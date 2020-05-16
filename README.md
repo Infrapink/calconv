@@ -24,6 +24,8 @@ FUTURE GOALS
 
 Replace the text boxes for months with dropdown menus.
 
+Make the overall GUI look nice, perhaps with a proper graphical toolkit like GTK or Qt
+
 Add the following calendars:
 * Old Roman
 * Byzantine
