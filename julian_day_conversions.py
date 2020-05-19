@@ -275,3 +275,40 @@ def julian_day_to_ethiopian(jday):
 
     date = [day, month, year]
     return(date)
+
+def julian_day_to_egyptian(jday):
+    jday = int(jday)
+    alpha = 160331
+    delta = jday - alpha
+    m = months.EGYPTIAN_MONTHS
+    year = 0
+    month = ""
+    day = 0
+
+    if delta > 0:
+        year = (delta // 365) + 1 # if delta is positive, year > 1 even if less than one full year has passed since day 0
+        delta %= 365
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+    else:
+        delta = 0 - delta
+        year = delta // 365 # I'm going to give Egypt a year 0 to make things easier.
+        delta = 365 - (delta % 365)
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+        year = 0 - year
+
+
+    date = [day, month, year]
+    return date
+

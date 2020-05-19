@@ -103,6 +103,11 @@ COPTIC_MONTHS_LEAP = {"Thout": 30,
                       "Mesori": 30,
                       "Extra Days": 6}
 
+# The Egyptian civil calendar was exactly 365 days long because they never figured out leap years.
+# Pharaonic Year 6291 began on 11/Sep/2017 according to this article:
+# https://www.egypttoday.com/Article/4/22184/September-11-marks-the-beginning-of-a-new-Egyptian-year
+# This means that day 1 of the Egyptian civil calendar is Julian Day 160332.
+
 EGYPTIAN_MONTHS = {"Thoth": 30,
                    "Phaophi": 30,
                    "Hathor": 30,
