@@ -38,7 +38,6 @@ Add the following calendars:
 * Chinese Lunisolar
 * Shire Reckoning
 * Sumerian
-* Ancient Egyptian
 * Buddhist
 * Indian
 * ISO
