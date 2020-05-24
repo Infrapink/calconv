@@ -7,6 +7,7 @@ import gregorian_convert
 import coptic_convert
 import ethiopian_convert
 import egyptian_convert
+import armenian_convert
 import months
 
 class Application(Frame):
@@ -80,6 +81,18 @@ class Application(Frame):
         self.egyptian_day_ent.insert(0, egyptian_day_value)
         self.egyptian_month_ent.insert(0, egyptian_month_value)
         self.egyptian_year_ent.insert(0, egyptian_year_value)
+
+        # Convert a Julian Day to a date in the Armenian Calendar
+        armenian_date = julian_day_conversions.julian_day_to_armenian(day)
+        armenian_day_value = armenian_date[0]
+        armenian_month_value = armenian_date[1]
+        armenian_year_value = armenian_date[2]
+        self.armenian_day_ent.delete(0, END)
+        self.armenian_month_ent.delete(0, END)
+        self.armenian_year_ent.delete(0, END)
+        self.armenian_day_ent.insert(0, armenian_day_value)
+        self.armenian_month_ent.insert(0, armenian_month_value)
+        self.armenian_year_ent.insert(0, armenian_year_value)
         
 
 
@@ -129,6 +142,16 @@ class Application(Frame):
         month = self.egyptian_month_ent.get()
         year = self.egyptian_year_ent.get()
         jday = egyptian_convert.convert(day, month, year)
+        self.day_julian_ent.delete(0, END)
+        self.day_julian_ent.insert(0, jday)
+        self.day_julian_convert()
+
+    def armenian_converter(self):
+        """Convert a date in the Armenian Calendar to a Julian Day."""
+        day = self.armenian_day_ent.get()
+        month = self.armenian_month_ent.get()
+        year = self.armenian_year_ent.get()
+        jday = armenian_convert.convert(day, month, year)
         self.day_julian_ent.delete(0, END)
         self.day_julian_ent.insert(0, jday)
         self.day_julian_convert()
@@ -213,6 +236,19 @@ class Application(Frame):
         self.egyptian_year_ent = Entry(self)
         self.egyptian_year_ent.grid(row = 7, column = 2, sticky = W)
         self.egyptian_bttn = Button(self, text = "Calculate", command = self.egyptian_converter).grid(row = 8, column = 0, columnspan = 3, sticky = W)
+
+        # Armenian Calendar
+        self.armenian_lbl = Label(self, text = "Armenian Calendar").grid(row = 5, column = 3, columnspan = 3, sticky = W)
+        self.armenian_day_lbl = Label(self, text = "Day").grid(row = 6, column = 3, sticky = W)
+        self.armenian_day_ent = Entry(self)
+        self.armenian_day_ent.grid(row = 7, column = 3, sticky = W)
+        self.armenian_month_lbl = Label(self, text = "Month").grid(row = 6, column = 4, sticky = W)
+        self.armenian_month_ent = Entry(self)
+        self.armenian_month_ent.grid(row = 7, column = 4, sticky = W)
+        self.armenian_year_lbl = Label(self, text = "Year").grid(row = 6, column = 5, sticky = W)
+        self.armenian_year_ent = Entry(self)
+        self.armenian_year_ent.grid(row = 7, column = 5, sticky = W)
+        self.armenian_bttn = Button(self, text = "Calculate", command = self.armenian_converter).grid(row = 8, column = 3, columnspan = 3, sticky = W)
 
 # create the root window
 root = Tk()

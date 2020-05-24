@@ -312,3 +312,38 @@ def julian_day_to_egyptian(jday):
     date = [day, month, year]
     return date
 
+def julian_day_to_armenian(jday):
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+    delta = jday - 1922866
+    m = months.ARMENIAN_MONTHS
+
+    if delta > 0:
+        year = (delta // 365) + 1 # add 1 to account for the lack of year 0
+        delta %= 365
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+    else:
+        delta = 0 - delta # modulo operator doesn't play nicely with negative numbers
+        year = (delta // 365) + 1 # add (ie substract) 1 to account for the lack of year 0
+        year = 0 - year
+        delta %= 365
+        delta = 365 - delta
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = [day, month, year]
+    return date
+

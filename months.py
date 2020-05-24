@@ -202,3 +202,39 @@ SOLAR_HIJRI_MONTHS_LEAP = {"Farvardin": 31,
                            "Dey": 30,
                            "Bahman": 30,
                            "Esfand": 30}
+
+
+# Armenian Calendar
+#
+# The Armenian calendar was used in Armenian until the 11th century, when
+# the Julian calendar was introduced.
+# The original calendar was notionally established by Hayk, the legendary
+# founder of Armenia, in 2492 BC to commemorate his defeat of General
+# Belos of Babylon; academic consensus appears to be that it was established
+# by Artaxias (188 BC - 161 BC)
+#
+# Much like the Egyptian calendar, the Armenian calendar consists of
+# 30 * 12-day months plus five extra days at the end of the year.
+#
+# The Armenian calendar epoch is Julian Day 1922867, basically to make
+# it easier to work out the date of Easter.
+#
+# Sources:
+# https://en.wikipedia.org/wiki/Armenian_calendar
+# http://haytomar.com/calendar.php
+# http://www.rahamasha.net/uploads/2/3/2/8/2328777/armenian_calendar.pdf
+# http://www.armeniapedia.org/wiki/Armenian_calendar
+
+ARMENIAN_MONTHS = {"Nawasard": 30,
+                   "Hoṙi": 30,
+                   "Sahmi": 30,
+                   "Trē": 30,
+                   "Kʿałocʿ": 30,
+                   "Arac'": 30,
+                   "Mehekan": 30,
+                   "Areg": 30,
+                   "Ahekan": 30,
+                   "Mareri": 30,
+                   "Margac'": 30,
+                   "Hrotic'": 30,
+                   "Extra days": 5}
