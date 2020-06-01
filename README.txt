@@ -14,6 +14,144 @@ From the command line, navigate to the folder where you unpacked the program and
 
 On Windows, you can instead double-click on calconv.bat
 
+Dates are entered in the indicated text boxes in the order Day, Month, Year (except for the Julian Day, which is just a number). For now, months must be written in full, and entered exactly as listed here, including punctuation and diacritical marks. A later version will replace the text entry fields with selectable dropdown menus. Years before the calendar epoch are entered as negative numbers; so, for example, the year 44 BC would be input as -44.
+
+Julian Day:
+* This is a simple number.
+
+Julian and Gregorian Calendars:
+* January
+* February
+* March
+* April
+* May
+* June
+* July
+* August
+* September
+* October
+* November
+* December
+
+Ethiopian Calendar:
+* Mäskäräm
+* Ṭəqəmt
+* Ḫədar
+* Taḫśaś
+* Ṭərr
+* Yäkatit
+* Mägabit
+* Miyazya
+* Gənbo
+* Säne
+* Ḥamle
+* Nähase
+* Ṗagume
+* Extra Days
+
+Coptic Calendar:
+* Thout
+* Paopi
+* Hathor
+* Koiak
+* Tobi
+* Meshir
+* Paremhat
+* Parmouti
+* Pashons
+* Paoni
+* Epip
+* Mesori
+* Extra days
+
+Egyptian Calendar:
+* Thoth
+* Phaophi
+* Hathor
+* Choak
+* Tybi
+* Mechir
+* Phamenoth
+* Pharmuthi
+* Pachons
+* Payni
+* Spiphi
+* Mesore
+* Extra days
+
+Lunar Hijri Calendar:
+* Muharram
+* Safar
+* Rabi' al-awwal
+* Rabi' al-Thani
+* Jumada al-awwal
+* Jumada al-Thani
+* Rajab
+* Sha'ban
+* Ramadan
+* Shawwal
+* Dhu al-Qidah
+* Dhu al-Hijjah
+
+Solar Hijri and Ahmad Birashk's Calendars:
+* Farvardin
+* Ordibehesht
+* Khordad
+* Tir
+* Mordad
+* Shahrivar
+* Mehr
+* Aban
+* Azar
+* Dey
+* Bahman
+* Esfand
+
+Armenian Calendar:
+* Nawasard
+* Hoṙi
+* Sahmi
+* Trē
+* Kʿałocʿ
+* Arac
+* Mehekan
+* Areg
+* Ahekan
+* Mareri
+* Margac
+* Hrotic'
+* Extra days
+
+Modern Assyrian Calendar
+* Nīsān
+* ʾĪyār
+* Ḥzīrān
+* Tammūz
+* Ṭabbāḥ
+* ʾĪlūl
+* Tešrīn Qḏīm
+* Tešrīn Ḥrāy
+* Kānōn Qḏīm
+* Kānōn Ḥrāy
+* Šḇāṭ
+* Āḏar
+
+Babylonian Calendar:
+* Nisānu
+* Āru
+* Simanu
+* Dumuzu
+* Abu
+* Ulūlu
+* Ulūlu Arku (only in the 17th year of the Metonic cycle)
+* Tišritum
+* Samnu
+* Kislimu
+* Ṭebētum
+* Šabaṭu
+* Addaru
+* Addaru Arku (leap years only)
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -28,23 +166,16 @@ Add the following calendars:
 * Old Roman
 * Byzantine
 * Hebrew
-* Lunar Hijri (Islamic)
-* Solar Hijri
-* Birashk
 * Mayan
 * French Revolutionary
 * Chinese Lunisolar
 * Shire Reckoning
-* Sumerian
-* Ancient Egyptian
 * Buddhist
 * Indian
 * ISO
 * Unix time
 * Baha'í
 * Revised Julian
-* Armenian
-* Assyrian
 * Saka
 * Bengali
 * Berber
