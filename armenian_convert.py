@@ -1,33 +1,41 @@
 #!/usr/bin/python
 
+#
+# Convert a date in the Armenian Calendar to a Julian Day
+#
+
 import months
 
 def convert(day, month, year):
-    alpha = 1922866
     day = int(day)
-    month = month.title()
+    month = month
     year = int(year)
     days = 0
-    jday = 0
     m = months.ARMENIAN_MONTHS
 
     if year > 0:
-        days = (year - 1) * 365 # have to subtract 1 to account for the lack of year 0
+        # positive years
+        alpha = 1922866
+        for y in range(1,year):
+            days += 365
         for i in m.keys():
             if i == month:
                 days += day
                 break
             else:
                 days += m[i]
-        else:
-            year = 1 - year
-            days = year * 365
-            for i in m.keys():
-                if i == month:
-                    days -= day
-                    break
-                else:
-                    days -= m[i]
-
-    jday = days + alpha
+    else:
+        # negative years
+        alpha = 1922867
+        year = 0 - year
+        for i in m.keys():
+            if i == month:
+                days += day - 1
+                break
+            else:
+                days += m[i]
+        for y in range(0,year):
+            days -= 365
+    jday = alpha + days
     return jday
+                

@@ -152,6 +152,25 @@ Babylonian Calendar:
 * Addaru
 * Addaru Arku (leap years only)
 
+Hebrew calendar:
+* Tishrei
+* Marcheshvan
+* Kislev
+* Tevet
+* Shevat
+* Adar
+* Veadar (leap years only)
+* Nisan
+* Iyar
+* Sivan
+* Tammuz
+* Av
+* Elul
+
+(Note: Everyone else lists Nisan as the first month of the year, and Adar/Veadar as the last. This is for Jewish
+cultural reasons; however, Tishrei is the first month of the civil Hebrew calendar, as it is on 1 Tishrei
+that theyear number increments. I have listed the months in this order to avoid confusion).
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

@@ -1,60 +1,60 @@
 #!/usr/bin/python
 
+#
+# Convert a Julian Day to a date in various calendars
+#
+
+from decimal import *
+from fractions import *
+from math import *
+
 import months
+import leap_years_birashk
+import leap_years_assyrian
+import hebrew_calculations
 
 cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
 
-def julian_day_to_julian(jday):
+cycle30 = (30 * 354) + 11
+
+cycle5 = (365 * 5) + 1
+cycle33 = (7 * cycle4) + cycle5
+cycle29 = (6 * cycle4) + cycle5
+cycle37 = (8 * cycle4) + cycle5
+cycle128 = (3 * cycle33) + cycle29
+cycle132 = (2 * cycle33) + cycle29 + cycle37
+cycle2820 = (21 * cycle128) + cycle132
+
+cycle19 = (12 * 354) + (7 * 383)
+
+def julian(jday):
     """Convert the Julian Day to a date in the Julian Calendar"""
-    alpha = int(jday)
+    jday = int(jday)
     year = 0
     month = ""
     day = 0
     m = None
     d = 0
 
-    # number of days that have passed since day 31/Dec/1 BC
-    delta = alpha - 1721422
-
-    if delta > 0:
+    if jday > 1721422:
+        # positive date
+        delta = jday - 1721422
         year_4 = delta // cycle4
-        delta = delta % cycle4
+        delta %= cycle4
         single_years = delta // 365
-        single_years += 1 # need to add 1 to account for the lack of year 0
-        delta = delta % 365
-        year =  (4 * year_4) + single_years
+        delta %= 365
+        year = (4 * year_4) + single_years + 1 # need to add 1 to account for the lack of year 0
         if year % 4 == 0:
             # leap year
             m = months.CAESAR_MONTHS_LEAP
         else:
             # not a leap year
             m = months.CAESAR_MONTHS_NORMAL
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
-    elif delta <= 0:
-        delta = 0 - delta # modulo operator doesn't play nicely with negative numbers
-        year_4 = delta // cycle4
-        delta = delta % cycle4
-        single_years = delta // 365
-        delta = delta % 365
-        year = (4 * year_4) + single_years # won't correct for lack of year 0 just yet to make leap years easier
-        if year % 4 == 0:
-            # leap year
-            m = months.CAESAR_MONTHS_LEAP
-            d = 366
-        else:
-            # not a leap year
-            m = months.CAESAR_MONTHS_NORMAL
-            d = 365
-        year = 0 - year - 1 # have to deduct 1 to account for the lack of year 0
-        delta = d - delta
+        if delta == 0:
+            delta = 365
+            year -= 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -63,12 +63,49 @@ def julian_day_to_julian(jday):
             else:
                 delta -= m[i]
 
-    date = [day, month, year]
-    return(date)
+    else:
+        # negative date
+        delta = 1721423 - jday
+        # This guarantees a nonzero value for delta
+        # Because we are counting backwards, it is the first and not the fourth year of the 4-year cycle
+        # that has 366 days in it.
+        # But we're starting at year 0, which will be corrected later.
 
-def julian_day_to_gregorian(jday):
+        while delta > 0:
+            if year % 4 == 0:
+                year += 1
+                delta -= 366
+            else:
+                year += 1
+                delta -= 365
+
+        # delta is now 0 or negative, and year is the negative of the actual year.
+        if (year - 1) % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+            delta = 0 - delta + 1
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+            delta = 0 - delta + 1
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+        year = 0 - year
+        date = (day,month,year)
+        return date
+
+    date = (day,month,year)
+    return date
+
+def gregorian(jday):
     """Convert a Julian Day to a date in the Gregorian calendar"""
-    alpha = int(jday)
+    jday = int(jday)
     year = 0
     month = ""
     day = 0
@@ -76,9 +113,9 @@ def julian_day_to_gregorian(jday):
     d = 0
     leap = None
 
-    # number of days that have passed since 31/Dec/1 BC
-    delta = alpha - 1721424 # apparently 01/Jan/1 in the Gregorian calendar is 03/Jan/1 in the Julian calendar
-    if delta > 0:
+    if jday > 1721424:
+        # positive date
+        delta = jday - 1721424
         year_400 = delta // cycle400
         delta = delta % cycle400
         year_100 = delta // cycle100
@@ -87,7 +124,7 @@ def julian_day_to_gregorian(jday):
         delta = delta % cycle4
         single_years = delta // 365
         delta = delta % 365
-        year = (400 * year_400) + (100 * year_100) + (4 * year_4) + single_years + 1 # need to add 1 to account for the lack of year 0
+        year = (400 * year_400) + (100 * year_100) + (4 * year_4) + single_years +1 # have to add 1 to account for the lack of year 0
 
         if year % 400 == 0:
             # leap year
@@ -106,6 +143,9 @@ def julian_day_to_gregorian(jday):
             m = months.CAESAR_MONTHS_LEAP
         else:
             m = months.CAESAR_MONTHS_NORMAL
+        if delta == 0:
+            delta = 365
+            year -= 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -114,37 +154,39 @@ def julian_day_to_gregorian(jday):
             else:
                 delta -= m[i]
 
-    elif delta <= 0:
-        delta = 0 - delta # modulo operator doesn't play nicely with negative numbers
-        year_400 = delta // cycle400
-        delta = delta % cycle400
-        year_100 = delta // cycle100
-        delta = delta % cycle100
-        year_4 = delta // cycle4
-        delta = delta % cycle4
-        single_years = delta // 365
-        delta = delta % 365
-        year = (400 * year_400) + (100 * year_100) + (4 * year_4) + single_years # don't add the corrective year just yet
-        if year	% 400 == 0:
-            # leap year
-            leap = True
-        elif year % 100 == 0:
-            # not a leap year                                                                                       
-            leap = False
-        elif year % 4 == 0:
-            # leap year                                                                                             
-            leap = True
-        else:
-            # not a leap year                                                                                       
-            leap = False
+    else:
+        # negative date
+        delta = 1721425 - jday
 
-        year = 0 - year - 1 # have to subtract 1 to account for the lack of year 0
-        if leap == True:
+        while delta > 0:
+            if year % 400 == 0:
+                year += 1
+                delta -= 366
+            elif year % 100 == 0:
+                year += 1
+                delta -= 365
+            elif year % 4 == 0:
+                year += 1
+                delta -= 366
+            else:
+                year+= 1
+                delta -= 365
+
+        if (year - 1) % 400 == 0:
+            # leap year
             m = months.CAESAR_MONTHS_LEAP
-            delta = 366 - delta
-        else:
+        elif (year - 1) % 100 == 0:
+            # not a leap year
             m = months.CAESAR_MONTHS_NORMAL
-            delta = 365 - delta
+        elif (year - 1) % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta + 1
 
         for i in m.keys():
             if delta <= m[i]:
@@ -157,17 +199,18 @@ def julian_day_to_gregorian(jday):
     date = [day, month, year]
     return(date)
 
-def julian_day_to_coptic(jday):
+def coptic(jday):
     """Convert a Julian Day to a date in the Coptic Calendar"""
-    alpha = int(jday)
-    delta = alpha - 1825028 # days that have passed since day 0
+    jday = int(jday)
     day = 0
     month = ""
     year = 0
     d = 0
     m = None
 
-    if delta > 0:
+    if jday > 1825028:
+        # positive date
+        delta = jday - 1825028
         year_4 = delta // cycle4
         delta = delta % cycle4
         single_years = delta // 365
@@ -179,7 +222,9 @@ def julian_day_to_coptic(jday):
         else:
             # not a leap year
             m = months.COPTIC_MONTHS_NORMAL
-
+        if delta == 0:
+            delta = 365
+            year -= 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -188,23 +233,28 @@ def julian_day_to_coptic(jday):
             else:
                 delta -= m[i]
 
-    elif delta <= 0:
-        delta = 0 - delta # modulo operator doesn't play nicely with negative numbers
-        year_4 = delta // cycle4
-        delta = delta % cycle4
-        single_years = delta // 365
-        delta = delta % 365
-        year = (4 * year_4) + single_years # won't correct for the lack of year 0 just yet to make it easier to determine leap years
-        if year % 4 == 0:
+    else:
+        # negative date
+        delta = 1825029 - jday
+
+        while delta > 0:
+            if year % 4 == 0:
+                year += 1
+                delta -= 366
+            else:
+                year += 1
+                delta -= 365
+
+        if (year - 1) % 4 == 0:
             # leap year
             m = months.COPTIC_MONTHS_LEAP
-            d = 366
         else:
             # not a leap year
             m = months.COPTIC_MONTHS_NORMAL
-            d = 365
-        year = 0 - year - 1 # deduct 1 to account for the lack of year 0
-        delta = d - delta
+
+        year = 0 - year
+        delta = 0 - delta + 1
+
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -212,23 +262,22 @@ def julian_day_to_coptic(jday):
                 break
             else:
                 delta -= m[i]
-
+                
     date = [day, month, year]
     return(date)
 
-def julian_day_to_ethiopian(jday):
+def ethiopian(jday):
     """Convert a Julian Day to a date in the Ethiopian calendar"""
-    alpha = int(jday)
+    jday = int(jday)
     year = 0
     month = ""
     day = 0
     m = None
     d = 0
 
-    # Number of days that have passed since the end of 1 BC
-    delta = alpha - 1724221
-
-    if delta > 0:
+    if jday > 1724221:
+        # positive date
+        delta = jday - 1724221
         year_4 = delta // cycle4
         delta = delta % cycle4
         single_years = delta // 365
@@ -240,6 +289,9 @@ def julian_day_to_ethiopian(jday):
         else:
             # not a leap year
             m = months.ETHIOPIAN_MONTHS_NORMAL
+        if delta == 0:
+            delta = 365
+            year -= 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -248,23 +300,28 @@ def julian_day_to_ethiopian(jday):
             else:
                 delta -= m[i]
 
-    elif delta <= 0:
-        delta = 0 - delta # modulo operator doesn't play nicely with negative numbers
-        year_4 = delta // cycle4
-        delta = delta % cycle4
-        single_years = delta // 365
-        delta = delta % 365
-        year = (4 * year_4) + single_years
-        if year % 4 == 0:
+    else:
+        # negative date
+        delta = 1724222 - jday
+
+        while delta > 0:
+            if year % 4 == 0:
+                year += 1
+                delta -= 366
+            else:
+                year += 1
+                delta -= 365
+
+        if (year %4) == 0:
             # leap year
             m = months.ETHIOPIAN_MONTHS_LEAP
-            d = 366
         else:
             # not a leap year
             m = months.ETHIOPIAN_MONTHS_NORMAL
-            d = 365
+
         year = 0 - year
-        delta = d - delta
+        delta = 0 - delta + 1
+
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -276,18 +333,22 @@ def julian_day_to_ethiopian(jday):
     date = [day, month, year]
     return(date)
 
-def julian_day_to_egyptian(jday):
+def egyptian(jday):
+    """Convert a Julian Day to a date in the Egyptian calendar."""
     jday = int(jday)
-    alpha = 160331
-    delta = jday - alpha
     m = months.EGYPTIAN_MONTHS
     year = 0
     month = ""
     day = 0
 
-    if delta > 0:
+    if jday > 160331:
+        # positive year
+        delta = jday - 160331
         year = (delta // 365) + 1 # if delta is positive, year > 1 even if less than one full year has passed since day 0
         delta %= 365
+        if delta == 0:
+            delta = 365
+            year -= 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -296,9 +357,14 @@ def julian_day_to_egyptian(jday):
             else:
                 delta -= m[i]
     else:
-        delta = 0 - delta
-        year = delta // 365 # I'm going to give Egypt a year 0 to make things easier.
-        delta = 365 - (delta % 365)
+        # negative year
+        delta = 160332 - jday
+
+        while delta > 0:
+            year -= 1
+            delta -= 365
+
+        delta = 0 - delta + 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -306,23 +372,26 @@ def julian_day_to_egyptian(jday):
                 break
             else:
                 delta -= m[i]
-        year = 0 - year
-
 
     date = [day, month, year]
     return date
 
-def julian_day_to_armenian(jday):
+def armenian(jday):
+    """Convert a Julian Day to a date in the Armenian calendar"""
     jday = int(jday)
     day = 0
     month = ""
     year = 0
-    delta = jday - 1922866
     m = months.ARMENIAN_MONTHS
 
-    if delta > 0:
+    if jday > 1922866:
+        # positive year
+        delta = jday - 1922866
         year = (delta // 365) + 1 # add 1 to account for the lack of year 0
         delta %= 365
+        if delta == 0:
+            delta = 365
+            year -= 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -331,11 +400,89 @@ def julian_day_to_armenian(jday):
             else:
                 delta -= m[i]
     else:
-        delta = 0 - delta # modulo operator doesn't play nicely with negative numbers
-        year = (delta // 365) + 1 # add (ie substract) 1 to account for the lack of year 0
+        # negative year
+        delta = 1922867 - jday
+        while delta > 0:
+            year -= 1
+            delta -= 365
+
+        delta = 0 - delta + 1
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+                
+    date = [day, month, year]
+    return date
+
+def lunar_hijri(jday):
+    """Convert a Julian Day to a date in the Lunar Hijri calendar."""
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+    single_year = 0
+    leap_years_ah = (2, 5, 7, 10, 13, 16, 18, 21, 24, 26, 29)
+    leap_years_bh = (2, 5, 7, 10, 13, 15, 18, 21, 24, 26, 29)
+    leap_years_zero = (1, 4, 6, 9, 12, 14, 17, 20, 23, 25, 28)
+
+    if jday > 1948438:
+        # positive year
+        delta = jday - 1948438
+        cycles = delta // cycle30
+        delta = delta % cycle30
+        m = None
+        for y in range(1, 31):
+            if y in leap_years_ah:
+                if delta <= 355:
+                    # leap year
+                    m = months.LUNAR_HIJRI_MONTHS_LEAP
+                    single_year = y
+                    break
+                else:
+                    delta -= 355
+            else:
+                if delta <= 354:
+                    # not a leap year
+                    m = months.LUNAR_HIJRI_MONTHS_NORMAL
+                    single_year = y
+                    break
+                else:
+                    delta -= 354
+        year = (cycles * 30) + single_year
+        if delta == 0:
+            delta = 354
+            year -= 1
+            
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+    else:
+        # negative year
+        delta = 1948439 - jday
+        while delta > 0:
+            if (year % 30) in leap_years_zero:
+                year += 1
+                delta -= 355
+            else:
+                year += 1
+                delta -= 354
+            
+        if (year % 30) in leap_years_bh:
+            # leap year
+            m = months.LUNAR_HIJRI_MONTHS_LEAP
+        else:
+            m = months.LUNAR_HIJRI_MONTHS_NORMAL
+                
         year = 0 - year
-        delta %= 365
-        delta = 365 - delta
+        delta = 0 - delta + 1
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -344,6 +491,600 @@ def julian_day_to_armenian(jday):
             else:
                 delta -= m[i]
 
-    date = [day, month, year]
+    date = (day, month, year)
+    return date
+                    
+
+
+def solar_hijri(jday):
+    """Convert a Julian Day to a date in the Solar Hijri calendar."""
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+
+    leap_years_ah = (5,9,13,17,21,25,29,33)
+    leap_years_zero = (0,4,8,12,16,20,24,28)
+    leap_years_bh = (1,5,9,13,17,21,25,29)
+
+    if jday > 1948319:
+        # positive date
+        delta = jday - 1948319
+        cycles = delta // cycle33
+        delta %= cycle33
+        for y in range(1,34):
+            if y in leap_years_ah:
+                if delta <= 366:
+                    # leap year
+                    single_years = y
+                    m = months.SOLAR_HIJRI_MONTHS_LEAP
+                    break
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    # not a leap year
+                    single_years = y
+                    m = months.SOLAR_HIJRI_MONTHS_NORMAL
+                    break
+                else:
+                    delta -= 365
+        year = (33 * cycles) + single_years
+        if delta == 0:
+            delta = 365
+            year -= 1
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+    else:
+        # negative date
+        delta = 1948320 - jday
+
+        while delta > 0:
+            if (year % 33) in leap_years_zero:
+                year += 1
+                delta -= 366
+            else:
+                year += 1
+                delta -= 365
+
+        if year in leap_years_bh:
+            # leap year
+            m = months.SOLAR_HIJRI_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.SOLAR_HIJRI_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta + 1
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+    date = (day,month,year)
     return date
 
+def birashk(jday):
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+    delta = jday - 1948319 # days that have passed, starting on 1/1/1
+
+    # I tried to be smart anc calculate by cycles and subcycles, but Python apparently gets confused when you go too many levels deep in if..else statements, so screw it I'm just going to use one big 2820-year cycle.
+
+    if delta > 0:
+        great_cycles = delta // cycle2820
+        delta %= cycle2820
+
+        for y in range(1,2821):
+            if y in leap_years_birashk.ah:
+                if delta <= 366:
+                    # leap year
+                    single_year = y
+                    m = months.SOLAR_HIJRI_MONTHS_LEAP
+                    break
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    # not a leap year
+                    single_year = y
+                    m = months.SOLAR_HIJRI_MONTHS_NORMAL
+                    break
+                else:
+                    delta -= 365
+
+        year = (great_cycles * 2820) + single_year
+        if delta == 0:
+            delta = 365
+            year -= 1
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        delta = 0 - delta # module operator doesn't place nicely with negative numbers
+        great_cycles = delta // cycle2820
+        delta %= cycle2820
+
+        for y in range(0,2820):
+            if y in leap_years_birashk.bh:
+                if delta <= 366:
+                    # leap year
+                    single_year = y
+                    m = months.SOLAR_HIJRI_MONTHS_LEAP
+                    delta = 366 - delta
+                    if delta == 0:
+                        delta = 1
+                    break
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    # not a leap year
+                    single_year = y
+                    m = months.SOLAR_HIJRI_MONTHS_NORMAL
+                    delta = 366 - delta
+                    break
+                else:
+                    delta -= 365
+
+        year = (great_cycles * 2820) + single_year
+        year = 0 - year - 1
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = [day,month,year]
+    return date
+
+def assyrian(jday):
+    """Convert a Julian Day to a date in the Assyrian calendar."""
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+    leap = None
+
+    if jday > -13388:
+        # positive year
+        delta = jday - -13388
+        cycles = delta // cycle400
+        delta %= cycle400
+
+
+        for y in range(1,401):
+            if y in leap_years_assyrian.PD:
+                if delta <= 366:
+                    m = months.ASSYRIAN_MONTHS_LEAP
+                    single_year = y
+                    break
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    m = months.ASSYRIAN_MONTHS_NORMAL
+                    single_year = y
+                    break
+                else:
+                    delta -= 365
+
+        year = (400 * cycles) + single_year
+        if delta == 0:
+            year -= 1
+            if year in leap_years_assyrian.PD:
+                m = months.ASSYRIAN_MONTHS_LEAP
+                delta = 366
+            else:
+                m = months.ASSYRIAN_MONTHS_NORMAL
+                delta = 365
+                
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+    else:
+        # negative date
+        delta = -13387 - jday
+
+        while delta > 0:
+            if (year % 400) in leap_years_assyrian.ZO:
+                year += 1
+                delta -= 366
+            else:
+                year += 1
+                delta -= 365
+
+        if (year % 400) in leap_years_assyrian.AD:
+            m = months.ASSYRIAN_MONTHS_LEAP
+        else:
+            m = months.ASSYRIAN_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta
+
+        if delta == 0:
+            year -= 1
+            if (year % 400) in leap_years_assyrian.AD:
+                m = months.ASSYRIAN_MONTHS_LEAP
+                delta = 366
+            else:
+                m = months.ASSYRIAN_MONTHS_NORMAL
+                delta = 365
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day,month,year)
+    return date
+        
+
+
+def babylonian(jday):
+    """Convert a Julian Day to a date in the Babylonian calendar."""
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+    leap_years_pd = (3,6,8,11,14,17,19,0)
+    leap_years_ad = (1,3,6,9,12,14,17)
+    leap_years_zo = (0,2,5,8,11,13,16)
+
+    # Years 17 PD, 3 AD, and 2 ZO are the ones where Veululu and not Veadar is the leap month
+
+    if jday > -210264:
+        # positive year
+        delta = jday - -210264
+        cycles = delta // cycle19
+        delta %= cycle19
+
+        for y in range (1,20):
+            if y == 17:
+                if delta <= 383:
+                    m = months.BABYLONIAN_MONTHS_LEAP_17
+                    single_year = y
+                    break
+                else:
+                    delta -= 383
+            elif y in leap_years_pd:
+                if delta <= 383:
+                    # leap year
+                    m = months.BABYLONIAN_MONTHS_LEAP
+                    single_year = y
+                    break
+                else:
+                    delta -= 383
+            else:
+                if delta <= 354:
+                    # not a leap year
+                    m = months.BABYLONIAN_MONTHS_NORMAL
+                    single_year = y
+                    break
+                else:
+                    delta -= 354
+
+        year = (19 * cycles) + single_year
+        if delta == 0:
+            year -= 1
+            if (year % 19) == 17:
+                delta = 383
+                m = months.BABYLONIAN_MONTHS_LEAP_17
+            elif (year % 19) in leap_years_pd:
+                m = months.BABYLONIAN_MONTHS_LEAP
+                delta = 383
+            else:
+                m = months.BABYLONIAN_MONTHS_NORMAL
+                dleta = 353
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+                
+
+    else:
+        delta = -210263 - jday
+        while delta > 0:
+            if (year % 19) in leap_years_zo:
+                year += 1
+                delta -= 383
+            else:
+                year += 1
+                delta -= 354
+
+        if (year % 19) in leap_years_ad:
+            # leap year
+            m = months.BABYLONIAN_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.BABYLONIAN_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta
+        if delta == 0:
+            year -= 1
+            if (year % 19) == 2:
+                m = months.BABYLONIAN_MONTHS_LEAP_17
+                delta = 383
+            elif (year % 19) in leap_years_ad:
+                m = months.BABYLONIAN_MONTHS_LEAP
+                delta = 383
+            else:
+                m = months.BABYLONIAN_MONTHS_NORMAL
+                delta = 354
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day,month,year)
+    return date
+
+def hebrew(jday):
+    """Convert a Julian Day to a day in the Hebrew calendar."""
+    leap_years_am = (3,6,8,11,14,17,19,0)
+    leap_years_bc = (1,3,6,9,12,14,17)
+    leap_years_zo = (0,2,5,8,11,13,16)
+    monlen = 29 + Fraction(12,24) + Fraction(793, (24 * 1080))
+    yearlen12 = 12 * monlen
+    yearlen13 = 13 * monlen
+    cycle19 = 235 * monlen
+    molad_tohu = Fraction(5,24) + Fraction(204,(24 * 1080))
+
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+
+    yeartype = {353:months.HEBREW_MONTHS_DEFICIENT_NORMAL,
+                354:months.HEBREW_MONTHS_REGULAR_NORMAL,
+                355:months.HEBREW_MONTHS_ABUNDANT_NORMAL,
+                383:months.HEBREW_MONTHS_DEFICIENT_LEAP,
+                384:months.HEBREW_MONTHS_REGULAR_LEAP,
+                385:months.HEBREW_MONTHS_ABUNDANT_LEAP}
+
+    if jday > 347996:
+        # positive dates
+        numbers = hebrew_calculations.calc(jday)
+        rosh = numbers[0]  # Julian Day of the molad of Tishri
+        mrosh = rosh
+        molad = numbers[1] # moment of the molad of Tishri
+        year = numbers[2]  # number of the current year
+        if (year % 19) in leap_years_am: # Is it a leap year?
+            leap = True
+        else:
+            leap = False
+
+        # Now we have to do the same for last year and next year
+        iday = rosh - 50 # last year
+        kday = rosh + 390 # next year
+
+        prev_numbers = hebrew_calculations.calc(iday)
+        prev_rosh = prev_numbers[0]
+        prev_mrosh = prev_rosh
+        prev_molad = prev_numbers[1]
+        prev_year = year - 1
+        
+        next_numbers = hebrew_calculations.calc(kday)
+        next_rosh = next_numbers[0]
+        next_mrosh = next_rosh
+        next_molad = next_numbers[1]
+        next_year = year + 1
+
+        r1 = False # check if R1 has applied. If R1 == False, do not apply rules 3 or 4.
+        prev_r1 = False
+        next_r1 = False
+
+        # Rule 1: If the molad of Tishri for year n falls after noon, subtract 1 day from Kislev in year n
+        # and add 1 day to Marcheshvan in year (n - 1)
+
+        if molad > Fraction(3,4):
+            rosh += 1
+            r1 = True
+
+        if next_molad > Fraction(3,4):
+            next_rosh += 1
+            next_r1 = True
+
+        # Rule 2: If the molad of Tishri in year n falls on a "Tuesday", after 9 hours 204 chalakim, and year n
+        # is NOT a leap year, postpone Rosh Hashana. To accomplish this, subtract 1 day from Kislev in year n
+        # and add 1 day to Marcheshvan in year (n - 1)
+
+        if r1 == False:
+            if (year % 19) not in leap_years_am:
+                if (mrosh % 7) == 0: # "Tuesday"
+                    if molad >= Fraction(9,24) + Fraction(204,(24 * 1080)): # 9 hours 204 chalakim
+                        rosh += 1
+
+        if next_r1 == False:
+            if (next_year % 19) not in leap_years_am:
+                if (next_mrosh % 7) == 0: # "Tuesday"
+                    if next_molad >= Fraction(9,24) + Fraction(204,(24 * 1080)): # 9 hours 204 chalakim
+                        next_rosh += 1
+
+        # Rule 3: If year n comes AFTER a leap year, and the molad of Tishri falls on a "Monday" on or after
+        # 15 hours 589 chalakim, Rosh Hashana is postponed. This is accomplished by subtracting 1 day from
+        # Kislev in year n and adding 1 day to Marcheshvan in year (n - 1)
+
+        if r1 == False:
+            if (prev_year % 19) in leap_years_am:
+                if (mrosh % 7) == 6: # "Monday"
+                    if molad >= Fraction(15,24) + Fraction(589,(24 * 1080)): # 15 hours 589 chalakim
+                        rosh += 1
+
+        if next_r1 == False:
+            if (year % 19) in leap_years_am:
+                if (next_mrosh % 7) == 6: # "Monday"
+                    if next_molad >= Fraction(15,24) + Fraction(589,(24 * 1080)): # 15 hours 589 chalakim
+                        next_rosh += 1
+
+        # Rule 4: If Rosh Hashanah in year n falls on a "Sunday", "Wednesday", or "Friday", it is postponed.
+        # To accomplish this, subtract 1 day from Kislev in year n and add 1 day to Marcheshvan in year (n - 1)
+
+        if (rosh % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
+            rosh += 1
+
+        if (next_rosh % 7) in (1,3,5):
+            next_rosh += 1
+
+        delta = jday - rosh + 1
+
+        m = yeartype[next_rosh - rosh]
+        if delta <= 0:
+            year -= 1
+            month = "Elul"
+            day = 29 + delta
+        else:
+            for i in m.keys():
+                if delta <= m[i]:
+                    month = i
+                    day = delta
+                    break
+                else:
+                    delta -= m[i]
+
+    else:
+        # negative dates
+        numbers = hebrew_calculations.calc(jday)
+        rosh = numbers[0]  # Julian Day on which the molad of Tishri falls
+        mrosh = rosh
+        molad = numbers[1] # moment of the molad of Tishri
+        year = numbers[2]  # number of the current year
+        r1 = False
+
+
+
+        # looking good so far. now do it for next year
+        kday = rosh + 390 # next year
+        next_numbers = hebrew_calculations.calc(kday)
+        next_rosh = next_numbers[0]
+        next_mrosh = next_rosh
+        next_molad = next_numbers[1]
+        next_year = year - 1 # year is positive, so next_year is 1 less
+        if next_year == 0:
+            next_year = 1
+        next_r1 = False
+
+
+
+        # Rule 1: If the molad of Tishri falls after noon, postpone Rosh Hashanah
+        if abs(molad) > Fraction(3,4): # noon falls 3/4 of the way through a standard Hebrew day
+            rosh += 1
+            r1 = True
+
+        if abs(next_molad) > Fraction(3,4): # noon falls 3/4 of the way through a standard Hebrew day
+            next_rosh += 1
+            next_r1 = True
+
+
+        # Rule 2: If the molad of Tishri falls on a "Tuesday" after 9 hours 204 chalakim
+        # and it's NOT a leap year, postpone Rosh Hashanah. This rule is only invoked if rule 1 has not been.
+        if r1 == False:
+            if (abs(year) % 19) not in leap_years_bc:
+                if (mrosh % 7) == 0: # "Tuesday". This applies to both positive and negative Julian Days
+                    if molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
+                        rosh += 1
+
+        if next_r1 == False:
+            if (abs(next_year) % 19) not in leap_years_bc:
+                if (next_mrosh % 7) == 0: # "Tuesday"
+                    if next_molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
+                        next_rosh += 1
+
+
+        # Rule 3: If it's the year AFTER a leap year, and the molad of Tishri falls on a "Monday" on or after
+        # 15 hours 589 chalakim, postpone Rosh Hashanah. Again, this rule is only invoked if rule 1 has not been.
+
+        if r1 == False:
+            if ((year + 1) % 19) in leap_years_bc: # year is still positive, so add 1 to get the previous year
+                if mrosh > 0: # mrosh might be negative, so we need to account for that.
+                    if (mrosh % 7) == 6: # "Monday"
+                        if molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
+                            rosh += 1
+                else:
+                    if (abs(mrosh) % 7) == 1: # "Monday"
+                        if abs(molad) >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
+                            rosh += 1
+
+        if next_r1 == False:
+            if (year % 19) in leap_years_bc:
+                if next_mrosh > 0: # next_mrosh might be negative, so we need to account for that
+                    if (next_mrosh % 7) == 6: # "Monday"
+                        if next_molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
+                            next_rosh += 1
+                else:
+                    if (abs(next_mrosh) % 7) == 6: # "Monday"
+                        if abs(next_molad) >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
+                            next_rosh += 1
+
+
+        # Rule 4: If Rosh Hashanah would fall on a "Sunday", "Wednesday", or "Friday", it is postponed
+
+        if rosh > 0:
+            if (rosh % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
+                rosh += 1
+        else:
+            if (abs(rosh) % 7) in (2,4,6): # "Sunday", "Friday", "Wednesday"
+                rosh += 1
+
+        if next_rosh > 0:
+            if (next_rosh % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
+                next_rosh += 1
+        else:
+            if (abs(next_rosh) % 7) in (2,4,6): # "Sunday", "Friday", "Wednesday"
+                next_rosh += 1
+
+        delta = jday - rosh + 1
+        year = 0 - year
+        m = yeartype[next_rosh - rosh]
+
+        if delta <= 0:
+            year -= 1
+            month = "Elul"
+            day = 29 + delta
+        elif jday == next_rosh:
+            day = 1
+            month = "Tishrei"
+            year += 1
+        else:
+            for i in m.keys():
+                if delta <= m[i]:
+                    month = i
+                    day = delta
+                    break
+                else:
+                    delta -= m[i]
+
+    date = (day,month,year)
+    return date
