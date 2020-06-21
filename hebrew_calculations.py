@@ -113,7 +113,10 @@ def calc(jday):
                 position -= yearlen12
 
         rosh = int(position)
-        molad = position % 1
+        if position > 0:
+            molad = position % 1
+        else:
+            molad = (0 - position) % 1
 
 
     results = (rosh,molad,year)
