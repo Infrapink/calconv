@@ -18,6 +18,15 @@ def convert(day, month, year):
     if year > 0:
         # positive year
         alpha = -210264
+
+        if month == "Ulūlu Arku":
+            if (year % 19) != 17:
+                month = "Ulūlu"
+
+        if month == "Addaru Arku":
+            if (year % 19) not in (3,6,8,11,14,19,0):
+                month = "Addaru"
+                
         for y in range(1,year):
             if (y % 19) in leap_years_pd:
                 days += 383
@@ -42,6 +51,15 @@ def convert(day, month, year):
         # negative years
         alpha = -210263
         year = 0 - year
+
+        if month == "Ulūlu Arku":
+            if (year % 19) != 3:
+                month = "Ulūlu"
+
+        if month == "Addaru Arku":
+            if (year % 19) not in (1,6,9,12,14,17):
+                month = "Addaru"
+                
         if (year % 19) == 3:
             m = months.BABYLONIAN_MONTHS_LEAP_17
         elif (year % 19) in leap_years_ad:

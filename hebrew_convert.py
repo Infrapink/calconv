@@ -36,6 +36,10 @@ def convert(day, month, year):
 
     if year > 0:
         # positive dates
+        if month == "Veadar":
+            if (year % 19) not in leap_years_am:
+                month = "Adar"
+                
         for y in range(1, year):
             if (y % 19) in leap_years_am:
                 days += yearlen13
@@ -124,17 +128,16 @@ def convert(day, month, year):
 
     else:
         # negative dates
+        if month == "Veadar":
+            if (abs(year) % 19) not in leap_years_bc:
+                month = "Adar"
         position = 347997 + molad_tohu
-  #      print(position, int(position), position % 1)
 
-        # we're going to be working with negative numbers
         for y in range(0,abs(year)):
             if (y % 19) in leap_years_zo:
                 position -= yearlen13
- #               print(position, int(position), position % 1)
             else:
                 position -= yearlen12
-#                print(position, int(position), position % 1)
 
         # so far so good
         # now, the integer part of position should give us the day of the molad of Tishri, and
