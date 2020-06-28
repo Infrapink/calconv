@@ -14,6 +14,7 @@ import birashk_convert
 import assyrian_convert
 import babylonian_convert
 import hebrew_convert
+import samaritan_convert
 import months
 
 class Application(Frame):
@@ -174,6 +175,18 @@ class Application(Frame):
         self.hebrew_month_ent.insert(0, hebrew_month_value)
         self.hebrew_year_ent.insert(0, hebrew_year_value)
 
+        # Convert a Julian Day to a date in the Samaritan calendar
+        samaritan_date = julian_day_conversions.samaritan(day)
+        samaritan_day_value = samaritan_date[0]
+        samaritan_month_value = samaritan_date[1]
+        samaritan_year_value = samaritan_date[2]
+        self.samaritan_day_ent.delete(0, END)
+        self.samaritan_month_ent.delete(0, END)
+        self.samaritan_year_ent.delete(0, END)
+        self.samaritan_day_ent.insert(0, samaritan_day_value)
+        self.samaritan_month_ent.insert(0, samaritan_month_value)
+        self.samaritan_year_ent.insert(0, samaritan_year_value)
+
     def day_julian_plus(self):
         day = self.day_julian_ent.get()
         day = int(day) + 1
@@ -308,6 +321,16 @@ class Application(Frame):
         self.day_julian_ent.insert(0, jday)
         self.day_julian_convert()
 
+    def samaritan_converter(self):
+        """Convert a date in the Revised Hebrew calendar to a Julain Day"""
+        day = self.samaritan_day_ent.get()
+        month = self.samaritan_month_ent.get()
+        year = self.samaritan_year_ent.get()
+        jday = samaritan_convert.convert(day,month,year)
+        self.day_julian_ent.delete(0, END)
+        self.day_julian_ent.insert(0, jday)
+        self.day_julian_convert()
+
 
         
     def create_widgets(self):
@@ -315,7 +338,7 @@ class Application(Frame):
         # For now, months will just have to be typed manually until I can figure out how to use dropdown menus.
         
         # Julian Day
-        self.day_julian_lbl = Label(self, text = "Julian Day").grid(row = 0, column = 0, columnspan = 3, sticky = W)
+        self.day_julian_lbl = Label(self, text = "Chronological Julian Day").grid(row = 0, column = 0, columnspan = 3, sticky = W)
         self.day_julian_desc_lbl = Label(self, text = "Day").grid (row = 1, column = 0, columnspan = 3, sticky = W)
         self.day_julian_ent = Entry(self)
         self.day_julian_ent.grid(row = 2, column = 0, sticky = W)
@@ -475,7 +498,7 @@ class Application(Frame):
         self.babylonian_bttn = Button(self, text = "Calculate", command = self.babylonian_converter).grid(row = 13, column = 3, columnspan = 3, sticky = W)
 
         # Hebrew (Jewish) Calendar
-        self.hebrew_lbl = Label(self, text = "Hebrew Calendar").grid(row = 10, column = 6, columnspan = 3, sticky = W)
+        self.hebrew_lbl = Label(self, text = "Jewish Hebrew Calendar").grid(row = 10, column = 6, columnspan = 3, sticky = W)
         self.hebrew_day_lbl = Label(self, text = "Day").grid(row = 11, column = 6, sticky = W)
         self.hebrew_day_ent = Entry(self)
         self.hebrew_day_ent.grid(row = 12, column = 6, sticky = W)
@@ -487,9 +510,22 @@ class Application(Frame):
         self.hebrew_year_ent.grid(row = 12, column = 8, sticky = W)
         self.hebrew_bttn = Button(self, text = "Calculate", command = self.hebrew_converter).grid(row = 13, column = 6, columnspan = 3, sticky = W)
 
+        # Samaritan Calendar
+        self.samaritan_lbl = Label(self, text = "Samaritan Hebrew Calendar (estimated)").grid(row = 10, column = 9, columnspan = 3, sticky = W)
+        self.samaritan_day_lbl = Label(self, text = "Day").grid(row = 11, column = 9, sticky = W)
+        self.samaritan_day_ent = Entry(self)
+        self.samaritan_day_ent.grid(row = 12, column = 9, sticky = W)
+        self.samaritan_month_lbl = Label(self, text = "Month").grid(row = 11, column = 10, sticky = W)
+        self.samaritan_month_ent = Entry(self)
+        self.samaritan_month_ent.grid(row = 12, column = 10, sticky = W)
+        self.samaritan_year_lbl = Label(self, text = "Year").grid(row = 11, column = 11, sticky = W)
+        self.samaritan_year_ent = Entry(self)
+        self.samaritan_year_ent.grid(row = 12, column = 11, sticky = W)
+        self.samaritan_bttn = Button(self, text = "Calculate", command = self.samaritan_converter).grid(row = 13, column = 9, columnspan = 3, sticky = W)
+
 # create the root window
 root = Tk()
 app = Application(root)
-root.title("Calendar Converter 0.9.0")
+root.title("Calendar Converter 0.11.0")
 
 root.mainloop()

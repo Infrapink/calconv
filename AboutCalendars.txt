@@ -1,0 +1,264 @@
+
+---------------
+BUILDING BLOCKS
+---------------
+
+All timekeeping is, when you get right down to it, applied astronomy.
+
+Prehistoric humans noticed alternating periods of light and darkness, and gave them names meaning "day" and "night" respectively. In Sumer and China, the day was considered to end at sunset; in Egypt, Iran, and Mexico, the day began at sunrise. This subtle difference in consideration became important when humans gathered into societies and record-keeping became important. When this happened, it made sense to consider a day and a night as a single unit, which was also called a day. As a result, in Sumer, a calendar day lasted from sunset to sunset, while in Egypt, it lasted from sunrise to sunrise. The Romans instead defined the day at starting at midnight, when the sun is at its nadir; this has the useful effect that one goes to bed on one day and wakes up the next day[0].
+
+Early subdivisions of the day reflect the early concept of day and night as fundamentally different. Sumerians and Egyptians both divided the period of sunset to sunrise into 12 equal parts, and also divided the period from sunrise to sunset into 12 parts, identified by the rising of particular stars [1][2]; this is the basis for the modern hour. As you can imagine, the length of the daytime and nighttime hours were usually unequal, and the lengths of the respective hours would change across the course of Earth's orbit around the sun. This changed with the invention of mechanical clocks in the late Middle Ages; because a mechanical clock cannot compensate for change in the length of daylight and nighttime, an hour was now fixed as 1/24 of a day/night cycle [3][4]. In an echo of having seperate sets of 12 hours each for daytime and nighttime, it is common in everyday speech to refer to the 12 hours between midnight and noon as a.m. (ante meridian, Latin for before noon), while those between noon and midnight are called p.m. (post meridian, after noon), with a.m. and p.m. hours each running from 1 to 12. In contexts where clarity is important, it is more common to refer to hours by a 24-hour scheme, running from starting at 00 at midnight, continuing on through 12 at noon until 24 is reached, at which point the count resets to 00.
+
+Accurate timekeeping entails subdividing the hour. Semitic peoples divide the hour in 1080 chalakim (singular: chelek), which is important when calculating the exact start of the month [5]. The Sumerian preference for the number 60 led to Indo-European peoples dividing the hour into 60 minutes; as mechanical clocks became more accurate, the minute itself was divided into 60 seconds [3].
+
+Even defining a day throws up some unexpected complications. In ancient times, people quite reasonably defined the length of a day as the time between successive noons or midnights; in modern times, we know this is the time over which Earth returns to the same orientation relative to the sun. This averages to 24 hours, or 86400 seconds. However, due to orbital mechanics, the actual length of the solar day can vary by up to 29 seconds [6]. Astronomers commonly use the sidereal day, the time taken for Earth to rotate once on its axis, as measured relative to the fixed stars. This time lasts 86164.1 seconds, or 23 hours 56 minutes 4.1 seconds. [7]
+
+But days add up quickly, and in a time when most people can't count beyond 100, some scheme to group days together is necessary. The phases of the moon provide a handy guide, as the moon passes through its phases at a regular interval (but not quite regular; it decreases by about 25 microseconds each time) [5]. This period was known as a month, and in Sumer and China, each month began on the first sighting of the waxing crescent; in modern times, this is widely replaced with the more precise astronomical definition of the moment when the centre of the moon crosses the ecliptic longitude of the centre of the sun. The Akkadians (Assyrians and Chaldaeans) adopted the Sumerian practice, and transmitted it to the Hebrews and Arabs [8][9][10][11]; the veneration of Chinese culture in East Asia meant the system was also adopted in Cambodia, Thailand, Laos, Vietnam, Korea, and Japan.
+
+But as with days, defining a month can be tricky. The period between solar conjunctions is referred to as the synodic month, which averages to 29 days 12 hours 44 minutes 2.8 seconds. There is, of course, a sidereal month, the time taken for the moon to return to the same position relative to the fixed stars; this lasts 27 days 7 hours 43 minutes 11.6 seconds, the discrepancy with the synodic month due to the fact that Earth is moving around the sun and thus from the perspective of someone on Earth, the moon needs a little over 2 more days to catch up to the sun. The tropical month is the time between ascendant crossings of the ecliptic, which comes out to 27 days 7 hours 43 minutes 4.7 seconds due to orbital wobble. The draconic month is the time between crossings of the point where the plane of the moon's orbit intersects the celestial equator, which is 27 days 5 hours 5 minutes 35.8 seconds. Finally, there is the anomalistic month, which is the time between perigees; it is 27 days 13 hours 18 minutes 33.2 seconds long. [15]
+
+The other grouping of days is the time taken for Earth to orbit the sun, known as a year. Sumerians, Egyptians, Chinese, and Mayans figured out the length of the year by counting the number of days between vernal equinoxes and between summer solstices, which comes out to 365 days. In Sumer and China, it was noticed that this was 11 days longer than 12 full months, and so a standard year was defined as a cycle of 12 months. However, this would result in the months slipping out of sync with the equinoxes, and so some years would have 13 months to catch up [11]. In Egypt, people held the sun in greater reverence than the moon, and so the civil year was simply defined as 365 days, with no attempt to keep months in sync with the moon.
+
+As ever, defining a year can be tricky. The tropical year is the time it takes for the sun to return to the same position in the sky, and lasts 365 days 5 hours 48 minutes 45 seconds [12]. Alternatively, there is the equinoctial year, the time between two of the same equinox - in other words, the time between the centre of the sun crossing the point where the celestial equator intersects the ecliptic. Because Earth's axis of precession is rotating slowly, the equinoctial year lasts 365 days 5 hours 49 minutes 1 second [13]. The sidereal year is longer again, being the time it takes for Earth to complete one orbit relative to the fixed stars; this one lasts 365 days 6 hours 9 minutes 9.76 seconds [14].
+
+
+[0]  https://en.wikipedia.org/wiki/History_of_calendars
+[1]  https://en.wikipedia.org/wiki/Decan
+[2]  https://www.nist.gov/pml/time-and-frequency-division/popular-links/walk-through-time/walk-through-time-early-clocks
+[3]  http://www.historyworld.net/wrldhis/PlainTextHistories.asp?historyid=191
+[4]  https://www.nist.gov/pml/time-and-frequency-division/popular-links/walk-through-time/walk-through-time-revolution
+[5]  http://individual.utoronto.ca/kalendis/hebrew/drift.htm
+[6]  https://en.wikipedia.org/wiki/Solar_time
+[7]  https://earthsky.org/astronomy-essentials/what-is-sidereal-time
+[8]  http://world.clndr.org/history/ancient-sumerian
+[9]  https://www.livescience.com/44964-why-60-minutes-in-an-hour.html
+[10] https://www.ancient-origins.net/history/sumerians-looked-heavens-they-invented-system-time-and-we-still-use-it-today-007341
+[11] https://www.livius.org/articles/concept/calendar-babylonian/
+[12] https://web.archive.org/web/20190119121207/http://asa.usno.navy.mil/SecM/Glossary.html
+[13] http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
+[14] http://hpiers.obspm.fr/eop-pc/models/constants.html
+[15] https://en.wikipedia.org/wiki/Lunar_month
+
+----------------------
+CONSECUTIVE JULIAN DAY
+----------------------
+
+The Julian day (not to be confused with the Julian calendar) is a system which assigns a unique number to each date. Strictly speaking, each Julian day begins at noon UTC, because they scheme was originally developed by and for astronomers. Specifically, Ludwig Ideler and Sir John Herschel simplified the Julian Period to just a count of days with the same epoch, in which day 0 well before any recorded history (1 January 4713 BC by the Julian calendar; 24 November 4714 BC by the Gregorian calendar; 3 Azar 5335 BH by the Solar Hijri calendar). Astronomers and computer programmers find Julian days useful due to often having to do maths with dates, and most every calendar converter you will find (including this one) uses Julian days as an intermediary to convert between other calendars.
+
+This converter uses the consecutive Julian days rather than the standard version. Each consecutive Julian day starts at midnight rather than noon; as such, day 0 in the canonical Julian day scheme is day (-1) in the consecutive Julian day scheme.
+
+https://en.wikipedia.org/wiki/Julian_day
+https://www.hermetic.ch/cal_stud/jdn.htm
+https://www.aa.quae.nl/en/reken/juliaansedag.html
+
+---------------
+JULIAN CALENDAR
+---------------
+
+The Julian calendar was designed by Sosigenes of Alexandria, building on the work of Eudoxus of Cnidus, and introduced as Julius Caesar in 44 BC as a replacement for the old Roman calendar. This was necessary because the Roman calendar was notoriously inaccurate, irregular, and subject to political manipulation to the point that when Caesar became dictator, nobody could agree on what the date actually was. To this end, Caesar declared that the year he took power would last 445 days, which brought the calendar back in sync with the solstices and equinoxes, and the Julian calendar began the next year.
+
+The Julian calendar consists of 12 months of 30 or 31 days each, except for February, which has 28 days in normal years and 29 in leap years. Leap years occur every 4th year, without exception. The average year is thus 365 days 6 hours long, which is 11 minutes 15 seconds longer than the mean tropical year; as a consequence, the calendar loses 1 day every 128 years. Days begin at midnight. It is a completely solar calendar that makes no effort to maintain synchronisation with the phases of the moons.
+
+The modern calendar era is the nominal birth year of Jesus Christ (though hisotrians and Bible scholars ge\
+nerally agree that Jesus was more likely born four years earlier), placing the epoch at Julian Day 1721423.
+
+Today, it has been almost completely supplanted by the Gregorian calendar, though Orthodox churches continue to use it to determine the dates of religious festivals and observances.
+
+The Anno Domini dating system simply means that each year AD refers to the nth year of Jesus Christ, while each year BC is the nth year before Jesus was born. As such, both are ordinal rather than cardinal, and there is no year 0.
+
+https://en.wikipedia.org/wiki/Julian_calendar
+
+------------------
+GREGORIAN CALENDAR
+------------------
+
+The Gregorian calendar was designed by Aloysius Lilius and introduced in 1582 AD by Pope Gregory XIII in 1582 AD. As early as the 8th century AD, the innacuracies of the Julian calendar were known, and by the 16th century AD, the drift of Easter relative to the equinoxes had become unacceptably severe. Modified the Julian calendar such that years that are integer multiples of 100 would NOT be leap years, except for those that are also integer multiples of 400. The overall result is a cycle of 400 years in which 97 are leap years. The average year length is thus 365 days, 5 hours, 49 minutes, and 12 seconds, which is just 29 seconds longer than the mean tropical year. This means that the Gregorian calendar accumulates loses just 1 day in 3300 years.
+
+Lilius and Gregory calibrated the calendar so that the solstices and equinoxes of 1582 would match those of the First Council of Nicaea in 325. Because the Julian calendar had alrady lost two days by then, the epoch of the Gregorian calendar is Julian Day 1721425, two days after the start of the Julian calendar. Days begin at midnight. It is a purely solar calendar which makes no effort to maintain synchronisation with the phases of the moon.
+
+It is sometimes said that the Gregorian calendar cannot truly be used for events before 1582, when the calendar was introduced. This is false, because a calendar is simply a scheme to assign every day a unique identifier. As such, it is perfectly possible to extend the calendar back to before it was introduced. This converter uses the standard practice of no year 0, so 1 BC is followed by 1 AD.
+
+When the Gregorian calendar was introduced, the day after 4 October became 15 October to correct for calendar drift. The new calendar was adopted readily in Catholic countries, but Orthodox and Protestant countries at first refused, not trusting anything from the Vatican. Britain famously did not adopt it until 1752, at which point they had to skip 11 rather than jsut 10 days, and it remained customary for decades after to refer to dates in both the Julian and Gregorian calendars.
+
+Sweden formally adopted the Gregorian calendar in 1700, but the king decided to gradually transition by leaving out leap years from 1700 to 1740. However, due to poor management, leap years were accidentally inserted in 1704 and 1708, and then Sweden got into a war with Russia, so the plan was abandoned and Sweden reverted to the Julian calendar, with the result that February 1712 had 30 days. The Gregorian calendar was finally properly introduced in Swden in 1753, with a single 11-day jump.
+
+https://en.wikipedia.org/wiki/Gregorian_calendar
+https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar
+
+---------------
+COPTIC CALENDAR
+---------------
+
+The Coptic calendar is a descendent of the Ancient Egyptian calendar, which incorporates the Julian calendar's rule of a leap year every four years. Days begin at midnight. The epoch is Julian Day 1825028, which corresponds to 29 August 284 by the Julian calendar, the Year of Martyrs.
+
+The calendar consists of 12 months of 30 days plus five extra days (six in leap years). Days begin at midnight. It is a purely solar calendar that makes no effort to maintain synchronisation with the phases of the moon. The calendar is not used for civil purposes today, being only a liturgical calendar for the Coptic Orthodox Church.
+
+https://en.wikipedia.org/wiki/Coptic_calendar
+http://www.copticchurch.net/easter.html
+https://web.archive.org/web/20060928041231/http://www.copticheritage.org/parameters/copticheritage/calendar/The_Coptic_Calendar.pdf
+
+------------------
+ETHIOPIAN CALENDAR
+------------------
+
+The calendar used in Ethiopia and Eritrea is also a descendent of the ancient Egpytian calendar, and like the Julian calendar, it includes a leap year every four years without exception; as in the Coptic calendar, leap day is added to the extra days at the end of the year.
+
+The Ethiopian calendar, like the Gregorian, is dated from the birth of Jesus Christ. However, it uses a later estimate of his birth, and so the calendar epoch is 1724222, corresponding to 29 August 8 AD by the Gregorian calendar. Days begin at midnight. It is an entirely solar calendar, and makes no effort to maintain synchronisation of the months with the phases of the moon.
+
+https://en.wikipedia.org/wiki/Ethiopian_calendar
+https://www.timeanddate.com/calendar/ethiopia-calendar.html
+https://theculturetrip.com/africa/ethiopia/articles/why-is-the-ethiopian-calendar-7-years-behind/
+
+-------------------------
+ANCIENT EGYPTIAN CALENDAR
+-------------------------
+
+The Egyptians developed the first known completely solar calendar. While there is evidence that the very early Egyptian civilisation had a lunar calendar, the civil calendar never attempted to maintain synchronisation with the phases of the moon.
+
+From the earliest times, Egyptian civilisation has been dependent on the regular flooding of the Nile. It was noticed in antiquity that the Nile would always flood right after Sirius returned to the sky for its heliacal rising, and so this even was celebrated as the start of the year. While modern Egpytians follow Islam an Christianity, the date is still celebrated.
+
+By simply counting the days between the heliacal risings of Sirius, the Egyptians measured the year as 365 days, and a civil calendar of this length was introduced by Pharaoh Shepsekaf consisting of three seasons of four months, each with 30 days, plus five extra days consecrated to the children of Nuit, the goddess of the sky, and Geb, the earth god. Given the prominence of the sun and the year marker occurring just before sunrise, the day begins at sunrise; as such, any Egyptian date on this calendar should actually refer to the previous day if the time falls between midnight and sunrise.
+
+The mythology holds that the year was originally 360 days long, but when Nuit became pregnant, she was cursed by Ra, the sun god to never give birth in any month. Thoth, the god of wisdom and thus under whose domain fall legal loopholes, was sympathetic to Nuit and gambled with Khonsu, the god of the moon, to win enough light to create five extra days. Because these five days were not part of any month, Nuit was free to give birth to Osiris, Isis, Seth, Nephthys, and Horus the Elder. The Rosetta Stone records a decree by Pharaoh Ptolemy III to introduce a leap year mechanism which would fix New Year's Day to the heliacal rising of Sirius; however, this was opposed by the priesthood on the grounds that only gods can create new days.
+
+The Egyptians did not have a continuous count of years, instead describing each year by how long the current pharaoh had been in power. I chose the epoch as Julian Day 160332 to make 1 Thoth 6298 coincide with 11 September 2019 AD, as reported in Egpyt Today. the veracity of Egypt Today is questionable at best, but it's at last something.
+
+https://en.wikipedia.org/wiki/Egyptian_calendar
+http://www.copticchurch.net/easter.html
+https://web.archive.org/web/20060928041231/http://www.copticheritage.org/parameters/copticheritage/calendar/The_Coptic_Calen\
+dar.pdf
+https://www.egypttoday.com/Article/4/22184/September-11-marks-the-beginning-of-a-new-Egyptian-year
+
+-----------------
+ARMENIAN CALENDAR
+-----------------
+
+The Old Armenian calendar is another derivative of the ancient Egyptian calendar, which was in use in Armenia until the 11th century AD, when it was replaced by the Julian calendar.
+
+Folklore relates how it was established by Hayk, the legendary founder of Armenia, to commemorate his victory of General Belos of Babylon; consensus among historians is that it was introduced by king Artaxias I (188 BC - 161 BC). The calendar epoch is 1922867 (Gregorian: 13 May 552 AD; Solar Hijri: 22 Tir 70 BH), when the Great Armenian Era was declared.
+
+https://en.wikipedia.org/wiki/Armenian_calendar
+http://haytomar.com/calendar.php
+http://www.rahamasha.net/uploads/2/3/2/8/2328777/armenian_calendar.pdf
+http://www.armeniapedia.org/wiki/Armenian_calendar
+
+------------------------------
+LUNAR HIJRI (ISLAMIC) CALENDAR
+------------------------------
+
+The Lunar Hijri calendar is a slightly modified version of the pre-Islamic Arab calendar. Most notably, the prophet Muhammad ended the practice of intercalary leap months, resulting in an entirely lunar calendar that makes no effort to maintain synchronisation with the sun.
+
+Each month of the religious calendar begins with the first sighting of the waxing crescent moon, and days thus begin at sunset; as such, any date give by this converter actually refers to the next day if the time is between sunset and midnight. This reliance on observation can cause trouble when it's cloudy.
+
+The version used in this converter instead uses arithmetical calculations. The year consists of 12 months of alternating 30 and 29 days. In addition, an extra day is added to Dhu al-Hijjah according to a 30 year leap cycle in which 2, 5, 7, 10, 13, 16, 18, 21, 24, 26 and 29 are leap years. Until 1441 AH, an alternative algorithmic calendar, the Umm al-Qura calendar, was the official civil calendar of Saudi Arabia; however, I have not been able to find any good descriptions of the algorithms used for that one. In 1437, the Arabian government switched to a homebrew solar calendar for purposes of paying civil servants, and since 1439 have used the Gregorian calendar.
+
+The epoch of the Lunar Hijri calendar is Julian Day 1948439, the first day of Muharram in the year that the prophet Muhammad and his acolytes moved from Mecca to Medina and established the first ummah.
+
+https://en.wikipedia.org/wiki/Islamic_calendar
+https://en.wikipedia.org/wiki/Tabular_Islamic_calendar
+http://www.webexhibits.org/calendars/calendar-islamic.html
+
+--------------------
+SOLAR HIJRI CALENDAR
+--------------------
+
+The Solar Hijri calendar is the civil calendar used in Iran and Afghanistan. As its name suggests, it is a solar calendar that makes no effort to maintain consistency with the phases of the moon. As with the Lunar Hijri calendar, its era is the flight of the prophet Muhammad from Mecca to Medina. Days begin at midnight.
+
+The modern Solar Hijri calendar is observational, with Nowruz falling the instant the centre of the north ascendant sun crosses the celestial equator; New Year's Day is then the day whose midnight falls closes to the moment of vernal equinox as observed in Tehran. Because that is impractical in an algorithmic computer program, this converter instead uses the Jalali scheme introduced by Omar Khayyam in 454 AH. This calendar operates on a 33-year cycle in which the fifth year and every fourth year there after is a leap year, leap day being added to Esfand. The average year in this calendar lasts 365 days 5 hours 49 minutes 3.4 seconds, which is 3.32 seconds longer than the mean equinoctial year. As such, the algorithmic calendar accumulates 1 day of error every 5000 years, while the observational calendar is infinitely accurate.
+
+http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
+
+------------------------
+AHMAD BIRASHK'S CALENDAR
+------------------------
+
+Ahmad Birashk came up with a new calendar in 1993, building on the work of Zabih Beruz, published in 1952. Birashk proposed a baroque algorithmic calendar which he claimed was more accurate; it does better match the tropical year, but Khayyam's calendar is still a better match for the equinoctial year.
+
+Birashk's calendar is based on the same 33-year leap year cycle as Khayyam's, but also includes a 29-year cycle, in which the last four years are omitted, and a 37-year cycle, which adds an additional four years with a leap year in year 37. These are then arranged in 21 cycles of one 29-year cycle and three 33-year cycles (128) years, followed by a cycle of one 29-year cycle, two 33-year cycles, and one 37-year cycle, for a total cycle length of a dizzying 2820 years. This results in an average year length of 365 days 5 hours 48 minutes 45.952 seconds, just 0.023 second shorter than the mean tropical day; as such, it gains just one day in 3.8 million years, by which point the accuracy will have been cancelled out by Earth's slowing rotation.
+
+http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
+
+------------------------
+MODERN ASSYRIAN CALENDAR
+------------------------
+
+The Assyrian calendar included in this converter is not the one used by the ancient Assyrian empires. It is an entirely solar calendar used by the modern Assyrian people, a Christian minority mostly living in Syria. Days begin at midnight, and New Year's Day falls on 1 April by the Gregorian calendar. It consists of six months of 31 days followed by five months of 30 days and a final month of 29 days, which has 30 days in leap years. Days begin at midnight.
+
+The epoch is Julian Day (-13387), which corresponds to 1 April 4750 BC and 12 Farvardin 5371 BH. In Assyrian mythology, this is considered to be the year of the Great Flood, the story on which the Biblical Flood narrative was based. References to this calendar tend to get caught up in Assyrian nationalism, so be skeptical when reading the sources.
+
+http://www.nineveh.com/Assyrian%20Calendar.html
+https://en.wikipedia.org/wiki/Assyrian_calendar
+https://web.archive.org/web/20100728001440/http://www.assyriatimes.com/engine/modules/news/article.php?storyid=3410
+
+-----------------------
+OLD BABYLONIAN CALENDAR
+-----------------------
+
+The Babylonians inherited their calendar from the Sumerians. It is a lunisolar calendar, which attempts to simultaneously keep the months synchronised with the phases of the moon while also ensuring that New Year's Day falls around the vernal equinox. In the earliest days, it was a purely observational calendar; each month began with the first sighting of the waxing crescent moon, and an intercalary month was inserted whenever the priests thought it was about the right time. As such, days begin at sunset; because this converter midnight-indexes all days for the sake of simplicity, each date is a day early if the time is between sunset and midnight.
+
+Around 499 BC / 1120 BH, the Babylonians switched to an algorithmic calendar based on the 19-year Metonic cycle (which is named for Meton of Athens, who learned it from the Babylonians), in which years 3, 6, 8, 11, 14, 17, and 19 of the cycle are leap years. This calendar was used by all the Semitic civilisations, and even today the Islamic, Jewish, and Samaritan calendars all ultimately descend from it. In the 17th year of the cycle, the intercalary month is inserted between Ulūlu and Tišritum; otherwise, it is inserted after Addaru.
+
+The Chaldean Nation website claims that 2019 AD corresponds to 7319 PD in the Babylonian calendar. Even more than Egypt Today and my sources for the Assyrian calendar, Chaldean Nation is suspect, and there is a lot of Chaldean nationalism going on, but it's the only source I could find for an era. To ensure that 1 Farvardin BH corresponds to 1 Nisānu 4798, I have set the epoch to Julian Day (-210487) (11 August 5290 BC, 18 Mordad 5911 BH).
+
+This all gives an average year of 365 days 1 hour 15 minutes 47.37 seconds, and so it gains a day every 5.27 tropical years.
+
+https://chaldeannation.com/blog/2019/03/31/akitu-7319-chaldean-new-year/
+https://en.wikipedia.org/wiki/Babylonian_calendar
+
+---------------
+HEBREW CALENDAR
+---------------
+
+And now we come to the Jewish Hebrew calendar, the most fiendishly baroque calendar currently in use. This is the liturgical calendar used by Jews all over the world and it also one of two official civil calendars used in Israel, the other being the Gregorian calendar. Looking around the Internet, I get the impression that most Israelis use the Gregorian calendar almost exclusively, only checking the Jewish calendar to see when certain religious festivals fall. All national holidays in Israel are fixed to the Jewish calendar and government correspondence is supposed to be issued in both date formats, though until computer became widely available it was common to ignore the Hebrew date.
+
+The year begins on the first of Tishrei, around the autumnal equinox, with the festival of Rosh Hashanah. Confusingly, Tishrei is ususally listed as the seventh monthl, with Nisan as the first; this is most likely due to Babylonian influence, since all the month names are derived from those of the Babylonian calendar. The 1st of Nisan is also considered a New Year's Day, most likely due again to Babylonian influence; this day is considered the ecclesiastical new year, as opposed to 1 Tishrei, the civil new year (and the day on which the year increments).
+
+To confuse matters further, the 1st of Elul is the start of the year when calculating the payment of tithes, and the 15th of Shevat is identified as the New Year of Trees (Tu BiShvat). In ancient times, this had to do with calculating when it was acceptable to eat fruit from a given tree, and when that fruit could be tithed; in modern times, it is an environmental awareness day, often marked by planting trees. To keep things simple, this converter only considers the civil year, and so Tishrei is considered the first month of the year.
+
+The Jewish calendar is lunisolar, like the Babylonian. In ancient times, months began with the first observation of the new moon, known as the molad. In the late 41st century AM, Hillel II ben Jehudah worked out a purely mathematical calendar that would maintain alignment with the phases of the moon; this gradually caught on among the scattered Jews as a way to maintain their traditions even in the face of persecution; indeed, Jews even managed to make calendars and carry on their traditions on the correct dates while in concentration camps.
+
+The calendar epoch is Julian Day 347997 (Gregorian: 7 September 3761 BC; Solar Hijri: 16 Shahrivar 4382 BH), which Moses ben Maimon (AKA Maimonides, Rambam) in 4938 AM (1178 AD, 557 AH) determined to be the date of the Genesis creation account... sort of. Adam is traditionally held to have been created on Rosh Hashanah, but because there were five days of creation preceding Adam, this was technically Rosh Hashanah of the second year. Maimonides, assuming that time before Creation was still meaningful, extended this backwards to the molad of Tishrei that would have existed had God gotten around to creating the moon yet; because this occurs in before Creation, it is termed the molad tohu, or new moon of chaos (which is also a good name for a heavy metal band).
+
+The basic Jewish year consists of 12 months of alternating 30 and 29 days. In a leap year, Adar is renamed to Veadar, Adar Sheini, Adar Beth, or Adar II, and a 30-day month, called Adar I, Adar Aleph, Adar Rishon, or simply Adar, is inserted before it. Thus a year by default has 354 days in a normal year and 384 in a leap year, but in Judaism, things are rarely simple.
+
+Days begin at sunset; as such, a given date in this converter actually refers to the next day if viewed between sunset and midnight; for purposes of calculation, we can fortunately assume that every sunset occurs at exactly 18:00. An important unit of time when calculating the start of the month is the chelek (plural chalakim), equal to 1/1080 hours, 1/18 minute, or 10/3 seconds.
+
+Hillel II determined the mean lunation to be 29 days 12 hours 793 chalakim. This was correct at the time, but we now know that due to orbital mechanics, the mean lunation time is shrinking by about 25 microseconds a month, and it is now about 0.6 seconds shorter than it was when this was first worked out. Still, this difference has not yet become significant.
+
+To prevent Yom Kippur from falling on a Friday or Sunday, and to keep Hoshanah Rabbah from falling on a Saturday, while keeping the length of the year more or less consistent, Rosh Hashanah will often be postponed by a day or two. This happens if the molad of Tishrei falls on a "Tuesday" after 03:11 and 20 seconds am when it's not a leap year, or on a "Monday" in the year after a leap year after 09:32 and 43 seconds am, or in any year if the molad of Tishrei falls after noon. After accounting for all that, if Rosh Hashanah would fall on a "Sunday", "Wednesday", or "Friday", it falls the next day. To ensure the correct form of the calendar is used, Rosh Hashanah postponements must be worked out at least a year in advance.
+
+The upshot of all that is that a year may be a day shorter than the basic year, in which case it is termed deficient and a day is removed from Marcheshvan; it may also be a day longer, in which case it is called abundant and a day is added to Kislev. It also means that the exact cycle of year types will only repeat every 689,472 years!
+
+Having to maintain this calendar shows just how protective Jews are of their culture and traditions. Karaite Jews in Israel have reverted to the ancient practice of going outside and looking at the moon, and they also add a leap month based not on calculations but on the ripening of barley.
+
+This calendar only loses 1 day in 13800 years against the moon, but is less accurate with regard to the sun, gaining 1 day every 216 years. Irv Bromberg, a professor of medicine at the University of Toronto and calendar enthusiast, has proposed a revised (or rectified as he calls it) Hebrew calendar, based on a 353-year leap year cycle and incorporating a progressively shorter molad interval; unfortunately, I was unable to accurately translate his scheme or his algorithms into Python. Perhaps someone smarter than me can give it a try.
+
+http://www.webexhibits.org/calendars/calendar-jewish.html
+https://www.individual.utoronto.ca/kalendis/hebrew/molad.htm
+https://www.individual.utoronto.ca/kalendis/hebrew/drift.htm
+https://www.individual.utoronto.ca/kalendis/lunar/index.htm
+https://www.individual.utoronto.ca/kalendis/hebrew/postpone.htm
+https://www.individual.utoronto.ca/kalendis/hebrew/rect.htm
+https://www.tondering.dk/claus/cal/julperiod.php/hebrew.php
+https://www.tondering.dk/claus/cal/hebrew.php
+https://en.wikipedia.org/wiki/Hebrew_calendar
+http://www.jewfaq.org/calendar.htm
+http://www.jewfaq.org/calendr2.htm
+
+-------------------------
+SAMARITAN HEBREW CALENDAR
+-------------------------
+
+The Samaritans are a small Israeli community numbering 818 as of 4 May 2020. They mostly live around Mount Gezirim and Holon. They consider themselves to uphold the true religion of Moses, and modern Jews to be heretics. They have their own calendar, which is similar but not identical to the Jewish calendar; based on The Samaritan Update, they also appear to mostly use the Gregorian calendar in day to day life. The exact nature of the calendar and how it is calculated is a secret known only to the high priest and his family. At some point in the late 20th century, high priest Avraham ben Pinchas developed a computer algorithm to calculate the calendar six months in advance, using a scheme which the high priest verifies every six month by astronomical observations. Samaritan sources claim this calendar is accurate to one second in one million years; unfortunately, the algorithm and its rules are a secret, and so this converter can only estimate them. However, some information can be gleaned.
+
+The Samaritan calendar is based on the mythological date of the entry of the Israelites under Joshua into Canaan. Samaritan year 3658 AY corresponds to 2020 AD and 5780 AM. The Samaritans use the same 19-year leap year cycle as the Jews, but starting approximately 2000 years later, which results in the two calendars' leap year schedules being out of phase. The Samaritans celebrate Rosh Hashanah on 1 Nisan rather than 1 Tishrei, likely influenced by the Assyrian occupation of Israel. They also do not apply any postponement rules; if Yom Kippur should fall on a Friday or Sunday, they just plough through two consecutive days of Sabbath restrictions. They also do not appear to use willow branches in their version of Sukkoth ceremonies, obviating the need to preent Rosh Hashanah from falling on a Saturday.
+
+https://www.israelite-samaritans.com/history/
+https://www.israelite-samaritans.com/religion/passover/
+https://www.israelite-samaritans.com/religion/sukkah/
+https://www.israelite-samaritans.com/religion/sukkah/
+https://www.israelite-samaritans.com/religion/calendar/
+http://shomron0.tripod.com/articles/samaritancalendar.pdf
+http://thesamaritanupdate.com/
+https://www.the-samaritans.net/
+https://www.the-samaritans.net/the-festival-of-sukkoth-tabernacles/

@@ -4,13 +4,14 @@
 # Convert a Julian Day to a date in various calendars
 #
 
-from decimal import *
 from fractions import *
 from math import *
 
 import months
 import leap_years_birashk
 import leap_years_assyrian
+#import leap_years_rev_hebrew
+
 import hebrew_calculations
 
 cycle4 = (4 * 365) + 1
@@ -757,9 +758,9 @@ def babylonian(jday):
 
     # Years 17 PD, 3 AD, and 2 ZO are the ones where Veululu and not Veadar is the leap month
 
-    if jday > -210264:
+    if jday > -210488: #-210264:
         # positive year
-        delta = jday - -210264
+        delta = jday - -210488 #-210264
         cycles = delta // cycle19
         delta %= cycle19
 
@@ -799,7 +800,7 @@ def babylonian(jday):
                 delta = 383
             else:
                 m = months.BABYLONIAN_MONTHS_NORMAL
-                dleta = 353
+                delta = 353
 
         for i in m.keys():
             if delta <= m[i]:
@@ -811,7 +812,8 @@ def babylonian(jday):
                 
 
     else:
-        delta = -210263 - jday
+        #delta = -210263 - jday
+        delta = -210487 - jday
         while delta > 0:
             if (year % 19) in leap_years_zo:
                 year += 1
@@ -1085,6 +1087,116 @@ def hebrew(jday):
                     break
                 else:
                     delta -= m[i]
+
+    date = (day,month,year)
+    return date
+
+def samaritan(jday):
+    """Convert a Julian Day to a date in the Samaritan calendar."""
+    leap_years_ai = (3,6,8,11,14,17,19,0)
+    leap_years_bi = (1,3,6,9,12,14,17)
+    leap_years_zo = (0,2,5,8,11,13,16)
+    monlen = 29 + Fraction(12,24) + Fraction(793, (24 * 1080))
+    yearlen12 = 12 * monlen
+    yearlen13 = 13 * monlen
+    cycle19 = 235 * monlen
+    #molad0 = Fraction(2,24) + Fraction(655,25920)
+    #molad0 = Fraction(17,24) + Fraction(859,25920)
+    molad0 = Fraction(11,24) + Fraction(451,25920)
+
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+
+    if jday > 1122908:
+        # positive dates
+        delta = jday - 1122908
+
+        # First count 19-year cycles
+        while delta > cycle19:
+            year += 19
+            delta -= cycle19
+
+        # whole years
+        for y in range(0, 19):
+            y += 1
+            if y in leap_years_ai:
+                if delta <= yearlen13:
+                    year += y
+                    break
+                else:
+                    delta -= yearlen13
+            else:
+                if delta <= yearlen12:
+                    year += y
+                    break
+                else:
+                    delta -= yearlen12
+
+        # delta now gives the exact position in the current year.
+        delta = int(delta)
+        if delta == 0:
+            year -= 1
+            if (year % 19) in leap_years_ai:
+                delta = 384
+            else:
+                delta = 354
+                
+        if (year % 19) in leap_years_ai:
+            m = months.SAMARITAN_MONTHS_LEAP
+        else:
+            m = months.SAMARITAN_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        # negative years
+        delta = 1122909 - jday
+        flag = False
+
+        while flag == False:
+            year -= 1
+            if (abs(year) % 19) in leap_years_bi:
+                if delta <= yearlen13:
+                    flag = True
+                else:
+                    delta -= yearlen13
+            else:
+                if delta <= yearlen12:
+                    flag = True
+                else:
+                    delta -= yearlen12
+
+        # year now gives us the current year year and delta the exact position within that year.
+        delta = int(delta)
+        if delta == 0:
+            year -= 1
+#            if (abs(year) % 19) in leap_years_bi:
+ #               delta = 384
+  #          else:
+   #             delta = 354
+                
+        if (abs(year) % 19) in leap_years_bi:
+            m = months.SAMARITAN_MONTHS_LEAP
+            delta = 384 - delta
+        else:
+            m = months.SAMARITAN_MONTHS_NORMAL
+            delta = 354 - delta
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
 
     date = (day,month,year)
     return date
