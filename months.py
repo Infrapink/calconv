@@ -303,7 +303,7 @@ ASSYRIAN_MONTHS_LEAP = {"Nīsān": 31,
 # In ancient times, the Babylonian calendar operated on a purely obversational
 # basis. Each month started when the first crescent moon was visible in the sky,
 # and intercalary months were added whenever the priests figured it was about
-# time. In 499BC, they switched to an algorithmic system based on the 19-year
+# time. In 1120 BH (499BC), they switched to an algorithmic system based on the 19-year
 # Metonic cycle, in whcih years 3, 6, 8, 11, 14, 17, and 19 are leap years.
 # This is also the system used in the Hebrew calendar. I'm going to assume,
 # based on the Hebrew calendar, that the Babylonian months start with 30
@@ -314,14 +314,9 @@ ASSYRIAN_MONTHS_LEAP = {"Nīsān": 31,
 # 2019 AD was 7319 PD by the Babylonian calendar according to this source:
 # https://chaldeannation.com/blog/2019/03/31/akitu-7319-chaldean-new-year/
 #
-# The average calendar year length is 364.684210526 days, which is 13 hours
-# 23 minutes and 29.322 seconds short of the solar year (thanks,
-# Wolfram|Alpha!). This adds up over time.
-#
-# 7319 = (385 * 19) + 4, so 385 19-year cycles plus 3 years and 1 day. Based
-# on come calculations to make 7319 PD coincide with 2019 AD, I am going to take
-# the calendar epoch to be Julian Day -210263 (1 Farvardin 5910 BH), so
-# day 0 is -210264.
+# The average year length is 365.0526315789473684210526316 days, which
+# works out to 365 days 1 hour 15 minutes 47.37 seconds, and as such
+# it gains 1 day every 5.27 years.
 
 
 BABYLONIAN_MONTHS_NORMAL = {"Nisānu": 30,
@@ -348,7 +343,7 @@ BABYLONIAN_MONTHS_LEAP = {"Nisānu": 30,
                           "Kislimu": 30,
                           "Ṭebētum": 29,
                           "Šabaṭu": 30,
-                          "Addaru": 29,
+                          "Addaru": 30,
                           "Addaru Arku": 29}
 
 BABYLONIAN_MONTHS_LEAP_17 = {"Nisānu": 30,
@@ -357,7 +352,7 @@ BABYLONIAN_MONTHS_LEAP_17 = {"Nisānu": 30,
                              "Dumuzu": 29,
                              "Abu": 30,
                              "Ulūlu": 29,
-                             "Ulūlu Arku": 29,
+                             "Ulūlu Arku": 30,
                              "Tišritum": 30,
                              "Samnu": 29,
                              "Kislimu": 30,
@@ -462,3 +457,59 @@ HEBREW_MONTHS_ABUNDANT_LEAP = {"Tishrei": 30,
                                "Av": 30,
                                "Elul": 29}
 
+# SAMARITAN MONTHS
+
+SAMARITAN_MONTHS_NORMAL = {"Nisan": 30,
+                            "Iyar": 29,
+                            "Sivan": 30,
+                            "Tammuz": 29,
+                            "Av": 30,
+                            "Elul": 29,
+                            "Tishrei": 30,
+                            "Marcheshvan": 29,
+                            "Kislev": 30,
+                            "Tevet": 29,
+                            "Shevat": 30,
+                            "Adar": 29}
+
+SAMARITAN_MONTHS_LEAP = {"Nisan": 30,
+                         "Iyar": 29,
+                         "Sivan": 30,
+                         "Tammuz": 29,
+                         "Av": 30,
+                         "Elul": 29,
+                         "Tishrei": 30,
+                         "Marcheshvan": 29,
+                         "Kislev": 30,
+                         "Tevet": 29,
+                         "Shevat": 30,
+                         "Adar": 30,
+                         "Veadar": 29}
+
+#KURDISH MONTHS
+
+KURDISH_MONTHS_NORMAL = {"Jejhnan": 31,
+                         "Gullan": 31,
+                         "Zerdan": 31,
+                         "Púshperr": 31,
+                         "Gelawéjh": 31,
+                         "Xermanan": 31,
+                         "Beran": 30,
+                         "Xezan": 30,
+                         "Saran": 30,
+                         "Befran": 30,
+                         "Rébandan": 30,
+                         "Reshemé": 29}
+
+KURDISH_MONTHS_LEAP = {"Jejhnan": 31,
+                      "Gullan": 31,
+                      "Zerdan": 31,
+                      "Púshperr": 31,
+                      "Gelawéjh": 31,
+                      "Xermanan": 31,
+                      "Beran": 30,
+                      "Xezan": 30,
+                      "Saran": 30,
+                      "Befran": 30,
+                      "Rébandan": 30,
+                      "Reshemé": 30}
