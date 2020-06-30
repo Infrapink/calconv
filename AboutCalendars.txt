@@ -369,12 +369,28 @@ https://en.wikipedia.org/wiki/Year_2038_problem
 https://www.scienceabc.com/innovation/what-is-the-2038-problem.htm
 https://fossbytes.com/year-2038-problem-linux-unix/
 
------------
-GANGALE SOL
------------
+---------------------
+CONSECUTIVE SOL COUNT
+---------------------
 
-The Gangale sol is an integer count of sols (Martian days), beginning on the sol corresponding to 29 December 1873. Each sol lasts 24 hours 39 minutes 35.244 seconds.
+The consecutive sol count is an integer count of sols (Martian days), beginning on the sol corresponding to 29 December 1873. Each sol lasts 24 hours 39 minutes 35.244 seconds.
 
 https://en.wikipedia.org/wiki/Julian_day
 https://en.wikipedia.org/wiki/Sol_(day_on_Mars)
 https://jtauber.github.io/mars-clock/
+
+----------------
+AMAZIGH CALENDAR
+----------------
+
+The Amazigh calendar is a variant of the Julian calendar used by the Amazigh people (also called the Berbers). In times past, it was the standard civil calendar used by the Amazigh, because the Lunar Hijri calendar was unsuitable for agricultural purposes. Today, Amazigh people live mostly in Morocco, Algeria, and Mali, which use the Gregorian calendar; however, the Amazigh continue to celebrate the first day of their calendar, which is known as Yenneyar after the month.
+
+Unlike the Julian calendar, leap day is added to the 12th rather than the 2nd month of the year. The epoch is Julian day 1374435, which puts it in 950 BC / 1572 BH. This era was chosen as the approximate ascension of Sheshonq I, the first Amazigh pharaoh of Egypt.
+
+https://en.wikipedia.org/wiki/Berber_calendar
+https://web.archive.org/web/20060716215321/http://tamurth.net/article.php3?id_article=625
+https://www.thenational.ae/world/africa/happy-2968-berber-new-year-becomes-holiday-in-algeria-1.69486
+http://world.clndr.org/calendars/Berber-calendar
+https://mastersfdl.hypotheses.org/443]
+http://www.tamazgha.fr/La-fete-de-Yennayer-pratiques-et-presages,1841.html
+https://www.best-country.com/en/africa/algeria/new_year

@@ -18,6 +18,7 @@ import babylonian_convert
 import hebrew_convert
 import samaritan_convert
 import kurdish_convert
+import amazigh_convert
 import months
 
 class Application(Frame):
@@ -262,6 +263,15 @@ class Application(Frame):
         self.lop_ent.delete(0,END)
         self.lop_ent.insert(0,lop)
 
+        # Convert a Julian day to a date in the Amazigh calendar
+        amazigh_date = julian_day_conversions.amazigh(day)
+        self.amazigh_day_ent.delete(0,END)
+        self.amazigh_month_ent.delete(0,END)
+        self.amazigh_year_ent.delete(0,END)
+        self.amazigh_day_ent.insert(0, amazigh_date[0])
+        self.amazigh_month_ent.insert(0, amazigh_date[1])
+        self.amazigh_year_ent.insert(0, amazigh_date[2])
+
     def cons_day_julian_plus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) + 1
@@ -493,6 +503,17 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
+
+    def amazigh_converter(self):
+        """Convert a date in the Amazigh calendar to a Julian day."""
+        day = int(self.amazigh_day_ent.get())
+        month = self.amazigh_month_ent.get()
+        year = int(self.amazigh_year_ent.get())
+        jday = amazigh_convert.convert(day,month,year)
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
         
     def create_widgets(self):
         """Generate various widgets."""
@@ -769,7 +790,18 @@ class Application(Frame):
         self.lop_ent.grid(row = 15, column = 11, sticky = W)
         self.lop_bttn = Button(self, text = "Calculate", command = self.lop_converter).grid(row = 16, column = 11, sticky = W)
 
-
+        # Amazigh calendar
+        self.amazigh_lbl = Label(self, text = "Amazigh calendar").grid(row = 18, column = 0, columnspan = 3, sticky = W)
+        self.amazigh_day_lbl = Label(self, text = "Day").grid(row = 19, column = 0, sticky = W)
+        self.amazigh_day_ent = Entry(self)
+        self.amazigh_day_ent.grid(row = 20, column = 0, sticky = W)
+        self.amazigh_month_lbl = Label(self, text = "Month").grid(row = 19, column = 1, sticky = W)
+        self.amazigh_month_ent = Entry(self)
+        self.amazigh_month_ent.grid(row = 20, column = 1, sticky = W)
+        self.amazigh_year_lbl = Label(self, text = "Year").grid(row = 19, column = 2, sticky = W)
+        self.amazigh_year_ent = Entry(self)
+        self.amazigh_year_ent.grid(row = 20, column = 2, sticky = W)
+        self.amazigh_bttn = Button(self, text = "Calculate", command = self.amazigh_converter).grid(row = 21, column = 0, sticky = W)
 
 
 
@@ -780,6 +812,6 @@ class Application(Frame):
 # create the root window
 root = Tk()
 app = Application(root)
-root.title("Calendar Converter 0.11.0")
+root.title("Calendar Converter 0.12.0")
 
 root.mainloop()
