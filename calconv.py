@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 from tkinter import *
+from decimal import *
+
 import julian_day_conversions
 import julian_convert
 import gregorian_convert
@@ -28,7 +30,7 @@ class Application(Frame):
 
     def cons_day_julian_convert(self):
         """Take the input into the Julian Day box and convert it into the other date formats"""
-        day = self.cons_day_julian_ent.get()
+        day = Decimal(self.cons_day_julian_ent.get())
         #day = int(day) - 0.1
         #day = round(day)
 
@@ -200,6 +202,66 @@ class Application(Frame):
         self.kurdish_month_ent.insert(0,kurdish_month_value)
         self.kurdish_year_ent.insert(0,kurdish_year_value)
 
+        # True Julian Day
+        tjday = int(day) + Decimal(0.5)
+        self.day_julian_ent.delete(0,END)
+        self.day_julian_ent.insert(0,tjday)
+
+        # Reduced Julian Day
+        rjday = int(day) + Decimal(0.5) - 2400000
+        self.red_day_julian_ent.delete(0,END)
+        self.red_day_julian_ent.insert(0,rjday)
+
+        # Modified Julian Day
+        mjday = int(day) - 2400000
+        self.mod_day_julian_ent.delete(0,END)
+        self.mod_day_julian_ent.insert(0,mjday)
+
+        # Truncated Julian Day
+        tjday = int(day) - 2440000
+        self.trun_day_julian_ent.delete(0,END)
+        self.trun_day_julian_ent.insert(0,tjday)
+
+        # Dublin Julian Day
+        djday = int(day) + Decimal(0.5) - 2415020
+        self.dub_day_julian_ent.delete(0,END)
+        self.dub_day_julian_ent.insert(0,djday)
+
+        # CNES Julian Day
+        cnes = int(day) - 2433282
+        self.cnes_ent.delete(0,END)
+        self.cnes_ent.insert(0,cnes)
+
+        # CCSDS Julian Day
+        ccsds = int(day) - 2436204
+        self.ccsds_ent.delete(0,END)
+        self.ccsds_ent.insert(0,ccsds)
+
+        # Lilian Day
+        lday = int(day) - 2299159
+        self.day_lilian_ent.delete(0,END)
+        self.day_lilian_ent.insert(0,lday)
+
+        # Rata Die
+        rday = int(day) - 1721424
+        self.rata_die_ent.delete(0,END)
+        self.rata_die_ent.insert(0,rday)
+
+        # Unix time
+        unix = (int(day) - 2440587) * 86400
+        self.unix_time_ent.delete(0,END)
+        self.unix_time_ent.insert(0,unix)
+
+        # Julian Sol
+        sol_gangale = round((int(day) - Decimal('2405520.5')) / Decimal(1.02749))
+        self.sol_gangale_ent.delete(0,END)
+        self.sol_gangale_ent.insert(0,sol_gangale)
+
+        # LOP Julian day
+        lop = int(day) - 2448622
+        self.lop_ent.delete(0,END)
+        self.lop_ent.insert(0,lop)
+
     def cons_day_julian_plus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) + 1
@@ -354,7 +416,83 @@ class Application(Frame):
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
 
+    def true_day_julian_converter(self):
+        """Convert a Julian Day to a True Julian Day."""
+        jday = Decimal(self.day_julian_ent.get()) + Decimal('0.5')
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
 
+    def red_day_julian_converter(self):
+        """Convert a Reduced Julian Day to a Consecutive Julian Day."""
+        jday = Decimal(self.red_day_julian_ent.get()) + 2400000 - Decimal('0.5')
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def mod_day_julian_converter(self):
+        """Convert a Modified Julian Day to a Consecutive Julian Day."""
+        jday = int(self.mod_day_julian_ent.get()) + 2400000
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def trun_day_julian_converter(self):
+        """Convert a Truncated Julian Day to a Consecutive Julian Day."""
+        jday = int(self.trun_day_julian_ent.get()) + 2440000
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+        
+    def dub_day_julian_converter(self):
+        """Convert a Dublin Julian Day to a Consecutive Julian DAy."""
+        jday = Decimal(self.dub_day_julian_ent.get()) + 2415020 - Decimal('0.5')
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def cnes_converter(self):
+        """Convert a CNES Julian Day into a Consecutive Julian Day."""
+        jday = int(self.cnes_ent.get())+ 2433282
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def ccsds_converter(self):
+        jday = int(self.ccsds_ent.get()) + 2436204
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def day_lilian_converter(self):
+        jday = int(self.day_lilian_ent.get()) + 2299159
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def rata_die_converter(self):
+        jday = int(self.rata_die_ent.get()) + 1721424
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def unix_time_converter(self):
+        jday = (int(self.unix_time_ent.get()) // 86400) + 2440587
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def sol_gangale_converter(self):
+        jday = round(Decimal(self.sol_gangale_ent.get()) * Decimal('1.02749')) + 2405521
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def lop_converter(self):
+        jday = int(self.lop_ent.get()) + 2448622
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
         
     def create_widgets(self):
         """Generate various widgets."""
@@ -558,6 +696,86 @@ class Application(Frame):
         self.kurdish_year_ent = Entry(self)
         self.kurdish_year_ent.grid(row = 12, column = 14, sticky = W)
         self.kurdish_bttn = Button(self, text = "Calculate", command = self.kurdish_converter).grid(row = 13, column = 12, columnspan = 3, sticky = W)
+
+        # True Julian Day
+        self.day_julian_lbl = Label(self, text = "True Julian Day").grid(row = 14, column = 0, sticky = W)
+        self.day_julian_ent = Entry(self)
+        self.day_julian_ent.grid(row = 15, column = 0, sticky = W)
+        self.day_julian_bttn = Button(self, text = "Calculate", command = self.true_day_julian_converter).grid(row = 16, column = 0, sticky = W)
+
+        # Reduced Julian Day
+        self.red_day_julian_lbl = Label(self, text = "Reduced Julian Day").grid(row = 14, column = 1, sticky = W)
+        self.red_day_julian_ent = Entry(self)
+        self.red_day_julian_ent.grid(row = 15, column = 1, sticky = W)
+        self.red_day_julian_bttn = Button(self, text = "Calculate", command = self.red_day_julian_converter).grid(row = 16, column = 1, sticky	= W)
+
+        # Modified Julian Day
+        self.mod_day_julian_lbl = Label(self, text = "Modified Julian Day").grid(row = 14, column = 2, sticky = W)
+        self.mod_day_julian_ent = Entry(self)
+        self.mod_day_julian_ent.grid(row = 15, column = 2, sticky = W)
+        self.mod_day_julian_bttn = Button(self, text = "Calculate", command = self.mod_day_julian_converter).grid(row = 16, column = 2, sticky	= W)
+
+        # Truncated Julian Day                                                                                      
+        self.trun_day_julian_lbl = Label(self, text = "Truncated Julian Day").grid(row = 14, column =3, sticky = W)
+        self.trun_day_julian_ent = Entry(self)
+        self.trun_day_julian_ent.grid(row = 15, column = 3, sticky = W)
+        self.trun_day_julian_bttn = Button(self, text = "Calculate", command = self.trun_day_julian_converter).grid(row = 16, column = 3, sticky = W)
+
+        # Dublin Julian Day                                                                                         
+        self.dub_day_julian_lbl = Label(self, text = "Dublin Julian Day").grid(row = 14, column = 4, sticky = W)
+        self.dub_day_julian_ent = Entry(self)
+        self.dub_day_julian_ent.grid(row = 15, column = 4, sticky = W)
+        self.dub_day_julian_bttn = Button(self, text = "Calculate", command = self.dub_day_julian_converter).grid(row = 16, column = 4, sticky	= W)
+
+        # CNES Julian Day                                                                                           
+        self.cnes_lbl = Label(self, text = "CNES Julian Day").grid(row = 14, column = 5, sticky = W)
+        self.cnes_ent = Entry(self)
+        self.cnes_ent.grid(row = 15, column = 5, sticky = W)
+        self.cnes_bttn = Button(self, text = "Calculate", command = self.cnes_converter).grid(row = 16, column = 5, sticky	= W)
+
+        # CCSDS Julian Day                                                                                       
+        self.ccsds_lbl = Label(self, text = "CCSDS Julian Day").grid(row = 14, column = 6, sticky = W)
+        self.ccsds_ent = Entry(self)
+        self.ccsds_ent.grid(row = 15, column = 6, sticky = W)
+        self.ccsds_bttn = Button(self, text = "Calculate", command = self.ccsds_converter).grid(row = 16, column = 6, sticky	= W)
+
+        # Lilian Day                                                                                           
+        self.day_lilian_lbl = Label(self, text = "Lilian Day").grid(row = 14, column = 7, sticky = W)
+        self.day_lilian_ent = Entry(self)
+        self.day_lilian_ent.grid(row = 15, column = 7, sticky = W)
+        self.day_lilian_bttn = Button(self, text = "Calculate", command = self.day_lilian_converter).grid(row = 16, column = 7, sticky	= W)
+
+        # Rata Die
+        self.rata_die_lbl = Label(self, text = "Rata Die").grid(row = 14, column = 8, sticky = W)
+        self.rata_die_ent = Entry(self)
+        self.rata_die_ent.grid(row = 15, column = 8, sticky = W)
+        self.rata_die_bttn = Button(self, text = "Calculate", command = self.rata_die_converter).grid(row = 16, column = 8, sticky = W)
+
+        # Unix time
+        self.unix_time_lbl = Label(self, text = "Unix time").grid(row = 14, column = 9, sticky = W)
+        self.unix_time_ent = Entry(self)
+        self.unix_time_ent.grid(row = 15, column =9, sticky = W)
+        self.unix_time_bttn = Button(self, text = "Calculate", command = self.unix_time_converter).grid(row = 16, column = 9, sticky	= W)
+
+        # Gangale sol
+        self.sol_gangale_lbl = Label(self, text = "Consecutive Martian sol").grid(row = 14, column = 10, sticky = W)
+        self.sol_gangale_ent = Entry(self)
+        self.sol_gangale_ent.grid(row = 15, column = 10, sticky = W)
+        self.sol_gangale_bttn = Button(self, text = "Calculate", command = self.sol_gangale_converter).grid(row = 16, column = 10, sticky = W)
+
+        # LOP day
+        self.lop_lbl = Label(self, text = "LOP Julian day").grid(row = 14, column = 11, sticky = W)
+        self.lop_ent = Entry(self)
+        self.lop_ent.grid(row = 15, column = 11, sticky = W)
+        self.lop_bttn = Button(self, text = "Calculate", command = self.lop_converter).grid(row = 16, column = 11, sticky = W)
+
+
+
+
+
+
+
+
 
 # create the root window
 root = Tk()

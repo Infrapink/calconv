@@ -271,3 +271,110 @@ The Kurdish calendar is, naturally, the calendar of the Kurds. It is commonly us
 
 https://en.wikipedia.org/wiki/Kurdish_calendar
 https://web.archive.org/web/20080222053000/http://www.kurdistanica.com/english/culture/ncharacters/calendar/calendar.html
+
+---------------
+TRUE JULIAN DAY
+---------------
+
+The true Julian day is the Julian day used by astronomers. Unlike other days, the day increments at noon, and so is 0.5 days ahead of the chronological Julian day. (Strictly speaking, the Julian day is the time at Greenwich Observatory, but for the sake of a converter this can be ignored).
+
+https://en.wikipedia.org/wiki/Julian_day
+https://www.hermetic.ch/cal_stud/jdn.htm
+https://www.aa.quae.nl/en/reken/juliaansedag.html
+
+------------------
+REDUCED JULIAN DAY
+------------------
+
+The reduced Julian Day was introduced by the Smithsonian Astrophysical Observatory in 1957 for use with satellite tracking. Because the full Julian day was too big to fit in the memory of the computers used at the time, the SAO subtracted 2400000 from the Julian day, yielding an epoch of noon on 16 November 1858.
+
+https://www.slac.stanford.edu/~rkj/crazytime.txt
+
+-------------------
+MODIFIED JULIAN DAY
+-------------------
+
+The modified Julian day is a variant of the reduced Julian day, which drops the half day for an epoch of midnight on 17 November 1858; in effect, it is a midnight-indexed version of the reduced Julian calendar. The modified Julian date was the base value used in Digital's popular operating systems TOPS-10, TOPS-20, and VMS.
+
+https://www.slac.stanford.edu/~rkj/crazytime.txt
+
+--------------------
+TRUNCATED JULIAN DAY
+--------------------
+
+The truncated Julian day was introduced by NASA's Goddard Space Flight Center in 1979 to fit a count of days into 14 bits; this is accomplished by subtracting 2440000.5 from the true Julian day, giving it an epoch of midnight on 12 May 1968.
+
+https://ntrs.nasa.gov/archive/nasa/casi.ntrs.nasa.gov/19800007830.pdf
+https://archive.org/stream/nasa_techdoc_19890006406/19890006406_djvu.txt
+
+-----------------
+DUBLIN JULIAN DAY
+-----------------
+
+The Dublin Julian day was determined by the International Astronomical Union at their 1955 meeting in Dublin. It is based on the epoch used by Simon Newcomb in his Tables of the Motion of the Earth on its Axis and Around the Sun, which is 31 December 1899. This is the date format used internally by LibreOffice.
+
+https://en.wikipedia.org/wiki/Julian_day
+
+---------------
+CNES JULIAN DAY
+---------------
+
+The CNES Julian day is, as you can probably guess, the day format used by the Centre National d'études spatiales. Its epoch is midnight on 1 January 1950.
+
+http://www.mlb.co.jp/linux/science/tptime/doc/index-5.html
+
+----------------
+CCSDS JULIAN DAY
+----------------
+
+The CCSDS Julian day is used by the Consultative Committe for Space Data Systems, an international space agency forum. Its epoch is midnight on 1 January 1958
+
+http://www.mlb.co.jp/linux/science/tptime/doc/index-5.html
+
+--------------
+LOP JULIAN DAY
+--------------
+
+The LOP Julian day is the day format used by Laboratoire d'Oceanographique Physique. Its epoch is midnight on 1 January 1992.
+
+http://www.mlb.co.jp/linux/science/tptime/doc/index-5.html
+
+----------
+LILIAN DAY
+----------
+
+The Lilian Day is a count of the number of days since midnight on 15 October 1582, the day that the Gregorian calendar was introduced; it is named after Aloysius Lilius, the inventor of the calendar. Unlike other integral day counts, the Lilian Day is 1-indexed, not 0-indexed. It was introduced by Bruce G. Ohms at IBM in 1986, and is the internal date format used in IBM's modern mainframes.
+
+https://en.wikipedia.org/wiki/Lilian_date
+
+--------
+RATA DIE
+--------
+
+Rata Die is a count of days since the start of the Gregorian calendar; like the Lilian Day, rata die is 1-indexed, so day 1 corresponds to 1 January 1. It is the internal date format used in the Rexx programming language as well as some other calendar converters.
+
+https://en.wikipedia.org/wiki/Rata_Die
+
+---------
+UNIX TIME
+---------
+
+Unix time is the internal time format used in Unix and Unix-like operating systems. It is a count of the number of seconds since 1 January 1970. Unix treats each day as containing exactly 86400 seconds, and thus does not account for the variation in Earth's rotation; leap seconds are accounted for by having the preceding 'second' last twice as long.
+
+Unix stores time as a signed integer. In the 1970s, this integer was 32 bits, which will max out and reset to 0 at 03:14:08 on 19 January 2038. Fortunately, most Unix computers have switched to a 64-bit integer, which will last beyond the heat death of the universe.
+
+https://en.wikipedia.org/wiki/Unix_time
+https://www.mail-archive.com/leapsecs@rom.usno.navy.mil/msg00109.html
+https://en.wikipedia.org/wiki/Year_2038_problem
+https://www.scienceabc.com/innovation/what-is-the-2038-problem.htm
+https://fossbytes.com/year-2038-problem-linux-unix/
+
+-----------
+GANGALE SOL
+-----------
+
+The Gangale sol is an integer count of sols (Martian days), beginning on the sol corresponding to 29 December 1873. Each sol lasts 24 hours 39 minutes 35.244 seconds.
+
+https://en.wikipedia.org/wiki/Julian_day
+https://en.wikipedia.org/wiki/Sol_(day_on_Mars)
+https://jtauber.github.io/mars-clock/
