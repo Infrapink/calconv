@@ -1356,3 +1356,72 @@ def amazigh(jday):
     date = (day,month,year)
     return date
 
+def rumi(jday):
+    """Convert a Julian day to a date in the Rumi calendar."""
+    jday = int(jday)
+    year = 0
+    month = ""
+    day = 0
+
+    if jday > 1948242:
+        # positive dates
+        delta = jday - 1948242
+        current = False
+        while current == False:
+            year += 1
+            if (year + 2) % 4 == 0:
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+
+        if (year + 2) % 4 == 0:
+            # leap year
+            m = months.TURKISH_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.TURKISH_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        # negative dates
+        delta = 1948243 - jday
+        while delta > 0:
+            if (abs(year) - 2) % 4 == 0:
+                year -= 1
+                delta -= 366
+            else:
+                year -= 1
+                delta -= 365
+
+        delta = abs(delta) + 1
+
+        if (abs(year) % 4) == 0:
+            # leap year
+            m = months.TURKISH_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.TURKISH_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day,month,year)
+    return date

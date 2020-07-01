@@ -513,3 +513,60 @@ KURDISH_MONTHS_LEAP = {"Jejhnan": 31,
                       "Befran": 30,
                       "Rébandan": 30,
                       "Reshemé": 30}
+
+# Amazigh months
+AMAZIGH_MONTHS_NORMAL = {"Yennayer": 31,
+                         "Yebrayer": 28,
+                         "Mares": 31,
+                         "Yebrir": 30,
+                         "May": 31,
+                         "Yunyu": 30,
+                         "Yulyuz": 31,
+                         "Ɣuct": 31,
+                         "Shutembir": 30,
+                         "Ktuber": 31,
+                         "Nwambir": 30,
+                         "Dujembir": 31}
+
+AMAZIGH_MONTHS_LEAP = {"Yennayer": 31,
+                       "Yebrayer": 28,
+                       "Mares": 31,
+                       "Yebrir": 30,
+                       "May":	31,
+                       "Yunyu": 30,
+                       "Yulyuz": 31,
+                       "Ɣuct": 31,
+                       "Shutembir": 30,
+                       "Ktuber": 31,
+                       "Nwambir": 30,
+                       "Dujembir": 32}
+
+# Turkish months
+
+TURKISH_MONTHS_NORMAL = {"Kânûn-ı Sânî": 31,
+                         "Şubat": 28,
+                         "Mart": 31,
+                         "Nisan": 30,
+                         "Mayıs": 31,
+                         "Haziran": 30,
+                         "Temmuz": 31,
+                         "Ağustos": 31,
+                         "Eylül": 30,
+                         "Teşrin-i Evvel": 31,
+                         "Teşrin-i Sânî": 30,
+                         "Kânûn-ı Evvel": 31}
+
+
+TURKISH_MONTHS_LEAP =  {"Kânûn-ı Sânî": 31,
+                       "Şubat": 29,
+                       "Mart": 31,
+                       "Nisan": 30,
+                       "Mayıs": 31,
+                       "Haziran": 30,
+                       "Temmuz": 31,
+                       "Ağustos": 31,
+                       "Eylül": 30,
+                       "Teşrin-i Evvel": 31,
+                       "Teşrin-i Sânî": 30,
+                       "Kânûn-ı Evvel": 31}
+

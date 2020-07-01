@@ -19,6 +19,7 @@ import hebrew_convert
 import samaritan_convert
 import kurdish_convert
 import amazigh_convert
+import rumi_convert
 import months
 
 class Application(Frame):
@@ -272,6 +273,15 @@ class Application(Frame):
         self.amazigh_month_ent.insert(0, amazigh_date[1])
         self.amazigh_year_ent.insert(0, amazigh_date[2])
 
+        # Convert a Julian day to a date in the Rumi calendar
+        rumi_date = julian_day_conversions.rumi(day)
+        self.rumi_day_ent.delete(0,END)
+        self.rumi_month_ent.delete(0,END)
+        self.rumi_year_ent.delete(0,END)
+        self.rumi_day_ent.insert(0, rumi_date[0])
+        self.rumi_month_ent.insert(0, rumi_date[1])
+        self.rumi_year_ent.insert(0, rumi_date[2])
+
     def cons_day_julian_plus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) + 1
@@ -512,6 +522,16 @@ class Application(Frame):
         jday = amazigh_convert.convert(day,month,year)
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
+        self.cons_day_julian_convert()
+
+    def rumi_converter(self):
+        """Convert a date in the Rumi calendar to a Julian day."""
+        day = int(self.rumi_day_ent.get())
+        month = self.rumi_month_ent.get()
+        year = int(self.rumi_year_ent.get())
+        jday = rumi_convert.convert(day, month, year)
+        self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
 
         
@@ -803,7 +823,18 @@ class Application(Frame):
         self.amazigh_year_ent.grid(row = 20, column = 2, sticky = W)
         self.amazigh_bttn = Button(self, text = "Calculate", command = self.amazigh_converter).grid(row = 21, column = 0, sticky = W)
 
-
+        # Rumi calendar
+        self.rumi_lbl = Label(self, text = "Rumi calendar").grid(row = 18, column = 3, columnspan = 3, sticky = W)
+        self.rumi_day_lbl = Label(self, text = "Day").grid(row = 19, column = 3, sticky = W)
+        self.rumi_day_ent = Entry(self)
+        self.rumi_day_ent.grid(row = 20, column = 3, sticky = W)
+        self.rumi_month_lbl = Label(self, text = "Month").grid(row = 19, column = 4, sticky = W)
+        self.rumi_month_ent = Entry(self)
+        self.rumi_month_ent.grid(row = 20, column = 4, sticky = W)
+        self.rumi_year_lbl = Label(self, text = "Year").grid(row = 19, column = 5, sticky = W)
+        self.rumi_year_ent = Entry(self)
+        self.rumi_year_ent.grid(row = 20, column = 5, sticky = W)
+        self.rumi_bttn = Button(self, text = "Calculate", command = self.rumi_converter).grid(row = 21, column = 3, columnspan = 3, sticky = W)
 
 
 
@@ -812,6 +843,6 @@ class Application(Frame):
 # create the root window
 root = Tk()
 app = Application(root)
-root.title("Calendar Converter 0.12.0")
+root.title("Calendar Converter 0.13.0")
 
 root.mainloop()
