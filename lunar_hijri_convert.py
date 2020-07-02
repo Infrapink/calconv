@@ -24,10 +24,10 @@ def convert(day, month, year):
                 days += 354
         if year in leap_years_ah:
             # leap year
-            m = months.LUNAR_HIJRI_MONTHS_LEAP
+            m = months.ARAB_MONTHS_LEAP
         else:
             # not a leap year
-            m = months.LUNAR_HIJRI_MONTHS_NORMAL
+            m = months.ARAB_MONTHS_NORMAL
 
         for i in m.keys():
             if i == month:
@@ -45,11 +45,11 @@ def convert(day, month, year):
         if year in leap_years_bh:
             # leap year
             #days -= 356
-            m = months.LUNAR_HIJRI_MONTHS_LEAP
+            m = months.ARAB_MONTHS_LEAP
         else:
             # not a leap year
             #days -= 355
-            m = months.LUNAR_HIJRI_MONTHS_NORMAL
+            m = months.ARAB_MONTHS_NORMAL
         for i in m.keys():
             if i == month:
                 days += day

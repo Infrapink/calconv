@@ -212,3 +212,6 @@ Add the following calendars:
 * Nanakshahi
 * Thai
 * Tibetan
+* Julian Period
+* Astronomical Gregorian calendar
+* Variants listed on Wikipedia's Julian day page

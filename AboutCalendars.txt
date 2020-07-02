@@ -19,8 +19,7 @@ But as with days, defining a month can be tricky. The period between solar conju
 
 The other grouping of days is the time taken for Earth to orbit the sun, known as a year. Sumerians, Egyptians, Chinese, and Mayans figured out the length of the year by counting the number of days between vernal equinoxes and between summer solstices, which comes out to 365 days. In Sumer and China, it was noticed that this was 11 days longer than 12 full months, and so a standard year was defined as a cycle of 12 months. However, this would result in the months slipping out of sync with the equinoxes, and so some years would have 13 months to catch up [11]. In Egypt, people held the sun in greater reverence than the moon, and so the civil year was simply defined as 365 days, with no attempt to keep months in sync with the moon.
 
-As ever, defining a year can be tricky. The tropical year is the time it takes for the sun to return to the same position in the sky, and lasts 365 days 5 hours 48 minutes 45 seconds [12]. Alternatively, there is the equinoctial year, the time between two of the same equinox - in other words, the time between the centre of the sun crossing the point where the celestial equator intersects the ecliptic. Because Earth's axis of precession is rotating slowly, the equinoctial year lasts 365 days 5 hours 49 minutes 1 second [13]. The sidereal year is longer again, being the time it takes for Earth to complete one orbit relative to the fixed stars; this one lasts 365 days 6 hours 9 minutes 9.76 seconds [14].
-
+As ever, defining a year can be tricky. The sidereal year is the time it takes for Earth to orbit the sun once, relative to the fixed stars; this lasts 365 days 6 hours 9 minutes 9.76 seconds [14]. There are two possible meanings of tropical year. The more common , also called the equinoctial year, is the time between two moments of northward equinox, the moment when the centre of the north ascendant sun crosses the point where the celestial equator intersects the ecliptic. Because Earth's axis is preceding slowly, this period lastsis 365 days 5 hours 48 minutes 45 seconds [12]. Alternatively, there is the time taken for the sun to return to the same position in the sky, which is 365 days 5 hours 49 minutes 1 second [13].
 
 [0]  https://en.wikipedia.org/wiki/History_of_calendars
 [1]  https://en.wikipedia.org/wiki/Decan
@@ -72,7 +71,7 @@ https://en.wikipedia.org/wiki/Julian_calendar
 GREGORIAN CALENDAR
 ------------------
 
-The Gregorian calendar was designed by Aloysius Lilius and introduced in 1582 AD by Pope Gregory XIII in 1582 AD. As early as the 8th century AD, the innacuracies of the Julian calendar were known, and by the 16th century AD, the drift of Easter relative to the equinoxes had become unacceptably severe. Modified the Julian calendar such that years that are integer multiples of 100 would NOT be leap years, except for those that are also integer multiples of 400. The overall result is a cycle of 400 years in which 97 are leap years. The average year length is thus 365 days, 5 hours, 49 minutes, and 12 seconds, which is just 29 seconds longer than the mean tropical year. This means that the Gregorian calendar accumulates loses just 1 day in 3300 years.
+The Gregorian calendar was designed by Aloysius Lilius and introduced in 1582 AD by Pope Gregory XIII in 1582 AD. As early as the 8th century AD, the innacuracies of the Julian calendar were known, and by the 16th century AD, the drift of Easter relative to the equinoxes had become unacceptably severe. Modified the Julian calendar such that years that are integer multiples of 100 would NOT be leap years, except for those that are also integer multiples of 400. The overall result is a cycle of 400 years in which 97 are leap years. The average year length is thus 365 days, 5 hours, 49 minutes, and 12 seconds, which is just 29 seconds longer than the mean equinoctial year. This means that the Gregorian calendar accumulates loses just 1 day in 3030 years. When the second-to-second effects of gravity and Earth's variable speed are taken into account, it may only lose one day in 7700 years, by which point the slowing of Earth's rotation will become an issue.
 
 Lilius and Gregory calibrated the calendar so that the solstices and equinoxes of 1582 would match those of the First Council of Nicaea in 325. Because the Julian calendar had alrady lost two days by then, the epoch of the Gregorian calendar is Julian Day 1721425, two days after the start of the Julian calendar. Days begin at midnight. It is a purely solar calendar which makes no effort to maintain synchronisation with the phases of the moon.
 
@@ -394,3 +393,22 @@ http://world.clndr.org/calendars/Berber-calendar
 https://mastersfdl.hypotheses.org/443]
 http://www.tamazgha.fr/La-fete-de-Yennayer-pratiques-et-presages,1841.html
 https://www.best-country.com/en/africa/algeria/new_year
+
+-------------
+RUMI CALENDAR
+-------------
+
+The Rumi calendar is a version of the Julian calendar dated from the Hijra. It was used in Turkey for tax calculations from 1677 AD (1055 AH), and adopted as the civil calendar in 1840 AD (1218 AH). It was replaced by the Gregorian calendar in 1926 AD (1304 AH) as part of Mustafa Kemal Atatürk's reforms.
+
+https://en.wikipedia.org/wiki/Rumi_calendar
+https://www.takvim.com/takvim_donusum.php
+
+--------------------------
+REVISED GREGORIAN CALENDAR
+--------------------------
+
+William Herschel proposed a revision to the Gregorian calendar by which years that are integer multiples of 4000 would not be leap years, though this was never officially adopted. The mean calendar year in the revised Gregorian calendar is 365 day 5 hours 48 minutes 50.4 seconds, a mere 5.4 seconds longer than the mean equinoctial year and thus accurate to 1 day in 19500 years, assuming Earth's period of rotation does not change.
+
+http://visualiseur.bnf.fr/CadresFenetre?O=NUMM-94926&I=649&M=tdm p 29
+https://tondering.dk/claus/cal/gregorian.php
+

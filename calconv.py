@@ -20,6 +20,7 @@ import samaritan_convert
 import kurdish_convert
 import amazigh_convert
 import rumi_convert
+import rev_gregorian_convert
 import months
 
 class Application(Frame):
@@ -282,6 +283,15 @@ class Application(Frame):
         self.rumi_month_ent.insert(0, rumi_date[1])
         self.rumi_year_ent.insert(0, rumi_date[2])
 
+        # Convert a Julian day to a date in the revised Gregorian calendar
+        rev_gregorian_date = julian_day_conversions.rev_gregorian(day)
+        self.rev_gregorian_day_ent.delete(0, END)
+        self.rev_gregorian_month_ent.delete(0, END)
+        self.rev_gregorian_year_ent.delete(0, END)
+        self.rev_gregorian_day_ent.insert(0, rev_gregorian_date[0])
+        self.rev_gregorian_month_ent.insert(0, rev_gregorian_date[1])
+        self.rev_gregorian_year_ent.insert(0, rev_gregorian_date[2])
+
     def cons_day_julian_plus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) + 1
@@ -531,6 +541,16 @@ class Application(Frame):
         year = int(self.rumi_year_ent.get())
         jday = rumi_convert.convert(day, month, year)
         self.cons_day_julian_ent.delete(0,END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_convert()
+
+    def rev_gregorian_converter(self):
+        """Convert a date in the revised Gregorian calendar to a Julian day."""
+        day = int(self.rev_gregorian_day_ent.get())
+        month = self.rev_gregorian_month_ent.get()
+        year = int(self.rev_gregorian_year_ent.get())
+        jday = rev_gregorian_convert.convert(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
 
@@ -836,7 +856,19 @@ class Application(Frame):
         self.rumi_year_ent.grid(row = 20, column = 5, sticky = W)
         self.rumi_bttn = Button(self, text = "Calculate", command = self.rumi_converter).grid(row = 21, column = 3, columnspan = 3, sticky = W)
 
-
+        # Revised Gregorian calendar
+        self.rev_gregorian_lbl = Label(self, text = "Revised Gregorian calendar").grid(row = 18, column = 6, columnspan = 3, sticky = W)
+        self.rev_gregorian_day_lbl = Label(self, text = "Day").grid(row = 19, column = 6, sticky = W)
+        self.rev_gregorian_day_ent = Entry(self)
+        self.rev_gregorian_day_ent.grid(row = 20, column = 6, sticky = W)
+        self.rev_gregorian_month_lbl = Label(self, text = "Months").grid(row = 19, column = 7, sticky = W)
+        self.rev_gregorian_month_ent = Entry(self)
+        self.rev_gregorian_month_ent.grid(row = 20, column = 7, sticky = W)
+        self.rev_gregorian_year_lbl = Label(self, text = "Year").grid(row = 19, column = 8, sticky = W)
+        self.rev_gregorian_year_ent = Entry(self)
+        self.rev_gregorian_year_ent.grid(row = 20, column = 8, sticky = W)
+        self.rev_gregorian_bttn = Button(self, text = "Calculate", command = self.rev_gregorian_converter).grid(row = 21, column = 6, columnspan = 3, sticky = W)
+        
 
 
 

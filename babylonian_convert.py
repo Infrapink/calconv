@@ -17,7 +17,7 @@ def convert(day, month, year):
 
     if year > 0:
         # positive year
-        alpha = -210264
+        alpha = -210488
 
         if month == "Ulūlu Arku":
             if (year % 19) != 17:
@@ -49,7 +49,7 @@ def convert(day, month, year):
 
     else:
         # negative years
-        alpha = -210263
+        alpha = -210487
         year = 0 - year
 
         if month == "Ulūlu Arku":

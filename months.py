@@ -134,7 +134,7 @@ EGYPTIAN_MONTHS = {"Thoth": 30,
 # There are a few algorithms to decide on a leap year. The most common is a 30-year cycle in which a leap year falls in years 2, 5, 7, 10, 13, 16, 18, 21, 24, 26 and 29
 # Day 1 is Julian Day 1948439, which means day 0 is 1948438. It appears that the Hijri calendars do in fact have a year 0.
 
-LUNAR_HIJRI_MONTHS_NORMAL = {"Muharram": 30,
+ARAB_MONTHS_NORMAL = {"Muharram": 30,
                              "Safar": 29,
                              "Rabi' al-awwal": 30,
                              "Rabi' al-Thani": 29,
@@ -147,7 +147,7 @@ LUNAR_HIJRI_MONTHS_NORMAL = {"Muharram": 30,
                              "Dhu al-Qidah": 30,
                              "Dhu al-Hijjah": 29}
 
-LUNAR_HIJRI_MONTHS_LEAP = {"Muharram": 30,
+ARAB_MONTHS_LEAP = {"Muharram": 30,
                            "Safar": 29,
                            "Rabi' al-awwal": 30,
                            "Rabi' al-Thani": 29,
