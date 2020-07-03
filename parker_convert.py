@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the revised Gregorian Calendar to a Julian Day
+# Convert a date in the Parker Calendar to a Julian Day
 #
 
 import months
@@ -16,7 +16,7 @@ def convert(day, month, year):
     if year > 0:
         alpha = 1721424
         for y in range(1, year):
-            if y % 4000 == 0:
+            if (y % 10000) in (2800,5600,8400):
                 days += 365
             elif y % 400 == 0:
                 days += 366
@@ -27,7 +27,7 @@ def convert(day, month, year):
             else:
                 days += 365
 
-        if year % 4000 == 0:
+        if (year % 10000) in (2800,5600,8400):
             # not leap year
             m = months.CAESAR_MONTHS_NORMAL
         elif year % 400 == 0:
@@ -52,7 +52,7 @@ def convert(day, month, year):
         alpha = 1721425
         year = 0 - year
 
-        if (year - 1) % 4000 == 0:
+        if ((year - 1) % 10000) in(2800,5600,8400):
             # not a leap year
             m = months.CAESAR_MONTHS_NORMAL
         elif (year - 1) % 400 == 0:
@@ -76,7 +76,7 @@ def convert(day, month, year):
                 days += m[i]
 
         for y in range(0, year):
-            if y % 4000 == 0:
+            if (y % 10000) in (2800,5600,8400):
                 days -= 365
             elif y % 400 == 0:
                 days -= 366
@@ -86,6 +86,5 @@ def convert(day, month, year):
                 days -= 366
             else:
                 days -= 365
-
     jday = alpha + days
     return jday

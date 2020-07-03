@@ -21,6 +21,8 @@ import kurdish_convert
 import amazigh_convert
 import rumi_convert
 import rev_gregorian_convert
+import parker_convert
+import goucher_convert
 import months
 
 class Application(Frame):
@@ -292,6 +294,25 @@ class Application(Frame):
         self.rev_gregorian_month_ent.insert(0, rev_gregorian_date[1])
         self.rev_gregorian_year_ent.insert(0, rev_gregorian_date[2])
 
+        # Convert a Julian day to a date in the Parker calendar
+        parker_date = julian_day_conversions.parker(day)
+        self.parker_day_ent.delete(0, END)
+        self.parker_month_ent.delete(0, END)
+        self.parker_year_ent.delete(0, END)
+        self.parker_day_ent.insert(0, parker_date[0])
+        self.parker_month_ent.insert(0, parker_date[1])
+        self.parker_year_ent.insert(0, parker_date[2])
+
+        # Convert a Julian day to a date in the Goucher-Parker calendar
+        goucher_date = julian_day_conversions.goucher(day)
+        self.goucher_day_ent.delete(0, END)
+        self.goucher_month_ent.delete(0, END)
+        self.goucher_year_ent.delete(0, END)
+        self.goucher_day_ent.insert(0, goucher_date[0])
+        self.goucher_month_ent.insert(0, goucher_date[1])
+        self.goucher_year_ent.insert(0, goucher_date[2])
+        
+
     def cons_day_julian_plus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) + 1
@@ -550,6 +571,26 @@ class Application(Frame):
         month = self.rev_gregorian_month_ent.get()
         year = int(self.rev_gregorian_year_ent.get())
         jday = rev_gregorian_convert.convert(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_convert()
+
+    def parker_converter(self):
+        """Convert a date in the Parker calendar to a Julian day."""
+        day = int(self.parker_day_ent.get())
+        month = self.parker_month_ent.get()
+        year = int(self.parker_year_ent.get())
+        jday = parker_convert.convert(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_convert()
+
+    def goucher_converter(self):
+        """Convert a date in the Goucher calendar to a Julian day."""
+        day = int(self.goucher_day_ent.get())
+        month = self.goucher_month_ent.get()
+        year = int(self.goucher_year_ent.get())
+        jday = goucher_convert.convert(day, month, year)
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
@@ -868,6 +909,32 @@ class Application(Frame):
         self.rev_gregorian_year_ent = Entry(self)
         self.rev_gregorian_year_ent.grid(row = 20, column = 8, sticky = W)
         self.rev_gregorian_bttn = Button(self, text = "Calculate", command = self.rev_gregorian_converter).grid(row = 21, column = 6, columnspan = 3, sticky = W)
+
+        # Parker calendar
+        self.parker_lbl = Label(self, text = "Parker calendar").grid(row = 18, column = 9, columnspan = 3, sticky = W)
+        self.parker_day_lbl = Label(self, text = "Day").grid(row = 19, column = 9, sticky = W)
+        self.parker_day_ent = Entry(self)
+        self.parker_day_ent.grid(row = 20, column = 9, sticky = W)
+        self.parker_month_lbl = Label(self, text = "Month").grid(row = 19, column = 10, sticky = W)
+        self.parker_month_ent = Entry(self)
+        self.parker_month_ent.grid(row = 20, column = 10, sticky = W)
+        self.parker_year_lbl = Label(self, text = "Year").grid(row = 19, column = 11, sticky = W)
+        self.parker_year_ent = Entry(self)
+        self.parker_year_ent.grid(row = 20, column = 11, sticky = W)
+        self.parker_bttn = Button(self, text = "Calculate", command = self.parker_converter).grid(row = 21, column = 9, columnspan = 3, sticky = W)
+
+        # Goucher-Parker calendar
+        self.goucher_lbl = Label(self, text = "Goucher-Parker calendar").grid(row = 18, column = 12, columnspan = 3, sticky = W)
+        self.goucher_day_lbl = Label(self, text = "Day").grid(row = 19, column = 12, sticky = W)
+        self.goucher_day_ent = Entry(self)
+        self.goucher_day_ent.grid(row = 20, column = 12, sticky = W)
+        self.goucher_month_lbl = Label(self, text = "Month").grid(row = 19, column = 13, sticky = W)
+        self.goucher_month_ent = Entry(self)
+        self.goucher_month_ent.grid(row = 20, column = 13, sticky = W)
+        self.goucher_year_lbl = Label(self, text = "Year").grid(row = 19, column = 14, sticky = W)
+        self.goucher_year_ent = Entry(self)
+        self.goucher_year_ent.grid(row = 20, column = 14, sticky = W)
+        self.goucher_bttn = Button(self, text = "Calculate", command = self.goucher_converter).grid(row = 21, column =12, columnspan = 3)
         
 
 
@@ -875,6 +942,6 @@ class Application(Frame):
 # create the root window
 root = Tk()
 app = Application(root)
-root.title("Calendar Converter 0.13.0")
+root.title("Calendar Converter 0.14.0")
 
 root.mainloop()

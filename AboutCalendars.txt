@@ -412,3 +412,23 @@ William Herschel proposed a revision to the Gregorian calendar by which years th
 http://visualiseur.bnf.fr/CadresFenetre?O=NUMM-94926&I=649&M=tdm p 29
 https://tondering.dk/claus/cal/gregorian.php
 
+---------------
+PARKER CALENDAR
+---------------
+
+The Parker calendar is an alternative revison to the Gregorian calendar suggested by stand-up mathematician Matt Parker when describing improved leap year algorithms. In this version, a year is NOT a leap year if, when divided by 10000, it yields a remainder of 2800, 5600, or 8400. This works out to a mean calendar year of 365 days 5 hours 48 minutes 46.08 seconds, just 1.08 seconds longer than the current mean equinoctial year; this adds up to a loss of just one day in 675,000 years, if we ignore the chaotic effects of the gravity and momentum of everything else in the solar system.
+
+As you can tell from the name, the Parker calendar is almost, but not quite, a perfect match for the astronomical year. Celestial mechanics mean that any algorithmic calendar will have some error, but fortunately Matt did independently derive the Goucher-Parker calendar.
+
+https://www.youtube.com/watch?v=qkt_wmRKYNQ
+
+-----------------------
+GOUCHER-PARKER CALENDAR
+-----------------------
+
+The Goucher-Parker calendar was independently worked out, by different approaches, by Matt Parker and mathematician Adam P. Goucher. It dispenses with the 100- and 400-year rules of the Gregorian calendar in favour of omitting leap years in years that are integer multiples of 128. Matt describes this as rolling back to the Julian calendar, and so I have chosen to date this calendar from the Julian rather than the Gregorian epoch.
+
+https://www.youtube.com/watch?v=qkt_wmRKYNQ
+https://cp4space.wordpress.com/2012/09/12/lunisolar-calendars/
+https://www.theguardian.com/science/2011/feb/28/leap-year-alex-bellos
+
