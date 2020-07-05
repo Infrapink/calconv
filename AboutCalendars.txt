@@ -416,7 +416,7 @@ https://tondering.dk/claus/cal/gregorian.php
 PARKER CALENDAR
 ---------------
 
-The Parker calendar is an alternative revison to the Gregorian calendar suggested by stand-up mathematician Matt Parker when describing improved leap year algorithms. In this version, a year is NOT a leap year if, when divided by 10000, it yields a remainder of 2800, 5600, or 8400. This works out to a mean calendar year of 365 days 5 hours 48 minutes 46.08 seconds, just 1.08 seconds longer than the current mean equinoctial year; this adds up to a loss of just one day in 675,000 years, if we ignore the chaotic effects of the gravity and momentum of everything else in the solar system.
+The Parker calendar is an alternative revison to the Gregorian calendar suggested by stand-up mathematician Matt Parker when describing improved leap year algorithms. In this version, a year is NOT a leap year if, when divided by 10000, it yields a remainder of 2800, 5600, or 8400. This works out to a mean calendar year of 365 days 5 hours 48 minutes 46.08 seconds, just 1.08 seconds longer than the current mean equinoctial year; this adds up to a loss of just one day in 91,743 years.
 
 As you can tell from the name, the Parker calendar is almost, but not quite, a perfect match for the astronomical year. Celestial mechanics mean that any algorithmic calendar will have some error, but fortunately Matt did independently derive the Goucher-Parker calendar.
 
@@ -426,9 +426,40 @@ https://www.youtube.com/watch?v=qkt_wmRKYNQ
 GOUCHER-PARKER CALENDAR
 -----------------------
 
-The Goucher-Parker calendar was independently worked out, by different approaches, by Matt Parker and mathematician Adam P. Goucher. It dispenses with the 100- and 400-year rules of the Gregorian calendar in favour of omitting leap years in years that are integer multiples of 128. Matt describes this as rolling back to the Julian calendar, and so I have chosen to date this calendar from the Julian rather than the Gregorian epoch.
+The Goucher-Parker calendar was independently worked out, by different approaches, by Matt Parker and mathematician Adam P. Goucher. It dispenses with the 100- and 400-year rules of the Gregorian calendar in favour of omitting leap years in years that are integer multiples of 128. Matt describes this as rolling back to the Julian calendar, and so I have chosen to date this calendar from the Julian rather than the Gregorian epoch..
+
+The mean Goucher-Parker calendar year is less than 1 second longer than the mean equinoctial year, meaning it only loses 1 day in 625,000 years, if we ignore the chaotic effects of the gravity and momentum of everything else in the solar system.
 
 https://www.youtube.com/watch?v=qkt_wmRKYNQ
 https://cp4space.wordpress.com/2012/09/12/lunisolar-calendars/
 https://www.theguardian.com/science/2011/feb/28/leap-year-alex-bellos
 
+-----------------------
+SERBIAN CHURCH CALENDAR
+-----------------------
+
+The Serbian church calendar was designed by Maksim Trpković in 1900. At the time, the Julian calendar was the civil calendar in Serbia; the Gregorian calendar had not been adopted because Serbia was (and is) majority Eastern Orthodox, and until the early 19th century had been part of Ottoman Turkey. Since the Julian calendar was by the 15 days off, there was considerable interest in a better calendar, preferably one not linked to the Catholic Church, an Trpković stepped up to the task.
+
+Trpković's calendar adopts the Gregorian calendar's 100-year rule, but replaces the 400-year rule with a rule whereby a year which yields a remainder of 0 or 400 when divided by 900 is a leap year. Like the revised Julian calendar devised by Milutin Milanković, Trpković's calendar is accurate to 1 day in 28,800 years. Trpković's calendar has an advantage over Milanković's in that the astronomical northward equinox will fall more often on 21 March; however, Milanković's calendar spreads the leap years out more evenly and is better aligned to the Gregorian calendar, which is the de facto standard. Because Trpković said to only skip 13 days rather than 15 and wanted to keep the equinoxes aligned with those of 325, the year in which the Council of Nicaea met, it shares a calendar epoch with the Gregorian.
+
+Trpković's calendar was endorsed by the Serbian government and the Serbian Orthodox Church, and was put forward at the Pan-Orthodox Congress as a candidate to replace the old Julian calendar. The calendar met with considerable approval, but the Congress ultimately opted for Milanković's submission.
+
+http://publications.aob.rs/75/pdf/301-306.pdf
+
+-----------------------
+REVISED JULIAN CALENDAR
+-----------------------
+
+The revised Julian calendar was developed by Milutin Milanković in 1923, building on the work of Maksim Trpković. It implements the Gregorian 100-year rule, but instead of the 400-year rule, adds a rule that any year which leaves a remainder of 200 or 600 when divided by 900 is a leap year. Due to Milanković, like Gregory, seeking to preserve the date of the northward equinox of the Council of Nicaea, the revised Julian calendar has the same epoch as the Gregorian calendar and not the original Julian.
+
+the Orthodox churches had refused to accept the Gregorian calendar on the grounds that it came from the pope of Rome, and as such the majority-Orthodox countries had stuck with the Julian calendar. By the 20th century, it had become drifted drastically out of sync with the seasons, and in 1902 Ecumenical Patriarch Joakim III wrote to the other patriarchs and bishops to invite proposals on calendar reform. Patriarch Miletios IV convened a Pan-Orthodox Congress in Istanbul, then under Entente occupation, in May 1923. Trpković's calendar was supported by the Serbian delegation, but ultimately Milanković persuaded the council to adopt his proposal instead, and this change was promulgated by Miletios IV and King George II of Greece. The revised Julian calendar was never used for civil purposes, all the Eastern Orthodox-majority countries having already adopted the Gregorian calendar as their civil calendar by this time; the revised Julian calendar was thus only ever used as a liturgical calendar.
+
+However, things did not proceed smoothly. Miletios IV was a controversial figure in the Eastern Orthodox Church, and the patriarchs of Alexandria, Antioch, Jerusalem, and Russia did not attend. The new calendar was adopted by the Orthodox Churches of Constantinople, Greece, Serbia, Romania, and Cyprus, but initially no others. Since then, the revised calendar has been adopted by the Patriarchates of Alexandria and Antioch, but not Jerusalem. It has also been adopted by the Churches of Bulgaria, Poland, Albania, Estonia, Czechai and Slovakia, and America (except Alaska); these are collectively referred to as the 'new calendarists'. The Finnish Orthodox Church uses the Gregorian calendar for all purposes, and the rest of the Eastern Orthodox churches continue to date their festivals by the old Julian calendar. A few churches use both calendars for different purposes, and all except Finland use the original Julian calendar to calculate the date of Easter.
+
+The average calendar year length is 365 days 5 hours 48 minutes 48 seconds, just 3 seconds longer than the mean equinoctial year, which works out to a loss of one day in 28,800 years; the revised Julian calendar is the most accurate algorithmic calendar ever implemented.
+
+https://en.wikipedia.org/wiki/Revised_Julian_calendar
+http://images.astronet.ru/pubd/2008/09/28/0001230709/145-147.pdf
+https://www.holy-trinity.org/modern/calen3.html
+http://www.byzcath.org/forums/ubbthreads.php/topics/309500/Which_Churches_follow_what_cal
+http://publications.aob.rs/75/pdf/301-306.pdf

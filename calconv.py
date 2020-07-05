@@ -23,10 +23,14 @@ import rumi_convert
 import rev_gregorian_convert
 import parker_convert
 import goucher_convert
+import serbian_church_convert
+import rev_julian_convert
+
 import months
 
 class Application(Frame):
     """A GUI application with various widgets"""
+
     def __init__(self, master):
         """Initialise the Frame"""
         super(Application, self).__init__(master)
@@ -36,9 +40,7 @@ class Application(Frame):
     def cons_day_julian_convert(self):
         """Take the input into the Julian Day box and convert it into the other date formats"""
         day = Decimal(self.cons_day_julian_ent.get())
-        #day = int(day) - 0.1
-        #day = round(day)
-
+    
         # Convert a Julian Day to a date in the Julian Calendar
         julian_date = julian_day_conversions.julian(day)
         julian_day_value = julian_date[0]
@@ -311,15 +313,32 @@ class Application(Frame):
         self.goucher_day_ent.insert(0, goucher_date[0])
         self.goucher_month_ent.insert(0, goucher_date[1])
         self.goucher_year_ent.insert(0, goucher_date[2])
-        
 
+        # Convert a Julian day to a date in the Serbian church calendar
+        serbian_church_date = julian_day_conversions.serbian_church(day)
+        self.serbian_church_day_ent.delete(0, END)
+        self.serbian_church_month_ent.delete(0, END)
+        self.serbian_church_year_ent.delete(0, END)
+        self.serbian_church_day_ent.insert(0, serbian_church_date[0])
+        self.serbian_church_month_ent.insert(0, serbian_church_date[1])
+        self.serbian_church_year_ent.insert(0, serbian_church_date[2])
+
+        # Convert a Julain day to a date in the revised Julian calendar
+        rev_julian_date = julian_day_conversions.rev_julian(day)
+        self.rev_julian_day_ent.delete(0, END)
+        self.rev_julian_month_ent.delete(0, END)
+        self.rev_julian_year_ent.delete(0, END)
+        self.rev_julian_day_ent.insert(0, rev_julian_date[0])
+        self.rev_julian_month_ent.insert(0, rev_julian_date[1])
+        self.rev_julian_year_ent.insert(0, rev_julian_date[2])
+        
     def cons_day_julian_plus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) + 1
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, day)
         self.cons_day_julian_convert()
-
+        
     def cons_day_julian_minus(self):
         day = self.cons_day_julian_ent.get()
         day = int(day) - 1
@@ -336,7 +355,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def gregorian_converter(self):
         """Convert a date in the Gregorian Calendar to a Julian  Day."""
         day = self.gregorian_day_ent.get()
@@ -346,7 +365,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def coptic_converter(self):
         """Convert a date in the Coptic Calendar to a Julian Day."""
         day = self.coptic_day_ent.get()
@@ -356,7 +375,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def ethiopian_converter(self):
         """Convert a date in the Ethiopian Calendar to a Julian day."""
         day = self.ethiopian_day_ent.get()
@@ -366,7 +385,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def egyptian_converter(self):
         """Convert a date in the Egyptian Calendar to a Julian Day."""
         day = self.egyptian_day_ent.get()
@@ -376,7 +395,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def armenian_converter(self):
         """Convert a date in the Armenian Calendar to a Julian Day."""
         day = self.armenian_day_ent.get()
@@ -386,7 +405,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def lunar_hijri_converter(self):
         """Convert a date in the Lunar Hijri Calendar to a Julian DAy."""
         day = self.lunar_hijri_day_ent.get()
@@ -396,7 +415,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def solar_hijri_converter(self):
         """Convert a date in the Solar Hijri Calendar to a Julian Day."""
         day = self.solar_hijri_day_ent.get()
@@ -406,7 +425,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def birashk_converter(self):
         """Convert a date in Birashk's calendar to a Julian Day."""
         day = self.birashk_day_ent.get()
@@ -416,7 +435,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def assyrian_converter(self):
         """Convert a date in the Assyrian calendar to a Julian Day."""
         day = self.assyrian_day_ent.get()
@@ -426,7 +445,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def babylonian_converter(self):
         """Convert a date in the Babylonian calendar to a Julian Day."""
         day = self.babylonian_day_ent.get()
@@ -436,7 +455,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def hebrew_converter(self):
         """Convert a date in the Hebrew calendar to a Julian Day."""
         day = self.hebrew_day_ent.get()
@@ -446,7 +465,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def samaritan_converter(self):
         """Convert a date in the Samaritan Hebrew calendar to a Julian Day"""
         day = self.samaritan_day_ent.get()
@@ -456,7 +475,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def kurdish_converter(self):
         """Convert a date in the Kurdish calendar to a Julian Day."""
         day = self.kurdish_day_ent.get()
@@ -466,28 +485,28 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def true_day_julian_converter(self):
         """Convert a Julian Day to a True Julian Day."""
         jday = Decimal(self.day_julian_ent.get()) + Decimal('0.5')
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def red_day_julian_converter(self):
         """Convert a Reduced Julian Day to a Consecutive Julian Day."""
         jday = Decimal(self.red_day_julian_ent.get()) + 2400000 - Decimal('0.5')
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def mod_day_julian_converter(self):
         """Convert a Modified Julian Day to a Consecutive Julian Day."""
         jday = int(self.mod_day_julian_ent.get()) + 2400000
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def trun_day_julian_converter(self):
         """Convert a Truncated Julian Day to a Consecutive Julian Day."""
         jday = int(self.trun_day_julian_ent.get()) + 2440000
@@ -501,50 +520,50 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def cnes_converter(self):
         """Convert a CNES Julian Day into a Consecutive Julian Day."""
         jday = int(self.cnes_ent.get())+ 2433282
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def ccsds_converter(self):
         jday = int(self.ccsds_ent.get()) + 2436204
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def day_lilian_converter(self):
         jday = int(self.day_lilian_ent.get()) + 2299159
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def rata_die_converter(self):
         jday = int(self.rata_die_ent.get()) + 1721424
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def unix_time_converter(self):
         jday = (int(self.unix_time_ent.get()) // 86400) + 2440587
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def sol_gangale_converter(self):
         jday = round(Decimal(self.sol_gangale_ent.get()) * Decimal('1.02749')) + 2405521
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def lop_converter(self):
         jday = int(self.lop_ent.get()) + 2448622
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def amazigh_converter(self):
         """Convert a date in the Amazigh calendar to a Julian day."""
         day = int(self.amazigh_day_ent.get())
@@ -554,7 +573,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0,jday)
         self.cons_day_julian_convert()
-
+        
     def rumi_converter(self):
         """Convert a date in the Rumi calendar to a Julian day."""
         day = int(self.rumi_day_ent.get())
@@ -564,7 +583,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0,END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def rev_gregorian_converter(self):
         """Convert a date in the revised Gregorian calendar to a Julian day."""
         day = int(self.rev_gregorian_day_ent.get())
@@ -574,7 +593,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def parker_converter(self):
         """Convert a date in the Parker calendar to a Julian day."""
         day = int(self.parker_day_ent.get())
@@ -584,7 +603,7 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
     def goucher_converter(self):
         """Convert a date in the Goucher calendar to a Julian day."""
         day = int(self.goucher_day_ent.get())
@@ -594,7 +613,24 @@ class Application(Frame):
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_convert()
-
+        
+    def serbian_church_converter(self):
+        day = int(self.serbian_church_day_ent.get())
+        month = self.serbian_church_month_ent.get()
+        year = int(self.serbian_church_year_ent.get())
+        jday = serbian_church_convert.convert(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_convert()
+        
+    def rev_julian_converter(self):
+        day = int(self.rev_julian_day_ent.get())
+        month = self.rev_julian_month_ent.get()
+        year = int(self.rev_julian_year_ent.get())
+        jday = rev_julian_convert.convert(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_convert()
         
     def create_widgets(self):
         """Generate various widgets."""
@@ -611,7 +647,6 @@ class Application(Frame):
         # Plus and Minus buttons
         self.cons_day_julian_plus_bttn = Button(self, text = "+", command = self.cons_day_julian_plus)
         self.cons_day_julian_plus_bttn.grid(row = 2, column = 1, sticky = W)
-
         self.cons_day_julian_minus_bttn = Button(self, text = "-", command = self.cons_day_julian_minus)
         self.cons_day_julian_minus_bttn.grid(row = 3, column = 1, sticky = W)
 
@@ -935,13 +970,35 @@ class Application(Frame):
         self.goucher_year_ent = Entry(self)
         self.goucher_year_ent.grid(row = 20, column = 14, sticky = W)
         self.goucher_bttn = Button(self, text = "Calculate", command = self.goucher_converter).grid(row = 21, column =12, columnspan = 3)
+
+        # Serbian church calendar
+        self.serbian_church_lbl = Label(self, text = "Serbian church calendar").grid(row = 23, column = 0, columnspan = 3, sticky = W)
+        self.serbian_church_day_lbl = Label(self, text = "Day").grid(row = 24, column = 0, sticky = W)
+        self.serbian_church_day_ent = Entry(self)
+        self.serbian_church_day_ent.grid(row = 25, column = 0, sticky = W)
+        self.serbian_church_month_lbl = Label(self, text = "Month").grid(row = 24, column = 1, sticky = W)
+        self.serbian_church_month_ent = Entry(self)
+        self.serbian_church_month_ent.grid(row = 25, column = 1, sticky = W)
+        self.serbian_church_year_lbl = Label(self, text = "Year").grid(row = 24, column = 2, sticky = W)
+        self.serbian_church_year_ent = Entry(self)
+        self.serbian_church_year_ent.grid(row = 25, column = 2, sticky = W)
+        self.serbian_church_bttn = Button(self, text = "Calculate", command = self.serbian_church_converter).grid(row = 26, column = 0, columnspan = 3, sticky = W)
+
+        # Revised Julian calendar
+        self.rev_julian_lbl = Label(self, text = "Revised Julian calendar").grid(row = 23, column = 3, columnspan = 3, sticky = W)
+        self.rev_julian_day_lbl = Label(self, text = "Day").grid(row = 24, column = 3, sticky = W)
+        self.rev_julian_day_ent = Entry(self)
+        self.rev_julian_day_ent.grid(row = 25, column = 3, sticky = W)
+        self.rev_julian_month_lbl = Label(self, text = "Month").grid(row = 24, column = 4, sticky = W)
+        self.rev_julian_month_ent = Entry(self)
+        self.rev_julian_month_ent.grid(row = 25, column = 4, sticky = W)
+        self.rev_julian_year_lbl = Label(self, text = "Year").grid(row = 24, column = 5, sticky = W)
+        self.rev_julian_year_ent = Entry(self)
+        self.rev_julian_year_ent.grid(row = 25, column = 5, sticky = W)
+        self.rev_julian_bttn = Button(self, text = "Calculate", command = self.rev_julian_converter).grid(row = 26, column = 3, sticky = W)
         
-
-
-
 # create the root window
 root = Tk()
 app = Application(root)
 root.title("Calendar Converter 0.14.0")
-
 root.mainloop()

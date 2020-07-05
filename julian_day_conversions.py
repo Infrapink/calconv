@@ -13,11 +13,14 @@ import leap_years_assyrian
 #import leap_years_rev_hebrew
 
 import hebrew_calculations
+#import rev_hebrew_calculations
 
 cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
+cycle900 = (900 * 365) + 218
 cycle4000 = (4000 * 365) + 969
+cycle128j = (128 * 365) + 31
 
 cycle30 = (30 * 354) + 11
 
@@ -1521,4 +1524,383 @@ def rev_gregorian(jday):
                 delta -= m[i]
 
     date = (day,month,year)
+    return date
+
+def parker(jday):
+    """Convert a Julian day to a date in the Parker calendar."""
+    jday = int(jday)
+    year = 0
+    month = ""
+    day = 0
+
+    if jday > 1721424:
+        # positive date
+        delta = jday - 1721424
+        current = False
+
+        while current == False:
+            year += 1
+            if (year % 10000) in (2800, 5600, 8400):
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+            elif year % 400 == 0:
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            elif year % 100 == 0:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+            elif year % 4 == 0:
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+
+        if (year % 10000) in (2800,5600,8400):
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif year % 400 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        elif year % 100 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif year % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        # negative dates
+        delta = 1721425 - jday
+
+        while delta > 0:
+            if (year % 10000) in (2800, 5600, 8400):
+                delta -= 365
+            elif year % 400 == 0:
+                delta -= 366
+            elif year % 100 == 0:
+                delta -= 365
+            elif year % 4 == 0:
+                delta -= 366
+            else:
+                delta -= 365
+            year += 1
+
+        if (year - 1) % 10000 in (2800,5600,8400):
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif (year - 1) % 400 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        elif (year - 1) % 100 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif (year - 1) % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta + 1
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day, month, year)
+    return date
+
+def goucher(jday):
+    """Convert a Julian day to a date in the Goucher-Parker calendar."""
+    jday = int(jday)
+    year = 0
+    month = ""
+    day = 0
+
+    if jday > 1721422:
+        # positive date
+        delta = jday - 1721422
+        year_128 = delta // cycle128j
+        delta %= cycle128j
+        year_4 = delta // cycle4
+        delta %= cycle4
+        single_years = delta // 365
+        delta %= 365
+        year = (128 * year_128) + (4 * year_4) + single_years + 1 # need to add 1 to account for the lack of year 0
+        if year % 128 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif year % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        # negative date
+        delta = 1721423 - jday
+        while delta > 0:
+            if year % 128 == 0:
+                delta -= 365
+            elif year % 4 == 0:
+                delta -= 366
+            else:
+                delta -= 365
+            year += 1
+
+        if (year - 1) % 128 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif (year - 1) % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap yer
+            m = months.CAESAR_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta + 1
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day,month,year)
+    return date
+
+def serbian_church(jday):
+    """Convert a Julian day to a date in the Serbian church calendar."""
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+
+    if jday> 1721424:
+        # positive date
+        delta = jday - 1721424
+        current = False
+        while current == False:
+            year += 1
+            if (year % 900) in (0, 400):
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            elif year % 100 == 0:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+            elif year % 4 == 0:
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+
+        if (year % 900) in (0,400):
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        elif year % 100 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif year % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        # negative dates
+        delta = 1721425 - jday
+
+        while delta > 0:
+            if (year % 900) in (0, 400):
+                delta -= 366
+            elif year % 100 == 0:
+                delta -= 365
+            elif year % 4 == 0:
+                delta -= 366
+            else:
+                delta -= 365
+            year += 1
+
+        if ((year - 1) % 900) in (0, 400):
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        elif (year - 1) % 100 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif (year - 1) % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta + 1
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day, month, year)
+    return date
+
+
+
+
+def rev_julian(jday):
+    """Convert a Julian day to a date in the revised Julian calendar."""
+    jday = int(jday)
+    day = 0
+    month = ""
+    year = 0
+
+    if jday > 1721424:
+        # positive date
+        delta = jday - 1721424
+        current = False
+        while current == False:
+            year += 1
+            if (year % 900) in (200,600):
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            elif year % 100 == 0:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+            elif year % 4 == 0:
+                if delta <= 366:
+                    current = True
+                else:
+                    delta -= 366
+            else:
+                if delta <= 365:
+                    current = True
+                else:
+                    delta -= 365
+                    
+        if (year % 900) in (200,600):
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        elif year % 100 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif year % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    else:
+        # negative dates
+        delta = 1721425 - jday
+
+        while delta > 0:
+            if (year % 900) in (200, 600):
+                delta -= 366
+            elif year % 100 == 0:
+                delta -= 365
+            elif year % 4 == 0:
+                delta -= 366
+            else:
+                delta -= 365
+            year += 1
+
+
+        if ((year - 1) % 900) in (200,600):
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        elif (year - 1) % 100 == 0:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+        elif (year - 1) % 4 == 0:
+            # leap year
+            m = months.CAESAR_MONTHS_LEAP
+        else:
+            # not a leap year
+            m = months.CAESAR_MONTHS_NORMAL
+
+        year = 0 - year
+        delta = 0 - delta + 1
+
+        for i in m.keys():
+            if delta <= m[i]:
+                month = i
+                day = delta
+                break
+            else:
+                delta -= m[i]
+
+    date = (day, month, year)
     return date
