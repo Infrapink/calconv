@@ -400,8 +400,11 @@ RUMI CALENDAR
 
 The Rumi calendar is a version of the Julian calendar dated from the Hijra. It was used in Turkey for tax calculations from 1677 AD (1055 AH), and adopted as the civil calendar in 1840 AD (1218 AH). It was replaced by the Gregorian calendar in 1926 AD (1304 AH) as part of Mustafa Kemal Atatürk's reforms.
 
+Dating this calendar is tricky. Because for most of its history, it was ony a fiscal calendar, and the Lunar Hijri calendar was the civil calendar of Turkey. As such, the year number of the Rumi calendar is the same as the corresponding lunar hijri year, but because the lunar hijri calendr is only 354 or 355 days long, one will occasionally find a civil year that starts in one fiscal year and ends before the end of that same fiscal year. To compensate for this, every 33rd fiscal year number was skipped until the 29th century, when the skipping was abolished.
+
 https://en.wikipedia.org/wiki/Rumi_calendar
 https://www.takvim.com/takvim_donusum.php
+https://www.jstor.org/stable/23060497?read-now=1&seq=11#page_scan_tab_contents
 
 --------------------------
 REVISED GREGORIAN CALENDAR
@@ -438,9 +441,9 @@ https://www.theguardian.com/science/2011/feb/28/leap-year-alex-bellos
 SERBIAN CHURCH CALENDAR
 -----------------------
 
-The Serbian church calendar was designed by Maksim Trpković in 1900. At the time, the Julian calendar was the civil calendar in Serbia; the Gregorian calendar had not been adopted because Serbia was (and is) majority Eastern Orthodox, and until the early 19th century had been part of Ottoman Turkey. Since the Julian calendar was by the 15 days off, there was considerable interest in a better calendar, preferably one not linked to the Catholic Church, an Trpković stepped up to the task.
+The Serbian church calendar was designed by Maksim Trpković in 1900. At the time, the Julian calendar was the civil calendar in Serbia; the Gregorian calendar had not been adopted because Serbia was (and is) majority Eastern Orthodox, and until the early 19th century AD had been part of Ottoman Turkey. Since the Julian calendar was by the 15 days off, there was considerable interest in a better calendar, preferably one not linked to the Catholic Church, an Trpković stepped up to the task.
 
-Trpković's calendar adopts the Gregorian calendar's 100-year rule, but replaces the 400-year rule with a rule whereby a year which yields a remainder of 0 or 400 when divided by 900 is a leap year. Like the revised Julian calendar devised by Milutin Milanković, Trpković's calendar is accurate to 1 day in 28,800 years. Trpković's calendar has an advantage over Milanković's in that the astronomical northward equinox will fall more often on 21 March; however, Milanković's calendar spreads the leap years out more evenly and is better aligned to the Gregorian calendar, which is the de facto standard. Because Trpković said to only skip 13 days rather than 15 and wanted to keep the equinoxes aligned with those of 325, the year in which the Council of Nicaea met, it shares a calendar epoch with the Gregorian.
+Trpković's calendar adopts the Gregorian calendar's 100-year rule, but replaces the 400-year rule with a rule whereby a year which yields a remainder of 0 or 400 when divided by 900 is a leap year. Like the revised Julian calendar devised by Milutin Milanković, Trpković's calendar is accurate to 1 day in 28,800 years. Trpković's calendar has an advantage over Milanković's in that the astronomical northward equinox will fall more often on 21 March; however, Milanković's calendar spreads the leap years out more evenly and is better aligned to the Gregorian calendar, which is the de facto standard. Because Trpković said to only skip 13 days rather than 15 and wanted to keep the equinoxes aligned with those of 325 AD, the year in which the Council of Nicaea met, it shares a calendar epoch with the Gregorian.
 
 Trpković's calendar was endorsed by the Serbian government and the Serbian Orthodox Church, and was put forward at the Pan-Orthodox Congress as a candidate to replace the old Julian calendar. The calendar met with considerable approval, but the Congress ultimately opted for Milanković's submission.
 
@@ -450,9 +453,9 @@ http://publications.aob.rs/75/pdf/301-306.pdf
 REVISED JULIAN CALENDAR
 -----------------------
 
-The revised Julian calendar was developed by Milutin Milanković in 1923, building on the work of Maksim Trpković. It implements the Gregorian 100-year rule, but instead of the 400-year rule, adds a rule that any year which leaves a remainder of 200 or 600 when divided by 900 is a leap year. Due to Milanković, like Gregory, seeking to preserve the date of the northward equinox of the Council of Nicaea, the revised Julian calendar has the same epoch as the Gregorian calendar and not the original Julian.
+The revised Julian calendar was developed by Milutin Milanković in 1923 AD, building on the work of Maksim Trpković. It implements the Gregorian 100-year rule, but instead of the 400-year rule, adds a rule that any year which leaves a remainder of 200 or 600 when divided by 900 is a leap year. Due to Milanković, like Gregory, seeking to preserve the date of the northward equinox of the Council of Nicaea, the revised Julian calendar has the same epoch as the Gregorian calendar and not the original Julian.
 
-the Orthodox churches had refused to accept the Gregorian calendar on the grounds that it came from the pope of Rome, and as such the majority-Orthodox countries had stuck with the Julian calendar. By the 20th century, it had become drifted drastically out of sync with the seasons, and in 1902 Ecumenical Patriarch Joakim III wrote to the other patriarchs and bishops to invite proposals on calendar reform. Patriarch Miletios IV convened a Pan-Orthodox Congress in Istanbul, then under Entente occupation, in May 1923. Trpković's calendar was supported by the Serbian delegation, but ultimately Milanković persuaded the council to adopt his proposal instead, and this change was promulgated by Miletios IV and King George II of Greece. The revised Julian calendar was never used for civil purposes, all the Eastern Orthodox-majority countries having already adopted the Gregorian calendar as their civil calendar by this time; the revised Julian calendar was thus only ever used as a liturgical calendar.
+the Orthodox churches had refused to accept the Gregorian calendar on the grounds that it came from the pope of Rome, and as such the majority-Orthodox countries had stuck with the Julian calendar. By the 20th century AD, it had become drifted drastically out of sync with the seasons, and in 1902 AD Ecumenical Patriarch Joakim III wrote to the other patriarchs and bishops to invite proposals on calendar reform. Patriarch Miletios IV convened a Pan-Orthodox Congress in Istanbul, then under Entente occupation, in May 1923 AD. Trpković's calendar was supported by the Serbian delegation, but ultimately Milanković persuaded the council to adopt his proposal instead, and this change was promulgated by Miletios IV and King George II of Greece. The revised Julian calendar was never used for civil purposes, all the Eastern Orthodox-majority countries having already adopted the Gregorian calendar as their civil calendar by this time; the revised Julian calendar was thus only ever used as a liturgical calendar.
 
 However, things did not proceed smoothly. Miletios IV was a controversial figure in the Eastern Orthodox Church, and the patriarchs of Alexandria, Antioch, Jerusalem, and Russia did not attend. The new calendar was adopted by the Orthodox Churches of Constantinople, Greece, Serbia, Romania, and Cyprus, but initially no others. Since then, the revised calendar has been adopted by the Patriarchates of Alexandria and Antioch, but not Jerusalem. It has also been adopted by the Churches of Bulgaria, Poland, Albania, Estonia, Czechai and Slovakia, and America (except Alaska); these are collectively referred to as the 'new calendarists'. The Finnish Orthodox Church uses the Gregorian calendar for all purposes, and the rest of the Eastern Orthodox churches continue to date their festivals by the old Julian calendar. A few churches use both calendars for different purposes, and all except Finland use the original Julian calendar to calculate the date of Easter.
 
@@ -463,3 +466,71 @@ http://images.astronet.ru/pubd/2008/09/28/0001230709/145-147.pdf
 https://www.holy-trinity.org/modern/calen3.html
 http://www.byzcath.org/forums/ubbthreads.php/topics/309500/Which_Churches_follow_what_cal
 http://publications.aob.rs/75/pdf/301-306.pdf
+
+--------------
+WORLD CALENDAR
+--------------
+
+The World calendar was designed by Elisabeth Achelis in 1930 AD, one of many proposed after the League of Nations called for proposed calendar reforms in 1923.
+
+The World calendar has all the same months as the Gregorian calendar, but changes the number of days such that they year divides into four quarters of three months, each having 31, 30, and 30 days. An additional day, Worldsday, comes after 30 December and falls outside of the week; thus, in every year, Saturday 30 December is followed by Worldsday, which in turn is followed by Sunday 1 January. Leap years follow the same cycle as the Gregorian calendar; Leap Day is inserted between 30 June and 1 July, and like Worldsday it falls outside the week. Achelis proposed that Worldsday and Leap Day be international holidays. Every year starts on a Sunday, and Friday the 13th falls four times a year. Leap years follow the same rules as the Gregorian calendar, giving the World calendar exactly the same accuracy.
+
+The World Calendar Association point to the benefits of having months and quarters of consistent length making it easier for businesses to compare performance over fractions of a year. The fact that every day of the year always falls on the same day of the week makes it easier to schedule events in advance, and also has ecological benefits as there is no need to buy a new wall calendar every year.
+
+The World calendar faced considerable opposition from Jews with the support of Christians, spearheaded by Rabbi Joseph Herman Hertz. Hertz pointed out that because Jews and Christians [and also Muslims] worship on a seven-day cycle, having a day fall outside the week would wreak havoc on religious observances; people would be forced to either worship on the wrong day of the week, or of shifting the time of the weekends, which cancels out the whole point of the World calendar. Achelis argued that people could view Worldsday and Leap Day as double Sabbaths, but this doesn't really change the fact that such a double Sabbath would still cover two solar days, plus the Jewish New Year algorithm has checks specifically to prevent double Sabbaths as two consecutive days of Sabbath restrictions is considered to be overly harsh. Moreover, because Muslims worship on Friday and Worldsday and Leap Day falls between Saturday and Sunday, they would be unable to use the holidays as a double day of rest.
+
+Faced with this, the to-then strong support for the calendar in America faltered as Congress decided not to endorse the reform. In the end, the calendar was not implemented, but the World Calendar Foundation, founded by Achelis, continues to advocate for it.
+
+https://en.wikipedia.org/wiki/World_Calendar
+http://myweb.ecu.edu/mccartyr/achelis.html
+http://myweb.ecu.edu/mccartyr/world-calendar.html
+http://www.theworldcalendar.org/TWCandDescription.pdf
+http://www.theworldcalendar.org/CalendarMathProblemSolution100206.pdf
+
+----------------------------
+INTERNATIONAL FIXED CALENDAR
+----------------------------
+
+The International Fixed Calendar (henceforth IFC) was designed at the turn of the 20th century AD by Moses Cotsworth, a railway advisor with the North Eastern Railway who grew frustrated with trying to compare monthly incomes and expenditures. Cotsworth shopped the new calendar around various companies in America and the British Empire, but people at the time were more concerned with the approaching World War I at the time.
+
+The IFC divides the year into 13 months of 28 days, making each one exactly four weeks long; the extra month, called Sol, is inserted between June and July. As in the World calendar, each year has one extra day, Yearsday, after December 28 which falls outside the week. Leap Day falls between June and Sol, and is also outside of the week. Leap years follow the same rules as the Gregorian calendar, giving the IFC exactly the same accuracy. Cotsworth 
+
+The IFC has many of the same advantages as the World Calendar. Every day of the year falls on the same day of the week, which makes scheduling easier. Every month is of perfectly consistent length, and is an integer number of weeks, which makes month-to-month comparisons easier for businesses; however, quarterly comparisons don't line up well with monthly ones, because 13 is a prime number and so any even subdivision of the year will contain a non-integer number of months. It also means that workers who are paid on a monthly basis have a far more reliable, regular income.
+
+The IFC was presented alongside the World calendar and others at the League of Nations' 1928 AD calendar reform call for proposals, and it failed for the same reasons as the World calendar, since Yearsday and Leap Day falling outside the year wreak havoc with traditional religious worship cycles. However, George Eastman was an enthusiastic fan, and his Kodak company used the IFC internally from 1928 until 1992.
+
+https://en.wikipedia.org/wiki/International_Fixed_Calendar
+https://www.jta.org/2012/02/24/default/calendar-reform-and-joseph-herman-hertz
+http://myweb.ecu.edu/mccartyr/eastman.html
+http://myweb.ecu.edu/mccartyr/cotsworth.html
+https://www.rd.com/article/international-fixed-calendar/
+https://www.unz.com/print/Outlook-1927sep28-00109?__cf_chl_jschl_tk__=69f7afabc2eb77ff8dd0af23f69afa34b2155314-1594419113-0-AecdfOlrq79eBgNEnZ8l09Qsb4M0yN_jiA69aqUPiaDEINHpDW0exKuMkKgfAXsmofpRfzTsfSyQSt4IQMURLAYlDbvvgHMzXI3JPcxOcbO_483Tr3kSbDeawEO6Snh5S3TjgVf9nSlOgF8WoUVv_8PONWbAgvFPb6TA9z7UnKQ9egYgeeyYIbO6St90r0IJzI-12-ScaJtX3i_fCVTHAuO82QigVePEeKI7EYQhZ4mZfSo804Yt_YetSadLqCbwSqPohCBUddQQAayVt21Uqm3ixSpg-AwZnqVwrPYgllRb_RM3VS_HPmLJ6GGMPgEL6Q
+https://www.bloomberg.com/news/articles/2014-12-11/the-death-and-life-of-the-13-month-calendar
+
+------------
+PAX CALENDAR
+------------
+
+The Pax calendar is yet another proposed reform presented to the League of Nations in 1930 AD, designed by James Colligan. Like the World calendar and IFC, the Pax calendar aims to be perennial. Unlike them, it contains an integer number of weeks in each year; as such, each leap year adds an extra week rather than just a day. All the other months contain exactly four weeks (28 days), with an extra month, Columbus, falling between November and December. In leap years, the extra week forms a bonus mini-month, falling between Columbus and December. Leap years fall in any year whose last two digits are 00, 99, or an integer multiple of 6, unless the year is an integer multiple of 400. This all means that 400 years in the Pax calendar have the same number of days as 400 years in the Gregorian calendar, giving it exactly the same accuracy.
+
+The Pax calendar brings in all the advantages of the World calendar and the IFC while avoiding the religious problems, at the cost of the dates of the solstices and equionxes moving about the year. It seems to have failed mostly because people were concerned with the first rumblings of World War II.
+
+https://en.wikipedia.org/wiki/Pax_Calendar
+http://myweb.ecu.edu/mccartyr/colligan.html
+
+---------------
+GORMAN CALENDAR
+---------------
+
+The Gorman calendar is a variation of the IFC designed by comedian Dave Gorman out of things which annoy him about the Gregorian calendar. The year starts in March so that those months whose names contain numerican components are in the right position, and each month is exactly four weeks long. July and August are renames to Quintilis and Sextilis because naming a month after oneself is arrogant, and a new month, Gormanuary, is added afer February to round out the year. Between 28 Gormanuary and 1 March, there is a single day which falls outside the week, just called Intermission; in leap years, Intermission is two days long. Leap years follow the Gregorian rules, and so the Gorman calendar is exactly as accurate as the Gregorian.
+
+https://www.youtube.com/watch?v=EcMTHr3TqA0
+
+--------
+PAX 2020
+--------
+
+The Pax 2020 calendar is completely unrelated to the 1920s Pax calendar. Pax 2020 was designed by a 9-year-old child who was being homeschooled during the 2020 AD Covid-19 lockdown. After noticing a subtle ambiguity in a maths problem, he read up on calendars on Wikipedia and realised he could design his own.
+
+https://bryanmmathers.com/?mailpoet_router&endpoint=view_in_browser&action=view&data=WzMsImJhYzE3YTBiOWYzYyIsMSwiNGEwNGEzIiwzLDFd
+https://bryanmmathers.com/pax-calendar/
