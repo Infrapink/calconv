@@ -7,10 +7,6 @@
 import months
 from fractions import *
 
-import hebrew_calculations
-import julian_day_conversions
-
-
 from fractions import *
 
 def calc(jday):
@@ -403,7 +399,7 @@ def fromjd(jday):
 
     if jday > 347996:
         # positive dates
-        numbers = hebrew_calculations.calc(jday)
+        numbers = calc(jday)
         rosh = numbers[0]  # Julian Day of the molad of Tishri
         mrosh = rosh
         molad = numbers[1] # moment of the molad of Tishri
@@ -417,13 +413,13 @@ def fromjd(jday):
         iday = rosh - 50 # last year
         kday = rosh + 390 # next year
 
-        prev_numbers = hebrew_calculations.calc(iday)
+        prev_numbers = calc(iday)
         prev_rosh = prev_numbers[0]
         prev_mrosh = prev_rosh
         prev_molad = prev_numbers[1]
         prev_year = year - 1
         
-        next_numbers = hebrew_calculations.calc(kday)
+        next_numbers = calc(kday)
         next_rosh = next_numbers[0]
         next_mrosh = next_rosh
         next_molad = next_numbers[1]

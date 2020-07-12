@@ -6,7 +6,6 @@
 
 import months
 from fractions import *
-import julian_day_conversions
 
 def tojd(day,month,year):
     day = int(day)

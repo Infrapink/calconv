@@ -19,19 +19,26 @@ Dates are entered in the indicated text boxes in the order Day, Month, Year (exc
 Julian Day:
 * This is a simple number.
 
-Julian and Gregorian Calendars:
+Julian, Revised Julian, Gregorian, Revised Gregorian, Astronomical Gregorian, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, and Gorman Calendars:
 * January
 * February
+* Gormanuary (Gorman calendar only)
+* Intermission (Gorman calendar only)
 * March
 * April
 * May
 * June
+* Sol (International Fixed calendar only)
 * July
 * August
 * September
 * October
 * November
+* Pax (Pax calendar only)
 * December
+* Worldsday (World calendar only)
+* Year Day (International Fixed calendar only)
+* Leap day (World and International Fixed calendars only)
 
 Ethiopian Calendar:
 * Mäskäräm
@@ -152,7 +159,7 @@ Babylonian Calendar:
 * Addaru
 * Addaru Arku (leap years only)
 
-Hebrew calendar:
+Hebrew and Samaritan calendars:
 * Tishrei
 * Marcheshvan
 * Kislev
@@ -169,7 +176,81 @@ Hebrew calendar:
 
 (Note: Everyone else lists Nisan as the first month of the year, and Adar/Veadar as the last. This is for Jewish
 cultural reasons; however, Tishrei is the first month of the civil Hebrew calendar, as it is on 1 Tishrei
-that theyear number increments. I have listed the months in this order to avoid confusion).
+that theyear number increments. I have listed the months in this order to avoid confusion. Nisan is the first day of the year in the Samaritan calendar).
+
+Kurdish calendar:
+* Jejhnan
+* Gullan
+* Zerdan
+* Púshperr
+* Gelawéjh
+* Xermanan
+* Beran
+* Xezan
+* Saran
+* Befran
+* Rébandan
+* Reshemé
+
+Amazigh calendar:
+* Yennayer
+* Yebrayer
+* Mares
+* Yebrir
+* May
+* Yunyu
+* Yulyuz
+* Ɣuct
+* Shutembir
+* Ktuber
+* Nwambir
+* Dujembir
+
+Rumi calendars:
+* Mart
+* Nisan
+* Mayıs
+* Haziran
+* Temmuz
+* Ağustos
+* Eylül
+* Teşrin-i Evvel
+* Teşrin-i Sânî
+* Kânûn-ı Evve
+* Kânûn-ı Sânî
+* Şubat
+
+Pax 2020:
+* Initium
+* Rutilante
+* Semen
+* Gaudium
+* Apes
+* Serenium
+* Coleum
+* Amare
+* Messis
+* Follium
+* Nixcumumis
+* Pax
+* Requiem
+
+Positivist calendar
+* Moses
+* Homer
+* Aristotle
+* Archimedes
+* Caesar
+* St. Paul
+* Charlemagne
+* Dante
+* Gutenberg
+* Shakespeare
+* Descartes
+* Frederick II
+* Bichat
+* Festival of All the Dead
+* Festival of Holy Women
 
 LICENSE
 
