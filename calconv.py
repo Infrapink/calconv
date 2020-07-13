@@ -29,6 +29,8 @@ import ifc
 import gorman
 import pax
 import pax2
+import ast_gregorian
+import nex
 import positivist
 
 import months
@@ -382,7 +384,7 @@ class Application(Frame):
         self.pax2_month_ent.insert(0, pax2_date[1])
         self.pax2_year_ent.insert(0, pax2_date[2])
 
-        # Convert a Julian day to a date in the Pax 2020 calendar
+        # Convert a Julian day to a date in the Positivist calendar
         positivist_date = positivist.fromjd(day)
         self.positivist_day_ent.delete(0, END)
         self.positivist_month_ent.delete(0, END)
@@ -390,6 +392,24 @@ class Application(Frame):
         self.positivist_day_ent.insert(0, positivist_date[0])
         self.positivist_month_ent.insert(0, positivist_date[1])
         self.positivist_year_ent.insert(0, positivist_date[2])
+
+        # Convert a Julian day to a date in the astronomical Gregorian calendar
+        ast_gregorian_date = ast_gregorian.fromjd(day)
+        self.ast_gregorian_day_ent.delete(0, END)
+        self.ast_gregorian_month_ent.delete(0, END)
+        self.ast_gregorian_year_ent.delete(0, END)
+        self.ast_gregorian_day_ent.insert(0, ast_gregorian_date[0])
+        self.ast_gregorian_month_ent.insert(0, ast_gregorian_date[1])
+        self.ast_gregorian_year_ent.insert(0, ast_gregorian_date[2])
+
+        # Convert a Julian day to a date in the Nex calendar
+        nex_date = nex.fromjd(day)
+        self.nex_day_ent.delete(0, END)
+        self.nex_month_ent.delete(0, END)
+        self.nex_year_ent.delete(0, END)
+        self.nex_day_ent.insert(0, nex_date[0])
+        self.nex_month_ent.insert(0, nex_date[1])
+        self.nex_year_ent.insert(0, nex_date[2])
         
         
     def cons_day_julian_plus(self):
@@ -743,6 +763,24 @@ class Application(Frame):
         month = self.positivist_month_ent.get()
         year = int(self.positivist_year_ent.get())
         jday = positivist.tojd(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_todate()
+
+    def ast_gregorian_converter(self):
+        day = int(self.ast_gregorian_day_ent.get())
+        month = self.ast_gregorian_month_ent.get()
+        year = int(self.ast_gregorian_year_ent.get())
+        jday = ast_gregorian.tojd(day, month, year)
+        self.cons_day_julian_ent.delete(0, END)
+        self.cons_day_julian_ent.insert(0, jday)
+        self.cons_day_julian_todate()
+
+    def nex_converter(self):
+        day = int(self.nex_day_ent.get())
+        month = self.nex_month_ent.get()
+        year = int(self.nex_year_ent.get())
+        jday = nex.tojd(day, month, year)
         self.cons_day_julian_ent.delete(0, END)
         self.cons_day_julian_ent.insert(0, jday)
         self.cons_day_julian_todate()
@@ -1190,6 +1228,32 @@ class Application(Frame):
         self.positivist_year_ent = Entry(self)
         self.positivist_year_ent.grid(row = 30, column = 8, sticky = W)
         self.positivist_bttn = Button(self, text = "Calculate", command = self.positivist_converter).grid(row = 31, column = 6, columnspan = 3, sticky = W)
+
+        # Astronomical Gregorian calendar
+        self.ast_gregorian_lbl = Label(self, text = "Astronomical Gregorian calendar").grid(row = 28, column = 9, columnspan = 3, sticky = W)
+        self.ast_gregorian_day_lbl = Label(self, text = "Day").grid(row = 29, column = 9, sticky = W)
+        self.ast_gregorian_day_ent = Entry(self)
+        self.ast_gregorian_day_ent.grid(row = 30, column = 9, sticky = W)
+        self.ast_gregorian_month_lbl = Label(self, text = "Month").grid(row = 29, column = 10, sticky = W)
+        self.ast_gregorian_month_ent = Entry(self)
+        self.ast_gregorian_month_ent.grid(row = 30, column = 10, sticky = W)
+        self.ast_gregorian_year_lbl = Label(self, text = "Year").grid(row = 29, column = 11, sticky = W)
+        self.ast_gregorian_year_ent = Entry(self)
+        self.ast_gregorian_year_ent.grid(row = 30, column = 11, sticky = W)
+        self.ast_gregorian_bttn = Button(self, text = "Calculate", command = self.ast_gregorian_converter).grid(row = 31, column = 9, columnspan = 3, sticky = W)
+
+        # Nex calendar
+        self.nex_lbl = Label(self, text = "Nex calendar").grid(row = 28, column = 12, columnspan = 3, sticky = W)
+        self.nex_day_lbl = Label(self, text = "Day").grid(row = 29, column = 12, sticky = W)
+        self.nex_day_ent = Entry(self)
+        self.nex_day_ent.grid(row = 30, column = 12, sticky = W)
+        self.nex_month_lbl = Label(self, text = "Month").grid(row = 29, column = 13, sticky = W)
+        self.nex_month_ent = Entry(self)
+        self.nex_month_ent.grid(row = 30, column = 13, sticky = W)
+        self.nex_year_lbl = Label(self, text = "Year").grid(row = 29, column = 14, sticky = W)
+        self.nex_year_ent = Entry(self)
+        self.nex_year_ent.grid(row = 30, column = 14, sticky = W)
+        self.nex_bttn = Button(self, text = "Calculate", command = self.nex_converter).grid(row = 31, column = 12, columnspan = 3, sticky = W)
 
         
         
