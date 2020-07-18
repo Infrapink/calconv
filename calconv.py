@@ -1,7 +1,10 @@
 #!/usr/bin/python
 
 from tkinter import *
+from tkinter import ttk
 from decimal import *
+
+import months
 
 import julian
 import gregorian
@@ -33,1232 +36,1423 @@ import ast_gregorian
 import nex
 import positivist
 
-import months
-
-class Application(Frame):
-    """A GUI application with various widgets"""
-
-    def __init__(self, master):
-        """Initialise the Frame"""
-        super(Application, self).__init__(master)
-        self.grid()
-        self.create_widgets()
-
-    def cons_day_julian_todate(self):
+def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
-        day = Decimal(self.cons_day_julian_ent.get())
+        day = Decimal(cons_day_julian_ent.get())
     
         # Convert a Julian Day to a date in the Julian Calendar
         julian_date = julian.fromjd(day)
         julian_day_value = julian_date[0]
         julian_month_value = julian_date[1]
         julian_year_value = julian_date[2]
-        self.julian_day_ent.delete(0, END)
-        self.julian_month_ent.delete(0, END)
-        self.julian_year_ent.delete(0, END)
-        self.julian_day_ent.insert(0, julian_day_value)
-        self.julian_month_ent.insert(0, julian_month_value)
-        self.julian_year_ent.insert(0, julian_year_value)
+        julian_day_ent.delete(0, END)
+        julian_month_ent.delete(0, END)
+        julian_year_ent.delete(0, END)
+        julian_day_ent.insert(0, julian_day_value)
+        julian_month_ent.insert(0, julian_month_value)
+        julian_year_ent.insert(0, julian_year_value)
 
         # Convert a Julian Day to a date in the Gregorian Calendar
         gregorian_date = gregorian.fromjd(day)
         gregorian_day_value = gregorian_date[0]
         gregorian_month_value = gregorian_date[1]
         gregorian_year_value = gregorian_date[2]
-        self.gregorian_day_ent.delete(0, END)
-        self.gregorian_month_ent.delete(0, END)
-        self.gregorian_year_ent.delete(0, END)
-        self.gregorian_day_ent.insert(0, gregorian_day_value)
-        self.gregorian_month_ent.insert(0, gregorian_month_value)
-        self.gregorian_year_ent.insert(0, gregorian_year_value)
+        gregorian_day_ent.delete(0, END)
+        gregorian_month_ent.delete(0, END)
+        gregorian_year_ent.delete(0, END)
+        gregorian_day_ent.insert(0, gregorian_day_value)
+        gregorian_month_ent.insert(0, gregorian_month_value)
+        gregorian_year_ent.insert(0, gregorian_year_value)
 
         # Convert a Julian Day to a date in the Coptic Calendar
         coptic_date = coptic.fromjd(day)
         coptic_day_value = coptic_date[0]
         coptic_month_value = coptic_date[1]
         coptic_year_value = coptic_date[2]
-        self.coptic_day_ent.delete(0, END)
-        self.coptic_month_ent.delete(0, END)
-        self.coptic_year_ent.delete(0, END)
-        self.coptic_day_ent.insert(0, coptic_day_value)
-        self.coptic_month_ent.insert(0, coptic_month_value)
-        self.coptic_year_ent.insert(0, coptic_year_value)
+        coptic_day_ent.delete(0, END)
+        coptic_month_ent.delete(0, END)
+        coptic_year_ent.delete(0, END)
+        coptic_day_ent.insert(0, coptic_day_value)
+        coptic_month_ent.insert(0, coptic_month_value)
+        coptic_year_ent.insert(0, coptic_year_value)
 
         # Convert a Julian Day to a date in the Ethiopian Calendar
         ethiopian_date = ethiopian.fromjd(day)
         ethiopian_day_value = ethiopian_date[0]
         ethiopian_month_value = ethiopian_date[1]
         ethiopian_year_value = ethiopian_date[2]
-        self.ethiopian_day_ent.delete(0, END)
-        self.ethiopian_month_ent.delete(0, END)
-        self.ethiopian_year_ent.delete(0, END)
-        self.ethiopian_day_ent.insert(0, ethiopian_day_value)
-        self.ethiopian_month_ent.insert(0, ethiopian_month_value)
-        self.ethiopian_year_ent.insert(0, ethiopian_year_value)
+        ethiopian_day_ent.delete(0, END)
+        ethiopian_month_ent.delete(0, END)
+        ethiopian_year_ent.delete(0, END)
+        ethiopian_day_ent.insert(0, ethiopian_day_value)
+        ethiopian_month_ent.insert(0, ethiopian_month_value)
+        ethiopian_year_ent.insert(0, ethiopian_year_value)
 
         # Convert a Julian Day to a date in the Egyptian Calendar
         egyptian_date = egyptian.fromjd(day)
         egyptian_day_value = egyptian_date[0]
         egyptian_month_value = egyptian_date[1]
         egyptian_year_value = egyptian_date[2]
-        self.egyptian_day_ent.delete(0, END)
-        self.egyptian_month_ent.delete(0, END)
-        self.egyptian_year_ent.delete(0, END)
-        self.egyptian_day_ent.insert(0, egyptian_day_value)
-        self.egyptian_month_ent.insert(0, egyptian_month_value)
-        self.egyptian_year_ent.insert(0, egyptian_year_value)
+        egyptian_day_ent.delete(0, END)
+        egyptian_month_ent.delete(0, END)
+        egyptian_year_ent.delete(0, END)
+        egyptian_day_ent.insert(0, egyptian_day_value)
+        egyptian_month_ent.insert(0, egyptian_month_value)
+        egyptian_year_ent.insert(0, egyptian_year_value)
 
         # Convert a Julian Day to a date in the Armenian Calendar
         armenian_date = armenian.fromjd(day)
         armenian_day_value = armenian_date[0]
         armenian_month_value = armenian_date[1]
         armenian_year_value = armenian_date[2]
-        self.armenian_day_ent.delete(0, END)
-        self.armenian_month_ent.delete(0, END)
-        self.armenian_year_ent.delete(0, END)
-        self.armenian_day_ent.insert(0, armenian_day_value)
-        self.armenian_month_ent.insert(0, armenian_month_value)
-        self.armenian_year_ent.insert(0, armenian_year_value)
+        armenian_day_ent.delete(0, END)
+        armenian_month_ent.delete(0, END)
+        armenian_year_ent.delete(0, END)
+        armenian_day_ent.insert(0, armenian_day_value)
+        armenian_month_ent.insert(0, armenian_month_value)
+        armenian_year_ent.insert(0, armenian_year_value)
 
         # Convert a Julian Day to a date in the Lunar Hijri Calendar
         lunar_hijri_date = lunar_hijri.fromjd(day)
         lunar_hijri_day_value = lunar_hijri_date[0]
         lunar_hijri_month_value = lunar_hijri_date[1]
         lunar_hijri_year_value = lunar_hijri_date[2]
-        self.lunar_hijri_day_ent.delete(0, END)
-        self.lunar_hijri_month_ent.delete(0, END)
-        self.lunar_hijri_year_ent.delete(0, END)
-        self.lunar_hijri_day_ent.insert(0, lunar_hijri_day_value)
-        self.lunar_hijri_month_ent.insert(0, lunar_hijri_month_value)
-        self.lunar_hijri_year_ent.insert(0, lunar_hijri_year_value)
+        lunar_hijri_day_ent.delete(0, END)
+        lunar_hijri_month_ent.delete(0, END)
+        lunar_hijri_year_ent.delete(0, END)
+        lunar_hijri_day_ent.insert(0, lunar_hijri_day_value)
+        lunar_hijri_month_ent.insert(0, lunar_hijri_month_value)
+        lunar_hijri_year_ent.insert(0, lunar_hijri_year_value)
 
         # Convert a Julian Day to a date in the Solar Hijri calendar
         solar_hijri_date = solar_hijri.fromjd(day)
         solar_hijri_day_value = solar_hijri_date[0]
         solar_hijri_month_value = solar_hijri_date[1]
         solar_hijri_year_value = solar_hijri_date[2]
-        self.solar_hijri_day_ent.delete(0, END)
-        self.solar_hijri_month_ent.delete(0, END)
-        self.solar_hijri_year_ent.delete(0, END)
-        self.solar_hijri_day_ent.insert(0, solar_hijri_day_value)
-        self.solar_hijri_month_ent.insert(0, solar_hijri_month_value)
-        self.solar_hijri_year_ent.insert(0, solar_hijri_year_value)
+        solar_hijri_day_ent.delete(0, END)
+        solar_hijri_month_ent.delete(0, END)
+        solar_hijri_year_ent.delete(0, END)
+        solar_hijri_day_ent.insert(0, solar_hijri_day_value)
+        solar_hijri_month_ent.insert(0, solar_hijri_month_value)
+        solar_hijri_year_ent.insert(0, solar_hijri_year_value)
 
         # Convert a Julian Day to a date in Birashk's calendar
         birashk_date = birashk.fromjd(day)
         birashk_day_value = birashk_date[0]
         birashk_month_value = birashk_date[1]
         birashk_year_value = birashk_date[2]
-        self.birashk_day_ent.delete(0, END)
-        self.birashk_month_ent.delete(0, END)
-        self.birashk_year_ent.delete(0, END)
-        self.birashk_day_ent.insert(0, birashk_day_value)
-        self.birashk_month_ent.insert(0, birashk_month_value)
-        self.birashk_year_ent.insert(0, birashk_year_value)
+        birashk_day_ent.delete(0, END)
+        birashk_month_ent.delete(0, END)
+        birashk_year_ent.delete(0, END)
+        birashk_day_ent.insert(0, birashk_day_value)
+        birashk_month_ent.insert(0, birashk_month_value)
+        birashk_year_ent.insert(0, birashk_year_value)
 
         # Convert a Julian Day to a date in the Assyrian calendar
         assyrian_date = assyrian.fromjd(day)
         assyrian_day_value = assyrian_date[0]
         assyrian_month_value = assyrian_date[1]
         assyrian_year_value = assyrian_date[2]
-        self.assyrian_day_ent.delete(0, END)
-        self.assyrian_month_ent.delete(0, END)
-        self.assyrian_year_ent.delete(0, END)
-        self.assyrian_day_ent.insert(0, assyrian_day_value)
-        self.assyrian_month_ent.insert(0, assyrian_month_value)
-        self.assyrian_year_ent.insert(0, assyrian_year_value)
+        assyrian_day_ent.delete(0, END)
+        assyrian_month_ent.delete(0, END)
+        assyrian_year_ent.delete(0, END)
+        assyrian_day_ent.insert(0, assyrian_day_value)
+        assyrian_month_ent.insert(0, assyrian_month_value)
+        assyrian_year_ent.insert(0, assyrian_year_value)
 
         # Convert a Julian Day to a date in the Babylonian calendar
         babylonian_date = babylonian.fromjd(day)
         babylonian_day_value = babylonian_date[0]
         babylonian_month_value = babylonian_date[1]
         babylonian_year_value = babylonian_date[2]
-        self.babylonian_day_ent.delete(0, END)
-        self.babylonian_month_ent.delete(0, END)
-        self.babylonian_year_ent.delete(0, END)
-        self.babylonian_day_ent.insert(0, babylonian_day_value)
-        self.babylonian_month_ent.insert(0, babylonian_month_value)
-        self.babylonian_year_ent.insert(0, babylonian_year_value)
+        babylonian_day_ent.delete(0, END)
+        babylonian_month_ent.delete(0, END)
+        babylonian_year_ent.delete(0, END)
+        babylonian_day_ent.insert(0, babylonian_day_value)
+        babylonian_month_ent.insert(0, babylonian_month_value)
+        babylonian_year_ent.insert(0, babylonian_year_value)
 
         # Convert a Julian Day to a date in the Hebrew calendar
         hebrew_date = hebrew.fromjd(day)
         hebrew_day_value = hebrew_date[0]
         hebrew_month_value = hebrew_date[1]
         hebrew_year_value = hebrew_date[2]
-        self.hebrew_day_ent.delete(0, END)
-        self.hebrew_month_ent.delete(0, END)
-        self.hebrew_year_ent.delete(0, END)
-        self.hebrew_day_ent.insert(0, hebrew_day_value)
-        self.hebrew_month_ent.insert(0, hebrew_month_value)
-        self.hebrew_year_ent.insert(0, hebrew_year_value)
+        hebrew_day_ent.delete(0, END)
+        hebrew_month_ent.delete(0, END)
+        hebrew_year_ent.delete(0, END)
+        hebrew_day_ent.insert(0, hebrew_day_value)
+        hebrew_month_ent.insert(0, hebrew_month_value)
+        hebrew_year_ent.insert(0, hebrew_year_value)
 
         # Convert a Julian Day to a date in the Samaritan calendar
         samaritan_date = samaritan.fromjd(day)
         samaritan_day_value = samaritan_date[0]
         samaritan_month_value = samaritan_date[1]
         samaritan_year_value = samaritan_date[2]
-        self.samaritan_day_ent.delete(0, END)
-        self.samaritan_month_ent.delete(0, END)
-        self.samaritan_year_ent.delete(0, END)
-        self.samaritan_day_ent.insert(0, samaritan_day_value)
-        self.samaritan_month_ent.insert(0, samaritan_month_value)
-        self.samaritan_year_ent.insert(0, samaritan_year_value)
+        samaritan_day_ent.delete(0, END)
+        samaritan_month_ent.delete(0, END)
+        samaritan_year_ent.delete(0, END)
+        samaritan_day_ent.insert(0, samaritan_day_value)
+        samaritan_month_ent.insert(0, samaritan_month_value)
+        samaritan_year_ent.insert(0, samaritan_year_value)
 
         # Convert a Julian Day to a date in the Kurdish calendar
         kurdish_date = kurdish.fromjd(day)
         kurdish_day_value = kurdish_date[0]
         kurdish_month_value = kurdish_date[1]
         kurdish_year_value = kurdish_date[2]
-        self.kurdish_day_ent.delete(0,END)
-        self.kurdish_month_ent.delete(0,END)
-        self.kurdish_year_ent.delete(0,END)
-        self.kurdish_day_ent.insert(0,kurdish_day_value)
-        self.kurdish_month_ent.insert(0,kurdish_month_value)
-        self.kurdish_year_ent.insert(0,kurdish_year_value)
+        kurdish_day_ent.delete(0,END)
+        kurdish_month_ent.delete(0,END)
+        kurdish_year_ent.delete(0,END)
+        kurdish_day_ent.insert(0,kurdish_day_value)
+        kurdish_month_ent.insert(0,kurdish_month_value)
+        kurdish_year_ent.insert(0,kurdish_year_value)
 
         # True Julian Day
         tjday = int(day) + Decimal(0.5)
-        self.day_julian_ent.delete(0,END)
-        self.day_julian_ent.insert(0,tjday)
+        day_julian_ent.delete(0,END)
+        day_julian_ent.insert(0,tjday)
 
         # Reduced Julian Day
         rjday = int(day) + Decimal(0.5) - 2400000
-        self.red_day_julian_ent.delete(0,END)
-        self.red_day_julian_ent.insert(0,rjday)
+        red_day_julian_ent.delete(0,END)
+        red_day_julian_ent.insert(0,rjday)
 
         # Modified Julian Day
         mjday = int(day) - 2400000
-        self.mod_day_julian_ent.delete(0,END)
-        self.mod_day_julian_ent.insert(0,mjday)
+        mod_day_julian_ent.delete(0,END)
+        mod_day_julian_ent.insert(0,mjday)
 
         # Truncated Julian Day
         tjday = int(day) - 2440000
-        self.trun_day_julian_ent.delete(0,END)
-        self.trun_day_julian_ent.insert(0,tjday)
+        trun_day_julian_ent.delete(0,END)
+        trun_day_julian_ent.insert(0,tjday)
 
         # Dublin Julian Day
         djday = int(day) + Decimal(0.5) - 2415020
-        self.dub_day_julian_ent.delete(0,END)
-        self.dub_day_julian_ent.insert(0,djday)
+        dub_day_julian_ent.delete(0,END)
+        dub_day_julian_ent.insert(0,djday)
 
         # CNES Julian Day
         cnes = int(day) - 2433282
-        self.cnes_ent.delete(0,END)
-        self.cnes_ent.insert(0,cnes)
+        cnes_ent.delete(0,END)
+        cnes_ent.insert(0,cnes)
 
         # CCSDS Julian Day
         ccsds = int(day) - 2436204
-        self.ccsds_ent.delete(0,END)
-        self.ccsds_ent.insert(0,ccsds)
+        ccsds_ent.delete(0,END)
+        ccsds_ent.insert(0,ccsds)
 
         # Lilian Day
         lday = int(day) - 2299159
-        self.day_lilian_ent.delete(0,END)
-        self.day_lilian_ent.insert(0,lday)
+        day_lilian_ent.delete(0,END)
+        day_lilian_ent.insert(0,lday)
 
         # Rata Die
         rday = int(day) - 1721424
-        self.rata_die_ent.delete(0,END)
-        self.rata_die_ent.insert(0,rday)
+        rata_die_ent.delete(0,END)
+        rata_die_ent.insert(0,rday)
 
         # Unix time
         unix = (int(day) - 2440587) * 86400
-        self.unix_time_ent.delete(0,END)
-        self.unix_time_ent.insert(0,unix)
+        unix_time_ent.delete(0,END)
+        unix_time_ent.insert(0,unix)
 
         # Julian Sol
         sol_gangale = round((int(day) - Decimal('2405520.5')) / Decimal(1.02749))
-        self.sol_gangale_ent.delete(0,END)
-        self.sol_gangale_ent.insert(0,sol_gangale)
+        sol_gangale_ent.delete(0,END)
+        sol_gangale_ent.insert(0,sol_gangale)
 
         # LOP Julian day
         lop = int(day) - 2448622
-        self.lop_ent.delete(0,END)
-        self.lop_ent.insert(0,lop)
+        lop_ent.delete(0,END)
+        lop_ent.insert(0,lop)
 
         # Convert a Julian day to a date in the Amazigh calendar
         amazigh_date = amazigh.fromjd(day)
-        self.amazigh_day_ent.delete(0,END)
-        self.amazigh_month_ent.delete(0,END)
-        self.amazigh_year_ent.delete(0,END)
-        self.amazigh_day_ent.insert(0, amazigh_date[0])
-        self.amazigh_month_ent.insert(0, amazigh_date[1])
-        self.amazigh_year_ent.insert(0, amazigh_date[2])
+        amazigh_day_ent.delete(0,END)
+        amazigh_month_ent.delete(0,END)
+        amazigh_year_ent.delete(0,END)
+        amazigh_day_ent.insert(0, amazigh_date[0])
+        amazigh_month_ent.insert(0, amazigh_date[1])
+        amazigh_year_ent.insert(0, amazigh_date[2])
 
         # Convert a Julian day to a date in the Rumi calendar
         rumi_n_date = rumi_n.fromjd(day)
-        self.rumi_n_day_ent.delete(0,END)
-        self.rumi_n_month_ent.delete(0,END)
-        self.rumi_n_year_ent.delete(0,END)
-        self.rumi_n_day_ent.insert(0, rumi_n_date[0])
-        self.rumi_n_month_ent.insert(0, rumi_n_date[1])
-        self.rumi_n_year_ent.insert(0, rumi_n_date[2])
+        rumi_n_day_ent.delete(0,END)
+        rumi_n_month_ent.delete(0,END)
+        rumi_n_year_ent.delete(0,END)
+        rumi_n_day_ent.insert(0, rumi_n_date[0])
+        rumi_n_month_ent.insert(0, rumi_n_date[1])
+        rumi_n_year_ent.insert(0, rumi_n_date[2])
 
         # Convert a Julian day to a date in the revised Gregorian calendar
         rev_gregorian_date = rev_gregorian.fromjd(day)
-        self.rev_gregorian_day_ent.delete(0, END)
-        self.rev_gregorian_month_ent.delete(0, END)
-        self.rev_gregorian_year_ent.delete(0, END)
-        self.rev_gregorian_day_ent.insert(0, rev_gregorian_date[0])
-        self.rev_gregorian_month_ent.insert(0, rev_gregorian_date[1])
-        self.rev_gregorian_year_ent.insert(0, rev_gregorian_date[2])
+        rev_gregorian_day_ent.delete(0, END)
+        rev_gregorian_month_ent.delete(0, END)
+        rev_gregorian_year_ent.delete(0, END)
+        rev_gregorian_day_ent.insert(0, rev_gregorian_date[0])
+        rev_gregorian_month_ent.insert(0, rev_gregorian_date[1])
+        rev_gregorian_year_ent.insert(0, rev_gregorian_date[2])
 
         # Convert a Julian day to a date in the Parker calendar
         parker_date = parker.fromjd(day)
-        self.parker_day_ent.delete(0, END)
-        self.parker_month_ent.delete(0, END)
-        self.parker_year_ent.delete(0, END)
-        self.parker_day_ent.insert(0, parker_date[0])
-        self.parker_month_ent.insert(0, parker_date[1])
-        self.parker_year_ent.insert(0, parker_date[2])
+        parker_day_ent.delete(0, END)
+        parker_month_ent.delete(0, END)
+        parker_year_ent.delete(0, END)
+        parker_day_ent.insert(0, parker_date[0])
+        parker_month_ent.insert(0, parker_date[1])
+        parker_year_ent.insert(0, parker_date[2])
 
         # Convert a Julian day to a date in the Goucher-Parker calendar
         goucher_date = goucher.fromjd(day)
-        self.goucher_day_ent.delete(0, END)
-        self.goucher_month_ent.delete(0, END)
-        self.goucher_year_ent.delete(0, END)
-        self.goucher_day_ent.insert(0, goucher_date[0])
-        self.goucher_month_ent.insert(0, goucher_date[1])
-        self.goucher_year_ent.insert(0, goucher_date[2])
+        goucher_day_ent.delete(0, END)
+        goucher_month_ent.delete(0, END)
+        goucher_year_ent.delete(0, END)
+        goucher_day_ent.insert(0, goucher_date[0])
+        goucher_month_ent.insert(0, goucher_date[1])
+        goucher_year_ent.insert(0, goucher_date[2])
 
         # Convert a Julian day to a date in the Serbian church calendar
         serbian_church_date = serbian_church.fromjd(day)
-        self.serbian_church_day_ent.delete(0, END)
-        self.serbian_church_month_ent.delete(0, END)
-        self.serbian_church_year_ent.delete(0, END)
-        self.serbian_church_day_ent.insert(0, serbian_church_date[0])
-        self.serbian_church_month_ent.insert(0, serbian_church_date[1])
-        self.serbian_church_year_ent.insert(0, serbian_church_date[2])
+        serbian_church_day_ent.delete(0, END)
+        serbian_church_month_ent.delete(0, END)
+        serbian_church_year_ent.delete(0, END)
+        serbian_church_day_ent.insert(0, serbian_church_date[0])
+        serbian_church_month_ent.insert(0, serbian_church_date[1])
+        serbian_church_year_ent.insert(0, serbian_church_date[2])
 
         # Convert a Julain day to a date in the revised Julian calendar
         rev_julian_date = rev_julian.fromjd(day)
-        self.rev_julian_day_ent.delete(0, END)
-        self.rev_julian_month_ent.delete(0, END)
-        self.rev_julian_year_ent.delete(0, END)
-        self.rev_julian_day_ent.insert(0, rev_julian_date[0])
-        self.rev_julian_month_ent.insert(0, rev_julian_date[1])
-        self.rev_julian_year_ent.insert(0, rev_julian_date[2])
+        rev_julian_day_ent.delete(0, END)
+        rev_julian_month_ent.delete(0, END)
+        rev_julian_year_ent.delete(0, END)
+        rev_julian_day_ent.insert(0, rev_julian_date[0])
+        rev_julian_month_ent.insert(0, rev_julian_date[1])
+        rev_julian_year_ent.insert(0, rev_julian_date[2])
 
         # Convert a Julian day to  a date in the World calendar
         world_date = world.fromjd(day)
-        self.world_day_ent.delete(0, END)
-        self.world_month_ent.delete(0, END)
-        self.world_year_ent.delete(0, END)
-        self.world_day_ent.insert(0, world_date[0])
-        self.world_month_ent.insert(0, world_date[1])
-        self.world_year_ent.insert(0, world_date[2])
+        world_day_ent.delete(0, END)
+        world_month_ent.delete(0, END)
+        world_year_ent.delete(0, END)
+        world_day_ent.insert(0, world_date[0])
+        world_month_ent.insert(0, world_date[1])
+        world_year_ent.insert(0, world_date[2])
 
         # Convert a Julian day to a date in the International Fixed calendar
         ifc_date = ifc.fromjd(day)
-        self.ifc_day_ent.delete(0, END)
-        self.ifc_month_ent.delete(0, END)
-        self.ifc_year_ent.delete(0, END)
-        self.ifc_day_ent.insert(0, ifc_date[0])
-        self.ifc_month_ent.insert(0, ifc_date[1])
-        self.ifc_year_ent.insert(0, ifc_date[2])
+        ifc_day_ent.delete(0, END)
+        ifc_month_ent.delete(0, END)
+        ifc_year_ent.delete(0, END)
+        ifc_day_ent.insert(0, ifc_date[0])
+        ifc_month_ent.insert(0, ifc_date[1])
+        ifc_year_ent.insert(0, ifc_date[2])
 
         # Convert a Julian day to a date in the Pax calendar
         pax_date = pax.fromjd(day)
-        self.pax_day_ent.delete(0, END)
-        self.pax_month_ent.delete(0, END)
-        self.pax_year_ent.delete(0, END)
-        self.pax_day_ent.insert(0, pax_date[0])
-        self.pax_month_ent.insert(0, pax_date[1])
-        self.pax_year_ent.insert(0, pax_date[2])
+        pax_day_ent.delete(0, END)
+        pax_month_ent.delete(0, END)
+        pax_year_ent.delete(0, END)
+        pax_day_ent.insert(0, pax_date[0])
+        pax_month_ent.insert(0, pax_date[1])
+        pax_year_ent.insert(0, pax_date[2])
 
         # Convert a Julian day to a date in the Gorman calendar
         gorman_date = gorman.fromjd(day)
-        self.gorman_day_ent.delete(0, END)
-        self.gorman_month_ent.delete(0, END)
-        self.gorman_year_ent.delete(0, END)
-        self.gorman_day_ent.insert(0, gorman_date[0])
-        self.gorman_month_ent.insert(0, gorman_date[1])
-        self.gorman_year_ent.insert(0, gorman_date[2])
+        gorman_day_ent.delete(0, END)
+        gorman_month_ent.delete(0, END)
+        gorman_year_ent.delete(0, END)
+        gorman_day_ent.insert(0, gorman_date[0])
+        gorman_month_ent.insert(0, gorman_date[1])
+        gorman_year_ent.insert(0, gorman_date[2])
 
         # Convert a Julian day to a date in the Pax 2020 calendar
         pax2_date = pax2.fromjd(day)
-        self.pax2_day_ent.delete(0, END)
-        self.pax2_month_ent.delete(0, END)
-        self.pax2_year_ent.delete(0, END)
-        self.pax2_day_ent.insert(0, pax2_date[0])
-        self.pax2_month_ent.insert(0, pax2_date[1])
-        self.pax2_year_ent.insert(0, pax2_date[2])
+        pax2_day_ent.delete(0, END)
+        pax2_month_ent.delete(0, END)
+        pax2_year_ent.delete(0, END)
+        pax2_day_ent.insert(0, pax2_date[0])
+        pax2_month_ent.insert(0, pax2_date[1])
+        pax2_year_ent.insert(0, pax2_date[2])
 
         # Convert a Julian day to a date in the Positivist calendar
         positivist_date = positivist.fromjd(day)
-        self.positivist_day_ent.delete(0, END)
-        self.positivist_month_ent.delete(0, END)
-        self.positivist_year_ent.delete(0, END)
-        self.positivist_day_ent.insert(0, positivist_date[0])
-        self.positivist_month_ent.insert(0, positivist_date[1])
-        self.positivist_year_ent.insert(0, positivist_date[2])
+        positivist_day_ent.delete(0, END)
+        positivist_month_ent.delete(0, END)
+        positivist_year_ent.delete(0, END)
+        positivist_day_ent.insert(0, positivist_date[0])
+        positivist_month_ent.insert(0, positivist_date[1])
+        positivist_year_ent.insert(0, positivist_date[2])
 
         # Convert a Julian day to a date in the astronomical Gregorian calendar
         ast_gregorian_date = ast_gregorian.fromjd(day)
-        self.ast_gregorian_day_ent.delete(0, END)
-        self.ast_gregorian_month_ent.delete(0, END)
-        self.ast_gregorian_year_ent.delete(0, END)
-        self.ast_gregorian_day_ent.insert(0, ast_gregorian_date[0])
-        self.ast_gregorian_month_ent.insert(0, ast_gregorian_date[1])
-        self.ast_gregorian_year_ent.insert(0, ast_gregorian_date[2])
+        ast_gregorian_day_ent.delete(0, END)
+        ast_gregorian_month_ent.delete(0, END)
+        ast_gregorian_year_ent.delete(0, END)
+        ast_gregorian_day_ent.insert(0, ast_gregorian_date[0])
+        ast_gregorian_month_ent.insert(0, ast_gregorian_date[1])
+        ast_gregorian_year_ent.insert(0, ast_gregorian_date[2])
 
         # Convert a Julian day to a date in the Nex calendar
         nex_date = nex.fromjd(day)
-        self.nex_day_ent.delete(0, END)
-        self.nex_month_ent.delete(0, END)
-        self.nex_year_ent.delete(0, END)
-        self.nex_day_ent.insert(0, nex_date[0])
-        self.nex_month_ent.insert(0, nex_date[1])
-        self.nex_year_ent.insert(0, nex_date[2])
-        
-        
-    def cons_day_julian_plus(self):
-        day = self.cons_day_julian_ent.get()
+        nex_day_ent.delete(0, END)
+        nex_month_ent.delete(0, END)
+        nex_year_ent.delete(0, END)
+        nex_day_ent.insert(0, nex_date[0])
+        nex_month_ent.insert(0, nex_date[1])
+        nex_year_ent.insert(0, nex_date[2])
+
+def cons_day_julian_plus():
+        day = cons_day_julian_ent.get()
         day = int(day) + 1
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, day)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, day)
+        cons_day_julian_todate()
         
-    def cons_day_julian_minus(self):
-        day = self.cons_day_julian_ent.get()
+def cons_day_julian_minus():
+        day = cons_day_julian_ent.get()
         day = int(day) - 1
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, day)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, day)
+        cons_day_julian_todate()
 
-    def julian_converter(self):
+def julian_converter():
         """Convert a date in the Julian Calendar to a Julian Day."""
-        day = self.julian_day_ent.get()
-        month = self.julian_month_ent.get()
-        year = self.julian_year_ent.get()
+        day = julian_day_ent.get()
+        month = julian_month_ent.get()
+        year = julian_year_ent.get()
         jday = julian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def gregorian_converter(self):
+def gregorian_converter():
         """Convert a date in the Gregorian Calendar to a Julian  Day."""
-        day = self.gregorian_day_ent.get()
-        month = self.gregorian_month_ent.get()
-        year = self.gregorian_year_ent.get()
+        day = gregorian_day_ent.get()
+        month = gregorian_month_ent.get()
+        year = gregorian_year_ent.get()
         jday = gregorian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def coptic_converter(self):
+def coptic_converter():
         """Convert a date in the Coptic Calendar to a Julian Day."""
-        day = self.coptic_day_ent.get()
-        month = self.coptic_month_ent.get()
-        year = self.coptic_year_ent.get()
+        day = coptic_day_ent.get()
+        month = coptic_month_ent.get()
+        year = coptic_year_ent.get()
         jday = coptic.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def ethiopian_converter(self):
+def ethiopian_converter():
         """Convert a date in the Ethiopian Calendar to a Julian day."""
-        day = self.ethiopian_day_ent.get()
-        month = self.ethiopian_month_ent.get()
-        year = self.ethiopian_year_ent.get()
+        day = ethiopian_day_ent.get()
+        month = ethiopian_month_ent.get()
+        year = ethiopian_year_ent.get()
         jday = ethiopian.tojd(day,month,year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def egyptian_converter(self):
+def egyptian_converter():
         """Convert a date in the Egyptian Calendar to a Julian Day."""
-        day = self.egyptian_day_ent.get()
-        month = self.egyptian_month_ent.get()
-        year = self.egyptian_year_ent.get()
+        day = egyptian_day_ent.get()
+        month = egyptian_month_ent.get()
+        year = egyptian_year_ent.get()
         jday = egyptian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def armenian_converter(self):
+def armenian_converter():
         """Convert a date in the Armenian Calendar to a Julian Day."""
-        day = self.armenian_day_ent.get()
-        month = self.armenian_month_ent.get()
-        year = self.armenian_year_ent.get()
+        day = armenian_day_ent.get()
+        month = armenian_month_ent.get()
+        year = armenian_year_ent.get()
         jday = armenian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def lunar_hijri_converter(self):
+def lunar_hijri_converter():
         """Convert a date in the Lunar Hijri Calendar to a Julian DAy."""
-        day = self.lunar_hijri_day_ent.get()
-        month = self.lunar_hijri_month_ent.get()
-        year = self.lunar_hijri_year_ent.get()
+        day = lunar_hijri_day_ent.get()
+        month = lunar_hijri_month_ent.get()
+        year = lunar_hijri_year_ent.get()
         jday = lunar_hijri.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def solar_hijri_converter(self):
+def solar_hijri_converter():
         """Convert a date in the Solar Hijri Calendar to a Julian Day."""
-        day = self.solar_hijri_day_ent.get()
-        month = self.solar_hijri_month_ent.get()
-        year = self.solar_hijri_year_ent.get()
+        day = solar_hijri_day_ent.get()
+        month = solar_hijri_month_ent.get()
+        year = solar_hijri_year_ent.get()
         jday = solar_hijri.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def birashk_converter(self):
+def birashk_converter():
         """Convert a date in Birashk's calendar to a Julian Day."""
-        day = self.birashk_day_ent.get()
-        month = self.birashk_month_ent.get()
-        year = self.birashk_year_ent.get()
+        day = birashk_day_ent.get()
+        month = birashk_month_ent.get()
+        year = birashk_year_ent.get()
         jday = birashk.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def assyrian_converter(self):
+def assyrian_converter():
         """Convert a date in the Assyrian calendar to a Julian Day."""
-        day = self.assyrian_day_ent.get()
-        month = self.assyrian_month_ent.get()
-        year = self.assyrian_year_ent.get()
+        day = assyrian_day_ent.get()
+        month = assyrian_month_ent.get()
+        year = assyrian_year_ent.get()
         jday = assyrian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def babylonian_converter(self):
+def babylonian_converter():
         """Convert a date in the Babylonian calendar to a Julian Day."""
-        day = self.babylonian_day_ent.get()
-        month = self.babylonian_month_ent.get()
-        year = self.babylonian_year_ent.get()
+        day = babylonian_day_ent.get()
+        month = babylonian_month_ent.get()
+        year = babylonian_year_ent.get()
         jday = babylonian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def hebrew_converter(self):
+def hebrew_converter():
         """Convert a date in the Hebrew calendar to a Julian Day."""
-        day = self.hebrew_day_ent.get()
-        month = self.hebrew_month_ent.get()
-        year = self.hebrew_year_ent.get()
+        day = hebrew_day_ent.get()
+        month = hebrew_month_ent.get()
+        year = hebrew_year_ent.get()
         jday = hebrew.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def samaritan_converter(self):
+def samaritan_converter():
         """Convert a date in the Samaritan Hebrew calendar to a Julian Day"""
-        day = self.samaritan_day_ent.get()
-        month = self.samaritan_month_ent.get()
-        year = self.samaritan_year_ent.get()
+        day = samaritan_day_ent.get()
+        month = samaritan_month_ent.get()
+        year = samaritan_year_ent.get()
         jday = samaritan.tojd(day,month,year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def kurdish_converter(self):
+def kurdish_converter():
         """Convert a date in the Kurdish calendar to a Julian Day."""
-        day = self.kurdish_day_ent.get()
-        month = self.kurdish_month_ent.get()
-        year = self.kurdish_year_ent.get()
+        day = kurdish_day_ent.get()
+        month = kurdish_month_ent.get()
+        year = kurdish_year_ent.get()
         jday = kurdish.tojd(day,month,year)
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def true_day_julian_converter(self):
+def true_day_julian_converter():
         """Convert a Julian Day to a True Julian Day."""
-        jday = Decimal(self.day_julian_ent.get()) + Decimal('0.5')
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        jday = Decimal(day_julian_ent.get()) + Decimal('0.5')
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def red_day_julian_converter(self):
+def red_day_julian_converter():
         """Convert a Reduced Julian Day to a Consecutive Julian Day."""
-        jday = Decimal(self.red_day_julian_ent.get()) + 2400000 - Decimal('0.5')
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        jday = Decimal(red_day_julian_ent.get()) + 2400000 - Decimal('0.5')
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def mod_day_julian_converter(self):
+def mod_day_julian_converter():
         """Convert a Modified Julian Day to a Consecutive Julian Day."""
-        jday = int(self.mod_day_julian_ent.get()) + 2400000
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        jday = int(mod_day_julian_ent.get()) + 2400000
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def trun_day_julian_converter(self):
+def trun_day_julian_converter():
         """Convert a Truncated Julian Day to a Consecutive Julian Day."""
-        jday = int(self.trun_day_julian_ent.get()) + 2440000
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        jday = int(trun_day_julian_ent.get()) + 2440000
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def dub_day_julian_converter(self):
+def dub_day_julian_converter():
         """Convert a Dublin Julian Day to a Consecutive Julian DAy."""
-        jday = Decimal(self.dub_day_julian_ent.get()) + 2415020 - Decimal('0.5')
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        jday = Decimal(dub_day_julian_ent.get()) + 2415020 - Decimal('0.5')
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def cnes_converter(self):
+def cnes_converter():
         """Convert a CNES Julian Day into a Consecutive Julian Day."""
-        jday = int(self.cnes_ent.get())+ 2433282
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        jday = int(cnes_ent.get())+ 2433282
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def ccsds_converter(self):
-        jday = int(self.ccsds_ent.get()) + 2436204
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+def ccsds_converter():
+        jday = int(ccsds_ent.get()) + 2436204
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def day_lilian_converter(self):
-        jday = int(self.day_lilian_ent.get()) + 2299159
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+def day_lilian_converter():
+        jday = int(day_lilian_ent.get()) + 2299159
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def rata_die_converter(self):
-        jday = int(self.rata_die_ent.get()) + 1721424
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+def rata_die_converter():
+        jday = int(rata_die_ent.get()) + 1721424
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def unix_time_converter(self):
-        jday = (int(self.unix_time_ent.get()) // 86400) + 2440587
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+def unix_time_converter():
+        jday = (int(unix_time_ent.get()) // 86400) + 2440587
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def sol_gangale_converter(self):
-        jday = round(Decimal(self.sol_gangale_ent.get()) * Decimal('1.02749')) + 2405521
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+def sol_gangale_converter():
+        jday = round(Decimal(sol_gangale_ent.get()) * Decimal('1.02749')) + 2405521
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def lop_converter(self):
-        jday = int(self.lop_ent.get()) + 2448622
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+def lop_converter():
+        jday = int(lop_ent.get()) + 2448622
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def amazigh_converter(self):
+def amazigh_converter():
         """Convert a date in the Amazigh calendar to a Julian day."""
-        day = int(self.amazigh_day_ent.get())
-        month = self.amazigh_month_ent.get()
-        year = int(self.amazigh_year_ent.get())
+        day = int(amazigh_day_ent.get())
+        month = amazigh_month_ent.get()
+        year = int(amazigh_year_ent.get())
         jday = amazigh.tojd(day,month,year)
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0,jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
         
-    def rumi_n_converter(self):
+def rumi_n_converter():
         """Convert a date in the Rumi calendar to a Julian day."""
-        day = int(self.rumi_n_day_ent.get())
-        month = self.rumi_n_month_ent.get()
-        year = int(self.rumi_n_year_ent.get())
+        day = int(rumi_n_day_ent.get())
+        month = rumi_n_month_ent.get()
+        year = int(rumi_n_year_ent.get())
         jday = rumi_n.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0,END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def rev_gregorian_converter(self):
+def rev_gregorian_converter():
         """Convert a date in the revised Gregorian calendar to a Julian day."""
-        day = int(self.rev_gregorian_day_ent.get())
-        month = self.rev_gregorian_month_ent.get()
-        year = int(self.rev_gregorian_year_ent.get())
+        day = int(rev_gregorian_day_ent.get())
+        month = rev_gregorian_month_ent.get()
+        year = int(rev_gregorian_year_ent.get())
         jday = rev_gregorian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def parker_converter(self):
+def parker_converter():
         """Convert a date in the Parker calendar to a Julian day."""
-        day = int(self.parker_day_ent.get())
-        month = self.parker_month_ent.get()
-        year = int(self.parker_year_ent.get())
+        day = int(parker_day_ent.get())
+        month = parker_month_ent.get()
+        year = int(parker_year_ent.get())
         jday = parker.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def goucher_converter(self):
+def goucher_converter():
         """Convert a date in the Goucher calendar to a Julian day."""
-        day = int(self.goucher_day_ent.get())
-        month = self.goucher_month_ent.get()
-        year = int(self.goucher_year_ent.get())
+        day = int(goucher_day_ent.get())
+        month = goucher_month_ent.get()
+        year = int(goucher_year_ent.get())
         jday = goucher.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def serbian_church_converter(self):
-        day = int(self.serbian_church_day_ent.get())
-        month = self.serbian_church_month_ent.get()
-        year = int(self.serbian_church_year_ent.get())
+def serbian_church_converter():
+        day = int(serbian_church_day_ent.get())
+        month = serbian_church_month_ent.get()
+        year = int(serbian_church_year_ent.get())
         jday = serbian_church.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
         
-    def rev_julian_converter(self):
-        day = int(self.rev_julian_day_ent.get())
-        month = self.rev_julian_month_ent.get()
-        year = int(self.rev_julian_year_ent.get())
+def rev_julian_converter():
+        day = int(rev_julian_day_ent.get())
+        month = rev_julian_month_ent.get()
+        year = int(rev_julian_year_ent.get())
         jday = rev_julian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def world_converter(self):
-        day = int(self.world_day_ent.get())
-        month = self.world_month_ent.get()
-        year = int(self.world_year_ent.get())
+def world_converter():
+        day = int(world_day_ent.get())
+        month = world_month_ent.get()
+        year = int(world_year_ent.get())
         jday = world.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def ifc_converter(self):
-        day = int(self.ifc_day_ent.get())
-        month = self.ifc_month_ent.get()
-        year = int(self.ifc_year_ent.get())
+def ifc_converter():
+        day = int(ifc_day_ent.get())
+        month = ifc_month_ent.get()
+        year = int(ifc_year_ent.get())
         jday = ifc.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def pax_converter(self):
-        day = int(self.pax_day_ent.get())
-        month = self.pax_month_ent.get()
-        year = int(self.pax_year_ent.get())
+def pax_converter():
+        day = int(pax_day_ent.get())
+        month = pax_month_ent.get()
+        year = int(pax_year_ent.get())
         jday = pax.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def gorman_converter(self):
-        day = int(self.gorman_day_ent.get())
-        month = self.gorman_month_ent.get()
-        year = int(self.gorman_year_ent.get())
+def gorman_converter():
+        day = int(gorman_day_ent.get())
+        month = gorman_month_ent.get()
+        year = int(gorman_year_ent.get())
         jday = gorman.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def pax2_converter(self):
-        day = self.pax2_day_ent.get()
+def pax2_converter():
+        day = pax2_day_ent.get()
         day = int(day)
-        month = self.pax2_month_ent.get()
-        year = int(self.pax2_year_ent.get())
+        month = pax2_month_ent.get()
+        year = int(pax2_year_ent.get())
         jday = pax2.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def positivist_converter(self):
-        day = int(self.positivist_day_ent.get())
-        month = self.positivist_month_ent.get()
-        year = int(self.positivist_year_ent.get())
+def positivist_converter():
+        day = int(positivist_day_ent.get())
+        month = positivist_month_ent.get()
+        year = int(positivist_year_ent.get())
         jday = positivist.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def ast_gregorian_converter(self):
-        day = int(self.ast_gregorian_day_ent.get())
-        month = self.ast_gregorian_month_ent.get()
-        year = int(self.ast_gregorian_year_ent.get())
+def ast_gregorian_converter():
+        day = int(ast_gregorian_day_ent.get())
+        month = ast_gregorian_month_ent.get()
+        year = int(ast_gregorian_year_ent.get())
         jday = ast_gregorian.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-    def nex_converter(self):
-        day = int(self.nex_day_ent.get())
-        month = self.nex_month_ent.get()
-        year = int(self.nex_year_ent.get())
+def nex_converter():
+        day = int(nex_day_ent.get())
+        month = nex_month_ent.get()
+        year = int(nex_year_ent.get())
         jday = nex.tojd(day, month, year)
-        self.cons_day_julian_ent.delete(0, END)
-        self.cons_day_julian_ent.insert(0, jday)
-        self.cons_day_julian_todate()
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
 
-        
-    def create_widgets(self):
-        """Generate various widgets."""
-        # For now, months will just have to be typed manually until I can figure out how to use dropdown menus.
-        
-        # Julian Day
-        self.cons_day_julian_lbl = Label(self, text = "Chronological Julian Day").grid(row = 0, column = 0, columnspan = 3, sticky = W)
-        self.cons_day_julian_desc_lbl = Label(self, text = "Day").grid (row = 1, column = 0, columnspan = 3, sticky = W)
-        self.cons_day_julian_ent = Entry(self)
-        self.cons_day_julian_ent.grid(row = 2, column = 0, sticky = W)
-        self.cons_day_julian_bttn = Button(self, text = "Calculate", command = self.cons_day_julian_todate)
-        self.cons_day_julian_bttn.grid(row = 3, column = 0, columnspan = 3, sticky = W)
 
-        # Plus and Minus buttons
-        self.cons_day_julian_plus_bttn = Button(self, text = "+", command = self.cons_day_julian_plus)
-        self.cons_day_julian_plus_bttn.grid(row = 2, column = 1, sticky = W)
-        self.cons_day_julian_minus_bttn = Button(self, text = "-", command = self.cons_day_julian_minus)
-        self.cons_day_julian_minus_bttn.grid(row = 3, column = 1, sticky = W)
 
-        # Julian Calendar
-        self.julian_lbl = Label(self, text = "Julian Calendar").grid(row = 0, column = 3, columnspan = 3, sticky = W)
-        self.julian_day_lbl = Label(self, text = "Day").grid(row = 1, column = 3, columnspan = 3, sticky = W)
-        self.julian_day_ent = Entry(self)
-        self.julian_day_ent.grid(row = 2, column = 3, sticky = W)
-        self.julian_month_lbl = Label(self, text = "Month").grid(row = 1, column = 4, sticky = W)
-        self.julian_month_ent = Entry(self)
-        self.julian_month_ent.grid(row = 2, column = 4, sticky = W)
-        self.julian_year_lbl = Label(self, text = "Year").grid(row = 1, column = 5, sticky = W)
-        self.julian_year_ent = Entry(self)
-        self.julian_year_ent.grid(row = 2, column = 5, sticky = W)
-        self.julian_bttn = Button(self, text = "Calculate", command = self.julian_converter)
-        self.julian_bttn.grid(row = 3, column = 3, columnspan = 3, sticky = W)
-
-        # Gregorian Calendar
-        self.gregorian_lbl = Label(self, text = "Gregorian Calendar").grid(row = 0, column = 6, columnspan = 3, sticky = W)
-        self.gregorian_day_lbl = Label(self, text = "Day").grid(row = 1, column = 6, sticky = W)
-        self.gregorian_day_ent = Entry(self)
-        self.gregorian_day_ent.grid(row = 2, column = 6, sticky = W)
-        self.gregroian_month_lbl = Label(self, text = "Month").grid(row = 1, column = 7, sticky = W)
-        self.gregorian_month_ent = Entry(self)
-        self.gregorian_month_ent.grid(row = 2, column = 7, sticky = W)
-        self.gregorian_year_lbl = Label(self, text = "Year").grid(row = 1, column = 8, sticky = W)
-        self.gregorian_year_ent = Entry(self)
-        self.gregorian_year_ent.grid(row = 2, column = 8, sticky = W)
-        self.gregorian_bttn = Button(self, text = "Calculate", command = self.gregorian_converter)
-        self.gregorian_bttn.grid(row = 3, column = 6, columnspan = 3, sticky = W)
-
-        # Coptic Calendar
-        self.coptic_lbl = Label(self, text = "Coptic Calendar").grid(row = 0, column = 9, columnspan = 3, sticky = W)
-        self.coptic_day_lbl = Label(self, text = "Day").grid(row = 1, column = 9, sticky = W)
-        self.coptic_day_ent = Entry(self)
-        self.coptic_day_ent.grid(row = 2, column = 9, sticky = W)
-        self.coptic_month_lbl = Label(self, text = "Month").grid(row = 1, column = 10, sticky = W)
-        self.coptic_month_ent = Entry(self)
-        self.coptic_month_ent.grid(row = 2, column = 10, sticky = W)
-        self.coptic_year_lbl = Label(self, text = "Year").grid(row = 1, column = 11, sticky = W)
-        self.coptic_year_ent = Entry(self)
-        self.coptic_year_ent.grid(row = 2, column = 11, sticky = W)
-        self.coptic_bttn = Button(self, text = "Calculate", command = self.coptic_converter).grid(row = 3, column = 9, columnspan = 3, sticky = W)
-
-        # Ethiopian Calendar
-        self.ethiopian_lbl = Label(self, text = "Ethiopian Calendar").grid(row = 0, column = 12, columnspan = 3, sticky = W)
-        self.ethiopian_day_lbl = Label(self, text = "Day").grid(row = 1, column = 12, sticky = W)
-        self.ethiopian_day_ent = Entry(self)
-        self.ethiopian_day_ent.grid(row = 2, column = 12, sticky = W)
-        self.ethiopian_month_lbl = Label(self, text = "Month").grid(row = 1, column = 13, sticky = W)
-        self.ethiopian_month_ent = Entry(self)
-        self.ethiopian_month_ent.grid(row = 2, column = 13, sticky = W)
-        self.ethiopian_year_lbl = Label(self, text = "Year").grid(row = 1, column = 11, sticky = W)
-        self.ethiopian_year_ent = Entry(self)
-        self.ethiopian_year_ent.grid(row = 2, column = 14, sticky = W)
-        self.ethiopian_bttn = Button(self, text = "Calculate", command = self.ethiopian_converter).grid(row = 3, column = 12, columnspan = 3, sticky = W)
-
-        # Egyptian Calendar
-        self.egyptian_lbl = Label(self, text = "Egyptian Calendar").grid(row = 5, column = 0, columnspan = 3, sticky = W)
-        self.egyptian_day_lbl = Label(self, text = "Day").grid(row = 6, column = 0, sticky = W)
-        self.egyptian_day_ent = Entry(self)
-        self.egyptian_day_ent.grid(row = 7, column = 0, sticky = W)
-        self.egyptian_month_lbl = Label(self, text = "Month").grid(row = 6, column = 1, sticky = W)
-        self.egyptian_month_ent = Entry(self)
-        self.egyptian_month_ent.grid(row = 7, column = 1, sticky = W)
-        self.egyptian_year_lbl = Label(self, text = "Year").grid(row = 6, column = 2, sticky = W)
-        self.egyptian_year_ent = Entry(self)
-        self.egyptian_year_ent.grid(row = 7, column = 2, sticky = W)
-        self.egyptian_bttn = Button(self, text = "Calculate", command = self.egyptian_converter).grid(row = 8, column = 0, columnspan = 3, sticky = W)
-
-        # Armenian Calendar
-        self.armenian_lbl = Label(self, text = "Armenian Calendar").grid(row = 5, column = 3, columnspan = 3, sticky = W)
-        self.armenian_day_lbl = Label(self, text = "Day").grid(row = 6, column = 3, sticky = W)
-        self.armenian_day_ent = Entry(self)
-        self.armenian_day_ent.grid(row = 7, column = 3, sticky = W)
-        self.armenian_month_lbl = Label(self, text = "Month").grid(row = 6, column = 4, sticky = W)
-        self.armenian_month_ent = Entry(self)
-        self.armenian_month_ent.grid(row = 7, column = 4, sticky = W)
-        self.armenian_year_lbl = Label(self, text = "Year").grid(row = 6, column = 5, sticky = W)
-        self.armenian_year_ent = Entry(self)
-        self.armenian_year_ent.grid(row = 7, column = 5, sticky = W)
-        self.armenian_bttn = Button(self, text = "Calculate", command = self.armenian_converter).grid(row = 8, column = 3, columnspan = 3, sticky = W)
-
-        # Lunar Hijri Calendar
-        self.lunar_hijri_lbl = Label(self, text = "Lunar Hijri (Islamic) Calendar").grid(row = 5, column = 6, columnspan = 3, sticky = W)
-        self.lunar_hijri_day_lbl = Label(self, text = "Day").grid(row = 6, column = 6, sticky = W)
-        self.lunar_hijri_day_ent = Entry(self)
-        self.lunar_hijri_day_ent.grid(row = 7, column = 6, sticky = W)
-        self.lunar_hijri_month_lbl = Label(self, text = "Month").grid(row = 6, column = 7, sticky = W)
-        self.lunar_hijri_month_ent = Entry(self)
-        self.lunar_hijri_month_ent.grid(row = 7, column = 7, sticky = W)
-        self.lunar_hijri_year_lbl = Label(self, text = "Year").grid(row = 6, column = 8, sticky = W)
-        self.lunar_hijri_year_ent = Entry(self)
-        self.lunar_hijri_year_ent.grid(row = 7, column = 8, sticky = W)
-        self.lunar_hijri_bttn = Button(self, text = "Calculate", command = self.lunar_hijri_converter).grid(row = 8, column = 6, columnspan = 3, sticky = W)
-
-        # Solar Hijir Calendar
-        self.solar_hijri_lbl = Label(self, text = "Solar Hijri Calendar").grid(row = 5, column = 9, columnspan = 3, sticky = W)
-        self.solar_hijri_day_lbl = Label(self, text = "Day").grid(row = 6, column = 9, sticky = W)
-        self.solar_hijri_day_ent = Entry(self)
-        self.solar_hijri_day_ent.grid(row = 7, column = 9, sticky = W)
-        self.solar_hijri_month_lbl = Label(self, text = "Month").grid(row = 6, column = 10, sticky = W)
-        self.solar_hijri_month_ent = Entry(self)
-        self.solar_hijri_month_ent.grid(row = 7, column = 10, sticky = W)
-        self.solar_hijri_year_lbl = Label(self, text = "Year").grid(row = 6, column = 11, sticky = W)
-        self.solar_hijri_year_ent = Entry(self)
-        self.solar_hijri_year_ent.grid(row = 7, column = 11, sticky = W)
-        self.solar_hijri_bttn = Button(self, text = "Calculate", command = self.solar_hijri_converter).grid(row = 8, column = 9, columnspan = 3, sticky = W)
-
-        # Birashk's calendar
-        self.birashk_lbl = Label(self, text = "Ahmad Birashk's Calendar").grid(row = 5, column = 12, columnspan = 3, sticky = W)
-        self.birashk_day_lbl = Label(self, text = "Day").grid(row = 6, column = 12, sticky = W)
-        self.birashk_day_ent = Entry(self)
-        self.birashk_day_ent.grid(row = 7, column = 12, sticky = W)
-        self.birashk_month_lbl = Label(self, text = "Month").grid(row = 6, column = 13, sticky = W)
-        self.birashk_month_ent = Entry(self)
-        self.birashk_month_ent.grid(row = 7, column = 13, sticky = W)
-        self.birashk_year_lbl = Label(self, text = "Year").grid(row = 6, column = 14, sticky = W)
-        self.birashk_year_ent = Entry(self)
-        self.birashk_year_ent.grid(row = 7, column = 14, sticky = W)
-        self.birashk_bttn = Button(self, text = "Calculate", command = self.birashk_converter).grid(row = 8, column = 12, columnspan = 3, sticky = W)
-
-        # Assyrian calendar
-        self.assyrian_lbl = Label(self, text = "Modern Assyrian Calendar").grid(row = 10, column = 0, columnspan = 3, sticky = W)
-        self.assyrian_day_lbl = Label(self, text = "Day").grid(row = 11, column = 0, sticky = W)
-        self.assyrian_day_ent = Entry(self)
-        self.assyrian_day_ent.grid(row = 12, column = 0, sticky = W)
-        self.assyrian_month_lbl = Label(self, text = "Month").grid(row = 11, column = 1, sticky = W)
-        self.assyrian_month_ent = Entry(self)
-        self.assyrian_month_ent.grid(row = 12, column = 1, sticky = W)
-        self.assyrian_year_lbl = Label(self, text = "Year").grid(row = 11, column = 2, sticky = W)
-        self.assyrian_year_ent = Entry(self)
-        self.assyrian_year_ent.grid(row = 12, column = 2, sticky = W)
-        self.assyrian_bttn = Button(self, text = "Calculate", command = self.assyrian_converter).grid(row = 13, column = 0, columnspan = 3, sticky = W)
-
-        # Babylonian Calendar
-        self.babylonian_lbl = Label(self, text = "Babylonian Calendar").grid(row = 10, column = 3, columnspan = 3, sticky = W)
-        self.babylonian_day_lbl = Label(self, text = "Day").grid(row = 11, column = 3, sticky = W)
-        self.babylonian_day_ent = Entry(self)
-        self.babylonian_day_ent.grid(row = 12, column = 3, sticky = W)
-        self.babylonian_month_lbl = Label(self, text = "Month").grid(row = 11, column = 4, sticky = W)
-        self.babylonian_month_ent = Entry(self)
-        self.babylonian_month_ent.grid(row = 12, column = 4, sticky = W)
-        self.babylonian_year_lbl = Label(self, text = "Year").grid(row = 11, column = 5, sticky = W)
-        self.babylonian_year_ent = Entry(self)
-        self.babylonian_year_ent.grid(row = 12, column = 5, sticky = W)
-        self.babylonian_bttn = Button(self, text = "Calculate", command = self.babylonian_converter).grid(row = 13, column = 3, columnspan = 3, sticky = W)
-
-        # Hebrew (Jewish) Calendar
-        self.hebrew_lbl = Label(self, text = "Jewish Hebrew Calendar").grid(row = 10, column = 6, columnspan = 3, sticky = W)
-        self.hebrew_day_lbl = Label(self, text = "Day").grid(row = 11, column = 6, sticky = W)
-        self.hebrew_day_ent = Entry(self)
-        self.hebrew_day_ent.grid(row = 12, column = 6, sticky = W)
-        self.hebrew_month_lbl = Label(self, text = "Month").grid(row = 11, column = 7, sticky = W)
-        self.hebrew_month_ent = Entry(self)
-        self.hebrew_month_ent.grid(row = 12, column = 7, sticky = W)
-        self.hebrew_year_lbl = Label(self, text = "Year").grid(row = 11, column = 8, sticky = W)
-        self.hebrew_year_ent = Entry(self)
-        self.hebrew_year_ent.grid(row = 12, column = 8, sticky = W)
-        self.hebrew_bttn = Button(self, text = "Calculate", command = self.hebrew_converter).grid(row = 13, column = 6, columnspan = 3, sticky = W)
-
-        # Samaritan Calendar
-        self.samaritan_lbl = Label(self, text = "Samaritan Hebrew Calendar (estimated)").grid(row = 10, column = 9, columnspan = 3, sticky = W)
-        self.samaritan_day_lbl = Label(self, text = "Day").grid(row = 11, column = 9, sticky = W)
-        self.samaritan_day_ent = Entry(self)
-        self.samaritan_day_ent.grid(row = 12, column = 9, sticky = W)
-        self.samaritan_month_lbl = Label(self, text = "Month").grid(row = 11, column = 10, sticky = W)
-        self.samaritan_month_ent = Entry(self)
-        self.samaritan_month_ent.grid(row = 12, column = 10, sticky = W)
-        self.samaritan_year_lbl = Label(self, text = "Year").grid(row = 11, column = 11, sticky = W)
-        self.samaritan_year_ent = Entry(self)
-        self.samaritan_year_ent.grid(row = 12, column = 11, sticky = W)
-        self.samaritan_bttn = Button(self, text = "Calculate", command = self.samaritan_converter).grid(row = 13, column = 9, columnspan = 3, sticky = W)
-
-        # Kurdish Calendar
-        self.kurdish_lbl = Label(self, text = "Kurdish Calendar").grid(row = 10, column = 12, columnspan = 3, sticky = W)
-        self.kurdish_day_lbl = Label(self, text = "Day").grid(row = 11, column = 12, sticky = W)
-        self.kurdish_day_ent = Entry(self)
-        self.kurdish_day_ent.grid(row = 12, column = 12, sticky = W)
-        self.kurdish_month_lbl = Label(self, text = "Month")
-        self.kurdish_month_ent = Entry(self)
-        self.kurdish_month_ent.grid(row = 12, column = 13, sticky = W)
-        self.kurdish_year_lbl = Label(self, text = "Year").grid(row = 11, column = 14, sticky = W)
-        self.kurdish_year_ent = Entry(self)
-        self.kurdish_year_ent.grid(row = 12, column = 14, sticky = W)
-        self.kurdish_bttn = Button(self, text = "Calculate", command = self.kurdish_converter).grid(row = 13, column = 12, columnspan = 3, sticky = W)
-
-        # True Julian Day
-        self.day_julian_lbl = Label(self, text = "True Julian Day").grid(row = 14, column = 0, sticky = W)
-        self.day_julian_ent = Entry(self)
-        self.day_julian_ent.grid(row = 15, column = 0, sticky = W)
-        self.day_julian_bttn = Button(self, text = "Calculate", command = self.true_day_julian_converter).grid(row = 16, column = 0, sticky = W)
-
-        # Reduced Julian Day
-        self.red_day_julian_lbl = Label(self, text = "Reduced Julian Day").grid(row = 14, column = 1, sticky = W)
-        self.red_day_julian_ent = Entry(self)
-        self.red_day_julian_ent.grid(row = 15, column = 1, sticky = W)
-        self.red_day_julian_bttn = Button(self, text = "Calculate", command = self.red_day_julian_converter).grid(row = 16, column = 1, sticky	= W)
-
-        # Modified Julian Day
-        self.mod_day_julian_lbl = Label(self, text = "Modified Julian Day").grid(row = 14, column = 2, sticky = W)
-        self.mod_day_julian_ent = Entry(self)
-        self.mod_day_julian_ent.grid(row = 15, column = 2, sticky = W)
-        self.mod_day_julian_bttn = Button(self, text = "Calculate", command = self.mod_day_julian_converter).grid(row = 16, column = 2, sticky	= W)
-
-        # Truncated Julian Day                                                                                      
-        self.trun_day_julian_lbl = Label(self, text = "Truncated Julian Day").grid(row = 14, column =3, sticky = W)
-        self.trun_day_julian_ent = Entry(self)
-        self.trun_day_julian_ent.grid(row = 15, column = 3, sticky = W)
-        self.trun_day_julian_bttn = Button(self, text = "Calculate", command = self.trun_day_julian_converter).grid(row = 16, column = 3, sticky = W)
-
-        # Dublin Julian Day                                                                                         
-        self.dub_day_julian_lbl = Label(self, text = "Dublin Julian Day").grid(row = 14, column = 4, sticky = W)
-        self.dub_day_julian_ent = Entry(self)
-        self.dub_day_julian_ent.grid(row = 15, column = 4, sticky = W)
-        self.dub_day_julian_bttn = Button(self, text = "Calculate", command = self.dub_day_julian_converter).grid(row = 16, column = 4, sticky	= W)
-
-        # CNES Julian Day                                                                                           
-        self.cnes_lbl = Label(self, text = "CNES Julian Day").grid(row = 14, column = 5, sticky = W)
-        self.cnes_ent = Entry(self)
-        self.cnes_ent.grid(row = 15, column = 5, sticky = W)
-        self.cnes_bttn = Button(self, text = "Calculate", command = self.cnes_converter).grid(row = 16, column = 5, sticky	= W)
-
-        # CCSDS Julian Day                                                                                       
-        self.ccsds_lbl = Label(self, text = "CCSDS Julian Day").grid(row = 14, column = 6, sticky = W)
-        self.ccsds_ent = Entry(self)
-        self.ccsds_ent.grid(row = 15, column = 6, sticky = W)
-        self.ccsds_bttn = Button(self, text = "Calculate", command = self.ccsds_converter).grid(row = 16, column = 6, sticky	= W)
-
-        # Lilian Day                                                                                           
-        self.day_lilian_lbl = Label(self, text = "Lilian Day").grid(row = 14, column = 7, sticky = W)
-        self.day_lilian_ent = Entry(self)
-        self.day_lilian_ent.grid(row = 15, column = 7, sticky = W)
-        self.day_lilian_bttn = Button(self, text = "Calculate", command = self.day_lilian_converter).grid(row = 16, column = 7, sticky	= W)
-
-        # Rata Die
-        self.rata_die_lbl = Label(self, text = "Rata Die").grid(row = 14, column = 8, sticky = W)
-        self.rata_die_ent = Entry(self)
-        self.rata_die_ent.grid(row = 15, column = 8, sticky = W)
-        self.rata_die_bttn = Button(self, text = "Calculate", command = self.rata_die_converter).grid(row = 16, column = 8, sticky = W)
-
-        # Unix time
-        self.unix_time_lbl = Label(self, text = "Unix time").grid(row = 14, column = 9, sticky = W)
-        self.unix_time_ent = Entry(self)
-        self.unix_time_ent.grid(row = 15, column =9, sticky = W)
-        self.unix_time_bttn = Button(self, text = "Calculate", command = self.unix_time_converter).grid(row = 16, column = 9, sticky	= W)
-
-        # Gangale sol
-        self.sol_gangale_lbl = Label(self, text = "Consecutive Martian sol").grid(row = 14, column = 10, sticky = W)
-        self.sol_gangale_ent = Entry(self)
-        self.sol_gangale_ent.grid(row = 15, column = 10, sticky = W)
-        self.sol_gangale_bttn = Button(self, text = "Calculate", command = self.sol_gangale_converter).grid(row = 16, column = 10, sticky = W)
-
-        # LOP day
-        self.lop_lbl = Label(self, text = "LOP Julian day").grid(row = 14, column = 11, sticky = W)
-        self.lop_ent = Entry(self)
-        self.lop_ent.grid(row = 15, column = 11, sticky = W)
-        self.lop_bttn = Button(self, text = "Calculate", command = self.lop_converter).grid(row = 16, column = 11, sticky = W)
-
-        # Amazigh calendar
-        self.amazigh_lbl = Label(self, text = "Amazigh calendar").grid(row = 18, column = 0, columnspan = 3, sticky = W)
-        self.amazigh_day_lbl = Label(self, text = "Day").grid(row = 19, column = 0, sticky = W)
-        self.amazigh_day_ent = Entry(self)
-        self.amazigh_day_ent.grid(row = 20, column = 0, sticky = W)
-        self.amazigh_month_lbl = Label(self, text = "Month").grid(row = 19, column = 1, sticky = W)
-        self.amazigh_month_ent = Entry(self)
-        self.amazigh_month_ent.grid(row = 20, column = 1, sticky = W)
-        self.amazigh_year_lbl = Label(self, text = "Year").grid(row = 19, column = 2, sticky = W)
-        self.amazigh_year_ent = Entry(self)
-        self.amazigh_year_ent.grid(row = 20, column = 2, sticky = W)
-        self.amazigh_bttn = Button(self, text = "Calculate", command = self.amazigh_converter).grid(row = 21, column = 0, sticky = W)
-
-        # Rumi calendar
-        self.rumi_n_lbl = Label(self, text = "Rumi calendar (non-skipping)").grid(row = 18, column = 3, columnspan = 3, sticky = W)
-        self.rumi_n_day_lbl = Label(self, text = "Day").grid(row = 19, column = 3, sticky = W)
-        self.rumi_n_day_ent = Entry(self)
-        self.rumi_n_day_ent.grid(row = 20, column = 3, sticky = W)
-        self.rumi_n_month_lbl = Label(self, text = "Month").grid(row = 19, column = 4, sticky = W)
-        self.rumi_n_month_ent = Entry(self)
-        self.rumi_n_month_ent.grid(row = 20, column = 4, sticky = W)
-        self.rumi_n_year_lbl = Label(self, text = "Year").grid(row = 19, column = 5, sticky = W)
-        self.rumi_n_year_ent = Entry(self)
-        self.rumi_n_year_ent.grid(row = 20, column = 5, sticky = W)
-        self.rumi_n_bttn = Button(self, text = "Calculate", command = self.rumi_n_converter).grid(row = 21, column = 3, columnspan = 3, sticky = W)
-
-        # Revised Gregorian calendar
-        self.rev_gregorian_lbl = Label(self, text = "Revised Gregorian calendar").grid(row = 18, column = 6, columnspan = 3, sticky = W)
-        self.rev_gregorian_day_lbl = Label(self, text = "Day").grid(row = 19, column = 6, sticky = W)
-        self.rev_gregorian_day_ent = Entry(self)
-        self.rev_gregorian_day_ent.grid(row = 20, column = 6, sticky = W)
-        self.rev_gregorian_month_lbl = Label(self, text = "Months").grid(row = 19, column = 7, sticky = W)
-        self.rev_gregorian_month_ent = Entry(self)
-        self.rev_gregorian_month_ent.grid(row = 20, column = 7, sticky = W)
-        self.rev_gregorian_year_lbl = Label(self, text = "Year").grid(row = 19, column = 8, sticky = W)
-        self.rev_gregorian_year_ent = Entry(self)
-        self.rev_gregorian_year_ent.grid(row = 20, column = 8, sticky = W)
-        self.rev_gregorian_bttn = Button(self, text = "Calculate", command = self.rev_gregorian_converter).grid(row = 21, column = 6, columnspan = 3, sticky = W)
-
-        # Parker calendar
-        self.parker_lbl = Label(self, text = "Parker calendar").grid(row = 18, column = 9, columnspan = 3, sticky = W)
-        self.parker_day_lbl = Label(self, text = "Day").grid(row = 19, column = 9, sticky = W)
-        self.parker_day_ent = Entry(self)
-        self.parker_day_ent.grid(row = 20, column = 9, sticky = W)
-        self.parker_month_lbl = Label(self, text = "Month").grid(row = 19, column = 10, sticky = W)
-        self.parker_month_ent = Entry(self)
-        self.parker_month_ent.grid(row = 20, column = 10, sticky = W)
-        self.parker_year_lbl = Label(self, text = "Year").grid(row = 19, column = 11, sticky = W)
-        self.parker_year_ent = Entry(self)
-        self.parker_year_ent.grid(row = 20, column = 11, sticky = W)
-        self.parker_bttn = Button(self, text = "Calculate", command = self.parker_converter).grid(row = 21, column = 9, columnspan = 3, sticky = W)
-
-        # Goucher-Parker calendar
-        self.goucher_lbl = Label(self, text = "Goucher-Parker calendar").grid(row = 18, column = 12, columnspan = 3, sticky = W)
-        self.goucher_day_lbl = Label(self, text = "Day").grid(row = 19, column = 12, sticky = W)
-        self.goucher_day_ent = Entry(self)
-        self.goucher_day_ent.grid(row = 20, column = 12, sticky = W)
-        self.goucher_month_lbl = Label(self, text = "Month").grid(row = 19, column = 13, sticky = W)
-        self.goucher_month_ent = Entry(self)
-        self.goucher_month_ent.grid(row = 20, column = 13, sticky = W)
-        self.goucher_year_lbl = Label(self, text = "Year").grid(row = 19, column = 14, sticky = W)
-        self.goucher_year_ent = Entry(self)
-        self.goucher_year_ent.grid(row = 20, column = 14, sticky = W)
-        self.goucher_bttn = Button(self, text = "Calculate", command = self.goucher_converter).grid(row = 21, column =12, columnspan = 3)
-
-        # Serbian church calendar
-        self.serbian_church_lbl = Label(self, text = "Serbian church calendar").grid(row = 23, column = 0, columnspan = 3, sticky = W)
-        self.serbian_church_day_lbl = Label(self, text = "Day").grid(row = 24, column = 0, sticky = W)
-        self.serbian_church_day_ent = Entry(self)
-        self.serbian_church_day_ent.grid(row = 25, column = 0, sticky = W)
-        self.serbian_church_month_lbl = Label(self, text = "Month").grid(row = 24, column = 1, sticky = W)
-        self.serbian_church_month_ent = Entry(self)
-        self.serbian_church_month_ent.grid(row = 25, column = 1, sticky = W)
-        self.serbian_church_year_lbl = Label(self, text = "Year").grid(row = 24, column = 2, sticky = W)
-        self.serbian_church_year_ent = Entry(self)
-        self.serbian_church_year_ent.grid(row = 25, column = 2, sticky = W)
-        self.serbian_church_bttn = Button(self, text = "Calculate", command = self.serbian_church_converter).grid(row = 26, column = 0, columnspan = 3, sticky = W)
-
-        # Revised Julian calendar
-        self.rev_julian_lbl = Label(self, text = "Revised Julian calendar").grid(row = 23, column = 3, columnspan = 3, sticky = W)
-        self.rev_julian_day_lbl = Label(self, text = "Day").grid(row = 24, column = 3, sticky = W)
-        self.rev_julian_day_ent = Entry(self)
-        self.rev_julian_day_ent.grid(row = 25, column = 3, sticky = W)
-        self.rev_julian_month_lbl = Label(self, text = "Month").grid(row = 24, column = 4, sticky = W)
-        self.rev_julian_month_ent = Entry(self)
-        self.rev_julian_month_ent.grid(row = 25, column = 4, sticky = W)
-        self.rev_julian_year_lbl = Label(self, text = "Year").grid(row = 24, column = 5, sticky = W)
-        self.rev_julian_year_ent = Entry(self)
-        self.rev_julian_year_ent.grid(row = 25, column = 5, sticky = W)
-        self.rev_julian_bttn = Button(self, text = "Calculate", command = self.rev_julian_converter).grid(row = 26, column = 3, sticky = W)
-
-        # World calendar
-        self.world_lbl = Label(self, text = "World Calendar").grid(row = 23, column = 6, columnspan = 3, sticky = W)
-        self.world_day_lbl = Label(self, text = "Day").grid(row = 24, column = 6, sticky = W)
-        self.world_day_ent = Entry(self)
-        self.world_day_ent.grid(row = 25, column = 6, sticky = W)
-        self.world_month_lbl = Label(self, text = "Month").grid(row = 24, column = 7, sticky = W)
-        self.world_month_ent = Entry(self)
-        self.world_month_ent.grid(row = 25, column = 7, sticky = W)
-        self.world_year_lbl = Label(self, text = "Year").grid(row = 24, column = 8, sticky = W)
-        self.world_year_ent = Entry(self)
-        self.world_year_ent.grid(row = 25, column = 8, sticky = W)
-        self.world_bttn = Button(self, text = "Calculate", command = self.world_converter).grid(row = 26, column = 6, columnspan = 3, sticky = W)
-
-        # International Fixed Calendar
-        self.ifc_lbl = Label(self, text = "International Fixed Calendar").grid(row = 23, column = 9, columnspan = 3, sticky = W)
-        self.ifc_day_lbl = Label(self, text = "Day").grid(row = 24, column = 9, sticky = W)
-        self.ifc_day_ent = Entry(self)
-        self.ifc_day_ent.grid(row = 25, column = 9, sticky = W)
-        self.ifc_month_lbl = Label(self, text = "Month").grid(row = 24, column = 10, sticky = W)
-        self.ifc_month_ent = Entry(self)
-        self.ifc_month_ent.grid(row = 25, column = 10, sticky = W)
-        self.ifc_year_lbl = Label(self, text = "Year").grid(row = 24, column = 11, sticky = W)
-        self.ifc_year_ent = Entry(self)
-        self.ifc_year_ent.grid(row = 25, column = 11, sticky = W)
-        self.ifc_bttn = Button(self, text = "Calculate", command = self.ifc_converter).grid(row = 26, column = 9, columnspan = 3, sticky = W)
-
-        # Pax calendr
-        self.pax_lbl = Label(self, text = "Pax calendar").grid(row = 23, column = 12, columnspan = 3, sticky = W)
-        self.pax_day_lbl = Label(self, text = "Day").grid(row = 24, column = 12, sticky = W)
-        self.pax_day_ent = Entry(self)
-        self.pax_day_ent.grid(row = 25, column = 12, sticky = W)
-        self.pax_month_lbl = Label(self, text = "Month").grid(row = 24, column = 13, sticky = W)
-        self.pax_month_ent = Entry(self)
-        self.pax_month_ent.grid(row = 25, column = 13, sticky = W)
-        self.pax_year_lbl = Label(self, text = "Year").grid(row = 24, column = 14, sticky = W)
-        self.pax_year_ent = Entry(self)
-        self.pax_year_ent.grid(row = 25, column = 14, sticky = W)
-        self.pax_bttn = Button(self, text = "Calculate", command = self.pax_converter).grid(row = 26, column = 12, sticky = W)
-
-        # Gorman calendar
-        self.gorman_lbl = Label(self, text = "Gorman calendar").grid(row = 28, column = 0, columnspan = 3, sticky = W)
-        self.gorman_day_lbl = Label(self, text = "Day").grid(row = 29, column = 0, sticky = W)
-        self.gorman_day_ent = Entry(self)
-        self.gorman_day_ent.grid(row = 30, column = 0, sticky = W)
-        self.gorman_month_lbl = Label(self, text = "Month").grid(row = 29, column = 1, sticky = W)
-        self.gorman_month_ent = Entry(self)
-        self.gorman_month_ent.grid(row = 30, column = 1, sticky = W)
-        self.gorman_year_lbl = Label(self, text = "Year").grid(row = 29, column = 2, sticky = W)
-        self.gorman_year_ent = Entry(self)
-        self.gorman_year_ent.grid(row = 30, column = 2, sticky = W)
-        self.gorman_bttn = Button(self, text = "Calculate", command = self.gorman_converter).grid(row = 31, column = 0, columnspan = 3, sticky = W)
-
-        # Pax 2020 calendar
-        self.pax2_lbl = Label(self, text = "Pax 2020 calendar").grid(row = 28, column = 3, columnspan = 3, sticky = W)
-        self.pax2_day_lbl = Label(self, text = "Day").grid(row = 29, column = 3, sticky = W)
-        self.pax2_day_ent = Entry(self)
-        self.pax2_day_ent.grid(row = 30, column = 3, sticky = W)
-        self.pax2_month_lbl = Label(self, text = "Month").grid(row = 29, column = 4, sticky = W)
-        self.pax2_month_ent = Entry(self)
-        self.pax2_month_ent.grid(row = 30, column = 4, sticky = W)
-        self.pax2_year_lbl = Label(self, text = "Year").grid(row = 29, column = 5, sticky = W)
-        self.pax2_year_ent = Entry(self)
-        self.pax2_year_ent.grid(row = 30, column = 5, sticky = W)
-        self.pax2_bttn = Button(self, text = "Calculate", command = self.pax2_converter).grid(row = 31, column = 3, columnspan = 3, sticky = W)
-
-        # Positivist calendar
-        self.positivist_lbl = Label(self, text = "Positivist calendar").grid(row = 28, column = 6, columnspan = 3, sticky = W)
-        self.positivist_day_lbl = Label(self, text = "Day").grid(row = 29, column = 6, sticky = W)
-        self.positivist_day_ent = Entry(self)
-        self.positivist_day_ent.grid(row = 30, column = 6, sticky = W)
-        self.positivist_month_lbl = Label(self, text = "Month").grid(row = 29, column = 7, sticky = W)
-        self.positivist_month_ent = Entry(self)
-        self.positivist_month_ent.grid(row = 30, column = 7, sticky = W)
-        self.positivist_year_lbl = Label(self, text = "Year").grid(row = 29, column = 8, sticky = W)
-        self.positivist_year_ent = Entry(self)
-        self.positivist_year_ent.grid(row = 30, column = 8, sticky = W)
-        self.positivist_bttn = Button(self, text = "Calculate", command = self.positivist_converter).grid(row = 31, column = 6, columnspan = 3, sticky = W)
-
-        # Astronomical Gregorian calendar
-        self.ast_gregorian_lbl = Label(self, text = "Astronomical Gregorian calendar").grid(row = 28, column = 9, columnspan = 3, sticky = W)
-        self.ast_gregorian_day_lbl = Label(self, text = "Day").grid(row = 29, column = 9, sticky = W)
-        self.ast_gregorian_day_ent = Entry(self)
-        self.ast_gregorian_day_ent.grid(row = 30, column = 9, sticky = W)
-        self.ast_gregorian_month_lbl = Label(self, text = "Month").grid(row = 29, column = 10, sticky = W)
-        self.ast_gregorian_month_ent = Entry(self)
-        self.ast_gregorian_month_ent.grid(row = 30, column = 10, sticky = W)
-        self.ast_gregorian_year_lbl = Label(self, text = "Year").grid(row = 29, column = 11, sticky = W)
-        self.ast_gregorian_year_ent = Entry(self)
-        self.ast_gregorian_year_ent.grid(row = 30, column = 11, sticky = W)
-        self.ast_gregorian_bttn = Button(self, text = "Calculate", command = self.ast_gregorian_converter).grid(row = 31, column = 9, columnspan = 3, sticky = W)
-
-        # Nex calendar
-        self.nex_lbl = Label(self, text = "Nex calendar").grid(row = 28, column = 12, columnspan = 3, sticky = W)
-        self.nex_day_lbl = Label(self, text = "Day").grid(row = 29, column = 12, sticky = W)
-        self.nex_day_ent = Entry(self)
-        self.nex_day_ent.grid(row = 30, column = 12, sticky = W)
-        self.nex_month_lbl = Label(self, text = "Month").grid(row = 29, column = 13, sticky = W)
-        self.nex_month_ent = Entry(self)
-        self.nex_month_ent.grid(row = 30, column = 13, sticky = W)
-        self.nex_year_lbl = Label(self, text = "Year").grid(row = 29, column = 14, sticky = W)
-        self.nex_year_ent = Entry(self)
-        self.nex_year_ent.grid(row = 30, column = 14, sticky = W)
-        self.nex_bttn = Button(self, text = "Calculate", command = self.nex_converter).grid(row = 31, column = 12, columnspan = 3, sticky = W)
-
-        
-        
-# create the root window
 root = Tk()
-app = Application(root)
-root.title("Calendar Converter 0.16.0")
+
+container = Frame(root, width = 1920, height = 1080)
+container.pack(expand = True, fill = BOTH)
+canvas = Canvas(container, width = 1900, height = 1080)
+scrollbar = Scrollbar(container)                      
+
+canvas.pack(side = LEFT, expand = True, fill = BOTH)
+scrollbar.pack(side = RIGHT, fill = Y)
+scrollbar.configure(command = canvas.yview)
+frame = Frame(canvas)
+frame.grid()
+frame.bind(
+        "<Configure>",
+        lambda e: canvas.configure(
+                scrollregion = canvas.bbox("all")
+        )
+)
+
+canvas.create_window((0,0), window = frame, anchor = "nw")
+canvas.configure(yscrollcommand = scrollbar.set)
+
+
+
+# Consecutive Julian day widget
+cons_day_julian_lbl = Label(frame, text = "Chronological Julian day")
+cons_day_julian_lbl.grid(row = 1, column = 0, columnspan = 3, sticky = W)
+#cons_day_julian_desc_lbl = Label(frame, text = "Day").grid(row = 2, column = 0, columnspan = 3, sticky = W)
+cons_day_julian_ent = Entry(frame)
+cons_day_julian_ent.grid(row = 2, column = 0, sticky = W)
+cons_day_julian_bttn = Button(frame, text = "Calculate", command = cons_day_julian_todate)
+cons_day_julian_bttn.grid(row = 3, column = 0, columnspan = 3, sticky = W)
+
+# Plus and Minus buttons
+cons_day_julian_plus_bttn = Button(frame, text = "+", command = cons_day_julian_plus)
+cons_day_julian_plus_bttn.grid(row = 2, column = 1, sticky = W)
+cons_day_julian_minus_bttn = Button(frame, text = "-", command = cons_day_julian_minus)
+cons_day_julian_minus_bttn.grid(row = 3, column = 1, sticky = W)
+
+# Julian Calendar
+julian_lbl = Label(frame, text = "Julian Calendar")
+julian_lbl.grid(row = 0, column = 3, columnspan = 3, sticky = W)
+julian_day_lbl = Label(frame, text = "Day")
+julian_day_lbl.grid(row = 1, column = 3, columnspan = 3, sticky = W)
+julian_day_ent = Entry(frame)
+julian_day_ent.grid(row = 2, column = 3, sticky = W)
+julian_month_lbl = Label(frame, text = "Month")
+julian_month_lbl.grid(row = 1, column = 4, sticky = W)
+julian_month_ent = Entry(frame)
+julian_month_ent.grid(row = 2, column = 4, sticky = W)
+julian_year_lbl = Label(frame, text = "Year")
+julian_year_lbl.grid(row = 1, column = 5, sticky = W)
+julian_year_ent = Entry(frame)
+julian_year_ent.grid(row = 2, column = 5, sticky = W)
+julian_bttn = Button(frame, text = "Calculate", command = julian_converter)
+julian_bttn.grid(row = 3, column = 3, columnspan = 3, sticky = W)
+
+# Gregorian Calendar
+gregorian_lbl = Label(frame, text = "Gregorian Calendar")
+gregorian_lbl.grid(row = 0, column = 6, columnspan = 3, sticky = W)
+gregorian_day_lbl = Label(frame, text = "Day")
+gregorian_day_lbl.grid(row = 1, column = 6, sticky = W)
+gregorian_day_ent = Entry(frame)
+gregorian_day_ent.grid(row = 2, column = 6, sticky = W)
+gregorian_month_lbl = Label(frame, text = "Month")
+gregorian_month_lbl.grid(row = 1, column = 7, sticky = W)
+gregorian_month_ent = Entry(frame)
+gregorian_month_ent.grid(row = 2, column = 7, sticky = W)
+gregorian_year_lbl = Label(frame, text = "Year")
+gregorian_year_lbl.grid(row = 1, column = 8, sticky = W)
+gregorian_year_ent = Entry(frame)
+gregorian_year_ent.grid(row = 2, column = 8, sticky = W)
+gregorian_bttn = Button(frame, text = "Calculate", command = gregorian_converter)
+gregorian_bttn.grid(row = 3, column = 6, columnspan = 3, sticky = W)
+
+# Coptic Calendar
+coptic_lbl = Label(frame, text = "Coptic Calendar")
+coptic_lbl.grid(row = 0, column = 9, columnspan = 3, sticky = W)
+coptic_day_lbl = Label(frame, text = "Day")
+coptic_day_lbl.grid(row = 1, column = 9, sticky = W)
+coptic_day_ent = Entry(frame)
+coptic_day_ent.grid(row = 2, column = 9, sticky = W)
+coptic_month_lbl = Label(frame, text = "Month")
+coptic_month_lbl.grid(row = 1, column = 10, sticky = W)
+coptic_month_ent = Entry(frame)
+coptic_month_ent.grid(row = 2, column = 10, sticky = W)
+coptic_year_lbl = Label(frame, text = "Year")
+coptic_year_lbl.grid(row = 1, column = 11, sticky = W)
+coptic_year_ent = Entry(frame)
+coptic_year_ent.grid(row = 2, column = 11, sticky = W)
+coptic_bttn = Button(frame, text = "Calculate", command = coptic_converter)
+coptic_bttn.grid(row = 3, column = 9, columnspan = 3, sticky = W)
+
+# Ethiopian Calendar
+ethiopian_lbl = Label(frame, text = "Ethiopian Calendar")
+ethiopian_lbl.grid(row = 0, column = 12, columnspan = 3, sticky = W)
+ethiopian_day_lbl = Label(frame, text = "Day")
+ethiopian_day_lbl.grid(row = 1, column = 12, sticky = W)
+ethiopian_day_ent = Entry(frame)
+ethiopian_day_ent.grid(row = 2, column = 12, sticky = W)
+ethiopian_month_lbl = Label(frame, text = "Month")
+ethiopian_month_lbl.grid(row = 1, column = 13, sticky = W)
+ethiopian_month_ent = Entry(frame)
+ethiopian_month_ent.grid(row = 2, column = 13, sticky = W)
+ethiopian_year_lbl = Label(frame, text = "Year")
+ethiopian_year_lbl.grid(row = 1, column = 14, sticky = W)
+ethiopian_year_ent = Entry(frame)
+ethiopian_year_ent.grid(row = 2, column = 14, sticky = W)
+ethiopian_bttn = Button(frame, text = "Calculate", command = ethiopian_converter)
+ethiopian_bttn.grid(row = 3, column = 12, columnspan = 3, sticky = W)
+
+# Egyptian Calendar
+egyptian_lbl = Label(frame, text = "Egyptian Calendar")
+egyptian_lbl.grid(row = 5, column = 0, columnspan = 3, sticky = W)
+egyptian_day_lbl = Label(frame, text = "Day")
+egyptian_day_lbl.grid(row = 6, column = 0, sticky = W)
+egyptian_day_ent = Entry(frame)
+egyptian_day_ent.grid(row = 7, column = 0, sticky = W)
+egyptian_month_lbl = Label(frame, text = "Month")
+egyptian_month_lbl.grid(row = 6, column = 1, sticky = W)
+egyptian_month_ent = Entry(frame)
+egyptian_month_ent.grid(row = 7, column = 1, sticky = W)
+egyptian_year_lbl = Label(frame, text = "Year")
+egyptian_year_lbl.grid(row = 6, column = 2, sticky = W)
+egyptian_year_ent = Entry(frame)
+egyptian_year_ent.grid(row = 7, column = 2, sticky = W)
+egyptian_bttn = Button(frame, text = "Calculate", command = egyptian_converter)
+egyptian_bttn.grid(row = 8, column = 0, columnspan = 3, sticky = W)
+
+# Armenian Calendar
+armenian_lbl = Label(frame, text = "Armenian Calendar")
+armenian_lbl.grid(row = 5, column = 3, columnspan = 3, sticky = W)
+armenian_day_lbl = Label(frame, text = "Day")
+armenian_day_lbl.grid(row = 6, column = 3, sticky = W)
+armenian_day_ent = Entry(frame)
+armenian_day_ent.grid(row = 7, column = 3, sticky = W)
+armenian_month_lbl = Label(frame, text = "Month")
+armenian_month_lbl.grid(row = 6, column = 4, sticky = W)
+armenian_month_ent = Entry(frame)
+armenian_month_ent.grid(row = 7, column = 4, sticky = W)
+armenian_year_lbl = Label(frame, text = "Year")
+armenian_year_lbl.grid(row = 6, column = 5, sticky = W)
+armenian_year_ent = Entry(frame)
+armenian_year_ent.grid(row = 7, column = 5, sticky = W)
+armenian_bttn = Button(frame, text = "Calculate", command = armenian_converter)
+armenian_bttn.grid(row = 8, column = 3, columnspan = 3, sticky = W)
+
+# Lunar Hijri Calendar
+lunar_hijri_lbl = Label(frame, text = "Lunar Hijri (Islamic) Calendar")
+lunar_hijri_lbl.grid(row = 5, column = 6, columnspan = 3, sticky = W)
+lunar_hijri_day_lbl = Label(frame, text = "Day")
+lunar_hijri_day_lbl.grid(row = 6, column = 6, sticky = W)
+lunar_hijri_day_ent = Entry(frame)
+lunar_hijri_day_ent.grid(row = 7, column = 6, sticky = W)
+lunar_hijri_month_lbl = Label(frame, text = "Month")
+lunar_hijri_month_lbl.grid(row = 6, column = 7, sticky = W)
+lunar_hijri_month_ent = Entry(frame)
+lunar_hijri_month_ent.grid(row = 7, column = 7, sticky = W)
+lunar_hijri_year_lbl = Label(frame, text = "Year")
+lunar_hijri_year_lbl.grid(row = 6, column = 8, sticky = W)
+lunar_hijri_year_ent = Entry(frame)
+lunar_hijri_year_ent.grid(row = 7, column = 8, sticky = W)
+lunar_hijri_bttn = Button(frame, text = "Calculate", command = lunar_hijri_converter)
+lunar_hijri_bttn.grid(row = 8, column = 6, columnspan = 3, sticky = W)
+
+# Solar Hijir Calendar
+solar_hijri_lbl = Label(frame, text = "Solar Hijri Calendar")
+solar_hijri_lbl.grid(row = 5, column = 9, columnspan = 3, sticky = W)
+solar_hijri_day_lbl = Label(frame, text = "Day")
+solar_hijri_day_lbl.grid(row = 6, column = 9, sticky = W)
+solar_hijri_day_ent = Entry(frame)
+solar_hijri_day_ent.grid(row = 7, column = 9, sticky = W)
+solar_hijri_month_lbl = Label(frame, text = "Month")
+solar_hijri_month_lbl.grid(row = 6, column = 10, sticky = W)
+solar_hijri_month_ent = Entry(frame)
+solar_hijri_month_ent.grid(row = 7, column = 10, sticky = W)
+solar_hijri_year_lbl = Label(frame, text = "Year")
+solar_hijri_year_lbl.grid(row = 6, column = 11, sticky = W)
+solar_hijri_year_ent = Entry(frame)
+solar_hijri_year_ent.grid(row = 7, column = 11, sticky = W)
+solar_hijri_bttn = Button(frame, text = "Calculate", command = solar_hijri_converter)
+solar_hijri_bttn.grid(row = 8, column = 9, columnspan = 3, sticky = W)
+
+# Birashk's calendar
+birashk_lbl = Label(frame, text = "Ahmad Birashk's Calendar")
+birashk_lbl.grid(row = 5, column = 12, columnspan = 3, sticky = W)
+birashk_day_lbl = Label(frame, text = "Day")
+birashk_day_lbl.grid(row = 6, column = 12, sticky = W)
+birashk_day_ent = Entry(frame)
+birashk_day_ent.grid(row = 7, column = 12, sticky = W)
+birashk_month_lbl = Label(frame, text = "Month")
+birashk_month_lbl.grid(row = 6, column = 13, sticky = W)
+birashk_month_ent = Entry(frame)
+birashk_month_ent.grid(row = 7, column = 13, sticky = W)
+birashk_year_lbl = Label(frame, text = "Year")
+birashk_year_lbl.grid(row = 6, column = 14, sticky = W)
+birashk_year_ent = Entry(frame)
+birashk_year_ent.grid(row = 7, column = 14, sticky = W)
+birashk_bttn = Button(frame, text = "Calculate", command = birashk_converter)
+birashk_bttn.grid(row = 8, column = 12, columnspan = 3, sticky = W)
+
+# Assyrian calendar
+assyrian_lbl = Label(frame, text = "Modern Assyrian Calendar")
+assyrian_lbl.grid(row = 10, column = 0, columnspan = 3, sticky = W)
+assyrian_day_lbl = Label(frame, text = "Day")
+assyrian_day_lbl.grid(row = 11, column = 0, sticky = W)
+assyrian_day_ent = Entry(frame)
+assyrian_day_ent.grid(row = 12, column = 0, sticky = W)
+assyrian_month_lbl = Label(frame, text = "Month")
+assyrian_month_lbl.grid(row = 11, column = 1, sticky = W)
+assyrian_month_ent = Entry(frame)
+assyrian_month_ent.grid(row = 12, column = 1, sticky = W)
+assyrian_year_lbl = Label(frame, text = "Year")
+assyrian_year_lbl.grid(row = 11, column = 2, sticky = W)
+assyrian_year_ent = Entry(frame)
+assyrian_year_ent.grid(row = 12, column = 2, sticky = W)
+assyrian_bttn = Button(frame, text = "Calculate", command = assyrian_converter)
+assyrian_bttn.grid(row = 13, column = 0, columnspan = 3, sticky = W)
+
+# Babylonian Calendar
+babylonian_lbl = Label(frame, text = "Babylonian Calendar")
+babylonian_lbl.grid(row = 10, column = 3, columnspan = 3, sticky = W)
+babylonian_day_lbl = Label(frame, text = "Day")
+babylonian_day_lbl.grid(row = 11, column = 3, sticky = W)
+babylonian_day_ent = Entry(frame)
+babylonian_day_ent.grid(row = 12, column = 3, sticky = W)
+babylonian_month_lbl = Label(frame, text = "Month")
+babylonian_month_lbl.grid(row = 11, column = 4, sticky = W)
+babylonian_month_ent = Entry(frame)
+babylonian_month_ent.grid(row = 12, column = 4, sticky = W)
+babylonian_year_lbl = Label(frame, text = "Year")
+babylonian_year_lbl.grid(row = 11, column = 5, sticky = W)
+babylonian_year_ent = Entry(frame)
+babylonian_year_ent.grid(row = 12, column = 5, sticky = W)
+babylonian_bttn = Button(frame, text = "Calculate", command = babylonian_converter)
+babylonian_bttn.grid(row = 13, column = 3, columnspan = 3, sticky = W)
+
+# Hebrew (Jewish) Calendar
+hebrew_lbl = Label(frame, text = "Jewish Hebrew Calendar")
+hebrew_lbl.grid(row = 10, column = 6, columnspan = 3, sticky = W)
+hebrew_day_lbl = Label(frame, text = "Day")
+hebrew_day_lbl.grid(row = 11, column = 6, sticky = W)
+hebrew_day_ent = Entry(frame)
+hebrew_day_ent.grid(row = 12, column = 6, sticky = W)
+hebrew_month_lbl = Label(frame, text = "Month")
+hebrew_month_lbl.grid(row = 11, column = 7, sticky = W)
+hebrew_month_ent = Entry(frame)
+hebrew_month_ent.grid(row = 12, column = 7, sticky = W)
+hebrew_year_lbl = Label(frame, text = "Year")
+hebrew_year_lbl.grid(row = 11, column = 8, sticky = W)
+hebrew_year_ent = Entry(frame)
+hebrew_year_ent.grid(row = 12, column = 8, sticky = W)
+hebrew_bttn = Button(frame, text = "Calculate", command = hebrew_converter)
+hebrew_bttn.grid(row = 13, column = 6, columnspan = 3, sticky = W)
+
+# Samaritan Calendar
+samaritan_lbl = Label(frame, text = "Samaritan Hebrew Calendar (estimated)")
+samaritan_lbl.grid(row = 10, column = 9, columnspan = 3, sticky = W)
+samaritan_day_lbl = Label(frame, text = "Day")
+samaritan_day_lbl.grid(row = 11, column = 9, sticky = W)
+samaritan_day_ent = Entry(frame)
+samaritan_day_ent.grid(row = 12, column = 9, sticky = W)
+samaritan_month_lbl = Label(frame, text = "Month")
+samaritan_month_lbl.grid(row = 11, column = 10, sticky = W)
+samaritan_month_ent = Entry(frame)
+samaritan_month_ent.grid(row = 12, column = 10, sticky = W)
+samaritan_year_lbl = Label(frame, text = "Year")
+samaritan_year_lbl.grid(row = 11, column = 11, sticky = W)
+samaritan_year_ent = Entry(frame)
+samaritan_year_ent.grid(row = 12, column = 11, sticky = W)
+samaritan_bttn = Button(frame, text = "Calculate", command = samaritan_converter)
+samaritan_bttn.grid(row = 13, column = 9, columnspan = 3, sticky = W)
+
+# Kurdish Calendar
+kurdish_lbl = Label(frame, text = "Kurdish Calendar")
+kurdish_lbl.grid(row = 10, column = 12, columnspan = 3, sticky = W)
+kurdish_day_lbl = Label(frame, text = "Day")
+kurdish_day_lbl.grid(row = 11, column = 12, sticky = W)
+kurdish_day_ent = Entry(frame)
+kurdish_day_ent.grid(row = 12, column = 12, sticky = W)
+kurdish_month_lbl = Label(frame, text = "Month")
+kurdish_month_ent = Entry(frame)
+kurdish_month_ent.grid(row = 12, column = 13, sticky = W)
+kurdish_year_lbl = Label(frame, text = "Year")
+kurdish_year_lbl.grid(row = 11, column = 14, sticky = W)
+kurdish_year_ent = Entry(frame)
+kurdish_year_ent.grid(row = 12, column = 14, sticky = W)
+kurdish_bttn = Button(frame, text = "Calculate", command = kurdish_converter)
+kurdish_bttn.grid(row = 13, column = 12, columnspan = 3, sticky = W)
+
+# True Julian Day
+day_julian_lbl = Label(frame, text = "True Julian Day")
+day_julian_lbl.grid(row = 14, column = 0, sticky = W)
+day_julian_ent = Entry(frame)
+day_julian_ent.grid(row = 15, column = 0, sticky = W)
+day_julian_bttn = Button(frame, text = "Calculate", command = true_day_julian_converter)
+day_julian_bttn.grid(row = 16, column = 0, sticky = W)
+
+# Reduced Julian Day
+red_day_julian_lbl = Label(frame, text = "Reduced Julian Day")
+red_day_julian_lbl.grid(row = 14, column = 1, sticky = W)
+red_day_julian_ent = Entry(frame)
+red_day_julian_ent.grid(row = 15, column = 1, sticky = W)
+red_day_julian_bttn = Button(frame, text = "Calculate", command = red_day_julian_converter)
+red_day_julian_bttn.grid(row = 16, column = 1, sticky	= W)
+
+# Modified Julian Day
+mod_day_julian_lbl = Label(frame, text = "Modified Julian Day")
+mod_day_julian_lbl.grid(row = 14, column = 2, sticky = W)
+mod_day_julian_ent = Entry(frame)
+mod_day_julian_ent.grid(row = 15, column = 2, sticky = W)
+mod_day_julian_bttn = Button(frame, text = "Calculate", command = mod_day_julian_converter)
+mod_day_julian_bttn.grid(row = 16, column = 2, sticky	= W)
+
+# Truncated Julian Day                                                                                      
+trun_day_julian_lbl = Label(frame, text = "Truncated Julian Day")
+trun_day_julian_lbl.grid(row = 14, column =3, sticky = W)
+trun_day_julian_ent = Entry(frame)
+trun_day_julian_ent.grid(row = 15, column = 3, sticky = W)
+trun_day_julian_bttn = Button(frame, text = "Calculate", command = trun_day_julian_converter)
+trun_day_julian_bttn.grid(row = 16, column = 3, sticky = W)
+
+# Dublin Julian Day                                                                                         
+dub_day_julian_lbl = Label(frame, text = "Dublin Julian Day")
+dub_day_julian_lbl.grid(row = 14, column = 4, sticky = W)
+dub_day_julian_ent = Entry(frame)
+dub_day_julian_ent.grid(row = 15, column = 4, sticky = W)
+dub_day_julian_bttn = Button(frame, text = "Calculate", command = dub_day_julian_converter)
+dub_day_julian_bttn.grid(row = 16, column = 4, sticky = W)
+
+# CNES Julian Day                                                                                           
+cnes_lbl = Label(frame, text = "CNES Julian Day")
+cnes_lbl.grid(row = 14, column = 5, sticky = W)
+cnes_ent = Entry(frame)
+cnes_ent.grid(row = 15, column = 5, sticky = W)
+cnes_bttn = Button(frame, text = "Calculate", command = cnes_converter)
+cnes_bttn.grid(row = 16, column = 5, sticky	= W)
+
+# CCSDS Julian Day                                                                                       
+ccsds_lbl = Label(frame, text = "CCSDS Julian Day")
+ccsds_lbl.grid(row = 14, column = 6, sticky = W)
+ccsds_ent = Entry(frame)
+ccsds_ent.grid(row = 15, column = 6, sticky = W)
+ccsds_bttn = Button(frame, text = "Calculate", command = ccsds_converter)
+ccsds_bttn.grid(row = 16, column = 6, sticky	= W)
+
+# Lilian Day                                                                                           
+day_lilian_lbl = Label(frame, text = "Lilian Day")
+day_lilian_lbl.grid(row = 14, column = 7, sticky = W)
+day_lilian_ent = Entry(frame)
+day_lilian_ent.grid(row = 15, column = 7, sticky = W)
+day_lilian_bttn = Button(frame, text = "Calculate", command = day_lilian_converter)
+day_lilian_bttn.grid(row = 16, column = 7, sticky = W)
+
+# Rata Die
+rata_die_lbl = Label(frame, text = "Rata Die")
+rata_die_lbl.grid(row = 14, column = 8, sticky = W)
+rata_die_ent = Entry(frame)
+rata_die_ent.grid(row = 15, column = 8, sticky = W)
+rata_die_bttn = Button(frame, text = "Calculate", command = rata_die_converter)
+rata_die_bttn.grid(row = 16, column = 8, sticky = W)
+
+# Unix time
+unix_time_lbl = Label(frame, text = "Unix time")
+unix_time_lbl.grid(row = 14, column = 9, sticky = W)
+unix_time_ent = Entry(frame)
+unix_time_ent.grid(row = 15, column =9, sticky = W)
+unix_time_bttn = Button(frame, text = "Calculate", command = unix_time_converter)
+unix_time_bttn.grid(row = 16, column = 9, sticky	= W)
+
+# Gangale sol
+sol_gangale_lbl = Label(frame, text = "Consecutive Martian sol")
+sol_gangale_lbl.grid(row = 14, column = 10, sticky = W)
+sol_gangale_ent = Entry(frame)
+sol_gangale_ent.grid(row = 15, column = 10, sticky = W)
+sol_gangale_bttn = Button(frame, text = "Calculate", command = sol_gangale_converter)
+sol_gangale_bttn.grid(row = 16, column = 10, sticky = W)
+
+# LOP day
+lop_lbl = Label(frame, text = "LOP Julian day")
+lop_lbl.grid(row = 14, column = 11, sticky = W)
+lop_ent = Entry(frame)
+lop_ent.grid(row = 15, column = 11, sticky = W)
+lop_bttn = Button(frame, text = "Calculate", command = lop_converter)
+lop_bttn.grid(row = 16, column = 11, sticky = W)
+
+# Amazigh calendar
+amazigh_lbl = Label(frame, text = "Amazigh calendar")
+amazigh_lbl.grid(row = 18, column = 0, columnspan = 3, sticky = W)
+amazigh_day_lbl = Label(frame, text = "Day")
+amazigh_day_lbl.grid(row = 19, column = 0, sticky = W)
+amazigh_day_ent = Entry(frame)
+amazigh_day_ent.grid(row = 20, column = 0, sticky = W)
+amazigh_month_lbl = Label(frame, text = "Month")
+amazigh_month_lbl.grid(row = 19, column = 1, sticky = W)
+amazigh_month_ent = Entry(frame)
+amazigh_month_ent.grid(row = 20, column = 1, sticky = W)
+amazigh_year_lbl = Label(frame, text = "Year")
+amazigh_year_lbl.grid(row = 19, column = 2, sticky = W)
+amazigh_year_ent = Entry(frame)
+amazigh_year_ent.grid(row = 20, column = 2, sticky = W)
+amazigh_bttn = Button(frame, text = "Calculate", command = amazigh_converter)
+amazigh_bttn.grid(row = 21, column = 0, sticky = W)
+
+# Rumi calendar
+rumi_n_lbl = Label(frame, text = "Rumi calendar (non-skipping)")
+rumi_n_lbl.grid(row = 18, column = 3, columnspan = 3, sticky = W)
+rumi_n_day_lbl = Label(frame, text = "Day")
+rumi_n_day_lbl.grid(row = 19, column = 3, sticky = W)
+rumi_n_day_ent = Entry(frame)
+rumi_n_day_ent.grid(row = 20, column = 3, sticky = W)
+rumi_n_month_lbl = Label(frame, text = "Month")
+rumi_n_month_lbl.grid(row = 19, column = 4, sticky = W)
+rumi_n_month_ent = Entry(frame)
+rumi_n_month_ent.grid(row = 20, column = 4, sticky = W)
+rumi_n_year_lbl = Label(frame, text = "Year")
+rumi_n_year_lbl.grid(row = 19, column = 5, sticky = W)
+rumi_n_year_ent = Entry(frame)
+rumi_n_year_ent.grid(row = 20, column = 5, sticky = W)
+rumi_n_bttn = Button(frame, text = "Calculate", command = rumi_n_converter)
+rumi_n_bttn.grid(row = 21, column = 3, columnspan = 3, sticky = W)
+
+# Revised Gregorian calendar
+rev_gregorian_lbl = Label(frame, text = "Revised Gregorian calendar")
+rev_gregorian_lbl.grid(row = 18, column = 6, columnspan = 3, sticky = W)
+rev_gregorian_day_lbl = Label(frame, text = "Day")
+rev_gregorian_day_lbl.grid(row = 19, column = 6, sticky = W)
+rev_gregorian_day_ent = Entry(frame)
+rev_gregorian_day_ent.grid(row = 20, column = 6, sticky = W)
+rev_gregorian_month_lbl = Label(frame, text = "Months")
+rev_gregorian_month_lbl.grid(row = 19, column = 7, sticky = W)
+rev_gregorian_month_ent = Entry(frame)
+rev_gregorian_month_ent.grid(row = 20, column = 7, sticky = W)
+rev_gregorian_year_lbl = Label(frame, text = "Year")
+rev_gregorian_year_lbl.grid(row = 19, column = 8, sticky = W)
+rev_gregorian_year_ent = Entry(frame)
+rev_gregorian_year_ent.grid(row = 20, column = 8, sticky = W)
+rev_gregorian_bttn = Button(frame, text = "Calculate", command = rev_gregorian_converter)
+rev_gregorian_bttn.grid(row = 21, column = 6, columnspan = 3, sticky = W)
+
+# Parker calendar
+parker_lbl = Label(frame, text = "Parker calendar")
+parker_lbl.grid(row = 18, column = 9, columnspan = 3, sticky = W)
+parker_day_lbl = Label(frame, text = "Day")
+parker_day_lbl.grid(row = 19, column = 9, sticky = W)
+parker_day_ent = Entry(frame)
+parker_day_ent.grid(row = 20, column = 9, sticky = W)
+parker_month_lbl = Label(frame, text = "Month")
+parker_month_lbl.grid(row = 19, column = 10, sticky = W)
+parker_month_ent = Entry(frame)
+parker_month_ent.grid(row = 20, column = 10, sticky = W)
+parker_year_lbl = Label(frame, text = "Year")
+parker_year_lbl.grid(row = 19, column = 11, sticky = W)
+parker_year_ent = Entry(frame)
+parker_year_ent.grid(row = 20, column = 11, sticky = W)
+parker_bttn = Button(frame, text = "Calculate", command = parker_converter)
+parker_bttn.grid(row = 21, column = 9, columnspan = 3, sticky = W)
+
+# Goucher-Parker calendar
+goucher_lbl = Label(frame, text = "Goucher-Parker calendar")
+goucher_lbl.grid(row = 18, column = 12, columnspan = 3, sticky = W)
+goucher_day_lbl = Label(frame, text = "Day")
+goucher_day_lbl.grid(row = 19, column = 12, sticky = W)
+goucher_day_ent = Entry(frame)
+goucher_day_ent.grid(row = 20, column = 12, sticky = W)
+goucher_month_lbl = Label(frame, text = "Month")
+goucher_month_lbl.grid(row = 19, column = 13, sticky = W)
+goucher_month_ent = Entry(frame)
+goucher_month_ent.grid(row = 20, column = 13, sticky = W)
+goucher_year_lbl = Label(frame, text = "Year")
+goucher_year_lbl.grid(row = 19, column = 14, sticky = W)
+goucher_year_ent = Entry(frame)
+goucher_year_ent.grid(row = 20, column = 14, sticky = W)
+goucher_bttn = Button(frame, text = "Calculate", command = goucher_converter)
+goucher_bttn.grid(row = 21, column =12, columnspan = 3)
+
+# Serbian church calendar
+serbian_church_lbl = Label(frame, text = "Serbian church calendar")
+serbian_church_lbl.grid(row = 23, column = 0, columnspan = 3, sticky = W)
+serbian_church_day_lbl = Label(frame, text = "Day")
+serbian_church_day_lbl.grid(row = 24, column = 0, sticky = W)
+serbian_church_day_ent = Entry(frame)
+serbian_church_day_ent.grid(row = 25, column = 0, sticky = W)
+serbian_church_month_lbl = Label(frame, text = "Month")
+serbian_church_month_lbl.grid(row = 24, column = 1, sticky = W)
+serbian_church_month_ent = Entry(frame)
+serbian_church_month_ent.grid(row = 25, column = 1, sticky = W)
+serbian_church_year_lbl = Label(frame, text = "Year")
+serbian_church_year_lbl.grid(row = 24, column = 2, sticky = W)
+serbian_church_year_ent = Entry(frame)
+serbian_church_year_ent.grid(row = 25, column = 2, sticky = W)
+serbian_church_bttn = Button(frame, text = "Calculate", command = serbian_church_converter)
+serbian_church_bttn.grid(row = 26, column = 0, columnspan = 3, sticky = W)
+
+# Revised Julian calendar
+rev_julian_lbl = Label(frame, text = "Revised Julian calendar")
+rev_julian_lbl.grid(row = 23, column = 3, columnspan = 3, sticky = W)
+rev_julian_day_lbl = Label(frame, text = "Day")
+rev_julian_day_lbl.grid(row = 24, column = 3, sticky = W)
+rev_julian_day_ent = Entry(frame)
+rev_julian_day_ent.grid(row = 25, column = 3, sticky = W)
+rev_julian_month_lbl = Label(frame, text = "Month")
+rev_julian_month_lbl.grid(row = 24, column = 4, sticky = W)
+rev_julian_month_ent = Entry(frame)
+rev_julian_month_ent.grid(row = 25, column = 4, sticky = W)
+rev_julian_year_lbl = Label(frame, text = "Year")
+rev_julian_year_lbl.grid(row = 24, column = 5, sticky = W)
+rev_julian_year_ent = Entry(frame)
+rev_julian_year_ent.grid(row = 25, column = 5, sticky = W)
+rev_julian_bttn = Button(frame, text = "Calculate", command = rev_julian_converter)
+rev_julian_bttn.grid(row = 26, column = 3, sticky = W)
+
+# World calendar
+world_lbl = Label(frame, text = "World Calendar")
+world_lbl.grid(row = 23, column = 6, columnspan = 3, sticky = W)
+world_day_lbl = Label(frame, text = "Day")
+world_day_lbl.grid(row = 24, column = 6, sticky = W)
+world_day_ent = Entry(frame)
+world_day_ent.grid(row = 25, column = 6, sticky = W)
+world_month_lbl = Label(frame, text = "Month")
+world_month_lbl.grid(row = 24, column = 7, sticky = W)
+world_month_ent = Entry(frame)
+world_month_ent.grid(row = 25, column = 7, sticky = W)
+world_year_lbl = Label(frame, text = "Year")
+world_year_lbl.grid(row = 24, column = 8, sticky = W)
+world_year_ent = Entry(frame)
+world_year_ent.grid(row = 25, column = 8, sticky = W)
+world_bttn = Button(frame, text = "Calculate", command = world_converter)
+world_bttn.grid(row = 26, column = 6, columnspan = 3, sticky = W)
+
+# International Fixed Calendar
+ifc_lbl = Label(frame, text = "International Fixed Calendar")
+ifc_lbl.grid(row = 23, column = 9, columnspan = 3, sticky = W)
+ifc_day_lbl = Label(frame, text = "Day")
+ifc_day_lbl.grid(row = 24, column = 9, sticky = W)
+ifc_day_ent = Entry(frame)
+ifc_day_ent.grid(row = 25, column = 9, sticky = W)
+ifc_month_lbl = Label(frame, text = "Month")
+ifc_month_lbl.grid(row = 24, column = 10, sticky = W)
+ifc_month_ent = Entry(frame)
+ifc_month_ent.grid(row = 25, column = 10, sticky = W)
+ifc_year_lbl = Label(frame, text = "Year")
+ifc_year_lbl.grid(row = 24, column = 11, sticky = W)
+ifc_year_ent = Entry(frame)
+ifc_year_ent.grid(row = 25, column = 11, sticky = W)
+ifc_bttn = Button(frame, text = "Calculate", command = ifc_converter)
+ifc_bttn.grid(row = 26, column = 9, columnspan = 3, sticky = W)
+
+# Pax calendar
+pax_lbl = Label(frame, text = "Pax calendar")
+pax_lbl.grid(row = 23, column = 12, columnspan = 3, sticky = W)
+pax_day_lbl = Label(frame, text = "Day")
+pax_day_lbl.grid(row = 24, column = 12, sticky = W)
+pax_day_ent = Entry(frame)
+pax_day_ent.grid(row = 25, column = 12, sticky = W)
+pax_month_lbl = Label(frame, text = "Month")
+pax_month_lbl.grid(row = 24, column = 13, sticky = W)
+pax_month_ent = Entry(frame)
+pax_month_ent.grid(row = 25, column = 13, sticky = W)
+pax_year_lbl = Label(frame, text = "Year")
+pax_year_lbl.grid(row = 24, column = 14, sticky = W)
+pax_year_ent = Entry(frame)
+pax_year_ent.grid(row = 25, column = 14, sticky = W)
+pax_bttn = Button(frame, text = "Calculate", command = pax_converter)
+pax_bttn.grid(row = 26, column = 12, sticky = W)
+
+# Gorman calendar
+gorman_lbl = Label(frame, text = "Gorman calendar")
+gorman_lbl.grid(row = 28, column = 0, columnspan = 3, sticky = W)
+gorman_day_lbl = Label(frame, text = "Day")
+gorman_day_lbl.grid(row = 29, column = 0, sticky = W)
+gorman_day_ent = Entry(frame)
+gorman_day_ent.grid(row = 30, column = 0, sticky = W)
+gorman_month_lbl = Label(frame, text = "Month")
+gorman_month_lbl.grid(row = 29, column = 1, sticky = W)
+gorman_month_ent = Entry(frame)
+gorman_month_ent.grid(row = 30, column = 1, sticky = W)
+gorman_year_lbl = Label(frame, text = "Year")
+gorman_year_lbl.grid(row = 29, column = 2, sticky = W)
+gorman_year_ent = Entry(frame)
+gorman_year_ent.grid(row = 30, column = 2, sticky = W)
+gorman_bttn = Button(frame, text = "Calculate", command = gorman_converter)
+gorman_bttn.grid(row = 31, column = 0, columnspan = 3, sticky = W)
+
+# Pax 2020 calendar
+pax2_lbl = Label(frame, text = "Pax 2020 calendar")
+pax2_lbl.grid(row = 28, column = 3, columnspan = 3, sticky = W)
+pax2_day_lbl = Label(frame, text = "Day")
+pax2_day_lbl.grid(row = 29, column = 3, sticky = W)
+pax2_day_ent = Entry(frame)
+pax2_day_ent.grid(row = 30, column = 3, sticky = W)
+pax2_month_lbl = Label(frame, text = "Month")
+pax2_month_lbl.grid(row = 29, column = 4, sticky = W)
+pax2_month_ent = Entry(frame)
+pax2_month_ent.grid(row = 30, column = 4, sticky = W)
+pax2_year_lbl = Label(frame, text = "Year")
+pax2_year_lbl.grid(row = 29, column = 5, sticky = W)
+pax2_year_ent = Entry(frame)
+pax2_year_ent.grid(row = 30, column = 5, sticky = W)
+pax2_bttn = Button(frame, text = "Calculate", command = pax2_converter)
+pax2_bttn.grid(row = 31, column = 3, columnspan = 3, sticky = W)
+
+# Positivist calendar
+positivist_lbl = Label(frame, text = "Positivist calendar")
+positivist_lbl.grid(row = 28, column = 6, columnspan = 3, sticky = W)
+positivist_day_lbl = Label(frame, text = "Day")
+positivist_day_lbl.grid(row = 29, column = 6, sticky = W)
+positivist_day_ent = Entry(frame)
+positivist_day_ent.grid(row = 30, column = 6, sticky = W)
+positivist_month_lbl = Label(frame, text = "Month")
+positivist_month_lbl.grid(row = 29, column = 7, sticky = W)
+positivist_month_ent = Entry(frame)
+positivist_month_ent.grid(row = 30, column = 7, sticky = W)
+positivist_year_lbl = Label(frame, text = "Year")
+positivist_year_lbl.grid(row = 29, column = 8, sticky = W)
+positivist_year_ent = Entry(frame)
+positivist_year_ent.grid(row = 30, column = 8, sticky = W)
+positivist_bttn = Button(frame, text = "Calculate", command = positivist_converter)
+positivist_bttn.grid(row = 31, column = 6, columnspan = 3, sticky = W)
+
+# Astronomical Gregorian calendar
+ast_gregorian_lbl = Label(frame, text = "Astronomical Gregorian calendar")
+ast_gregorian_lbl.grid(row = 28, column = 9, columnspan = 3, sticky = W)
+ast_gregorian_day_lbl = Label(frame, text = "Day")
+ast_gregorian_day_lbl.grid(row = 29, column = 9, sticky = W)
+ast_gregorian_day_ent = Entry(frame)
+ast_gregorian_day_ent.grid(row = 30, column = 9, sticky = W)
+ast_gregorian_month_lbl = Label(frame, text = "Month")
+ast_gregorian_month_lbl.grid(row = 29, column = 10, sticky = W)
+ast_gregorian_month_ent = Entry(frame)
+ast_gregorian_month_ent.grid(row = 30, column = 10, sticky = W)
+ast_gregorian_year_lbl = Label(frame, text = "Year")
+ast_gregorian_year_lbl.grid(row = 29, column = 11, sticky = W)
+ast_gregorian_year_ent = Entry(frame)
+ast_gregorian_year_ent.grid(row = 30, column = 11, sticky = W)
+ast_gregorian_bttn = Button(frame, text = "Calculate", command = ast_gregorian_converter)
+ast_gregorian_bttn.grid(row = 31, column = 9, columnspan = 3, sticky = W)
+
+# Nex calendar
+nex_lbl = Label(frame, text = "Nex calendar")
+nex_lbl.grid(row = 28, column = 12, columnspan = 3, sticky = W)
+nex_day_lbl = Label(frame, text = "Day")
+nex_day_lbl.grid(row = 29, column = 12, sticky = W)
+nex_day_ent = Entry(frame)
+nex_day_ent.grid(row = 30, column = 12, sticky = W)
+nex_month_lbl = Label(frame, text = "Month")
+nex_month_lbl.grid(row = 29, column = 13, sticky = W)
+nex_month_ent = Entry(frame)
+nex_month_ent.grid(row = 30, column = 13, sticky = W)
+nex_year_lbl = Label(frame, text = "Year")
+nex_year_lbl.grid(row = 29, column = 14, sticky = W)
+nex_year_ent = Entry(frame)
+nex_year_ent.grid(row = 30, column = 14, sticky = W)
+nex_bttn = Button(frame, text = "Calculate", command = nex_converter)
+nex_bttn.grid(row = 31, column = 12, columnspan = 3, sticky = W)
+
+# Holocene era                                                                                             
+holocene_lbl = Label(frame, text = "Holocene era")
+holocene_lbl.grid(row = 33, column = 0, columnspan = 3, sticky = W)
+holocene_day_lbl = Label(frame, text = "Day")
+holocene_day_lbl.grid(row = 34, column = 0, sticky = W)
+holocene_day_ent = Entry(frame)
+holocene_day_ent.grid(row = 35, column = 0, sticky = W)
+holocene_month_lbl = Label(frame, text = "Month")
+holocene_month_lbl.grid(row = 34, column = 1, sticky = W)
+holocene_month_ent = Entry(frame)
+holocene_month_ent.grid(row = 35, column = 1, sticky = W)
+holocene_year_lbl = Label(frame, text = "Year")
+holocene_year_lbl.grid(row = 34, column = 2, sticky = W)
+holocene_year_ent = Entry(frame)
+holocene_year_ent.grid(row = 35, column = 2, sticky = W)
+holocene_bttn = Button(frame, text = "Calculate", command = nex_converter)
+holocene_bttn.grid(row = 36, column = 0, columnspan = 3, sticky = W)
+
+
+
+
 root.mainloop()
