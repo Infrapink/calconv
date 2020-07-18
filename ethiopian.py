@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Ethiopian Calendar to a Julian Day
+# Convert between the Ethiopian Calendar and Julian Day
 #
 
 import months

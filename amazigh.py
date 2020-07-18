@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Amazigh Calendar to a Julian Day
+# Convert between the Amazigh Calendar and Julian Day
 #
 
 import months

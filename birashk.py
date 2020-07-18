@@ -1,5 +1,9 @@
 #!/usr/bin/python
 
+#
+# Convert between Julian days and Ahmad Birashk's calendar
+#
+
 import months
 import leap_years_birashk
 

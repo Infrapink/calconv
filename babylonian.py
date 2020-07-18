@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
-# # Convert a date in the Babylonian Calendar to a Julian Day
+#
+# Convert between the Babylonian Calendar and Julian Day
 #
 
 import months

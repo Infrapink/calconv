@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Armenian Calendar to a Julian Day
+# Convert between the Armenian Calendar and Julian Day
 #
 
 import months

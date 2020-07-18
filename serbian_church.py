@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Serbian church calendar to a Julian day
+# Convert between the Serbian church calendar and Julian day
 #
 
 import months

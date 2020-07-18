@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Assyrian Calendar to a Julian Day
+# Convert between the Assyrian Calendar and Julian Day
 #
 
 import months

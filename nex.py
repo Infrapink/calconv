@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the World Calendar to a Julian Day
+# Convert between the Nex Calendar and Julian Day
 #
 
 import months

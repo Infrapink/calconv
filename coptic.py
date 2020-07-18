@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Coptic Calendar to a Julian Day
+# Convert between the Coptic Calendar and Julian Day
+#
 
 import months
 

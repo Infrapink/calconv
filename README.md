@@ -19,7 +19,7 @@ Dates are entered in the indicated text boxes in the order Day, Month, Year (exc
 Julian Day:
 * This is a simple number.
 
-Julian, Revised Julian, Gregorian, Revised Gregorian, Astronomical Gregorian, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, and Gorman Calendars:
+Julian, Revised Julian, Gregorian, Revised Gregorian, Astronomical Gregorian, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, and Holocene Calendars:
 * January
 * February
 * Gormanuary (Gorman calendar only)

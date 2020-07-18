@@ -499,7 +499,7 @@ def fromjd(jday):
 
     else:
         # negative dates
-        numbers = hebrew_calculations.calc(jday)
+        numbers = calc(jday)
         rosh = numbers[0]  # Julian Day on which the molad of Tishri falls
         mrosh = rosh
         molad = numbers[1] # moment of the molad of Tishri
@@ -510,7 +510,7 @@ def fromjd(jday):
 
         # looking good so far. now do it for next year
         kday = rosh + 390 # next year
-        next_numbers = hebrew_calculations.calc(kday)
+        next_numbers = calc(kday)
         next_rosh = next_numbers[0]
         next_mrosh = next_rosh
         next_molad = next_numbers[1]
