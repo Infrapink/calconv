@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Julian Calendar to a Julian Day
+# Convert between the Julian Calendar and Julian Day
 #
 
 import months

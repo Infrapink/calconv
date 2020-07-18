@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the World Calendar to a Julian Day
+# Convert between Pax 2020 and Julian Day
 #
 
 import months

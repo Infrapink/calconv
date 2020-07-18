@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Pax calendar to a Julian day
+# Convert between the Pax calendar and Julian day
 #
 
 import months

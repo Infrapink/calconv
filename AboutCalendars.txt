@@ -90,7 +90,7 @@ https://scienceworld.wolfram.com/astronomy/GregorianCalendar.html
 COPTIC CALENDAR
 ---------------
 
-The Coptic calendar is a descendent of the Ancient Egyptian calendar, which incorporates the Julian calendar's rule of a leap year every four years. Days begin at midnight. The epoch is Julian Day 1825028, which corresponds to 29 August 284 by the Julian calendar, the Year of Martyrs.
+The Coptic calendar is a descendent of the Ancient Egyptian calendar, which incorporates the Julian calendar's rule of a leap year every four years. Days begin at midnight. The epoch is Julian Day 1825028, which corresponds to 29 August 284 by the Julian calendar, the Year of Martyrs or the Diocletian era, named for the severe persecutions of Christians begun by Emperor Diocletian.
 
 The calendar consists of 12 months of 30 days plus five extra days (six in leap years). Days begin at midnight. It is a purely solar calendar that makes no effort to maintain synchronisation with the phases of the moon. The calendar is not used for civil purposes today, being only a liturgical calendar for the Coptic Orthodox Church.
 
@@ -268,7 +268,7 @@ https://www.the-samaritans.net/the-festival-of-sukkoth-tabernacles/
 KURDISH CALENDAR
 ----------------
 
-The Kurdish calendar is, naturally, the calendar of the Kurds. It is commonly used by Iraqi and Iranian Kurds, in Iraq due to their status as a protected minority and in Iran because the Kurdish calendar is functionally the same as the Iranian calendar, but its reference era is the Battle of Nineveh in 1233 BH; as such, the calendar epoch is Julian Day 1497976. It it little used in Turkey or Syria due to its association with Kurdish nationalism.
+The Kurdish calendar is, naturally, the calendar of the Kurds. It is commonly used by Iraqi and Iranian Kurds, in Iraq due to their status as a protected minority and in Iran because the Kurdish calendar is functionally the same as the Iranian calendar, but its reference era is the Battle of Nineveh in 1233 BH; as such, the calendar epoch is Julian Day 1497976. The Battle of Nineveh marked the end of Assyrian dominance of the Middle East and the ascendance of the Median Empire, from which the Kurds are descended. The calendar is little used in Turkey or Syria due to its association with Kurdish nationalism.
 
 https://en.wikipedia.org/wiki/Kurdish_calendar
 https://web.archive.org/web/20080222053000/http://www.kurdistanica.com/english/culture/ncharacters/calendar/calendar.html
@@ -534,6 +534,8 @@ PAX 2020
 
 The Pax 2020 calendar is completely unrelated to the 1920s Pax calendar. Pax 2020 was designed by a 9-year-old child who was being homeschooled during the 2020 AD Covid-19 lockdown. After noticing a subtle ambiguity in a maths problem, he read up on calendars on Wikipedia and realised he could design his own.
 
+Pax 2020 consists of 13 months. 12 of these have 28 days (exactly four weeks), and the last has 29 days in normal years or 30 in leap years; the creator suggests these last two days be holidays.
+
 https://bryanmmathers.com/?mailpoet_router&endpoint=view_in_browser&action=view&data=WzMsImJhYzE3YTBiOWYzYyIsMSwiNGEwNGEzIiwzLDFd
 https://bryanmmathers.com/pax-calendar/
 
@@ -568,3 +570,15 @@ NEX CALENDAR
 The Nex calendar is yet another proposed perennial calendar. In the Nex calendar, each year begins on Monday. The months have the same lengths as in the Gregorian calendar, except that February has 29 days each year and December had 30, except in leap years when December has 31 days. The 30th and 31st of December are both Sunday, and the last two days of August are both Saturday.
 
 http://nexcalendar.org/
+
+-----------------
+HOLOCENE CALENDAR
+-----------------
+
+The Holocene calendar was proposed by geologist Cesare Emiliani in 1993 AD (11993 HE, 1371 AH). It is a variant of the astronomical Gregorian calendar, differing only in its epoch. The Holocene calendar begins on Julian day (-1931366), which corresponds to 1 January 10001 BC, the approximate start of the Holocene geologic epoch. Humans first started to transition from hunting and gathering to agriculture in the early Holocene, and so this calendar allows all of human history to have a positive number. The calendar is closer to cultural neutrality than is the Gregorian. Any relatively recent date can be converted into the Holocene calendar simply by prepending a 1.
+
+https://en.wikipedia.org/wiki/Holocene_calendar
+https://www.youtube.com/watch?v=czgOWmtGVGs
+https://holocenecalendar.org/
+https://www.easytimeline.org/
+https://www.youtube.com/watch?v=aDnoTk5mOQc

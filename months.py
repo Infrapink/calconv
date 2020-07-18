@@ -590,7 +590,7 @@ PAX2_NORMAL = {"Initium": 28,
                "Follium": 28,
                "Nixcumumis": 28,
                "Pax": 28,
-               "Requiem": 1}
+               "Requiem": 29}
 
 PAX2_LEAP = {"Initium": 28,
              "Rutilante": 28,
@@ -604,4 +604,65 @@ PAX2_LEAP = {"Initium": 28,
              "Follium": 28,
              "Nixcumumis": 28,
              "Pax": 28,
-             "Requiem": 2}
+             "Requiem": 30}
+
+# POSITIVIST CALENDAR
+
+POSITIVIST_NORMAL = {"Moses": 28,
+                     "Homer": 28,
+                     "Aristotle": 28,
+                     "Archimedes": 28,
+                     "Caesar": 28,
+                     "St. Paul": 28,
+                     "Charlemagne": 28,
+                     "Dante": 28,
+                     "Gutenberg": 28,
+                     "Shakespeare": 28,
+                     "Descartes": 28,
+                     "Frederick II": 28,
+                     "Bichat": 28,
+                     "Festival of All the Dead": 1}
+
+POSITIVIST_LEAP = {"Moses": 28,
+                   "Homer": 28,
+                   "Aristotle": 28,
+                   "Archimedes": 28,
+                   "Caesar": 28,
+                   "St. Paul": 28,
+                   "Charlemagne": 28,
+                   "Dante": 28,
+                   "Gutenberg": 28,
+                   "Shakespeare": 28,
+                   "Descartes": 28,
+                   "Frederick II": 28,
+                   "Bichat": 28,
+                   "Festival of All the Dead": 1,
+                   "Festival of Holy Women": 1}
+
+# NEX CALENDAR
+
+NEX_NORMAL = {"January": 31,
+              "February": 29,
+              "March": 31,
+              "April": 30,
+              "May": 31,
+              "June": 30,
+              "July": 31,
+              "August": 31,
+              "September": 30,
+              "October": 31,
+              "November": 30,
+              "December": 30}
+
+NEX_LEAP = {"January": 31,
+            "February": 29,
+            "March": 31,
+            "April": 30,
+            "May": 31,
+            "June": 30,
+            "July": 31,
+            "August":	31,
+            "September": 30,
+            "October": 31,
+            "November": 30,
+            "December": 31}

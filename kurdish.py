@@ -1,7 +1,8 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Kurdish Calendar to Julian Day
+# Convert between the Kurdish Calendar and Julian Day
+#
 
 import months
 
@@ -25,7 +26,7 @@ def tojd(day, month, year):
 
     if year > 0:
         # positive years
-        alpha = 1497975
+        alpha = 1497974
         for y in range(1,year):
             if (y % 33) in leap_years_an:
                 days += 366
@@ -48,7 +49,7 @@ def tojd(day, month, year):
 
     else:
         # negative years
-        alpha = 1497976
+        alpha = 1497975
         year = abs(year) # modulo operator doesn't play nicely with negative numbers
         if (year % 33) in leap_years_an:
             # leap year
@@ -84,9 +85,9 @@ def fromjd(jday):
     leap_years_bn = (3,7,11,16,20,24,28,32)
     leap_years_zo = (2,6,10,15,19,23,27,31)
 
-    if jday > 1497975:
+    if jday > 1497974:
         # positive date
-        delta = jday - 1497975
+        delta = jday - 1497974
         cycles = delta // cycle33
         delta %= cycle33
         for y in range(1,34):
@@ -126,7 +127,7 @@ def fromjd(jday):
 
     else:
         # negative dates
-        delta = 1497976 - jday
+        delta = 1497975 - jday
         while delta > 0:
             if (abs(year) % 33) in leap_years_zo:
                 year -= 1

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Egyptian Calendar to a Julian Day
+# Convert between the Egyptian Calendar and Julian Day
 #
 
 import months

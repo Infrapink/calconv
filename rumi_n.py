@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Rumi Calendar to a Julian Day
+# Convert between the non-skipping Rumi Calendar and Julian Day
 #
 
 import months

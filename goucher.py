@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert a date in the Goucher-Parker calendar to a Julian day
+# Convert between the Goucher-Parker calendar and Julian day
 #
 
 import months

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 ##
-## This converts a Lunar Hijri date to a Julian Day.
+## Conveart between Lunar Hijri calendar and Julian Day.
 ##
 
 import months
