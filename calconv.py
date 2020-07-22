@@ -13,7 +13,7 @@ import ethiopian
 import egyptian
 import armenian
 import lunar_hijri
-import solar_hijri
+import jalali
 import birashk
 import assyrian
 import babylonian
@@ -126,17 +126,17 @@ def cons_day_julian_todate():
         lunar_hijri_month_ent.insert(0, lunar_hijri_month_value)
         lunar_hijri_year_ent.insert(0, lunar_hijri_year_value)
 
-        # Convert a Julian Day to a date in the Solar Hijri calendar
-        solar_hijri_date = solar_hijri.fromjd(day)
-        solar_hijri_day_value = solar_hijri_date[0]
-        solar_hijri_month_value = solar_hijri_date[1]
-        solar_hijri_year_value = solar_hijri_date[2]
-        solar_hijri_day_ent.delete(0, END)
-        solar_hijri_month_ent.delete(0, END)
-        solar_hijri_year_ent.delete(0, END)
-        solar_hijri_day_ent.insert(0, solar_hijri_day_value)
-        solar_hijri_month_ent.insert(0, solar_hijri_month_value)
-        solar_hijri_year_ent.insert(0, solar_hijri_year_value)
+        # Convert a Julian Day to a date in the Jalali calendar
+        jalali_date = jalali.fromjd(day)
+        jalali_day_value = jalali_date[0]
+        jalali_month_value = jalali_date[1]
+        jalali_year_value = jalali_date[2]
+        jalali_day_ent.delete(0, END)
+        jalali_month_ent.delete(0, END)
+        jalali_year_ent.delete(0, END)
+        jalali_day_ent.insert(0, jalali_day_value)
+        jalali_month_ent.insert(0, jalali_month_value)
+        jalali_year_ent.insert(0, jalali_year_value)
 
         # Convert a Julian Day to a date in Birashk's calendar
         birashk_date = birashk.fromjd(day)
@@ -507,12 +507,12 @@ def lunar_hijri_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
         
-def solar_hijri_converter():
+def jalali_converter():
         """Convert a date in the Solar Hijri Calendar to a Julian Day."""
-        day = solar_hijri_day_ent.get()
-        month = solar_hijri_month_ent.get()
-        year = solar_hijri_year_ent.get()
-        jday = solar_hijri.tojd(day, month, year)
+        day = jalali_day_ent.get()
+        month = jalali_month_ent.get()
+        year = jalali_year_ent.get()
+        jday = jalali.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -579,7 +579,7 @@ def kurdish_converter():
         
 def true_day_julian_converter():
         """Convert a Julian Day to a True Julian Day."""
-        jday = Decimal(day_julian_ent.get()) + Decimal('0.5')
+        jday = int(Decimal(day_julian_ent.get()) - Decimal('0.5'))
         cons_day_julian_ent.delete(0,END)
         cons_day_julian_ent.insert(0,jday)
         cons_day_julian_todate()
@@ -941,18 +941,18 @@ lunar_hijri_year_ent = Entry(frame)
 lunar_hijri_year_ent.grid(row = 7, column = 8, sticky = W)
 lunar_hijri_bttn = Button(frame, text = "Calculate", command = lunar_hijri_converter).grid(row = 8, column = 6, columnspan = 3, sticky = W)
 
-# Solar Hijir Calendar
-solar_hijri_lbl = Label(frame, text = "Solar Hijri Calendar").grid(row = 5, column = 9, columnspan = 3, sticky = W)
-solar_hijri_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 9, sticky = W)
-solar_hijri_day_ent = Entry(frame)
-solar_hijri_day_ent.grid(row = 7, column = 9, sticky = W)
-solar_hijri_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 10, sticky = W)
-solar_hijri_month_ent = Entry(frame)
-solar_hijri_month_ent.grid(row = 7, column = 10, sticky = W)
-solar_hijri_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 11, sticky = W)
-solar_hijri_year_ent = Entry(frame)
-solar_hijri_year_ent.grid(row = 7, column = 11, sticky = W)
-solar_hijri_bttn = Button(frame, text = "Calculate", command = solar_hijri_converter).grid(row = 8, column = 9, columnspan = 3, sticky = W)
+# Jalali Calendar
+jalali_lbl = Label(frame, text = "Jalali Calendar").grid(row = 5, column = 9, columnspan = 3, sticky = W)
+jalali_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 9, sticky = W)
+jalali_day_ent = Entry(frame)
+jalali_day_ent.grid(row = 7, column = 9, sticky = W)
+jalali_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 10, sticky = W)
+jalali_month_ent = Entry(frame)
+jalali_month_ent.grid(row = 7, column = 10, sticky = W)
+jalali_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 11, sticky = W)
+jalali_year_ent = Entry(frame)
+jalali_year_ent.grid(row = 7, column = 11, sticky = W)
+jalali_bttn = Button(frame, text = "Calculate", command = jalali_converter).grid(row = 8, column = 9, columnspan = 3, sticky = W)
 
 # Birashk's calendar
 birashk_lbl = Label(frame, text = "Ahmad Birashk's Calendar").grid(row = 5, column = 12, columnspan = 3, sticky = W)

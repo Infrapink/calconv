@@ -119,12 +119,12 @@ def calc(jday):
             else:
                 position -= yearlen12
 
-        rosh = int(position)
-        if position > 0:
+        if position >= 0:
+            rosh = int(position)
             molad = position % 1
         else:
-            molad = (0 - position) % 1
-
+            rosh = int(position) - 1
+            molad = int(position) - position
 
     results = (rosh,molad,year)
     return results
@@ -170,19 +170,21 @@ def tojd(day, month, year):
         # if my calculations are correct, the integer part of days is the day of the molad of Tishri,
         # and the fractional part is the time of day the molad occurs
 
-        nums = hebrew_calculations.calc(int(days))
+        nums = calc(int(days))
         rosh = nums[0]
         mrosh = rosh
         molad = nums[1]
         r1 = False
 
         kday = rosh + 390
-        next_nums = hebrew_calculations.calc(kday)
+        next_nums = calc(kday)
         next_rosh = next_nums[0]
         next_mrosh = next_rosh
         next_molad = next_nums[1]
         next_year = next_nums[2]
         next_r1 = False
+
+
 
         # Rule 1: If the molad of Tishri is after noon, postpone Rosh Hashana
         if molad > Fraction(3,4): # noon comes 3/4 through a standard Hebrew day
@@ -194,6 +196,8 @@ def tojd(day, month, year):
             next_rosh += 1
             next_r1 = True
 
+
+        
         # Rule 2: If the molad of Tishri falls on a "Tuesday" after 9 hours 204 chalakim
         # and it's NOT a leap year, and rule 1 has not been triggered, postpone Rosh Hashana
 
@@ -210,6 +214,8 @@ def tojd(day, month, year):
                     if next_molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         next_rosh += 1
 
+
+        
         # Rule 3: If the molad of Tishri falls on a "Monday" after 15 hours 589 chalakim
         # and it's the year AFTER a leap year, and rule 1 has not been triggered postpone Rosh Hashana
 
@@ -226,7 +232,7 @@ def tojd(day, month, year):
                     if next_molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         next_rosh += 1
 
-        # Rule 4: If Rosh Hashanah would fall on a "Sunday", "Wednesday", or "Friday", it is postponed
+
 
         if (rosh % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
             rosh += 1
@@ -234,6 +240,7 @@ def tojd(day, month, year):
 
         if (next_rosh % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
             next_rosh += 1
+
 
         m = yeartype[next_rosh - rosh]
 
@@ -263,9 +270,14 @@ def tojd(day, month, year):
         # the fractional part should gives us the point in the day when it occurs.
 
         r1 = False
-        rosh = int(position)
+        if position > 0:
+            rosh = int(position)
+            molad = abs(position) % 1
+        else:
+            rosh = int(position) - 1
+            molad = int(position) - position
         mrosh = rosh
-        molad = abs(position) % 1
+
 
         # now do it for next year
         if (abs(year) % 19) in leap_years_bc:
@@ -274,12 +286,19 @@ def tojd(day, month, year):
             next_position = position + yearlen12
 
         next_r1 = False
-        next_rosh = int(next_position)
-        next_mrosh = next_rosh
-        next_molad = abs(next_position) % 1
+        if next_position > 0:
+            next_rosh = int(next_position)
+            next_molad = abs(next_position) % 1
+        else:
+            next_rosh = int(next_position) - 1
+            next_molad = int(next_position) - next_position
+        next_mrosh = next_rosh            
         next_year = year + 1
         if next_year == 0:
             next_year = 1
+
+        print("R0", rosh, molad)
+        print("R0", next_rosh, next_molad)
 
         if molad > Fraction(3,4): # noon is 3/4 through a standard Hebrew day
             rosh += 1
@@ -290,6 +309,9 @@ def tojd(day, month, year):
             next_rosh += 1
             next_r1 = True
 
+        print("R1", rosh, molad)
+        print("R1", next_rosh, next_molad)
+        
         # Rule 2: If the molad of Tishri falls on a "Tuesday" after 9 hours 204 chalakim and it's
         # NOT a leap year, postpone Rosh Hashana
 
@@ -307,6 +329,8 @@ def tojd(day, month, year):
                         if next_molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                             next_rosh += 1
 
+        print("R2", rosh, molad)
+        print("R2", next_rosh, next_molad)
         # Rule 3: If the molad of Tishri falls on a "Monday" after 15 hours 589 chalakim
         # in the year AFTER a leap year, postpone Rosh Hashana
 
@@ -334,7 +358,8 @@ def tojd(day, month, year):
                     if (abs(next_mrosh) % 7) == 1: # "Monday"
                         if next_molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                             next_rosh += 1
-
+        print("R3", rosh, molad)
+        print("R3", next_rosh, next_molad)
         # Rule 4: If Rosh Hashana would falls on a "Sunday", "Wednesday", or "Friday", it is postponed
 
         if rosh > 0:
@@ -353,6 +378,10 @@ def tojd(day, month, year):
             if (abs(next_rosh) % 7) in (6,4,2): # "Wednesday", "Friday", "Sunday"
                 next_rosh += 1
 
+        print("R4", rosh, molad)
+        print("R4", next_rosh, next_molad)
+        print(next_rosh - rosh)
+
         m = yeartype[next_rosh - rosh]
         days = int(position)
         
@@ -365,10 +394,17 @@ def tojd(day, month, year):
 
         days = int(days) - 1 # fix the fencepost error
         
-        # This right here is some sneaky buggery to fix an obscure fencepost error that I can't figure out.
-        testdate = fromjd(int(days))                                                 
-        if testdate[0] != day:
-            days += 1
+        # This right here is some sneaky buggery to fix a fencepost error that appears to actually depend on the phase of the moon
+        testdate = fromjd(int(days))
+        if days >= 0:
+            if testdate[0] != day:
+                days += 1
+        else:
+            if testdate[0] != day:
+                days -= 1
+
+ #       correction = testdate[0] - days
+  #      days += correction
 
 
     days = int(days)

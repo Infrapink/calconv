@@ -159,13 +159,24 @@ https://en.wikipedia.org/wiki/Islamic_calendar
 https://en.wikipedia.org/wiki/Tabular_Islamic_calendar
 http://www.webexhibits.org/calendars/calendar-islamic.html
 
+---------------
+JALALI CALENDAR
+---------------
+
+The Jalali calendar is a purely solar calendar designed by Omar Khayyam in 457 AH (1079 AD) at the behest of Grand Vizier Abu Ali Hasan ibn Ali Tusi of the Seljuq Empire, and promulgated by Sultan Malik Shah I (born Jalāl al-Dawla), after whom it is named. This calendar operates on a 33-year cycle in which the fifth year and every fourth year there after is a leap year, leap day being added to Esfand. The average year in this calendar lasts 365 days 5 hours 49 minutes 3.4 seconds, which is 3.32 seconds longer than the mean equinoctial year. As such, the algorithmic calendar accumulates 1 day of error every 5000 years. New Year's Day is timed to fall on the day of the northward equinox.
+
+Khayyam's original formulation was entirely observational, each month beginning with the transition of the sun into the relevent portion of the Zodiac; as such, every month could have between 29 and 32 days depending on the state of every particle in the universe. Forward planning thus required a carefully-determined ephemeris to be worked out in advance; for simplicity, this was abandoned in favour of the purely algorithmic calendar used here.
+
+http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
+https://en.wikipedia.org/wiki/Jalali_calendar
+
 --------------------
 SOLAR HIJRI CALENDAR
 --------------------
 
 The Solar Hijri calendar is the civil calendar used in Iran and Afghanistan. As its name suggests, it is a solar calendar that makes no effort to maintain consistency with the phases of the moon. As with the Lunar Hijri calendar, its era is the flight of the prophet Muhammad from Mecca to Medina. Days begin at midnight.
 
-The modern Solar Hijri calendar is observational, with Nowruz falling the instant the centre of the north ascendant sun crosses the celestial equator; New Year's Day is then the day whose midnight falls closes to the moment of vernal equinox as observed in Tehran. Because that is impractical in an algorithmic computer program, this converter instead uses the Jalali scheme introduced by Omar Khayyam in 454 AH. This calendar operates on a 33-year cycle in which the fifth year and every fourth year there after is a leap year, leap day being added to Esfand. The average year in this calendar lasts 365 days 5 hours 49 minutes 3.4 seconds, which is 3.32 seconds longer than the mean equinoctial year. As such, the algorithmic calendar accumulates 1 day of error every 5000 years, while the observational calendar is infinitely accurate.
+The modern Solar Hijri calendar is observational, with Nowruz falling the instant the centre of the north ascendant sun crosses the celestial equator; New Year's Day is then the day whose midnight falls closes to the moment of vernal equinox as observed in Tehran. 
 
 http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
 
@@ -582,3 +593,12 @@ https://www.youtube.com/watch?v=czgOWmtGVGs
 https://holocenecalendar.org/
 https://www.easytimeline.org/
 https://www.youtube.com/watch?v=aDnoTk5mOQc
+
+---
+ADA
+---
+
+ADA, an abbreviation for After the Development of Agriculture, is another dating system based on the origin of farming. ADA was proposed by feminist archaeologist Merlin Stone and begins in 8001 BC (2000 HE), the approximate date which Stone believes that women invented agriculture. This dating system never caught on, possibly at least in part due to many of Stone's ideas about prehistory being questionable at best. Still, a calendar is a calendar.
+
+https://en.wikipedia.org/wiki/After_the_Development_of_Agriculture
+
