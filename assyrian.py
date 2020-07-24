@@ -22,12 +22,20 @@ def tojd(day,month,year):
         # positive year
         alpha = -13388
         for y in range(1,year):
-            if (y % 400) in leap_years_assyrian.PD:
+            if y % 400 == 349:
+                days += 366
+            elif y % 100 == 49:
+                days += 365
+            elif y % 4 == 1:
                 days += 366
             else:
                 days += 365
 
-        if (year % 400) in leap_years_assyrian.PD:
+        if year % 400 == 349:
+            m = months.ASSYRIAN_LEAP
+        elif year % 100 == 49:
+            m = months.ASSYRIAN_NORMAL
+        elif year % 4 == 1:
             m = months.ASSYRIAN_LEAP
         else:
             m = months.ASSYRIAN_NORMAL
@@ -42,12 +50,17 @@ def tojd(day,month,year):
     else:
         # negative years
         year = 0 - year
-        alpha = -13387
+        alpha = -13388
 
-        if (year % 400) in leap_years_assyrian.AD:
+        if year % 400 == 51:
+            m = months.ASSYRIAN_LEAP
+        elif year % 100 == 51:
+            m = months.ASSYRIAN_NORMAL
+        elif year % 4 == 3:
             m = months.ASSYRIAN_LEAP
         else:
             m = months.ASSYRIAN_NORMAL
+            
         for i in m.keys():
             if i == month:
                 days += day
@@ -56,7 +69,11 @@ def tojd(day,month,year):
                 days += m[i]
 
         for y in range(0,year):
-            if (y % 400) in leap_years_assyrian.ZO:
+            if y % 400 == 51:
+                days -= 366
+            elif y % 100 == 51:
+                days -= 365
+            elif y % 4 == 3:
                 days -= 366
             else:
                 days -= 365
@@ -80,7 +97,21 @@ def fromjd(jday):
 
 
         for y in range(1,401):
-            if y in leap_years_assyrian.PD:
+            if y % 400 == 349:
+                if delta <= 366:
+                    m = months.ASSYRIAN_LEAP
+                    single_year = y
+                    break
+                else:
+                    delta -= 366
+            elif y % 100 == 49:
+                if delta <= 365:
+                    m = months.ASSYRIAN_NORMAL
+                    single_year = y
+                    break
+                else:
+                    delta -= 365
+            elif y % 4 == 1:
                 if delta <= 366:
                     m = months.ASSYRIAN_LEAP
                     single_year = y
@@ -98,7 +129,13 @@ def fromjd(jday):
         year = (400 * cycles) + single_year
         if delta == 0:
             year -= 1
-            if year in leap_years_assyrian.PD:
+            if year % 400 == 349:
+                m = months.ASSYRIAN_LEAP
+                delta = 366
+            elif year % 100 == 49:
+                m = months.ASSYRIAN_NORMAL
+                delta = 365
+            elif year % 4 == 1:
                 m = months.ASSYRIAN_LEAP
                 delta = 366
             else:
@@ -114,17 +151,28 @@ def fromjd(jday):
                 delta -= m[i]
     else:
         # negative date
-        delta = -13387 - jday
+        delta = -13388 - jday
+        steps = 0
 
         while delta > 0:
-            if (year % 400) in leap_years_assyrian.ZO:
+            if year % 400 == 51:
+                year += 1
+                delta -= 366
+            elif year % 100 == 51:
+                year += 1
+                delta -= 365
+            elif year % 4 == 3:
                 year += 1
                 delta -= 366
             else:
                 year += 1
                 delta -= 365
 
-        if (year % 400) in leap_years_assyrian.AD:
+        if year % 400 == 51:
+            m = months.ASSYRIAN_LEAP
+        elif year % 100 == 51:
+            m = months.ASSYRIAN_NORMAL
+        elif year % 4 == 3:
             m = months.ASSYRIAN_LEAP
         else:
             m = months.ASSYRIAN_NORMAL
@@ -134,12 +182,19 @@ def fromjd(jday):
 
         if delta == 0:
             year -= 1
-            if (year % 400) in leap_years_assyrian.AD:
+            if year % 400 == 51:
+                m = months.ASSYRIAN_LEAP
+                delta = 366
+            elif year % 100 == 51:
+                m = months.ASSYRIAN_NORMAL
+                delta = 365
+            elif year % 4 == 3:
                 m = months.ASSYRIAN_LEAP
                 delta = 366
             else:
                 m = months.ASSYRIAN_NORMAL
                 delta = 365
+                
 
         for i in m.keys():
             if delta <= m[i]:
@@ -151,6 +206,3 @@ def fromjd(jday):
 
     date = (day,month,year)
     return date
-        
-
-
