@@ -18,8 +18,8 @@ def tojd(day, month, year):
     days = 0
 
     if year >= 0:
-        alpha = 1721058
-        for y in range(0, year):
+        alpha = 1721424
+        for y in range(1, year):
             if y % 400 == 0:
                 days += 366
             elif y % 100 == 0:
@@ -49,10 +49,10 @@ def tojd(day, month, year):
             else:
                 days += m[i]
     else:
-        alpha = 1721059
+        alpha = 1721425
         year = 0 - year
 
-        for y in range(0, year):
+        for y in range(0, year + 1):
             if y % 400 == 0:
                 days -= 366
             elif y % 100 == 0:
@@ -86,7 +86,7 @@ def tojd(day, month, year):
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the World calendar"""
+    """Convert a Julian Day to a date in the Nex calendar"""
     jday = int(jday)
     year = 0
     month = ""
@@ -158,47 +158,42 @@ def fromjd(jday):
                 delta -= m[i]
 
     else:
-        # negative date
-        delta = 1721059 - jday
+        # non-positive date
+        delta = 1721425 - jday
         current = False
 
         while delta > 0:
-            if abs(year) % 400 == 0:
-                delta -= 366
-            elif abs(year) % 100 == 0:
-                delta -= 365
-            elif abs(year) % 4 == 0:
-                delta -= 366
+            if year % 400 == 0:
+                if delta <= 366:
+                    m = months.NEX_LEAP
+                    delta = 367 - delta
+                    break
+                else:
+                    delta -= 366
+            elif year % 100 == 0:
+                if delta <= 365:
+                    m = months.NEX_NORMAL
+                    delta = 366 - delta
+                    break
+                else:
+                    delta -= 365
+            elif year % 4 == 0:
+                if delta <= 366:
+                    m = months.NEX_LEAP
+                    delta = 367 - delta
+                    break
+                else:
+                    delta -= 366
             else:
-                delta -= 365
-            year -= 1
+                if delta <= 365:
+                    m = months.NEX_NORMAL
+                    delta = 366 - delta
+                    break
+                else:
+                    delta -= 365
+            year += 1
 
-        delta = 0 - delta
-
-        if delta == 0:
-            year -= 1
-            if abs(year) % 400 == 0:
-                delta = 366
-            elif abs(year) % 100 == 0:
-                delta = 365
-            elif abs(year) % 4 == 0:
-                delta = 366
-            else:
-                delta = 365
-                
-        if abs(year) % 400 == 0:
-            # leap year
-            m = months.NEX_LEAP
-        elif abs(year) % 100 == 0:
-            # not a leap year
-            m = months.NEX_NORMAL
-        elif abs(year) % 4 == 0:
-            # leap year
-            m = months.NEX_LEAP
-        else:
-            # not leap year
-            m = months.NEX_NORMAL
-
+        year = 0 - year
 
         for i in m.keys():
             if delta <= m[i]:
@@ -208,5 +203,5 @@ def fromjd(jday):
             else:
                 delta -= m[i]
 
-    date = [day, month, year]
+    date = (day, month, year)
     return(date)
