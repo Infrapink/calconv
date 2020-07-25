@@ -77,7 +77,7 @@ def tojd(day, month, year):
 
         for i in m.keys():
             if i == month:
-                days += day
+                days += day - 1
                 break
             else:
                 days += m[i]
