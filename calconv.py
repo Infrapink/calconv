@@ -1312,7 +1312,7 @@ holocene_year_ent = Entry(frame)
 holocene_year_ent.grid(row = 35, column = 2, sticky = W)
 holocene_bttn = Button(frame, text = "Calculate", command = holocene_converter).grid(row = 36, column = 0, columnspan = 3, sticky = W)
 
-# ADA calendar                                                                                            
+# After Development of Agriculture
 ada_lbl = Label(frame, text = "ADA").grid(row = 33, column = 3, columnspan = 3, sticky = W)
 ada_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 3, sticky = W)
 ada_day_ent = Entry(frame)

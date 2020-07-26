@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert between Julian day and ADA
+# Convert between the ADA Calendar and Julian Day
 #
 
 import months
@@ -49,10 +49,10 @@ def tojd(day, month, year):
             else:
                 days += m[i]
     else:
-        alpha = (-1200879)
+        alpha = (-1200881)
         year = 0 - year
 
-        for y in range(0, year):
+        for y in range(1, year + 1):
             if y % 400 == 0:
                 days -= 366
             elif y % 100 == 0:
@@ -77,7 +77,7 @@ def tojd(day, month, year):
 
         for i in m.keys():
             if i == month:
-                days += day
+                days += day - 1
                 break
             else:
                 days += m[i]
@@ -86,7 +86,7 @@ def tojd(day, month, year):
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the World calendar"""
+    """Convert a Julian Day to a date in the CAESAR calendar"""
     jday = int(jday)
     year = 0
     month = ""
@@ -96,18 +96,6 @@ def fromjd(jday):
         # positive date
         delta = jday - (-1200882)
         current = False
-
-        while delta > cycle400:
-            year += 400
-            delta -= cycle400
-
-        while delta > cycle100:
-            year += 100
-            delta -= cycle100
-
-        while delta > cycle4:
-            year += 4
-            delta -= cycle4
 
         while current == False:
             if year % 400 == 0:
@@ -158,47 +146,43 @@ def fromjd(jday):
                 delta -= m[i]
 
     else:
-        # negative date
-        delta = (1200881) - jday
+        # non-positive date
+        delta = (-1200881) - jday
         current = False
+        year += 1
 
         while delta > 0:
-            if abs(year) % 400 == 0:
-                delta -= 366
-            elif abs(year) % 100 == 0:
-                delta -= 365
-            elif abs(year) % 4 == 0:
-                delta -= 366
+            if year % 400 == 0:
+                if delta <= 366:
+                    m = months.CAESAR_LEAP
+                    delta = 367 - delta
+                    break
+                else:
+                    delta -= 366
+            elif year % 100 == 0:
+                if delta <= 365:
+                    m = months.CAESAR_NORMAL
+                    delta = 366 - delta
+                    break
+                else:
+                    delta -= 365
+            elif year % 4 == 0:
+                if delta <= 366:
+                    m = months.CAESAR_LEAP
+                    delta = 367 - delta
+                    break
+                else:
+                    delta -= 366
             else:
-                delta -= 365
-            year -= 1
+                if delta <= 365:
+                    m = months.CAESAR_NORMAL
+                    delta = 366 - delta
+                    break
+                else:
+                    delta -= 365
+            year += 1
 
-        delta = 0 - delta
-
-        if delta == 0:
-            year -= 1
-            if abs(year) % 400 == 0:
-                delta = 366
-            elif abs(year) % 100 == 0:
-                delta = 365
-            elif abs(year) % 4 == 0:
-                delta = 366
-            else:
-                delta = 365
-                
-        if abs(year) % 400 == 0:
-            # leap year
-            m = months.CAESAR_LEAP
-        elif abs(year) % 100 == 0:
-            # not a leap year
-            m = months.CAESAR_NORMAL
-        elif abs(year) % 4 == 0:
-            # leap year
-            m = months.CAESAR_LEAP
-        else:
-            # not leap year
-            m = months.CAESAR_NORMAL
-
+        year = 0 - year
 
         for i in m.keys():
             if delta <= m[i]:
@@ -208,5 +192,5 @@ def fromjd(jday):
             else:
                 delta -= m[i]
 
-    date = [day, month, year]
+    date = (day, month, year)
     return(date)

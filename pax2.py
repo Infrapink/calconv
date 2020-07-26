@@ -52,7 +52,7 @@ def tojd(day, month, year):
         alpha = 1721059
         year = 0 - year
 
-        for y in range(0, year):
+        for y in range(1, year + 1):
             if y % 400 == 0:
                 days -= 366
             elif y % 100 == 0:
@@ -96,18 +96,6 @@ def fromjd(jday):
         # positive date
         delta = jday - 1721058
         current = False
-
-        while delta > cycle400:
-            year += 400
-            delta -= cycle400
-
-        while delta > cycle100:
-            year += 100
-            delta -= cycle100
-
-        while delta > cycle4:
-            year += 4
-            delta -= cycle4
 
         while current == False:
             if year % 400 == 0:
