@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert between the Samaritcan calendar and Julian day.
+# Convert between the Samaritan calendar and Julian day.
 #
 
 import months
