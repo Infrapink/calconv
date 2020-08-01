@@ -100,7 +100,7 @@ Lunar Hijri Calendar:
 * Dhu al-Qidah
 * Dhu al-Hijjah
 
-Solar Hijri and Ahmad Birashk's Calendars:
+Jalali, Solar Hijri and Ahmad Birashk's Calendars:
 * Farvardin
 * Ordibehesht
 * Khordad
@@ -252,6 +252,21 @@ Positivist calendar
 * Festival of All the Dead
 * Festival of Holy Women
 
+FRENCH CALENDARS:
+* Vendémiaire
+* Brumaire
+* Frimaire
+* Nivôse
+* Pluviôse
+* Ventôse
+* Germinal
+* Floréal
+* Prairial
+* Messidor
+* Thermidor
+* Fructidor
+* Sans-culottides
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -265,20 +280,15 @@ Replace the text boxes for months with dropdown menus.
 Add the following calendars:
 * Old Roman
 * Byzantine
-* Hebrew
 * Mayan
-* French Revolutionary
 * Chinese Lunisolar
 * Shire Reckoning
 * Buddhist
 * Indian
 * ISO
-* Unix time
 * Baha'í
-* Revised Julian
 * Saka
 * Bengali
-* Berber
 * Myanmar
 * Discordian
 * Vikram Samvat
@@ -294,5 +304,3 @@ Add the following calendars:
 * Thai
 * Tibetan
 * Julian Period
-* Astronomical Gregorian calendar
-* Variants listed on Wikipedia's Julian day page
