@@ -37,6 +37,8 @@ import nex
 import positivist
 import holocene
 import ada
+import ast_french
+import alg_french
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -422,6 +424,24 @@ def cons_day_julian_todate():
         ada_day_ent.insert(0, ada_date[0])
         ada_month_ent.insert(0, ada_date[1])
         ada_year_ent.insert(0, ada_date[2])
+
+        # Convert a Julian day to a date in the Rrench Republican calendar
+        ast_french_date = ast_french.fromjd(day)
+        ast_french_day_ent.delete(0, END)
+        ast_french_month_ent.delete(0, END)
+        ast_french_year_ent.delete(0, END)
+        ast_french_day_ent.insert(0, ast_french_date[0])
+        ast_french_month_ent.insert(0, ast_french_date[1])
+        ast_french_year_ent.insert(0, ast_french_date[2])
+
+        # Convert a Julian day to a date in the alg_french calendar
+        alg_french_date = alg_french.fromjd(day)
+        alg_french_day_ent.delete(0, END)
+        alg_french_month_ent.delete(0, END)
+        alg_french_year_ent.delete(0, END)
+        alg_french_day_ent.insert(0, alg_french_date[0])
+        alg_french_month_ent.insert(0, alg_french_date[1])
+        alg_french_year_ent.insert(0, alg_french_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -810,6 +830,24 @@ def ada_converter():
         month = ada_month_ent.get()
         year = int(ada_year_ent.get())
         jday = ada.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def ast_french_converter():
+        day = int(ast_french_day_ent.get())
+        month = ast_french_month_ent.get()
+        year = int(ast_french_year_ent.get())
+        jday = ast_french.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def alg_french_converter():
+        day = int(alg_french_day_ent.get())
+        month = alg_french_month_ent.get()
+        year = int(alg_french_year_ent.get())
+        jday = alg_french.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1313,7 +1351,7 @@ holocene_year_ent.grid(row = 35, column = 2, sticky = W)
 holocene_bttn = Button(frame, text = "Calculate", command = holocene_converter).grid(row = 36, column = 0, columnspan = 3, sticky = W)
 
 # After Development of Agriculture
-ada_lbl = Label(frame, text = "ADA").grid(row = 33, column = 3, columnspan = 3, sticky = W)
+ada_lbl = Label(frame, text = "After Development of Agriculture").grid(row = 33, column = 3, columnspan = 3, sticky = W)
 ada_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 3, sticky = W)
 ada_day_ent = Entry(frame)
 ada_day_ent.grid(row = 35, column = 3, sticky = W)
@@ -1324,6 +1362,32 @@ ada_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 5, sticky = W
 ada_year_ent = Entry(frame)
 ada_year_ent.grid(row = 35, column = 5, sticky = W)
 ada_bttn = Button(frame, text = "Calculate", command = ada_converter).grid(row = 36, column = 3, columnspan = 3, sticky = W)
+
+# Astronomical French Republican calendar                                                                                            
+ast_french_lbl = Label(frame, text = "Astronomical French Republican calendar").grid(row = 33, column = 6, columnspan = 3, sticky = W)
+ast_french_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 6, sticky = W)
+ast_french_day_ent = Entry(frame)
+ast_french_day_ent.grid(row = 35, column = 6, sticky = W)
+ast_french_month_lbl = Label(frame, text = "Month").grid(row = 34, column = 7, sticky = W)
+ast_french_month_ent = Entry(frame)
+ast_french_month_ent.grid(row = 35, column = 7, sticky = W)
+ast_french_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 8, sticky = W)
+ast_french_year_ent = Entry(frame)
+ast_french_year_ent.grid(row = 35, column = 8, sticky = W)
+ast_french_bttn = Button(frame, text = "Calculate", command = ast_french_converter).grid(row = 36, column = 6, columnspan = 3, sticky = W)
+
+# Algorithmic French Republican calendar                                                                                            
+alg_french_lbl = Label(frame, text = "Algorithmic French Republican calendar").grid(row = 33, column = 9, columnspan = 3, sticky = W)
+alg_french_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 9, sticky = W)
+alg_french_day_ent = Entry(frame)
+alg_french_day_ent.grid(row = 35, column = 9, sticky = W)
+alg_french_month_lbl = Label(frame, text = "Month").grid(row = 34, column = 10, sticky = W)
+alg_french_month_ent = Entry(frame)
+alg_french_month_ent.grid(row = 35, column = 10, sticky = W)
+alg_french_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 11, sticky = W)
+alg_french_year_ent = Entry(frame)
+alg_french_year_ent.grid(row = 35, column = 11, sticky = W)
+alg_french_bttn = Button(frame, text = "Calculate", command = alg_french_converter).grid(row = 36, column = 9, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.17.0")
 root.mainloop()

@@ -602,3 +602,31 @@ ADA, an abbreviation for After the Development of Agriculture, is another dating
 
 https://en.wikipedia.org/wiki/After_the_Development_of_Agriculture
 
+---------------------------
+FRENCH REPUBLICAN CALENDARS
+---------------------------
+
+The French Republican (or Revolutionary) calendar was introduced in France on 2 January 1793 AD (13 Dey 1171 AH; 13 Nivôse 1 AR) following a period of debate which only fully ended on 24 October 1793 AD (3 Aban 1172 AH; 3 Brumaire 2 AR). The calendar was part of a wide-ranging series of radical reconstitutions of society intended to make a clean break with the ancien régime; other reforms included the introduction of the metric system and decimal currency, which have lasted until today. The Revolution also brought a decimal time system, in which each day was divided into 10 "hours", each of which was subdivided into 100 "minutes" consisting of 100 "seconds" each. Unlike the other reforms, decimal time was unpopular, and was abandoned after less than a year and a half.
+
+The calendar committee sought a more regular calendar than the Gregorian, and so decided that each year would consist of 12 months of 30 days each, grouped into 10-day décades (not to be confused with the English word 'decade'). Décadi, the tenth day of the décade, was a national day of rest, and the fifth day, Quintidi, was a half day. Each month was given a Latin- or Greek-derived name referring to the dominant weather in Metropolitan France at that time of year. Due to the presence of poets on the calendar committe, the three months in each season rhyme. To make up the length of the year, a five-day period (six in leap years) of natinal holidays was appended to the year, referred to as the complementary days or the Sans-culottides in honour of the working-class people who made the Revolution.
+
+If this seems familiar, you are correct. The French Republican calendar ended up basically the same as the ancient Egyptian civil calendar, but with a leap year mechanism. However, where the Egyptian calendar was intended to start around the northern solstice when Sirius returns to the sky, the French Republican calendar began on the southward equinox, possibly inspired by the Jalali calendar. Its epoch is Julian Day 2375839, corresponding to 1 Vendémiaire Ans du Révolution; the era is 1792 AD, the year the Revolution began. While the calendar was in use, it was customary to write the year in Roman numerals; I have ignored this rule for the sake of readability.
+
+The determination of leap years presented a problem which was never resolved while the calendar was in use. The initial proclamation is itself confused; it declares that each year will begin on the autumnal (ie southward) equinox as observed from Paris Observatory, and also that leap day would occur every four years. As such, an in order to ensure the calendar would be more accurate than at least the Julian, there was some debate as to hwo leap years should be calculated. Initially, the observational rule was adopted, though this was unsatisfactory because determining the start of the year required consulting astronomers, and errors could accrue if the equinox occurred very close to midnight. Tying it to the southward equinox also make the calendar a harder sell abroad, where the New Year's Day tended to fall around the southern solstice or northern equinox. (It also necessarily privileges Paris time above all others). Gilbert Romme, who served on the committee which originally designed the calendar, proposed an algorithmic solution: the Republican calendar would use the same rules as the Gregorian and also implement William Herschel's 4000-year rule. Romme lost his head soon after this proposal and it was never formally implemented.
+
+Both these rules are implemented in this converter. The algorithmic French Republican calendar, naturally, uses Romme's proposal; as with the revised Gregorian calendar, it loses one day in 19500 years. The astronomical French Republican calendar uses the length of the mean equinoctial year (365 days 5 hours 48 minutes 45 seconds) to determine when each New Year's Day happens. Earth's angular velocity is gradually being transferred to the moon, which results in the length of the solar day increasing by about 2ms per century. I have not taken this change into account, and so the algorithm used in this converter will gain one day every 4.32*10^9 years.
+
+As part of an ongoing policy of Dechristianisation, businesses were only permitted to close and religious services allowed to be held only on Décadi in order to mess up the seven-day cycle of religious observance (there were also restrictions on which day of the décade fish could be sold so as to make it harder for Christians to refrain from poultry and red meat on Friday). In addition, individual days were associated with crops, farm animals, farm equipment, and minerals rather than Catholic saints. The décade system was tremendously unpopular, because one day of rest in 10 is objectively worse than one in seven; as such, the seven-day week was reintroduced in 3 AR (1795 AD); at the same time, the Gregorian calendar was restored to co-official status to facilitate international relations.
+
+The Republican calendar was formally abandoned by Napoleon on 1 January 1806 AD (11 Nivôse 14 AR), though it was briefly revived in 1871 AD (79 AR) by the Paris Commune. As such, France, one of the first countries to adopt the Gregorian calendar, was also the first to abandon it, and is so far the only country to abandon and then readopt it.
+
+https://www.fourmilab.ch/documents/calendar/fr_decret.html
+https://en.wikipedia.org/wiki/French_Republican_calendar
+http://www.webexhibits.org/calendars/calendar-french.html
+https://www.cooksinfo.com/french-revolutionary-calendar
+http://www.windhorst.org/calendar/
+https://www.tondering.dk/claus/cal/french.php
+https://www.napoleon.org/en/history-of-the-two-empires/the-republican-calendar/
+https://www.worldslastchance.com/ecourses/lessons/changing-weeks-hiding-sabbath-ecourse/18/french-republican-calendar.html
+https://en.wikipedia.org/wiki/Sansculottides
+https://web.archive.org/web/20070618041235/http://personal.telefonica.terra.es/web/jlmartinmas/repcalendar/calendar.html
