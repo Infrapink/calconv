@@ -38,10 +38,10 @@ def tojd(day,month,year):
 
         if (year % 2820) in leap_years_birashk.ah:
             # leap year
-            m = months.SOLAR_HIJRI_LEAP
+            m = months.IRANIAN_LEAP
         else:
             # not a leap year
-            m = months.SOLAR_HIJRI_NORMAL
+            m = months.IRANIAN_NORMAL
 
         for i in m.keys():
             if i == month:
@@ -60,11 +60,11 @@ def tojd(day,month,year):
 
         if year in leap_years_birashk.bh:
             # leap year
-            m = months.SOLAR_HIJRI_LEAP
+            m = months.IRANIAN_LEAP
             days -= 367 # subtract 367 rather than 366 to avoid a fencepost error
         else:
             # not a leap year
-            m = months.SOLAR_HIJRI_NORMAL
+            m = months.IRANIAN_NORMAL
             days -= 366 # subtract 366 rathger than 365 to avoid a fencepost error
 
         for i in m.keys():
@@ -95,7 +95,7 @@ def fromjd(jday):
                 if delta <= 366:
                     # leap year
                     single_year = y
-                    m = months.SOLAR_HIJRI_LEAP
+                    m = months.IRANIAN_LEAP
                     break
                 else:
                     delta -= 366
@@ -103,15 +103,18 @@ def fromjd(jday):
                 if delta <= 365:
                     # not a leap year
                     single_year = y
-                    m = months.SOLAR_HIJRI_NORMAL
+                    m = months.IRANIAN_NORMAL
                     break
                 else:
                     delta -= 365
 
         year = (great_cycles * 2820) + single_year
         if delta == 0:
-            delta = 365
             year -= 1
+            if year % 2820 in leap_years_birashk.ah:
+                delta = 366
+            else:
+                delta = 365
         for i in m.keys():
             if delta <= m[i]:
                 month = i
@@ -130,7 +133,7 @@ def fromjd(jday):
                 if delta <= 366:
                     # leap year
                     single_year = y
-                    m = months.SOLAR_HIJRI_LEAP
+                    m = months.IRANIAN_LEAP
                     delta = 366 - delta
                     if delta == 0:
                         delta = 1
@@ -141,7 +144,7 @@ def fromjd(jday):
                 if delta <= 365:
                     # not a leap year
                     single_year = y
-                    m = months.SOLAR_HIJRI_NORMAL
+                    m = months.IRANIAN_NORMAL
                     delta = 366 - delta
                     break
                 else:
@@ -149,6 +152,12 @@ def fromjd(jday):
 
         year = (great_cycles * 2820) + single_year
         year = 0 - year - 1
+        if delta == 0:
+            year -= 1
+            if abs(year) % 2820 in leap_years_birashk.bh:
+                delta = 366
+            else:
+                delta = 365
 
         for i in m.keys():
             if delta <= m[i]:
@@ -157,6 +166,11 @@ def fromjd(jday):
                 break
             else:
                 delta -= m[i]
+
+    if jday == 1948319:
+        day = 30
+        month = "Esfand"
+        year = (-1)
 
     date = [day,month,year]
     return date
