@@ -39,6 +39,7 @@ import holocene
 import ada
 import ast_french
 import alg_french
+import solar_hijri
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -425,7 +426,7 @@ def cons_day_julian_todate():
         ada_month_ent.insert(0, ada_date[1])
         ada_year_ent.insert(0, ada_date[2])
 
-        # Convert a Julian day to a date in the Rrench Republican calendar
+        # Convert a Julian day to a date in the observational Frenchench Republican calendar
         ast_french_date = ast_french.fromjd(day)
         ast_french_day_ent.delete(0, END)
         ast_french_month_ent.delete(0, END)
@@ -434,7 +435,7 @@ def cons_day_julian_todate():
         ast_french_month_ent.insert(0, ast_french_date[1])
         ast_french_year_ent.insert(0, ast_french_date[2])
 
-        # Convert a Julian day to a date in the alg_french calendar
+        # Convert a Julian day to a date in the algorithmic French Republican calendar
         alg_french_date = alg_french.fromjd(day)
         alg_french_day_ent.delete(0, END)
         alg_french_month_ent.delete(0, END)
@@ -442,6 +443,15 @@ def cons_day_julian_todate():
         alg_french_day_ent.insert(0, alg_french_date[0])
         alg_french_month_ent.insert(0, alg_french_date[1])
         alg_french_year_ent.insert(0, alg_french_date[2])
+
+        # Convert a Julian day to a date in the Solar Hijri calendar
+        solar_hijri_date = solar_hijri.fromjd(day)
+        solar_hijri_day_ent.delete(0, END)
+        solar_hijri_month_ent.delete(0, END)
+        solar_hijri_year_ent.delete(0, END)
+        solar_hijri_day_ent.insert(0, solar_hijri_date[0])
+        solar_hijri_month_ent.insert(0, solar_hijri_date[1])
+        solar_hijri_year_ent.insert(0, solar_hijri_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -848,6 +858,15 @@ def alg_french_converter():
         month = alg_french_month_ent.get()
         year = int(alg_french_year_ent.get())
         jday = alg_french.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def solar_hijri_converter():
+        day = int(solar_hijri_day_ent.get())
+        month = solar_hijri_month_ent.get()
+        year = int(solar_hijri_year_ent.get())
+        jday = solar_hijri.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1389,5 +1408,18 @@ alg_french_year_ent = Entry(frame)
 alg_french_year_ent.grid(row = 35, column = 11, sticky = W)
 alg_french_bttn = Button(frame, text = "Calculate", command = alg_french_converter).grid(row = 36, column = 9, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.17.0")
+# Solar Hijri calendar                                                                                            
+solar_hijri_lbl = Label(frame, text = "Solar Hijri calendar").grid(row = 33, column = 12, columnspan = 3, sticky = W)
+solar_hijri_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 12, sticky = W)
+solar_hijri_day_ent = Entry(frame)
+solar_hijri_day_ent.grid(row = 35, column = 12, sticky = W)
+solar_hijri_month_lbl = Label(frame, text = "Month").grid(row = 34, column = 13, sticky = W)
+solar_hijri_month_ent = Entry(frame)
+solar_hijri_month_ent.grid(row = 35, column = 13, sticky = W)
+solar_hijri_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 14, sticky = W)
+solar_hijri_year_ent = Entry(frame)
+solar_hijri_year_ent.grid(row = 35, column = 14, sticky = W)
+solar_hijri_bttn = Button(frame, text = "Calculate", command = solar_hijri_converter).grid(row = 36, column = 12, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.18.0")
 root.mainloop()

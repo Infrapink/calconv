@@ -1,4 +1,3 @@
-
 ---------------
 BUILDING BLOCKS
 ---------------
@@ -85,6 +84,7 @@ https://en.wikipedia.org/wiki/Gregorian_calendar
 https://en.wikipedia.org/wiki/Adoption_of_the_Gregorian_calendar
 https://courses.lumenlearning.com/astronomy/chapter/the-calendar/
 https://scienceworld.wolfram.com/astronomy/GregorianCalendar.html
+https://www.fourmilab.ch/documents/calendar/IG_Latin.html
 
 ---------------
 COPTIC CALENDAR
@@ -167,8 +167,11 @@ The Jalali calendar is a purely solar calendar designed by Omar Khayyam in 457 A
 
 Khayyam's original formulation was entirely observational, each month beginning with the transition of the sun into the relevent portion of the Zodiac; as such, every month could have between 29 and 32 days depending on the state of every particle in the universe. Forward planning thus required a carefully-determined ephemeris to be worked out in advance; for simplicity, this was abandoned in favour of the purely algorithmic calendar used here.
 
+The Jalali calendar was set aside around 638 AH (1259 AD) and replaced with a duodecimal system in which each year as assigned an animal based on the Chinese zodiac, introduced by Mongol conquerors. This remained the official calendar of Iran until 1911, when the Jalali calendar was restored.
+
 http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
 https://en.wikipedia.org/wiki/Jalali_calendar
+http://www.iranicaonline.org/articles/calendars
 
 --------------------
 SOLAR HIJRI CALENDAR
@@ -630,3 +633,15 @@ https://www.napoleon.org/en/history-of-the-two-empires/the-republican-calendar/
 https://www.worldslastchance.com/ecourses/lessons/changing-weeks-hiding-sabbath-ecourse/18/french-republican-calendar.html
 https://en.wikipedia.org/wiki/Sansculottides
 https://web.archive.org/web/20070618041235/http://personal.telefonica.terra.es/web/jlmartinmas/repcalendar/calendar.html
+
+--------------------
+SOLAR HIJRI CALENDAR
+--------------------
+
+The Solar Hijri calendar is a refinement of the Jalali calendar, designed by partially going back to Omar Khayyam's original formulation. Like the French Republican calendar, the Solar Hijri calendar determines the new year, known as Nowruz, entirely by observation. The beginning of the year is based on the observation of the northward equinox; new year's day, known as Nowruz, is the day whose midnight in Iran Standard Time falls closest to the moment of equinox; to put it another way, if the equinox happens before noon, Nowruz is the same day, while if it falls after noon, Nowruz is the following day. Culturally, the moment of equinox is considered to be the real start of the year, as that is when everybody celebrates the transition. As the calendar is completely observation-based, it remains perfectly synchronised with the seasons. To keep things manageable, this converter assumes constant values for the year and the day; in fact, both are gradaully getting longer, and this should be taken into account if you are forecasting 4.32 billion years into the future.
+
+The Solar Hijri calendar was first adopted in 1301 AH (1922 AD), replacing the animal-based duodecimal calendar introduced by the Mongols. It was later adopted as the official calendar of Iran in 1304 AH (1922 AD), replacing the Jalali calendar.
+
+https://iranicaonline.org/articles/calendars
+https://en.wikipedia.org/wiki/Solar_Hijri_calendar
+http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html

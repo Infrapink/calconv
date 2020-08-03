@@ -19,7 +19,7 @@ Dates are entered in the indicated text boxes in the order Day, Month, Year (exc
 Julian Day:
 * This is a simple number.
 
-Julian, Revised Julian, Gregorian, Revised Gregorian, Astronomical Gregorian, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, and Holocene Calendars:
+Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, and Holocene Calendars:
 * January
 * February
 * Gormanuary (Gorman calendar only)
@@ -252,7 +252,7 @@ Positivist calendar
 * Festival of All the Dead
 * Festival of Holy Women
 
-FRENCH CALENDARS:
+French Republican calendars:
 * Vendémiaire
 * Brumaire
 * Frimaire
