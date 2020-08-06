@@ -12,7 +12,7 @@ import coptic
 import ethiopian
 import egyptian
 import armenian
-import lunar_hijri
+import tab_islamic
 import jalali
 import birashk
 import assyrian
@@ -37,9 +37,10 @@ import nex
 import positivist
 import holocene
 import ada
-import ast_french
+import obs_french
 import alg_french
 import solar_hijri
+import thellid
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -117,17 +118,17 @@ def cons_day_julian_todate():
         armenian_month_ent.insert(0, armenian_month_value)
         armenian_year_ent.insert(0, armenian_year_value)
 
-        # Convert a Julian Day to a date in the Lunar Hijri Calendar
-        lunar_hijri_date = lunar_hijri.fromjd(day)
-        lunar_hijri_day_value = lunar_hijri_date[0]
-        lunar_hijri_month_value = lunar_hijri_date[1]
-        lunar_hijri_year_value = lunar_hijri_date[2]
-        lunar_hijri_day_ent.delete(0, END)
-        lunar_hijri_month_ent.delete(0, END)
-        lunar_hijri_year_ent.delete(0, END)
-        lunar_hijri_day_ent.insert(0, lunar_hijri_day_value)
-        lunar_hijri_month_ent.insert(0, lunar_hijri_month_value)
-        lunar_hijri_year_ent.insert(0, lunar_hijri_year_value)
+        # Convert a Julian Day to a date in the Tabular Islamic Calendar
+        tab_islamic_date = tab_islamic.fromjd(day)
+        tab_islamic_day_value = tab_islamic_date[0]
+        tab_islamic_month_value = tab_islamic_date[1]
+        tab_islamic_year_value = tab_islamic_date[2]
+        tab_islamic_day_ent.delete(0, END)
+        tab_islamic_month_ent.delete(0, END)
+        tab_islamic_year_ent.delete(0, END)
+        tab_islamic_day_ent.insert(0, tab_islamic_day_value)
+        tab_islamic_month_ent.insert(0, tab_islamic_month_value)
+        tab_islamic_year_ent.insert(0, tab_islamic_year_value)
 
         # Convert a Julian Day to a date in the Jalali calendar
         jalali_date = jalali.fromjd(day)
@@ -427,13 +428,13 @@ def cons_day_julian_todate():
         ada_year_ent.insert(0, ada_date[2])
 
         # Convert a Julian day to a date in the observational Frenchench Republican calendar
-        ast_french_date = ast_french.fromjd(day)
-        ast_french_day_ent.delete(0, END)
-        ast_french_month_ent.delete(0, END)
-        ast_french_year_ent.delete(0, END)
-        ast_french_day_ent.insert(0, ast_french_date[0])
-        ast_french_month_ent.insert(0, ast_french_date[1])
-        ast_french_year_ent.insert(0, ast_french_date[2])
+        obs_french_date = obs_french.fromjd(day)
+        obs_french_day_ent.delete(0, END)
+        obs_french_month_ent.delete(0, END)
+        obs_french_year_ent.delete(0, END)
+        obs_french_day_ent.insert(0, obs_french_date[0])
+        obs_french_month_ent.insert(0, obs_french_date[1])
+        obs_french_year_ent.insert(0, obs_french_date[2])
 
         # Convert a Julian day to a date in the algorithmic French Republican calendar
         alg_french_date = alg_french.fromjd(day)
@@ -452,6 +453,15 @@ def cons_day_julian_todate():
         solar_hijri_day_ent.insert(0, solar_hijri_date[0])
         solar_hijri_month_ent.insert(0, solar_hijri_date[1])
         solar_hijri_year_ent.insert(0, solar_hijri_date[2])
+
+        # Convert a Julian day to a date in the thellid calendar
+        thellid_date = thellid.fromjd(day)
+        thellid_day_ent.delete(0, END)
+        thellid_month_ent.delete(0, END)
+        thellid_year_ent.delete(0, END)
+        thellid_day_ent.insert(0, thellid_date[0])
+        thellid_month_ent.insert(0, thellid_date[1])
+        thellid_year_ent.insert(0, thellid_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -527,12 +537,12 @@ def armenian_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
         
-def lunar_hijri_converter():
+def tab_islamic_converter():
         """Convert a date in the Lunar Hijri Calendar to a Julian DAy."""
-        day = lunar_hijri_day_ent.get()
-        month = lunar_hijri_month_ent.get()
-        year = lunar_hijri_year_ent.get()
-        jday = lunar_hijri.tojd(day, month, year)
+        day = tab_islamic_day_ent.get()
+        month = tab_islamic_month_ent.get()
+        year = tab_islamic_year_ent.get()
+        jday = tab_islamic.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -844,11 +854,11 @@ def ada_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def ast_french_converter():
-        day = int(ast_french_day_ent.get())
-        month = ast_french_month_ent.get()
-        year = int(ast_french_year_ent.get())
-        jday = ast_french.tojd(day, month, year)
+def obs_french_converter():
+        day = int(obs_french_day_ent.get())
+        month = obs_french_month_ent.get()
+        year = int(obs_french_year_ent.get())
+        jday = obs_french.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -867,6 +877,15 @@ def solar_hijri_converter():
         month = solar_hijri_month_ent.get()
         year = int(solar_hijri_year_ent.get())
         jday = solar_hijri.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def thellid_converter():
+        day = int(thellid_day_ent.get())
+        month = thellid_month_ent.get()
+        year = int(thellid_year_ent.get())
+        jday = thellid.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -985,18 +1004,18 @@ armenian_year_ent = Entry(frame)
 armenian_year_ent.grid(row = 7, column = 5, sticky = W)
 armenian_bttn = Button(frame, text = "Calculate", command = armenian_converter).grid(row = 8, column = 3, columnspan = 3, sticky = W)
 
-# Lunar Hijri Calendar
-lunar_hijri_lbl = Label(frame, text = "Lunar Hijri (Islamic) Calendar").grid(row = 5, column = 6, columnspan = 3, sticky = W)
-lunar_hijri_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 6, sticky = W)
-lunar_hijri_day_ent = Entry(frame)
-lunar_hijri_day_ent.grid(row = 7, column = 6, sticky = W)
-lunar_hijri_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 7, sticky = W)
-lunar_hijri_month_ent = Entry(frame)
-lunar_hijri_month_ent.grid(row = 7, column = 7, sticky = W)
-lunar_hijri_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 8, sticky = W)
-lunar_hijri_year_ent = Entry(frame)
-lunar_hijri_year_ent.grid(row = 7, column = 8, sticky = W)
-lunar_hijri_bttn = Button(frame, text = "Calculate", command = lunar_hijri_converter).grid(row = 8, column = 6, columnspan = 3, sticky = W)
+# Tabular Islamic Calendar
+tab_islamic_lbl = Label(frame, text = "Tabular Islamic Calendar").grid(row = 5, column = 6, columnspan = 3, sticky = W)
+tab_islamic_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 6, sticky = W)
+tab_islamic_day_ent = Entry(frame)
+tab_islamic_day_ent.grid(row = 7, column = 6, sticky = W)
+tab_islamic_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 7, sticky = W)
+tab_islamic_month_ent = Entry(frame)
+tab_islamic_month_ent.grid(row = 7, column = 7, sticky = W)
+tab_islamic_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 8, sticky = W)
+tab_islamic_year_ent = Entry(frame)
+tab_islamic_year_ent.grid(row = 7, column = 8, sticky = W)
+tab_islamic_bttn = Button(frame, text = "Calculate", command = tab_islamic_converter).grid(row = 8, column = 6, columnspan = 3, sticky = W)
 
 # Jalali Calendar
 jalali_lbl = Label(frame, text = "Jalali Calendar").grid(row = 5, column = 9, columnspan = 3, sticky = W)
@@ -1383,17 +1402,17 @@ ada_year_ent.grid(row = 35, column = 5, sticky = W)
 ada_bttn = Button(frame, text = "Calculate", command = ada_converter).grid(row = 36, column = 3, columnspan = 3, sticky = W)
 
 # Astronomical French Republican calendar                                                                                            
-ast_french_lbl = Label(frame, text = "Astronomical French Republican calendar").grid(row = 33, column = 6, columnspan = 3, sticky = W)
-ast_french_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 6, sticky = W)
-ast_french_day_ent = Entry(frame)
-ast_french_day_ent.grid(row = 35, column = 6, sticky = W)
-ast_french_month_lbl = Label(frame, text = "Month").grid(row = 34, column = 7, sticky = W)
-ast_french_month_ent = Entry(frame)
-ast_french_month_ent.grid(row = 35, column = 7, sticky = W)
-ast_french_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 8, sticky = W)
-ast_french_year_ent = Entry(frame)
-ast_french_year_ent.grid(row = 35, column = 8, sticky = W)
-ast_french_bttn = Button(frame, text = "Calculate", command = ast_french_converter).grid(row = 36, column = 6, columnspan = 3, sticky = W)
+obs_french_lbl = Label(frame, text = "Astronomical French Republican calendar").grid(row = 33, column = 6, columnspan = 3, sticky = W)
+obs_french_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 6, sticky = W)
+obs_french_day_ent = Entry(frame)
+obs_french_day_ent.grid(row = 35, column = 6, sticky = W)
+obs_french_month_lbl = Label(frame, text = "Month").grid(row = 34, column = 7, sticky = W)
+obs_french_month_ent = Entry(frame)
+obs_french_month_ent.grid(row = 35, column = 7, sticky = W)
+obs_french_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 8, sticky = W)
+obs_french_year_ent = Entry(frame)
+obs_french_year_ent.grid(row = 35, column = 8, sticky = W)
+obs_french_bttn = Button(frame, text = "Calculate", command = obs_french_converter).grid(row = 36, column = 6, columnspan = 3, sticky = W)
 
 # Algorithmic French Republican calendar                                                                                            
 alg_french_lbl = Label(frame, text = "Algorithmic French Republican calendar").grid(row = 33, column = 9, columnspan = 3, sticky = W)
@@ -1420,6 +1439,19 @@ solar_hijri_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 14, s
 solar_hijri_year_ent = Entry(frame)
 solar_hijri_year_ent.grid(row = 35, column = 14, sticky = W)
 solar_hijri_bttn = Button(frame, text = "Calculate", command = solar_hijri_converter).grid(row = 36, column = 12, columnspan = 3, sticky = W)
+
+# Thellid calendar                                                                                            
+thellid_lbl = Label(frame, text = "Thellid calendar").grid(row = 38, column = 0, columnspan = 3, sticky = W)
+thellid_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 0, sticky = W)
+thellid_day_ent = Entry(frame)
+thellid_day_ent.grid(row = 40, column = 0, sticky = W)
+thellid_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 1, sticky = W)
+thellid_month_ent = Entry(frame)
+thellid_month_ent.grid(row = 40, column = 1, sticky = W)
+thellid_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 2, sticky = W)
+thellid_year_ent = Entry(frame)
+thellid_year_ent.grid(row = 40, column = 2, sticky = W)
+thellid_bttn = Button(frame, text = "Calculate", command = thellid_converter).grid(row = 41, column = 0, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.18.0")
 root.mainloop()

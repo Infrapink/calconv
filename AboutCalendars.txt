@@ -110,9 +110,9 @@ https://en.wikipedia.org/wiki/Ethiopian_calendar
 https://www.timeanddate.com/calendar/ethiopia-calendar.html
 https://theculturetrip.com/africa/ethiopia/articles/why-is-the-ethiopian-calendar-7-years-behind/
 
--------------------------
-ANCIENT EGYPTIAN CALENDAR
--------------------------
+-------------------------------
+ANCIENT EGYPTIAN CIVIL CALENDAR
+-------------------------------
 
 The Egyptians developed the first known completely solar calendar. While there is evidence that the very early Egyptian civilisation had a lunar calendar, the civil calendar never attempted to maintain synchronisation with the phases of the moon.
 
@@ -144,7 +144,7 @@ http://www.rahamasha.net/uploads/2/3/2/8/2328777/armenian_calendar.pdf
 http://www.armeniapedia.org/wiki/Armenian_calendar
 
 ------------------------------
-LUNAR HIJRI (ISLAMIC) CALENDAR
+TABULAR ISLAMIC CALENDAR
 ------------------------------
 
 The Lunar Hijri calendar is a slightly modified version of the pre-Islamic Arab calendar. Most notably, the prophet Muhammad ended the practice of intercalary leap months, resulting in an entirely lunar calendar that makes no effort to maintain synchronisation with the sun.
@@ -645,3 +645,15 @@ The Solar Hijri calendar was first adopted in 1301 AH (1922 AD), replacing the a
 https://iranicaonline.org/articles/calendars
 https://en.wikipedia.org/wiki/Solar_Hijri_calendar
 http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
+
+----------------
+THELLID CALENDAR
+----------------
+
+The Thellid calendar was designed by Warren Mars as a liturgical calendar for the Church of Infinite Dimensions, a rather quirky secular alternative to religion which he founded; fortunately, he designed it to be perfectly usable as a purely civil calendar.
+
+The Thellid calendar incorporates ideas from the Holocene, Positivist, and French Republican calendars; Mars claims he was unaware of the Positivist calendar when he came up with the Thellid, and I have no reason to doubt this. Each year consists of 13 months of 28 days, plus one extra day, called Old Year's Day. Old Year's Day always falls on the day of the southern solstice as measured from Greenwich Obervatory; in leap years, Leap Day is inserted before Old Year's Day. As with the Positivist, World, Gorman, and International Fixed calendars, Leap Day and Old Year's Day are not part of any month, and fall outside of the week; as such, every day of the year always falls on the same day of the week.
+
+To keep things as secular as possible, the Thellid calendar uses the Holocene era, though its epoch is Julian Day (-1931005), five days before the Holocene calendar epoch due to different definitions of New Year's Day. Each month and weekday is given a distinctive name; weekdays are all two syllables long, while months get three. The names of the weeks and the months, as well as the name 'Thellid', were all concocted by Mars himself; they are not derived from any root words and are thus culturally neutral (though there is a clear echo of the Roman alphabet in the naming of the months).
+
+http://infinitedimensions.org/devices/thellid_calendar/thellid_calendar.htm
