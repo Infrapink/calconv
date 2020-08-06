@@ -267,6 +267,23 @@ French Republican calendars:
 * Fructidor
 * Sans-culottides
 
+Thellid calendar
+* Alvakku
+* Bethanis
+* Duvadda
+* Emovvi
+* Forkithal
+* Kalvazzi
+* Irentos
+* Jukennuk
+* Miskullen
+* Ossakov
+* Raikkaved
+* Underro
+* Zithebbe
+* Leap Day (leap years only)
+* Old Year's Day
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
