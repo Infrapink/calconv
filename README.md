@@ -10,7 +10,7 @@ RUNNING
 
 From the command line, navigate to the folder where you unpacked the program and type:
 
-./calconv0.6.py
+./calconv.py
 
 On Windows, you can instead double-click on calconv.bat
 
