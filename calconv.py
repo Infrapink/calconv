@@ -17,7 +17,7 @@ import jalali
 import birashk
 import assyrian
 import babylonian
-import hebrew
+import jewish
 import samaritan
 import kurdish
 import amazigh
@@ -179,16 +179,16 @@ def cons_day_julian_todate():
         babylonian_year_ent.insert(0, babylonian_year_value)
 
         # Convert a Julian Day to a date in the Hebrew calendar
-        hebrew_date = hebrew.fromjd(day)
-        hebrew_day_value = hebrew_date[0]
-        hebrew_month_value = hebrew_date[1]
-        hebrew_year_value = hebrew_date[2]
-        hebrew_day_ent.delete(0, END)
-        hebrew_month_ent.delete(0, END)
-        hebrew_year_ent.delete(0, END)
-        hebrew_day_ent.insert(0, hebrew_day_value)
-        hebrew_month_ent.insert(0, hebrew_month_value)
-        hebrew_year_ent.insert(0, hebrew_year_value)
+        jewish_date = jewish.fromjd(day)
+        jewish_day_value = jewish_date[0]
+        jewish_month_value = jewish_date[1]
+        jewish_year_value = jewish_date[2]
+        jewish_day_ent.delete(0, END)
+        jewish_month_ent.delete(0, END)
+        jewish_year_ent.delete(0, END)
+        jewish_day_ent.insert(0, jewish_day_value)
+        jewish_month_ent.insert(0, jewish_month_value)
+        jewish_year_ent.insert(0, jewish_year_value)
 
         # Convert a Julian Day to a date in the Samaritan calendar
         samaritan_date = samaritan.fromjd(day)
@@ -587,12 +587,12 @@ def babylonian_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
         
-def hebrew_converter():
+def jewish_converter():
         """Convert a date in the Hebrew calendar to a Julian Day."""
-        day = hebrew_day_ent.get()
-        month = hebrew_month_ent.get()
-        year = hebrew_year_ent.get()
-        jday = hebrew.tojd(day, month, year)
+        day = jewish_day_ent.get()
+        month = jewish_month_ent.get()
+        year = jewish_year_ent.get()
+        jday = jewish.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1070,17 +1070,17 @@ babylonian_year_ent.grid(row = 12, column = 5, sticky = W)
 babylonian_bttn = Button(frame, text = "Calculate", command = babylonian_converter).grid(row = 13, column = 3, columnspan = 3, sticky = W)
 
 # Hebrew (Jewish) Calendar
-hebrew_lbl = Label(frame, text = "Jewish Hebrew Calendar").grid(row = 10, column = 6, columnspan = 3, sticky = W)
-hebrew_day_lbl = Label(frame, text = "Day").grid(row = 11, column = 6, sticky = W)
-hebrew_day_ent = Entry(frame)
-hebrew_day_ent.grid(row = 12, column = 6, sticky = W)
-hebrew_month_lbl = Label(frame, text = "Month").grid(row = 11, column = 7, sticky = W)
-hebrew_month_ent = Entry(frame)
-hebrew_month_ent.grid(row = 12, column = 7, sticky = W)
-hebrew_year_lbl = Label(frame, text = "Year").grid(row = 11, column = 8, sticky = W)
-hebrew_year_ent = Entry(frame)
-hebrew_year_ent.grid(row = 12, column = 8, sticky = W)
-hebrew_bttn = Button(frame, text = "Calculate", command = hebrew_converter).grid(row = 13, column = 6, columnspan = 3, sticky = W)
+jewish_lbl = Label(frame, text = "Jewish Hebrew Calendar").grid(row = 10, column = 6, columnspan = 3, sticky = W)
+jewish_day_lbl = Label(frame, text = "Day").grid(row = 11, column = 6, sticky = W)
+jewish_day_ent = Entry(frame)
+jewish_day_ent.grid(row = 12, column = 6, sticky = W)
+jewish_month_lbl = Label(frame, text = "Month").grid(row = 11, column = 7, sticky = W)
+jewish_month_ent = Entry(frame)
+jewish_month_ent.grid(row = 12, column = 7, sticky = W)
+jewish_year_lbl = Label(frame, text = "Year").grid(row = 11, column = 8, sticky = W)
+jewish_year_ent = Entry(frame)
+jewish_year_ent.grid(row = 12, column = 8, sticky = W)
+jewish_bttn = Button(frame, text = "Calculate", command = jewish_converter).grid(row = 13, column = 6, columnspan = 3, sticky = W)
 
 # Samaritan Calendar
 samaritan_lbl = Label(frame, text = "Samaritan Hebrew Calendar (estimated)").grid(row = 10, column = 9, columnspan = 3, sticky = W)
