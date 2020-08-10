@@ -41,6 +41,7 @@ import obs_french
 import alg_french
 import solar_hijri
 import thellid
+import lunar_hijri
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -462,6 +463,15 @@ def cons_day_julian_todate():
         thellid_day_ent.insert(0, thellid_date[0])
         thellid_month_ent.insert(0, thellid_date[1])
         thellid_year_ent.insert(0, thellid_date[2])
+
+        # Convert a Julian day to a date in the lunar_hijri calendar
+        lunar_hijri_date = lunar_hijri.fromjd(day)
+        lunar_hijri_day_ent.delete(0, END)
+        lunar_hijri_month_ent.delete(0, END)
+        lunar_hijri_year_ent.delete(0, END)
+        lunar_hijri_day_ent.insert(0, lunar_hijri_date[0])
+        lunar_hijri_month_ent.insert(0, lunar_hijri_date[1])
+        lunar_hijri_year_ent.insert(0, lunar_hijri_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -886,6 +896,15 @@ def thellid_converter():
         month = thellid_month_ent.get()
         year = int(thellid_year_ent.get())
         jday = thellid.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def lunar_hijri_converter():
+        day = int(lunar_hijri_day_ent.get())
+        month = lunar_hijri_month_ent.get()
+        year = int(lunar_hijri_year_ent.get())
+        jday = lunar_hijri.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1453,5 +1472,18 @@ thellid_year_ent = Entry(frame)
 thellid_year_ent.grid(row = 40, column = 2, sticky = W)
 thellid_bttn = Button(frame, text = "Calculate", command = thellid_converter).grid(row = 41, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.18.0")
+# Lunar Hijri calendar                                                                                            
+lunar_hijri_lbl = Label(frame, text = "Lunar Hijri (Islamic) calendar").grid(row = 38, column = 3, columnspan = 3, sticky = W)
+lunar_hijri_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 3, sticky = W)
+lunar_hijri_day_ent = Entry(frame)
+lunar_hijri_day_ent.grid(row = 40, column = 3, sticky = W)
+lunar_hijri_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 4, sticky = W)
+lunar_hijri_month_ent = Entry(frame)
+lunar_hijri_month_ent.grid(row = 40, column = 4, sticky = W)
+lunar_hijri_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 5, sticky = W)
+lunar_hijri_year_ent = Entry(frame)
+lunar_hijri_year_ent.grid(row = 40, column = 5, sticky = W)
+lunar_hijri_bttn = Button(frame, text = "Calculate", command = lunar_hijri_converter).grid(row = 41, column = 3, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.19.0")
 root.mainloop()

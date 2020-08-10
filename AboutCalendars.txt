@@ -37,9 +37,9 @@ As ever, defining a year can be tricky. The sidereal year is the time it takes f
 [14] http://hpiers.obspm.fr/eop-pc/models/constants.html
 [15] https://en.wikipedia.org/wiki/Lunar_month
 
-----------------------
-CONSECUTIVE JULIAN DAY
-----------------------
+------------------------
+CHRONOLOGICAL JULIAN DAY
+------------------------
 
 The Julian day (not to be confused with the Julian calendar) is a system which assigns a unique number to each date. Strictly speaking, each Julian day begins at noon UTC, because they scheme was originally developed by and for astronomers. Specifically, Ludwig Ideler and Sir John Herschel simplified the Julian Period to just a count of days with the same epoch, in which day 0 well before any recorded history (1 January 4713 BC by the Julian calendar; 24 November 4714 BC by the Gregorian calendar; 3 Azar 5335 BH by the Solar Hijri calendar). Astronomers and computer programmers find Julian days useful due to often having to do maths with dates, and most every calendar converter you will find (including this one) uses Julian days as an intermediary to convert between other calendars.
 
@@ -147,13 +147,9 @@ http://www.armeniapedia.org/wiki/Armenian_calendar
 TABULAR ISLAMIC CALENDAR
 ------------------------------
 
-The Lunar Hijri calendar is a slightly modified version of the pre-Islamic Arab calendar. Most notably, the prophet Muhammad ended the practice of intercalary leap months, resulting in an entirely lunar calendar that makes no effort to maintain synchronisation with the sun.
+The tabular Islamic calendar is a version of the Solar Hijri calendar based entirely on arithmetical calculations of rational numbers. The year consists of 12 months of alternating 30 and 29 days. In addition, an extra day is added to Dhu al-Hijjah according to a 30 year leap cycle in which 2, 5, 7, 10, 13, 16, 18, 21, 24, 26 and 29 are leap years. Until 1441 AH, an alternative algorithmic calendar, the Umm al-Qura calendar, was the official civil calendar of Saudi Arabia; however, I have not been able to find any good descriptions of the algorithms used for that one. In 1437, the Arabian government switched to a homebrew solar calendar for purposes of paying civil servants, and since 1439 have used the Gregorian calendar.
 
-Each month of the religious calendar begins with the first sighting of the waxing crescent moon, and days thus begin at sunset; as such, any date give by this converter actually refers to the next day if the time is between sunset and midnight. This reliance on observation can cause trouble when it's cloudy.
-
-The version used in this converter instead uses arithmetical calculations. The year consists of 12 months of alternating 30 and 29 days. In addition, an extra day is added to Dhu al-Hijjah according to a 30 year leap cycle in which 2, 5, 7, 10, 13, 16, 18, 21, 24, 26 and 29 are leap years. Until 1441 AH, an alternative algorithmic calendar, the Umm al-Qura calendar, was the official civil calendar of Saudi Arabia; however, I have not been able to find any good descriptions of the algorithms used for that one. In 1437, the Arabian government switched to a homebrew solar calendar for purposes of paying civil servants, and since 1439 have used the Gregorian calendar.
-
-The epoch of the Lunar Hijri calendar is Julian Day 1948439, the first day of Muharram in the year that the prophet Muhammad and his acolytes moved from Mecca to Medina and established the first ummah.
+The epoch of this calendar is Julian Day 1948439, the first day of Muharram in the year that the prophet Muhammad and his acolytes moved from Mecca to Medina and established the first ummah.
 
 https://en.wikipedia.org/wiki/Islamic_calendar
 https://en.wikipedia.org/wiki/Tabular_Islamic_calendar
@@ -657,3 +653,20 @@ The Thellid calendar incorporates ideas from the Holocene, Positivist, and Frenc
 To keep things as secular as possible, the Thellid calendar uses the Holocene era, though its epoch is Julian Day (-1931005), five days before the Holocene calendar epoch due to different definitions of New Year's Day. Each month and weekday is given a distinctive name; weekdays are all two syllables long, while months get three. The names of the weeks and the months, as well as the name 'Thellid', were all concocted by Mars himself; they are not derived from any root words and are thus culturally neutral (though there is a clear echo of the Roman alphabet in the naming of the months).
 
 http://infinitedimensions.org/devices/thellid_calendar/thellid_calendar.htm
+
+------------------------------
+LUNAR HIJRI (ISLAMIC) CALENDAR
+------------------------------
+
+The Lunar Hijri calendar is a slightly modified version of the pre-Islamic Arab calendar. Most notably, the prophet Muhammad ended the practice of intercalary leap months, resulting in an entirely lunar calendar that makes no effort to maintain synchronisation with the sun.
+
+Each month of the religious calendar begins with the first sighting of the waxing crescent moon, and days thus begin at sunset; as such, any date give by this converter actually refers to the next day if the time is between sunset and midnight. Years are numbered AH, for Anno Hejirae; this is the year that the prohpet Muhammad moved from Mecca to Medina and founded the first Muslim community. For simplicity, I have taken the month to be exactly 29 days 12 hours 44 minutes 3.3 seconds long, based on Hebrew calculations; this will become inaccurate over millions of years as angular momentum is transferred from Earth to the moon.
+
+The version used in this converter takes an epoch of Julian Day 1948437 and 1807/4320 of a day; this was derived by first taking the date and time of the New Moon of Muharram 1442 AH and then subtracting 1441 * the length of the astronomical lunar year. The date and time of the new moon is the instant in Saudi Arabian Standard Time when the New Moon is visible anywhere in the world. This is the convention used by many Muslim communities for convenience and to allow for Muslims across the world to celebrate religious observances at the same time. Strictly speaking, however, the month is supposed to begin on the night of the first local sighting of the New Moon, which can mean that the Islamic months begin on different nights depending on time zones; this reliance on direct observations causes problems when it's cloudy.
+
+As such, the dates given in this converter might not exactly match those decreed by Muslim authorities; they can also differ from those of the tabular calendar. In the modern age, this difference can be up to two days; over centuries, the extra 44 minutes 3.3 seconds add up, resulting in a greater divergence millennia in the past and future.
+
+https://en.wikipedia.org/wiki/Islamic_calendar
+https://en.wikipedia.org/wiki/Tabular_Islamic_calendar
+http://www.webexhibits.org/calendars/calendar-islamic.html
+https://icfresno.org/2019/06/eid-prayer-at-iccf-2/

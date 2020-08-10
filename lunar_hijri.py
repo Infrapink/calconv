@@ -1,138 +1,106 @@
 #!/usr/bin/python
 
-##
-## Conveart between Lunar Hijri calendar and Julian Day.
-##
+#
+# Convert between Lunar Hijri dates and Julian Days
+#
 
-import months
+from fractions import *
 
-cycle30 = (30 * 354) + 11
+monlen = 29 + Fraction(12,24) + Fraction(793, 25920) # using Hebrew measurements, which should be accurate enough
+yearlen = 12 * monlen
+#epoch = Fraction(8417249647, 4320)
+epoch = 1948437 + Fraction(1807,4320)# - yearlen# New Moon of 1 Muharram 1 AH, Saudi Arabian Standard Time
+
+months = ("Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-Thani", "Jumada al-awwal", "Jumada al-Thani", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qidah", "Dhu al-Hijjah")
 
 def tojd(day, month, year):
     day = int(day)
     month = month
     year = int(year)
-    alpha = 1948438
-    days = 0
-    cycle30 = (30 * 354) + 11
-    leap_years_ah = (2,5,7,10,13,16,18,21,24,26,29)
-    leap_years_bh = (1,4,6,9,12,15,17,20,23,25,28)
+    jday = epoch
+    current = False
+    m = 0
 
     if year > 0:
-        for y in range(1,year):
-            if (y % 30) in leap_years_ah:
-                days += 355
-            else:
-                days += 354
-        if year in leap_years_ah:
-            # leap year
-            m = months.ARAB_LEAP
-        else:
-            # not a leap year
-            m = months.ARAB_NORMAL
+        # positive dates
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
+        for y in range(1, year):
+            jday += yearlen
+
+        while current == False:
+            if month == months[m]:
+                jday += day# + 1
+                current = True
             else:
-                days += m[i]
+                jday += monlen
+            m += 1
+
     else:
-        year = 0 - year # modulo operator doesn't play nicely with negative numbers
-        for y in range(0,year):
-            if (y % 30) in leap_years_bh:
-                days -= 355
+        # negative dates
+
+        for y in range(-1, (year - 1), -1):
+            jday -= yearlen
+
+        while current == False:
+            if month == months[m]:
+                jday += day# + 1 # add 1 to account for a fencepost error
+                current = True
             else:
-                days -= 354
-        if year in leap_years_bh:
-            # leap year
-            #days -= 356
-            m = months.ARAB_LEAP
-        else:
-            # not a leap year
-            #days -= 355
-            m = months.ARAB_NORMAL
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
-    jday = days + alpha
-    return jday
+                jday += monlen
+            m += 1
+
+    if jday < 0:
+        jday -= 1
+        
+    return int(jday)
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Lunar Hijri calendar."""
     jday = int(jday)
     day = 0
     month = ""
     year = 0
-    single_year = 0
-    leap_years_ah = (2, 5, 7, 10, 13, 16, 18, 21, 24, 26, 29)
-    leap_years_bh = (2, 5, 7, 10, 13, 15, 18, 21, 24, 26, 29)
-    leap_years_zero = (1, 4, 6, 9, 12, 14, 17, 20, 23, 25, 28)
+    nyd = epoch
+    curryear = False
+    currmonth = False
+    m = 0
 
-    if jday > 1948438:
-        # positive year
-        delta = jday - 1948438
-        cycles = delta // cycle30
-        delta = delta % cycle30
-        m = None
-        for y in range(1, 31):
-            if y in leap_years_ah:
-                if delta <= 355:
-                    # leap year
-                    m = months.ARAB_LEAP
-                    single_year = y
-                    break
-                else:
-                    delta -= 355
+    if jday >= int(epoch):
+        # positive dates
+
+        while curryear == False:
+            year += 1
+            if jday - nyd < yearlen:
+                curryear = True
             else:
-                if delta <= 354:
-                    # not a leap year
-                    m = months.ARAB_NORMAL
-                    single_year = y
-                    break
-                else:
-                    delta -= 354
-        year = (cycles * 30) + single_year
-        if delta == 0:
-            delta = 354
-            year -= 1
-            
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
+                nyd += yearlen
+
+        while currmonth == False:
+            if jday - nyd < monlen:
+                day = int(jday - nyd) + 1
+                month = months[m]
+                currmonth = True
             else:
-                delta -= m[i]
+                nyd += monlen
+            m += 1
+
     else:
-        # negative year
-        delta = 1948439 - jday
-        while delta > 0:
-            if (year % 30) in leap_years_zero:
-                year += 1
-                delta -= 355
-            else:
-                year += 1
-                delta -= 354
-            
-        if (year % 30) in leap_years_bh:
-            # leap year
-            m = months.ARAB_LEAP
-        else:
-            m = months.ARAB_NORMAL
-                
-        year = 0 - year
-        delta = 0 - delta + 1
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+        # negative dates
 
-    date = (day, month, year)
-    return date
+        while curryear == False:
+            year -= 1
+            if jday > nyd:
+                curryear = True
+            else:
+                nyd -= yearlen
+
+        year += 1
+        while currmonth == False:
+            if jday - nyd <= monlen:
+                day = int(jday - nyd) + 1
+                month = months[m]
+                currmonth = True
+            else:
+                nyd += monlen
+            m += 1
+
+    return (day, month, year)
