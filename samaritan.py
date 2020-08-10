@@ -1,195 +1,216 @@
 #!/usr/bin/python
 
 #
-# Convert between the Samaritan calendar and Julian day.
+# Convert between Samaritan Hebrew calendar and Julian Day
 #
 
 import months
 from fractions import *
 
-def tojd(day,month,year):
+leap_years_ai = (3,6,8,11,14,17,19,0)
+leap_years_bi = (1,3,6,9,12,14,17)
+leap_years_zo = (0,2,5,8,11,13,16)
+    
+monlen = 29 + Fraction(12,24) + Fraction(793, (24 * 1080)) # formal mean synodic month length
+yearlen12 = 12 * monlen # length of a 12-month year
+yearlen13 = 13 * monlen # length of a 13-month year
+cycle19 = 235 * monlen
+molad_prime = 1122909 + Fraction(11,24) + Fraction(451,25920)
+
+YEARTYPE = {353: months.SAMARITAN_DEFICIENT_NORMAL,
+            354: months.SAMARITAN_REGULAR_NORMAL,
+            355: months.SAMARITAN_ABUNDANT_NORMAL,
+            383: months.SAMARITAN_DEFICIENT_LEAP,
+            384: months.SAMARITAN_REGULAR_LEAP,
+            385: months.SAMARITAN_ABUNDANT_LEAP}
+
+def tojd(day, month, year):
     day = int(day)
-    month = month.title()
+    month = month
     year = int(year)
-    days = 0
+    
+    hashanah = molad_prime
 
-    leap_years_ai = (3,6,8,11,14,17,19,0)
-    leap_years_bi = (1,3,6,9,12,14,17)
-    leap_years_zo = (0,2,5,8,11,13,16)
+    if year >= 1:
+        # positive years
 
-    monlen = 29 + Fraction(12,24) + Fraction(793,25920)
-    yearlen12 = 12 * monlen
-    yearlen13 = 13 * monlen
-    cycle19 = 235 * monlen
-
-    molad0 = Fraction(11,24) + Fraction(451,25920)
-
-    if year > 0:
-        # positive dates
         if month == "Veadar":
-            if (year % 19) not in leap_years_ai:
+            if year % 19 not in leap_years_ai:
                 month = "Adar"
-
-        for y in range(1,year):
-            if (y % 19) in leap_years_ai:
-                days += yearlen13
+                
+        for y in range(1, year):
+            if y % 19 in leap_years_ai:
+                hashanah += yearlen13
             else:
-                days += yearlen12
+                hashanah += yearlen12
 
-        days = int(days + 1122908 + molad0)
-        if (year % 19) in leap_years_ai:
-            m = months.SAMARITAN_LEAP
+        # the value of days is now the moment of the molad of Nisan for the year in question
+        
+        if year % 19 in leap_years_ai:
+            next_hashanah = hashanah + yearlen13
         else:
-            m = months.SAMARITAN_NORMAL
+            next_hashanah = hashanah + yearlen12
+
+        rosh = int(hashanah)
+        molad = hashanah % 1
+
+        next_rosh = int(next_hashanah)
+        next_molad = next_hashanah % 1
+
+        m = YEARTYPE[next_rosh - rosh]
+        days = rosh
 
         for i in m.keys():
             if i == month:
-                days += day + 1
+                days += day - 1
                 break
             else:
                 days += m[i]
-
-        test = julian_day_conversions.samaritan(days)
-        if test[0] != day:
-            days -= 1
 
     else:
         # negative dates
-        if month == "Veadar":
-            if (abs(year) % 19) not in leap_years_bi:
-                month = "Adar"
+        
+        for y in range(-1, (year - 1), -1):
+            if abs(y) % 19 in leap_years_bi:
+                hashanah -= yearlen13
+            else:
+                hashanah -= yearlen12
 
-        if (abs(year) % 19) in leap_years_bi:
-            m = months.SAMARITAN_LEAP
+        if abs(year) % 19 in leap_years_bi:
+            next_hashanah = hashanah + yearlen13
         else:
-            m = months.SAMARITAN_NORMAL
-            
+            next_hashanah = hashanah + yearlen12
+
+        next_year = year + 1
+
+        if hashanah < 0:
+            rosh = int(hashanah) - 1
+        else:
+            rosh = int(hashanah)
+        molad = hashanah % 1
+
+        if next_hashanah < 0:
+            next_rosh = int(next_hashanah) - 1
+        else:
+            next_rosh = int(next_hashanah)
+        next_molad = next_hashanah % 1
+
+        days = rosh
+        m = YEARTYPE[next_rosh - rosh]
+
         for i in m.keys():
             if i == month:
-                days += day
+                days += day - 1
                 break
             else:
                 days += m[i]
-                
-        for y in range(0, abs(year)):
-            if (y % 19) in leap_years_zo:
-                days -= yearlen13
-            else:
-                days -= yearlen12
+        days = int(days)
 
-        days = int(days + molad0 + 1122909)
-        test = fromjd(days)
-        if test[0] != day:
-            days -= 1
-
-    return days
+    return(days)
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Samaritan calendar."""
-    leap_years_ai = (3,6,8,11,14,17,19,0)
-    leap_years_bi = (1,3,6,9,12,14,17)
-    leap_years_zo = (0,2,5,8,11,13,16)
-    monlen = 29 + Fraction(12,24) + Fraction(793, (24 * 1080))
-    yearlen12 = 12 * monlen
-    yearlen13 = 13 * monlen
-    cycle19 = 235 * monlen
-    #molad0 = Fraction(2,24) + Fraction(655,25920)
-    #molad0 = Fraction(17,24) + Fraction(859,25920)
-    molad0 = Fraction(11,24) + Fraction(451,25920)
-
+    """Convert a Julian day to a date in the Jewish calendar."""
     jday = int(jday)
     day = 0
     month = ""
     year = 0
 
-    if jday > 1122908:
+    hashanah = molad_prime
+
+    if jday >= int(molad_prime):
         # positive dates
-        delta = jday - 1122908
 
-        # First count 19-year cycles
-        while delta > cycle19:
-            year += 19
-            delta -= cycle19
+        current = False
 
-        # whole years
-        for y in range(0, 19):
-            y += 1
-            if y in leap_years_ai:
-                if delta <= yearlen13:
-                    year += y
-                    break
-                else:
-                    delta -= yearlen13
+        while current == False:
+            year += 1
+            if year % 19 in leap_years_ai:
+                y = yearlen13
             else:
-                if delta <= yearlen12:
-                    year += y
-                    break
-                else:
-                    delta -= yearlen12
-
-        # delta now gives the exact position in the current year.
-        delta = int(delta)
-        if delta == 0:
-            year -= 1
-            if (year % 19) in leap_years_ai:
-                delta = 384
-            else:
-                delta = 354
+                y = yearlen12
                 
-        if (year % 19) in leap_years_ai:
-            m = months.SAMARITAN_LEAP
-        else:
-            m = months.SAMARITAN_NORMAL
-
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
+            if jday - hashanah < y:
+                current = True
             else:
-                delta -= m[i]
+                hashanah += y
+
+        # now we have the current year, and hashanah gives the molad of Nisan
+        if year % 19 in leap_years_ai:
+            next_hashanah = hashanah + yearlen13
+        else:
+            next_hashanah = hashanah + yearlen12
+
+        next_year = year + 1
+
+        rosh = int(hashanah)
+        molad = hashanah % 1
+
+        next_rosh = int(next_hashanah)
+        next_molad = next_hashanah % 1
+
+        delta = jday - rosh + 1
+        m = YEARTYPE[next_rosh - rosh]
+        if delta <= 0:
+            year -= 1
+            month = "Elul"
+            day = 29 + delta
+        else:
+            for i in m.keys():
+                if delta <= m[i]:
+                    month = i
+                    day = delta
+                    break
+                else:
+                    delta -= m[i]
+
 
     else:
-        # negative years
-        delta = 1122909 - jday
-        flag = False
-
-        while flag == False:
+        # negative dates
+        while hashanah > jday:
             year -= 1
-            if (abs(year) % 19) in leap_years_bi:
-                if delta <= yearlen13:
-                    flag = True
-                else:
-                    delta -= yearlen13
+            if abs(year) % 19 in leap_years_bi:
+                hashanah -= yearlen13
             else:
-                if delta <= yearlen12:
-                    flag = True
-                else:
-                    delta -= yearlen12
+                hashanah -= yearlen12
 
-        # year now gives us the current year year and delta the exact position within that year.
-        delta = int(delta)
-        if delta == 0:
-            year -= 1
-#            if (abs(year) % 19) in leap_years_bi:
- #               delta = 384
-  #          else:
-   #             delta = 354
-                
-        if (abs(year) % 19) in leap_years_bi:
-            m = months.SAMARITAN_LEAP
-            delta = 384 - delta
+        # This gives us the exact year, and hashanah gives the exact moment of the molad of Tishri for year
+        next_year = year + 1
+
+        if abs(year) % 19 in leap_years_bi:
+            next_hashanah = hashanah + yearlen13
         else:
-            m = months.SAMARITAN_NORMAL
-            delta = 354 - delta
+            next_hashanah = hashanah + yearlen12
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+        if hashanah < 0:
+            rosh = int(hashanah) - 1
+        else:
+            rosh = int(hashanah)
+        molad = hashanah % 1
 
-    date = (day,month,year)
-    return date
+        if next_hashanah < 0:
+            next_rosh = int(next_hashanah) - 1
+        else:
+            next_rosh = int(next_hashanah)
+        next_molad = next_hashanah % 1
+
+        m = YEARTYPE[next_rosh - rosh]
+        delta = jday - rosh + 1
+
+        if jday == next_rosh:
+            day = 1
+            month = "Tishrei"
+            year += 1
+        elif delta <= 0:
+            year -= 1
+            month = "Elul"
+            day = 29 + delta
+        else:
+            for i in m.keys():
+                if delta <= m[i]:
+                    month = i
+                    day = delta
+                    break
+                else:
+                    delta -= m[i]
+
+    return (day,month,year)
