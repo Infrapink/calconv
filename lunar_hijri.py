@@ -9,7 +9,7 @@ from fractions import *
 monlen = 29 + Fraction(12,24) + Fraction(793, 25920) # using Hebrew measurements, which should be accurate enough
 yearlen = 12 * monlen
 #epoch = Fraction(8417249647, 4320)
-epoch = 1948437 + Fraction(1807,4320)# - yearlen# New Moon of 1 Muharram 1 AH, Saudi Arabian Standard Time
+epoch = 1948437 + Fraction(1987,4320)# - yearlen# New Moon of 1 Muharram 1 AH, Arab Time by Saudi Arabian meridian
 
 months = ("Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-Thani", "Jumada al-awwal", "Jumada al-Thani", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qidah", "Dhu al-Hijjah")
 
@@ -29,7 +29,7 @@ def tojd(day, month, year):
 
         while current == False:
             if month == months[m]:
-                jday += day# + 1
+                jday += day - 1
                 current = True
             else:
                 jday += monlen
@@ -43,7 +43,7 @@ def tojd(day, month, year):
 
         while current == False:
             if month == months[m]:
-                jday += day# + 1 # add 1 to account for a fencepost error
+                jday += day + 1 # add 1 to account for a fencepost error
                 current = True
             else:
                 jday += monlen
@@ -60,6 +60,7 @@ def fromjd(jday):
     month = ""
     year = 0
     nyd = epoch
+    next_nyd = nyd + yearlen
     curryear = False
     currmonth = False
     m = 0
@@ -69,38 +70,52 @@ def fromjd(jday):
 
         while curryear == False:
             year += 1
-            if jday - nyd < yearlen:
+            if jday < int(next_nyd):
                 curryear = True
             else:
                 nyd += yearlen
+                next_nyd += yearlen
+
+        newmoon = nyd
+        nextmoon = nyd + monlen
 
         while currmonth == False:
-            if jday - nyd < monlen:
-                day = int(jday - nyd) + 1
+            if jday < int(nextmoon):
+                day = jday - int(newmoon) + 1
                 month = months[m]
                 currmonth = True
             else:
-                nyd += monlen
+                newmoon += monlen
+                nextmoon += monlen
             m += 1
 
     else:
         # negative dates
 
         while curryear == False:
-            year -= 1
-            if jday > nyd:
+
+            if jday > int(nyd):
                 curryear = True
             else:
                 nyd -= yearlen
-
-        year += 1
+                next_nyd -= yearlen
+                year -= 1
+            
+        newmoon = nyd
+        nextmoon = newmoon + monlen
+        
         while currmonth == False:
-            if jday - nyd <= monlen:
-                day = int(jday - nyd) + 1
+            if newmoon >= 0:
+                mu = int(nextmoon)
+            else:
+                mu = int(nextmoon) - 1
+            if jday < mu:
+                day = jday - int(newmoon)
                 month = months[m]
                 currmonth = True
             else:
-                nyd += monlen
+                newmoon += monlen
+                nextmoon += monlen
             m += 1
 
     return (day, month, year)
