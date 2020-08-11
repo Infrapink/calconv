@@ -6,10 +6,12 @@
 
 from fractions import *
 
-monlen = 29 + Fraction(12,24) + Fraction(793, 25920) # using Hebrew measurements, which should be accurate enough
+#monlen = 29 + Fraction(12,24) + Fraction(793, 25920) # using Hebrew measurements, which should be accurate enough
+monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000) # mean synodic month, according to Wolfram Alpha
 yearlen = 12 * monlen
 #epoch = Fraction(8417249647, 4320)
-epoch = 1948437 + Fraction(1987,4320)# - yearlen# New Moon of 1 Muharram 1 AH, Arab Time by Saudi Arabian meridian
+#epoch = 1948437 + Fraction(1987,4320)# - yearlen# New Moon of 1 Muharram 1 AH, Arab Time by Saudi Arabian meridian
+epoch = 1948437 + Fraction(5233,7200) # Based on taking the New Moon of Muharram 1442 and subtracting (1441 * yearlen)
 
 months = ("Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-Thani", "Jumada al-awwal", "Jumada al-Thani", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qidah", "Dhu al-Hijjah")
 
