@@ -42,6 +42,7 @@ import alg_french
 import solar_hijri
 import thellid
 import lunar_hijri
+import arab
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -472,6 +473,15 @@ def cons_day_julian_todate():
         lunar_hijri_day_ent.insert(0, lunar_hijri_date[0])
         lunar_hijri_month_ent.insert(0, lunar_hijri_date[1])
         lunar_hijri_year_ent.insert(0, lunar_hijri_date[2])
+
+        # Convert a Julian day to a date in the Pre-Islamic Arab calendar
+        arab_date = arab.fromjd(day)
+        arab_day_ent.delete(0, END)
+        arab_month_ent.delete(0, END)
+        arab_year_ent.delete(0, END)
+        arab_day_ent.insert(0, arab_date[0])
+        arab_month_ent.insert(0, arab_date[1])
+        arab_year_ent.insert(0, arab_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -905,6 +915,15 @@ def lunar_hijri_converter():
         month = lunar_hijri_month_ent.get()
         year = int(lunar_hijri_year_ent.get())
         jday = lunar_hijri.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def arab_converter():
+        day = int(arab_day_ent.get())
+        month = arab_month_ent.get()
+        year = int(arab_year_ent.get())
+        jday = arab.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1484,6 +1503,19 @@ lunar_hijri_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 5, st
 lunar_hijri_year_ent = Entry(frame)
 lunar_hijri_year_ent.grid(row = 40, column = 5, sticky = W)
 lunar_hijri_bttn = Button(frame, text = "Calculate", command = lunar_hijri_converter).grid(row = 41, column = 3, columnspan = 3, sticky = W)
+
+# Pre-Islamic Arab calendar                                                                                            
+arab_lbl = Label(frame, text = "Pre-Islamic Arab calendar").grid(row = 38, column = 6, columnspan = 3, sticky = W)
+arab_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 6, sticky = W)
+arab_day_ent = Entry(frame)
+arab_day_ent.grid(row = 40, column = 6, sticky = W)
+arab_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 7, sticky = W)
+arab_month_ent = Entry(frame)
+arab_month_ent.grid(row = 40, column = 7, sticky = W)
+arab_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 8, sticky = W)
+arab_year_ent = Entry(frame)
+arab_year_ent.grid(row = 40, column = 8, sticky = W)
+arab_bttn = Button(frame, text = "Calculate", command = arab_converter).grid(row = 41, column = 6, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.19.0")
 root.mainloop()

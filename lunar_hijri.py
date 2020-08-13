@@ -110,7 +110,7 @@ def fromjd(jday):
             if newmoon >= 0:
                 mu = int(nextmoon)
             else:
-                mu = int(nextmoon) - 1
+                mu = int(nextmoon)# - 1
             if jday < mu:
                 day = jday - int(newmoon)
                 month = months[m]

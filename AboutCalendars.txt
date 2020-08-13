@@ -670,3 +670,27 @@ https://en.wikipedia.org/wiki/Islamic_calendar
 https://en.wikipedia.org/wiki/Tabular_Islamic_calendar
 http://www.webexhibits.org/calendars/calendar-islamic.html
 https://icfresno.org/2019/06/eid-prayer-at-iccf-2/
+
+-------------------------
+PRE-ISLAMIC ARAB CALENDAR
+-------------------------
+
+The nature of the calendar used by the Arabs before the introduction of Islam is little-known and controversial. Some evidence exists that two seperate calendars were in use, one entirely lunar, the other lunisolar. If this is the case, the purely lunar calendar was basically identical to the modern liturgical Muslim calendar, and so has already been implemented.
+
+Tentative reconstructions of the pagan Arab lunisolar calendar point to one quite similar to the Hebrew calendars. An extra month, Nasiʾ, was intercalated according to the Babylonian algorithm which Rabbi Hillel II had introduced to the Jews in 4118 AM (358 AD, 273 BH lunar, 269 BH solar). Some historians have suggested that the intercalation algorithm followed a simpler scheme in which Nasiʾ was added every two, three, or four years, or that nine out of every 24 years were intercalated; however, the most plausible lines of evidence point to the Arabs copying the Jewish scheme.
+
+Other historians question whether Nasiʾ was in fact an extra month, pointing out that the word just means 'postponement', and as such may have simply referred to postponing the sacredness of one month to the next without actually adding any months. Even if this was the case at some point, the evidence most strongly indicates that by 200 BH, the Arabs were indeed adding months to the year.
+
+While other lunisolar calendars add months at a fixed point in the year, the Arab calendar appears to have cycled which month it would follow; if Nasiʾ followed Muharram one year, it would follow Safar the next, and so on. This is all rather complicated, and as in other cultures, it fell to an individual to declare when Nasiʾ would be added. In the case of the Arab calendar, this was al-Qalammas, a position apparently named after the first person to hold the office, who was always of the Qinanah tribe.
+
+A variety of calendar eras were in use at different times. It appears that, after Islam became dominant, the Wathanists adopted the Hijra era, and so this converter dates years Anno Hegirae. 
+
+Muhammad abolished the practice of Nasiʾ on the grounds that adding months screws with what God has ordained; it has also been suggested that this was done to weaken the influence of the Qinanah. Wathanists, naturally, continued the practice.
+
+Muhammad finally got around to performing the Hajj in Dhu al-Hijjah 10 AH, stating that at this time, the Muslim and pagan calendars had gotten back in sync. Thereafter, he banned non-Muslims from performing Hajj. Based on this, I have set the epoch as the new moon of Julian Day 1948319 so that Dhu al-Hijjah 10 AH will start and end on the same days in the Lunar Hijri and Arab calendars.
+
+https://en.wikipedia.org/wiki/Pre-Islamic_Arabian_calendar
+http://irigs.iiu.edu.pk:64447/gsdl/collect/islamics/import/v37i34.pdf
+https://en.wikipedia.org/wiki/Nasi%27
+http://etheses.dur.ac.uk/978/1/978.pdf?EThOS%20(BL)
+http://www.eretzyisroel.org/~jkatz/The%20Islamic%20Jewish%20Calendar.pdf
