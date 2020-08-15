@@ -43,6 +43,8 @@ import solar_hijri
 import thellid
 import lunar_hijri
 import arab
+import rumi_s
+import rumi
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -482,6 +484,24 @@ def cons_day_julian_todate():
         arab_day_ent.insert(0, arab_date[0])
         arab_month_ent.insert(0, arab_date[1])
         arab_year_ent.insert(0, arab_date[2])
+
+        # Convert a Julian day to a date in the skipping Rumi calendar
+        rumi_s_date = rumi_s.fromjd(day)
+        rumi_s_day_ent.delete(0, END)
+        rumi_s_month_ent.delete(0, END)
+        rumi_s_year_ent.delete(0, END)
+        rumi_s_day_ent.insert(0, rumi_s_date[0])
+        rumi_s_month_ent.insert(0, rumi_s_date[1])
+        rumi_s_year_ent.insert(0, rumi_s_date[2])
+
+        # Convert a Julian day to a date in the Ottoman fiscal calendar
+        rumi_date = rumi.fromjd(day)
+        rumi_day_ent.delete(0, END)
+        rumi_month_ent.delete(0, END)
+        rumi_year_ent.delete(0, END)
+        rumi_day_ent.insert(0, rumi_date[0])
+        rumi_month_ent.insert(0, rumi_date[1])
+        rumi_year_ent.insert(0, rumi_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -924,6 +944,25 @@ def arab_converter():
         month = arab_month_ent.get()
         year = int(arab_year_ent.get())
         jday = arab.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def rumi_s_converter():
+        """Convert a date in the skipping Rumi calendar to a Julian Day."""
+        day = rumi_s_day_ent.get()
+        month = rumi_s_month_ent.get()
+        year = rumi_s_year_ent.get()
+        jday = rumi_s.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def rumi_converter():
+        day = int(rumi_day_ent.get())
+        month = rumi_month_ent.get()
+        year = int(rumi_year_ent.get())
+        jday = rumi.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1517,5 +1556,31 @@ arab_year_ent = Entry(frame)
 arab_year_ent.grid(row = 40, column = 8, sticky = W)
 arab_bttn = Button(frame, text = "Calculate", command = arab_converter).grid(row = 41, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.19.0")
+# Skipping Rumi calendar                                                                                            
+rumi_s_lbl = Label(frame, text = "Rumi calendar (skipping)").grid(row = 38, column = 9, columnspan = 3, sticky = W)
+rumi_s_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 9, sticky = W)
+rumi_s_day_ent = Entry(frame)
+rumi_s_day_ent.grid(row = 40, column = 9, sticky = W)
+rumi_s_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 10, sticky = W)
+rumi_s_month_ent = Entry(frame)
+rumi_s_month_ent.grid(row = 40, column = 10, sticky = W)
+rumi_s_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 11, sticky = W)
+rumi_s_year_ent = Entry(frame)
+rumi_s_year_ent.grid(row = 40, column = 11, sticky = W)
+rumi_s_bttn = Button(frame, text = "Calculate", command = rumi_s_converter).grid(row = 41, column = 9, columnspan = 3, sticky = W)
+
+# Rumi calendar                                                                                            
+rumi_lbl = Label(frame, text = "Rumi calendar").grid(row = 38, column = 12, columnspan = 3, sticky = W)
+rumi_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 12, sticky = W)
+rumi_day_ent = Entry(frame)
+rumi_day_ent.grid(row = 40, column = 12, sticky = W)
+rumi_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 13, sticky = W)
+rumi_month_ent = Entry(frame)
+rumi_month_ent.grid(row = 40, column = 13, sticky = W)
+rumi_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 14, sticky = W)
+rumi_year_ent = Entry(frame)
+rumi_year_ent.grid(row = 40, column = 14, sticky = W)
+rumi_bttn = Button(frame, text = "Calculate", command = rumi_converter).grid(row = 41, column = 12, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.20.0")
 root.mainloop()

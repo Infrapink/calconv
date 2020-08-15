@@ -216,23 +216,23 @@ This all gives an average year of 365 days 1 hour 15 minutes 47.37 seconds, and 
 https://chaldeannation.com/blog/2019/03/31/akitu-7319-chaldean-new-year/
 https://en.wikipedia.org/wiki/Babylonian_calendar
 
----------------
-HEBREW CALENDAR
----------------
+----------------------
+JEWISH HEBREW CALENDAR
+----------------------
 
-And now we come to the Jewish Hebrew calendar, the most fiendishly baroque calendar currently in use. This is the liturgical calendar used by Jews all over the world and it also one of two official civil calendars used in Israel, the other being the Gregorian calendar. Looking around the Internet, I get the impression that most Israelis use the Gregorian calendar almost exclusively, only checking the Jewish calendar to see when certain religious festivals fall. All national holidays in Israel are fixed to the Jewish calendar and government correspondence is supposed to be issued in both date formats, though until computer became widely available it was common to ignore the Hebrew date.
+And now we come to the Jewish Hebrew calendar, the most fiendishly baroque calendar currently in use. This is the liturgical calendar used by Jews all over the world and it also one of two official civil calendars used in Israel, the other being the Gregorian calendar. Looking around the Internet, I get the impression that most Israelis use the Gregorian calendar almost exclusively, only checking the Jewish calendar to see when certain religious festivals fall. All national holidays in Israel are fixed to the Jewish calendar and government correspondence is supposed to be issued in both date formats, though until computers became widely available it was common to ignore the Hebrew date.
 
-The year begins on the first of Tishrei, around the autumnal equinox, with the festival of Rosh Hashanah. Confusingly, Tishrei is ususally listed as the seventh monthl, with Nisan as the first; this is most likely due to Babylonian influence, since all the month names are derived from those of the Babylonian calendar. The 1st of Nisan is also considered a New Year's Day, most likely due again to Babylonian influence; this day is considered the ecclesiastical new year, as opposed to 1 Tishrei, the civil new year (and the day on which the year increments).
+The year begins on the first of Tishrei, around the southward equinox, with the festival of Rosh Hashanah. Confusingly, Tishrei is ususally listed as the seventh month, with Nisan as the first; this is most likely due to Babylonian influence, since all the month names are derived from those of the Babylonian calendar. The 1st of Nisan is also considered a New Year's Day, most likely due again to Babylonian influence; this day is considered the ecclesiastical new year, as opposed to 1 Tishrei, the civil new year (and the day on which the year increments).
 
 To confuse matters further, the 1st of Elul is the start of the year when calculating the payment of tithes, and the 15th of Shevat is identified as the New Year of Trees (Tu BiShvat). In ancient times, this had to do with calculating when it was acceptable to eat fruit from a given tree, and when that fruit could be tithed; in modern times, it is an environmental awareness day, often marked by planting trees. To keep things simple, this converter only considers the civil year, and so Tishrei is considered the first month of the year.
 
-The Jewish calendar is lunisolar, like the Babylonian. In ancient times, months began with the first observation of the new moon, known as the molad. In the late 41st century AM, Hillel II ben Jehudah worked out a purely mathematical calendar that would maintain alignment with the phases of the moon; this gradually caught on among the scattered Jews as a way to maintain their traditions even in the face of persecution; indeed, Jews even managed to make calendars and carry on their traditions on the correct dates while in concentration camps.
+The Jewish calendar is lunisolar, like the Babylonian. In ancient times, months began with the first observation of the new moon, known as the molad. In the late 41st century AM, Hillel II ben Jehudah worked out a purely mathematical calendar that would maintain alignment with the phases of the moon. This gradually caught on among the scattered Jews as a way to maintain their traditions even in the face of persecution; indeed, Jews even managed to make calendars and carry on their traditions on the correct dates while in concentration camps.
 
 The calendar epoch is Julian Day 347997 (Gregorian: 7 September 3761 BC; Solar Hijri: 16 Shahrivar 4382 BH), which Moses ben Maimon (AKA Maimonides, Rambam) in 4938 AM (1178 AD, 557 AH) determined to be the date of the Genesis creation account... sort of. Adam is traditionally held to have been created on Rosh Hashanah, but because there were five days of creation preceding Adam, this was technically Rosh Hashanah of the second year. Maimonides, assuming that time before Creation was still meaningful, extended this backwards to the molad of Tishrei that would have existed had God gotten around to creating the moon yet; because this occurs in before Creation, it is termed the molad tohu, or new moon of chaos (which is also a good name for a heavy metal band).
 
 The basic Jewish year consists of 12 months of alternating 30 and 29 days. In a leap year, Adar is renamed to Veadar, Adar Sheini, Adar Beth, or Adar II, and a 30-day month, called Adar I, Adar Aleph, Adar Rishon, or simply Adar, is inserted before it. Thus a year by default has 354 days in a normal year and 384 in a leap year, but in Judaism, things are rarely simple.
 
-Days begin at sunset; as such, a given date in this converter actually refers to the next day if viewed between sunset and midnight; for purposes of calculation, we can fortunately assume that every sunset occurs at exactly 18:00. An important unit of time when calculating the start of the month is the chelek (plural chalakim), equal to 1/1080 hours, 1/18 minute, or 10/3 seconds.
+Days begin at sunset, so a given date in this converter actually refers to the next day if viewed between sunset and midnight; for purposes of calculation, we can fortunately assume that every sunset occurs at exactly 18:00. An important unit of time when calculating the start of the month is the chelek (plural chalakim), equal to 1/1080 hours, 1/18 minutes, or 10/3 seconds.
 
 Hillel II determined the mean lunation to be 29 days 12 hours 793 chalakim. This was correct at the time, but we now know that due to orbital mechanics, the mean lunation time is shrinking by about 25 microseconds a month, and it is now about 0.6 seconds shorter than it was when this was first worked out. Still, this difference has not yet become significant.
 
@@ -330,7 +330,7 @@ https://en.wikipedia.org/wiki/Julian_day
 CNES JULIAN DAY
 ---------------
 
-The CNES Julian day is, as you can probably guess, the day format used by the Centre National d'études spatiales. Its epoch is midnight on 1 January 1950.
+The CNES Julian day is, as you can probably guess, the day format used by the Centre national d'études spatiales. Its epoch is midnight on 1 January 1950, the "present" epoch in the Before Present dating system.
 
 http://www.mlb.co.jp/linux/science/tptime/doc/index-5.html
 
@@ -406,13 +406,20 @@ https://mastersfdl.hypotheses.org/443]
 http://www.tamazgha.fr/La-fete-de-Yennayer-pratiques-et-presages,1841.html
 https://www.best-country.com/en/africa/algeria/new_year
 
--------------
-RUMI CALENDAR
--------------
+--------------
+RUMI CALENDARS
+--------------
 
 The Rumi calendar is a version of the Julian calendar dated from the Hijra. It was used in Turkey for tax calculations from 1677 AD (1055 AH), and adopted as the civil calendar in 1840 AD (1218 AH). It was replaced by the Gregorian calendar in 1926 AD (1304 AH) as part of Mustafa Kemal Atatürk's reforms.
 
-Dating this calendar is tricky. Because for most of its history, it was ony a fiscal calendar, and the Lunar Hijri calendar was the civil calendar of Turkey. As such, the year number of the Rumi calendar is the same as the corresponding lunar hijri year, but because the lunar hijri calendr is only 354 or 355 days long, one will occasionally find a civil year that starts in one fiscal year and ends before the end of that same fiscal year. To compensate for this, every 33rd fiscal year number was skipped until the 29th century, when the skipping was abolished.
+Dating this calendar is tricky. Because for most of its history, it was ony a fiscal calendar, and the Lunar Hijri calendar was the civil calendar of Turkey. As such, the year number of the Rumi calendar is the same as the corresponding lunar hijri year, but because the lunar hijri calendr is only 354 or 355 days long, one will occasionally find a civil year that starts in one fiscal year and ends before the end of that same fiscal year. To compensate for this, every 33rd fiscal year number was skipped until the 1256, when the skipping was abolished.
+
+This converter contains three different implementations of the Rumi calendar.
+* Rumi calendar (non-skipping) does not implement the skipping rule at all. In effect, it is the Julian calendar, but dated form the Hijri rather than the birth of Jesus.
+* Rumi calendar (skipping) constantly implements the skipping rule. Since it was only a fiscal and not a civil calendar, the Ottomans never decided how it would be used for pre-hijri dates. I have decided that any year whose absolute value is an integer multiple of 33 will be skipped, and as such no year is skipped between 33 BH and 33 AH. This results in negative Rumi years properly coinciding with negative Lunar Hijri years
+* Rumi skips years whose absolute values are integer multiples of 33 if, and only if, they are less than 1256. This is an approximation of the calendar that was actually used in Ottoman Turkey.
+
+The Rumi calendar is actually a year off from the Ottoman fiscal calendar. The Ottoman government did not apply the skipping rule consistently; sometimes they skipped the 33rd year, sometimes the 34th. The deciding factor appears to have been whether Muslim year n would end before the start of Rumi year n, and if it did, to skip Rumi year n.
 
 https://en.wikipedia.org/wiki/Rumi_calendar
 https://www.takvim.com/takvim_donusum.php
@@ -534,7 +541,7 @@ http://myweb.ecu.edu/mccartyr/colligan.html
 GORMAN CALENDAR
 ---------------
 
-The Gorman calendar is a variation of the IFC designed by comedian Dave Gorman out of things which annoy him about the Gregorian calendar. The year starts in March so that those months whose names contain numerican components are in the right position, and each month is exactly four weeks long. July and August are renames to Quintilis and Sextilis because naming a month after oneself is arrogant, and a new month, Gormanuary, is added afer February to round out the year. Between 28 Gormanuary and 1 March, there is a single day which falls outside the week, just called Intermission; in leap years, Intermission is two days long. Leap years follow the Gregorian rules, and so the Gorman calendar is exactly as accurate as the Gregorian.
+The Gorman calendar is a variation of the IFC designed by comedian Dave Gorman out of things which annoy him about the Gregorian calendar. The year starts in March so that those months whose names contain numerican components are in the right position, and each month is exactly four weeks long. July and August are renamed to Quintilis and Sextilis because naming a month after oneself is arrogant, and a new month, Gormanuary, is added afer February to round out the year. Between 28 Gormanuary and 1 March, there is a single day which falls outside the week, just called Intermission; in leap years, Intermission is two days long. Leap years follow the Gregorian rules, and so the Gorman calendar is exactly as accurate as the Gregorian.
 
 https://www.youtube.com/watch?v=EcMTHr3TqA0
 
@@ -556,7 +563,7 @@ POSITIVIST CALENDAR
 
 The Positivist calendar was designed by Auguste Comte in 1849, which he intended as a break with both Julian and Gregorian traditions. The Positivist calendar is the forebear of the various other perennial calendars included in this converter; it consists of thirteen months of exactly four weeks each, plus one extra day, the Festival of all the Dead. In leap years, this day is followed by the Festival of Holy Women; both year-end festivals fall outside the week. Unlike other perennial calendrs, the Positivist calendar starts each year on Monday.
 
-In the Positivist calendar, Comte imbues his humanist goals, naming each month after a significant philosopher, writer, or political reformer, all originating from a variety of countries to show an inernational spirit. Alas, Comte's 19th-century biases are clearly visible; 12 of the months are named after white European men, and one after a Jewish man. There are no women at all, nor are there any Africans, Pacific Islanders, aboriginal people of Australia or the Americas, not any Asians except for Moses.
+In the Positivist calendar, Comte imbues his humanist goals, naming each month after a significant philosopher, writer, or political reformer, all originating from a variety of countries to show an inernational spirit. Alas, Comte's 19th-century biases are clearly visible; 12 of the months are named after white European men, and one after a Jewish man. There are no women at all, nor are there any Africans, Pacific Islanders, aboriginal people of Australia or the Americas, nor any Asians except for Moses.
 
 The calendar was never adopted anywhere, at least partly because months named after people came across as silly at the time. Plus, as we have seen, religious people weren't about to give up their seven-day cycle of worship.
 
