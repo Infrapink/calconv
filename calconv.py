@@ -45,6 +45,7 @@ import lunar_hijri
 import arab
 import rumi_s
 import rumi
+import igbo
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -502,6 +503,15 @@ def cons_day_julian_todate():
         rumi_day_ent.insert(0, rumi_date[0])
         rumi_month_ent.insert(0, rumi_date[1])
         rumi_year_ent.insert(0, rumi_date[2])
+
+       # Convert a Julian day to a date in the Igbo calendar
+        igbo_date = igbo.fromjd(day)
+        igbo_day_ent.delete(0, END)
+        igbo_month_ent.delete(0, END)
+        igbo_year_ent.delete(0, END)
+        igbo_day_ent.insert(0, igbo_date[0])
+        igbo_month_ent.insert(0, igbo_date[1])
+        igbo_year_ent.insert(0, igbo_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -963,6 +973,15 @@ def rumi_converter():
         month = rumi_month_ent.get()
         year = int(rumi_year_ent.get())
         jday = rumi.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def igbo_converter():
+        day = int(igbo_day_ent.get())
+        month = igbo_month_ent.get()
+        year = int(igbo_year_ent.get())
+        jday = igbo.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1581,6 +1600,19 @@ rumi_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 14, sticky =
 rumi_year_ent = Entry(frame)
 rumi_year_ent.grid(row = 40, column = 14, sticky = W)
 rumi_bttn = Button(frame, text = "Calculate", command = rumi_converter).grid(row = 41, column = 12, columnspan = 3, sticky = W)
+
+# Igbo calendar                                                                                            
+igbo_lbl = Label(frame, text = "Igbo calendar").grid(row = 43, column = 0, columnspan = 3, sticky = W)
+igbo_day_lbl = Label(frame, text = "Day").grid(row = 44, column = 0, sticky = W)
+igbo_day_ent = Entry(frame)
+igbo_day_ent.grid(row = 45, column = 0, sticky = W)
+igbo_month_lbl = Label(frame, text = "Month").grid(row = 44, column = 1, sticky = W)
+igbo_month_ent = Entry(frame)
+igbo_month_ent.grid(row = 45, column = 1, sticky = W)
+igbo_year_lbl = Label(frame, text = "Year").grid(row = 44, column = 2, sticky = W)
+igbo_year_ent = Entry(frame)
+igbo_year_ent.grid(row = 45, column = 2, sticky = W)
+igbo_bttn = Button(frame, text = "Calculate", command = igbo_converter).grid(row = 46, column = 0, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.20.0")
 root.mainloop()

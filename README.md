@@ -14,10 +14,7 @@ From the command line, navigate to the folder where you unpacked the program and
 
 On Windows, you can instead double-click on calconv.bat
 
-Dates are entered in the indicated text boxes in the order Day, Month, Year (except for the Julian Day, which is just a number). For now, months must be written in full, and entered exactly as listed here, including punctuation and diacritical marks. A later version will replace the text entry fields with selectable dropdown menus. Years before the calendar epoch are entered as negative numbers; so, for example, the year 44 BC would be input as -44.
-
-Julian Day:
-* This is a simple number.
+Dates are entered in the indicated text boxes in the order Day, Month, Year; if there is only one text box, input is a simple number. For now, months must be written in full, and entered exactly as listed here, including punctuation and diacritical marks. A later version will replace the text entry fields with selectable dropdown menus. Years before the calendar epoch are entered as negative numbers; so, for example, the year 44 BC would be input as '-44'.
 
 Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, and Holocene Calendars:
 * January
@@ -86,7 +83,7 @@ Egyptian Calendar:
 * Mesore
 * Extra days
 
-Lunar Hijri Calendar:
+Lunar Hijri Tabular Islamic, and Pre-Islamic Arab calendars:
 * Muharram
 * Safar
 * Rabi' al-awwal
@@ -99,6 +96,7 @@ Lunar Hijri Calendar:
 * Shawwal
 * Dhu al-Qidah
 * Dhu al-Hijjah
+* Nasiʾ (Pre-Islamic Arab calendar only)
 
 Jalali, Solar Hijri and Ahmad Birashk's Calendars:
 * Farvardin
@@ -176,7 +174,8 @@ Hebrew and Samaritan calendars:
 
 (Note: Everyone else lists Nisan as the first month of the year, and Adar/Veadar as the last. This is for Jewish
 cultural reasons; however, Tishrei is the first month of the civil Hebrew calendar, as it is on 1 Tishrei
-that theyear number increments. I have listed the months in this order to avoid confusion. Nisan is the first day of the year in the Samaritan calendar).
+that theyear number increments. I have listed the months in this order to avoid confusion. Nisan is the first
+mont of the year in the Samaritan calendar).
 
 Kurdish calendar:
 * Jejhnan
@@ -284,6 +283,21 @@ Thellid calendar
 * Leap Day (leap years only)
 * Old Year's Day
 
+Igbo calendar
+* Mbụ
+* Abụo
+* Ife Eke
+* Anọ
+* Agwụ
+* Ifejiọkụ
+* Alọm Chi
+* Ilo Mmụọ
+* Ana
+* Okike
+* Ajana
+* Ede Ajana
+* Ụzọ Alụsị
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -312,7 +326,6 @@ Add the following calendars:
 * Shaka Samvat
 * Kali Yuga
 * Celtic
-* Igbo
 * Javanese
 * Korean
 * Minguo

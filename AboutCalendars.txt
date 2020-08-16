@@ -701,3 +701,18 @@ http://irigs.iiu.edu.pk:64447/gsdl/collect/islamics/import/v37i34.pdf
 https://en.wikipedia.org/wiki/Nasi%27
 http://etheses.dur.ac.uk/978/1/978.pdf?EThOS%20(BL)
 http://www.eretzyisroel.org/~jkatz/The%20Islamic%20Jewish%20Calendar.pdf
+
+-------------
+IGBO CALENDAR
+-------------
+
+The Igbo calendar is the traditional calendar used by the Igbo people. While Nigeria uses the Gregorian calendar, the Igbo continue to use their own traditional calendar in parallel to determine days of rest and market days.
+
+A year in the Igbo calendar contains only 364 days. These are divided into 13 months, each of which contains seven izu of four days each. People work and farm three days of the izu, setting aside the fourth as a day of rest. Eke is the standard, but each community is free to designate any day as an alternative rest day.
+
+The count of years begins in 1003 AD, but I couldn't find any reference as to the origin of this era. The epoch is thus the first of Mbụ this year, which is Julian Day 2087628.
+
+https://en.wikipedia.org/wiki/Igbo_calendar
+https://www.thenigerianvoice.com/nvnews/85709/1/day-massob-took-over-nri-kingdom.html
+https://igbocalendar.com/igbo-calendar/view-igbo-calendar-for-this-year/
+http://www.ekwenche.org/igbo-calendar-2020-2021.htm
