@@ -1614,5 +1614,5 @@ igbo_year_ent = Entry(frame)
 igbo_year_ent.grid(row = 45, column = 2, sticky = W)
 igbo_bttn = Button(frame, text = "Calculate", command = igbo_converter).grid(row = 46, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.20.0")
+root.title("Calendar Converter 0.20.1")
 root.mainloop()
