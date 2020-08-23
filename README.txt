@@ -298,6 +298,20 @@ Igbo calendar
 * Ede Ajana
 * Ụzọ Alụsị
 
+Roman calendar
+* Martius
+* Aprilis
+* Maia
+* Iunius
+* Quintilis
+* Sextilis
+* Septembris
+* Octobris
+* Novembris
+* Decembris
+* Ianuarius
+* Februarius
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

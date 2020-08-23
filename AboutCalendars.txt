@@ -4,7 +4,7 @@ BUILDING BLOCKS
 
 All timekeeping is, when you get right down to it, applied astronomy.
 
-Prehistoric humans noticed alternating periods of light and darkness, and gave them names meaning "day" and "night" respectively. In Sumer and China, the day was considered to end at sunset; in Egypt, Iran, and Mexico, the day began at sunrise. This subtle difference in consideration became important when humans gathered into societies and record-keeping became important. When this happened, it made sense to consider a day and a night as a single unit, which was also called a day. As a result, in Sumer, a calendar day lasted from sunset to sunset, while in Egypt, it lasted from sunrise to sunrise. The Romans instead defined the day at starting at midnight, when the sun is at its nadir; this has the useful effect that one goes to bed on one day and wakes up the next day[0].
+Prehistoric humans noticed alternating periods of light and darkness, and gave them names meaning "day" and "night" respectively. In Sumer and China, the day was considered to end at sunset; in Egypt, Iran, and Mexico, the day began at sunrise. This subtle difference in consideration became important when humans gathered into societies and record-keeping became important. When this happened, it made sense to consider a day and a night as a single unit, which was also called a day. As a result, in Sumer, a calendar day lasted from sunset to sunset, while in Egypt, it lasted from sunrise to sunrise. The Romans instead defined the day at starting at midnight, when the sun is at its nadir; this has the useful effect that one goes to bed on one day and wakes up the next day[0][16].
 
 Early subdivisions of the day reflect the early concept of day and night as fundamentally different. Sumerians and Egyptians both divided the period of sunset to sunrise into 12 equal parts, and also divided the period from sunrise to sunset into 12 parts, identified by the rising of particular stars [1][2]; this is the basis for the modern hour. As you can imagine, the length of the daytime and nighttime hours were usually unequal, and the lengths of the respective hours would change across the course of Earth's orbit around the sun. This changed with the invention of mechanical clocks in the late Middle Ages; because a mechanical clock cannot compensate for change in the length of daylight and nighttime, an hour was now fixed as 1/24 of a day/night cycle [3][4]. In an echo of having seperate sets of 12 hours each for daytime and nighttime, it is common in everyday speech to refer to the 12 hours between midnight and noon as a.m. (ante meridian, Latin for before noon), while those between noon and midnight are called p.m. (post meridian, after noon), with a.m. and p.m. hours each running from 1 to 12. In contexts where clarity is important, it is more common to refer to hours by a 24-hour scheme, running from starting at 00 at midnight, continuing on through 12 at noon until 24 is reached, at which point the count resets to 00.
 
@@ -36,6 +36,7 @@ As ever, defining a year can be tricky. The sidereal year is the time it takes f
 [13] http://aramis.obspm.fr/~heydari/divers/ir-cal-eng.html
 [14] http://hpiers.obspm.fr/eop-pc/models/constants.html
 [15] https://en.wikipedia.org/wiki/Lunar_month
+[16] http://www.beaglesoft.com/timehistoryroman.htm
 
 ------------------------
 CHRONOLOGICAL JULIAN DAY
@@ -708,7 +709,7 @@ IGBO CALENDAR
 
 The Igbo calendar is the traditional calendar used by the Igbo people. While Nigeria uses the Gregorian calendar, the Igbo continue to use their own traditional calendar in parallel to determine days of rest and market days.
 
-A year in the Igbo calendar contains only 364 days. These are divided into 13 months, each of which contains seven izu of four days each. People work and farm three days of the izu, setting aside the fourth as a day of rest. Eke is the standard, but each community is free to designate any day as an alternative rest day.
+A year in the Igbo calendar contains only 364 days. These are divided into 13 months, each of which contains seven izu of four days each. People work and farm three days of the izu, setting aside the fourth as a day of rest. Eke is the standard, but each community is free to designate any day as an alternative rest day. Since Nigeria is quite close to the Equator, the weather doesn't change much with the seasons, so presumably the Igbo didn't feel any particular need to keep pace with the solstices and equinoxes.
 
 The count of years begins in 1003 AD, but I couldn't find any reference as to the origin of this era. The epoch is thus the first of Mbụ this year, which is Julian Day 2087628.
 
@@ -716,3 +717,38 @@ https://en.wikipedia.org/wiki/Igbo_calendar
 https://www.thenigerianvoice.com/nvnews/85709/1/day-massob-took-over-nri-kingdom.html
 https://igbocalendar.com/igbo-calendar/view-igbo-calendar-for-this-year/
 http://www.ekwenche.org/igbo-calendar-2020-2021.htm
+
+--------------
+ROMAN CALENDAR
+--------------
+
+The Romans were bad at calendars.
+
+The legend goes that the earliest Roman calendar was designed by Romulus himself, consisting of four months of 31 days and six of 30, for a total of 304; the remaining 61 or so days were just assigned to an indeterminate winter period. Numa Pompilius later assigned the winter days to two new months, Ianuarius and Februarius.
+
+In fact, the evidence is that the Romans originally used some sort of lunar calendar, which later evolved into a calendar of fixed-length months. Presumably this at one point consisted of months with alternating lengths of 30 and 29 days; however, the Romans thought that even numbers were unlucky, and so it was restructured into four months having 31 days, seven having 29, and Februarius having 28. This gives us a 355-day calendar which does not track the sun or the moon.
+
+In order to somewhat stay in sync with the sun, a leap month, Mercedonius, was sometimes added, and this is where things get complicated. Wikipedia claims that Mercedonius fell between 23 and 24 Februarius, but this isn't really accurate, because the Romans didn't think of days in terms of "the nth day of the month". Rather, they referred to days in relation to the kalends, nones, and ides, days which fell at fixed points in the month (these at one time corresponded to the days of the new moon, first quarter moon, and full moon, but the calendar used in the Roman Republic had long since stopped corresponding to the lunar cycle). Thus, for example, the festival of Carmentalia, which we would think of as falling on 11 January, was considered by the Romans to fall on the fifth day before the Nones of Ianuarius. So in reality, in leap years, Februarius was shortened, and the days between Mercedonius and Martius of the next year were just considered to be a group of days before the kalends of Martius.
+
+It is known that leap years in the Roman calendar could be either 377 or 378 days long, and there is some controversy as to whether it was Februarius or Mercedonius that got the extra day in a 378-day year. Bennett cites the work of historian A Michels as well as the writings of Livy, where it is stated that Mercedonius sometimes fell between Terminalia and Regifugium, and sometimes the day after Regifugium. Thus, it appears that the length of Mercedonius was fixed and the length of Februarius was variable in leap years; this is the convention I have used in this converter.
+
+Nominally, years were supposed to progress in a four-year cycle of 355, 377, 355, and 378 days, for an average of 366.25 days; as such, the calendar would lose 5 days in 16 years. But leap years weren't assigned by any rule. Instead, the task of deciding when to declare a leap year was given to the pontifex maximus, who would routinely declare a leap year when he supported the consuls, and fail to declare one when he did not (or when there were more pressing matters). This is also probably why it was actually more common to declare a year of 378 than of 377 years. Furthermore, since the declaration of when a leap year fell had to be proclaimed across the empire, people in far-off provinces would not know for some time what kind of year year it was, which had implications for tax collection.
+
+As you can see, the Roman calendar was hopelessly unfit for purpose, which is why fixing it was one of the planks of Julius Caesar's dictatorship. Caesar wisely hired Greek astronomers and mathematicians to design a sensible calendar, most notably Sosigenes of Alexandria. Caesar declared the year 708 AUC (46 BC, 667 BH) would be 445 days long, and the new calendar took effect from the start of the next year, 708 AUC (45 BC, 666 BH).
+
+For the calendar era, I am using Ab Urbe Condita (From the Founding of the City [of Rome]) convention, which dates from the legendary foundation of Rome in 753 BC (1374 BH). This dating system was occasionally used by Roman writers, but was pretty rare; it was mostly used by Romanophiliac European writers of the Middle Ages and Renaissance, who make it look more common than it really was when they sometimes insert it into translations of authentic Roman writings. Romans mostly referred to the year by who the consuls were, or by the year of the current king or emperor.
+
+I have also decided to use the convention that the calendar begins in Martius rather than Ianuarius. This is the original form of the calendar, with New Year's Day shifting to Ianuarius at some point apparently in the early Republican era, or possibly during the middle Kingdom era. Because Sosigenes and Caesar calibrated the Julian calendar to restore sanity to the dates of the solstices and equinoxes, I have chosen as the epoch Julian Day 1446449, which corresponds to 1 March 753 BC by the Julian calendar.
+
+As you can tell, this converter will not convert an actual Roman date to the correct date in any other calendar, because the Roman calendar was unstable and inconsistent, and constantly micromanaged by the government. Rather, it will give the dates corresponding what would have been the date in the Roman calendar had it been implemented sensibly and consistently.
+
+https://en.wikipedia.org/wiki/Roman_calendar
+https://archive.org/stream/historyrome00dickgoog#page/n242/mode/2up
+https://en.wikipedia.org/wiki/Mercedonius
+http://elfinspell.com/ClassicalTexts/Maude/Censorinus/DeDieNatale-Part2.html
+https://en.wikipedia.org/wiki/Ab_urbe_condita
+https://books.google.ie/books?id=krcp3GU2MssC&pg=PA14&redir_esc=y#v=onepage&q&f=false
+http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/chron/roman/chron_rom_cal_fr.htm
+http://www.webexhibits.org/calendars/calendar-roman.html
+http://penelope.uchicago.edu/~grout/encyclopaedia_romana/calendar/romancalendar.html
+

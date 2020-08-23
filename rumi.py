@@ -25,7 +25,7 @@ def tojd(day, month, year):
         # positive years.
         alpha = 1948241
         for y in range(1,year):
-            if y < 1256 and y % 33 == 0:
+            if y <= 1256 and y % 33 == 2:
                 skips += 1
             elif (y - skips) % 4 == 2:
                 days += 366
@@ -51,7 +51,7 @@ def tojd(day, month, year):
         alpha = 1948242
 
         for y in range(-1, (year - 1), -1):
-            if abs(y) % 33== 0:
+            if y % 33== 2:
                 skips += 1
             elif (abs(y) - skips) % 4 == 1:
                 days -= 366
@@ -89,7 +89,7 @@ def fromjd(jday):
         current = False
         while current == False:
             year += 1
-            if year < 1256 and year % 33 == 0:
+            if year <= 1256 and year % 33 == 2:
                 skips += 1
             elif (year - skips) % 4 == 2:
                 if delta <= 366:
@@ -122,7 +122,7 @@ def fromjd(jday):
         delta = 1948242 - jday
         while delta > 0:
             year -= 1
-            if abs(year) % 33 == 0:
+            if year % 33 == 2:
                 skips += 1
             elif (abs(year) - skips) % 4 == 1:
                 delta -= 366
