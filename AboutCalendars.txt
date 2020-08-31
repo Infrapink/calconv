@@ -752,3 +752,28 @@ http://www.instonebrewer.com/TyndaleSites/Egypt/ptolemies/chron/roman/chron_rom_
 http://www.webexhibits.org/calendars/calendar-roman.html
 http://penelope.uchicago.edu/~grout/encyclopaedia_romana/calendar/romancalendar.html
 
+-------------------
+MACEDONIAN CALENDAR
+-------------------
+
+A variety of calendars were in use in Ancient Greece; in fact, each city-state had its own calendar. All were luni-solar and the months were supposed to start on the first sighting of the new moon, but that's where the similarities end. Different city-states tied the start of the year to each of the equinoxes and sunsets, and days were variously reckoned to begin at sunset, sunrise, midnight, and even noon. Some employed the Metonic cycle to decide when to add leap months, while others just added extra months whenever it looked about right. City governments would sometimes insert extra days into a given month, causing it to drift out of sync with the moon; this habit forms the plot of Thucidydes' satifical play INSERT TITLE HERE. To make things more irritating, the Greeks did not use calendar eras, instead referring to each year by who the archon was at the time; this has been causing headaches for historians since ancient times. A scheme occasionally used was to date events by the Olympiad, but this could be ambiguous due to each city-state reckoning the lengths of years differently.
+
+While most Greek calendars are fragmentary and lack a reasonable era, the Macedonian calendar is quite well known. Each year began on the first new moon following the southward equinox. Intercalary months would normally be added in spring, but could happen at the end of the year (or really whenever the king wanted). It appears that the Macedonians at some point adoped the Metonic cycle to assign leap years; for this converter I have chosen to go with the observational scheme used in the older version of the calendar. For the era, I have somewhat arbitrarily chosen the year Alexander the Great ascended the throne of Macedon; this puts the epoch at Julian Day 1598617.
+
+https://en.wikipedia.org/wiki/Ancient_Greek_calendars
+https://en.wikipedia.org/wiki/Ancient_Macedonian_calendar
+https://books.google.ie/books?id=x2AD3M77TgMC&pg=PA166&lpg=PA166&dq=Macedonian+epigraphy&source=bl&ots=MOvxl5luuB&sig=StnUhRUO0D5aowvC3muiUfjbyOw&hl=en&ei=lPoxSu_9O4LAsAbK8NXNCQ&sa=X&oi=book_result&ct=result&redir_esc=y#v=onepage&q=Macedonian%20epigraphy&f=false
+http://www.ancientgreecefacts.com/greek-calendar/
+http://www.polysyllabic.com/?q=calhistory/earlier/greek
+https://www.nancybiska.com/ancient-macedonia-and-its-calendars/#
+https://www.researchgate.net/publication/292592727_THE_MACEDONIAN_CALENDAR_IN_MACEDONIA
+
+-----------------
+SELEUCID CALENDAR
+-----------------
+
+The Seleucid Calendar can be considered a variant of either the Macedonian or the fixed Babylonian calendar. It was used in the Seleucid Empire and dates from the second conquest of Babylon by Seleucus I Nicator in 312 BC, giving it an epoch of Julian Day 1607743. Like the Macedonian calendar, it begins on the new moon following the southward equinox; as in the fixed Babylonian calendar, intercalary months are assigned as per the Metonic cycle rather than by deciding the weather is about right. I have designed this converter so that the addition of intercalary months in the Seleucid and fixed Babylonian calendars will sync up; indeed, Wikipedia says that farmers in the Seleucid Empire used the Babylonian calendar with Macedonian month names, and as such the commoners began the year six or seven months before the nobility, at the northward equinox.
+
+https://en.wikipedia.org/wiki/Seleucid_era
+http://theos-sphragis.info/hebrew_babylonian_intercalation.html
+https://www.nancybiska.com/ancient-macedonia-and-its-calendars/#

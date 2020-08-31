@@ -312,6 +312,22 @@ Roman calendar
 * Ianuarius
 * Februarius
 
+Macedonian and Seleucid calendars:
+* Dios
+* Apellaiios
+* Audunaios
+* Peritios
+* Dystros
+* Xanthikos
+* Xandikos Embolimos (leap years only)
+* Artemisios
+* Daisios
+* Panamos
+* Lōios
+* Gorpiaios
+* Hyperberetaios
+* Hyperberetaios Embolimos (only in some leap years)
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

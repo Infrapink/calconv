@@ -46,6 +46,9 @@ import arab
 import rumi_s
 import rumi
 import igbo
+import roman
+import macedonian
+import seleucid
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -512,6 +515,33 @@ def cons_day_julian_todate():
         igbo_day_ent.insert(0, igbo_date[0])
         igbo_month_ent.insert(0, igbo_date[1])
         igbo_year_ent.insert(0, igbo_date[2])
+
+        # Convert a Julian day to a date in the Roman calendar
+        roman_date = roman.fromjd(day)
+        roman_day_ent.delete(0, END)
+        roman_month_ent.delete(0, END)
+        roman_year_ent.delete(0, END)
+        roman_day_ent.insert(0, roman_date[0])
+        roman_month_ent.insert(0, roman_date[1])
+        roman_year_ent.insert(0, roman_date[2])
+
+        # Convert a Julian day to a date in the Macedonian calendar
+        macedonian_date = macedonian.fromjd(day)
+        macedonian_day_ent.delete(0, END)
+        macedonian_month_ent.delete(0, END)
+        macedonian_year_ent.delete(0, END)
+        macedonian_day_ent.insert(0, macedonian_date[0])
+        macedonian_month_ent.insert(0, macedonian_date[1])
+        macedonian_year_ent.insert(0, macedonian_date[2])
+
+        # Convert a Julian day to a date in the Seleucid calendar
+        seleucid_date = seleucid.fromjd(day)
+        seleucid_day_ent.delete(0, END)
+        seleucid_month_ent.delete(0, END)
+        seleucid_year_ent.delete(0, END)
+        seleucid_day_ent.insert(0, seleucid_date[0])
+        seleucid_month_ent.insert(0, seleucid_date[1])
+        seleucid_year_ent.insert(0, seleucid_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -982,6 +1012,33 @@ def igbo_converter():
         month = igbo_month_ent.get()
         year = int(igbo_year_ent.get())
         jday = igbo.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def roman_converter():
+        day = int(roman_day_ent.get())
+        month = roman_month_ent.get()
+        year = int(roman_year_ent.get())
+        jday = roman.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def macedonian_converter():
+        day = int(macedonian_day_ent.get())
+        month = macedonian_month_ent.get()
+        year = int(macedonian_year_ent.get())
+        jday = macedonian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def seleucid_converter():
+        day = int(seleucid_day_ent.get())
+        month = seleucid_month_ent.get()
+        year = int(seleucid_year_ent.get())
+        jday = seleucid.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1614,5 +1671,44 @@ igbo_year_ent = Entry(frame)
 igbo_year_ent.grid(row = 45, column = 2, sticky = W)
 igbo_bttn = Button(frame, text = "Calculate", command = igbo_converter).grid(row = 46, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.20.1")
+# Roman calendar                                                                                            
+roman_lbl = Label(frame, text = "Roman calendar").grid(row = 43, column = 3, columnspan = 3, sticky = W)
+roman_day_lbl = Label(frame, text = "Day").grid(row = 44, column = 3, sticky = W)
+roman_day_ent = Entry(frame)
+roman_day_ent.grid(row = 45, column = 3, sticky = W)
+roman_month_lbl = Label(frame, text = "Month").grid(row = 44, column = 4, sticky = W)
+roman_month_ent = Entry(frame)
+roman_month_ent.grid(row = 45, column = 4, sticky = W)
+roman_year_lbl = Label(frame, text = "Year").grid(row = 44, column = 5, sticky = W)
+roman_year_ent = Entry(frame)
+roman_year_ent.grid(row = 45, column = 5, sticky = W)
+roman_bttn = Button(frame, text = "Calculate", command = roman_converter).grid(row = 46, column = 3, columnspan = 3, sticky = W)
+
+# Macedonian calendar                                                                                            
+macedonian_lbl = Label(frame, text = "Macedonian calendar").grid(row = 43, column = 6, columnspan = 3, sticky = W)
+macedonian_day_lbl = Label(frame, text = "Day").grid(row = 44, column = 6, sticky = W)
+macedonian_day_ent = Entry(frame)
+macedonian_day_ent.grid(row = 45, column = 6, sticky = W)
+macedonian_month_lbl = Label(frame, text = "Month").grid(row = 44, column = 7, sticky = W)
+macedonian_month_ent = Entry(frame)
+macedonian_month_ent.grid(row = 45, column = 7, sticky = W)
+macedonian_year_lbl = Label(frame, text = "Year").grid(row = 44, column = 8, sticky = W)
+macedonian_year_ent = Entry(frame)
+macedonian_year_ent.grid(row = 45, column = 8, sticky = W)
+macedonian_bttn = Button(frame, text = "Calculate", command = macedonian_converter).grid(row = 46, column = 6, columnspan = 3, sticky = W)
+
+# Seleucid calendar                                                                                            
+seleucid_lbl = Label(frame, text = "Seleucid calendar").grid(row = 43, column = 9, columnspan = 3, sticky = W)
+seleucid_day_lbl = Label(frame, text = "Day").grid(row = 44, column = 9, sticky = W)
+seleucid_day_ent = Entry(frame)
+seleucid_day_ent.grid(row = 45, column = 9, sticky = W)
+seleucid_month_lbl = Label(frame, text = "Month").grid(row = 44, column = 10, sticky = W)
+seleucid_month_ent = Entry(frame)
+seleucid_month_ent.grid(row = 45, column = 10, sticky = W)
+seleucid_year_lbl = Label(frame, text = "Year").grid(row = 44, column = 11, sticky = W)
+seleucid_year_ent = Entry(frame)
+seleucid_year_ent.grid(row = 45, column = 11, sticky = W)
+seleucid_bttn = Button(frame, text = "Calculate", command = seleucid_converter).grid(row = 46, column = 9, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.21.0")
 root.mainloop()
