@@ -107,12 +107,12 @@ def fromjd(jday):
             if nyd - jday > cycle4:
                 year -= 4
                 nyd -= cycle4
-            elif abs(year) % 4 == 1:
-                year -= 1
-                nyd -= 366
             else:
                 year -= 1
-                nyd -= 365
+                if abs(year) % 4 == 1:
+                    nyd -= 366
+                else:
+                    nyd -= 365
 
         if abs(year) % 4 == 1:
             m = months.CAESAR_LEAP
