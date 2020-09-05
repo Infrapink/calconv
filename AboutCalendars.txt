@@ -208,14 +208,25 @@ OLD BABYLONIAN CALENDAR
 
 The Babylonians inherited their calendar from the Sumerians. It is a lunisolar calendar, which attempts to simultaneously keep the months synchronised with the phases of the moon while also ensuring that New Year's Day falls around the vernal equinox. In the earliest days, it was a purely observational calendar; each month began with the first sighting of the waxing crescent moon, and an intercalary month was inserted whenever the priests thought it was about the right time. As such, days begin at sunset; because this converter midnight-indexes all days for the sake of simplicity, each date is a day early if the time is between sunset and midnight.
 
-Around 499 BC / 1120 BH, the Babylonians switched to an algorithmic calendar based on the 19-year Metonic cycle (which is named for Meton of Athens, who learned it from the Babylonians), in which years 3, 6, 8, 11, 14, 17, and 19 of the cycle are leap years. This calendar was used by all the Semitic civilisations, and even today the Islamic, Jewish, and Samaritan calendars all ultimately descend from it. In the 17th year of the cycle, the intercalary month is inserted between Ulūlu and Tišritum; otherwise, it is inserted after Addaru.
+The lengths of the Babylonian months were not fixed; instead, each month referred to the duration of the actual lunar cycle. Civil days begin at sunset, and the month begins with the first sighting of the crescent moon at sunset. Getthing the exact time involves going down a rabbit hole of celestial mechanics and atmospheric refraction, so I have simply declared that the first crescent is visible the day after the New Moon; I have furthermore simplified sunset as always happening at 18:00, which is reasonably accurate around the northward equinox.
 
-The Chaldean Nation website claims that 2019 AD corresponds to 7319 PD in the Babylonian calendar. Even more than Egypt Today and my sources for the Assyrian calendar, Chaldean Nation is suspect, and there is a lot of Chaldean nationalism going on, but it's the only source I could find for an era. To ensure that 1 Farvardin BH corresponds to 1 Nisānu 4798, I have set the epoch to Julian Day (-210487) (11 August 5290 BC, 18 Mordad 5911 BH).
-
-This all gives an average year of 365 days 1 hour 15 minutes 47.37 seconds, and so it gains a day every 5.27 tropical years.
+The Chaldean Nation website claims that 2019 AD corresponds to 7319 PD in the Babylonian calendar. Even more than Egypt Today and my sources for the Assyrian calendar, Chaldean Nation is suspect, and there is a lot of Chaldean nationalism going on, but it's the only source I could find for an era.
 
 https://chaldeannation.com/blog/2019/03/31/akitu-7319-chaldean-new-year/
 https://en.wikipedia.org/wiki/Babylonian_calendar
+https://www.friesian.com/calendar.htm
+
+--------------------------
+FIXED BABYLONIAN CALENDAR
+--------------------------
+
+When Nabû-nāṣir, also called Nabonasser, came to power in Babylon in 747 BC, he implemented a policy of meticulous astronomical and chronological record keeping. As a result, by 424 BC, Babylonian astronomers had worked out that 235 lunar months was almost exactly equal to 19 solar years, and thus concluded that seven intercalary months should be added to each cycle on 19 years. This pattern, known as the Metonic Cycle after Meton of Athens (who learned about it from the Babylonians) is used today in the Jewish calendar.
+
+Days begin at sunset, and the month begins with the first sighting of the waxing crescent moon at sunset; as with the Old Babylonian Calendar, I amm assuming that the sun sets at 18:00 each day and that the first crescent is visible the day after teh New Moon. The Metonic Cycle as used by the Babylonians is indexed to 747 BC, the year of Nabû-nāṣir's accession; as such, this date is taken as the calendar era, as was done by Greek astronomers working with Babylonian records.
+
+theos-sphragis.info/hebrew_babylonian_intercalation.html
+https://en.wikipedia.org/wiki/Babylonian_calendar
+https://www.livius.org/articles/concept/calendar-babylonian/
 
 ----------------------
 JEWISH HEBREW CALENDAR
@@ -756,7 +767,7 @@ http://penelope.uchicago.edu/~grout/encyclopaedia_romana/calendar/romancalendar.
 MACEDONIAN CALENDAR
 -------------------
 
-A variety of calendars were in use in Ancient Greece; in fact, each city-state had its own calendar. All were luni-solar and the months were supposed to start on the first sighting of the new moon, but that's where the similarities end. Different city-states tied the start of the year to each of the equinoxes and sunsets, and days were variously reckoned to begin at sunset, sunrise, midnight, and even noon. Some employed the Metonic cycle to decide when to add leap months, while others just added extra months whenever it looked about right. City governments would sometimes insert extra days into a given month, causing it to drift out of sync with the moon; this habit forms the plot of Thucidydes' satifical play INSERT TITLE HERE. To make things more irritating, the Greeks did not use calendar eras, instead referring to each year by who the archon was at the time; this has been causing headaches for historians since ancient times. A scheme occasionally used was to date events by the Olympiad, but this could be ambiguous due to each city-state reckoning the lengths of years differently.
+A variety of calendars were in use in Ancient Greece; in fact, each city-state had its own calendar. All were luni-solar and the months were supposed to start on the first sighting of the new moon, but that's where the similarities end. Different city-states tied the start of the year to each of the equinoxes and sunsets, and days were variously reckoned to begin at sunset, sunrise, midnight, and even noon. Some employed the Metonic cycle to decide when to add leap months, while others just added extra months whenever it looked about right. City governments would sometimes insert extra days into a given month, causing it to drift out of sync with the moon; this habit forms the plot of Aristophanes' satirical play Clouds. To make things more irritating, the Greeks did not use calendar eras, instead referring to each year by who the archon was at the time; this has been causing headaches for historians since ancient times. A scheme occasionally used was to date events by the Olympiad, but this could be ambiguous due to each city-state reckoning the lengths of years differently.
 
 While most Greek calendars are fragmentary and lack a reasonable era, the Macedonian calendar is quite well known. Each year began on the first new moon following the southward equinox. Intercalary months would normally be added in spring, but could happen at the end of the year (or really whenever the king wanted). It appears that the Macedonians at some point adoped the Metonic cycle to assign leap years; for this converter I have chosen to go with the observational scheme used in the older version of the calendar. For the era, I have somewhat arbitrarily chosen the year Alexander the Great ascended the throne of Macedon; this puts the epoch at Julian Day 1598617.
 

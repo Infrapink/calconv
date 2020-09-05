@@ -141,7 +141,7 @@ Modern Assyrian Calendar
 * Šḇāṭ
 * Āḏar
 
-Babylonian Calendar:
+Babylonian Calendars:
 * Nisānu
 * Āru
 * Simanu

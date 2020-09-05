@@ -1,194 +1,195 @@
 #!/usr/bin/python
 
 #
-# Convert between the Babylonian Calendar and Julian Day
+# Convert between the Old Babylonian calendar and Julian Day
 #
 
-import months
+from fractions import *
+from math import floor
 
-cycle19 = (12 * 354) + (7 * 383)
+MONTHS_NORMAL = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru")
+MONTHS_LEAP = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru", "Addaru Arku")
+MONTHS_17 = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Ulūlu Arrku", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru")
+
+monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000)
+eqlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
+
+year12 = 12 * monlen
+year13 = 13 * monlen
+
+solar_epoch = Fraction(-18513734071, 86400) + Fraction(7,24) # I accidentally included Daylight Savings when I shouldn't have, so I had to compendate, hence the weird fractions.
+lunar_epoch = Fraction(-46280862427, 216000) + Fraction(6,24)
 
 def tojd(day, month, year):
+    """Convert a date in the Macedonian calendar to a Julian Day."""
     day = int(day)
     month = month
     year = int(year)
-    days = 0
 
-    leap_years_pd = (3,6,8,11,14,17,19,0)
-    leap_years_ad = (1,3,6,9,12,14,17)
-    leap_years_zo = (0,2,5,8,11,13,16)
+    curryear = False
 
-    if year > 0:
-        # positive year
-        alpha = -210488
+    if year >= 0:
+        # positive dates
+        equinox = ((year - 1) * eqlen) + solar_epoch
+        lunations = (equinox - lunar_epoch) // monlen
+        jday = (lunations * monlen) + lunar_epoch
+        while jday < equinox:
+            jday += monlen
 
-        if month == "Ulūlu Arku":
-            if (year % 19) != 17:
-                month = "Ulūlu"
+        # jday is now the new moon of the first month in the year in question. Is the year in question a leap year?
 
-        if month == "Addaru Arku":
-            if (year % 19) not in (3,6,8,11,14,19,0):
-                month = "Addaru"
-                
-        for y in range(1,year):
-            if (y % 19) in leap_years_pd:
-                days += 383
+        if jday + year12 <= equinox + eqlen:
+            # leap year
+            if year % 19 == 18:
+                m = MONTHS_17
             else:
-                days += 354
-
-        if (year % 19) == 17:
-            m = months.BABYLONIAN_LEAP_17
-        elif (year % 19) in leap_years_pd:
-            m = months.BABYLONIAN_LEAP
+                m = MONTHS_LEAP
         else:
-            m = months.BABYLONIAN_NORMAL
+            # not a leap year
+            m = MONTHS_NORMAL
 
-        for i in m.keys():
+        if month not in m:
+            if month == "Ulūlu Arrku":
+                month = "Ulūlu"
+            elif month == "Addaru Arku":
+                month = "Addaru"
+
+        for i in m:
             if i == month:
-                days += day
+                jday = int(jday) + day# - 1
                 break
             else:
-                days += m[i]
+                jday += monlen
 
     else:
         # negative years
-        alpha = -210487
-        year = 0 - year
+        equinox = (year * eqlen) + solar_epoch
+        lunations = (lunar_epoch - equinox) // monlen
+        jday = lunar_epoch - (lunations * monlen)
+        while jday - equinox > monlen:
+            jday -= monlen
 
-        if month == "Ulūlu Arku":
-            if (year % 19) != 3:
-                month = "Ulūlu"
+        # jday is now the new moon of the first month of the year in questino. Is it a leap year?
 
-        if month == "Addaru Arku":
-            if (year % 19) not in (1,6,9,12,14,17):
-                month = "Addaru"
-                
-        if (year % 19) == 3:
-            m = months.BABYLONIAN_LEAP_17
-        elif (year % 19) in leap_years_ad:
-            m = months.BABYLONIAN_LEAP
+        if jday + year12 <= equinox + eqlen:
+            # leap year
+            if abs(year % 19) == 2:
+                m = MONTHS_18
+            else:
+                m = MONTHS_LEAP
         else:
-            m = months.BABYLONIAN_NORMAL
+            # not a leap year
+            m = MONTHS_NORMAL
 
-        for i in m.keys():
+        if month not in m:
+            if month == "Ulūlu Arrku":
+                month = "Ulūlu"
+            elif month == "Addaru Arrku":
+                month = "Addaru"
+
+        for i in m:
             if i == month:
-                days += day
+                jday = floor(jday) + day
                 break
             else:
-                days += m[i]
-
-        for y in range(0,year):
-            if (y % 19) in leap_years_zo:
-                days -= 383
-            else:
-                days -= 354
-
-    jday = alpha + days
+                jday += monlen
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Babylonian calendar."""
+    """Convert a Julian Day to a date in the Macedonian calendar"""
     jday = int(jday)
+
     day = 0
     month = ""
     year = 0
-    leap_years_pd = (3,6,8,11,14,17,19,0)
-    leap_years_ad = (1,3,6,9,12,14,17)
-    leap_years_zo = (0,2,5,8,11,13,16)
 
-    # Years 17 PD, 3 AD, and 2 ZO are the ones where Veululu and not Veadar is the leap month
+    curryear = False
+    equinox = solar_epoch
+    res = lunar_epoch
+    metonic = 0
 
-    if jday > -210488: #-210264:
-        # positive year
-        delta = jday - -210488 #-210264
-        cycles = delta // cycle19
-        delta %= cycle19
+    if jday >= int(lunar_epoch):
+        # positive dates
+        year = 1
 
-        for y in range (1,20):
-            if y == 17:
-                if delta <= 383:
-                    m = months.BABYLONIAN_LEAP_17
-                    single_year = y
-                    break
-                else:
-                    delta -= 383
-            elif y in leap_years_pd:
-                if delta <= 383:
-                    # leap year
-                    m = months.BABYLONIAN_LEAP
-                    single_year = y
-                    break
-                else:
-                    delta -= 383
+        while curryear == False:
+            next_equinox = equinox + eqlen
+            if res + year12 < next_equinox:
+                next_res = res + year13
+                metonic += 1
             else:
-                if delta <= 354:
-                    # not a leap year
-                    m = months.BABYLONIAN_NORMAL
-                    single_year = y
-                    break
-                else:
-                    delta -= 354
+                next_res = res + year12
 
-        year = (19 * cycles) + single_year
-        if delta == 0:
-            year -= 1
-            if (year % 19) == 17:
-                delta = 383
-                m = months.BABYLONIAN_LEAP_17
-            elif (year % 19) in leap_years_pd:
-                m = months.BABYLONIAN_LEAP
-                delta = 383
-            else:
-                m = months.BABYLONIAN_NORMAL
-                delta = 353
-
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
-                
-
-    else:
-        #delta = -210263 - jday
-        delta = -210487 - jday
-        while delta > 0:
-            if (year % 19) in leap_years_zo:
-                year += 1
-                delta -= 383
+            if jday < int(next_res):
+                curryear = True
             else:
                 year += 1
-                delta -= 354
+                equinox = next_equinox
+                res = next_res
 
-        if (year % 19) in leap_years_ad:
+        # check if it's a leap year
+        if (res + year12) < (equinox + eqlen):
             # leap year
-            m = months.BABYLONIAN_LEAP
+            if metonic % 6 == 0:
+                m = MONTHS_17
+            else:
+                m = MONTHS_LEAP
         else:
             # not a leap year
-            m = months.BABYLONIAN_NORMAL
+            m = MONTHS_NORMAL
 
-        year = 0 - year
-        delta = 0 - delta
-        if delta == 0:
-            year -= 1
-            if (year % 19) == 2:
-                m = months.BABYLONIAN_LEAP_17
-                delta = 383
-            elif (year % 19) in leap_years_ad:
-                m = months.BABYLONIAN_LEAP
-                delta = 383
-            else:
-                m = months.BABYLONIAN_NORMAL
-                delta = 354
-        for i in m.keys():
-            if delta <= m[i]:
+        newmoon = res
+        nextmoon = newmoon + monlen
+
+        for i in m:
+            crescent = floor(newmoon) + 1
+            next_crescent = floor(nextmoon) + 1
+            if floor(jday) < next_crescent:
                 month = i
-                day = delta
+                day = jday - crescent + 1
                 break
             else:
-                delta -= m[i]
+                newmoon += monlen
+                nextmoon += monlen
 
-    date = (day,month,year)
-    return date
+    else:
+        # negative dates
+        while res > jday:
+            year -= 1
+            equinox -= eqlen
+
+            if res - year13 > equinox:
+                res -= year13
+            else:
+                res -= year12
+
+        # right, now what type of year is it?
+
+        nexteq = equinox + eqlen
+        if res + year12 < nexteq:
+            # leap year
+            if abs(year) % 19 == 2:
+                m = MONTHS_17
+            else:
+                m = MONTHS_LEAP
+        else:
+            # not a leap year
+            m = MONTHS_NORMAL
+
+        newmoon = res
+        nextmoon = newmoon + monlen
+        
+        for i in m:
+            crescent = floor(newmoon) + 1
+            next_crescent = floor(nextmoon) +1
+            if jday < next_crescent:
+                month = i
+                day = jday - crescent + 1
+                #if jday < 0:
+                    #day += 1
+                break
+            else:
+                newmoon += monlen
+                nextmoon += monlen
+
+    return (day, month, year)
