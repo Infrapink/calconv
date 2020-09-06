@@ -7,22 +7,28 @@
 import months
 
 cycle4 = (4 * 365) + 1
+epoch = 1825029
 
 def tojd(day, month, year):
 
     day = int(day)
     month = month.title()
     year = int(year)
-    days = 0
+    jday = epoch
 
     if year > 0:
-        # positive years. day 0 is 1825028
-        alpha = 1825028
-        for y in range(1, year):
-            if y % 4 == 0:
-                days += 366
+        # positive years
+        y = 1
+        while y < year:
+            if year - y > 4:
+                y += 4
+                jday += cycle4
+            elif y % 4 == 0:
+                y += 1
+                jday += 366
             else:
-                days += 365
+                y += 1
+                jday += 365
 
         if year % 4 == 0:
             # leap year
@@ -30,38 +36,35 @@ def tojd(day, month, year):
         else:
             # not a leap year
             m = months.COPTIC_NORMAL
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
+           
     else:
-        # negative years. day 0  is 1825029
-        alpha = 1825029
-        year = 0 - year
+        # negative years
+        y = 0
+        while y > year:
+            if y - year > 4:
+                y -= 4
+                jday -= cycle4
+            else:
+                y -= 1
+                if abs(y) % 4 == 1:
+                    jday -= 366
+                else:
+                    jday -= 365
 
-        if (year - 1) % 4 == 0:
+        if abs(year) % 4 == 1:
             # leap year
             m = months.COPTIC_LEAP
         else:
             # not a leap year
             m = months.COPTIC_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
 
-        for y in range(0, year):
-            if y % 4 == 0:
-                days -= 366
-            else:
-                days -= 365
-
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
@@ -70,63 +73,63 @@ def fromjd(jday):
     day = 0
     month = ""
     year = 0
-    d = 0
-    m = None
+    nyd = epoch
 
-    if jday > 1825028:
+    if jday >= epoch:
         # positive date
-        delta = jday - 1825028
-        year_4 = delta // cycle4
-        delta = delta % cycle4
-        single_years = delta // 365
-        delta = delta % 365
-        year = (4 * year_4) + single_years + 1 # add 1 year to account for the lack of year 0
+        curryear = False
+        year = 1
+        while curryear == False:
+            if jday - nyd > cycle4:
+                year += 4
+                nyd += cycle4
+            elif year % 4 == 0:
+                if jday - nyd < 366:
+                    curryear = True
+                else:
+                    year += 1
+                    nyd += 366
+            else:
+                if jday - nyd < 365:
+                    curryear = True
+                else:
+                    year += 1
+                    nyd += 365
+                    
         if year % 4 == 0:
             # leap year
             m = months.COPTIC_LEAP
         else:
             # not a leap year
             m = months.COPTIC_NORMAL
-        if delta == 0:
-            delta = 365
-            year -= 1
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
 
     else:
         # negative date
-        delta = 1825029 - jday
-
-        while delta > 0:
-            if year % 4 == 0:
-                year += 1
-                delta -= 366
+        while jday < nyd:
+            if nyd - jday > cycle4:
+                year -= 4
+                nyd -= cycle4
             else:
-                year += 1
-                delta -= 365
+                year -= 1
+                if abs(year) % 4 == 1:
+                    nyd -= 366
+                else:
+                    nyd -= 365
 
-        if (year - 1) % 4 == 0:
+        if abs(year) % 4 == 1:
             # leap year
             m = months.COPTIC_LEAP
         else:
             # not a leap year
             m = months.COPTIC_NORMAL
 
-        year = 0 - year
-        delta = 0 - delta + 1
-
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    delta = jday - nyd
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
                 
-    date = [day, month, year]
-    return(date)
+    return (day, month, year)
