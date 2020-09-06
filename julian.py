@@ -44,12 +44,12 @@ def tojd(day, month, year):
             if y - year > 4:
                 y -= 4
                 jday -= cycle4
-            elif abs(y) % 4 == 1:
-                y -= 1
-                jday -= 366
             else:
                 y -= 1
-                jday -= 365
+                if abs(y) % 4 == 1:
+                    jday -= 366
+                else:
+                    jday -= 365
                 
         if abs(year) % 4 == 1:
             # leap year
