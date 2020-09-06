@@ -159,6 +159,10 @@ def fromjd(jday):
 
     else:
         # negative date
+        while nyd - jday > cycle400:
+            year -= 400
+            nyd -= cycle400
+            
         while nyd > jday:
             year -= 1
             if abs(year) % 400 == 1:
