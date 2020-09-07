@@ -402,6 +402,14 @@ https://en.wikipedia.org/wiki/Julian_day
 https://en.wikipedia.org/wiki/Sol_(day_on_Mars)
 https://jtauber.github.io/mars-clock/
 
+--------
+VMS TIME
+--------
+
+VMS time is the time standard used in Digitals VMS operating system, developed for their VAX family of minicomputers, and their TOPS-10 and TOPS-20 mainframe operating systems. Time is counted in 100ns tics since the start of the Modified Julian Day epoch.
+
+https://www.slac.stanford.edu/~rkj/crazytime.txt
+
 ----------------
 AMAZIGH CALENDAR
 ----------------

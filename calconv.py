@@ -49,6 +49,7 @@ import igbo
 import roman
 import macedonian
 import seleucid
+import fixed_babylonian
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -281,6 +282,11 @@ def cons_day_julian_todate():
         lop = int(day) - 2448622
         lop_ent.delete(0,END)
         lop_ent.insert(0,lop)
+
+        # VMS time
+        vms = (int(day) - 2396349) * 86400 * 10000000
+        vms_time_ent.delete(0,END)
+        vms_time_ent.insert(9,vms)
 
         # Convert a Julian day to a date in the Amazigh calendar
         amazigh_date = amazigh.fromjd(day)
@@ -543,6 +549,15 @@ def cons_day_julian_todate():
         seleucid_month_ent.insert(0, seleucid_date[1])
         seleucid_year_ent.insert(0, seleucid_date[2])
 
+        # Convert a Julian day to a date in the Fixed Babylonian calendar
+        fixed_babylonian_date = fixed_babylonian.fromjd(day)
+        fixed_babylonian_day_ent.delete(0, END)
+        fixed_babylonian_month_ent.delete(0, END)
+        fixed_babylonian_year_ent.delete(0, END)
+        fixed_babylonian_day_ent.insert(0, fixed_babylonian_date[0])
+        fixed_babylonian_month_ent.insert(0, fixed_babylonian_date[1])
+        fixed_babylonian_year_ent.insert(0, fixed_babylonian_date[2])
+
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
         day = int(day) + 1
@@ -758,10 +773,19 @@ def rata_die_converter():
         cons_day_julian_todate()
         
 def unix_time_converter():
-        jday = (int(unix_time_ent.get()) // 86400) + 2440587
+        unix = int(unix_time_ent.get())
+        jday = (unix // 86400) + 2440587
         cons_day_julian_ent.delete(0,END)
         cons_day_julian_ent.insert(0,jday)
         cons_day_julian_todate()
+
+        unix_time_ent.delete(0,END)
+        unix_time_ent.insert(0,unix)
+
+        vms = unix + (86400 * (2440587 - 2396349))
+        vms *= 10000000
+        vms_time_ent.delete(0,END)
+        vms_time_ent.insert(0,vms)
         
 def sol_gangale_converter():
         jday = round(Decimal(sol_gangale_ent.get()) * Decimal('1.02749')) + 2405521
@@ -774,6 +798,21 @@ def lop_converter():
         cons_day_julian_ent.delete(0,END)
         cons_day_julian_ent.insert(0,jday)
         cons_day_julian_todate()
+
+def vms_time_converter():
+        vms = int(vms_time_ent.get())
+        jday = (vms // (86400 * 10000000)) + 2396349
+        cons_day_julian_ent.delete(0,END)
+        cons_day_julian_ent.insert(0,jday)
+        cons_day_julian_todate()
+
+        vms_time_ent.delete(0,END)
+        vms_time_ent.insert(0,vms)
+
+        unix = vms // 10000000
+        unix -= (86400 * (2440587 - 2396349))
+        unix_time_ent.delete(0,END)
+        unix_time_ent.insert(0,unix)
         
 def amazigh_converter():
         """Convert a date in the Amazigh calendar to a Julian day."""
@@ -1043,6 +1082,15 @@ def seleucid_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
+def fixed_babylonian_converter():
+        day = int(fixed_babylonian_day_ent.get())
+        month = fixed_babylonian_month_ent.get()
+        year = int(fixed_babylonian_year_ent.get())
+        jday = fixed_babylonian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 
 root = Tk()
 
@@ -1132,7 +1180,7 @@ ethiopian_year_ent.grid(row = 2, column = 14, sticky = W)
 ethiopian_bttn = Button(frame, text = "Calculate", command = ethiopian_converter).grid(row = 3, column = 12, columnspan = 3, sticky = W)
 
 # Egyptian Calendar
-egyptian_lbl = Label(frame, text = "Egyptian Calendar").grid(row = 5, column = 0, columnspan = 3, sticky = W)
+egyptian_lbl = Label(frame, text = "Ancient Egyptian civil calendar").grid(row = 5, column = 0, columnspan = 3, sticky = W)
 egyptian_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 0, sticky = W)
 egyptian_day_ent = Entry(frame)
 egyptian_day_ent.grid(row = 7, column = 0, sticky = W)
@@ -1209,8 +1257,8 @@ assyrian_year_ent = Entry(frame)
 assyrian_year_ent.grid(row = 12, column = 2, sticky = W)
 assyrian_bttn = Button(frame, text = "Calculate", command = assyrian_converter).grid(row = 13, column = 0, columnspan = 3, sticky = W)
 
-# Babylonian Calendar
-babylonian_lbl = Label(frame, text = "Babylonian Calendar").grid(row = 10, column = 3, columnspan = 3, sticky = W)
+# Old Babylonian Calendar
+babylonian_lbl = Label(frame, text = "Old Babylonian Calendar").grid(row = 10, column = 3, columnspan = 3, sticky = W)
 babylonian_day_lbl = Label(frame, text = "Day").grid(row = 11, column = 3, sticky = W)
 babylonian_day_ent = Entry(frame)
 babylonian_day_ent.grid(row = 12, column = 3, sticky = W)
@@ -1332,6 +1380,12 @@ lop_lbl = Label(frame, text = "LOP Julian day").grid(row = 14, column = 11, stic
 lop_ent = Entry(frame)
 lop_ent.grid(row = 15, column = 11, sticky = W)
 lop_bttn = Button(frame, text = "Calculate", command = lop_converter).grid(row = 16, column = 11, sticky = W)
+
+# VMS time
+vms_time_lbl = Label(frame, text = "VMS time").grid(row = 14, column = 12, sticky = W)
+vms_time_ent = Entry(frame)
+vms_time_ent.grid(row = 15, column = 12, sticky = W)
+vms_time_bttn = Button(frame, text = "Calculate", command = vms_time_converter).grid(row = 16, column = 12, sticky  =W)
 
 # Amazigh calendar
 amazigh_lbl = Label(frame, text = "Amazigh calendar").grid(row = 18, column = 0, columnspan = 3, sticky = W)
@@ -1710,5 +1764,18 @@ seleucid_year_ent = Entry(frame)
 seleucid_year_ent.grid(row = 45, column = 11, sticky = W)
 seleucid_bttn = Button(frame, text = "Calculate", command = seleucid_converter).grid(row = 46, column = 9, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.21.0")
+# Fixed Babylonian calendar                                                                                            
+fixed_babylonian_lbl = Label(frame, text = "Fixed Babylonian calendar").grid(row = 43, column = 12, columnspan = 3, sticky = W)
+fixed_babylonian_day_lbl = Label(frame, text = "Day").grid(row = 44, column = 12, sticky = W)
+fixed_babylonian_day_ent = Entry(frame)
+fixed_babylonian_day_ent.grid(row = 45, column = 12, sticky = W)
+fixed_babylonian_month_lbl = Label(frame, text = "Month").grid(row = 44, column = 13, sticky = W)
+fixed_babylonian_month_ent = Entry(frame)
+fixed_babylonian_month_ent.grid(row = 45, column = 13, sticky = W)
+fixed_babylonian_year_lbl = Label(frame, text = "Year").grid(row = 44, column = 14, sticky = W)
+fixed_babylonian_year_ent = Entry(frame)
+fixed_babylonian_year_ent.grid(row = 45, column = 14, sticky = W)
+fixed_babylonian_bttn = Button(frame, text = "Calculate", command = fixed_babylonian_converter).grid(row = 46, column = 12, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.23.0")
 root.mainloop()
