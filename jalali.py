@@ -6,143 +6,132 @@
 
 import months
 
+epoch = 1948320
+
 cycle4 = (4 * 365) + 1
 cycle5 = (365 * 5) + 1
 cycle33 = (7 * cycle4) + cycle5
+
+leap_years_ah = (5,9,13,17,21,25,29,33,0)
+leap_years_zero = (0,4,8,12,16,20,24,28)
+leap_years_bh = (1,5,9,13,17,21,25,29)
 
 def tojd(day, month, year):
     day = int(day)
     month = month.title()
     year = int(year)
-    days = 0
-
-    leap_years_ah = (5,9,13,17,21,25,29,33,0)
-    leap_years_zero = (0,4,8,12,16,20,24,28)
-    leap_years_bh = (1,5,9,13,17,21,25,29)
-
-    cycle4 = (4 * 365) + 1
-    cycle5 = (365 * 5) + 1
-    cycle33 = (7 * cycle4) + cycle5
+    jday = epoch
 
     if year > 0:
         # positive years
-        alpha = 1948319
-        for y in range(1,year):
-            if (y % 33) in leap_years_ah:
-                days += 366
+        y = 1
+        while y < year:
+            if year - y > 33:
+                y += 33
+                jday += cycle33
+            elif y % 33 in leap_years_ah:
+                y += 1
+                jday += 366
             else:
-                days += 365
+                y += 1
+                jday += 365
 
         if (year % 33) in leap_years_ah:
             # leap year
-            m = months.SOLAR_HIJRI_LEAP
+            m = months.IRANIAN_LEAP
         else:
-            m = months.SOLAR_HIJRI_NORMAL
-
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
+            m = months.IRANIAN_NORMAL
 
     else:
         # negative years
-        alpha = 1948320
-        year = 0 - year # modulo operator doesn't play nicely with negative numbers
-        if (year % 33) in leap_years_bh:
+        y = 0
+        while y > year:
+            if y - year > 33:
+                y -= 33
+                jday -= cycle33
+            else:
+                y -= 1
+                if abs(y) % 33 in leap_years_bh:
+                    jday -= 366
+                else:
+                    jday -= 365
+
+        if abs(year) % 33 in leap_years_bh:
             # leap year
-            m = months.SOLAR_HIJRI_LEAP
+            m = months.IRANIAN_LEAP
         else:
             # not a leap year
-            m = months.SOLAR_HIJRI_NORMAL
+            m = months.IRANIAN_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
-        for y in range(0,year):
-            if y % 33 in leap_years_zero:
-                days -= 366
-            else:
-                days -= 365
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
 
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Solar Hijri calendar."""
+    """Convert a Julian Day to a date in the Jalali calendar."""
     jday = int(jday)
     day = 0
     month = ""
     year = 0
+    nowruz = epoch
 
-    leap_years_ah = (5,9,13,17,21,25,29,33)
-    leap_years_zero = (0,4,8,12,16,20,24,28)
-    leap_years_bh = (1,5,9,13,17,21,25,29)
-
-    if jday > 1948319:
+    if jday >= epoch:
         # positive date
-        delta = jday - 1948319
-        cycles = delta // cycle33
-        delta %= cycle33
-        for y in range(1,34):
-            if y in leap_years_ah:
-                if delta <= 366:
-                    # leap year
-                    single_years = y
-                    m = months.SOLAR_HIJRI_LEAP
-                    break
+        year = 1
+        curryear = False
+        while curryear == False:
+            if jday - nowruz > cycle33:
+                year += 33
+                nowruz += cycle33
+            elif year % 33 in leap_years_ah:
+                if jday - nowruz <= 366:
+                    curryear = True
                 else:
-                    delta -= 366
+                    year += 1
+                    nowruz += 366
             else:
-                if delta <= 365:
-                    # not a leap year
-                    single_years = y
-                    m = months.SOLAR_HIJRI_NORMAL
-                    break
+                if jday - nowruz <= 365:
+                    curryear = True
                 else:
-                    delta -= 365
-        year = (33 * cycles) + single_years
-        if delta == 0:
-            delta = 365
-            year -= 1
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+                    year += 1
+                    nowruz += 365
+
+        if year % 33 in leap_years_ah:
+            m = months.IRANIAN_LEAP
+        else:
+            m = months.IRANIAN_NORMAL
     else:
         # negative date
-        delta = 1948320 - jday
-
-        while delta > 0:
-            if (year % 33) in leap_years_zero:
-                year += 1
-                delta -= 366
+        while nowruz > jday:
+            if nowruz - jday > cycle33:
+                year -= 33
+                nowruz -= cycle33
             else:
-                year += 1
-                delta -= 365
+                year -= 1
+                if abs(year) % 33 in leap_years_bh:
+                    nowruz -= 366
+                else:
+                    nowruz -= 365
 
         if year in leap_years_bh:
             # leap year
-            m = months.SOLAR_HIJRI_LEAP
+            m = months.IRANIAN_LEAP
         else:
             # not a leap year
-            m = months.SOLAR_HIJRI_NORMAL
+            m = months.IRANIAN_NORMAL
 
-        year = 0 - year
-        delta = 0 - delta + 1
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
-    date = (day,month,year)
-    return date
+    delta = jday - nowruz
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
+
+    return (day, month, year)

@@ -7,6 +7,8 @@
 import months
 import leap_years_birashk
 
+epoch = 1948320
+
 cycle4 = (4 * 365) + 1
 cycle5 = (365 * 5) + 1
 cycle33 = (7 * cycle4) + cycle5
@@ -20,21 +22,20 @@ def tojd(day,month,year):
     day = int(day)
     month = month.title()
     year = int(year)
-    days = 0
-    alpha = 1948319
-
-    cycle4 = (4 * 365) + 1
-    cycle5 = (5 * 365) + 1
-    cycle29 = (6 * cycle4) + cycle5
-    cycle33 = (7 * cycle4) + cycle5
-    cycle37 = (8 * cycle4) + cycle5
+    jday = epoch
 
     if year > 0:
-        for y in range(1,year):
-            if (y % 2820) in leap_years_birashk.ah:
-                days += 366
+        y = 1
+        while y < year:
+            if year - y > 2820:
+                y += 2820
+                jday += cycle2820
+            elif y % 2820 in leap_years_birashk.ah:
+                y += 1
+                jday += 366
             else:
-                days += 365
+                y += 1
+                jday += 365
 
         if (year % 2820) in leap_years_birashk.ah:
             # leap year
@@ -43,38 +44,33 @@ def tojd(day,month,year):
             # not a leap year
             m = months.IRANIAN_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
-
     else:
-        year = 0 - year - 1 # modulo operator doesn't play nicely with negative numebrs
-        for y in range (0, year):
-            if (y % 2820) in leap_years_birashk.bh:
-                days -= 366
+        y = 0
+        while y > year:
+            if y - year > 2820:
+                y -= 2820
+                jday -= cycle2820
             else:
-                days -= 365
+                y -= 1
+                if abs(y) % 2820 in leap_years_birashk.bh:
+                    jday -= 366
+                else:
+                    jday -= 365
 
-        if year in leap_years_birashk.bh:
+        if abs(year) % 2820 in leap_years_birashk.bh:
             # leap year
             m = months.IRANIAN_LEAP
-            days -= 367 # subtract 367 rather than 366 to avoid a fencepost error
         else:
             # not a leap year
             m = months.IRANIAN_NORMAL
-            days -= 366 # subtract 366 rathger than 365 to avoid a fencepost error
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
 
-    jday = days + alpha
     return jday
 
 def fromjd(jday):
@@ -82,95 +78,59 @@ def fromjd(jday):
     day = 0
     month = ""
     year = 0
-    delta = jday - 1948319 # days that have passed, starting on 1/1/1
+    nowruz = epoch
 
-    # I tried to be smart anc calculate by cycles and subcycles, but Python apparently gets confused when you go too many levels deep in if..else statements, so screw it I'm just going to use one big 2820-year cycle.
-
-    if delta > 0:
-        great_cycles = delta // cycle2820
-        delta %= cycle2820
-
-        for y in range(1,2821):
-            if y in leap_years_birashk.ah:
-                if delta <= 366:
-                    # leap year
-                    single_year = y
-                    m = months.IRANIAN_LEAP
-                    break
+    if jday >= epoch:
+        # positive dates
+        year = 1
+        curryear = False
+        while curryear == False:
+            if jday - nowruz > cycle2820:
+                year += 2820
+                nowruz += cycle2820
+            elif year % 2820 in leap_years_birashk.ah:
+                if jday - nowruz <= 366:
+                    curryear = True
                 else:
-                    delta -= 366
+                    year += 1
+                    nowruz += 366
             else:
-                if delta <= 365:
-                    # not a leap year
-                    single_year = y
-                    m = months.IRANIAN_NORMAL
-                    break
+                if jday - nowruz <= 365:
+                    curryear = True
                 else:
-                    delta -= 365
+                    year += 1
+                    nowruz += 365
 
-        year = (great_cycles * 2820) + single_year
-        if delta == 0:
-            year -= 1
-            if year % 2820 in leap_years_birashk.ah:
-                delta = 366
-            else:
-                delta = 365
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+        if year % 2820 in leap_years_birashk.ah:
+            m = months.IRANIAN_LEAP
+        else:
+            m = months.IRANIAN_NORMAL
 
     else:
-        delta = 0 - delta # module operator doesn't place nicely with negative numbers
-        great_cycles = delta // cycle2820
-        delta %= cycle2820
-
-        for y in range(0,2820):
-            if y in leap_years_birashk.bh:
-                if delta <= 366:
-                    # leap year
-                    single_year = y
-                    m = months.IRANIAN_LEAP
-                    delta = 366 - delta
-                    if delta == 0:
-                        delta = 1
-                    break
+        # negative dates
+        while nowruz > jday:
+            if nowruz - jday > cycle2820:
+                nowruz -= cycle2820
+                year -= 2820
+            else:
+                year -= 1
+                if abs(year) % 2820 in leap_years_birashk.bh:
+                    nowruz -= 366
                 else:
-                    delta -= 366
-            else:
-                if delta <= 365:
-                    # not a leap year
-                    single_year = y
-                    m = months.IRANIAN_NORMAL
-                    delta = 366 - delta
-                    break
-                else:
-                    delta -= 365
+                    nowruz -= 365
 
-        year = (great_cycles * 2820) + single_year
-        year = 0 - year - 1
-        if delta == 0:
-            year -= 1
-            if abs(year) % 2820 in leap_years_birashk.bh:
-                delta = 366
-            else:
-                delta = 365
+        if abs(year) % 2820 in leap_years_birashk.bh:
+            m = months.IRANIAN_LEAP
+        else:
+            m = months.IRANIAN_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    delta = jday - nowruz
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-    if jday == 1948319:
-        day = 30
-        month = "Esfand"
-        year = (-1)
-
-    date = [day,month,year]
-    return date
+    return (day, month, year)
