@@ -11,25 +11,34 @@ cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
 
+epoch = (-13387)
+
 def tojd(day,month,year):
 
     day = int(day)
     month = month
     year = int(year)
-    days = 0
+    jday = epoch
 
     if year > 0:
         # positive year
-        alpha = -13388
-        for y in range(1,year):
-            if y % 400 == 349:
-                days += 366
+        y = 1
+        while y < year:
+            if year - y > 400:
+                y += 400
+                jday += cycle400
+            elif y % 400 == 349:
+                jday += 366
+                y += 1
             elif y % 100 == 49:
-                days += 365
+                jday += 365
+                y += 1
             elif y % 4 == 1:
-                days += 366
+                jday += 366
+                y += 1
             else:
-                days += 365
+                y += 1
+                jday += 365
 
         if year % 400 == 349:
             m = months.ASSYRIAN_LEAP
@@ -40,18 +49,24 @@ def tojd(day,month,year):
         else:
             m = months.ASSYRIAN_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
-
     else:
         # negative years
-        year = 0 - year
-        alpha = -13388
-
+        y = 0
+        while y > year:
+            if y - year > 400:
+                y -= 400
+                jday -= cycle400
+            else:
+                y -= 1
+                if abs(y) % 400 == 51:
+                    jday -= 366
+                elif abs(y) % 100 == 51:
+                    jday -= 365
+                elif abs(y) % 4 == 3:
+                    jday -= 366
+                else:
+                    jday -= 365
+                
         if year % 400 == 51:
             m = months.ASSYRIAN_LEAP
         elif year % 100 == 51:
@@ -61,24 +76,13 @@ def tojd(day,month,year):
         else:
             m = months.ASSYRIAN_NORMAL
             
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
 
-        for y in range(0,year):
-            if y % 400 == 51:
-                days -= 366
-            elif y % 100 == 51:
-                days -= 365
-            elif y % 4 == 3:
-                days -= 366
-            else:
-                days -= 365
-
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
@@ -87,122 +91,83 @@ def fromjd(jday):
     day = 0
     month = ""
     year = 0
-    leap = None
+    akitu = epoch
 
-    if jday > -13388:
+    if jday >= epoch:
         # positive year
-        delta = jday - -13388
-        cycles = delta // cycle400
-        delta %= cycle400
-
-
-        for y in range(1,401):
-            if y % 400 == 349:
-                if delta <= 366:
-                    m = months.ASSYRIAN_LEAP
-                    single_year = y
-                    break
+        year = 1
+        curryear = False
+        while curryear == False:
+            if jday - akitu > cycle400:
+                year += 400
+                akitu += cycle400
+            elif year % 400 == 349:
+                if jday - akitu <= 366:
+                    curryear = True
                 else:
-                    delta -= 366
-            elif y % 100 == 49:
-                if delta <= 365:
-                    m = months.ASSYRIAN_NORMAL
-                    single_year = y
-                    break
-                else:
-                    delta -= 365
-            elif y % 4 == 1:
-                if delta <= 366:
-                    m = months.ASSYRIAN_LEAP
-                    single_year = y
-                    break
-                else:
-                    delta -= 366
-            else:
-                if delta <= 365:
-                    m = months.ASSYRIAN_NORMAL
-                    single_year = y
-                    break
-                else:
-                    delta -= 365
-
-        year = (400 * cycles) + single_year
-        if delta == 0:
-            year -= 1
-            if year % 400 == 349:
-                m = months.ASSYRIAN_LEAP
-                delta = 366
+                    year += 1
+                    akitu += 366
             elif year % 100 == 49:
-                m = months.ASSYRIAN_NORMAL
-                delta = 365
+                if jday - akitu <= 365:
+                    curryear = True
+                else:
+                    year += 1
+                    akitu += 365
             elif year % 4 == 1:
-                m = months.ASSYRIAN_LEAP
-                delta = 366
+                if jday - akitu <= 366:
+                    curryear = True
+                else:
+                    year += 1
+                    akitu += 366
             else:
-                m = months.ASSYRIAN_NORMAL
-                delta = 365
-                
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+                if jday - akitu <= 365:
+                    curryear = True
+                else:
+                    year += 1
+                    akitu += 365
+
+        if year % 400 == 349:
+            m = months.ASSYRIAN_LEAP
+        elif year % 100 == 49:
+            m = months.ASSYRIAN_NORMAL
+        elif year % 4 == 1:
+            m = months.ASSYRIAN_LEAP
+        else:
+            m = months.ASSYRIAN_NORMAL
+            
     else:
         # negative date
-        delta = -13388 - jday
-        steps = 0
-
-        while delta > 0:
-            if year % 400 == 51:
-                year += 1
-                delta -= 366
-            elif year % 100 == 51:
-                year += 1
-                delta -= 365
-            elif year % 4 == 3:
-                year += 1
-                delta -= 366
+        while akitu > jday:
+            if jday - akitu >= cycle400:
+                year -= 400
+                akitu -= cycle400
             else:
-                year += 1
-                delta -= 365
+                year -= 1
+                if abs(year) % 400 == 51:
+                    akitu -= 366
+                elif abs(year) % 100 == 51:
+                    akitu -= 365
+                elif abs(year) % 4 == 3:
+                    akitu -= 366
+                else:
+                    akitu -= 365
 
-        if year % 400 == 51:
+        if abs(year) % 400 == 51:
             m = months.ASSYRIAN_LEAP
-        elif year % 100 == 51:
+        elif abs(year) % 100 == 51:
             m = months.ASSYRIAN_NORMAL
-        elif year % 4 == 3:
+        elif abs(year) % 4 == 3:
             m = months.ASSYRIAN_LEAP
         else:
             m = months.ASSYRIAN_NORMAL
 
-        year = 0 - year
-        delta = 0 - delta
+    delta = jday - akitu
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-        if delta == 0:
-            year -= 1
-            if year % 400 == 51:
-                m = months.ASSYRIAN_LEAP
-                delta = 366
-            elif year % 100 == 51:
-                m = months.ASSYRIAN_NORMAL
-                delta = 365
-            elif year % 4 == 3:
-                m = months.ASSYRIAN_LEAP
-                delta = 366
-            else:
-                m = months.ASSYRIAN_NORMAL
-                delta = 365
-                
-
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
-
-    date = (day,month,year)
-    return date
+    return (day, month, year)

@@ -58,15 +58,15 @@ def tojd(day, month, year):
         y = 0
         #jday -= 366
         while y > year:
-            if year - y > 400:
+            if y - year > 400:
                 y -= 400
-                jday -= 400
-            elif year - y > 100:
-                y -= 100
-                jday -= cycle100
-            elif year - y > 4:
-                y -= 4
-                jday -= cycle4
+                jday -= cycle400
+            #elif y - year > 100:
+             #   y -= 100
+              #  jday -= cycle100
+            #elif y - year > 4:
+             #   y -= 4
+              #  jday -= cycle4
             else:
                 y -= 1
                 if abs(y) % 400 == 1:
@@ -162,7 +162,7 @@ def fromjd(jday):
         while nyd - jday > cycle400:
             year -= 400
             nyd -= cycle400
-            
+
         while nyd > jday:
             year -= 1
             if abs(year) % 400 == 1:
@@ -173,7 +173,7 @@ def fromjd(jday):
                 nyd -= 366
             else:
                 nyd -= 365
-
+           
         if abs(year) % 400 == 1:
             # leap year
             m = months.CAESAR_LEAP
