@@ -6,6 +6,7 @@
 
 import months
 from fractions import *
+from math import floor
 
 leap_years_ai = (3,6,8,11,14,17,19,0)
 leap_years_bi = (1,3,6,9,12,14,17)
@@ -82,17 +83,10 @@ def tojd(day, month, year):
             next_hashanah = hashanah + yearlen12
 
         next_year = year + 1
-
-        if hashanah < 0:
-            rosh = int(hashanah) - 1
-        else:
-            rosh = int(hashanah)
+        rosh = floor(hashanah)
+        next_rosh = floor(next_hashanah)
+        
         molad = hashanah % 1
-
-        if next_hashanah < 0:
-            next_rosh = int(next_hashanah) - 1
-        else:
-            next_rosh = int(next_hashanah)
         next_molad = next_hashanah % 1
 
         days = rosh
@@ -181,16 +175,10 @@ def fromjd(jday):
         else:
             next_hashanah = hashanah + yearlen12
 
-        if hashanah < 0:
-            rosh = int(hashanah) - 1
-        else:
-            rosh = int(hashanah)
+        rosh = floor(hashanah)
         molad = hashanah % 1
 
-        if next_hashanah < 0:
-            next_rosh = int(next_hashanah) - 1
-        else:
-            next_rosh = int(next_hashanah)
+        next_rosh = floor(next_hashanah)
         next_molad = next_hashanah % 1
 
         m = YEARTYPE[next_rosh - rosh]
