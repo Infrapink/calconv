@@ -6,63 +6,67 @@
 
 import months
 
+epoch = 1374435
+cycle4 = (4*365) + 1
+
 def tojd(day, month, year):
 
     day = int(day)
     month = month
     year = int(year)
-    alpha = 0
-    days = 0
+    jday = epoch
 
     if year > 0:
-        # positive years.
-        alpha = 1374434
-        for y in range(1,year):
-            if (y + 2) % 4 == 0:
-                days += 366
+        # positive years
+        y = 1
+        cycles = (year - y) // 4
+        y += (cycles * 4)
+        jday += (cycles * cycle4)
+        while y < year:
+            #if year - y > 4:
+             #   y += 4
+              #  jday += cycle4
+            if y % 4 == 2:
+                y += 1
+                jday += 366
             else:
-                days += 365
-
-        if (year + 2) % 4 == 0:
+                y += 1
+                jday += 365
+                
+        if year % 4 == 2:
             # leap year
             m = months.AMAZIGH_LEAP
         else:
             # not a leap year
             m = months.AMAZIGH_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
-
     else:
         # negative years.
-        alpha = 1374435
-        year = 0 - year
+        y = 0
+        cycles = (y - year) // 4
+        y -= (cycles * 4)
+        jday -= (cycles * cycle4)
+        while y > year:
+            y -= 1
+            if abs(y % 4) == 2:
+                jday -= 366
+            else:
+                jday -= 365
 
-        if (year + 2) % 4 == 0:
+        if abs(year) % 4 == 2:
             # leap yar
             m = months.AMAZIGH_LEAP
         else:
             # not a leap year
             m = months.AMAZIGH_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
 
-        for y in range(0, year):
-            if (y + 2) % 4 == 0:
-                days -= 366
-            else:
-                days -= 365
-
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
@@ -71,56 +75,46 @@ def fromjd(jday):
     year = 0
     month = ""
     day = 0
+    yen = epoch
 
-    if jday > 1374434:
+    if jday >= epoch:
         # positive dates
-        delta = jday - 1374434
-        current = False
-        while current == False:
-            year += 1
-            if (year + 2) % 4 == 0:
-                if delta <= 366:
-                    current = True
+        curryear = False
+        year = 1
+        cycles = (jday - yen) // cycle4
+        year += (4 * cycles)
+        yen += (cycles * cycle4)
+        while curryear == False:
+            if year % 4 == 2:
+                if jday - yen <= 366:
+                    curryear = True
                 else:
-                    delta -= 366
+                    year += 1
+                    yen += 366
             else:
-                if delta <= 365:
-                    current = True
+                if jday - yen <= 365:
+                    curryear = True
                 else:
-                    delta -= 365
+                    year += 1
+                    yen += 365
 
-        if (year + 2) % 4 == 0:
-            # leap year
+        if year % 4 == 2:
             m = months.AMAZIGH_LEAP
         else:
-            # not a leap year
             m = months.AMAZIGH_NORMAL
-            
-#        if delta == 0:
- #           delta = 365
-  #          year -= 1
-
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
 
     else:
         # negative dates
-        delta = 1374435 - jday
-        while delta > 0:
-            if (year - 2) % 4 == 0:
-                year -= 1
-                delta -= 366
+        cycles = (yen - jday) // cycle4
+        year -= (4 * cycles)
+        yen -= (cycles * cycle4)
+        while jday < yen:
+            year -= 1
+            if abs(year) % 4 == 2:
+                yen -= 366
             else:
-                year -= 1
-                delta -= 365
-
-        delta = abs(delta) + 1
-
+                yen -= 365
+                
         if (abs(year) - 2) % 4 == 0:
             # leap yar
             m = months.AMAZIGH_LEAP
@@ -128,13 +122,13 @@ def fromjd(jday):
             # not a leap year
             m = months.AMAZIGH_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    delta = jday - yen
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-    date = (day,month,year)
-    return date
+    return (day, month, year)
