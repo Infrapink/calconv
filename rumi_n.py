@@ -6,63 +6,63 @@
 
 import months
 
+epoch = 1948301
+cycle4 = (4 * 365) + 1
+
 def tojd(day, month, year):
 
     day = int(day)
     month = month.title()
     year = int(year)
-    alpha = 0
-    days = 0
+    jday = epoch
 
     if year > 0:
-        # positive years. day 0 is 1721422
-        alpha = 1948242
-        for y in range(1,year):
-            if (y + 2) % 4 == 0:
-                days += 366
+        # positive years
+        y = 1
+        cycles = (year - y) // 4
+        y += (cycles * 4)
+        jday += (cycles * cycle4)
+        while y < year:
+            if y % 4 == 2:
+                jday += 366
             else:
-                days += 365
+                jday += 365
+            y += 1
 
-        if (year + 2) % 4 == 0:
+        if year % 4 == 2:
             # leap year
             m = months.TURKISH_LEAP
         else:
             # not a leap year
             m = months.TURKISH_NORMAL
-
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
 
     else:
-        # negative years. count backwards. day 0 is 1721423
-        alpha = 1948243
-        year = 0 - year
+        # negative years
+        y = 0
+        cycles = (y - year) // 4
+        y -= (4 * cycles)
+        jday -= (cycles * cycle4)
+        while y > year:
+            y -= 1
+            if y % 4 == 2:
+                jday -= 366
+            else:
+                jday -= 365
 
-        if abs(year +2) % 4 == 0:
+        if abs(year) % 4 == 2:
             # leap year
             m = months.TURKISH_LEAP
         else:
             # not a leap year
             m = months.TURKISH_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
                 
-        for y in range(0,year):
-            if (y - 1) % 4 == 0:
-                days -= 366
-            else:
-                days -= 365
-
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
@@ -71,67 +71,61 @@ def fromjd(jday):
     year = 0
     month = ""
     day = 0
+    nyd = epoch
 
-    if jday > 1948242:
+    if jday >= epoch:
         # positive dates
-        delta = jday - 1948242
-        current = False
-        while current == False:
-            year += 1
-            if (year + 2) % 4 == 0:
+        curryear = False
+        year = 1
+        cycles = (jday - nyd) // cycle4
+        year += (4 * cycles)
+        nyd += (cycles * cycle4)
+
+        while curryear == False:
+            if year % 4 == 2:
                 if delta <= 366:
-                    current = True
+                    curryear = True
                 else:
-                    delta -= 366
+                    jday += 366
             else:
                 if delta <= 365:
-                    current = True
+                    curryear = True
                 else:
-                    delta -= 365
+                    jday += 365
+            year += 1
 
-        if (year + 2) % 4 == 0:
+        if year % 4 == 2:
             # leap year
             m = months.TURKISH_LEAP
         else:
             # not a leap year
             m = months.TURKISH_NORMAL
-
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
 
     else:
         # negative dates
-        delta = 1948243 - jday
-        while delta > 0:
-            if (year - 1) % 4 == 0:
-                year += 1
-                delta -= 366
+        cycles = (nyd - jday) // cycle4
+        year -= (4 * cycles)
+        nyd -= (cycles * cycle4)
+        while jday < nyd:
+            year -= 1
+            if abs(year) % 4 == 2:
+                nyd += 365
             else:
-                year += 1
-                delta -= 365
+                nyd += 365
 
-        delta = abs(delta) + 1
-        year = 0 - year
-
-        if (abs(year) - 2) % 4 == 0:
+        if abs(year) % 4 == 2:
             # leap year
             m = months.TURKISH_LEAP
         else:
             # not a leap year
             m = months.TURKISH_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-    date = (day,month,year)
-    return date
+    return (day, month, year)

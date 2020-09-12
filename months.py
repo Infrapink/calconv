@@ -94,19 +94,19 @@ COPTIC_LEAP = {"Thout": 30,
 
 # EGYPTIAN CALENDAR
 
-EGYPTIAN_MONTHS = {"Thoth": 30,
-                   "Phaophi": 30,
-                   "Hathor": 30,
-                   "Choak": 30,
-                   "Tybi": 30,
-                   "Mechir": 30,
-                   "Phamenoth": 30,
-                   "Pharmuthi": 30,
-                   "Pachons": 30,
-                   "Payni": 30,
-                   "Spiphi": 30,
-                   "Mesore": 30,
-                   "Extra days": 5}
+EGYPTIAN = {"Thoth": 30,
+            "Phaophi": 30,
+            "Hathor": 30,
+            "Choak": 30,
+            "Tybi": 30,
+            "Mechir": 30,
+            "Phamenoth": 30,
+            "Pharmuthi": 30,
+            "Pachons": 30,
+            "Payni": 30,
+            "Spiphi": 30,
+            "Mesore": 30,
+            "Extra days": 5}
 
 # LUNAR HIJRI CALENDAR
 
@@ -167,19 +167,19 @@ IRANIAN_LEAP = {"Farvardin": 31,
 
 # ARMENIAN CALENDAR
 
-ARMENIAN_MONTHS = {"Nawasard": 30,
-                   "Hoṙi": 30,
-                   "Sahmi": 30,
-                   "Trē": 30,
-                   "Kʿałocʿ": 30,
-                   "Arac'": 30,
-                   "Mehekan": 30,
-                   "Areg": 30,
-                   "Ahekan": 30,
-                   "Mareri": 30,
-                   "Margac'": 30,
-                   "Hrotic'": 30,
-                   "Extra days": 5}
+ARMENIAN = {"Nawasard": 30,
+            "Hoṙi": 30,
+            "Sahmi": 30,
+            "Trē": 30,
+            "Kʿałocʿ": 30,
+            "Arac'": 30,
+            "Mehekan": 30,
+            "Areg": 30,
+            "Ahekan": 30,
+            "Mareri": 30,
+            "Margac'": 30,
+            "Hrotic'": 30,
+            "Extra days": 5}
 
 # ASSYRIAN MONTHS
 
@@ -338,32 +338,84 @@ HEBREW_ABUNDANT_LEAP = {"Tishrei": 30,
 
 # SAMARITAN MONTHS
 
-SAMARITAN_NORMAL = {"Nisan": 30,
-                    "Iyar": 29,
-                    "Sivan": 30,
-                    "Tammuz": 29,
-                    "Av": 30,
-                    "Elul": 29,
-                    "Tishrei": 30,
-                    "Marcheshvan": 29,
-                    "Kislev": 30,
-                    "Tevet": 29,
-                    "Shevat": 30,
-                    "Adar": 29}
+SAMARITAN_DEFICIENT_NORMAL = {"Nisan": 30,
+                              "Iyar": 29,
+                              "Sivan": 30,
+                              "Tammuz": 29,
+                              "Av": 30,
+                              "Elul": 29,
+                              "Tishrei": 30,
+                              "Marcheshvan": 29,
+                              "Kislev": 29,
+                              "Tevet": 29,
+                              "Shevat": 30,
+                              "Adar": 29}
 
-SAMARITAN_LEAP = {"Nisan": 30,
-                  "Iyar": 29,
-                  "Sivan": 30,
-                  "Tammuz": 29,
-                  "Av": 30,
-                  "Elul": 29,
-                  "Tishrei": 30,
-                  "Marcheshvan": 29,
-                  "Kislev": 30,
-                  "Tevet": 29,
-                  "Shevat": 30,
-                  "Adar": 30,
-                  "Veadar": 29}
+SAMARITAN_REGULAR_NORMAL = {"Nisan": 30,
+                            "Iyar": 29,
+                            "Sivan": 30,
+                            "Tammuz": 29,
+                            "Av": 30,
+                            "Elul": 29,
+                            "Tishrei": 30,
+                            "Marcheshvan": 29,
+                            "Kislev": 30,
+                            "Tevet": 29,
+                            "Shevat": 30,
+                            "Adar": 29}
+
+SAMARITAN_ABUNDANT_NORMAL = {"Nisan": 30,
+                             "Iyar": 29,
+                             "Sivan": 30,
+                             "Tammuz": 29,
+                             "Av": 30,
+                             "Elul": 29,
+                             "Tishrei": 30,
+                             "Marcheshvan": 30,
+                             "Kislev": 30,
+                             "Tevet": 29,
+                             "Shevat": 30,
+                             "Adar": 29}
+
+SAMARITAN_DEFICIENT_LEAP = {"Nisan": 30,
+                            "Iyar": 29,
+                            "Sivan": 30,
+                            "Tammuz": 29,
+                            "Av": 30,
+                            "Elul": 29,
+                            "Tishrei": 30,
+                            "Marcheshvan": 29,
+                            "Kislev": 29,
+                            "Tevet": 29,
+                            "Shevat": 30,
+                            "Adar": 29}
+
+SAMARITAN_REGULAR_LEAP = {"Nisan": 30,
+                          "Iyar": 29,
+                          "Sivan": 30,
+                          "Tammuz": 29,
+                          "Av": 30,
+                          "Elul": 29,
+                          "Tishrei": 30,
+                          "Marcheshvan": 29,
+                          "Kislev": 30,
+                          "Tevet": 29,
+                          "Shevat": 30,
+                          "Adar": 30,
+                          "Veadar": 29}
+
+SAMARITAN_ABUNDANT_LEAP = {"Nisan": 30,
+                           "Iyar": 29,
+                           "Sivan": 30,
+                           "Tammuz": 29,
+                           "Av": 30,
+                           "Elul": 29,
+                           "Tishrei": 30,
+                           "Marcheshvan": 30,
+                           "Kislev": 30,
+                           "Tevet": 29,
+                           "Shevat": 30,
+                           "Adar": 29}
 
 # KURDISH MONTHS
 
@@ -422,9 +474,7 @@ AMAZIGH_LEAP = {"Yennayer": 31,
 
 # TURKISH MONTHS
 
-TURKISH_NORMAL = {"Kânûn-ı Sânî": 31,
-                  "Şubat": 28,
-                  "Mart": 31,
+TURKISH_NORMAL = {"Mart": 31,
                   "Nisan": 30,
                   "Mayıs": 31,
                   "Haziran": 30,
@@ -433,12 +483,12 @@ TURKISH_NORMAL = {"Kânûn-ı Sânî": 31,
                   "Eylül": 30,
                   "Teşrin-i Evvel": 31,
                   "Teşrin-i Sânî": 30,
-                  "Kânûn-ı Evvel": 31}
+                  "Kânûn-ı Evvel": 31,
+                  "Kânûn-ı Sânî": 31,
+                  "Şubat": 28}
 
 
-TURKISH_LEAP =  {"Kânûn-ı Sânî": 31,
-                 "Şubat": 29,
-                 "Mart": 31,
+TURKISH_LEAP =  {"Mart": 31,
                  "Nisan": 30,
                  "Mayıs": 31,
                  "Haziran": 30,
@@ -447,7 +497,9 @@ TURKISH_LEAP =  {"Kânûn-ı Sânî": 31,
                  "Eylül": 30,
                  "Teşrin-i Evvel": 31,
                  "Teşrin-i Sânî": 30,
-                 "Kânûn-ı Evvel": 31}
+                 "Kânûn-ı Evvel": 31,
+                 "Kânûn-ı Sânî": 31,
+                 "Şubat": 29}
 
 # WORLD MONTHS
 
@@ -725,3 +777,58 @@ THELLID_LEAP = {"Alvakku": 28,
                 "Zithebbe": 28,
                 "Leap Day": 1,
                 "Old Year's Day": 1}
+
+IGBO = {"Mbụ": 28,
+        "Abụo": 28,
+        "Ife Eke": 28,
+        "Anọ": 28,
+        "Agwụ": 28,
+        "Ifejiọkụ": 28,
+        "Alọm Chi": 28,
+        "Ilo Mmụọ": 28,
+        "Ana": 28,
+        "Okike": 28,
+        "Ajana": 28,
+        "Ede Ajana": 28,
+        "Ụzọ Alụsị": 28}
+
+ROMAN_NORMAL = {"Martius": 31,
+                "Aprilis": 29,
+                "Maia": 31,
+                "Iunius": 29,
+                "Quintilis": 31,
+                "Sextilis": 29,
+                "Septembris": 29,
+                "Octobris": 31,
+                "Novembris": 29,
+                "Decembris": 29,
+                "Ianuarius": 29,
+                "Ferbruarius": 28}
+
+ROMAN_2 = {"Martius": 31,
+           "Aprilis": 29,
+           "Maia": 31,
+           "Iunius": 29,
+           "Quintilis": 31,
+           "Sextilis": 29,
+           "Septembris": 29,
+           "Octobris": 31,
+           "Novembris": 29,
+           "Decembris": 29,
+           "Ianuarius": 29,
+           "Ferbruarius": 23,
+           "Mercedonius": 27}
+
+ROMAN_4 = {"Martius": 31,
+	   "Aprilis": 29,
+	   "Maia": 31,
+	   "Iunius": 29,
+	   "Quintilis": 31,
+	   "Sextilis": 29,
+	   "Septembris": 29,
+	   "Octobris": 31,
+	   "Novembris": 29,
+	   "Decembris": 29,
+	   "Ianuarius": 29,
+	   "Ferbruarius": 24,
+           "Mercedonius": 27}

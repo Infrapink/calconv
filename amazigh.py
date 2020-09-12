@@ -115,7 +115,7 @@ def fromjd(jday):
             else:
                 yen -= 365
                 
-        if (abs(year) - 2) % 4 == 0:
+        if abs(year) % 4 == 2:
             # leap yar
             m = months.AMAZIGH_LEAP
         else:
