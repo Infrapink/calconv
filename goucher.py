@@ -8,25 +8,30 @@ import months
 
 cycle128 = (128 * 365) + 31
 cycle4 = (4 * 365) + 1
+epoch = 1721423
 
 def tojd(day, month, year):
 
     day = int(day)
     month = month.title()
     year = int(year)
-    alpha = 0
-    days = 0
+    jday = epoch
 
     if year > 0:
-        # positive years. day 0 is 1721422
-        alpha = 1721422
-        for y in range(1,year):
+        # positive years
+        y = 1
+        cycles = (year - y) // 128
+        y += (128 * cycles)
+        jday += (cycles * cycle128)
+
+        while y < year:
             if y % 128 == 0:
-                days += 365
+                jday += 365
             elif y % 4 == 0:
-                days += 366
+                jday += 366
             else:
-                days += 365
+                jday += 365
+            y += 1
 
         if year % 128 == 0:
             # not a leap year
@@ -38,44 +43,39 @@ def tojd(day, month, year):
             # not a leap year
             m = months.CAESAR_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
-
     else:
-        # negative years. count backwards. day 0 is 1721423
-        alpha = 1721423
-        year = 0 - year
+        # negative years
+        y = 0
+        cycles = (y - year) // 128
+        y -= (cycles * 128)
+        jday -= (cycle128 * cycles)
 
-        if (year - 1) % 128 == 0:
+        while y > year:
+            y -= 1
+            if abs(y) % 128 == 1:
+                jday -= 365
+            elif abs(y) % 4 == 0:
+                jday -= 366
+            else:
+                jday -= 365
+
+        if abs(year) % 128 == 1:
             # not a leap year
             m = months.CAESAR_NORMAL
-        elif (year - 1) % 4 == 0:
+        elif abs(year) % 4 == 1:
             # leap year
             m = months.CAESAR_LEAP
         else:
             # not a leap year
             m = months.CAESAR_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
                 
-        for y in range(0,year):
-            if y % 128 == 0:
-                days -= 365
-            elif y % 4 == 0:
-                days -= 366
-            else:
-                days -= 365
-
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
@@ -84,17 +84,35 @@ def fromjd(jday):
     year = 0
     month = ""
     day = 0
+    nyd = epoch
+    curryear = False
 
-    if jday > 1721422:
+    if jday >= epoch:
         # positive date
-        delta = jday - 1721422
-        year_128 = delta // cycle128
-        delta %= cycle128
-        year_4 = delta // cycle4
-        delta %= cycle4
-        single_years = delta // 365
-        delta %= 365
-        year = (128 * year_128) + (4 * year_4) + single_years + 1 # need to add 1 to account for the lack of year 0
+        year = 1
+        cycles = (jday - nyd) // cycle128
+        year += (128 * cycles)
+        nyd += (cycles * cycle128)
+        while curryear == False:
+            if year % 128 == 0:
+                if jday - nyd <= 365:
+                    curryear = True
+                else:
+                    nyd += 365
+                    year += 1
+            elif year % 4 == 0:
+                if jday - nyd <= 366:
+                    curryear = True
+                else:
+                    nyd += 366
+                    year += 1
+            else:
+                if jday - nyd <= 365:
+                    curryear = True
+                else:
+                    nyd += 365
+                    year += 1
+                
         if year % 128 == 0:
             # not a leap year
             m = months.CAESAR_NORMAL
@@ -105,45 +123,39 @@ def fromjd(jday):
             # not a leap year
             m = months.CAESAR_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
-
     else:
         # negative date
-        delta = 1721423 - jday
-        while delta > 0:
-            if year % 128 == 0:
-                delta -= 365
-            elif year % 4 == 0:
-                delta -= 366
-            else:
-                delta -= 365
-            year += 1
+        year = 0
+        cycles = (nyd - jday) // cycle128
+        year -= (128 * cycles)
+        nyd -= (cycle128 * cycles)
 
-        if (year - 1) % 128 == 0:
+        while nyd > jday:
+            year -= 1
+            if abs(year) % 128 == 1:
+                nyd -= 365
+            elif abs(year) % 4 == 1:
+                nyd -= 366
+            else:
+                nyd -= 365
+
+        if abs(year) % 128 == 1:
             # not a leap year
             m = months.CAESAR_NORMAL
-        elif (year - 1) % 4 == 0:
+        elif abs(year) % 4 == 1:
             # leap year
             m = months.CAESAR_LEAP
         else:
             # not a leap yer
             m = months.CAESAR_NORMAL
 
-        year = 0 - year
-        delta = 0 - delta + 1
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    delta = jday - nyd
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-    date = (day,month,year)
-    return date
+    return (day, month, year)
