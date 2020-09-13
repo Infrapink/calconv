@@ -60,7 +60,7 @@ def tojd(day, month, year):
         # negative years
         y = 0
         cycles = (y - year) // 400
-        year -= (400 * cycles)
+        y -= (400 * cycles)
         jday -= (cycles * cycle400)
         
         while y > year:
