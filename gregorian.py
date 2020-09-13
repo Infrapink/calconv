@@ -22,6 +22,9 @@ def tojd(day, month, year):
     if year > 0:
         # positive dates
         y = 1
+        cycles = (year - y) // 400
+        y += (400 * cycles)
+        jday += (cycles * cycle400)
         while y < year:
             if year - y > 400:
                 y += 400
@@ -56,17 +59,14 @@ def tojd(day, month, year):
     else:
         # negative years
         y = 0
-        #jday -= 366
+        cycles = (y - year) // 400
+        year -= (400 * cycles)
+        jday -= (cycles * cycle400)
+        
         while y > year:
             if y - year > 400:
                 y -= 400
                 jday -= cycle400
-            #elif y - year > 100:
-             #   y -= 100
-              #  jday -= cycle100
-            #elif y - year > 4:
-             #   y -= 4
-              #  jday -= cycle4
             else:
                 y -= 1
                 if abs(y) % 400 == 1:
@@ -107,16 +107,13 @@ def fromjd(jday):
     if jday >= epoch:
         # positive date
         year = 1
+        cycles = (jday - nyd) // cycle400
+        year += (400 * cycles)
+        nyd += (cycles * cycle400)
         while curryear == False:
             if jday - nyd > cycle400:
                 year += 400
                 nyd += cycle400
-            elif jday - nyd > cycle100:
-                year += 100
-                nyd += cycle100
-            elif jday - nyd > cycle4:
-                year += 4
-                nyd += cycle4
             else:
                 #year += 1
                 if year % 400 == 0:
@@ -159,9 +156,9 @@ def fromjd(jday):
 
     else:
         # negative date
-        while nyd - jday > cycle400:
-            year -= 400
-            nyd -= cycle400
+        cycles = (nyd - jday) // cycle400
+        year -= (400 * cycles)
+        nyd -= (cycles * cycle400)
 
         while nyd > jday:
             year -= 1

@@ -83,12 +83,12 @@ def fromjd(jday):
 
         while curryear == False:
             if year % 4 == 2:
-                if delta <= 366:
+                if nyd - jday <= 366:
                     curryear = True
                 else:
                     jday += 366
             else:
-                if delta <= 365:
+                if nyd - jday <= 365:
                     curryear = True
                 else:
                     jday += 365
@@ -109,9 +109,9 @@ def fromjd(jday):
         while jday < nyd:
             year -= 1
             if abs(year) % 4 == 2:
-                nyd += 365
+                nyd -= 365
             else:
-                nyd += 365
+                nyd -= 365
 
         if abs(year) % 4 == 2:
             # leap year
@@ -120,6 +120,7 @@ def fromjd(jday):
             # not a leap year
             m = months.TURKISH_NORMAL
 
+    delta = nyd - jday
     for i in m.keys():
         if delta < m[i]:
             month = i
