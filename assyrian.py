@@ -23,22 +23,19 @@ def tojd(day,month,year):
     if year > 0:
         # positive year
         y = 1
+        cycles = (year - y) // 400
+        y += (400 * cycles)
+        jday += (cycle400 * cycles)
         while y < year:
-            if year - y > 400:
-                y += 400
-                jday += cycle400
-            elif y % 400 == 349:
+            if y % 400 == 349:
                 jday += 366
-                y += 1
             elif y % 100 == 49:
                 jday += 365
-                y += 1
             elif y % 4 == 1:
                 jday += 366
-                y += 1
             else:
-                y += 1
                 jday += 365
+            y += 1
 
         if year % 400 == 349:
             m = months.ASSYRIAN_LEAP
@@ -52,6 +49,9 @@ def tojd(day,month,year):
     else:
         # negative years
         y = 0
+        cycles = (y - year) // 400
+        y -= (400 * cycles)
+        jday -= (cycle400 * cycles)
         while y > year:
             if y - year > 400:
                 y -= 400
@@ -96,12 +96,12 @@ def fromjd(jday):
     if jday >= epoch:
         # positive year
         year = 1
+        cycles = (jday - akitu) // cycle400
+        year += (400 * cycles)
+        akitu += (cycle400 * cycles)
         curryear = False
         while curryear == False:
-            if jday - akitu > cycle400:
-                year += 400
-                akitu += cycle400
-            elif year % 400 == 349:
+            if year % 400 == 349:
                 if jday - akitu <= 366:
                     curryear = True
                 else:
@@ -137,20 +137,19 @@ def fromjd(jday):
             
     else:
         # negative date
+        cycles = (akitu - jday) // cycle400
+        year -= (400 * cycles)
+        akitu -= (cycle400 * cycles)
         while akitu > jday:
-            if jday - akitu >= cycle400:
-                year -= 400
-                akitu -= cycle400
+            year -= 1
+            if abs(year) % 400 == 51:
+                akitu -= 366
+            elif abs(year) % 100 == 51:
+                akitu -= 365
+            elif abs(year) % 4 == 3:
+                akitu -= 366
             else:
-                year -= 1
-                if abs(year) % 400 == 51:
-                    akitu -= 366
-                elif abs(year) % 100 == 51:
-                    akitu -= 365
-                elif abs(year) % 4 == 3:
-                    akitu -= 366
-                else:
-                    akitu -= 365
+                akitu -= 365
 
         if abs(year) % 400 == 51:
             m = months.ASSYRIAN_LEAP

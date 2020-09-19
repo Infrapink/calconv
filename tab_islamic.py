@@ -21,6 +21,9 @@ def tojd(day, month, year):
 
     if year > 0:
         y = 1
+        cycles = (year - y) // 30
+        y += (30 * cycles)
+        jday += (cycle30 * cycles)
         while y < year:
             if year - y >= 30:
                 y += 30
@@ -42,6 +45,9 @@ def tojd(day, month, year):
     else:
         # negative years
         y = 0
+        cycles = (y - year) // 30
+        y -= (30 * cycles)
+        jday -= (cycle30 * cycles)
         while y > year:
             if y - year > 30:
                 y -= 30
@@ -80,6 +86,9 @@ def fromjd(jday):
         # positive year
         curryear = False
         year = 1
+        cycles = (jday - nyd) // cycle30
+        year += (30 * cycles)
+        nyd += (cycle30 * cycles)
         while curryear == False:
             if jday - nyd > cycle30:
                 year += 30
@@ -104,6 +113,9 @@ def fromjd(jday):
 
     else:
         # negative year
+        cycles = (nyd - jday) // cycle30
+        year -= (30 * cycles)
+        nyd -= (cycle30 * cycles)
         while nyd > jday:
             if nyd - jday > cycle30:
                 nyd -= cycle30

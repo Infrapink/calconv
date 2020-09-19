@@ -26,10 +26,13 @@ def tojd(day,month,year):
 
     if year > 0:
         y = 1
+        cycles = (year - y) // 2820
+        y += (2820 * cycles)
+        jday += (cycle2820 * cycles)
         while y < year:
-            if year - y > 2820:
-                y += 2820
-                jday += cycle2820
+            if year - y > 128:
+                y += 128
+                jday += cycle128
             elif y % 2820 in leap_years_birashk.ah:
                 y += 1
                 jday += 366
@@ -46,16 +49,15 @@ def tojd(day,month,year):
 
     else:
         y = 0
+        cycles = (y - year) // 2820
+        y -= (2820 * cycles)
+        jday -= (cycle2820 * cycles)
         while y > year:
-            if y - year > 2820:
-                y -= 2820
-                jday -= cycle2820
+            y -= 1
+            if abs(y) % 2820 in leap_years_birashk.bh:
+                jday -= 366
             else:
-                y -= 1
-                if abs(y) % 2820 in leap_years_birashk.bh:
-                    jday -= 366
-                else:
-                    jday -= 365
+                jday -= 365
 
         if abs(year) % 2820 in leap_years_birashk.bh:
             # leap year
@@ -83,11 +85,14 @@ def fromjd(jday):
     if jday >= epoch:
         # positive dates
         year = 1
+        cycles = (jday - nowruz) // cycle2820
+        year += (2820 * cycles)
+        nowruz += (cycle2820 * cycles)
         curryear = False
         while curryear == False:
-            if jday - nowruz > cycle2820:
-                year += 2820
-                nowruz += cycle2820
+            if jday - nowruz > cycle128:
+                year += 128
+                nowruz += cycle128
             elif year % 2820 in leap_years_birashk.ah:
                 if jday - nowruz <= 366:
                     curryear = True
@@ -108,16 +113,15 @@ def fromjd(jday):
 
     else:
         # negative dates
+        cycles = (nowruz - jday) // cycle2820
+        year -= (2820 * cycles)
+        nowruz -= (cycle2820 * cycles)
         while nowruz > jday:
-            if nowruz - jday > cycle2820:
-                nowruz -= cycle2820
-                year -= 2820
+            year -= 1
+            if abs(year) % 2820 in leap_years_birashk.bh:
+                nowruz -= 366
             else:
-                year -= 1
-                if abs(year) % 2820 in leap_years_birashk.bh:
-                    nowruz -= 366
-                else:
-                    nowruz -= 365
+                nowruz -= 365
 
         if abs(year) % 2820 in leap_years_birashk.bh:
             m = months.IRANIAN_LEAP

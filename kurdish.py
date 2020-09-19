@@ -10,8 +10,8 @@ cycle4 = (4 * 365) + 1
 cycle5 = (365 * 5) + 1
 cycle33 = (7 * cycle4) + cycle5
 
-leap_years_an = (2,6,10,14,18,23,27,31)
-leap_years_bn = (3,7,11,16,20,24,28,32)
+leap_years_an = (17,21,25,29,33,4,8,12)
+leap_years_bn = (17,13,9,5,1,30,26,22)
 
 epoch = 1497975
 
@@ -21,15 +21,14 @@ def tojd(day, month, year):
     year = int(year)
     jday = epoch
 
-
     if year > 0:
         # positive years
         y = 1
+        cycles = (year - y) // 33
+        y += (33 * cycles)
+        jday += (cycle33 * cycles)
         while y < year:
-            if year - y > 33:
-                y += 33
-                jday += cycle33
-            elif y % 33 in leap_years_an:
+            if y % 33 in leap_years_an:
                 y += 1
                 jday += 366
             else:
@@ -46,16 +45,15 @@ def tojd(day, month, year):
     else:
         # negative years
         y = 0
+        cycles = (y - year) // 33
+        y -= (33 * cycles)
+        jday -= (cycle33 * cycles)
         while y > year:
-            if y - year > 33:
-                y -= 33
-                jday -= cycle33
+            y -= 1
+            if abs(y) % 33 in leap_years_bn:
+                jday -= 366
             else:
-                y -= 1
-                if abs(y) % 33 in leap_years_bn:
-                    jday -= 366
-                else:
-                    jday -= 365
+                jday -= 365
 
         if abs(year) % 33 in leap_years_bn:
             # leap year
@@ -84,12 +82,12 @@ def fromjd(jday):
     if jday >= epoch:
         # positive date
         year = 1
+        cycles = (jday - nowruz) // cycle33
+        year += (33 * cycles)
+        nowruz += (cycle33 * cycles)
         curryear = False
         while curryear == False:
-            if jday - nowruz > cycle33:
-                year += 33
-                nowruz += cycle33
-            elif year % 33 in leap_years_an:
+            if year % 33 in leap_years_an:
                 if jday - nowruz <= 366:
                     curryear = True
                 else:
@@ -109,16 +107,15 @@ def fromjd(jday):
 
     else:
         # negative dates
+        cycles = (nowruz - jday) // cycle33
+        year -= (33 * cycles)
+        nowruz -= (cycle33 * cycles)
         while nowruz > jday:
-            if nowruz - jday > cycle33:
-                year -= 33
-                nowruz -= cycle33
+            year -= 1
+            if abs(year) % 33 in leap_years_bn:
+                nowruz -= 366
             else:
-                year -= 1
-                if abs(year) % 33 in leap_years_bn:
-                    nowruz -= 366
-                else:
-                    nowruz -= 365
+                nowruz -= 365
 
         if abs(year) % 33 in leap_years_bn:
             # leap year

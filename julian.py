@@ -19,6 +19,9 @@ def tojd(day, month, year):
     if year > 0:
         # positive years
         y = 1
+        cycles = (year - y) // 4
+        y += (4 * cycles)
+        jday += (cycles * cycle4)
         while y < year:
             if year - y > 4:
                 y += 4
@@ -40,6 +43,9 @@ def tojd(day, month, year):
     else:
         # negative year
         y = 0
+        cycles = (y - year) // 4
+        y -= (4 * cycles)
+        jday -= (cycles * cycle4)
         while y > year:
             if y - year > 4:
                 y -= 4
@@ -79,6 +85,9 @@ def fromjd(jday):
         # positive dates
         curryear = False
         year = 1
+        cycles = (jday - nyd) // cycle4
+        year += (4 * cycles)
+        nyd += (cycles * cycle4)
         while curryear == False:
             if jday - nyd > cycle4:
                 year += 4
@@ -103,6 +112,9 @@ def fromjd(jday):
 
     else:
         # negative dates
+        cycles = (nyd - jday) // cycle4
+        year -= (4 * cycles)
+        nyd -= (cycles * cycle4)
         while jday < nyd:
             if nyd - jday > cycle4:
                 year -= 4

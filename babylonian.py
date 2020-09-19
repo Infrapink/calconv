@@ -5,7 +5,7 @@
 #
 
 from fractions import *
-from math import floor
+from math import floor, ceil
 
 MONTHS_NORMAL = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru")
 MONTHS_LEAP = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru", "Addaru Arku")
@@ -96,7 +96,7 @@ def tojd(day, month, year):
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Macedonian calendar"""
+    """Convert a Julian Day to a date in the Babylonian calendar"""
     jday = int(jday)
 
     day = 0
@@ -142,8 +142,8 @@ def fromjd(jday):
         nextmoon = newmoon + monlen
 
         for i in m:
-            crescent = floor(newmoon) + 1
-            next_crescent = floor(nextmoon) + 1
+            crescent = ceil(newmoon)
+            next_crescent = ceil(nextmoon)
             if floor(jday) < next_crescent:
                 month = i
                 day = jday - crescent + 1
@@ -180,13 +180,11 @@ def fromjd(jday):
         nextmoon = newmoon + monlen
         
         for i in m:
-            crescent = floor(newmoon) + 1
-            next_crescent = floor(nextmoon) +1
+            crescent = ceil(newmoon)
+            next_crescent = ceil(nextmoon)
             if jday < next_crescent:
                 month = i
                 day = jday - crescent + 1
-                #if jday < 0:
-                    #day += 1
                 break
             else:
                 newmoon += monlen
