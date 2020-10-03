@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert between the Serbian church calendar and Julian day
+# Convert between the revised Julian calendar and Julian day
 #
 
 import months
@@ -87,7 +87,7 @@ def tojd(day, month, year):
     return jday
 
 def fromjd(jday):
-    """Convert a Julian day to a date in the Serbian church calendar."""
+    """Convert a Julian day to a date in the revised Julian calendar."""
     jday = int(jday)
     day = 0
     month = ""
@@ -104,25 +104,25 @@ def fromjd(jday):
         
         while curryear == False:
             if (year % 900) in (200, 600):
-                if jday - nyd <= 366:
+                if jday - nyd < 366:
                     curryear = True
                 else:
                     nyd += 366
                     year += 1
             elif year % 100 == 0:
-                if jday - nyd <= 365:
+                if jday - nyd < 365:
                     curryear = True
                 else:
                     nyd += 365
                     year += 1
             elif year % 4 == 0:
-                if jday - nyd <= 366:
+                if jday - nyd < 366:
                     curryear = True
                 else:
                     nyd += 366
                     year += 1
             else:
-                if jday - nyd <= 365:
+                if jday - nyd < 365:
                     curryear = True
                 else:
                     nyd += 365

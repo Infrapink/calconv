@@ -86,13 +86,13 @@ def fromjd(jday):
         curryear = False
         while curryear == False:
             if year % 33 in leap_years_ah:
-                if jday - nowruz <= 366:
+                if jday - nowruz < 366:
                     curryear = True
                 else:
                     year += 1
                     nowruz += 366
             else:
-                if jday - nowruz <= 365:
+                if jday - nowruz < 365:
                     curryear = True
                 else:
                     year += 1

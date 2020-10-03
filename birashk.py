@@ -94,13 +94,13 @@ def fromjd(jday):
                 year += 128
                 nowruz += cycle128
             elif year % 2820 in leap_years_birashk.ah:
-                if jday - nowruz <= 366:
+                if jday - nowruz < 366:
                     curryear = True
                 else:
                     year += 1
                     nowruz += 366
             else:
-                if jday - nowruz <= 365:
+                if jday - nowruz < 365:
                     curryear = True
                 else:
                     year += 1

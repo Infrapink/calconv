@@ -104,25 +104,25 @@ def fromjd(jday):
         
         while curryear == False:
             if (year % 900) in (0, 400):
-                if jday - nyd <= 366:
+                if jday - nyd < 366:
                     curryear = True
                 else:
                     nyd += 366
                     year += 1
             elif year % 100 == 0:
-                if jday - nyd <= 365:
+                if jday - nyd < 365:
                     curryear = True
                 else:
                     nyd += 365
                     year += 1
             elif year % 4 == 0:
-                if jday - nyd <= 366:
+                if jday - nyd < 366:
                     curryear = True
                 else:
                     nyd += 366
                     year += 1
             else:
-                if jday - nyd <= 365:
+                if jday - nyd < 365:
                     curryear = True
                 else:
                     nyd += 365

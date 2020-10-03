@@ -94,13 +94,13 @@ def fromjd(jday):
                 year += 30
                 nyd += cycle30
             elif year % 30 in leap_years_ah:
-                if jday - nyd <= 355:
+                if jday - nyd < 355:
                     curryear = True
                 else:
                     year += 1
                     nyd += 355
             else:
-                if jday - nyd <= 354:
+                if jday - nyd < 354:
                     curryear = True
                 else:
                     year += 1

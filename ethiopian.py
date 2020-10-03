@@ -93,13 +93,13 @@ def fromjd(jday):
                 year += 4
                 nyd += cycle4
             elif year % 4 == 0:
-                if jday - nyd <= 366:
+                if jday - nyd < 366:
                     curryear = True
                 else:
                     year += 1
                     nyd += 366
             else:
-                if jday - nyd <= 365:
+                if jday - nyd < 365:
                     curryear = True
                 else:
                     year += 1

@@ -86,13 +86,13 @@ def fromjd(jday):
         yen += (cycles * cycle4)
         while curryear == False:
             if year % 4 == 2:
-                if jday - yen <= 366:
+                if jday - yen < 366:
                     curryear = True
                 else:
                     year += 1
                     yen += 366
             else:
-                if jday - yen <= 365:
+                if jday - yen < 365:
                     curryear = True
                 else:
                     year += 1

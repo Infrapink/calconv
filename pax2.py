@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert between the astronomical Gregorian Calendar and Julian Day
+# Convert between the Pax 2020 Calendar and Julian Day
 #
 
 import months
@@ -97,7 +97,7 @@ def tojd(day, month, year):
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Gregorian calendar"""
+    """Convert a Julian Day to a date in Pax 2020"""
     jday = int(jday)
     year = 0
     month = ""
@@ -116,25 +116,25 @@ def fromjd(jday):
             else:
                 #year += 1
                 if year % 400 == 0:
-                    if jday - nyd <= 366:
+                    if jday - nyd < 366:
                         curryear = True
                     else:
                         nyd += 366
                         year += 1
                 elif year % 100 == 0:
-                    if jday - nyd <= 365:
+                    if jday - nyd < 365:
                         curryear = True
                     else:
                         nyd += 365
                         year += 1
                 elif year % 4 == 0:
-                    if jday - nyd <= 366:
+                    if jday - nyd < 366:
                         curryear = True
                     else:
                         nyd += 366
                         year += 1
                 else:
-                    if jday - nyd <= 365:
+                    if jday - nyd < 365:
                         curryear = True
                     else:
                         nyd += 365
