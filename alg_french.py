@@ -8,140 +8,158 @@ import months
 
 cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
-cycle400 = (400 * 365) + 97
+cycle400 = (4 * cycle100) + 1
+cycle4000 = (10 * cycle400) - 1
+
+epoch = 2375474
 
 def tojd(day, month, year):
 
     day = int(day)
-    month = month
+    month = month.title()
     year = int(year)
-    days = 0
+    jday = epoch
 
-    if year >= 0:
-        alpha = 2375473
-        for y in range(0, year):
-            if y % 4000 == 0:
-                days += 365
+    if year > 0:
+        # positive dates
+        y = 0
+        cycles = (year - y) // 4000
+        y += (4000 * cycles)
+        jday += (cycles * cycle4000)
+        while y < year:
+            if year - y > 4000:
+                y += 4000
+                jday += cycle4000
+#            elif year - y > 400:
+ #               y += 400
+  #              jday += cycle400
+#            elif year - y > 100:
+ #               y += 100
+  #              jday += cycle100
+   #         elif year - y > 4:
+    #            y += 4
+     #           jday += cycle4
+            elif y % 4000 == 0:
+                y += 1
+                jday += 365
             elif y % 400 == 0:
-                days += 366
+                y += 1
+                jday += 366
             elif y % 100 == 0:
-                days += 365
+                y += 1
+                jday += 365
             elif y % 4 == 0:
-                days += 366
+                y += 1
+                jday += 366
             else:
-                days += 365
+                y += 1
+                jday += 365
 
         if year % 4000 == 0:
-            # not a leap year
             m = months.FRENCH_NORMAL
         elif year % 400 == 0:
-            # leap year
             m = months.FRENCH_LEAP
         elif year % 100 == 0:
-            # not a leap year
             m = months.FRENCH_NORMAL
         elif year % 4 == 0:
-            # leap year
             m = months.FRENCH_LEAP
         else:
-            # not a leap year
             m = months.FRENCH_NORMAL
-
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
-            else:
-                days += m[i]
     else:
-        alpha = 2375474
-        year = 0 - year
-
-        for y in range(1, year + 1):
-            if y % 4000 == 0:
-                days -= 365
-            elif y % 400 == 0:
-                days -= 366
-            elif y % 100 == 0:
-                days -= 365
-            elif y % 4 == 0:
-                days -= 366
+        # negative years
+        y = 0
+        cycles = (y - year) // 400
+        y -= (400 * cycles)
+        jday -= (cycles * cycle400)
+        
+        while y > year:
+            if y - year > 4000:
+                y -= 4000
+                jday -= cycle4000
             else:
-                days -= 365        
+                y -= 1
+                if abs(y) % 4000 == 0:
+                    jday -= 365
+                if abs(y) % 400 == 0:
+                    jday -= 366
+                elif abs(y) % 100 == 0:
+                    jday -= 365
+                elif abs(y) % 4 == 0:
+                    jday -= 366
+                else:
+                    jday -= 365
 
-        if year % 4000 == 0:
-            # not a leap year
+        if abs(year) % 4000 == 0:
             m = months.FRENCH_NORMAL
-        elif year % 400 == 0:
-            # leap year
+        elif abs(year) % 400 == 0:
             m = months.FRENCH_LEAP
-        elif year % 100 == 0:
-            # not a leap year
+        elif abs(year) % 100 == 0:
             m = months.FRENCH_NORMAL
-        elif year % 4 == 0:
-            # leap year
+        elif abs(year) % 4 == 0:
             m = months.FRENCH_LEAP
         else:
-            # not a leap year
             m = months.FRENCH_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
 
-    jday = alpha + days
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the astronomical Gregorian calendar"""
+    """Convert a Julian Day to a date in the algorithmic French Republican calendar"""
     jday = int(jday)
     year = 0
     month = ""
-    day = 0
+    nyd = epoch
+    curryear = False
 
-    if jday > 2375473:
+    if jday >= epoch:
         # positive date
-        delta = jday - 2375473
-        current = False
-
-        while current == False:
-            if year % 4000 == 0:
-                if delta <= 365:
-                    current = True
-                    break
-                else:
-                    delta -= 365
-            elif year % 400 == 0:
-                if delta <= 366:
-                    current = True
-                    break
-                else:
-                    delta -= 366
-            elif year % 100 == 0:
-                if delta <= 365:
-                    current = True
-                    break
-                else:
-                    delta -= 365
-            elif year % 4 == 0:
-                if delta <= 366:
-                    current = True
-                    break
-                else:
-                    delta -= 366
+        cycles = (jday - nyd) // cycle4000
+        year += (4000 * cycles)
+        nyd += (cycles * cycle4000)
+        while curryear == False:
+            if jday - nyd > cycle4000:
+                year += 4000
+                nyd += cycle4000
             else:
-                if delta <= 365:
-                    current = True
-                    break
+                #year += 1
+                if year % 4000 == 0:
+                    if jday - nyd < 365:
+                        curryear = True
+                    else:
+                        nyd += 365
+                        year += 1
+                if year % 400 == 0:
+                    if jday - nyd < 366:
+                        curryear = True
+                    else:
+                        nyd += 366
+                        year += 1
+                elif year % 100 == 0:
+                    if jday - nyd < 365:
+                        curryear = True
+                    else:
+                        nyd += 365
+                        year += 1
+                elif year % 4 == 0:
+                    if jday - nyd < 366:
+                        curryear = True
+                    else:
+                        nyd += 366
+                        year += 1
                 else:
-                    delta -= 365
-            year += 1
+                    if jday - nyd < 365:
+                        curryear = True
+                    else:
+                        nyd += 365
+                        year +=1
 
         if year % 4000 == 0:
-            # not a leap year
             m = months.FRENCH_NORMAL
         elif year % 400 == 0:
             # leap year
@@ -156,66 +174,47 @@ def fromjd(jday):
             # not a leap year
             m = months.FRENCH_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
-
     else:
-        # non-positive date
-        delta = 2375474 - jday
-        current = False
+        # negative date
+        cycles = (nyd - jday) // cycle4000
+        year -= (4000 * cycles)
+        nyd -= (cycles * cycle4000)
 
-        while delta > 0:
-            if year % 4000 == 0:
-                if delta <= 365:
-                    m = months.FRENCH_NORMAL
-                    delta = 366 - delta
-                    break
-                else:
-                    delta -= 365
-            elif year % 400 == 0:
-                if delta <= 366:
-                    m = months.FRENCH_LEAP
-                    delta = 367 - delta
-                    break
-                else:
-                    delta -= 366
-            elif year % 100 == 0:
-                if delta <= 365:
-                    m = months.FRENCH_NORMAL
-                    delta = 366 - delta
-                    break
-                else:
-                    delta -= 365
-            elif year % 4 == 0:
-                if delta <= 366:
-                    m = months.FRENCH_LEAP
-                    delta = 367 - delta
-                    break
-                else:
-                    delta -= 366
+        while nyd > jday:
+            year -= 1
+            if abs(year) % 4000 == 0:
+                nyd -= 365
+            elif abs(year) % 400 == 0:
+                nyd -= 366
+            elif abs(year) % 100 == 0:
+                nyd -= 365
+            elif abs(year) % 4 == 0:
+                nyd -= 366
             else:
-                if delta <= 365:
-                    m = months.FRENCH_NORMAL
-                    delta = 366 - delta
-                    break
-                else:
-                    delta -= 365
-            year += 1
+                nyd -= 365
 
-        year = 0 - year
+        if abs(year) % 4000 == 0:
+            m = months.FRENCH_NORMAL
+        elif abs(year) % 400 == 0:
+            # leap year
+            m = months.FRENCH_LEAP
+        elif abs(year) % 100 == 0:
+            # not a leap year
+            m = months.FRENCH_NORMAL
+        elif abs(year) % 4 == 0:
+            # leap year
+            m = months.FRENCH_LEAP
+        else:
+            # not leap year
+            m = months.FRENCH_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    delta = jday - nyd
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-    date = (day, month, year)
-    return(date)
+    return (day, month, year)

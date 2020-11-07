@@ -29,12 +29,12 @@ def tojd(day, month, year):
             if year - y > 400:
                 y += 400
                 jday += cycle400
-            elif year - y > 100:
-                y += 100
-                jday += cycle100
-            elif year - y > 4:
-                y += 4
-                jday += cycle4
+#            elif year - y > 100:
+ #               y += 100
+  #              jday += cycle100
+   #         elif year - y > 4:
+    #            y += 4
+     #           jday += cycle4
             elif y % 400 == 0:
                 y += 1
                 jday += 366
