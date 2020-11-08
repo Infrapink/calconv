@@ -5,12 +5,10 @@
 #
 
 from fractions import *
+from math import floor
 
-#monlen = 29 + Fraction(12,24) + Fraction(793, 25920) # using Hebrew measurements, which should be accurate enough
 monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000) # mean synodic month, according to Wolfram Alpha
 yearlen = 12 * monlen
-#epoch = Fraction(8417249647, 4320)
-#epoch = 1948437 + Fraction(1987,4320)# - yearlen# New Moon of 1 Muharram 1 AH, Arab Time by Saudi Arabian meridian
 epoch = 1948437 + Fraction(5233,7200) # Based on taking the New Moon of Muharram 1442 and subtracting (1441 * yearlen)
 
 months = ("Muharram", "Safar", "Rabi' al-awwal", "Rabi' al-Thani", "Jumada al-awwal", "Jumada al-Thani", "Rajab", "Sha'ban", "Ramadan", "Shawwal", "Dhu al-Qidah", "Dhu al-Hijjah")
@@ -19,105 +17,56 @@ def tojd(day, month, year):
     day = int(day)
     month = month
     year = int(year)
-    jday = epoch
     current = False
-    m = 0
 
     if year > 0:
         # positive dates
-
-        for y in range(1, year):
-            jday += yearlen
-
-        while current == False:
-            if month == months[m]:
-                jday += day - 1
-                current = True
-            else:
-                jday += monlen
-            m += 1
-
+        newmoon = epoch + (yearlen * (year - 1)) # 1 Muharram
     else:
         # negative dates
-
-        for y in range(-1, (year - 1), -1):
-            jday -= yearlen
-
-        while current == False:
-            if month == months[m]:
-                jday += day + 1 # add 1 to account for a fencepost error
-                current = True
-            else:
-                jday += monlen
-            m += 1
-
-    if jday < 0:
-        jday -= 1
+        newmoon = epoch + (year * yearlen) # 1 Muharram
         
-    return int(jday)
+    jday = newmoon
+
+    for m in range(0,12):
+        if month == months[m]:
+            jday += day - 1
+            break
+        else:
+            jday += monlen
+
+    return floor(jday)
 
 def fromjd(jday):
     jday = int(jday)
     day = 0
     month = ""
     year = 0
-    nyd = epoch
-    next_nyd = nyd + yearlen
-    curryear = False
-    currmonth = False
+    current = False
     m = 0
 
     if jday >= int(epoch):
         # positive dates
-
-        while curryear == False:
-            year += 1
-            if jday < int(next_nyd):
-                curryear = True
-            else:
-                nyd += yearlen
-                next_nyd += yearlen
-
-        newmoon = nyd
-        nextmoon = nyd + monlen
-
-        while currmonth == False:
-            if jday < int(nextmoon):
-                day = jday - int(newmoon) + 1
-                month = months[m]
-                currmonth = True
-            else:
-                newmoon += monlen
-                nextmoon += monlen
-            m += 1
+        y = (jday - epoch) // yearlen
+        year = y + 1
+        newmoon = epoch + (y * yearlen)
 
     else:
         # negative dates
+        year = (jday - epoch) // yearlen
+        newmoon = epoch + (year * yearlen)
 
-        while curryear == False:
+    nextmoon = newmoon + monlen
 
-            if jday > int(nyd):
-                curryear = True
-            else:
-                nyd -= yearlen
-                next_nyd -= yearlen
-                year -= 1
-            
-        newmoon = nyd
-        nextmoon = newmoon + monlen
-        
-        while currmonth == False:
-            if newmoon >= 0:
-                mu = int(nextmoon)
-            else:
-                mu = int(nextmoon)# - 1
-            if jday < mu:
-                day = jday - int(newmoon)
-                month = months[m]
-                currmonth = True
-            else:
-                newmoon += monlen
-                nextmoon += monlen
-            m += 1
+    while current == False:
+        if jday < floor(nextmoon):
+            day = jday - floor(newmoon) + 1
+            month = months[m]
+            current = True
+        else:
+            newmoon += monlen
+            nextmoon += monlen
+        m += 1
 
     return (day, month, year)
+

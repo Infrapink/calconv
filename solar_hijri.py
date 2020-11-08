@@ -20,12 +20,9 @@ def tojd(day,month,year):
     month = month
     year = int(year)
 
-    jday = 0
-
     if year >= 1:
         equinox = epoch + (yearlen * (year - 1))
         nexteq = equinox + yearlen
-        jday = int(equinox) - int(epoch)
 
         if equinox % 1 > Fraction(1,2):
             nowruz = int(equinox) + 1
@@ -41,7 +38,6 @@ def tojd(day,month,year):
         # negative years
         equinox = (year * yearlen) + epoch
         nexteq = equinox + yearlen
-        jday = int(epoch) - int(equinox)
         
         if equinox > 0:
             if equinox % 1 > Fraction(1,2):
