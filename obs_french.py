@@ -6,10 +6,11 @@
 
 import months
 from fractions import *
+from math import floor
 
 yearlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-day0 = 2375474 + Fraction(997,5400)
-day1 = 2375839 + Fraction(36877,86400)
+epoch = 2375474 + Fraction(997,5400)
+#day1 = 2375839 + Fraction(36877,86400)
 
 YEARTYPE = {365: months.FRENCH_NORMAL,
             366: months.FRENCH_LEAP}
@@ -20,122 +21,42 @@ def tojd(day,month,year):
     month = month
     year = int(year)
 
-    days = 0
-    equinox = day0
+    equinox = epoch + (year * yearlen)
     nexteq = equinox + yearlen
 
-    if year >= 0:
-        for y in range(0, year):
-            yeartype = int(nexteq) - int(equinox)
-            days += yeartype
-            equinox += yearlen
-            nexteq += yearlen
+    jday = floor(equinox)
+    m = YEARTYPE[floor(nexteq) - floor(equinox)]
 
-        m = YEARTYPE[int(nexteq) - int(equinox)]
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
-
-    else:
-        equinox -= yearlen
-        nexteq -= yearlen
-        for y in range (0, year, -1):
-            if equinox < 0 and nexteq > 0:
-                yeartype = int(nexteq) - int(equinox - 1)
-            else:
-                yeartype = int(nexteq) - int(equinox)
-            days -= yeartype
-            equinox -= yearlen
-            nexteq -= yearlen
-
-        if equinox < 0 and nexteq > 0:
-            m = YEARTYPE[int(nexteq) - int(equionx - 1)]
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
         else:
-            m = YEARTYPE[int(nexteq) - int(equinox)]
+            jday += m[i]
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
-
-    days += int(day0)
-    return days
+    return jday
 
 def fromjd(jday):
     """Convert a Julian day to a date in the French Republican calendar."""
+    jday = int(jday)
+    
     day = 0
     month = ""
-    year = 0
-    equinox = day0
-    
-    jday = int(jday)
-    current = False
-    equinox = day0
-    nexteq = day0 + yearlen
-    
-    if jday >= int(day0):
-        # positive dates
-        delta = jday - int(day0) + 1 # number of days since southward equinox of year 0
-        while current == False:
-            ytype = int(nexteq) - int(equinox)
-            if delta <= ytype:
-                current = True
-            else:
-                year += 1
-                delta -= ytype
-                equinox += yearlen
-                nexteq += yearlen
 
-#        if delta == 0:
- #           year -= 1
-  #          equinox -= yearlen
-   #         nexteq -= yearlen
-    #        delta = int(nexteq) - int(yearlen)
-            
-        m = YEARTYPE[int(nexteq) - int(equinox)]
+    year = (jday - epoch) // yearlen
+    equinox = epoch + (year * yearlen)
+    nexteq = equinox + yearlen
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    m = YEARTYPE[floor(nexteq) - floor(equinox)]
+    delta = jday - floor(equinox)
 
-    else:
-        # negative dates
-        delta = int(day0) - jday
-        while current == False:
-            year -= 1
-            equinox -= yearlen
-            nexteq -= yearlen
-            ytype = int(nexteq) - int(equinox)
-            #
-            # THIS BIT MIGHT CAUSE A BUG
-            # 
-            if equinox < 0 and nexteq > 0:
-                ytype += 1
-            #
-            # THIS BIT MIGHT CAUSE A BUG
-            #
-            if delta <= ytype:
-                current = True
-            else:
-                delta -= ytype
-
-        m = YEARTYPE[int(nexteq) - int(equinox)]
-        delta = int(nexteq) - int(equinox) - delta + 1
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    for i in m.keys():
+        if delta < m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
     return (day, month, year)
+
