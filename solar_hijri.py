@@ -15,7 +15,7 @@ YEARTYPE = {365: months.IRANIAN_NORMAL,
             366: months.IRANIAN_LEAP}
 
 def tojd(day,month,year):
-    """Convert a date in the French Republican calendar into a Julian day."""
+    """Convert a date in the Solar Hijri calendar into a Julian day."""
     day = int(day)
     month = month
     year = int(year)
@@ -49,7 +49,7 @@ def tojd(day,month,year):
             else:
                 nowruz = int(equinox)
         else:
-            if equinox % 1 > Fraction(1,2):
+            if equinox % 1 < Fraction(1,2): # change sign to account for negative division
                 nowruz = floor(equinox) - 1
             else:
                 nowruz = floor(equinox)
@@ -60,7 +60,7 @@ def tojd(day,month,year):
             else:
                 nextnowruz = int(nexteq)
         else:
-            if nexteq % 1 > Fraction(1,2):
+            if nexteq % 1 < Fraction(1,2): # change sign to account for negative division
                 nextnowruz = floor(nexteq) - 1
             else:
                 nextnowruz = floor(nexteq)
@@ -117,7 +117,7 @@ def fromjd(jday):
             else:
                 nowruz = int(equinox)
         else:
-            if equinox % 1 > Fraction(1,2):
+            if equinox % 1 < Fraction(1,2):  # change sign to account for negative division
                 nowruz = floor(equinox)
             else:
                 nowruz = floor(equinox) + 1
@@ -128,7 +128,7 @@ def fromjd(jday):
             else:
                 nextnowruz = int(nexteq)
         else:
-            if nexteq % 1 > Fraction(1,2):
+            if nexteq % 1 < Fraction(1,2): # change sign to account for negative division
                 nextnowruz = floor(nexteq)
             else:
                 nextnowruz = floor(nexteq) + 1
