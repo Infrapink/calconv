@@ -5,10 +5,12 @@
 #
 
 from fractions import *
+from math import floor
 
 monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000) # mean synodic month, according to Wolfram Alpha
 year12 = 12 * monlen
 year13 = 13 * monlen
+cycle19 = (12 * year12) + (year13 * 7)
 epoch = 1948319 + Fraction(65281, 108000) # Take the Muslim epoch and add 10 years, then subtract 4 leap and 6
                                           # regular years. This all results in Dhu al-Hijjah coinciding in the Arab
                                           # and Islamic calendrs for 1 AH
@@ -50,21 +52,25 @@ def tojd(day, month, year):
     day = int(day)
     month = month
     year = int(year)
-
-    jday = epoch
     current = False
-    m = 0
-    ytype = 0 # this is used to calculate which type of leap year it might be.
 
     if year > 0:
         # positive dates
+        y = 1
+        cycles = (year - y) // 19
+        y += (19 * cycles)
+        res = epoch + (cycles * cycle19)
+        ytype = 7 * cycles # use this to work out where Nasi' falls
 
-        for y in range(1, year):
+        while y < year:
             if y % 19 in leap_years:
-                jday += year13
+                res += year13
                 ytype += 1
             else:
-                jday += year12
+                res += year12
+            y += 1
+
+        #print(y, ":", year)
 
         # now we need to figure out what type of year it is
         if (year % 19) not in leap_years:
@@ -78,29 +84,24 @@ def tojd(day, month, year):
             #print("Not a leap year")
         else:
             months = CALTYPE[ytype % 12] # There are 12 types of leap year, so take the remainder to figure out which one
-           # print("Leap year")
-            #print(ytype % 12)
-
-        while current == False:
-            if month == months[m]:
-                jday += day - 1 # subtract 1 to account for a fencepost error
-                current = True
-            else:
-                jday += monlen
-            m += 1
-
 
     else:
         # negative dates
+        y = 0
+        cycles = (y - year) // 19
+        y -= (19 * cycles)
+        res = epoch - (cycle19 * cycles)
+        ytype = (-7) * cycles
 
-        for y in range(-1, (year - 1), -1):
+        while y > year:
+            y -= 1
             if abs(y) % 19 in leap_years:
-                jday -= year13
+                res -= year13
                 ytype -= 1
-                if ytype == 0:
-                    ytype -= 1
+                # if ytype == 0:
+                    #ytype -= 1
             else:
-                jday -= year12
+                res -= year12
 
         if abs(year) % 19 not in leap_years:
             months = months0
@@ -114,18 +115,17 @@ def tojd(day, month, year):
         else:
             months = CALTYPE[abs(ytype) % 12]
 
-        while current == False:
-            if month == months[m]:
-                jday += day# + 1 # add 1 to account for a fencepost error
-                current = True
-            else:
-                jday += monlen
-            m += 1
+    jday = res
+    m = 0
+    while current == False:
+        if month == months[m]:
+            jday = floor(jday) +  day - 1 # add 1 to account for a fencepost error
+            current = True
+        else:
+            jday += monlen
+        m += 1
 
-    #if jday < 0:
-     #   jday -= 1
-
-    return int(jday)
+    return jday
 
 def fromjd(jday):
     jday = int(jday)
@@ -134,7 +134,6 @@ def fromjd(jday):
     month = ""
     year = 0
 
-    nyd = epoch
     curryear = False
     currmonth = False
     m = 0
@@ -142,73 +141,53 @@ def fromjd(jday):
 
     if jday >= int(epoch):
         # positive dates
+        year = 1
+        cycles = (jday - epoch) // cycle19
+        year += (19 * cycles)
+        res = epoch + (cycle19 * cycles)
 
         while curryear == False:
-            year += 1
             if year % 19 in leap_years:
-                next_nyd = nyd + year13
+                next_res = res + year13
                 ytype += 1
             else:
-                next_nyd = nyd + year12
-            if jday < int(next_nyd):
+                next_res = res + year12
+            if jday < floor(next_res):
                 curryear = True
             else:
-                nyd = next_nyd
-
-        newmoon = nyd
-        nextmoon = nyd + monlen
-
-        if year % 19 not in leap_years:
-            months = months0
-        else:
-            months = CALTYPE[ytype % 12]
-
-        while currmonth == False:
-            if jday < int(nextmoon):
-                day = jday - int(newmoon) + 1
-                month = months[m]
-                currmonth = True
-            else:
-                newmoon += monlen
-                nextmoon += monlen
-            m += 1
+                res = next_res
 
     else:
         # negative dates
+        cycles = (epoch - jday) // cycle19
+        year -= (19 * cycles)
+        res = epoch - (cycle19 * cycles)
+        ytype -= (7 * cycles)
 
-        while curryear == False:
-            if jday > int(nyd):
-                curryear = True
+        while jday < floor(res):
+            year -= 1
+            if abs(year) % 19 in leap_years:
+                res -= year13
+                ytype -= 1
             else:
-                year -= 1
-                next_nyd = nyd
-                if abs(year) % 19 in leap_years:
-                    nyd -= year13
-                    ytype -= 1
-                else:
-                    nyd -= year12
+                res -= year12
 
-        newmoon = nyd
-        nextmoon = nyd + monlen
+    newmoon = res
+    nextmoon = res + monlen
 
-        if abs(year) % 19 not in leap_years:
-            months = months0
-        else:
-            months = CALTYPE[abs(ytype) % 12]
+    if abs(year) % 19 not in leap_years:
+        months = months0
+    else:
+        months = CALTYPE[abs(ytype) % 12]
 
-        while currmonth == False:
-            if newmoon >= 0:
-                mu = int(nextmoon)
-            else:
-                mu = int(nextmoon) - 1
-
-            if jday < mu:
-                day = jday - int(newmoon)
+    while currmonth == False:
+            if jday < floor(nextmoon):
+                day = jday - floor(newmoon) + 1
                 month = months[m]
                 currmonth = True
             else:
                 newmoon += monlen
                 nextmoon += monlen
-            m += 1
+            m += 1    
 
     return (day, month, year)
