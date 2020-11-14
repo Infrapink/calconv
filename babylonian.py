@@ -54,13 +54,6 @@ def tojd(day, month, year):
             elif month == "Addaru Arku":
                 month = "Addaru"
 
-        for i in m:
-            if i == month:
-                jday = int(jday) + day# - 1
-                break
-            else:
-                jday += monlen
-
     else:
         # negative years
         equinox = (year * eqlen) + solar_epoch
@@ -87,12 +80,12 @@ def tojd(day, month, year):
             elif month == "Addaru Arrku":
                 month = "Addaru"
 
-        for i in m:
-            if i == month:
-                jday = floor(jday) + day
-                break
-            else:
-                jday += monlen
+    for i in m:
+        if i == month:
+            jday = floor(jday) + day
+            break
+        else:
+            jday += monlen
     return jday
 
 def fromjd(jday):
@@ -111,7 +104,6 @@ def fromjd(jday):
     if jday >= int(lunar_epoch):
         # positive dates
         year = 1
-
         while curryear == False:
             next_equinox = equinox + eqlen
             if res + year12 < next_equinox:
@@ -141,17 +133,6 @@ def fromjd(jday):
         newmoon = res
         nextmoon = newmoon + monlen
 
-        for i in m:
-            crescent = ceil(newmoon)
-            next_crescent = ceil(nextmoon)
-            if floor(jday) < next_crescent:
-                month = i
-                day = jday - crescent + 1
-                break
-            else:
-                newmoon += monlen
-                nextmoon += monlen
-
     else:
         # negative dates
         while res > jday:
@@ -176,18 +157,18 @@ def fromjd(jday):
             # not a leap year
             m = MONTHS_NORMAL
 
-        newmoon = res
-        nextmoon = newmoon + monlen
+    newmoon = res
+    nextmoon = newmoon + monlen
         
-        for i in m:
-            crescent = ceil(newmoon)
-            next_crescent = ceil(nextmoon)
-            if jday < next_crescent:
-                month = i
-                day = jday - crescent + 1
-                break
-            else:
-                newmoon += monlen
-                nextmoon += monlen
+    for i in m:
+        crescent = ceil(newmoon)
+        next_crescent = ceil(nextmoon)
+        if jday < next_crescent:
+            month = i
+            day = jday - crescent
+            break
+        else:
+            newmoon += monlen
+            nextmoon += monlen
 
     return (day, month, year)

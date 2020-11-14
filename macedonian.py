@@ -135,9 +135,6 @@ def fromjd(jday):
             # not a leap year
             m = MONTHS_NORMAL
 
-        newmoon = noumenia
-        nextmoon = newmoon + monlen
-
     else:
         # negative dates
         while noumenia > jday:
@@ -162,8 +159,8 @@ def fromjd(jday):
             # not a leap year
             m = MONTHS_NORMAL
 
-        newmoon = noumenia
-        nextmoon = newmoon + monlen
+    newmoon = noumenia
+    nextmoon = newmoon + monlen
         
     for i in m:
         if jday < floor(nextmoon):
