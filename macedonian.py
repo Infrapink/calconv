@@ -6,6 +6,7 @@
 
 from months import *
 from fractions import *
+from math import floor, ceil
 
 MONTHS_NORMAL = ("Dios", "Apellaiios", "Audunaios", "Peritios", "Dystros", "Xanthikos", "Artemisios", "Daisios", "Panamos", "Lōios", "Gorpiaios", "Hyperberetaios")
 MONTHS_LEAP = ("Dios", "Apellaiios", "Audunaios", "Peritios", "Dystros", "Xanthikos", "Xandikos Embolimos", "Artemisios", "Daisios", "Panamos", "Lōios", "Gorpiaios", "Hyperberetaios")
@@ -56,13 +57,6 @@ def tojd(day, month, year):
             elif month == "Hyperberetaios Embolimos":
                 month = "Hyperberetaios"
 
-        for i in m:
-            if i == month:
-                jday = int(jday) + day - 1
-                break
-            else:
-                jday += monlen
-
     else:
         # negative years
         equinox = (year * eqlen) + solar_epoch
@@ -89,14 +83,13 @@ def tojd(day, month, year):
             elif month == "Hyperberetaios Embolimos":
                 month = "Hyperberetaios"
 
-        for i in m:
-            if i == month:
-                jday = int(jday) + day
-                if jday < 0:
-                    jday -= 1
-                break
-            else:
-                jday += monlen
+    for i in m:
+        if i == month:
+            jday = floor(jday) + day
+            break
+        else:
+            jday += monlen
+            
     return jday
 
 def fromjd(jday):
@@ -145,15 +138,6 @@ def fromjd(jday):
         newmoon = noumenia
         nextmoon = newmoon + monlen
 
-        for i in m:
-            if int(jday) < int(nextmoon):
-                month = i
-                day = int(jday) - int(newmoon) + 1
-                break
-            else:
-                newmoon += monlen
-                nextmoon += monlen
-
     else:
         # negative dates
         while noumenia > jday:
@@ -168,7 +152,7 @@ def fromjd(jday):
         # right, now what type of year is it?
 
         nexteq = equinox + eqlen
-        if noumenia + year12 < equinox:
+        if noumenia + year12 < nexteq:
             # leap year
             if abs(year) % 19 == 2:
                 m = MONTHS_17
@@ -181,15 +165,15 @@ def fromjd(jday):
         newmoon = noumenia
         nextmoon = newmoon + monlen
         
-        for i in m:
-            if jday < int(nextmoon):
-                month = i
-                day = int(jday) - int(newmoon)# + 1
-                if jday < 0:
-                    day += 1
-                break
-            else:
-                newmoon += monlen
-                nextmoon += monlen
+    for i in m:
+        if jday < int(nextmoon):
+            month = i
+            day = int(jday) - int(newmoon)# + 1
+            #if jday < 0:
+             #   day += 1
+            break
+        else:
+            newmoon += monlen
+            nextmoon += monlen
 
     return (day, month, year)
