@@ -155,7 +155,7 @@ def fromjd(jday):
         if noumenia + year12 < nexteq:
             # leap year
             if abs(year) % 19 == 2:
-                m = MONTHS_17
+                m = MONTHS_18
             else:
                 m = MONTHS_LEAP
         else:
