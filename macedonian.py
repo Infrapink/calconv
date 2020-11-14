@@ -166,9 +166,9 @@ def fromjd(jday):
         nextmoon = newmoon + monlen
         
     for i in m:
-        if jday < int(nextmoon):
+        if jday < floor(nextmoon):
             month = i
-            day = int(jday) - int(newmoon)# + 1
+            day = floor(jday) - floor(newmoon)# + 1
             #if jday < 0:
              #   day += 1
             break
