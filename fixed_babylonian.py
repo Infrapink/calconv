@@ -18,8 +18,8 @@ cycle19 = 235 * monlen
 
 #solar_epoch = Fraction(125181054427,86400)
 #lunar_epoch = Fraction(312955486723,216000)
-solar_epoch = Fraction(62582469179,43200)
-lunar_epoch = Fraction(7822931297,5400)
+solar_epoch = Fraction(62582469179,43200) + Fraction(3,24)
+lunar_epoch = Fraction(7822931297,5400) + Fraction(3,24)
 
 MONTHS_NORMAL = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru")
 MONTHS_LEAP = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru", "Addaru Arku")
