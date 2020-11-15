@@ -5,7 +5,7 @@
 #
 
 from fractions import *
-from math import floor
+from math import floor, ceil
 
 leap_years_an = (3,6,8,11,14,17,19,0)
 leap_years_bn = (1,3,6,9,12,14,17)
@@ -16,8 +16,10 @@ year12 = 12 * monlen
 year13 = 13 * monlen
 cycle19 = 235 * monlen
 
-lunar_epoch = 1448696 + Fraction(63379,72000)
-solar_epoch = 1448668 + Fraction(16979,43200)
+#solar_epoch = Fraction(125181054427,86400)
+#lunar_epoch = Fraction(312955486723,216000)
+solar_epoch = Fraction(62582469179,43200)
+lunar_epoch = Fraction(7822931297,5400)
 
 MONTHS_NORMAL = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru")
 MONTHS_LEAP = ("Nisānu", "Āru", "Simanu", "Dumuzu", "Abu", "Ulūlu", "Tišritum", "Samnu", "Kislimu", "Ṭebētum", "Šabaṭu", "Addaru", "Addaru Arku")
@@ -29,8 +31,6 @@ def tojd(day,month,year):
     month = month
     year = int(year)
 
-    jday = lunar_epoch
-
     if year > 0:
         # positive years
         if month == "Ulūlu Arrku":
@@ -41,31 +41,24 @@ def tojd(day,month,year):
                 month = "Addaru"
 
         y = 1
+        cycles = (year - y) // 19
+        y += (19 * cycles)
+        res = lunar_epoch + (cycle19 * cycles)
+        
         while y < year:
-            if (year - y) >= 19:
-                jday += cycle19
-                y += 19
-            elif y % 19 in leap_years_an:
-                jday += year13
-                y += 1
+            if y % 19 in leap_years_an:
+                res += year13
             else:
-                jday += year12
-                y += 1
+                res += year12
+            y += 1
 
-        # jday is now the new moon on which the year begins
+        # res is now the new moon on which the year begins
         if year % 19 == 17:
             m = MONTHS_17
         elif year % 19 in leap_years_an:
             m = MONTHS_LEAP
         else:
             m = MONTHS_NORMAL
-
-        for i in m:
-            if i == month:
-                jday = floor(jday) + day# - 1
-                break
-            else:
-                jday += monlen
 
     else:
         # negative years
@@ -77,16 +70,15 @@ def tojd(day,month,year):
                 month =	"Addaru"
 
         y = 0
+        cycles = (y - year) // 19
+        y -= (19 * cycles)
+        res = lunar_epoch - (cycle19 * cycles)
         while y > year:
-            if y - year >= 19:
-                y -= 19
-                jday -= cycle19
-            if abs(y - 1) % 19 in leap_years_bn:
-                y -= 1
-                jday -= year13
+            y -= 1
+            if abs(y) % 19 in leap_years_bn:
+                res -= year13
             else:
-                y -= 1
-                jday -= year12
+                res -= year12
 
         if abs(year) % 19 == 3:
             m = MONTHS_17
@@ -95,12 +87,13 @@ def tojd(day,month,year):
         else:
             m = MONTHS_NORMAL
 
-        for i in m:
-            if i == month:
-                jday = floor(jday) + day - 1
-                break
-            else:
-                jday = jday + monlen
+    jday = res
+    for i in m:
+        if i == month:
+            jday = floor(jday) + day# - 1
+            break
+        else:
+            jday = jday + monlen
 
     return jday
 
@@ -119,23 +112,21 @@ def fromjd(jday):
         # positive dates
 
         year += 1
+        cycles = (jday - lunar_epoch) // cycle19
+        year += (19 * cycles)
+        res = lunar_epoch + (cycle19 * cycles)
+        
         while curryear == False:
             if year % 19 in leap_years_an:
                 next_res = res + year13
             else:
                 next_res = res + year12
                 
-            if int(jday) < int(next_res):
+            if floor(jday) < floor(next_res):
                 curryear = True
-            elif jday - res >= cycle19:
-                year += 19
-                res += cycle19
-            elif year % 19 in leap_years_an:
-                year += 1
-                res += year13
             else:
                 year += 1
-                res += year12
+                res = next_res
 
         if year % 19 == 17:
             m = MONTHS_17
@@ -144,33 +135,19 @@ def fromjd(jday):
         else:
             m = MONTHS_NORMAL
 
-        newmoon = res
-        nextmoon = newmoon + monlen
-
-        for i in m:
-            crescent = floor(newmoon) + 1
-            next_crescent = floor(nextmoon) + 1
-            if floor(jday) < next_crescent:
-                month = i
-                day = floor(jday) - crescent + 1
-                break
-            else:
-                newmoon += monlen
-                nextmoon += monlen
-
     else:
         # negative dates
 
+        cycles = (lunar_epoch - jday) // cycle19
+        year -= (19 * cycles)
+        res = lunar_epoch - (cycle19 * cycles)
+        
         while floor(jday) < floor(res):
-            if res - jday >= cycle19:
-                res -= cycle19
-                year -= 19
-            elif abs(year - 1) % 19 in leap_years_bn:
+            year -= 1
+            if abs(year) % 19 in leap_years_bn:
                 res -= year13
-                year -= 1
             else:
                 res -= year12
-                year -= 1
 
         if abs(year) % 19 == 3:
             m = MONTHS_17
@@ -179,21 +156,19 @@ def fromjd(jday):
         else:
             m = MONTHS_NORMAL
 
-        newmoon = res
-        nextmoon = newmoon + monlen
-
-        for i in m:
-            crescent = floor(newmoon)
-            next_crescent = floor(nextmoon)
-            if floor(jday) < next_crescent:
-                month = i
-                day = int(jday) - crescent + 1
-                #if jday < 0:
-                    #day += 1
-                break
-            else:
-                newmoon += monlen
-                nextmoon += monlen
+    newmoon = res
+    nextmoon = newmoon + monlen
+    
+    for i in m:
+        crescent = ceil(newmoon)
+        next_crescent = ceil(nextmoon)
+        if floor(jday) < next_crescent:
+            month = i
+            day = floor(jday) - crescent + 1
+            break
+        else:
+            newmoon += monlen
+            nextmoon += monlen
 
     return (day, month, year)
 

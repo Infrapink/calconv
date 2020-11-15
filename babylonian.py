@@ -17,8 +17,11 @@ eqlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
 year12 = 12 * monlen
 year13 = 13 * monlen
 
-solar_epoch = Fraction(-18513734071, 86400) + Fraction(7,24) # I accidentally included Daylight Savings when I shouldn't have, so I had to compendate, hence the weird fractions.
-lunar_epoch = Fraction(-46280862427, 216000) + Fraction(6,24)
+#solar_epoch = Fraction(-18513734071, 86400) + Fraction(7,24) # I accidentally included Daylight Savings when I shouldn't have, so I had to compendate, hence the weird fractions.
+#lunar_epoch = Fraction(-46280862427, 216000) + Fraction(6,24)
+
+solar_epoch = Fraction(-18513741167,86400)
+lunar_epoch = Fraction(-46281244111,216000)
 
 def tojd(day, month, year):
     """Convert a date in the Macedonian calendar to a Julian Day."""
@@ -82,7 +85,7 @@ def tojd(day, month, year):
 
     for i in m:
         if i == month:
-            jday = floor(jday) + day
+            jday = ceil(jday) + day - 1
             break
         else:
             jday += monlen
@@ -165,7 +168,7 @@ def fromjd(jday):
         next_crescent = ceil(nextmoon)
         if jday < next_crescent:
             month = i
-            day = jday - crescent
+            day = jday - crescent + 1
             break
         else:
             newmoon += monlen

@@ -85,7 +85,7 @@ def tojd(day, month, year):
 
     for i in m:
         if i == month:
-            jday = floor(jday) + day
+            jday = floor(jday) + day - 1
             break
         else:
             jday += monlen
@@ -165,7 +165,7 @@ def fromjd(jday):
     for i in m:
         if jday < floor(nextmoon):
             month = i
-            day = floor(jday) - floor(newmoon)# + 1
+            day = floor(jday) - floor(newmoon) + 1
             #if jday < 0:
              #   day += 1
             break
