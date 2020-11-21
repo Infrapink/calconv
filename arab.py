@@ -5,7 +5,7 @@
 #
 
 from fractions import *
-from math import floor
+from math import ceil
 
 monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000) # mean synodic month, according to Wolfram Alpha
 year12 = 12 * monlen
@@ -119,7 +119,7 @@ def tojd(day, month, year):
     m = 0
     while current == False:
         if month == months[m]:
-            jday = floor(jday) +  day - 1 # add 1 to account for a fencepost error
+            jday = ceil(jday) +  day - 1 # add 1 to account for a fencepost error
             current = True
         else:
             jday += monlen
@@ -152,7 +152,7 @@ def fromjd(jday):
                 ytype += 1
             else:
                 next_res = res + year12
-            if jday < floor(next_res):
+            if jday < ceil(next_res):
                 curryear = True
             else:
                 res = next_res
@@ -164,7 +164,7 @@ def fromjd(jday):
         res = epoch - (cycle19 * cycles)
         ytype -= (7 * cycles)
 
-        while jday < floor(res):
+        while jday < ceil(res):
             year -= 1
             if abs(year) % 19 in leap_years:
                 res -= year13
@@ -181,8 +181,8 @@ def fromjd(jday):
         months = CALTYPE[abs(ytype) % 12]
 
     while currmonth == False:
-            if jday < floor(nextmoon):
-                day = jday - floor(newmoon) + 1
+            if jday < ceil(nextmoon):
+                day = jday - ceil(newmoon) + 1
                 month = months[m]
                 currmonth = True
             else:

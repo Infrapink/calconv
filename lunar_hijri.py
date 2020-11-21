@@ -5,7 +5,7 @@
 #
 
 from fractions import *
-from math import floor
+from math import ceil
 
 monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000) # mean synodic month, according to Wolfram Alpha
 yearlen = 12 * monlen
@@ -27,7 +27,6 @@ def tojd(day, month, year):
         newmoon = epoch + (year * yearlen) # 1 Muharram
         
     jday = newmoon
-
     for m in range(0,12):
         if month == months[m]:
             jday += day - 1
@@ -35,7 +34,7 @@ def tojd(day, month, year):
         else:
             jday += monlen
 
-    return floor(jday)
+    return ceil(jday)
 
 def fromjd(jday):
     jday = int(jday)
@@ -59,8 +58,8 @@ def fromjd(jday):
     nextmoon = newmoon + monlen
 
     while current == False:
-        if jday < floor(nextmoon):
-            day = jday - floor(newmoon) + 1
+        if jday < ceil(nextmoon):
+            day = jday - ceil(newmoon) + 1
             month = months[m]
             current = True
         else:
