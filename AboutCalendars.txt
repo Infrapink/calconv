@@ -144,9 +144,9 @@ http://haytomar.com/calendar.php
 http://www.rahamasha.net/uploads/2/3/2/8/2328777/armenian_calendar.pdf
 http://www.armeniapedia.org/wiki/Armenian_calendar
 
-------------------------------
+------------------------
 TABULAR ISLAMIC CALENDAR
-------------------------------
+------------------------
 
 The tabular Islamic calendar is a version of the Solar Hijri calendar based entirely on arithmetical calculations of rational numbers. The year consists of 12 months of alternating 30 and 29 days. In addition, an extra day is added to Dhu al-Hijjah according to a 30 year leap cycle in which 2, 5, 7, 10, 13, 16, 18, 21, 24, 26 and 29 are leap years. Until 1441 AH, an alternative algorithmic calendar, the Umm al-Qura calendar, was the official civil calendar of Saudi Arabia; however, I have not been able to find any good descriptions of the algorithms used for that one. In 1437, the Arabian government switched to a homebrew solar calendar for purposes of paying civil servants, and since 1439 have used the Gregorian calendar.
 
@@ -426,20 +426,13 @@ https://mastersfdl.hypotheses.org/443]
 http://www.tamazgha.fr/La-fete-de-Yennayer-pratiques-et-presages,1841.html
 https://www.best-country.com/en/africa/algeria/new_year
 
---------------
-RUMI CALENDARS
---------------
+------------------------------
+OTTOMAN FISCAL (RUMI) CALENDAR
+------------------------------
 
 The Rumi calendar is a version of the Julian calendar dated from the Hijra. It was used in Turkey for tax calculations from 1677 AD (1055 AH), and adopted as the civil calendar in 1840 AD (1218 AH). It was replaced by the Gregorian calendar in 1926 AD (1304 AH) as part of Mustafa Kemal Atatürk's reforms.
 
-Dating this calendar is tricky. Because for most of its history, it was ony a fiscal calendar, and the Lunar Hijri calendar was the civil calendar of Turkey. As such, the year number of the Rumi calendar is the same as the corresponding lunar hijri year, but because the lunar hijri calendr is only 354 or 355 days long, one will occasionally find a civil year that starts in one fiscal year and ends before the end of that same fiscal year. To compensate for this, every 33rd fiscal year number was skipped until the 1256, when the skipping was abolished.
-
-This converter contains three different implementations of the Rumi calendar.
-* Rumi calendar (non-skipping) does not implement the skipping rule at all. In effect, it is the Julian calendar, but dated form the Hijri rather than the birth of Jesus.
-* Rumi calendar (skipping) constantly implements the skipping rule. Since it was only a fiscal and not a civil calendar, the Ottomans never decided how it would be used for pre-hijri dates. I have decided that any year whose absolute value is an integer multiple of 33 will be skipped, and as such no year is skipped between 33 BH and 33 AH. This results in negative Rumi years properly coinciding with negative Lunar Hijri years
-* Rumi skips years whose absolute values are integer multiples of 33 if, and only if, they are less than 1256. This is an approximation of the calendar that was actually used in Ottoman Turkey.
-
-The Rumi calendar is actually a year off from the Ottoman fiscal calendar. The Ottoman government did not apply the skipping rule consistently; sometimes they skipped the 33rd year, sometimes the 34th. The deciding factor appears to have been whether Muslim year n would end before the start of Rumi year n, and if it did, to skip Rumi year n.
+Dating this calendar is tricky. Because for most of its history, it was ony a fiscal calendar, and the Lunar Hijri calendar was the civil calendar of Turkey. As such, the year number of the Rumi calendar is the same as the corresponding Lunar Hijri year, but because the Lunar Hijri calendr is only 354 or 355 days long, one will occasionally find a civil year that starts in one fiscal year and ends before the end of that same fiscal year. To compensate for this, the Ottoman government would occasionally skip a year to bring the fiscal calendar back into synchronisatin with the civil calendar; this happened approximately (but not consistently) every 33 years until 1256, when skipping was abolished and the Rumi calendar was made the civil calendar in Turkey. This situation lasted until 1342 (1926 AD), when the newly-constituted Republic of Turkey switched to the Gregorian calendar
 
 https://en.wikipedia.org/wiki/Rumi_calendar
 https://www.takvim.com/takvim_donusum.php

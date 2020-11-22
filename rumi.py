@@ -5,11 +5,12 @@
 #
 
 import months
+import tab_islamic
 
-rumi_normal = 365
-rumi_leap = 366
-muslim_normal = 354
-muslim_leap = 355
+cycle4 = (4 * 365) + 1
+skip_epoch = 1948302
+neo_epoch = 2393177
+skip_years = (13,47,80,114,147,181,214,248,282,315,349,382,416,449,483,517,550,584,617,651,684,718,751,785,819,852,886,819,953,986,1020,1053,1087,1121,1154,1188,1221,1255)
 
 
 def tojd(day, month, year):
@@ -17,135 +18,221 @@ def tojd(day, month, year):
     day = int(day)
     month = month.title()
     year = int(year)
-    alpha = 0
-    days = 0
-    skips = 0
 
-    if year > 0:
-        # positive years.
-        alpha = 1948241
-        for y in range(1,year):
-            if y <= 1256 and y % 33 == 2:
-                skips += 1
-            elif (y - skips) % 4 == 2:
-                days += 366
+    if year >= 1256:
+        # years after the abolition of skipping
+        jday = neo_epoch # 1 Mart 1256
+        y = 1256
+        cycles = (year - y) // 4
+        y += (4 * cycles)
+        jday += (cycle4 * cycles)
+
+        while y < year:
+            if y % 4 == 3:
+                jday += 366
             else:
-                days += 365
+                jday += 365
+            y += 1
 
-        if (year - skips) % 4 == 2:
-            # leap year
+        if year % 4 == 3:
             m = months.TURKISH_LEAP
         else:
-            # not a leap year
             m = months.TURKISH_NORMAL
+        
 
-        for i in m.keys():
-            if i == month:
-                days += day
-                break
+    elif year > 0:
+        # positive years when skipping was carried out
+        jday = skip_epoch
+        skip = 0 # used to calculate leap years
+
+        if year in skip_years:
+            year += 1
+
+        y = 1
+        z = 1
+        cycles = (year - y) // 4
+        y += (4 * cycles)
+        jday = skip_epoch + (cycle4 * cycles)
+
+        while z <= y:
+            if z in skip_years:
+                y += 1
+                skip += 1
+            z += 1
+
+        while y < year:
+            if y in skip_years:
+                skip += 1                
+            elif (y - skip) % 4 == 1:
+                jday += 366
             else:
-                days += m[i]
+                jday += 365
+            y += 1
+
+        if (year - skip) % 4 == 1:
+            m = months.TURKISH_LEAP
+        else:
+            m = months.TURKISH_NORMAL
 
     else:
         # negative years.
-        alpha = 1948242
+        nyd = skip_epoch
+        y = 0
 
-        for y in range(-1, (year - 1), -1):
-            if y % 33== 2:
-                skips += 1
-            elif (abs(y) - skips) % 4 == 1:
-                days -= 366
+        res = tab_islamic.tojd(1, "Muharram", year)
+        next_res = tab_islamic.tojd(1, "Muharram", (year + 1))
+
+        cycles = (nyd - res) // cycle4
+        nyd -= (cycle4 * cycles)
+        y -= (4 * cycles)
+
+        while nyd > res:
+            y -= 1
+            if abs(y) % 4 == 3:
+                nyd -= 366
             else:
-                days -= 365
+                nyd -= 365
 
-        if (abs(year) - skips) % 4 == 1:
-            # leap year
+        if abs(y) % 4 == 3:
+            next_nyd = nyd + 366
             m = months.TURKISH_LEAP
         else:
-            # not a leap year
+            next_nyd = nyd + 365
             m = months.TURKISH_NORMAL
 
-        for i in m.keys():
-            if i == month:
-                days += day - 1
-                break
-            else:
-                days += m[i]
+        if res > nyd and next_res < next_nyd:
+            jday = next_nyd
+        else:
+            jday = nyd
+
+        
+    for i in m.keys():
+        if i == month:
+            jday += day - 1
+            break
+        else:
+            jday += m[i]
                 
-    jday = alpha + days
     return jday
 
-def fromjd(jday):
+def fromjd(jday, m_year):
     """Convert a Julian day to a date in the Rumi calendar."""
     jday = int(jday)
+    m_year = int(m_year)
+    
     year = 0
     month = ""
     day = 0
-    skips = 0
 
-    if jday > 1948241:
-        # positive dates
-        delta = jday - 1948241
-        current = False
-        while current == False:
-            year += 1
-            if year <= 1256 and year % 33 == 2:
-                skips += 1
-            elif (year - skips) % 4 == 2:
-                if delta <= 366:
-                    current = True
+    if jday >= neo_epoch:
+        # positive dates after skipping was abolished
+        nyd = neo_epoch
+        curryear = False
+        year = 1256
+        cycles = (jday - nyd) // cycle4
+        year += (4 * cycles)
+        nyd += (cycle4 * cycles)
+        while curryear == False:
+            if year % 4 == 3:
+                if jday - nyd < 366:
+                    curryear = True
                 else:
-                    delta -= 366
+                    year += 1
+                    nyd += 366
             else:
-                if delta <= 365:
-                    current = True
+                if jday - nyd < 365:
+                    curryear = True
                 else:
-                    delta -= 365
+                    year += 1
+                    nyd += 365
 
-        if (year - skips) % 4 == 2:
-            # leap year
+        if year % 4 == 3:
             m = months.TURKISH_LEAP
         else:
-            # not a leap year
             m = months.TURKISH_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    elif jday >= skip_epoch:
+        # positive dates during the skipping era
+        nyd = skip_epoch
+        skip = 0 # used to calculate leap years
+        curryear = False
+        year = 1
+        cycles = (jday - nyd) // cycle4
+        year += (4 * cycles)
+        nyd += (cycle4 * cycles)
 
+        y = 1
+        while y <= year:
+            if y in skip_years:
+                year += 1
+                skip += 1
+            y += 1
+
+        while curryear == False:
+            if year in skip_years:
+                skip += 1
+                year += 1
+            elif (year - skip) % 4 == 1:
+                if jday - nyd < 366:
+                    curryear = True
+                else:
+                    nyd += 366
+                    year += 1
+            else:
+                if jday - nyd < 365:
+                    curryear = True
+                else:
+                    nyd += 365
+                    year += 1
+
+        if (year - skip) % 4 == 2:
+            m = months.TURKISH_LEAP
+        else:
+            m = months.TURKISH_NORMAL
+        
+        
     else:
         # negative dates
-        delta = 1948242 - jday
-        while delta > 0:
-            year -= 1
-            if year % 33 == 2:
-                skips += 1
-            elif (abs(year) - skips) % 4 == 1:
-                delta -= 366
+        y = 0
+        nyd = skip_epoch
+        
+        m_nyd = tab_islamic.tojd(1, "Muharram", m_year)
+        k_nyd = tab_islamic.tojd(1, "Muharram", (m_year + 1))
+
+        cycles = (nyd - jday) // cycle4
+        y -= (4 * cycles)
+        nyd -= (cycle4 * cycles)
+        
+        while nyd > jday:
+            y -= 1
+            if abs(y) % 4 == 3:
+                nyd -= 366
             else:
-                delta -= 365
+                nyd -= 365
 
+        if abs(y) % 4 == 3:
+            next_nyd = nyd + 366
+        else:
+            next_nyd = nyd + 365
 
-        delta = abs(delta) + 1
-
-        if (abs(year) - skips) % 4 == 1:
-            # leap year
+        if next_nyd > k_nyd:
+            year = m_year + 1
+        else:
+            year = m_year
+        
+        if abs(y) % 4 == 3:
             m = months.TURKISH_LEAP
         else:
-            # not a leap year
             m = months.TURKISH_NORMAL
 
-        for i in m.keys():
-            if delta <= m[i]:
-                month = i
-                day = delta
-                break
-            else:
-                delta -= m[i]
+    delta = jday - nyd
+    for i in m.keys():
+        if delta <= m[i]:
+            month = i
+            day = delta + 1
+            break
+        else:
+            delta -= m[i]
 
-    date = (day,month,year)
-    return date
+    return (day,month,year)
+
