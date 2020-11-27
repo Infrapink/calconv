@@ -21,7 +21,7 @@ import jewish
 import samaritan
 import kurdish
 import amazigh
-import rumi_n
+import lucis
 import rev_gregorian
 import parker
 import goucher
@@ -54,6 +54,7 @@ import fixed_babylonian
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
         day = Decimal(cons_day_julian_ent.get())
+
     
         # Convert a Julian Day to a date in the Julian Calendar
         julian_date = julian.fromjd(day)
@@ -138,6 +139,8 @@ def cons_day_julian_todate():
         tab_islamic_day_ent.insert(0, tab_islamic_day_value)
         tab_islamic_month_ent.insert(0, tab_islamic_month_value)
         tab_islamic_year_ent.insert(0, tab_islamic_year_value)
+
+        m_year = int(tab_islamic_year_ent.get())        
 
         # Convert a Julian Day to a date in the Jalali calendar
         jalali_date = jalali.fromjd(day)
@@ -297,14 +300,14 @@ def cons_day_julian_todate():
         amazigh_month_ent.insert(0, amazigh_date[1])
         amazigh_year_ent.insert(0, amazigh_date[2])
 
-        # Convert a Julian day to a date in the Rumi calendar
-        rumi_n_date = rumi_n.fromjd(day)
-        rumi_n_day_ent.delete(0,END)
-        rumi_n_month_ent.delete(0,END)
-        rumi_n_year_ent.delete(0,END)
-        rumi_n_day_ent.insert(0, rumi_n_date[0])
-        rumi_n_month_ent.insert(0, rumi_n_date[1])
-        rumi_n_year_ent.insert(0, rumi_n_date[2])
+        # Convert a Julian day to a n Anno Lucis date
+        lucis_date = lucis.fromjd(day)
+        lucis_day_ent.delete(0,END)
+        lucis_month_ent.delete(0,END)
+        lucis_year_ent.delete(0,END)
+        lucis_day_ent.insert(0, lucis_date[0])
+        lucis_month_ent.insert(0, lucis_date[1])
+        lucis_year_ent.insert(0, lucis_date[2])
 
         # Convert a Julian day to a date in the revised Gregorian calendar
         rev_gregorian_date = rev_gregorian.fromjd(day)
@@ -505,7 +508,7 @@ def cons_day_julian_todate():
         rumi_s_year_ent.insert(0, rumi_s_date[2])
 
         # Convert a Julian day to a date in the Ottoman fiscal calendar
-        rumi_date = rumi.fromjd(day)
+        rumi_date = rumi.fromjd(day, m_year)
         rumi_day_ent.delete(0, END)
         rumi_month_ent.delete(0, END)
         rumi_year_ent.delete(0, END)
@@ -513,7 +516,7 @@ def cons_day_julian_todate():
         rumi_month_ent.insert(0, rumi_date[1])
         rumi_year_ent.insert(0, rumi_date[2])
 
-       # Convert a Julian day to a date in the Igbo calendar
+        # Convert a Julian day to a date in the Igbo calendar
         igbo_date = igbo.fromjd(day)
         igbo_day_ent.delete(0, END)
         igbo_month_ent.delete(0, END)
@@ -824,12 +827,12 @@ def amazigh_converter():
         cons_day_julian_ent.insert(0,jday)
         cons_day_julian_todate()
         
-def rumi_n_converter():
-        """Convert a date in the Rumi calendar to a Julian day."""
-        day = int(rumi_n_day_ent.get())
-        month = rumi_n_month_ent.get()
-        year = int(rumi_n_year_ent.get())
-        jday = rumi_n.tojd(day, month, year)
+def lucis_converter():
+        """Convert a Masonic date to a Julian day."""
+        day = int(lucis_day_ent.get())
+        month = lucis_month_ent.get()
+        year = int(lucis_year_ent.get())
+        jday = lucis.tojd(day, month, year)
         cons_day_julian_ent.delete(0,END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1400,18 +1403,18 @@ amazigh_year_ent = Entry(frame)
 amazigh_year_ent.grid(row = 20, column = 2, sticky = W)
 amazigh_bttn = Button(frame, text = "Calculate", command = amazigh_converter).grid(row = 21, column = 0, sticky = W)
 
-# Rumi calendar
-rumi_n_lbl = Label(frame, text = "Rumi calendar (non-skipping)").grid(row = 18, column = 3, columnspan = 3, sticky = W)
-rumi_n_day_lbl = Label(frame, text = "Day").grid(row = 19, column = 3, sticky = W)
-rumi_n_day_ent = Entry(frame)
-rumi_n_day_ent.grid(row = 20, column = 3, sticky = W)
-rumi_n_month_lbl = Label(frame, text = "Month").grid(row = 19, column = 4, sticky = W)
-rumi_n_month_ent = Entry(frame)
-rumi_n_month_ent.grid(row = 20, column = 4, sticky = W)
-rumi_n_year_lbl = Label(frame, text = "Year").grid(row = 19, column = 5, sticky = W)
-rumi_n_year_ent = Entry(frame)
-rumi_n_year_ent.grid(row = 20, column = 5, sticky = W)
-rumi_n_bttn = Button(frame, text = "Calculate", command = rumi_n_converter).grid(row = 21, column = 3, columnspan = 3, sticky = W)
+# Masoic calendar
+lucis_lbl = Label(frame, text = "Anno Lucis (Craft Freemasonry)").grid(row = 18, column = 3, columnspan = 3, sticky = W)
+lucis_day_lbl = Label(frame, text = "Day").grid(row = 19, column = 3, sticky = W)
+lucis_day_ent = Entry(frame)
+lucis_day_ent.grid(row = 20, column = 3, sticky = W)
+lucis_month_lbl = Label(frame, text = "Month").grid(row = 19, column = 4, sticky = W)
+lucis_month_ent = Entry(frame)
+lucis_month_ent.grid(row = 20, column = 4, sticky = W)
+lucis_year_lbl = Label(frame, text = "Year").grid(row = 19, column = 5, sticky = W)
+lucis_year_ent = Entry(frame)
+lucis_year_ent.grid(row = 20, column = 5, sticky = W)
+lucis_bttn = Button(frame, text = "Calculate", command = lucis_converter).grid(row = 21, column = 3, columnspan = 3, sticky = W)
 
 # Revised Gregorian calendar
 rev_gregorian_lbl = Label(frame, text = "Revised Gregorian calendar").grid(row = 18, column = 6, columnspan = 3, sticky = W)
@@ -1700,7 +1703,7 @@ rumi_s_year_ent.grid(row = 40, column = 11, sticky = W)
 rumi_s_bttn = Button(frame, text = "Calculate", command = rumi_s_converter).grid(row = 41, column = 9, columnspan = 3, sticky = W)
 
 # Rumi calendar                                                                                            
-rumi_lbl = Label(frame, text = "Rumi calendar").grid(row = 38, column = 12, columnspan = 3, sticky = W)
+rumi_lbl = Label(frame, text = "Ottoman fiscal calendar").grid(row = 38, column = 12, columnspan = 3, sticky = W)
 rumi_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 12, sticky = W)
 rumi_day_ent = Entry(frame)
 rumi_day_ent.grid(row = 40, column = 12, sticky = W)
