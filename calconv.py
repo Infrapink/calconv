@@ -43,7 +43,7 @@ import solar_hijri
 import thellid
 import lunar_hijri
 import arab
-import rumi_s
+import inventionis
 import rumi
 import igbo
 import roman
@@ -498,14 +498,14 @@ def cons_day_julian_todate():
         arab_month_ent.insert(0, arab_date[1])
         arab_year_ent.insert(0, arab_date[2])
 
-        # Convert a Julian day to a date in the skipping Rumi calendar
-        rumi_s_date = rumi_s.fromjd(day)
-        rumi_s_day_ent.delete(0, END)
-        rumi_s_month_ent.delete(0, END)
-        rumi_s_year_ent.delete(0, END)
-        rumi_s_day_ent.insert(0, rumi_s_date[0])
-        rumi_s_month_ent.insert(0, rumi_s_date[1])
-        rumi_s_year_ent.insert(0, rumi_s_date[2])
+        # Convert a Julian day to a date in the Archmasonic calendar
+        inventionis_date = inventionis.fromjd(day)
+        inventionis_day_ent.delete(0, END)
+        inventionis_month_ent.delete(0, END)
+        inventionis_year_ent.delete(0, END)
+        inventionis_day_ent.insert(0, inventionis_date[0])
+        inventionis_month_ent.insert(0, inventionis_date[1])
+        inventionis_year_ent.insert(0, inventionis_date[2])
 
         # Convert a Julian day to a date in the Ottoman fiscal calendar
         rumi_date = rumi.fromjd(day, m_year)
@@ -1030,12 +1030,12 @@ def arab_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def rumi_s_converter():
-        """Convert a date in the skipping Rumi calendar to a Julian Day."""
-        day = rumi_s_day_ent.get()
-        month = rumi_s_month_ent.get()
-        year = rumi_s_year_ent.get()
-        jday = rumi_s.tojd(day, month, year)
+def inventionis_converter():
+        """Convert a date in the Archmasonic calendar to a Julian Day."""
+        day = inventionis_day_ent.get()
+        month = inventionis_month_ent.get()
+        year = inventionis_year_ent.get()
+        jday = inventionis.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1689,18 +1689,18 @@ arab_year_ent = Entry(frame)
 arab_year_ent.grid(row = 40, column = 8, sticky = W)
 arab_bttn = Button(frame, text = "Calculate", command = arab_converter).grid(row = 41, column = 6, columnspan = 3, sticky = W)
 
-# Skipping Rumi calendar                                                                                            
-rumi_s_lbl = Label(frame, text = "Rumi calendar (skipping)").grid(row = 38, column = 9, columnspan = 3, sticky = W)
-rumi_s_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 9, sticky = W)
-rumi_s_day_ent = Entry(frame)
-rumi_s_day_ent.grid(row = 40, column = 9, sticky = W)
-rumi_s_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 10, sticky = W)
-rumi_s_month_ent = Entry(frame)
-rumi_s_month_ent.grid(row = 40, column = 10, sticky = W)
-rumi_s_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 11, sticky = W)
-rumi_s_year_ent = Entry(frame)
-rumi_s_year_ent.grid(row = 40, column = 11, sticky = W)
-rumi_s_bttn = Button(frame, text = "Calculate", command = rumi_s_converter).grid(row = 41, column = 9, columnspan = 3, sticky = W)
+# Archmasonic calendar                                                                                            
+inventionis_lbl = Label(frame, text = "Anno Inventionis (Royal Archmasons)").grid(row = 38, column = 9, columnspan = 3, sticky = W)
+inventionis_day_lbl = Label(frame, text = "Day").grid(row = 39, column = 9, sticky = W)
+inventionis_day_ent = Entry(frame)
+inventionis_day_ent.grid(row = 40, column = 9, sticky = W)
+inventionis_month_lbl = Label(frame, text = "Month").grid(row = 39, column = 10, sticky = W)
+inventionis_month_ent = Entry(frame)
+inventionis_month_ent.grid(row = 40, column = 10, sticky = W)
+inventionis_year_lbl = Label(frame, text = "Year").grid(row = 39, column = 11, sticky = W)
+inventionis_year_ent = Entry(frame)
+inventionis_year_ent.grid(row = 40, column = 11, sticky = W)
+inventionis_bttn = Button(frame, text = "Calculate", command = inventionis_converter).grid(row = 41, column = 9, columnspan = 3, sticky = W)
 
 # Rumi calendar                                                                                            
 rumi_lbl = Label(frame, text = "Ottoman fiscal calendar").grid(row = 38, column = 12, columnspan = 3, sticky = W)

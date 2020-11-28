@@ -1,7 +1,7 @@
 #!/usr/bin/python
 
 #
-# Convert between the Masonic Calendar and Julian Day
+# Convert between the Archmason Calendar and Julian Day
 #
 
 import months
@@ -10,7 +10,7 @@ cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
 
-epoch = 260455
+epoch = 1527846
 
 def tojd(day, month, year):
 
@@ -35,24 +35,24 @@ def tojd(day, month, year):
             elif year - y > 4:
                 y += 4
                 jday += cycle4
-            elif y % 400 == 0:
+            elif y % 400 == 130:
                 y += 1
                 jday += 366
-            elif y % 100 == 0:
+            elif y % 100 == 30:
                 y += 1
                 jday += 365
-            elif y % 4 == 0:
+            elif y % 4 == 2:
                 y += 1
                 jday += 366
             else:
                 y += 1
                 jday += 365
 
-        if year % 400 == 0:
+        if year % 400 == 130:
             m = months.CAESAR_LEAP
-        elif year % 100 == 0:
+        elif year % 100 == 30:
             m = months.CAESAR_NORMAL
-        elif year % 4 == 0:
+        elif year % 4 == 2:
             m = months.CAESAR_LEAP
         else:
             m = months.CAESAR_NORMAL
@@ -69,20 +69,20 @@ def tojd(day, month, year):
                 jday -= cycle400
             else:
                 y -= 1
-                if abs(y) % 400 == 1:
+                if abs(y) % 400 == 271:
                     jday -= 366
-                elif abs(y) % 100 == 1:
+                elif abs(y) % 100 == 71:
                     jday -= 365
-                elif abs(y) % 4 == 1:
+                elif abs(y) % 4 == 3:
                     jday -= 366
                 else:
                     jday -= 365
 
-        if abs(year) % 400 == 1:
+        if abs(year) % 400 == 271:
             m = months.CAESAR_LEAP
-        elif abs(year) % 100 == 1:
+        elif abs(year) % 100 == 71:
             m = months.CAESAR_NORMAL
-        elif abs(year) % 4 == 1:
+        elif abs(year) % 4 == 3:
             m = months.CAESAR_LEAP
         else:
             m = months.CAESAR_NORMAL
@@ -97,7 +97,7 @@ def tojd(day, month, year):
     return jday
 
 def fromjd(jday):
-    """Convert a Julian Day to a date in the Masonic calendar"""
+    """Convert a Julian Day to a date in the Gregorian calendar"""
     jday = int(jday)
     year = 0
     month = ""
@@ -116,19 +116,19 @@ def fromjd(jday):
                 nyd += cycle400
             else:
                 #year += 1
-                if year % 400 == 0:
+                if year % 400 == 130:
                     if jday - nyd < 366:
                         curryear = True
                     else:
                         nyd += 366
                         year += 1
-                elif year % 100 == 0:
+                elif year % 100 == 30:
                     if jday - nyd < 365:
                         curryear = True
                     else:
                         nyd += 365
                         year += 1
-                elif year % 4 == 0:
+                elif year % 4 == 2:
                     if jday - nyd < 366:
                         curryear = True
                     else:
@@ -141,13 +141,13 @@ def fromjd(jday):
                         nyd += 365
                         year +=1
         
-        if year % 400 == 0:
+        if year % 400 == 130:
             # leap year
             m = months.CAESAR_LEAP
-        elif year % 100 == 0:
+        elif year % 100 == 30:
             # not a leap year
             m = months.CAESAR_NORMAL
-        elif year % 4 == 0:
+        elif year % 4 == 2:
             # leap year
             m = months.CAESAR_LEAP
         else:
@@ -162,22 +162,22 @@ def fromjd(jday):
 
         while nyd > jday:
             year -= 1
-            if abs(year) % 400 == 1:
+            if abs(year) % 400 == 271:
                 nyd -= 366
-            elif abs(year) % 100 == 1:
+            elif abs(year) % 100 == 71:
                 nyd -= 365
-            elif abs(year) % 4 == 1:
+            elif abs(year) % 4 == 3:
                 nyd -= 366
             else:
                 nyd -= 365
            
-        if abs(year) % 400 == 1:
+        if abs(year) % 400 == 271:
             # leap year
             m = months.CAESAR_LEAP
-        elif abs(year) % 100 == 1:
+        elif abs(year) % 100 == 71:
             # not a leap year
             m = months.CAESAR_NORMAL
-        elif abs(year) % 4 == 1:
+        elif abs(year) % 4 == 3:
             # leap year
             m = months.CAESAR_LEAP
         else:
