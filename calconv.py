@@ -50,6 +50,7 @@ import roman
 import macedonian
 import seleucid
 import fixed_babylonian
+import maya
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -560,6 +561,21 @@ def cons_day_julian_todate():
         fixed_babylonian_day_ent.insert(0, fixed_babylonian_date[0])
         fixed_babylonian_month_ent.insert(0, fixed_babylonian_date[1])
         fixed_babylonian_year_ent.insert(0, fixed_babylonian_date[2])
+
+        # Convert a Julian Day to a Long Count date
+        maya_date = maya.fromjd(day)
+        maya_piktun_ent.delete(0, END)
+        maya_baktun_ent.delete(0, END)
+        maya_katun_ent.delete(0, END)
+        maya_tun_ent.delete(0, END)
+        maya_uinal_ent.delete(0, END)
+        maya_kin_ent.delete(0, END)
+        maya_piktun_ent.insert(0, maya_date[0])
+        maya_baktun_ent.insert(0, maya_date[1])
+        maya_katun_ent.insert(0, maya_date[2])
+        maya_tun_ent.insert(0, maya_date[3])
+        maya_uinal_ent.insert(0, maya_date[4])
+        maya_kin_ent.insert(0, maya_date[5])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1090,6 +1106,20 @@ def fixed_babylonian_converter():
         month = fixed_babylonian_month_ent.get()
         year = int(fixed_babylonian_year_ent.get())
         jday = fixed_babylonian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+
+
+def maya_converter():
+        piktun = int(maya_piktun_ent.get())
+        baktun = int(maya_baktun_ent.get())
+        katun = int(maya_katun_ent.get())
+        tun = int(maya_tun_ent.get())
+        uinal = int(maya_uinal_ent.get())
+        kin = int(maya_kin_ent.get())
+        jday = maya.tojd(piktun, baktun, katun, tun, uinal, kin)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1780,5 +1810,37 @@ fixed_babylonian_year_ent = Entry(frame)
 fixed_babylonian_year_ent.grid(row = 45, column = 14, sticky = W)
 fixed_babylonian_bttn = Button(frame, text = "Calculate", command = fixed_babylonian_converter).grid(row = 46, column = 12, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.23.0")
+# Long Count
+maya_lbl = Label(frame, text = "Mesoamerican Long Count").grid(row = 48, column = 0, columnspan = 5, sticky = W)
+maya_piktun_lbl = Label(frame, text = "Piktun").grid(row = 49, column = 0, sticky = W)
+maya_piktun_ent = Entry(frame)
+maya_piktun_ent.grid(row = 50, column = 0, sticky = W)
+
+maya_baktun_lbl = Label(frame, text = "B'ak'tun").grid(row = 49, column = 1, sticky = W)
+maya_baktun_ent = Entry(frame)
+maya_baktun_ent.grid(row = 50, column = 1, sticky =W)
+
+maya_katun_lbl = Label(frame, text = "K'atun").grid(row = 49, column = 2, sticky = W)
+maya_katun_ent = Entry(frame)
+maya_katun_ent.grid(row = 50, column = 2, sticky = W)
+
+maya_tun_lbl = Label(frame, text = "Tun").grid(row = 49, column = 3, sticky = W)
+maya_tun_ent = Entry(frame)
+maya_tun_ent.grid(row = 50, column = 3, sticky = W)
+
+maya_uinal_lbl = Label(frame, text = "Uinal").grid(row = 49, column = 4, sticky = W)
+maya_uinal_ent = Entry(frame)
+maya_uinal_ent.grid(row = 50, column = 4, sticky = W)
+
+maya_kin_lbl = Label(frame, text = "Kin").grid(row = 49, column = 5, sticky = W)
+maya_kin_ent = Entry(frame)
+maya_kin_ent.grid(row = 50, column = 5, sticky = W)
+
+maya_bttn = Button(frame, text = "Calculate", command = maya_converter).grid(row = 51, column = 0, columnspan = 5, sticky = W)
+
+
+
+
+
+root.title("Calendar Converter 0.26.0")
 root.mainloop()
