@@ -822,3 +822,17 @@ The Long Count is based on powers of 20, with one exception; it does not make an
 Mayan inscriptions generally only go up to the b'ak'tun; since a single b'ak'tun lasts about 1,400 years, there was little need to go any higher. However, inscriptions at Palenque do indeed advance to the next place, which historians call a piktun. There is evidence of even bigger groups, termed kalabtun, k'inchiltun, and alautun, but they are poorly attested and so are not included in this converter. It is unclear whether a piktun was 20 b'ak'tun long or just 13. In my own research, I came across people arguing both ways; to me (and I stress I am no sort of historian), it looks like a piktun was indeed 20 b'ak'tuns long, and the idea it was only 13 derives from the fact that the Mayans considered 13 to be an auspicious number. The transition from one b'ak'tun to the next was believed to be the end of an era and a time of great change, and so was marked by important rituals and ceremonies, and so the beginning of b'ak'tun 13 would be particularly well-marked. This significance attached to b'ak'tun 13 is why people believed the Long Count would end on 21 December 2012, and with it the world, despite actual Mayans consistently saying that it was simply the end of an era.
 
 The epoch is Julian Day 584282. Uniquely among traditional calendars, all positions in the Long Count start at 0 rather tha 1, which makes conversion algorithms much simpler.
+
+https://en.wikipedia.org/wiki/Mesoamerican_Long_Count_calendar
+https://en.wikipedia.org/wiki/Maya_calendar
+https://en.wikipedia.org/wiki/Baktun
+https://en.wikipedia.org/wiki/Aztec_calendar
+https://en.wikipedia.org/wiki/Mesoamerican_calendars
+http://www.maya-portal.net/calendar/long_count
+https://mayan-calendar.com/ancient_longcount.html
+https://www.ancientpages.com/2016/08/11/on-this-day-in-history-mesoamerican-long-count-calendar-begins-on-august-11-3114-b-c/
+https://maya.nmai.si.edu/calendar/maya-calendar-converter
+https://www.timeanddate.com/calendar/mayan.html
+http://coyote-wind.com/studios/MayaDate/about.html
+https://mayanpeninsula.com/mayan-calendar/
+https://www.nationalgeographic.com/news/2012/12/121207-maya-truly-did-not-predict-doomsday-apocalypse/
