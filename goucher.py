@@ -54,7 +54,7 @@ def tojd(day, month, year):
             y -= 1
             if abs(y) % 128 == 1:
                 jday -= 365
-            elif abs(y) % 4 == 0:
+            elif abs(y) % 4 == 1:
                 jday -= 366
             else:
                 jday -= 365
