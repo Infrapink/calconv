@@ -16,7 +16,7 @@ On Windows, you can instead double-click on calconv.bat
 
 Dates are entered in the indicated text boxes in the order Day, Month, Year; if there is only one text box, input is a simple number. For now, months must be written in full, and entered exactly as listed here, including punctuation and diacritical marks. A later version will replace the text entry fields with selectable dropdown menus. Years before the calendar epoch are entered as negative numbers; so, for example, the year 44 BC would be input as '-44'.
 
-Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, and Holocene Calendars:
+Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, Georgian (Christian era), ADA, and Holocene Calendars:
 * January
 * February
 * Gormanuary (Gorman calendar only)
@@ -36,6 +36,9 @@ Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, W
 * Worldsday (World calendar only)
 * Year Day (International Fixed calendar only)
 * Leap day (World and International Fixed calendars only)
+* Georgy (Georgian calendar only)
+* Christmas (Georgian calendar only)
+* Olympiad (Georgian calendar only)
 
 Ethiopian Calendar:
 * Mäskäräm
@@ -328,6 +331,21 @@ Macedonian and Seleucid calendars:
 * Hyperberetaios
 * Hyperberetaios Embolimos (only in some leap years)
 
+Georgian calendar (Georgian Era)
+* Peter
+* Andrew
+* James the Great
+* John
+* Philip
+* Bartholomew
+* Thomas
+* Matthew
+* James the Less
+* Jude
+* Simon
+* Matthias
+* Paul
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -339,9 +357,8 @@ FUTURE GOALS
 Replace the text boxes for months with dropdown menus.
 
 Add the following calendars:
-* Old Roman
+
 * Byzantine
-* Mayan
 * Chinese Lunisolar
 * Shire Reckoning
 * Buddhist
@@ -355,7 +372,6 @@ Add the following calendars:
 * Vikram Samvat
 * Shaka Samvat
 * Kali Yuga
-* Celtic
 * Javanese
 * Korean
 * Minguo
@@ -364,3 +380,4 @@ Add the following calendars:
 * Thai
 * Tibetan
 * Julian Period
+* Muisca

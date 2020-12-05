@@ -51,6 +51,8 @@ import macedonian
 import seleucid
 import fixed_babylonian
 import maya
+import georgian_g
+import georgian_c
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -576,6 +578,24 @@ def cons_day_julian_todate():
         maya_tun_ent.insert(0, maya_date[3])
         maya_uinal_ent.insert(0, maya_date[4])
         maya_kin_ent.insert(0, maya_date[5])
+
+        # Convert a Julian day to a date in the original Georgian calendar
+        georgian_g_date = georgian_g.fromjd(day)
+        georgian_g_day_ent.delete(0, END)
+        georgian_g_month_ent.delete(0, END)
+        georgian_g_year_ent.delete(0, END)
+        georgian_g_day_ent.insert(0, georgian_g_date[0])
+        georgian_g_month_ent.insert(0, georgian_g_date[1])
+        georgian_g_year_ent.insert(0, georgian_g_date[2])
+
+        # Convert a Julian day to a date in the revised Georgian calendar
+        georgian_c_date = georgian_c.fromjd(day)
+        georgian_c_day_ent.delete(0, END)
+        georgian_c_month_ent.delete(0, END)
+        georgian_c_year_ent.delete(0, END)
+        georgian_c_day_ent.insert(0, georgian_c_date[0])
+        georgian_c_month_ent.insert(0, georgian_c_date[1])
+        georgian_c_year_ent.insert(0, georgian_c_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1120,6 +1140,24 @@ def maya_converter():
         uinal = int(maya_uinal_ent.get())
         kin = int(maya_kin_ent.get())
         jday = maya.tojd(piktun, baktun, katun, tun, uinal, kin)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def georgian_g_converter():
+        day = int(georgian_g_day_ent.get())
+        month = georgian_g_month_ent.get()
+        year = int(georgian_g_year_ent.get())
+        jday = georgian_g.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def georgian_c_converter():
+        day = int(georgian_c_day_ent.get())
+        month = georgian_c_month_ent.get()
+        year = int(georgian_c_year_ent.get())
+        jday = georgian_c.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1838,9 +1876,35 @@ maya_kin_ent.grid(row = 50, column = 5, sticky = W)
 
 maya_bttn = Button(frame, text = "Calculate", command = maya_converter).grid(row = 51, column = 0, columnspan = 5, sticky = W)
 
+# Revised Georgian calendar
+georgian_c_lbl = Label(frame, text = "Georgian calendar (Georgian era)").grid(row = 48, column = 6, columnspan = 3, sticky = W)
+georgian_c_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 6, sticky = W)
+georgian_c_day_ent = Entry(frame)
+georgian_c_day_ent.grid(row = 50, column = 6, sticky = W)
+georgian_c_month_lbl = Label(frame, text = "Month").grid(row = 49, column = 7, sticky = W)
+georgian_c_month_ent = Entry(frame)
+georgian_c_month_ent.grid(row = 50, column = 7, sticky = W)
+georgian_c_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 8, sticky = W)
+georgian_c_year_ent = Entry(frame)
+georgian_c_year_ent.grid(row = 50, column = 8, sticky = W)
+georgian_c_bttn = Button(frame, text = "Calculate", command = georgian_c_converter).grid(row = 51, column = 6, columnspan = 3, sticky = W)
+
+# Original Georgian calendar
+georgian_g_lbl = Label(frame, text = "Georgian calendar (Christian era)").grid(row = 48, column = 9, columnspan = 3, sticky = W)
+georgian_g_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 9, sticky = W)
+georgian_g_day_ent = Entry(frame)
+georgian_g_day_ent.grid(row = 50, column = 9, sticky = W)
+georgian_g_month_lbl = Label(frame, text = "Month").grid(row = 49, column = 10, sticky = W)
+georgian_g_month_ent = Entry(frame)
+georgian_g_month_ent.grid(row = 50, column = 10, sticky = W)
+georgian_g_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 11, sticky = W)
+georgian_g_year_ent = Entry(frame)
+georgian_g_year_ent.grid(row = 50, column = 11, sticky = W)
+georgian_g_bttn = Button(frame, text = "Calculate", command = georgian_g_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
 
 
 
 
-root.title("Calendar Converter 0.26.0")
+
+root.title("Calendar Converter 0.27.0")
 root.mainloop()
