@@ -867,3 +867,45 @@ https://www.uritours.com/blog/north-korea-juche-calendar/
 https://www.youngpioneertours.com/understanding-juche-calendar/
 http://wafflesatnoon.com/north-korea-calendar/
 https://en.wikipedia.org/wiki/North_Korean_calendar
+
+--------------
+INCA CALENDARS
+--------------
+
+The reckoning of time in Tiwantisuyu, also called the Inca Empire, is obscure and likely lost due to fact that the Andeans never developed writing . What they did have were khipus, devices which recorded data in the form of knots and colours in string, sometimes with cartouches attached to provide additional information. Alas, the knowledge of how to read teh khipus is itself lost due to suppression by the Spanish, and information found on the Internet is vague and contradictory. In attempting to work out the nature of the calendars used in Tiwantisuyu, I am relying primarily on Laurencich-Minelli, Laura & Magli, Giulio. (2008): A calendar Quipu of the early 17th century and its relationship with the Inca astronomy. Laurencich-Minelli and Magli analyse the Pachaquipu and correlate it with the Miccinelli documents to tease out the nature of the Inca calendars.
+
+The Incas appear to have used a purely solar calendar for agricultural purposes. Like the ancient Egyptian calendar, it consisted of twelve 30-day months plus five extra days. However, since the agricultural calendar was not the civil calendar, the Incas of Tiwantisuyu were under no obligation to keep the year to a particular length; based on the observation towers around Cuzco, it appears that the first day of the agricultural year was determined by astronomical observations. But which observations? Some sources suggest it began with the heliacal rising of the Pleiades, similar to how the Egyptian agricultural year began with the heliacal rising of Sirius. Other sources point to the summer solstice as the starting point, but Laurencich-Minelli and Magli argue that this was most likely an attempt by the Anonymous Chronicler to impose European calendrical ideas on the Tiwantisuyu system, either to make it easier for his king to understand or to facilitate the adoption of Christianity in Tiwantiduyu (or both) by putting Capac Raymi, the festival of the summer solstice, nest to the Julian New Year's Day. Based on the significance of Inti Raymi, the festival of the winter solstice, in the civil calendar, I suspect the agricultural calendar began on the northern solstice, and have used this convention in this converter.
+
+The civil year was a lunisolar calendar with some similarities to the old Babylonian calendar. Laurencich-Minelli and Magli argue that the Incas did not use the leap month convention seen in Middle Eastern calendars, but instead added extra days as needed to make up 365/6 in a calendar year; however, this gets hopelessly difficult to keep track of given that the civil year officially began on the last new moon before the northern solstice. It is possible that the Pachaquipu was intended to be used as both a lunar and solar calendar, depending on how one read it. In any case, I have decided to use the leap month convention which Laurencich-Minelli and Magli argue against on the grounds that it is simpler; if anyone can work out a clearer or more accurate picture of the Inca calendar, please let me know. Evidence from the Pachaquipu is that each month began on the sighting of the first crescent of the waxing moon. Some sources claim that the Incas also measured time by sidereal months; while sidereal months were certainly recorded, there is no evidence in the Pachaquipu that they factored into dating.
+
+As to the era, if the Incas had a single epoch like the Olmecs did, we don't know about it. It is entirely possible they simply went by how long the current sapa inca was in power, or perhaps they gave each year a name. But we need an epoch, and so I have chosen 1438 AD/817 AH as the era. This is the year Pachacútec officially ascended as sapa inca of the Kingdom of Cuzco, and it was under his reign that the kingdom conquered the surrounding lands to become the Empire of Tiwantisuyu, or the Inca Empire as the Spanish called it. More relevant to our purposes, he is traditionally held to have introduced Inti Raymi, to which the civil and agricultural years were anchored. English Wikipedia, citing a random web page, says this happened in 1412 AD/808 AH, which would be quite the feat considering he wasn't even born until 1418 AD/814 AH. Spanish Wikipedia places the first Inti Raymi in the 1430s AD, which is just about possible given that Pachacútec ascended the throne in 1438 AD. As such, the northern solstice of 1438 AD is our best bet.
+
+Sources (some of these are in Spanish):
+
+https://www.researchgate.net/publication/1906435_A_calendar_Quipu_of_the_early_17th_century_and_its_relationship_with_the_Inca_astronomy
+http://www.machupicchu-inca.com/inca-calendar.html
+http://www.gogeometry.com/incas/inca_calendar.htm
+https://www.kuodatravel.com/before-christmas-the-andean-celebrated-capac-raymi/
+https://globalvoices.org/2012/01/16/peru-capac-raymi-the-andean-christmas/
+https://www.worldhistory.biz/ancient-history/56365-inca-calendars.html
+https://www.britannica.com/topic/Inca-calendar
+http://amsacta.unibo.it/2350/7/Cap2.pdf
+http://cuzcoeats.com/days-of-the-andean-week/
+https://www.combonimissionaries.co.uk/index.php/2020/06/17/andean-calendar-the-celebration-of-the-sun/
+https://www.history.com/topics/south-america/inca
+https://en.wikipedia.org/wiki/Inca_Empire
+https://www.ducksters.com/history/inca/science_and_technology.php
+https://ancient-inca-empire.weebly.com/religious-festivals.html
+https://en.wikipedia.org/wiki/Inti_Raymi
+https://es.wikipedia.org/wiki/Inti_Raymi
+http://www.discover-peru.org/inti-raymi/
+https://www.classzone.com/books/en_espanol_shared/ML1/ML_1_Inti_Raymi/ml_1_inti_raymi.html
+https://www.cachilife.com/inti-raymi-peru-festival/
+https://es.wikipedia.org/wiki/Calendario_incaico
+https://es.wikipedia.org/wiki/Cápac_Raymi
+https://pueblosoriginarios.com/sur/andina/inca/calendario.html
+https://www.boletomachupicchu.com/astronomia-y-calendario-inca/
+https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/calendars-south-american-calendars
+https://en.wikipedia.org/wiki/Pachacuti
+https://es.wikipedia.org/wiki/Pachacútec
+https://www.cachilife.com/inti-raymi-peru-festival/

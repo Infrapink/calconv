@@ -360,6 +360,21 @@ Juche:
 * Sibil-wol
 * Sibi-wol
 
+Inca:
+* Intiraymipacha
+* Pachacyahuarllamapacha
+* Yapuypacha
+* Coyaraymipacha
+* Paramañaypacha
+* Ayamarcaypacha
+* Capacintiraymipacha
+* Huacapacha
+* Huarachicuypacha
+* Paraypacha
+* Rinrituccinapacha
+* Aymuraypacha
+* Intihuatapacyapanapacha (leap years only in the civil calendar)
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

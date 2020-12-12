@@ -54,6 +54,8 @@ import maya
 import georgian_g
 import georgian_c
 import juche
+import inca_lunar
+import inca_solar
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -599,13 +601,31 @@ def cons_day_julian_todate():
         georgian_c_year_ent.insert(0, georgian_c_date[2])
 
         # Convert a Julian day to a date in the Juche calendar
-        flarj_date = flarj.fromjd(day)
-        flarj_day_ent.delete(0, END)
-        flarj_month_ent.delete(0, END)
-        flarj_year_ent.delete(0, END)
-        flarj_day_ent.insert(0, flarj_date[0])
-        flarj_month_ent.insert(0, flarj_date[1])
-        flarj_year_ent.insert(0, flarj_date[2])
+        juche_date = juche.fromjd(day)
+        juche_day_ent.delete(0, END)
+        juche_month_ent.delete(0, END)
+        juche_year_ent.delete(0, END)
+        juche_day_ent.insert(0, juche_date[0])
+        juche_month_ent.insert(0, juche_date[1])
+        juche_year_ent.insert(0, juche_date[2])
+
+        # Convert a Julian day to a date in the Inca civil calendar
+        inca_lunar_date = inca_lunar.fromjd(day)
+        inca_lunar_day_ent.delete(0, END)
+        inca_lunar_month_ent.delete(0, END)
+        inca_lunar_year_ent.delete(0, END)
+        inca_lunar_day_ent.insert(0, inca_lunar_date[0])
+        inca_lunar_month_ent.insert(0, inca_lunar_date[1])
+        inca_lunar_year_ent.insert(0, inca_lunar_date[2])
+
+         # Convert a Julian day to a date in the Inca agricultural calendar
+        inca_solar_date = inca_solar.fromjd(day)
+        inca_solar_day_ent.delete(0, END)
+        inca_solar_month_ent.delete(0, END)
+        inca_solar_year_ent.delete(0, END)
+        inca_solar_day_ent.insert(0, inca_solar_date[0])
+        inca_solar_month_ent.insert(0, inca_solar_date[1])
+        inca_solar_year_ent.insert(0, inca_solar_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1172,11 +1192,29 @@ def georgian_c_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def flarj_converter():
-        day = int(flarj_day_ent.get())
-        month = flarj_month_ent.get()
-        year = int(flarj_year_ent.get())
-        jday = flarj.tojd(day, month, year)
+def juche_converter():
+        day = int(juche_day_ent.get())
+        month = juche_month_ent.get()
+        year = int(juche_year_ent.get())
+        jday = juche.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def inca_lunar_converter():
+        day = int(inca_lunar_day_ent.get())
+        month = inca_lunar_month_ent.get()
+        year = int(inca_lunar_year_ent.get())
+        jday = inca_lunar.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def inca_solar_converter():
+        day = int(inca_solar_day_ent.get())
+        month = inca_solar_month_ent.get()
+        year = int(inca_solar_year_ent.get())
+        jday = inca_solar.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1922,21 +1960,47 @@ georgian_g_year_ent.grid(row = 50, column = 11, sticky = W)
 georgian_g_bttn = Button(frame, text = "Calculate", command = georgian_g_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
 
 # Juche calendar
-flarj_lbl = Label(frame, text = "Juche calendar").grid(row = 48, column = 12, columnspan = 3, sticky = W)
-flarj_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 12, sticky = W)
-flarj_day_ent = Entry(frame)
-flarj_day_ent.grid(row = 50, column = 12, sticky = W)
-flarj_month_lbl = Label(frame, text = "Month").grid(row = 48, column = 13, sticky = W)
-flarj_month_ent = Entry(frame)
-flarj_month_ent.grid(row = 50, column = 13, sticky = W)
-flarj_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 14, sticky = W)
-flarj_year_ent = Entry(frame)
-flarj_year_ent.grid(row = 50, column = 14, sticky = W)
-flarj_bttn = Button(frame, text = "Calculate", command = flarj_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
+juche_lbl = Label(frame, text = "Juche calendar").grid(row = 48, column = 12, columnspan = 3, sticky = W)
+juche_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 12, sticky = W)
+juche_day_ent = Entry(frame)
+juche_day_ent.grid(row = 50, column = 12, sticky = W)
+juche_month_lbl = Label(frame, text = "Month").grid(row = 48, column = 13, sticky = W)
+juche_month_ent = Entry(frame)
+juche_month_ent.grid(row = 50, column = 13, sticky = W)
+juche_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 14, sticky = W)
+juche_year_ent = Entry(frame)
+juche_year_ent.grid(row = 50, column = 14, sticky = W)
+juche_bttn = Button(frame, text = "Calculate", command = juche_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
 
 
 
+# Inca civil calendar                                                                                            
+inca_lunar_lbl = Label(frame, text = "Inca civil calendar (tentative)").grid(row = 53, column = 0, columnspan = 3, sticky = W)
+inca_lunar_day_lbl = Label(frame, text = "Day").grid(row = 54, column = 0, sticky = W)
+inca_lunar_day_ent = Entry(frame)
+inca_lunar_day_ent.grid(row = 55, column = 0, sticky = W)
+inca_lunar_month_lbl = Label(frame, text = "Month").grid(row = 54, column = 1, sticky = W)
+inca_lunar_month_ent = Entry(frame)
+inca_lunar_month_ent.grid(row = 55, column = 1, sticky = W)
+inca_lunar_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 2, sticky = W)
+inca_lunar_year_ent = Entry(frame)
+inca_lunar_year_ent.grid(row = 55, column = 2, sticky = W)
+inca_lunar_bttn = Button(frame, text = "Calculate", command = inca_lunar_converter).grid(row = 56, column = 0, columnspan = 3, sticky = W)
+
+# inca_solar calendar
+inca_solar_lbl = Label(frame, text = "Inca agricultural calendar (tentative)").grid(row = 53, column = 3, columnspan = 3, sticky = W)
+inca_solar_day_lbl = Label(frame, text = "Day").grid(row = 54, column = 3, sticky = W)
+inca_solar_day_ent = Entry(frame)
+inca_solar_day_ent.grid(row = 55, column = 3, sticky = W)
+inca_solar_month_lbl = Label(frame, text = "Month").grid(row = 54, column = 4, sticky = W)
+inca_solar_month_ent = Entry(frame)
+inca_solar_month_ent.grid(row = 55, column = 4, sticky = W)
+inca_solar_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 5, sticky = W)
+inca_solar_year_ent = Entry(frame)
+inca_solar_year_ent.grid(row = 55, column = 5, sticky = W)
+inca_solar_bttn = Button(frame, text = "Calculate", command = inca_solar_converter).grid(row = 56, column = 3, columnspan = 3, sticky = W)
 
 
-root.title("Calendar Converter 0.28.0")
+
+root.title("Calendar Converter 0.29.0")
 root.mainloop()
