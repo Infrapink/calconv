@@ -53,6 +53,7 @@ import fixed_babylonian
 import maya
 import georgian_g
 import georgian_c
+import juche
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -596,6 +597,15 @@ def cons_day_julian_todate():
         georgian_c_day_ent.insert(0, georgian_c_date[0])
         georgian_c_month_ent.insert(0, georgian_c_date[1])
         georgian_c_year_ent.insert(0, georgian_c_date[2])
+
+        # Convert a Julian day to a date in the Juche calendar
+        flarj_date = flarj.fromjd(day)
+        flarj_day_ent.delete(0, END)
+        flarj_month_ent.delete(0, END)
+        flarj_year_ent.delete(0, END)
+        flarj_day_ent.insert(0, flarj_date[0])
+        flarj_month_ent.insert(0, flarj_date[1])
+        flarj_year_ent.insert(0, flarj_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1158,6 +1168,15 @@ def georgian_c_converter():
         month = georgian_c_month_ent.get()
         year = int(georgian_c_year_ent.get())
         jday = georgian_c.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def flarj_converter():
+        day = int(flarj_day_ent.get())
+        month = flarj_month_ent.get()
+        year = int(flarj_year_ent.get())
+        jday = flarj.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1902,9 +1921,22 @@ georgian_g_year_ent = Entry(frame)
 georgian_g_year_ent.grid(row = 50, column = 11, sticky = W)
 georgian_g_bttn = Button(frame, text = "Calculate", command = georgian_g_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
 
+# Juche calendar
+flarj_lbl = Label(frame, text = "Juche calendar").grid(row = 48, column = 12, columnspan = 3, sticky = W)
+flarj_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 9, sticky = W)
+flarj_day_ent = Entry(frame)
+flarj_day_ent.grid(row = 50, column = 9, sticky = W)
+flarj_month_lbl = Label(frame, text = "Month").grid(row = 48, column = 10, sticky = W)
+flarj_month_ent = Entry(frame)
+flarj_month_ent.grid(row = 50, column = 10, sticky = W)
+flarj_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 11, sticky = W)
+flarj_year_ent = Entry(frame)
+flarj_year_ent.grid(row = 50, column = 11, sticky = W)
+flarj_bttn = Button(frame, text = "Calculate", command = flarj_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
 
 
 
 
-root.title("Calendar Converter 0.27.0")
+
+root.title("Calendar Converter 0.28.0")
 root.mainloop()

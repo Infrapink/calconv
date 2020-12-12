@@ -346,6 +346,20 @@ Georgian calendar (Georgian Era)
 * Matthias
 * Paul
 
+Juche:
+* Il-wol
+* I-wol
+* Sam-wol
+* Sa-wol
+* O-wol
+* Yu-wol
+* Chil-wol
+* Pal-wol
+* Gu-wol
+* Si-wol
+* Sibil-wol
+* Sibi-wol
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

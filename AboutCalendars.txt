@@ -852,3 +852,18 @@ The calendar is intended to begin on the southern solstice, with the epoch falli
 In 1753, Jones published The Pancronometer, or Univesal Georgian Calendar, a pamphlet in which he set out a new version of the Georgian calendar. The structure is the same, but this version's epoch is Julian Day 2362414, corresponding to 10 December 1755 in the Julian calendar; thus, like the French Republican calendar, it would represent a clean break and the start of a new era. In this version, the months are all named after Christian saints.
 
 http://myweb.ecu.edu/mccartyr/hirossa.html
+
+--------------
+JUCHE CALENDAR
+--------------
+
+The Juche calendar is another variant of the Gregorian calendar, used exclusively in North Korea. Its epoch is 1 January 1912 AD, the year Kim Il-sung was born. It was implemented in 1997, three years after Kim's death, and prior year numbers retroactively changed. All official North Korean records and correspondence use Juche, but usually include the Gregorian year as well for convenience.
+
+For years prior to Juche 1, North Korean records simply use the Gregorian date; for date ranges which cross the Juche epoch, Gregorian dates are used exclusively. But that's boring, so I decided to implement it as if the Juche calendar was proleptic. (It will still give the correct date correspondence for any legitimate Juche date).
+
+http://world.clndr.org/calendars/Juche-calendar
+https://koryogroup.com/blog/what-year-is-it-in-north-korea-understanding-the-juche-calendar
+https://www.uritours.com/blog/north-korea-juche-calendar/
+https://www.youngpioneertours.com/understanding-juche-calendar/
+http://wafflesatnoon.com/north-korea-calendar/
+https://en.wikipedia.org/wiki/North_Korean_calendar
