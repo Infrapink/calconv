@@ -1923,15 +1923,15 @@ georgian_g_bttn = Button(frame, text = "Calculate", command = georgian_g_convert
 
 # Juche calendar
 flarj_lbl = Label(frame, text = "Juche calendar").grid(row = 48, column = 12, columnspan = 3, sticky = W)
-flarj_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 9, sticky = W)
+flarj_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 12, sticky = W)
 flarj_day_ent = Entry(frame)
-flarj_day_ent.grid(row = 50, column = 9, sticky = W)
-flarj_month_lbl = Label(frame, text = "Month").grid(row = 48, column = 10, sticky = W)
+flarj_day_ent.grid(row = 50, column = 12, sticky = W)
+flarj_month_lbl = Label(frame, text = "Month").grid(row = 48, column = 13, sticky = W)
 flarj_month_ent = Entry(frame)
-flarj_month_ent.grid(row = 50, column = 10, sticky = W)
-flarj_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 11, sticky = W)
+flarj_month_ent.grid(row = 50, column = 13, sticky = W)
+flarj_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 14, sticky = W)
 flarj_year_ent = Entry(frame)
-flarj_year_ent.grid(row = 50, column = 11, sticky = W)
+flarj_year_ent.grid(row = 50, column = 14, sticky = W)
 flarj_bttn = Button(frame, text = "Calculate", command = flarj_converter).grid(row = 51, column = 9, columnspan = 3, sticky = W)
 
 
