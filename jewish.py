@@ -224,6 +224,10 @@ def fromjd(jday):
 
         current = False
 
+        cycles = (jday - hashanah) // cycle19
+        year = 19 * cycles
+        hashanah += (cycles * cycle19)
+
         while current == False:
             year += 1
             if year % 19 in leap_years_am:
@@ -231,7 +235,7 @@ def fromjd(jday):
             else:
                 y = yearlen12
                 
-            if jday - hashanah < y:
+            if int(hashanah + y) > jday:
                 current = True
             else:
                 hashanah += y
@@ -252,7 +256,7 @@ def fromjd(jday):
         next_rosh = int(next_hashanah)
         next_molad = next_hashanah % 1
         next_r1 = False
-
+        
         # Rule 1: If the molad of Tishri falls after noon, postpone Rosh Hashanah
         if molad > Fraction(3,4): # noon comes 3/4 of the way through a standard Hebrew day
             rosh += 1
