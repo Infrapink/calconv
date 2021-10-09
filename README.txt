@@ -2,9 +2,36 @@ This is calconv, a program to convert between various calendars. It's my first r
 
 REQUIREMENTS
 
-To run calconv, you must have the Python programming language and the Tkinter toolkit installed. If you're running a Unix or Unix-like operating system, they probably came with your OS. If not, they should be available through your package manager (called an "app store" on Mac and Windows). If you can't find it in your package manager, you can download it from the following link:
+calconv is written mostly in Python 3, and uses Fortran for some of the more intense number crunching. It uses NumPy's f2py module to all Python scripts to interface with Fortran binaries, and the Tkinter toolkit to generate the GUI. Due to issues with f2py, I can't guarantee that calconv will run properly on Microsoft Windows.
 
-https://www.python.org/downloads/release/python-383/
+The specific programs you will need to compile and run calconv are:
+* A Python 3 interpreter. This comes as standard with Linux, BSD, and I believe Mac.
+* The NumPy library. The Anaconda Python distribution comes with NumPy built in.
+* The Tkinter library
+* A Fortran compiler. The standard Fortran compiler on Unix-like operating systems is gfortran; on Windows, ifort is more common, but my Fortran makes use of features which ifort might not include
+
+All these components should be available through your package manager (called an "app store" on Mac and Windows). If you do not wish to use a graphical program to install everything, you can enter the following commands on the command line in Linux:
+
+Arch (Chakra, Manjaro):
+$ sudo pacman -Syu python tk python-numpy gcc-fortran
+
+Debian (Ubuntu, Mint):
+$ sudo apt-get install python3 python3-tk python3-numpy gfortran
+
+Fedora (CentOS, Red Hat Enterprise Linux, PCLinuxOS):
+$ sudo dnf install python3 python3-tk python3-numpy gcc-gfortran
+
+Windows users can download the components from the following links:
+* Python (including NumPy and Tk): https://www.anaconda.com/products/individual
+* gfortran: http://www.equation.com/servlet/equation.cmd?fa=fortran
+
+COMPILING
+
+Before you can run calconv, you will need to compile the Fortran code. In the command line, navigate to the folder where you unpacked the source code (which should be the one containing this Readme file) and type the following:
+
+gfortran -c sunmoon.f90 -m sunmoon
+
+(This only needs to be done once)
 
 RUNNING
 
@@ -86,7 +113,7 @@ Egyptian Calendar:
 * Mesore
 * Extra days
 
-Lunar Hijri Tabular Islamic, and Pre-Islamic Arab calendars:
+Lunar Hijri, Tabular Islamic, and Pre-Islamic Arab calendars:
 * Muharram
 * Safar
 * Rabi' al-awwal
@@ -160,7 +187,7 @@ Babylonian Calendars:
 * Addaru
 * Addaru Arku (leap years only)
 
-Hebrew and Samaritan calendars:
+Hebrew (Jewish and Samaritan) calendars:
 * Tishrei
 * Marcheshvan
 * Kislev
@@ -177,8 +204,8 @@ Hebrew and Samaritan calendars:
 
 (Note: Everyone else lists Nisan as the first month of the year, and Adar/Veadar as the last. This is for Jewish
 cultural reasons; however, Tishrei is the first month of the civil Hebrew calendar, as it is on 1 Tishrei
-that theyear number increments. I have listed the months in this order to avoid confusion. Nisan is the first
-mont of the year in the Samaritan calendar).
+that the year number increments. I have listed the months in this order to avoid confusion. Nisan is the first
+month of the year in the Samaritan and Karaite calendars).
 
 Kurdish calendar:
 * Jejhnan
@@ -360,6 +387,37 @@ Juche:
 * Sibil-wol
 * Sibi-wol
 
+Inca:
+* Intiraymipacha
+* Pachacyahuarllamapacha
+* Yapuypacha
+* Coyaraymipacha
+* Paramañaypacha
+* Ayamarcaypacha
+* Capacintiraymipacha
+* Huacapacha
+* Huarachicuypacha
+* Paraypacha
+* Rinrituccinapacha
+* Aymuraypacha
+* Intihuatapacyapanapacha (leap years only in the civil calendar)
+
+Chinese lunisolar calendars
+* Zhēngyuè
+* Èryuè
+* Sānyuè
+* Sìyuè
+* Wǔyuè
+* Liùyuè
+* Qīyuè
+* Bāyuè
+* Jiǔyuè
+* Shíyuè
+* Shíyīyuè
+* Làyuè
+
+To get the leap month in the Chinese lunisolar calendar, precede it with "Rùn", for example "Rùn Zhēngyuè". In the Chinese lunisolar calendar, the leap month can occur anywhere in the year. For this reason, if a leap month is specified in a non-leap year, the algorithm assumes the user means the corresponding regular month; conversely, if an incorrect leap month is specified in a leap year, the algorithm assumes that the user means the actual leap month.
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -395,3 +453,6 @@ Add the following calendars:
 * Tibetan
 * Julian Period
 * Muisca
+* Mandean (Reingold and Dershowitz, p 129)
+* Pawukon
+* Akan

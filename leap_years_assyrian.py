@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 # This is a list of leap years for the Assyrian calendar, gathered her to make the main code neater.
 

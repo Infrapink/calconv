@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 #
 # Convert between the Solar Hijri calendar and Julian DAy
@@ -130,8 +130,8 @@ def fromjd(jday):
                 nextnowruz = floor(nexteq) + 1
             
     m = YEARTYPE[nextnowruz - nowruz]
-    
     delta = jday - nowruz
+
     for i in m.keys():
         if delta < m[i]:
             month = i

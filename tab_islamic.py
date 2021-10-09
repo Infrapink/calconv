@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ##
 ## Conveart between Lunar Hijri calendar and Julian Day.

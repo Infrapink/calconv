@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 #
 # Convert between the Solar Hijri calendar and Julian DAy

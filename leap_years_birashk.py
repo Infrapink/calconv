@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 ##
 ## Leap years in Ahmad Birashk's calendar, for use in the Birashk algorithm

@@ -909,3 +909,44 @@ https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-
 https://en.wikipedia.org/wiki/Pachacuti
 https://es.wikipedia.org/wiki/Pachacútec
 https://www.cachilife.com/inti-raymi-peru-festival/
+
+-----------------
+CHINESE CALENDARS
+-----------------
+
+A variety of calendars have been used in China throughout history, which have influenced the calendars of the surrounding countries where they were not adopted wholesale.
+
+A feature peculiar to the Chinese calendars is the solar term, or jiéqì, which is key to determining dates. Solar terms are a generalisaton of the concepts of solstices and equinoxes, and divides the ecliptic into 24 equal sections of 15º, anchored on the southern solstice (known as Dōngzhì). 12 of the solar terms are termed major solar terms (zhōngqì), four of which begin on the solstices and equinoxes; the other 12 are known as minor solar terms. Minor and major solar terms alternate through the year.
+
+There is evidence that the earliest Chinese calendars were purely solar, beginning on either the date of the southern solstice or the first of Lìchūn. The modern calendar consists of 12 lunar months, making the Chinese calendar an oddity in having gone from purely solar to lunisolar when the general trend is to do the opposite.
+
+Days in the Chinese calendars start at midnight. Each solar term begins on the day when the sun crosses that part of the ecliptic, regardless of when in the day that happens. For example, if the sun crosses 330º at 23:59 on 19 February, then Yǔshuı̌ begins on 19 February. Likewise, each month begins on the day of the new moon, regardless of when in the day the new moon actually happens. Rather than maintain seperate calendars for every single timezone, overseas Chinese consider the months and solar terms to begin on the dates they do according to Chinese standard time, a convention also used by this converter.
+
+The calendar is designed so that the southern solstice will always fall on a day during Shíyīyuè, the eleventh month of the year. The leap month can fall at any point in the year; if there are 12 complete lunations between the end of one Shíyīyuè and the start of the next, the first of these lunations to begin after the start of one major solar term and finish before the beginning of the next major solar term is the leap month. The leap month shares its number with that of the month preceding it, which allows the southern solstice to still fall in the eleventh month. In most cases, the leap month also shares it sname with the preceding month, differentiated by the addition of "Rùn" (for "extra") prior to the month name. The exception is if the leap month follows the 12th month; in this case, the leap month, being the final month of the year, is called "Làyuè", while the 12th month is called "Shíèryuè" ("12th moon").
+
+Older versions of the calendar assigned leap months according to the Metonic cycle, whereby there are seven leap years according to a fixed 19-year cycle. It also used mean values for the positions of the sun and the moon, which meant that the leap month could fall anywhere in the year with equal probability. In the early 17th century, Jesuit missionaries introduced new astronomical and mathematical tools, most notably logarithms, which made calculations much easier. Since then, months and solar terms have been determined by observation, which meant that to make this converter work, I had to write a Fortran module to do some serious number crunching.
+
+For most of history, the Chinese calendar did not make use of any for of calendar era, instead simply referring to years by the reigning emperor. In the early 20th century, Liu Shipei took inspiration from the Western practices of dating events based on Jesus and Muhammad, and proposed dating events from the reign of Emperor /Huangdi, or the Yellow Emperor, the legendary first Emperor of China, as part of a scheme to promote Han nationalism and oppose the Manchu Qing social order. Other proposals for a Chinese era include basing the year on Confucious, due to his profound influence on Chinese culture; Emperor Qin Shi Huang, for first uniting China and indeed introducing the very idea of Chinsa; the Gonghe Regency, as this is the earliest point in Chinese history for which a definitive date can be assigned; and Emperor Yao, considered to be the model of the ideal monarch. King Fuxi, the mythological first king of China, has also been proposed, but reliable information on him is so scarce it's not even certain whether he really existed.
+
+Sources:
+* https://en.wikipedia.org/wiki/Chinese_calendar
+* https://en.wikipedia.org/wiki/Chinese_New_Year
+* https://en.wikipedia.org/wiki/Solar_term
+* https://www.chinesecalendaronline.com
+* https://chinese-year.com
+* https://chinesenewyear.net/
+* https://www.almanac.com/content/chinese-new-year-chinese-zodiac
+* https://www.almanac.com/fact/chinese-new-year-the-new-year-is-holiday
+* http://www.chinesenewyears.info/chinese-new-year-calendar.php
+* https://www.travelchinaguide.com/intro/1985-chinese-zodiac-ox-year.htm
+* http://www.cma.gov.cn/en2014/20150311/20170119/201701/t20170119_388239.html
+* https://www.chineseastrologyonline.com/chinesezodiac/
+* http://en.nongli.info/years/index.php?year=1985
+* https://www.teasetc.com/education/chinese-lunar-new-year-calendar-and-zodiac-animals
+* https://www.hko.gov.hk/en/gts/time/calendar/pdf/files/1985e.pdf
+* https://www.hko.gov.hk/en/gts/time/24solarterms.htm
+* https://www.friesian.com/chinacal.htm
+* https://www.weather.gov/media/ind/seasons.pdf
+* https://www.calendar-12.com/moon_phases/1985
+* https://www.mastertsai.com/ChineseCalendar/The_Mathematics_of_the_Chinese_Calendar.pdf
+* https://www2.ihp.sinica.edu.tw/file/1097kaBVwNb.pdf

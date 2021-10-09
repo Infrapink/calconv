@@ -1,0 +1,34 @@
+        # Convert a Julian day to a date in the Flarj calendar
+        flarj_date = flarj.fromjd(day)
+        flarj_day_ent.delete(0, END)
+        flarj_month_ent.delete(0, END)
+        flarj_year_ent.delete(0, END)
+        flarj_day_ent.insert(0, flarj_date[0])
+        flarj_month_ent.insert(0, flarj_date[1])
+        flarj_year_ent.insert(0, flarj_date[2])
+
+
+
+def flarj_converter():
+        day = int(flarj_day_ent.get())
+        month = flarj_month_ent.get()
+        year = int(flarj_year_ent.get())
+        jday = flarj.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+
+
+# Flarj calendar                                                                                            
+flarj_lbl = Label(frame, text = "Flarj calendar").grid(row = 33, column = 0, columnspan = 3, sticky = W)
+flarj_day_lbl = Label(frame, text = "Day").grid(row = 34, column = 0, sticky = W)
+flarj_day_ent = Entry(frame)
+flarj_day_ent.grid(row = 35, column = 0, sticky = W)
+flarj_month_lbl = Label(frame, text = "Month").grid(row = 34, column = 1, sticky = W)
+flarj_month_ent = Entry(frame)
+flarj_month_ent.grid(row = 35, column = 1, sticky = W)
+flarj_year_lbl = Label(frame, text = "Year").grid(row = 34, column = 2, sticky = W)
+flarj_year_ent = Entry(frame)
+flarj_year_ent.grid(row = 35, column = 2, sticky = W)
+flarj_bttn = Button(frame, text = "Calculate", command = flarj_converter).grid(row = 36, column = 0, columnspan = 3, sticky = W)

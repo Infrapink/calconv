@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 #
 # Convert between the Inca civil calendar and Julian Day
@@ -116,7 +116,6 @@ def fromjd(jday):
     else:
         # negative dates
         while ceil(raymi) > jday:
-            print(int(raymi))
             year -= 1
             equinox -= eqlen
 

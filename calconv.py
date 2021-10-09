@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
 from tkinter import *
 from tkinter import ttk
@@ -56,6 +56,7 @@ import georgian_c
 import juche
 import inca_lunar
 import inca_solar
+import chinese_lunisolar_huangdi
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -618,7 +619,7 @@ def cons_day_julian_todate():
         inca_lunar_month_ent.insert(0, inca_lunar_date[1])
         inca_lunar_year_ent.insert(0, inca_lunar_date[2])
 
-         # Convert a Julian day to a date in the Inca agricultural calendar
+        # Convert a Julian day to a date in the Inca agricultural calendar
         inca_solar_date = inca_solar.fromjd(day)
         inca_solar_day_ent.delete(0, END)
         inca_solar_month_ent.delete(0, END)
@@ -626,6 +627,15 @@ def cons_day_julian_todate():
         inca_solar_day_ent.insert(0, inca_solar_date[0])
         inca_solar_month_ent.insert(0, inca_solar_date[1])
         inca_solar_year_ent.insert(0, inca_solar_date[2])
+
+        # Convert a Julian day to a date in the Chinese lunisolar calendar (Huangdi era)
+        chinese_lunisolar_huangdi_date = chinese_lunisolar_huangdi.fromjd(day)
+        chinese_lunisolar_huangdi_day_ent.delete(0, END)
+        chinese_lunisolar_huangdi_month_ent.delete(0, END)
+        chinese_lunisolar_huangdi_year_ent.delete(0, END)
+        chinese_lunisolar_huangdi_day_ent.insert(0, chinese_lunisolar_huangdi_date[0])
+        chinese_lunisolar_huangdi_month_ent.insert(0, chinese_lunisolar_huangdi_date[1])
+        chinese_lunisolar_huangdi_year_ent.insert(0, chinese_lunisolar_huangdi_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1215,6 +1225,15 @@ def inca_solar_converter():
         month = inca_solar_month_ent.get()
         year = int(inca_solar_year_ent.get())
         jday = inca_solar.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def chinese_lunisolar_huangdi_converter():
+        day = int(chinese_lunisolar_huangdi_day_ent.get())
+        month = chinese_lunisolar_huangdi_month_ent.get()
+        year = int(chinese_lunisolar_huangdi_year_ent.get())
+        jday = chinese_lunisolar_huangdi.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -1964,7 +1983,7 @@ juche_lbl = Label(frame, text = "Juche calendar").grid(row = 48, column = 12, co
 juche_day_lbl = Label(frame, text = "Day").grid(row = 49, column = 12, sticky = W)
 juche_day_ent = Entry(frame)
 juche_day_ent.grid(row = 50, column = 12, sticky = W)
-juche_month_lbl = Label(frame, text = "Month").grid(row = 48, column = 13, sticky = W)
+juche_month_lbl = Label(frame, text = "Month").grid(row = 49, column = 13, sticky = W)
 juche_month_ent = Entry(frame)
 juche_month_ent.grid(row = 50, column = 13, sticky = W)
 juche_year_lbl = Label(frame, text = "Year").grid(row = 49, column = 14, sticky = W)
@@ -1999,6 +2018,19 @@ inca_solar_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 5, sti
 inca_solar_year_ent = Entry(frame)
 inca_solar_year_ent.grid(row = 55, column = 5, sticky = W)
 inca_solar_bttn = Button(frame, text = "Calculate", command = inca_solar_converter).grid(row = 56, column = 3, columnspan = 3, sticky = W)
+
+# Chinese lunisolar calendar (Huangdi era)
+chinese_lunisolar_huangdi_lbl = Label(frame, text = "Flarj calendar").grid(row = 53, column = 6, columnspan = 3, sticky = W)
+chinese_lunisolar_huangdi_day_lbl = Label(frame, text = "Day").grid(row = 54, column = 6, sticky = W)
+chinese_lunisolar_huangdi_day_ent = Entry(frame)
+chinese_lunisolar_huangdi_day_ent.grid(row = 55, column = 6, sticky = W)
+chinese_lunisolar_huangdi_month_lbl = Label(frame, text = "Month").grid(row = 54, column = 7, sticky = W)
+chinese_lunisolar_huangdi_month_ent = Entry(frame)
+chinese_lunisolar_huangdi_month_ent.grid(row = 55, column = 7, sticky = W)
+chinese_lunisolar_huangdi_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 8, sticky = W)
+chinese_lunisolar_huangdi_year_ent = Entry(frame)
+chinese_lunisolar_huangdi_year_ent.grid(row = 55, column = 8, sticky = W)
+chinese_lunisolar_huangdi_bttn = Button(frame, text = "Calculate", command = chinese_lunisolar_huangdi_converter).grid(row = 56, column = 6, columnspan = 3, sticky = W)
 
 
 
