@@ -9,12 +9,8 @@
 # Someone, somewhere, has made an error, and I have no choice but to assume it's the first site.
 
 from fractions import Fraction
-from decimal import Decimal
 from math import floor
-
 from solun import conj, trans
-
-import gregorian
 
 MONTHS = ("Zhēngyuè", "Èryuè", "Sānyuè", "Sìyuè", "Wǔyuè", "Liùyuè", "Qīyuè", "Bāyuè", "Jiǔyuè", "Shíyuè", "Shíyīyuè", "Làyuè")
 
@@ -48,10 +44,10 @@ def fromjd(jday):
         orbits = (jday - solar_epoch) // solar_year
         solstice = solar_epoch + (solar_year * orbits)
         year = orbits + 1
-        while floor(trans((solstice + solar_year), 270, timezone)) <= jday:
+        while truesun((solstice + solar_year), 270) <= jday:
             solstice += solar_year
             year += 1
-        while floor(trans(solstice, 270, timezone)) > jday:
+        while truesun(solstice, 270) > jday:
             solstice -= solar_year
 
         lunations = (solstice - lunar_epoch) // lunar_month
