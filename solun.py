@@ -48,7 +48,7 @@ def truesun(day, angle, timezone):
     day = Fraction(day)
     angle = int(angle)
     timezone = Fraction(timezone)
-    return(floor(suntime(day, angle, timezone)))
+    return(floor(trans(day, angle, timezone)))
 
 def truemoon(day, timezone):
     day = Fraction(day)
