@@ -1,34 +1,34 @@
 #!/usr/bin/python3
 
-# Convert between the old Chinese calendar (Unity era) and Julian Day.
+# Convert between the old Chinese calendar (Huangdi era) and Julian Day.
 
-from fractions import *
+from fractions import Fraction
 from math import floor
+from months import JIEQI, SOLAR_TERMS
+from solun import truesun
 
-solar_year = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-solar_term = Fraction(solar_year,24)
-
-SOLAR_TERMS = ("Lìchūn", "Yǔshuı̌", "Jı̄ngzhé", "Chūnfēn", "Qı̄ngmíng", "Gǔyǔ", "Lìxià", "Xiǎomǎn", "Mángzhòng", "Xiàzhì", "Xiǎoshǔ", "Dàshǔ", "Lìqiū", "Chǔshǔ", "Báilù", "Qiūfēn", "Hánlù", "Shuāngjiàng", "Lìdōng", "Xiǎoxuě", "Dàxuě", "Dōngzhì", "Xiǎohán", "Dàhán")
-
-solstice = Fraction(141756192757, 86400) + Fraction(8,24) # Southern solstice of 1 Anno Qin = 23 December 2699 BC = 30 Azar 3320 BH, with correction for Chinese Standard Time
-epoch = solstice + (3 * solar_term) # moment when Lìchūn officially starts
+solar_year = 365 + Fraction(5,24) + Fraction(49,1440) + Fraction(328,864000)
+solar_term = solar_year / 24
+solstice = Fraction(708780574297, 432000) # instant of the southern solstice preceding the first year of the reign of Emperor Qin Shi Huangdi, GMT.
+epoch = solstice + (3 * solar_term)
+timezone = Fraction(8,24)
 
 def tojd(day, st, year):
     day = int(day)
-    st = st
+    st = str(st)
     year = int(year)
 
     if year > 0:
         # positive years
-        jday = epoch + (solar_year * year)
+        jday = epoch + (solar_year * (year - 1))
 
     else:
         # negative years
         jday = epoch + (year * solar_year)
 
-    for s in SOLAR_TERMS:
+    for s in JIEQI.keys():
         if s == st:
-            jday = floor(jday) + day - 1
+            jday = truesun(jday, JIEQI[s], timezone) + day - 1
             break
         else:
             jday += solar_term
@@ -41,29 +41,34 @@ def fromjd(jday):
     st = ""
     year = 0
 
-    if jday >= int(epoch):
+    if jday >= truesun(epoch + (3 * solar_term), 315, timezone):
         # positive dates
-        year = ((jday - epoch) // solar_year)# + 1
-        xin = epoch + (year * solar_year)
-        while jday > int(xin + solar_year):
+        orbits = ((jday - epoch) // solar_year)
+        dongzhi = solstice + (orbits * solar_year)
+        year = orbits + 1
+        xin = dongzhi + (3 * solar_term)
+        while jday >= truesun(xin + solar_year, 315, timezone):
             year += 1
             xin += solar_year
+
 
     else:
         # negative dates
         year = 0 - ((epoch - jday) // solar_year)
-        xin = epoch + (year * solar_year)
-        while jday < floor(xin):
+        dongzhi = solstice + (year * solar_year)
+        xin = dongzhi + (3 * solar_term)
+        while jday < truesun(xin, 315, timezone):
             year -= 1
             xin -= solar_year
 
     term = xin
-    for s in SOLAR_TERMS:
-        if floor(term + solar_term) > jday:
-            st = s
-            day = jday - floor(term) + 1
-            break
-        else:
-            term += solar_term
+    angle = 315
+
+    while truesun((term + solar_term), ((angle + 15) % 360), timezone) <= jday:
+        term += solar_term
+        angle = (angle + 15) % 360
+
+    st = SOLAR_TERMS[angle]
+    day = jday - truesun(term, angle, timezone) + 1    
 
     return(day, st, year)

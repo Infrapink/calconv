@@ -13,12 +13,15 @@ The specific programs you will need to compile and run calconv are:
 All these components should be available through your package manager (called an "app store" on Mac and Windows). If you do not wish to use a graphical program to install everything, you can enter the following commands on the command line in Linux:
 
 Arch (Chakra, Manjaro):
+
 $ sudo pacman -Syu python tk python-numpy gcc-fortran
 
 Debian (Ubuntu, Mint):
+
 $ sudo apt-get install python3 python3-tk python3-numpy gfortran
 
 Fedora (CentOS, Red Hat Enterprise Linux, PCLinuxOS):
+
 $ sudo dnf install python3 python3-tk python3-numpy gcc-gfortran
 
 Windows users can download the components from the following links:
@@ -402,7 +405,7 @@ Inca:
 * Aymuraypacha
 * Intihuatapacyapanapacha (leap years only in the civil calendar)
 
-Chinese lunisolar calendars
+Chinese lunisolar calendars:
 * Zhēngyuè
 * Èryuè
 * Sānyuè
@@ -417,6 +420,33 @@ Chinese lunisolar calendars
 * Làyuè
 
 To get the leap month in the Chinese lunisolar calendar, precede it with "Rùn", for example "Rùn Zhēngyuè". In the Chinese lunisolar calendar, the leap month can occur anywhere in the year. For this reason, if a leap month is specified in a non-leap year, the algorithm assumes the user means the corresponding regular month; conversely, if an incorrect leap month is specified in a leap year, the algorithm assumes that the user means the actual leap month.
+
+Chinese solar calendars:
+* Lìchūn
+* Yǔshuı̌
+* Jı̄ngzhé
+* Chūnfēn
+* Qı̄ngmíng
+* Gǔyǔ
+* Lìxià
+* Xiǎomǎn
+* Mángzhòng
+* Xiàzhì
+* Xiǎoshǔ
+* Dàshǔ
+* Lìqiū
+* Chǔshǔ
+* Báilù
+* Qiūfēn
+* Hánlù
+* Shuāngjiàng
+* Lìdōng
+* Xiǎoxuě
+* Dàxuě
+* Dōngzhì
+* Xiǎohán
+* Dàhán
+
 
 LICENSE
 
