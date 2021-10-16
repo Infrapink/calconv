@@ -447,6 +447,20 @@ Chinese solar calendars:
 * Xiǎohán
 * Dàhán
 
+Zhou calendar:
+* Dōngyuè
+* Bīngyuè
+* Zōuyuè
+* Xìngyuè
+* Táoyuè
+* Méiyuè
+* Liúyuè
+* Héyuè
+* Lányuè
+* Guìyuè
+* Júyuè
+* Lùyuè
+* Rùnyuè (leap years only)
 
 LICENSE
 

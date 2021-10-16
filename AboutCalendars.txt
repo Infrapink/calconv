@@ -950,3 +950,14 @@ Sources:
 * https://www.calendar-12.com/moon_phases/1985
 * https://www.mastertsai.com/ChineseCalendar/The_Mathematics_of_the_Chinese_Calendar.pdf
 * https://www2.ihp.sinica.edu.tw/file/1097kaBVwNb.pdf
+
+-------------
+ZHOU CALENDAR
+-------------
+
+The Zhou calendar is the oldest known lunisolar calendar used in China, dating to the early Western Zhou dynasty. It is a good deal more straightforward than the modern Chinese calendar; indeed, its structure is basically the same as the Inca civil calendar. Under the Zhou calendar, each year begins with the last new moon on or before the winter solstice, and leap years put the extra month right at the end. For the Zhou epoch, I have arbitrarily chosen the new moon of December 1047 BC, which corresponds to the first year of the reign of King Wu. I have also chosen a timezone of UTC + 7 hr 14 min 52.5 sec, based on when local midnight falls in Fenghao, the ancient capital of Zhou.
+
+Sources:
+* https://en.wikipedia.org/wiki/Chinese_calendar
+* https://en.wikipedia.org/wiki/Western_Zhou
+* http://en.chinaculture.org/library/2008-02/01/content_26219.htm

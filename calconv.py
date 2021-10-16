@@ -66,6 +66,7 @@ import chinese_solar_yao
 import chinese_solar_confucius
 import chinese_solar_gonghe
 import chinese_solar_qin
+import zhou
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -726,6 +727,15 @@ def cons_day_julian_todate():
         chinese_solar_qin_day_ent.insert(0, chinese_solar_qin_date[0])
         chinese_solar_qin_month_ent.insert(0, chinese_solar_qin_date[1])
         chinese_solar_qin_year_ent.insert(0, chinese_solar_qin_date[2])
+
+        # Convert a Julian day to a date in the Zhou calendar
+        zhou_date = zhou.fromjd(day)
+        zhou_day_ent.delete(0, END)
+        zhou_month_ent.delete(0, END)
+        zhou_year_ent.delete(0, END)
+        zhou_day_ent.insert(0, zhou_date[0])
+        zhou_month_ent.insert(0, zhou_date[1])
+        zhou_year_ent.insert(0, zhou_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1405,6 +1415,15 @@ def chinese_solar_confucius_converter():
         month = chinese_solar_confucius_month_ent.get()
         year = int(chinese_solar_confucius_year_ent.get())
         jday = chinese_solar_confucius.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def zhou_converter():
+        day = int(zhou_day_ent.get())
+        month = zhou_month_ent.get()
+        year = int(zhou_year_ent.get())
+        jday = zhou.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2320,5 +2339,18 @@ chinese_solar_qin_year_ent = Entry(frame)
 chinese_solar_qin_year_ent.grid(row = 65, column = 14, sticky = W)
 chinese_solar_qin_bttn = Button(frame, text = "Calculate", command = chinese_solar_qin_converter).grid(row = 66, column = 12, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.29.0")
+# Zhou calendar                                                                                            
+zhou_lbl = Label(frame, text = "Zhou calendar").grid(row = 68, column = 0, columnspan = 3, sticky = W)
+zhou_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 0, sticky = W)
+zhou_day_ent = Entry(frame)
+zhou_day_ent.grid(row = 70, column = 0, sticky = W)
+zhou_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 1, sticky = W)
+zhou_month_ent = Entry(frame)
+zhou_month_ent.grid(row = 70, column = 1, sticky = W)
+zhou_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 2, sticky = W)
+zhou_year_ent = Entry(frame)
+zhou_year_ent.grid(row = 70, column = 2, sticky = W)
+zhou_bttn = Button(frame, text = "Calculate", command = zhou_converter).grid(row = 71, column = 0, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.32.0")
 root.mainloop()
