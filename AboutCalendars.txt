@@ -951,13 +951,28 @@ Sources:
 * https://www.mastertsai.com/ChineseCalendar/The_Mathematics_of_the_Chinese_Calendar.pdf
 * https://www2.ihp.sinica.edu.tw/file/1097kaBVwNb.pdf
 
+---------------------------------------------
+CHINESE QUARTER REMAINDER CALENDAR (SIFEN LI)
+---------------------------------------------
+
+The Quarter Remainder calendar, Sifen li, or Later Han Qarter Calendar (四分曆), was introduced during the reign of Emperor Zhang of the Eastern Han dynasty; it should not be confused with the earlier Warring States Quarter Calendars. It defines the solar year as being exactly 365 + 1/4 days long, and the synodic month as 29 + 499/940 days; this results in 19 calendar years containing precisely 235 months. Leap months are added as needed to ensure that the southern solstice always falls in the 11th month. Since this calendar predates the introduction of solar terms, I am inserting the leap month immediately before the 11th month each time.
+
+Sources:
+* https://en.wikipedia.org/wiki/Chinese_calendar
+* https://zh.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2%E5%9B%9B%E5%88%86%E6%9B%86
+* http://www.webexhibits.org/calendars/calendar-chinese.html
+* https://chinesehsc.org/chinese_calenders.shtml
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English)
+
 -------------
 ZHOU CALENDAR
 -------------
 
-The Zhou calendar is the oldest known lunisolar calendar used in China, dating to the early Western Zhou dynasty. It is a good deal more straightforward than the modern Chinese calendar; indeed, its structure is basically the same as the Inca civil calendar. Under the Zhou calendar, each year begins with the last new moon on or before the winter solstice, and leap years put the extra month right at the end. For the Zhou epoch, I have arbitrarily chosen the new moon of December 1047 BC, which corresponds to the first year of the reign of King Wu. I have also chosen a timezone of UTC + 7 hr 14 min 52.5 sec, based on when local midnight falls in Fenghao, the ancient capital of Zhou.
+The Zhou calendar is the oldest attested lunisolar calendar used in China, dating to the early Western Zhou dynasty. It is a good deal more straightforward than the modern Chinese calendar; indeed, its structure is basically the same as the Inca civil calendar. Under the Zhou calendar, each year begins with the last new moon on or before the winter solstice, and leap years put the extra month right at the end. For the Zhou epoch, I have chosen the new moon of December 428 BC, which corresponds to the year the calendar was introduced. The new moon and the southern solstice both fell on the same day that year, and both around local noon; this corresponds to year 39 of the 76-year Callipic cycle (year 38 if one starts counting at 0). I have also chosen a timezone of UTC + 7 hr 14 min 52.5 sec, based on when local midnight falls in Fenghao, the ancient capital of Zhou.
 
 Sources:
 * https://en.wikipedia.org/wiki/Chinese_calendar
 * https://en.wikipedia.org/wiki/Western_Zhou
 * http://en.chinaculture.org/library/2008-02/01/content_26219.htm
+* http://www.webexhibits.org/calendars/calendar-chinese.html
+* https://chinesehsc.org/chinese_calenders.shtml

@@ -447,7 +447,7 @@ Chinese solar calendars:
 * Xiǎohán
 * Dàhán
 
-Zhou calendar:
+Older Chinese calendars:
 * Dōngyuè
 * Bīngyuè
 * Zōuyuè
