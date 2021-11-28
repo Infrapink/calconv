@@ -976,3 +976,13 @@ Sources:
 * http://en.chinaculture.org/library/2008-02/01/content_26219.htm
 * http://www.webexhibits.org/calendars/calendar-chinese.html
 * https://chinesehsc.org/chinese_calenders.shtml
+
+----------------
+ZHUANXU CALENDAR
+----------------
+
+The Zhuanxu calendar was introduced in 366 BC by Qin Xian II as an assertion of Qin's independence from Zhou during the Warring States period. It has the same pattern of months and years as the Zhou calendar, but starts in Guìyuè rather than Júyuè, the 10th month in the modern Chinese calendar. I have chosen 384 BC, the start of Xian's reign, as the epoch.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E9%A1%93%E9%A0%8A%E6%9B%86
+

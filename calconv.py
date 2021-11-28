@@ -66,7 +66,9 @@ import chinese_solar_yao
 import chinese_solar_confucius
 import chinese_solar_gonghe
 import chinese_solar_qin
+import sifen
 import zhou
+import zhuanxu
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -728,7 +730,16 @@ def cons_day_julian_todate():
         chinese_solar_qin_month_ent.insert(0, chinese_solar_qin_date[1])
         chinese_solar_qin_year_ent.insert(0, chinese_solar_qin_date[2])
 
-        # Convert a Julian day to a date in the Zhou calendar
+        # Convert a Julian day to a date in the Chinese Quarter Remainder calendar
+        sifen_date = sifen.fromjd(day)
+        sifen_day_ent.delete(0, END)
+        sifen_month_ent.delete(0, END)
+        sifen_year_ent.delete(0, END)
+        sifen_day_ent.insert(0, sifen_date[0])
+        sifen_month_ent.insert(0, sifen_date[1])
+        sifen_year_ent.insert(0, sifen_date[2])
+
+       # Convert a Julian day to a date in the Zhou calendar
         zhou_date = zhou.fromjd(day)
         zhou_day_ent.delete(0, END)
         zhou_month_ent.delete(0, END)
@@ -736,6 +747,15 @@ def cons_day_julian_todate():
         zhou_day_ent.insert(0, zhou_date[0])
         zhou_month_ent.insert(0, zhou_date[1])
         zhou_year_ent.insert(0, zhou_date[2])
+
+        # Convert a Julian day to a date in the Zhuanxu calendar
+        zhuanxu_date = zhuanxu.fromjd(day)
+        zhuanxu_day_ent.delete(0, END)
+        zhuanxu_month_ent.delete(0, END)
+        zhuanxu_year_ent.delete(0, END)
+        zhuanxu_day_ent.insert(0, zhuanxu_date[0])
+        zhuanxu_month_ent.insert(0, zhuanxu_date[1])
+        zhuanxu_year_ent.insert(0, zhuanxu_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1419,11 +1439,29 @@ def chinese_solar_confucius_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
+def sifen_converter():
+        day = int(sifen_day_ent.get())
+        month = sifen_month_ent.get()
+        year = int(sifen_year_ent.get())
+        jday = sifen.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 def zhou_converter():
         day = int(zhou_day_ent.get())
         month = zhou_month_ent.get()
         year = int(zhou_year_ent.get())
         jday = zhou.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def zhuanxu_converter():
+        day = int(zhuanxu_day_ent.get())
+        month = zhuanxu_month_ent.get()
+        year = int(zhuanxu_year_ent.get())
+        jday = zhuanxu.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2339,18 +2377,44 @@ chinese_solar_qin_year_ent = Entry(frame)
 chinese_solar_qin_year_ent.grid(row = 65, column = 14, sticky = W)
 chinese_solar_qin_bttn = Button(frame, text = "Calculate", command = chinese_solar_qin_converter).grid(row = 66, column = 12, columnspan = 3, sticky = W)
 
+# Chinese Quarter Remainder calendar
+sifen_lbl = Label(frame, text = "Chinese Quarter Remainder calendar").grid(row = 68, column = 0, columnspan = 3, sticky = W)
+sifen_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 0, sticky = W)
+sifen_day_ent = Entry(frame)
+sifen_day_ent.grid(row = 70, column = 0, sticky = W)
+sifen_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 1, sticky = W)
+sifen_month_ent = Entry(frame)
+sifen_month_ent.grid(row = 70, column = 1, sticky = W)
+sifen_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 2, sticky = W)
+sifen_year_ent = Entry(frame)
+sifen_year_ent.grid(row = 70, column = 2, sticky = W)
+sifen_bttn = Button(frame, text = "Calculate", command = sifen_converter).grid(row = 71, column = 0, columnspan = 3, sticky = W)
+
 # Zhou calendar                                                                                            
-zhou_lbl = Label(frame, text = "Zhou calendar").grid(row = 68, column = 0, columnspan = 3, sticky = W)
-zhou_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 0, sticky = W)
+zhou_lbl = Label(frame, text = "Zhou calendar").grid(row = 68, column = 3, columnspan = 3, sticky = W)
+zhou_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 3, sticky = W)
 zhou_day_ent = Entry(frame)
-zhou_day_ent.grid(row = 70, column = 0, sticky = W)
-zhou_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 1, sticky = W)
+zhou_day_ent.grid(row = 70, column = 3, sticky = W)
+zhou_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 4, sticky = W)
 zhou_month_ent = Entry(frame)
-zhou_month_ent.grid(row = 70, column = 1, sticky = W)
-zhou_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 2, sticky = W)
+zhou_month_ent.grid(row = 70, column = 4, sticky = W)
+zhou_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 5, sticky = W)
 zhou_year_ent = Entry(frame)
-zhou_year_ent.grid(row = 70, column = 2, sticky = W)
-zhou_bttn = Button(frame, text = "Calculate", command = zhou_converter).grid(row = 71, column = 0, columnspan = 3, sticky = W)
+zhou_year_ent.grid(row = 70, column = 5, sticky = W)
+zhou_bttn = Button(frame, text = "Calculate", command = zhou_converter).grid(row = 71, column = 3, columnspan = 3, sticky = W)
+
+# Zhuanxu calendar                                                                                            
+zhuanxu_lbl = Label(frame, text = "Zhuanxu calendar").grid(row = 68, column = 6, columnspan = 3, sticky = W)
+zhuanxu_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 6, sticky = W)
+zhuanxu_day_ent = Entry(frame)
+zhuanxu_day_ent.grid(row = 70, column = 6, sticky = W)
+zhuanxu_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 7, sticky = W)
+zhuanxu_month_ent = Entry(frame)
+zhuanxu_month_ent.grid(row = 70, column = 7, sticky = W)
+zhuanxu_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 8, sticky = W)
+zhuanxu_year_ent = Entry(frame)
+zhuanxu_year_ent.grid(row = 70, column = 8, sticky = W)
+zhuanxu_bttn = Button(frame, text = "Calculate", command = zhuanxu_converter).grid(row = 71, column = 6, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.32.0")
 root.mainloop()
