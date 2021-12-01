@@ -986,3 +986,12 @@ The Zhuanxu calendar was introduced in 366 BC by Qin Xian II as an assertion of 
 Sources:
 * https://zh.wikipedia.org/wiki/%E9%A1%93%E9%A0%8A%E6%9B%86
 
+------------
+XIA CALENDAR
+------------
+
+The Xia calendar was named for the calendar believed to have been used in the legendary Xia dynasty, and is modelled on descriptions found in Chinese classics. However, barring a surprising coincidence, it is *not* that calendar. Rather, the Xia calendar was introduced in 422 BC by one of Zhou's various rival states. The year begins two or three lunations after the new moon on or preceding the say on which the southern solstice falls, as in the modern calendar. Unlike the modern calendar, the leap month is always placed at the end of the year, because this is before the introduction of solar terms.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E9%A1%93%E9%A0%8A%E6%9B%86
+* https://zh.wikipedia.org/wiki/%E5%A4%8F%E6%9B%86_(%E5%8F%A4%E5%85%AD%E6%9B%86)
