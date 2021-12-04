@@ -995,3 +995,21 @@ The Xia calendar was named for the calendar believed to have been used in the le
 Sources:
 * https://zh.wikipedia.org/wiki/%E9%A1%93%E9%A0%8A%E6%9B%86
 * https://zh.wikipedia.org/wiki/%E5%A4%8F%E6%9B%86_(%E5%8F%A4%E5%85%AD%E6%9B%86)
+
+--------------
+SHANG CALENDAR
+--------------
+
+The Shang calendar, named after the legendary state that preceded the Zhou, was another calendar that arose during the Warring States Era. There is very little information available on this calendar, other than that the first month of the year was the one in which the southern solstice fell. Based on Chinese Wikipedia, it appears to have first been implemented eight years after the Zhuanxu.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E5%9B%9B%E5%88%86%E5%8E%86
+
+-----------
+LU CALENDAR
+-----------
+
+The Lu calendar was another quarter-remainder calendar from the Warring States Era which started the year on the month of the southern solstice. It was established by Lu, apparently around the same time as the Shang calendar. Since there it little information available, I have chosen as its epoch the first year of the reign of Ning, Duke Dao of Lu.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E5%9B%9B%E5%88%86%E5%8E%86

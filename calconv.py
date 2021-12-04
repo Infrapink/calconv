@@ -69,6 +69,8 @@ import chinese_solar_qin
 import zhou
 import zhuanxu
 import xia
+import shang
+import lu
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -756,6 +758,24 @@ def cons_day_julian_todate():
         xia_day_ent.insert(0, xia_date[0])
         xia_month_ent.insert(0, xia_date[1])
         xia_year_ent.insert(0, xia_date[2])
+
+        # Convert a Julian day to a date in the Shang calendar
+        shang_date = shang.fromjd(day)
+        shang_day_ent.delete(0, END)
+        shang_month_ent.delete(0, END)
+        shang_year_ent.delete(0, END)
+        shang_day_ent.insert(0, shang_date[0])
+        shang_month_ent.insert(0, shang_date[1])
+        shang_year_ent.insert(0, shang_date[2])
+
+        # Convert a Julian day to a date in the Lu calendar
+        lu_date = lu.fromjd(day)
+        lu_day_ent.delete(0, END)
+        lu_month_ent.delete(0, END)
+        lu_year_ent.delete(0, END)
+        lu_day_ent.insert(0, lu_date[0])
+        lu_month_ent.insert(0, lu_date[1])
+        lu_year_ent.insert(0, lu_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1462,6 +1482,24 @@ def xia_converter():
         month = xia_month_ent.get()
         year = int(xia_year_ent.get())
         jday = xia.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def shang_converter():
+        day = int(shang_day_ent.get())
+        month = shang_month_ent.get()
+        year = int(shang_year_ent.get())
+        jday = shang.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def lu_converter():
+        day = int(lu_day_ent.get())
+        month = lu_month_ent.get()
+        year = int(lu_year_ent.get())
+        jday = lu.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2415,6 +2453,32 @@ xia_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 8, sticky = W
 xia_year_ent = Entry(frame)
 xia_year_ent.grid(row = 70, column = 8, sticky = W)
 xia_bttn = Button(frame, text = "Calculate", command = xia_converter).grid(row = 71, column = 6, columnspan = 3, sticky = W)
+
+# Shang calendar                                                                                            
+shang_lbl = Label(frame, text = "Shang calendar").grid(row = 68, column = 9, columnspan = 3, sticky = W)
+shang_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 9, sticky = W)
+shang_day_ent = Entry(frame)
+shang_day_ent.grid(row = 70, column = 9, sticky = W)
+shang_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 10, sticky = W)
+shang_month_ent = Entry(frame)
+shang_month_ent.grid(row = 70, column = 10, sticky = W)
+shang_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 11, sticky = W)
+shang_year_ent = Entry(frame)
+shang_year_ent.grid(row = 70, column = 11, sticky = W)
+shang_bttn = Button(frame, text = "Calculate", command = shang_converter).grid(row = 71, column = 9, columnspan = 3, sticky = W)
+
+# Lu calendar                                                                                            
+lu_lbl = Label(frame, text = "Lu calendar").grid(row = 68, column = 12, columnspan = 3, sticky = W)
+lu_day_lbl = Label(frame, text = "Day").grid(row = 69, column = 12, sticky = W)
+lu_day_ent = Entry(frame)
+lu_day_ent.grid(row = 70, column = 12, sticky = W)
+lu_month_lbl = Label(frame, text = "Month").grid(row = 69, column = 13, sticky = W)
+lu_month_ent = Entry(frame)
+lu_month_ent.grid(row = 70, column = 13, sticky = W)
+lu_year_lbl = Label(frame, text = "Year").grid(row = 69, column = 14, sticky = W)
+lu_year_ent = Entry(frame)
+lu_year_ent.grid(row = 70, column = 14, sticky = W)
+lu_bttn = Button(frame, text = "Calculate", command = lu_converter).grid(row = 71, column = 12, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.32.0")
 root.mainloop()
