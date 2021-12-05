@@ -1013,3 +1013,12 @@ The Lu calendar was another quarter-remainder calendar from the Warring States E
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E5%9B%9B%E5%88%86%E5%8E%86
+
+------------
+YIN CALENDAR
+------------
+
+The Yin calendar is the last of the Six Ancient Calendars, introduced in the Song state during the Warring States Era. Unlike the others, it starts the year on the new moon following the southern solstice. Like the others, it defines the tropical year as exactly 365.25 days long, and has precisely 235 months in 19 tropical years.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E5%9B%9B%E5%88%86%E5%8E%86
