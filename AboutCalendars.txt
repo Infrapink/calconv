@@ -1022,3 +1022,31 @@ The Yin calendar is the last of the Six Ancient Calendars, introduced in the Son
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E5%9B%9B%E5%88%86%E5%8E%86
+
+-------------------------
+GRAND INCEPTIONS CALENDAR
+-------------------------
+
+The Taichu, or Great Inception, calendar was introduced in the 36th year of Emperor Wu of the Han Dynasty, and set the structure for all future Chinese calendars. It is also the oldest Chinese calendar for which full descriptions are available.
+
+The Taichu calendar takes the basic structure of the Xia calendar, in which there are 235 month in 19 years, but defines the tropical year as 365 + 385/1539 days and the lunar month as 29 + 43/81 days. This is actually slightly less accurate to the seasons than the Warring States calendars; the numbers seem to have been chosen because 1539 == 81 * 19.
+
+The most significant feature of the Taichu calendar is the introduction of the solar terms, which are key to fixing the time of the leap month. Furthermore, the leap month is for the first time defined as the first lunation betweeen two southern solstices during which the sun does not pass into a new major solar term.
+
+Every subsequent calendar would be a refinement of the Taichuli.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E5%A4%AA%E5%88%9D%E6%9B%86
+* http://www.chinastyle.cn/chinese-zodiac-calendar/tai-chu-calendar.htm
+* http://chinaknowledge.de/History/Terms/calendar.html
+* https://link.springer.com/content/pdf/10.1007%2F978-1-4614-6141-8_225.pdf
+
+---------------------------
+TRIPLE CONCORDANCE CALENDAR
+---------------------------
+
+The Santong, or Triple Concordance, calendar is an adjustment to the Taichu calendar, introduced by Liu Xin. This system establishes that the southern solstice coincided with the new moon 143,126 years before the calendar was introduced... which also means they coincided in the 37th year of Emperor Wu. Needless to say, this is inaccurate, but the basic principle would continue to be used for centuries after until better methods of predicting the exact positions of the sun and the moon were discovered.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E4%B8%89%E7%B5%B1%E6%9B%86
+* https://link.springer.com/content/pdf/10.1007%2F978-1-4614-6141-8_225.pdf

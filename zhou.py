@@ -7,6 +7,7 @@ from fractions import Fraction
 
 sui = 365 + Fraction(1,4) # solar year
 yue = 29 + Fraction(499,940) # lunar month
+
 nian12 = 12 * yue
 nian13 = 13 * yue
 cycle76 = 76 * sui # == 940 * yue
@@ -16,6 +17,24 @@ lunar_epoch = Fraction(135255365993,86400)
 
 MONTHS_NORMAL = ( "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè")
 MONTHS_LEAP = ( "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Rùnyuè")
+
+def getxin(solstice):
+    solstice = Fraction(solstice)
+
+    if floor(solstice) >= floor(lunar_epoch):
+        luns = (solstice - lunar_epoch) // yue
+        moon = lunar_epoch + (yue * luns)
+    else:
+        luns = (lunar_epoch - solstice) // yue
+        moon = lunar_epoch - (yue * luns)
+
+    while floor(moon + yue) <= floor(solstice):
+        moon += yue
+
+    while floor(moon) > floor(solstice):
+        moon -= yue
+
+    return moon
 
 def tojd(day, month, year):
     '''Convert a date in the Sifen li into a Julian Day'''
@@ -35,10 +54,6 @@ def tojd(day, month, year):
         while y < year:
             y += 1
             solstice += sui
-            if floor(xin + nian13) <= floor(solstice):
-                xin += nian13
-            else:
-                xin += nian12
     else:
         # negative dates
         cycles = abs(year) // 76
@@ -48,26 +63,16 @@ def tojd(day, month, year):
         while y > year:
             y -= 1
             solstice -= sui
-            if floor(xin - nian12) > floor(solstice):
-                xin -= nian13
-            else:
-                xin -= nian12
-
-    prev_solstice = solstice - sui
-    if floor(xin - nian12) > floor(prev_solstice):
-        prev_xin = xin - nian13
-        prev_leap = True
-    else:
-        prev_xin = xin - nian12
-        prev_leap = False
 
     next_solstice = solstice + sui
-    if floor(xin + nian13) <= floor(next_solstice):
+
+    xin = getxin(solstice)
+    next_xin = getxin(next_solstice)
+
+    if next_xin - xin == nian13:
         leap = True
-        next_xin = xin + (15 * yue)
     else:
         leap = False
-        next_xin = xin + (14 * yue)
 
     jday = xin
     m = 0
@@ -103,11 +108,9 @@ def fromjd(jday):
         while floor(solstice + sui) <= jday:
             year += 1
             solstice += sui
-        luns = (solstice - lunar_epoch) // yue
-        xin = lunar_epoch + (luns * yue)
-        while floor(xin + yue) <= floor(solstice):
-            xin += yue
-
+        while floor(solstice) > jday:
+            year -= 1
+            solstice -= sui
     else:
         # negative dates
         year = 0 - ((solar_epoch - jday) // sui)
@@ -118,21 +121,21 @@ def fromjd(jday):
         while floor(solstice + sui) <= jday:
             year += 1
             solstice += sui
-        luns = (lunar_epoch - solstice) // yue
-        xin = lunar_epoch - (luns * yue)
-        while floor(xin) > floor(solstice):
-            xin -= yue
-        while floor(xin + yue) <= jday:
-            xin += yue
 
     next_solstice = solstice + sui
-    if floor(xin + nian13) <= floor(next_solstice):
-        # leap year
-        next_xin = xin + nian13
+
+    xin = getxin(solstice)
+    next_xin = getxin(next_solstice)
+
+    if jday >= next_xin:
+        year += 1
+        xin = next_xin
+        next_solstice += sui
+        next_xin = getxin(next_solstice)
+
+    if next_xin - xin == nian13:
         leap = True
     else:
-        # regular year
-        next_xin = xin + nian12
         leap = False
 
     newmoon = xin

@@ -64,6 +64,7 @@ def tojd(day, month, year):
 
     next_solstice = solstice + sui
     next_xin = getxin(next_solstice)
+
     if next_xin - xin == (13 * yue):
         leap = True
     else:
@@ -124,7 +125,7 @@ def fromjd(jday):
         solstice = next_solstice
         xin = next_xin
         next_solstice = solstice + sui
-        next_sin = getxin(next_solstice)
+        next_xin = getxin(next_solstice)
 
     if next_xin - xin == (13 * yue):
         leap = True

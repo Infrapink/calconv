@@ -135,6 +135,19 @@ def fromjd(jday):
         next_xin = xin + nian12
         leap = False
 
+    if floor(next_xin) <= jday:
+        year += 1
+        xin = next_xin
+        solstice = next_solstice
+        next_solstice += sui
+        if floor(xin + nian13) <= floor(next_solstice):
+            # leap year
+            next_xin = xin + nian13
+            leap = True
+        else:
+            next_xin = xin + nain12
+            leap = False
+        
     newmoon = xin
     m = 0
     if leap == False:
