@@ -74,6 +74,7 @@ import lu
 import yin
 import taichu
 import santong
+import sifen
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -806,6 +807,15 @@ def cons_day_julian_todate():
         santong_day_ent.insert(0, santong_date[0])
         santong_month_ent.insert(0, santong_date[1])
         santong_year_ent.insert(0, santong_date[2])
+
+        # Convert a Julian day to a date in the Han Quarter Remainder calendar
+        sifen_date = sifen.fromjd(day)
+        sifen_day_ent.delete(0, END)
+        sifen_month_ent.delete(0, END)
+        sifen_year_ent.delete(0, END)
+        sifen_day_ent.insert(0, sifen_date[0])
+        sifen_month_ent.insert(0, sifen_date[1])
+        sifen_year_ent.insert(0, sifen_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1558,6 +1568,15 @@ def santong_converter():
         month = santong_month_ent.get()
         year = int(santong_year_ent.get())
         jday = santong.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sifen_converter():
+        day = int(sifen_day_ent.get())
+        month = sifen_month_ent.get()
+        year = int(sifen_year_ent.get())
+        jday = sifen.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2551,7 +2570,7 @@ yin_year_ent.grid(row = 75, column = 2, sticky = W)
 yin_bttn = Button(frame, text = "Calculate", command = yin_converter).grid(row = 76, column = 0, columnspan = 3, sticky = W)
 
 # Grand Inception calendar                                                                                            
-taichu_lbl = Label(frame, text = "Chinese Grand Inception calendar").grid(row = 73, column = 3, columnspan = 3, sticky = W)
+taichu_lbl = Label(frame, text = "Grand Inception calendar").grid(row = 73, column = 3, columnspan = 3, sticky = W)
 taichu_day_lbl = Label(frame, text = "Day").grid(row = 74, column = 3, sticky = W)
 taichu_day_ent = Entry(frame)
 taichu_day_ent.grid(row = 75, column = 3, sticky = W)
@@ -2564,7 +2583,7 @@ taichu_year_ent.grid(row = 75, column = 5, sticky = W)
 taichu_bttn = Button(frame, text = "Calculate", command = taichu_converter).grid(row = 76, column = 3, columnspan = 3, sticky = W)
 
 # Triple Concordance calendar                                                                                            
-santong_lbl = Label(frame, text = "Chinese Triple Concordance calendar").grid(row = 73, column = 6, columnspan = 3, sticky = W)
+santong_lbl = Label(frame, text = "Triple Concordance calendar").grid(row = 73, column = 6, columnspan = 3, sticky = W)
 santong_day_lbl = Label(frame, text = "Day").grid(row = 74, column = 6, sticky = W)
 santong_day_ent = Entry(frame)
 santong_day_ent.grid(row = 75, column = 6, sticky = W)
@@ -2575,6 +2594,19 @@ santong_year_lbl = Label(frame, text = "Year").grid(row = 74, column = 8, sticky
 santong_year_ent = Entry(frame)
 santong_year_ent.grid(row = 75, column = 8, sticky = W)
 santong_bttn = Button(frame, text = "Calculate", command = santong_converter).grid(row = 76, column = 6, columnspan = 3, sticky = W)
+
+# Han Quarter Remainder calendar                                                                                            
+sifen_lbl = Label(frame, text = "Han Quarter Remainder calendar").grid(row = 73, column = 9, columnspan = 3, sticky = W)
+sifen_day_lbl = Label(frame, text = "Day").grid(row = 74, column = 9, sticky = W)
+sifen_day_ent = Entry(frame)
+sifen_day_ent.grid(row = 75, column = 9, sticky = W)
+sifen_month_lbl = Label(frame, text = "Month").grid(row = 74, column = 10, sticky = W)
+sifen_month_ent = Entry(frame)
+sifen_month_ent.grid(row = 75, column = 10, sticky = W)
+sifen_year_lbl = Label(frame, text = "Year").grid(row = 74, column = 11, sticky = W)
+sifen_year_ent = Entry(frame)
+sifen_year_ent.grid(row = 75, column = 11, sticky = W)
+sifen_bttn = Button(frame, text = "Calculate", command = sifen_converter).grid(row = 76, column = 9, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.34.0")
 root.mainloop()

@@ -1050,3 +1050,13 @@ The Santong, or Triple Concordance, calendar is an adjustment to the Taichu cale
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B8%89%E7%B5%B1%E6%9B%86
 * https://link.springer.com/content/pdf/10.1007%2F978-1-4614-6141-8_225.pdf
+
+------------------------------
+HAN QUARTER REMAINDER CALENDAR
+------------------------------
+
+In the 10th year of Emperor Zhang, Han China reverted to the Quarter Remainder system of the Warring States era. The tropical year is 365 + 1/4 days long, and the synodic month is fixed at 29 + 499/940 days. As in the Xia calendar, the southern solstice falls in the 11th month. As in the Triple Concordance calendar, solar terms are a key part of the calendar; each solar term lasts exactly 1/24 of a tropical year, and the leap month is the first month of the year which does not contain the beginning of a major solar term.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E5%BE%8C%E6%BC%A2%E5%9B%9B%E5%88%86%E6%9B%86
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English) chapter 8

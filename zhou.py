@@ -127,7 +127,10 @@ def fromjd(jday):
     xin = getxin(solstice)
     next_xin = getxin(next_solstice)
 
-    if jday >= next_xin:
+    #print(floor(next_xin))
+    #print(jday)
+
+    if jday >= floor(next_xin):
         year += 1
         xin = next_xin
         next_solstice += sui
