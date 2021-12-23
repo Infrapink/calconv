@@ -145,7 +145,7 @@ def fromjd(jday):
             next_xin = xin + nian13
             leap = True
         else:
-            next_xin = xin + nain12
+            next_xin = xin + nian12
             leap = False
         
     newmoon = xin
