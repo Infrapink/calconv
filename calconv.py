@@ -75,6 +75,7 @@ import yin
 import taichu
 import santong
 import sifen
+import qianxiang
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -816,6 +817,15 @@ def cons_day_julian_todate():
         sifen_day_ent.insert(0, sifen_date[0])
         sifen_month_ent.insert(0, sifen_date[1])
         sifen_year_ent.insert(0, sifen_date[2])
+
+        # Convert a Julian day to a date in the Qianxiang calendar
+        qianxiang_date = qianxiang.fromjd(day)
+        qianxiang_day_ent.delete(0, END)
+        qianxiang_month_ent.delete(0, END)
+        qianxiang_year_ent.delete(0, END)
+        qianxiang_day_ent.insert(0, qianxiang_date[0])
+        qianxiang_month_ent.insert(0, qianxiang_date[1])
+        qianxiang_year_ent.insert(0, qianxiang_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1577,6 +1587,15 @@ def sifen_converter():
         month = sifen_month_ent.get()
         year = int(sifen_year_ent.get())
         jday = sifen.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def qianxiang_converter():
+        day = int(qianxiang_day_ent.get())
+        month = qianxiang_month_ent.get()
+        year = int(qianxiang_year_ent.get())
+        jday = qianxiang.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2608,5 +2627,18 @@ sifen_year_ent = Entry(frame)
 sifen_year_ent.grid(row = 75, column = 11, sticky = W)
 sifen_bttn = Button(frame, text = "Calculate", command = sifen_converter).grid(row = 76, column = 9, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.34.0")
+# Qianxiang calendar                                                                                            
+qianxiang_lbl = Label(frame, text = "Qianxiang calendar").grid(row = 73, column = 12, columnspan = 12, sticky = W)
+qianxiang_day_lbl = Label(frame, text = "Day").grid(row = 74, column = 12, sticky = W)
+qianxiang_day_ent = Entry(frame)
+qianxiang_day_ent.grid(row = 75, column = 12, sticky = W)
+qianxiang_month_lbl = Label(frame, text = "Month").grid(row = 74, column = 13, sticky = W)
+qianxiang_month_ent = Entry(frame)
+qianxiang_month_ent.grid(row = 75, column = 13, sticky = W)
+qianxiang_year_lbl = Label(frame, text = "Year").grid(row = 74, column = 14, sticky = W)
+qianxiang_year_ent = Entry(frame)
+qianxiang_year_ent.grid(row = 75, column = 14, sticky = W)
+qianxiang_bttn = Button(frame, text = "Calculate", command = qianxiang_converter).grid(row = 76, column = 12, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.35.0")
 root.mainloop()
