@@ -76,6 +76,7 @@ import taichu
 import santong
 import sifen
 import qianxiang
+import jingchu
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -826,6 +827,15 @@ def cons_day_julian_todate():
         qianxiang_day_ent.insert(0, qianxiang_date[0])
         qianxiang_month_ent.insert(0, qianxiang_date[1])
         qianxiang_year_ent.insert(0, qianxiang_date[2])
+
+        # Convert a Julian day to a date in the Luminous Inception calendar
+        jingchu_date = jingchu.fromjd(day)
+        jingchu_day_ent.delete(0, END)
+        jingchu_month_ent.delete(0, END)
+        jingchu_year_ent.delete(0, END)
+        jingchu_day_ent.insert(0, jingchu_date[0])
+        jingchu_month_ent.insert(0, jingchu_date[1])
+        jingchu_year_ent.insert(0, jingchu_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1596,6 +1606,15 @@ def qianxiang_converter():
         month = qianxiang_month_ent.get()
         year = int(qianxiang_year_ent.get())
         jday = qianxiang.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def jingchu_converter():
+        day = int(jingchu_day_ent.get())
+        month = jingchu_month_ent.get()
+        year = int(jingchu_year_ent.get())
+        jday = jingchu.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2639,6 +2658,19 @@ qianxiang_year_lbl = Label(frame, text = "Year").grid(row = 74, column = 14, sti
 qianxiang_year_ent = Entry(frame)
 qianxiang_year_ent.grid(row = 75, column = 14, sticky = W)
 qianxiang_bttn = Button(frame, text = "Calculate", command = qianxiang_converter).grid(row = 76, column = 12, columnspan = 3, sticky = W)
+
+# Luminous Inception calendar                                                                                            
+jingchu_lbl = Label(frame, text = "Luminous Inception calendar").grid(row = 78, column = 0, columnspan = 3, sticky = W)
+jingchu_day_lbl = Label(frame, text = "Day").grid(row = 79, column = 0, sticky = W)
+jingchu_day_ent = Entry(frame)
+jingchu_day_ent.grid(row = 80, column = 0, sticky = W)
+jingchu_month_lbl = Label(frame, text = "Month").grid(row = 79, column = 1, sticky = W)
+jingchu_month_ent = Entry(frame)
+jingchu_month_ent.grid(row = 80, column = 1, sticky = W)
+jingchu_year_lbl = Label(frame, text = "Year").grid(row = 79, column = 2, sticky = W)
+jingchu_year_ent = Entry(frame)
+jingchu_year_ent.grid(row = 80, column = 2, sticky = W)
+jingchu_bttn = Button(frame, text = "Calculate", command = jingchu_converter).grid(row = 81, column = 0, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.35.0")
 root.mainloop()

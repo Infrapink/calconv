@@ -1067,8 +1067,21 @@ QIANXIANG CALENDAR
 
 The Qianxiang calendar was designed by Liu Hong towards the end of the Han dynasty, and was the official calendar of Sun Wu during the Three Kingdoms Era. It was notably accurate in predicting the phase of the moon and the dates of eclises; indeed, it was so accurate it was adopted as the official calendar of the Han Empire as soon as Liu published it.
 
-The Qianliang calendar defines the tropical year as 365 + 189/589 days (365 days 7 hours 42 minutes 4.278 seconds), and the synodic month as 29 + 1117/1457 days (29 days 17 hours 54 minutes 28.14Z seconds); this is about 2 hours 7 minutes 43 seconds longer than the mean tropical year, and 4 hours 49 minutes 29 seconds longer than the mean synodic month, and the fractions preserve the equivalence of 19 tropical years to 235 synodic months. The Qian Lian Li is notably the first ever work to make use of the argument of perigee for calculating the new moon.
+The Qianliang calendar defines the tropical year as 365 + 189/589 days (365 days 7 hours 42 minutes 4.278 seconds), and the synodic month as 29 + 1117/1457 days (29 days 17 hours 54 minutes 28.14Z seconds); this is about 2 hours 7 minutes 43 seconds longer than the mean tropical year, and 4 hours 49 minutes 29 seconds longer than the mean synodic month, and the fractions preserve the equivalence of 19 tropical years to 235 synodic months yet is still less accurate than the Quarter Remainder calendar. The Qian Lian Li is notably the first ever work to make use of the argument of perigee for calculating the new moon.
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B9%BE%E8%B1%A1%E6%9B%86
 * https://en.wikipedia.org/wiki/Liu_Hong_(astronomer)
+
+---------------------------
+LUMINOUS INCEPTION CALENDAR
+---------------------------
+
+The Luminous Inception, or Jingchu, calendar was introduced by Cao Rui, the second king of Cao Wei, during the Three Kingdoms period. The introduction of the calendar marked the beginning of Rui's third era, Jingchu, for which the calendar is named.
+
+It defines the tropical year as 365 + 455/1843 days, the synodic month as 29 + 2419/4559 days, and the anomalistic month as 27 + 2528/4559 days. It is thus somewhat more accurate than the Qianxiang calendar, but still less accurate than the Quarter Remainder calendar. Still, it remained in use for a remarkably long time - after the reunification of China, it was adopted as the official calendar by the Sima Jin, Liu Song, and Toba Wei. It was in the Eastern Jin that the calendar lasted the longest, persisting until the 8th year of Emperor Wu of Liang, for a total of 274 years (that's a long time for a Chinese calendar).
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E6%99%AF%E5%88%9D%E6%9B%86
+* * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English) chapter 9
+
