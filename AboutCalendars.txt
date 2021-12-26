@@ -1083,5 +1083,14 @@ It defines the tropical year as 365 + 455/1843 days, the synodic month as 29 + 2
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E6%99%AF%E5%88%9D%E6%9B%86
-* * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English) chapter 9
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English) chapter 9
+
+--------------
+SANJI CALENDAR
+--------------
+
+The Sanji calendar was introduced in Yao Qin, one of the Sixteen Kingdoms in existence after the fragmentation of Sima Jin, by King Wuzhao at the very start of his reign. It was the first algorithmic calendar to be more accurate than the Quarter Remainder calendar - it defined the tropical year to be 365 + 605/2451 days long, and the synodic month as 29 + 3217/6063 days, an arrangement that maintains the convention of exactly 235 months in 19 years. Thus, the calculated year is about 6 min 18 sec, and the calculated month is less than 1.5 seconds longer than the actual mean synodic month.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E4%B8%89%E7%B4%80%E6%9B%86
 

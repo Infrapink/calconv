@@ -77,6 +77,7 @@ import santong
 import sifen
 import qianxiang
 import jingchu
+import sanji
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -836,6 +837,15 @@ def cons_day_julian_todate():
         jingchu_day_ent.insert(0, jingchu_date[0])
         jingchu_month_ent.insert(0, jingchu_date[1])
         jingchu_year_ent.insert(0, jingchu_date[2])
+
+        # Convert a Julian day to a date in the Sanji calendar
+        sanji_date = sanji.fromjd(day)
+        sanji_day_ent.delete(0, END)
+        sanji_month_ent.delete(0, END)
+        sanji_year_ent.delete(0, END)
+        sanji_day_ent.insert(0, sanji_date[0])
+        sanji_month_ent.insert(0, sanji_date[1])
+        sanji_year_ent.insert(0, sanji_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1615,6 +1625,15 @@ def jingchu_converter():
         month = jingchu_month_ent.get()
         year = int(jingchu_year_ent.get())
         jday = jingchu.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sanji_converter():
+        day = int(sanji_day_ent.get())
+        month = sanji_month_ent.get()
+        year = int(sanji_year_ent.get())
+        jday = sanji.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2672,5 +2691,18 @@ jingchu_year_ent = Entry(frame)
 jingchu_year_ent.grid(row = 80, column = 2, sticky = W)
 jingchu_bttn = Button(frame, text = "Calculate", command = jingchu_converter).grid(row = 81, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.35.0")
+# Sanji calendar                                                                                            
+sanji_lbl = Label(frame, text = "Sanji calendar").grid(row = 78, column = 3, columnspan = 3, sticky = W)
+sanji_day_lbl = Label(frame, text = "Day").grid(row = 79, column = 3, sticky = W)
+sanji_day_ent = Entry(frame)
+sanji_day_ent.grid(row = 80, column = 3, sticky = W)
+sanji_month_lbl = Label(frame, text = "Month").grid(row = 79, column = 4, sticky = W)
+sanji_month_ent = Entry(frame)
+sanji_month_ent.grid(row = 80, column = 4, sticky = W)
+sanji_year_lbl = Label(frame, text = "Year").grid(row = 79, column = 5, sticky = W)
+sanji_year_ent = Entry(frame)
+sanji_year_ent.grid(row = 80, column = 5, sticky = W)
+sanji_bttn = Button(frame, text = "Calculate", command = sanji_converter).grid(row = 81, column = 3, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.36.0")
 root.mainloop()
