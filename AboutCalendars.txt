@@ -1094,3 +1094,12 @@ The Sanji calendar was introduced in Yao Qin, one of the Sixteen Kingdoms in exi
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B8%89%E7%B4%80%E6%9B%86
 
+----------------
+YUANJIA CALENDAR
+----------------
+
+The Yuanjia calendar was developed by He Chengtian and introduced in the 22nd year of Emperor Wen of the Liu Song dynasty. It refines the Sanji calendar with more accurate approximations of the tropical year and synodic month, which still maintain the 19:235 ratio. The tropical year is defined as 365 + 75/304 days, which is about 6 minutes 29 seconds longer than the mean tropical year. The synodic month is defined as 29 + 399/752 days, less than half a second longer than the mean synodic month. Its use persisted into the Southern Liang dynasty, until it was replaced by the Daming calendar during the reign of Emperor Wu.
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E5%85%83%E5%98%89%E6%9B%86
+

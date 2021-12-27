@@ -78,6 +78,7 @@ import sifen
 import qianxiang
 import jingchu
 import sanji
+import yuanjia
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -846,6 +847,15 @@ def cons_day_julian_todate():
         sanji_day_ent.insert(0, sanji_date[0])
         sanji_month_ent.insert(0, sanji_date[1])
         sanji_year_ent.insert(0, sanji_date[2])
+
+        # Convert a Julian day to a date in the Yuanjia calendar
+        yuanjia_date = yuanjia.fromjd(day)
+        yuanjia_day_ent.delete(0, END)
+        yuanjia_month_ent.delete(0, END)
+        yuanjia_year_ent.delete(0, END)
+        yuanjia_day_ent.insert(0, yuanjia_date[0])
+        yuanjia_month_ent.insert(0, yuanjia_date[1])
+        yuanjia_year_ent.insert(0, yuanjia_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1634,6 +1644,15 @@ def sanji_converter():
         month = sanji_month_ent.get()
         year = int(sanji_year_ent.get())
         jday = sanji.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def yuanjia_converter():
+        day = int(yuanjia_day_ent.get())
+        month = yuanjia_month_ent.get()
+        year = int(yuanjia_year_ent.get())
+        jday = yuanjia.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2704,5 +2723,18 @@ sanji_year_ent = Entry(frame)
 sanji_year_ent.grid(row = 80, column = 5, sticky = W)
 sanji_bttn = Button(frame, text = "Calculate", command = sanji_converter).grid(row = 81, column = 3, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.36.0")
+# Yuanjia calendar                                                                                            
+yuanjia_lbl = Label(frame, text = "Yuanjia calendar").grid(row = 78, column = 6, columnspan = 3, sticky = W)
+yuanjia_day_lbl = Label(frame, text = "Day").grid(row = 79, column = 6, sticky = W)
+yuanjia_day_ent = Entry(frame)
+yuanjia_day_ent.grid(row = 80, column = 6, sticky = W)
+yuanjia_month_lbl = Label(frame, text = "Month").grid(row = 79, column = 7, sticky = W)
+yuanjia_month_ent = Entry(frame)
+yuanjia_month_ent.grid(row = 80, column = 7, sticky = W)
+yuanjia_year_lbl = Label(frame, text = "Year").grid(row = 79, column = 8, sticky = W)
+yuanjia_year_ent = Entry(frame)
+yuanjia_year_ent.grid(row = 80, column = 8, sticky = W)
+yuanjia_bttn = Button(frame, text = "Calculate", command = yuanjia_converter).grid(row = 81, column = 6, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.37.0")
 root.mainloop()
