@@ -79,6 +79,7 @@ import qianxiang
 import jingchu
 import sanji
 import yuanjia
+import xuanshi
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -856,6 +857,15 @@ def cons_day_julian_todate():
         yuanjia_day_ent.insert(0, yuanjia_date[0])
         yuanjia_month_ent.insert(0, yuanjia_date[1])
         yuanjia_year_ent.insert(0, yuanjia_date[2])
+
+        # Convert a Julian day to a date in the Xuanshi calendar
+        xuanshi_date = xuanshi.fromjd(day)
+        xuanshi_day_ent.delete(0, END)
+        xuanshi_month_ent.delete(0, END)
+        xuanshi_year_ent.delete(0, END)
+        xuanshi_day_ent.insert(0, xuanshi_date[0])
+        xuanshi_month_ent.insert(0, xuanshi_date[1])
+        xuanshi_year_ent.insert(0, xuanshi_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1653,6 +1663,15 @@ def yuanjia_converter():
         month = yuanjia_month_ent.get()
         year = int(yuanjia_year_ent.get())
         jday = yuanjia.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def xuanshi_converter():
+        day = int(xuanshi_day_ent.get())
+        month = xuanshi_month_ent.get()
+        year = int(xuanshi_year_ent.get())
+        jday = xuanshi.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2736,5 +2755,18 @@ yuanjia_year_ent = Entry(frame)
 yuanjia_year_ent.grid(row = 80, column = 8, sticky = W)
 yuanjia_bttn = Button(frame, text = "Calculate", command = yuanjia_converter).grid(row = 81, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.37.0")
+# Xuanshi calendar                                                                                            
+xuanshi_lbl = Label(frame, text = "Xuanshi calendar").grid(row = 78, column = 9, columnspan = 3, sticky = W)
+xuanshi_day_lbl = Label(frame, text = "Day").grid(row = 79, column = 9, sticky = W)
+xuanshi_day_ent = Entry(frame)
+xuanshi_day_ent.grid(row = 80, column = 9, sticky = W)
+xuanshi_month_lbl = Label(frame, text = "Month").grid(row = 79, column = 10, sticky = W)
+xuanshi_month_ent = Entry(frame)
+xuanshi_month_ent.grid(row = 80, column = 10, sticky = W)
+xuanshi_year_lbl = Label(frame, text = "Year").grid(row = 79, column = 11, sticky = W)
+xuanshi_year_ent = Entry(frame)
+xuanshi_year_ent.grid(row = 80, column = 11, sticky = W)
+xuanshi_bttn = Button(frame, text = "Calculate", command = xuanshi_converter).grid(row = 81, column = 9, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.38.0")
 root.mainloop()

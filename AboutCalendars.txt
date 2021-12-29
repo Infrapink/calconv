@@ -1103,3 +1103,12 @@ The Yuanjia calendar was developed by He Chengtian and introduced in the 22nd ye
 Sources:
 * https://zh.wikipedia.org/wiki/%E5%85%83%E5%98%89%E6%9B%86
 
+----------------
+XUANSHI CALENDAR
+----------------
+
+The Xuanshi calendar (also called the Yuanshi, but this can also refer to a later calendar introduced during the Yuan dynasty) was introduced at the very beginning of the Xuanshi era, the second era of King Juqu Mengxun of Bei Liang, and was also used in Tuoba Wei. It is most notable for breaking with the 19:235 year:month ratio; instead, 600 years in this calendar comprise 7421 months. The synodic month is defined as 29 + 47251/89052 days, which is a little less than 1 second longer than the mean synodic month. The tropical year is defined as 365 + 1759/7200 days, almost exactly 5 minutes longer than the mean tropical year. (Chinese Wikipedia gives the tropical year as 365 + 17589/72000 days, but the maths do not work with this value. I suspect it is a typo, especially since Martzloff gives the correct answer in his book).
+
+Sources:
+* https://zh.wikipedia.org/wiki/%E7%8E%84%E5%A7%8B%E6%9B%86
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
