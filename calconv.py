@@ -80,6 +80,7 @@ import jingchu
 import sanji
 import yuanjia
 import xuanshi
+import daming
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -866,6 +867,15 @@ def cons_day_julian_todate():
         xuanshi_day_ent.insert(0, xuanshi_date[0])
         xuanshi_month_ent.insert(0, xuanshi_date[1])
         xuanshi_year_ent.insert(0, xuanshi_date[2])
+
+        # Convert a Julian day to a date in the Daming calendar
+        daming_date = daming.fromjd(day)
+        daming_day_ent.delete(0, END)
+        daming_month_ent.delete(0, END)
+        daming_year_ent.delete(0, END)
+        daming_day_ent.insert(0, daming_date[0])
+        daming_month_ent.insert(0, daming_date[1])
+        daming_year_ent.insert(0, daming_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1672,6 +1682,15 @@ def xuanshi_converter():
         month = xuanshi_month_ent.get()
         year = int(xuanshi_year_ent.get())
         jday = xuanshi.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def daming_converter():
+        day = int(daming_day_ent.get())
+        month = daming_month_ent.get()
+        year = int(daming_year_ent.get())
+        jday = daming.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2768,5 +2787,18 @@ xuanshi_year_ent = Entry(frame)
 xuanshi_year_ent.grid(row = 80, column = 11, sticky = W)
 xuanshi_bttn = Button(frame, text = "Calculate", command = xuanshi_converter).grid(row = 81, column = 9, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.38.0")
+# Daming calendar                                                                                            
+daming_lbl = Label(frame, text = "Daming calendar").grid(row = 78, column = 12, columnspan = 3, sticky = W)
+daming_day_lbl = Label(frame, text = "Day").grid(row = 79, column = 12, sticky = W)
+daming_day_ent = Entry(frame)
+daming_day_ent.grid(row = 80, column = 12, sticky = W)
+daming_month_lbl = Label(frame, text = "Month").grid(row = 79, column = 13, sticky = W)
+daming_month_ent = Entry(frame)
+daming_month_ent.grid(row = 80, column = 13, sticky = W)
+daming_year_lbl = Label(frame, text = "Year").grid(row = 79, column = 14, sticky = W)
+daming_year_ent = Entry(frame)
+daming_year_ent.grid(row = 80, column = 14, sticky = W)
+daming_bttn = Button(frame, text = "Calculate", command = daming_converter).grid(row = 81, column = 12, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.39.0")
 root.mainloop()
