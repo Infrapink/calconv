@@ -1112,3 +1112,29 @@ The Xuanshi calendar (also called the Yuanshi, but this can also refer to a late
 Sources:
 * https://zh.wikipedia.org/wiki/%E7%8E%84%E5%A7%8B%E6%9B%86
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
+
+---------------
+DAMING CALENDAR
+---------------
+
+The Daming calendar was designed by Zu Chongzhi and presented to Emperor Xiaowu of Liu Song during the fifth year of the Daming era (462 AD, 162 BH). However, it was not implemented during his lifetime, only coming into use during the 8th year of Emperor Wu of Liang.
+
+The Daming calendar defines the synodic month as 29 + 2090/3939 days, which is just 0.107 seconds longer than the true mean synodic month. The tropical year is defined as 365 + 9589/39491 days, less than 2 minutes longer than the actual tropical year; this works out to 144 leap months in 391 years. Zu furthermore defined the draconic month as 27 + 5598/26377 days, a mere 0.9 seconds less than the true mean value.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
+* https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%98%8E%E6%9B%86_(%E7%A5%96%E6%B2%96%E4%B9%8B)
+* http://www.herongyang.com/1000124_Zu_Chongzhi_and_the_Chinese_Calendar_Reform_of_462_AD.html
+
+-------------------
+ZHENGGUANG CALENDAR
+-------------------
+
+The Zhengguang calendar was worked out by a council of scholars appointed by Emperor Xuanwu of Tuoba Wei at the very end of his reign, when errors in the Xuanshi calendar had started to become apparent. It is also known as the Tortoise calendar after the Shengui (Divine Tortoise) era, when it was first presented to Emperor Xiaoming. It was finally implemented halfway through the Zhengguang era, hence the name.
+
+The Zhengguang calendar defines the tropical year as 365 + 1477/6060 days, which is about 1 minute 13 seconds longer than the mean tropical year. The synodic month is defined as 29 + 39769/74952 days, just 0.4 seconds longer than the actual mean synodic month.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
+* https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%85%89%E6%9B%86
+

@@ -81,6 +81,7 @@ import sanji
 import yuanjia
 import xuanshi
 import daming
+import zhengguang
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -876,6 +877,15 @@ def cons_day_julian_todate():
         daming_day_ent.insert(0, daming_date[0])
         daming_month_ent.insert(0, daming_date[1])
         daming_year_ent.insert(0, daming_date[2])
+
+        # Convert a Julian day to a date in the Zhengguang calendar
+        zhengguang_date = zhengguang.fromjd(day)
+        zhengguang_day_ent.delete(0, END)
+        zhengguang_month_ent.delete(0, END)
+        zhengguang_year_ent.delete(0, END)
+        zhengguang_day_ent.insert(0, zhengguang_date[0])
+        zhengguang_month_ent.insert(0, zhengguang_date[1])
+        zhengguang_year_ent.insert(0, zhengguang_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1691,6 +1701,15 @@ def daming_converter():
         month = daming_month_ent.get()
         year = int(daming_year_ent.get())
         jday = daming.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def zhengguang_converter():
+        day = int(zhengguang_day_ent.get())
+        month = zhengguang_month_ent.get()
+        year = int(zhengguang_year_ent.get())
+        jday = zhengguang.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2799,6 +2818,19 @@ daming_year_lbl = Label(frame, text = "Year").grid(row = 79, column = 14, sticky
 daming_year_ent = Entry(frame)
 daming_year_ent.grid(row = 80, column = 14, sticky = W)
 daming_bttn = Button(frame, text = "Calculate", command = daming_converter).grid(row = 81, column = 12, columnspan = 3, sticky = W)
+
+# Zhengguang calendar                                                                                            
+zhengguang_lbl = Label(frame, text = "Zhengguang calendar").grid(row = 83, column = 0, columnspan = 3, sticky = W)
+zhengguang_day_lbl = Label(frame, text = "Day").grid(row = 84, column = 0, sticky = W)
+zhengguang_day_ent = Entry(frame)
+zhengguang_day_ent.grid(row = 85, column = 0, sticky = W)
+zhengguang_month_lbl = Label(frame, text = "Month").grid(row = 84, column = 1, sticky = W)
+zhengguang_month_ent = Entry(frame)
+zhengguang_month_ent.grid(row = 85, column = 1, sticky = W)
+zhengguang_year_lbl = Label(frame, text = "Year").grid(row = 84, column = 2, sticky = W)
+zhengguang_year_ent = Entry(frame)
+zhengguang_year_ent.grid(row = 85, column = 2, sticky = W)
+zhengguang_bttn = Button(frame, text = "Calculate", command = zhengguang_converter).grid(row = 86, column = 0, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.39.0")
 root.mainloop()
