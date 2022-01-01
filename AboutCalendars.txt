@@ -1135,6 +1135,15 @@ The Zhengguang calendar was worked out by a council of scholars appointed by Emp
 The Zhengguang calendar defines the tropical year as 365 + 1477/6060 days, which is about 1 minute 13 seconds longer than the mean tropical year. The synodic month is defined as 29 + 39769/74952 days, just 0.4 seconds longer than the actual mean synodic month.
 
 Sources:
-* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices F and G
 * https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%85%89%E6%9B%86
 
+---------------
+XINGHE CALENDAR
+---------------
+
+The Xinghe calendar was compiled by Lin Yexing towards the Dong Wei dynasty and introduced in the first year of Xinghe, the second era of King Heliuhun (AKA Gao Huan, Xianwu). It defines the tropical year as 365 + 4117/19860 days, which is slightly under 2 minutes longer than the mean tropical year. The synodic month is defined as 29 + 100647/208530 days, approximately 1.25 seconds longer than the modern mean synodic month. It is thus slightly less accurate than the Zhengguan calendar
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
+* https://zh.wikipedia.org/wiki/%E8%88%88%E5%92%8C%E6%9B%86
