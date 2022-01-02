@@ -1142,8 +1142,19 @@ Sources:
 XINGHE CALENDAR
 ---------------
 
-The Xinghe calendar was compiled by Lin Yexing towards the Dong Wei dynasty and introduced in the first year of Xinghe, the second era of King Heliuhun (AKA Gao Huan, Xianwu). It defines the tropical year as 365 + 4117/19860 days, which is slightly under 2 minutes longer than the mean tropical year. The synodic month is defined as 29 + 100647/208530 days, approximately 1.25 seconds longer than the modern mean synodic month. It is thus slightly less accurate than the Zhengguan calendar
+The Xinghe calendar was compiled by Lin Yexing towards the Dong Wei dynasty and introduced in the first year of Xinghe, the second era of King Heliuhun (AKA Gao Huan, Xianwu). It defines the tropical year as 365 + 4117/19860 days, which is slightly under 2 minutes longer than the mean tropical year. The synodic month is defined as 29 + 100647/208530 days, approximately 1.25 seconds longer than the modern mean synodic month. It is thus slightly less accurate than the Zhengguan calendar. This results in 6951 months in 562 years.
 
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
 * https://zh.wikipedia.org/wiki/%E8%88%88%E5%92%8C%E6%9B%86
+
+----------------
+TIANBAO CALENDAR
+----------------
+
+The Tianbao calendar was designed by Song Jing and introduced by Emperor Wenxuan at the very start of his reign. The tropical year is defined as 365 + 5787/23660 days, about 3 minutes 10 seconds longer than the mean tropical year. The synodic month is defines as 29 + 155272/292635 days, just 0.8 seconds longer than the actual mean synodic month. This worked out to 8361 months in 676 years. It was thus better than the Xinghe calendar, but still less accurate than the Zhengguang calendar.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
+* https://zh.wikipedia.org/wiki/%E5%A4%A9%E4%BF%9D%E6%9B%86_(%E4%B8%AD%E5%9C%8B)
+

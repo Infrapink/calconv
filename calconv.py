@@ -83,6 +83,7 @@ import xuanshi
 import daming
 import zhengguang
 import xinghe
+import tianbao
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -896,6 +897,15 @@ def cons_day_julian_todate():
         xinghe_day_ent.insert(0, xinghe_date[0])
         xinghe_month_ent.insert(0, xinghe_date[1])
         xinghe_year_ent.insert(0, xinghe_date[2])
+
+        # Convert a Julian day to a date in the Tianbao calendar
+        tianbao_date = tianbao.fromjd(day)
+        tianbao_day_ent.delete(0, END)
+        tianbao_month_ent.delete(0, END)
+        tianbao_year_ent.delete(0, END)
+        tianbao_day_ent.insert(0, tianbao_date[0])
+        tianbao_month_ent.insert(0, tianbao_date[1])
+        tianbao_year_ent.insert(0, tianbao_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1729,6 +1739,15 @@ def xinghe_converter():
         month = xinghe_month_ent.get()
         year = int(xinghe_year_ent.get())
         jday = xinghe.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def tianbao_converter():
+        day = int(tianbao_day_ent.get())
+        month = tianbao_month_ent.get()
+        year = int(tianbao_year_ent.get())
+        jday = tianbao.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2863,6 +2882,19 @@ xinghe_year_lbl = Label(frame, text = "Year").grid(row = 84, column = 5, sticky 
 xinghe_year_ent = Entry(frame)
 xinghe_year_ent.grid(row = 85, column = 5, sticky = W)
 xinghe_bttn = Button(frame, text = "Calculate", command = xinghe_converter).grid(row = 86, column = 3, columnspan = 3, sticky = W)
+
+# Tianbao calendar                                                                                            
+tianbao_lbl = Label(frame, text = "Tianbao calendar").grid(row = 83, column = 6, columnspan = 3, sticky = W)
+tianbao_day_lbl = Label(frame, text = "Day").grid(row = 84, column = 6, sticky = W)
+tianbao_day_ent = Entry(frame)
+tianbao_day_ent.grid(row = 85, column = 6, sticky = W)
+tianbao_month_lbl = Label(frame, text = "Month").grid(row = 84, column = 7, sticky = W)
+tianbao_month_ent = Entry(frame)
+tianbao_month_ent.grid(row = 85, column = 7, sticky = W)
+tianbao_year_lbl = Label(frame, text = "Year").grid(row = 84, column = 8, sticky = W)
+tianbao_year_ent = Entry(frame)
+tianbao_year_ent.grid(row = 85, column = 8, sticky = W)
+tianbao_bttn = Button(frame, text = "Calculate", command = tianbao_converter).grid(row = 86, column = 6, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.39.0")
 root.mainloop()
