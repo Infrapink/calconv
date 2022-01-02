@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-# Convert between the Taichu calendar and Julian Day
+# Convert between the Santong calendar and Julian Day
 
 from math import floor
 from fractions import Fraction
 
-sui = 365 + Fraction(1154,1539) # tropical year
-yue = 29 + Fraction(8,81) # synodic month
+sui = 365 + Fraction(385,1539) # tropical year
+yue = 29 + Fraction(43,81) # synodic month
 zhongqi = sui / 12 # major solar term
 nian12 = 12 * yue
 nian13 = 13 * yue
@@ -110,6 +110,7 @@ def fromjd(jday):
 
     newmoon = xin
     m = 0
+    #print(leap)
 
     if leap == False:
         # normal year
