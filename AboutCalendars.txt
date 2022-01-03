@@ -1158,3 +1158,12 @@ Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
 * https://zh.wikipedia.org/wiki/%E5%A4%A9%E4%BF%9D%E6%9B%86_(%E4%B8%AD%E5%9C%8B)
 
+---------------
+TIANHE CALENDAR
+---------------
+
+The Tianhe calendar was designed by Zhen Luan and introduced at the beginning of Tianhe, the second era of Emperor Wu of Bei Zhou. It adopts the Zhengguang calendar's convention of 4836 months in 391 years, but redefines the lengths of the tropical year and synodic month. The tropical year is defined as 365 + 5731/23460 days, less than 40 seconds longer than the modern mean tropical year (Martzloff's book has a typo; on p. 362, it gives the numerator of the fractional part as 5761, which is incorrect). The synodic month is defined as 29 + 153991/290160 days, a little over 10 seconds longer than the modern mean synodic month. The Tianhe calendar thus trades solar for lunar accuracy.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, and G
+* https://zh.wikipedia.org/wiki/%E5%A4%A9%E5%92%8C%E6%9B%86

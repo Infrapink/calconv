@@ -32,9 +32,9 @@ COMPILING
 
 Before you can run calconv, you will need to compile the Fortran code. In the command line, navigate to the folder where you unpacked the source code (which should be the one containing this Readme file) and type the following:
 
-gfortran -c sunmoon.f90 -m sunmoon
+f2py3 -c -m sunmoon sunmoon.f90
 
-(This only needs to be done once)
+(This only needs to be done once; however, if Python is updated to a new version number, it can break compatibility with binary code, and so a recompile will be necessary)
 
 RUNNING
 
