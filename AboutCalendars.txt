@@ -1167,3 +1167,14 @@ The Tianhe calendar was designed by Zhen Luan and introduced at the beginning of
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, and G
 * https://zh.wikipedia.org/wiki/%E5%A4%A9%E5%92%8C%E6%9B%86
+
+----------------
+DAXIANG CALENDAR
+----------------
+
+The Daxiang, or Bingyin Yuan, calendar was designed by Ma Xiang and introduced at the beginning of the reign of Emperor Jing of Bei Zhou; it continued to be used into the early Sui dynasty. The tropical year is defined as 365 + 3167/12992 days, which is about 1 minute 16 seconds longer than the modern mean tropical year. The synodic month is defined as 29 + 28422/53563 days, about 2.5 seconds longer than the modern mean synodic month. There are 5541 months in 448 years.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
+* https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%B1%A1%E6%9B%86
+
