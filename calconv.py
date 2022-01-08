@@ -86,6 +86,8 @@ import xinghe
 import tianbao
 import tianhe
 import daxiang
+import kaihuang
+import daye
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -926,6 +928,24 @@ def cons_day_julian_todate():
         daxiang_day_ent.insert(0, daxiang_date[0])
         daxiang_month_ent.insert(0, daxiang_date[1])
         daxiang_year_ent.insert(0, daxiang_date[2])
+
+        # Convert a Julian day to a date in the Kaihuang calendar
+        kaihuang_date = kaihuang.fromjd(day)
+        kaihuang_day_ent.delete(0, END)
+        kaihuang_month_ent.delete(0, END)
+        kaihuang_year_ent.delete(0, END)
+        kaihuang_day_ent.insert(0, kaihuang_date[0])
+        kaihuang_month_ent.insert(0, kaihuang_date[1])
+        kaihuang_year_ent.insert(0, kaihuang_date[2])
+
+        # Convert a Julian day to a date in the Daye calendar
+        daye_date = daye.fromjd(day)
+        daye_day_ent.delete(0, END)
+        daye_month_ent.delete(0, END)
+        daye_year_ent.delete(0, END)
+        daye_day_ent.insert(0, daye_date[0])
+        daye_month_ent.insert(0, daye_date[1])
+        daye_year_ent.insert(0, daye_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1786,6 +1806,24 @@ def daxiang_converter():
         month = daxiang_month_ent.get()
         year = int(daxiang_year_ent.get())
         jday = daxiang.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def kaihuang_converter():
+        day = int(kaihuang_day_ent.get())
+        month = kaihuang_month_ent.get()
+        year = int(kaihuang_year_ent.get())
+        jday = kaihuang.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def daye_converter():
+        day = int(daye_day_ent.get())
+        month = daye_month_ent.get()
+        year = int(daye_year_ent.get())
+        jday = daye.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2960,5 +2998,31 @@ daxiang_year_ent = Entry(frame)
 daxiang_year_ent.grid(row = 85, column = 14, sticky = W)
 daxiang_bttn = Button(frame, text = "Calculate", command = daxiang_converter).grid(row = 86, column = 12, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.39.0")
+# Kaihuang calendar                                                                                            
+kaihuang_lbl = Label(frame, text = "Kaihuang calendar").grid(row = 88, column = 0, columnspan = 3, sticky = W)
+kaihuang_day_lbl = Label(frame, text = "Day").grid(row = 89, column = 0, sticky = W)
+kaihuang_day_ent = Entry(frame)
+kaihuang_day_ent.grid(row = 90, column = 0, sticky = W)
+kaihuang_month_lbl = Label(frame, text = "Month").grid(row = 89, column = 1, sticky = W)
+kaihuang_month_ent = Entry(frame)
+kaihuang_month_ent.grid(row = 90, column = 1, sticky = W)
+kaihuang_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 2, sticky = W)
+kaihuang_year_ent = Entry(frame)
+kaihuang_year_ent.grid(row = 90, column = 2, sticky = W)
+kaihuang_bttn = Button(frame, text = "Calculate", command = kaihuang_converter).grid(row = 91, column = 0, columnspan = 3, sticky = W)
+
+# Daye calendar                                                                                            
+daye_lbl = Label(frame, text = "Daye calendar").grid(row = 88, column = 3, columnspan = 3, sticky = W)
+daye_day_lbl = Label(frame, text = "Day").grid(row = 89, column = 3, sticky = W)
+daye_day_ent = Entry(frame)
+daye_day_ent.grid(row = 90, column = 3, sticky = W)
+daye_month_lbl = Label(frame, text = "Month").grid(row = 89, column = 4, sticky = W)
+daye_month_ent = Entry(frame)
+daye_month_ent.grid(row = 90, column = 4, sticky = W)
+daye_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 5, sticky = W)
+daye_year_ent = Entry(frame)
+daye_year_ent.grid(row = 90, column = 5, sticky = W)
+daye_bttn = Button(frame, text = "Calculate", command = daye_converter).grid(row = 91, column = 3, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.42.0")
 root.mainloop()

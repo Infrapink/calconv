@@ -1178,3 +1178,28 @@ Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
 * https://zh.wikipedia.org/wiki/%E5%A4%A7%E8%B1%A1%E6%9B%86
 
+-----------------
+KAIHUANG CALENDAR
+-----------------
+
+After the Sui dynasty reunited China, Emperor Wen decided that a new calendar was in order and commissioned Zhang Bin to design one. Zhang's new calendar was introduced in the fourth year of the Kaihuang era, which was Emperor Wen's first era.
+
+The tropical year is defined as 365 + 25063/102960 days, about 46 seconds longer than the modern mean tropical year. The month is defined as 29 + 96529/181920 days, less than 2 seconds longer than the modern mean synodic month. There are 5306 months in 429 years.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
+* https://zh.wikipedia.org/wiki/%E9%96%8B%E7%9A%87%E6%9B%86
+
+-------------
+DAYE CALENDAR
+-------------
+
+The Daye calendar was developed by Zhang Hexuan towards the end of the Kaihuang era, when he noticed some errors in the Kaihuang calendar; however, it was not introduced until early in the reign of Emperor Yang, hence the name Daye calendar, after Yang's era name.
+
+The tropical year is defined as 365 + 10363/42640 days, just 13 seconds longer than the actual mean tropical year when measured from one souther solstice to the next. The synodic month was defined as 29 + 607/1144 days, less than 0.4 seconds longer than the modern mean synodic month. There are 5071 months in 410 years. It is the most accurate calendar I am aware of that uses mean values - indeed, it matches the period from one solstice to another better than the Gregorian calendar matches the period from one equinox to the next! The next big improvement would come from accounting for variation in the sun and moon's speeds across the zodiac.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
+* https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%A5%AD%E6%9B%86
+
+
