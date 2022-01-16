@@ -130,7 +130,7 @@ def fromjd(jday):
     #print(floor(next_xin))
     #print(jday)
 
-    if jday >= floor(next_xin):
+    if jday > floor(next_xin):
         year += 1
         xin = next_xin
         next_solstice += sui

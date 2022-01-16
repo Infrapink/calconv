@@ -91,7 +91,7 @@ def fromjd(jday):
     xin = getxin(solstice)
     next_xin = getxin(next_solstice)
 
-    if floor(xin) >= jday:
+    if floor(xin) > jday:
         year -= 1
         if year == 0:
             year = (-1)
@@ -111,6 +111,7 @@ def fromjd(jday):
     newmoon = xin
     m = 0
 
+    #print(leap)
     if leap == False:
         # normal year
         while floor(newmoon + yue) <= jday:

@@ -91,7 +91,7 @@ def fromjd(jday):
     xin = getxin(solstice)
     next_xin = getxin(next_solstice)
 
-    if floor(xin) >= jday:
+    if floor(xin) > jday:
         year -= 1
         if year == 0:
             year = (-1)
@@ -116,6 +116,10 @@ def fromjd(jday):
         while floor(newmoon + yue) <= jday:
             newmoon += yue
             m += 1
+        #print(m)
+        print(floor(newmoon))
+        print(jday)
+        print(jday - floor(newmoon))
         month = MONTHS[m]
         day = jday - floor(newmoon) + 1
     else:
@@ -125,7 +129,6 @@ def fromjd(jday):
         while floor(st) < floor(newmoon):
             st += zhongqi
 
-        #print(m)
         while floor(newmoon + yue) <= jday:
             if (floor(newmoon + yue) <= floor(st)) and (leapt == False):
                 leapt = True

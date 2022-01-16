@@ -91,7 +91,7 @@ def fromjd(jday):
     xin = getxin(solstice)
     next_xin = getxin(next_solstice)
 
-    if floor(xin) >= jday:
+    if floor(xin) > jday:
         year -= 1
         if year == 0:
             year = (-1)
