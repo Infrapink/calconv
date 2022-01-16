@@ -116,10 +116,6 @@ def fromjd(jday):
         while floor(newmoon + yue) <= jday:
             newmoon += yue
             m += 1
-        #print(m)
-        print(floor(newmoon))
-        print(jday)
-        print(jday - floor(newmoon))
         month = MONTHS[m]
         day = jday - floor(newmoon) + 1
     else:
