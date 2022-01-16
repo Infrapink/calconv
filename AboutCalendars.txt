@@ -1023,9 +1023,9 @@ The Yin calendar is the last of the Six Ancient Calendars, introduced in the Son
 Sources:
 * https://zh.wikipedia.org/wiki/%E6%88%98%E5%9B%BD%E5%9B%9B%E5%88%86%E5%8E%86
 
--------------------------
-GRAND INCEPTIONS CALENDAR
--------------------------
+---------------
+TAICHU CALENDAR
+---------------
 
 The Taichu, or Great Inception, calendar was introduced in the 36th year of Emperor Wu of the Han Dynasty, and set the structure for all future Chinese calendars. It is also the oldest Chinese calendar for which full descriptions are available.
 
@@ -1041,9 +1041,9 @@ Sources:
 * http://chinaknowledge.de/History/Terms/calendar.html
 * https://link.springer.com/content/pdf/10.1007%2F978-1-4614-6141-8_225.pdf
 
----------------------------
-TRIPLE CONCORDANCE CALENDAR
----------------------------
+----------------
+SANTONG CALENDAR
+----------------
 
 The Santong, or Triple Concordance, calendar is an adjustment to the Taichu calendar, introduced by Liu Xin. This system establishes that the southern solstice coincided with the new moon 143,126 years before the calendar was introduced... which also means they coincided in the 37th year of Emperor Wu. Needless to say, this is inaccurate, but the basic principle would continue to be used for centuries after until better methods of predicting the exact positions of the sun and the moon were discovered.
 
@@ -1073,9 +1073,9 @@ Sources:
 * https://zh.wikipedia.org/wiki/%E4%B9%BE%E8%B1%A1%E6%9B%86
 * https://en.wikipedia.org/wiki/Liu_Hong_(astronomer)
 
----------------------------
-LUMINOUS INCEPTION CALENDAR
----------------------------
+----------------
+JINGCHU CALENDAR
+----------------
 
 The Luminous Inception, or Jingchu, calendar was introduced by Cao Rui, the second king of Cao Wei, during the Three Kingdoms period. The introduction of the calendar marked the beginning of Rui's third era, Jingchu, for which the calendar is named.
 
@@ -1196,10 +1196,24 @@ DAYE CALENDAR
 
 The Daye calendar was developed by Zhang Hexuan towards the end of the Kaihuang era, when he noticed some errors in the Kaihuang calendar; however, it was not introduced until early in the reign of Emperor Yang, hence the name Daye calendar, after Yang's era name.
 
-The tropical year is defined as 365 + 10363/42640 days, just 13 seconds longer than the actual mean tropical year when measured from one souther solstice to the next. The synodic month was defined as 29 + 607/1144 days, less than 0.4 seconds longer than the modern mean synodic month. There are 5071 months in 410 years. It is the most accurate calendar I am aware of that uses mean values - indeed, it matches the period from one solstice to another better than the Gregorian calendar matches the period from one equinox to the next! The next big improvement would come from accounting for variation in the sun and moon's speeds across the zodiac.
+The tropical year is defined as 365 + 10363/42640 days, just 13 seconds longer than the actual mean tropical year when measured from one souther solstice to the next. The synodic month was defined as 29 + 607/1144 days, less than 0.4 seconds longer than the modern mean synodic month. There are 5071 months in 410 years. It is the most accurate calendar I am aware of that uses mean values - indeed, it matches the period from one solstice to another better than the Gregorian calendar matches the period from one equinox to the next!
 
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
 * https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%A5%AD%E6%9B%86
+
+--------------
+WUYIN CALENDAR
+--------------
+
+The Wuyin, or Wuyin Yuan, calendar, is the last hisotrical Chinese calendar to use exclusively mean values. Designed by Fu Renjun and Cui Shan, it was introduced early in the Tang dynasty, in the second year of Emperor Gaozu.
+
+There are 249 leap years in 676 year. The tropical year is defined as 365 + 2315/9464 days, about 2 and a half minutes longer than the modern tropical year. The synodic month was defined as 29 + 6901/13006 days, just under a second longer than the mean synodic month.
+
+While it was a step back from the Daye calendar, further calendar reforms in the Tang dynasty would make the calendar ever more accurate as the variable speed of the sun and the moon across the zodiac were taken into account to generate incredibly precise almanacs.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
+* https://zh.wikipedia.org/wiki/%E6%88%8A%E5%AF%85%E5%85%83%E6%9B%86
 
 

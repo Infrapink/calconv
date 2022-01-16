@@ -88,6 +88,7 @@ import tianhe
 import daxiang
 import kaihuang
 import daye
+import wuyin
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -803,7 +804,7 @@ def cons_day_julian_todate():
         yin_month_ent.insert(0, yin_date[1])
         yin_year_ent.insert(0, yin_date[2])
 
-        # Convert a Julian day to a date in the Chinese Grand Inception calendar
+        # Convert a Julian day to a date in the Taichu calendar
         taichu_date = taichu.fromjd(day)
         taichu_day_ent.delete(0, END)
         taichu_month_ent.delete(0, END)
@@ -812,7 +813,7 @@ def cons_day_julian_todate():
         taichu_month_ent.insert(0, taichu_date[1])
         taichu_year_ent.insert(0, taichu_date[2])
 
-        # Convert a Julian day to a date in the Chinese Triple Concordance calendar
+        # Convert a Julian day to a date in the Santong calendar
         santong_date = santong.fromjd(day)
         santong_day_ent.delete(0, END)
         santong_month_ent.delete(0, END)
@@ -839,7 +840,7 @@ def cons_day_julian_todate():
         qianxiang_month_ent.insert(0, qianxiang_date[1])
         qianxiang_year_ent.insert(0, qianxiang_date[2])
 
-        # Convert a Julian day to a date in the Luminous Inception calendar
+        # Convert a Julian day to a date in the Jingchu calendar
         jingchu_date = jingchu.fromjd(day)
         jingchu_day_ent.delete(0, END)
         jingchu_month_ent.delete(0, END)
@@ -946,6 +947,15 @@ def cons_day_julian_todate():
         daye_day_ent.insert(0, daye_date[0])
         daye_month_ent.insert(0, daye_date[1])
         daye_year_ent.insert(0, daye_date[2])
+
+        # Convert a Julian day to a date in the Wuyin calendar
+        wuyin_date = wuyin.fromjd(day)
+        wuyin_day_ent.delete(0, END)
+        wuyin_month_ent.delete(0, END)
+        wuyin_year_ent.delete(0, END)
+        wuyin_day_ent.insert(0, wuyin_date[0])
+        wuyin_month_ent.insert(0, wuyin_date[1])
+        wuyin_year_ent.insert(0, wuyin_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1824,6 +1834,15 @@ def daye_converter():
         month = daye_month_ent.get()
         year = int(daye_year_ent.get())
         jday = daye.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def wuyin_converter():
+        day = int(wuyin_day_ent.get())
+        month = wuyin_month_ent.get()
+        year = int(wuyin_year_ent.get())
+        jday = wuyin.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2816,8 +2835,8 @@ yin_year_ent = Entry(frame)
 yin_year_ent.grid(row = 75, column = 2, sticky = W)
 yin_bttn = Button(frame, text = "Calculate", command = yin_converter).grid(row = 76, column = 0, columnspan = 3, sticky = W)
 
-# Grand Inception calendar                                                                                            
-taichu_lbl = Label(frame, text = "Grand Inception calendar").grid(row = 73, column = 3, columnspan = 3, sticky = W)
+# Taichu calendar                                                                                            
+taichu_lbl = Label(frame, text = "Taichu calendar").grid(row = 73, column = 3, columnspan = 3, sticky = W)
 taichu_day_lbl = Label(frame, text = "Day").grid(row = 74, column = 3, sticky = W)
 taichu_day_ent = Entry(frame)
 taichu_day_ent.grid(row = 75, column = 3, sticky = W)
@@ -2829,8 +2848,8 @@ taichu_year_ent = Entry(frame)
 taichu_year_ent.grid(row = 75, column = 5, sticky = W)
 taichu_bttn = Button(frame, text = "Calculate", command = taichu_converter).grid(row = 76, column = 3, columnspan = 3, sticky = W)
 
-# Triple Concordance calendar                                                                                            
-santong_lbl = Label(frame, text = "Triple Concordance calendar").grid(row = 73, column = 6, columnspan = 3, sticky = W)
+# Santong calendar                                                                                            
+santong_lbl = Label(frame, text = "Santong calendar").grid(row = 73, column = 6, columnspan = 3, sticky = W)
 santong_day_lbl = Label(frame, text = "Day").grid(row = 74, column = 6, sticky = W)
 santong_day_ent = Entry(frame)
 santong_day_ent.grid(row = 75, column = 6, sticky = W)
@@ -2868,8 +2887,8 @@ qianxiang_year_ent = Entry(frame)
 qianxiang_year_ent.grid(row = 75, column = 14, sticky = W)
 qianxiang_bttn = Button(frame, text = "Calculate", command = qianxiang_converter).grid(row = 76, column = 12, columnspan = 3, sticky = W)
 
-# Luminous Inception calendar                                                                                            
-jingchu_lbl = Label(frame, text = "Luminous Inception calendar").grid(row = 78, column = 0, columnspan = 3, sticky = W)
+# Jingchu calendar                                                                                            
+jingchu_lbl = Label(frame, text = "Jingchu calendar").grid(row = 78, column = 0, columnspan = 3, sticky = W)
 jingchu_day_lbl = Label(frame, text = "Day").grid(row = 79, column = 0, sticky = W)
 jingchu_day_ent = Entry(frame)
 jingchu_day_ent.grid(row = 80, column = 0, sticky = W)
@@ -3023,6 +3042,19 @@ daye_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 5, sticky = 
 daye_year_ent = Entry(frame)
 daye_year_ent.grid(row = 90, column = 5, sticky = W)
 daye_bttn = Button(frame, text = "Calculate", command = daye_converter).grid(row = 91, column = 3, columnspan = 3, sticky = W)
+
+# Wuyin calendar                                                                                            
+wuyin_lbl = Label(frame, text = "Wuyin calendar").grid(row = 88, column = 6, columnspan = 3, sticky = W)
+wuyin_day_lbl = Label(frame, text = "Day").grid(row = 89, column = 6, sticky = W)
+wuyin_day_ent = Entry(frame)
+wuyin_day_ent.grid(row = 90, column = 6, sticky = W)
+wuyin_month_lbl = Label(frame, text = "Month").grid(row = 89, column = 7, sticky = W)
+wuyin_month_ent = Entry(frame)
+wuyin_month_ent.grid(row = 90, column = 7, sticky = W)
+wuyin_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 8, sticky = W)
+wuyin_year_ent = Entry(frame)
+wuyin_year_ent.grid(row = 90, column = 8, sticky = W)
+wuyin_bttn = Button(frame, text = "Calculate", command = wuyin_converter).grid(row = 91, column = 6, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.42.0")
 root.mainloop()
