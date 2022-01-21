@@ -1216,4 +1216,21 @@ Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
 * https://zh.wikipedia.org/wiki/%E6%88%8A%E5%AF%85%E5%85%83%E6%9B%86
 
+------------------
+XUANMMING CALENDAR
+------------------
+
+When Emperor Gaozong took the throne, he commissioned renowned scholar Li Chunfeng to revise the calendar yet again. Li's Linde calendar adapted Liu Zhou's proposed but never implemented Huangji li, formally introducing corrections to account for the sun's variable speed across the zodiac. It also employed the anomalistic month, first described in the Jingchu calendar, to fix the exact position of the moon relative to the ecliptic. It lasted for 66 years, but by the reign of Emperor Xuanzong, discrepancies between predictions and observations had become apparent. Around this time, the illustrious Buddhist monk Yi Xing, armed with Indian astronomical knowledge, produced the even more accurate Dayan calendar. His methods were slightly refined towards the end of Emperor Suzong's reign to produce the Baoying calendar. This was followed by the Zhengyuan (not to be confused with the Zhengguang) and Guanxiang calendars.
+
+Unfortunately, this is where I hit a brick wall in my research. All the real information about the Linde and Dayan calendars is written in Classical Chinese and has not been translated into English, Irish, French, or Spanish, and due to the involved calculations, I was unable to derive the required figures mathematically. As such, I had no choice but to move past them and go straight to the Xuanming calendar, which succeeded the Guanxiang and has possibly the most intricate calculations of any algorithmic calendar.
+
+The Xuanming calendar was implemented in the third year of Emperor Muzong. It defines the tropical year as 365 + 2055/8400 days, about 3 minutes 14 seconds longer than the mean tropical year. The synodic month is defined as 29 + 4457/8400 days, less than half a second longer than the modern mean synodic month. Finally, the anomalistic month is defined as 27 + 4658/8400 days, about 2 1/4 seconds shorter than the modern mean synodic month.
+
+Based on the pioneering work of Liu Zhou, the Xuanming calendar applies asmall correction to the length of each solar term so they will begin at a point closer to astronomical reality. Taoist principles of balance are visible in the algorithm - the true positions of the the solstices are assumed to be identical to their mean positions. Furthermore, a set of values are subtracted from the length of each solar term between the southern solstice and the northward equinox, and then those same values are added to each solar term between the northward equinox and the northern solstice but in reverse order. The same numbers are then added in the original order to each solar term between the northern solstice and southward equinox, and finally subtracted in reverse order to each solar term between the southward equinox and the southern solstice. This might not sound like much, but when you plot it out, or even program an algorithm, the whole thing visually and mathematically echoes the taijitu.
+
+The lunar adjustments are much more complex. The phase of the moon has two modifications, one solar and one lunar. The solar correction applies a modification based on the time between the start of the current solar term and the mean lunar phase, while the lunar correction uses the time from the start of the last anomalistic month to the lunar phase. Oh, but these aren't just simple addition and subtraction, oh no. The solar and lunar corrections are defined by complex, multi-stage algorithms that even have special cases for when it#s the 7nth day of the anomalistic month. Like I said, complex and intricate. Uniquely among calendars derived from the work of Liu Zhou, the Xuanming calendar splits the anomalistic month into two 'phases', with the exact modification dependent on both the phase of the anomalistic month and the time from the start of the anomalist month to the phase of the moon in question.
+
+Sources:
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), chapters 5 and 10.
+
 

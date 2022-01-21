@@ -89,6 +89,7 @@ import daxiang
 import kaihuang
 import daye
 import wuyin
+import xuanming
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -956,6 +957,15 @@ def cons_day_julian_todate():
         wuyin_day_ent.insert(0, wuyin_date[0])
         wuyin_month_ent.insert(0, wuyin_date[1])
         wuyin_year_ent.insert(0, wuyin_date[2])
+
+        # Convert a Julian day to a date in the Xuanming calendar
+        xuanming_date = xuanming.fromjd(day)
+        xuanming_day_ent.delete(0, END)
+        xuanming_month_ent.delete(0, END)
+        xuanming_year_ent.delete(0, END)
+        xuanming_day_ent.insert(0, xuanming_date[0])
+        xuanming_month_ent.insert(0, xuanming_date[1])
+        xuanming_year_ent.insert(0, xuanming_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1843,6 +1853,15 @@ def wuyin_converter():
         month = wuyin_month_ent.get()
         year = int(wuyin_year_ent.get())
         jday = wuyin.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def xuanming_converter():
+        day = int(xuanming_day_ent.get())
+        month = xuanming_month_ent.get()
+        year = int(xuanming_year_ent.get())
+        jday = xuanming.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -3055,6 +3074,19 @@ wuyin_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 8, sticky =
 wuyin_year_ent = Entry(frame)
 wuyin_year_ent.grid(row = 90, column = 8, sticky = W)
 wuyin_bttn = Button(frame, text = "Calculate", command = wuyin_converter).grid(row = 91, column = 6, columnspan = 3, sticky = W)
+
+# Xuanming calendar                                                                                            
+xuanming_lbl = Label(frame, text = "Xuanming calendar").grid(row = 88, column = 9, columnspan = 3, sticky = W)
+xuanming_day_lbl = Label(frame, text = "Day").grid(row = 89, column = 9, sticky = W)
+xuanming_day_ent = Entry(frame)
+xuanming_day_ent.grid(row = 90, column = 9, sticky = W)
+xuanming_month_lbl = Label(frame, text = "Month").grid(row = 89, column = 10, sticky = W)
+xuanming_month_ent = Entry(frame)
+xuanming_month_ent.grid(row = 90, column = 10, sticky = W)
+xuanming_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 11, sticky = W)
+xuanming_year_ent = Entry(frame)
+xuanming_year_ent.grid(row = 90, column = 11, sticky = W)
+xuanming_bttn = Button(frame, text = "Calculate", command = xuanming_converter).grid(row = 91, column = 9, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.42.0")
 root.mainloop()
