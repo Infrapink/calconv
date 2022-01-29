@@ -90,6 +90,7 @@ import kaihuang
 import daye
 import wuyin
 import xuanming
+import vietnamese
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -966,6 +967,15 @@ def cons_day_julian_todate():
         xuanming_day_ent.insert(0, xuanming_date[0])
         xuanming_month_ent.insert(0, xuanming_date[1])
         xuanming_year_ent.insert(0, xuanming_date[2])
+
+        # Convert a Julian day to a date in the Vietnamese lunisolar calendar
+        vietnamese_date = vietnamese.fromjd(day)
+        vietnamese_day_ent.delete(0, END)
+        vietnamese_month_ent.delete(0, END)
+        vietnamese_year_ent.delete(0, END)
+        vietnamese_day_ent.insert(0, vietnamese_date[0])
+        vietnamese_month_ent.insert(0, vietnamese_date[1])
+        vietnamese_year_ent.insert(0, vietnamese_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1862,6 +1872,15 @@ def xuanming_converter():
         month = xuanming_month_ent.get()
         year = int(xuanming_year_ent.get())
         jday = xuanming.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def vietnamese_converter():
+        day = int(vietnamese_day_ent.get())
+        month = vietnamese_month_ent.get()
+        year = int(vietnamese_year_ent.get())
+        jday = vietnamese.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -3087,6 +3106,19 @@ xuanming_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 11, stic
 xuanming_year_ent = Entry(frame)
 xuanming_year_ent.grid(row = 90, column = 11, sticky = W)
 xuanming_bttn = Button(frame, text = "Calculate", command = xuanming_converter).grid(row = 91, column = 9, columnspan = 3, sticky = W)
+
+# Vietnamese lunisolar calendar                                                                                            
+vietnamese_lbl = Label(frame, text = "Vietnamese lunisolar calendar").grid(row = 88, column = 12, columnspan = 3, sticky = W)
+vietnamese_day_lbl = Label(frame, text = "Day").grid(row = 389, column = 12, sticky = W)
+vietnamese_day_ent = Entry(frame)
+vietnamese_day_ent.grid(row = 90, column = 12, sticky = W)
+vietnamese_month_lbl = Label(frame, text = "Month").grid(row = 89, column = 13, sticky = W)
+vietnamese_month_ent = Entry(frame)
+vietnamese_month_ent.grid(row = 90, column = 13, sticky = W)
+vietnamese_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 14, sticky = W)
+vietnamese_year_ent = Entry(frame)
+vietnamese_year_ent.grid(row = 90, column = 14, sticky = W)
+vietnamese_bttn = Button(frame, text = "Calculate", command = vietnamese_converter).grid(row = 91, column = 12, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.42.0")
 root.mainloop()
