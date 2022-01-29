@@ -219,7 +219,7 @@ def fromjd(jday):
         
     else:
         # negative dates
-        year = (solar+epoch - jday) // sui
+        year = (solar_epoch - jday) // sui
         solstice = 0 - (sui * year)
         while floor(solstice) > jday:
             year -= 1
