@@ -42,12 +42,12 @@ def getruqi(solstice, newmoon):
 
     if newmoon < j:
         while j > newmoon:
-            q -= 1
+            q = (q - 1) % 24
             j = j - jieqi - STADJ[q % 24]
     elif newmoon > j:
-        while (j + jieqi + STADJ[q % 24]) < newmoon:
-            j = j + jieqi + STADJ[q % 24]
-            q += 1
+        while (j + jieqi + STADJ[(q + 1) % 24]) < newmoon:
+            j = j + jieqi + STADJ[(q + 1) % 24]
+            q = (q + 1) % 24
 
     return (newmoon - j)
 
@@ -110,12 +110,12 @@ def solcor(solstice, newmoon):
 
     ruqi = getruqi(j, n)
 
-    while (j + jieqi + STADJ[q % 24]) <= n:
-        j = j + jieqi + STADJ[q % 24]
-        q += 1
+    while (j + jieqi + STADJ[(q + 1) % 24]) < n:
+        j = j + jieqi + STADJ[(q + 1) % 24]
+        q = (q + 1) % 24
 
     while j > n:
-        q -= 1
+        q = (q - 1) % 24
         j = j - jieqi - STADJ[q % 24]
 
     delta = (SIGMA[(q - 0) % 24] - SIGMA[(q - 1) % 24],
@@ -124,8 +124,8 @@ def solcor(solstice, newmoon):
 
     eta = (j - jieqi - STADJ[(q - 1) % 24],
            j,
-           j + jieqi + STADJ[q % 24],
-           j + (2 * jieqi) + STADJ[q % 24] + STADJ[(q + 1) % 24])
+           j + jieqi + STADJ[(q + 1) % 24],
+           j + (2 * jieqi) + STADJ[(q + 2) % 24] + STADJ[(q + 3) % 24])
 
     zeta = (eta[1] - eta[0],
             eta[2] - eta[1],
@@ -213,13 +213,9 @@ def fromjd(jday):
 
         luns = (solstice - lunar_epoch) // yue
         msm = lunar_epoch + (luns * yue) # mean solstice moon
-
-        #peris = (msm - anom_epoch) // zhuan # how many anomalistic months have passed?
-        #anom = anom_epoch + (zhuan * peris)
-        
     else:
         # negative dates
-        year = (solar_epoch - jday) // sui
+        year = 0 - ((solar_epoch - jday) // sui)
         solstice = 0 - (sui * year)
         while floor(solstice) > jday:
             year -= 1
@@ -227,9 +223,6 @@ def fromjd(jday):
 
         luns = (lunar_epoch - solstice) // yue
         msm = lunar_epoch - (luns * yue)
-
-        #peris = (anom_epoch - msm) // zhuan
-        #anom = anom_epoch - (zhuan * peris)
 
     while floor(truemoon(msm, msm + yue, solstice)) <= floor(solstice):
         msm += yue
@@ -304,7 +297,6 @@ def fromjd(jday):
         else:
             leap = True
             xin = prev_msm + (14 * yue)
-
     newmoon = xin
     m = 0
 
@@ -316,14 +308,13 @@ def fromjd(jday):
         month = MONTHS[m]
         day = 1 + jday - floor(truemoon(newmoon, msm, solstice))
     else:
-        # leap year
         leapt = False # have we passed the leap month?
         run = False # are we in the leap month?
         zhongqi = solstice
         q = 0 # count of which solar term we're in, where the southern solstice is number 0
         
         while floor(zhongqi) < floor(truemoon(xin, msm, solstice)):
-            zhongqi = zhongqi + (2 * jieqi) + STADJ[q] + STADJ [q + 1]
+            zhongqi = zhongqi + (2 * jieqi) + STADJ[q % 24] + STADJ[(q + 1) % 24]
             q += 2
 
         while floor(truemoon(newmoon + yue, msm, solstice)) <= jday:
@@ -338,7 +329,7 @@ def fromjd(jday):
                 leapt = True
             else:
                 m += 1
-                zhongqi = zhongqi + (2 * jieqi) + STADJ[q] + STADJ[q + 1]
+                zhongqi = zhongqi + (2 * jieqi) + STADJ[q % 24] + STADJ[(q + 1) % 24]
                 q += 2
 
         if run == True:
@@ -444,7 +435,7 @@ def tojd(day, month, year):
         q = 0 # keep track of which solar term we're in, where the southern solstice is 0
 
         while floor(zhongqi) < floor(truemoon(jday, msm, solstice)):
-            zhongqi = zhongqi + (2 * jieqi) + STADJ[q] + STADJ[q + 1]
+            zhongqi = zhongqi + (2 * jieqi) + STADJ[q % 24] + STADJ[(q + 1) % 24]
             q += 2
 
         while month != MONTHS[m]:
@@ -454,7 +445,7 @@ def tojd(day, month, year):
             m += 1
             jday += yue
             if floor(zhongqi) < floor(truemoon(jday, msm, solstice)):
-                zhongqi = zhongqi + (2 * jieqi) + STADJ[q] + STADJ[q + 1]
+                zhongqi = zhongqi + (2 * jieqi) + STADJ[q % 24] + STADJ[(q + 1) % 24]
                 q += 2
 
         jday = floor(truemoon(jday, msm, solstice)) + day - 1
