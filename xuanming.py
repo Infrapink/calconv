@@ -45,7 +45,7 @@ def getruqi(solstice, newmoon):
             q = (q - 1) % 24
             j = j - jieqi - STADJ[q % 24]
     elif newmoon > j:
-        while (j + jieqi + STADJ[(q + 1) % 24]) < newmoon:
+        while (j + jieqi + STADJ[(q + 1) % 24]) <= newmoon:
             j = j + jieqi + STADJ[(q + 1) % 24]
             q = (q + 1) % 24
 
@@ -216,7 +216,7 @@ def fromjd(jday):
     else:
         # negative dates
         year = 0 - ((solar_epoch - jday) // sui)
-        solstice = 0 - (sui * year)
+        solstice = solar_epoch + (sui * year)
         while floor(solstice) > jday:
             year -= 1
             solstice -= sui

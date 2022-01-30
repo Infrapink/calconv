@@ -238,7 +238,7 @@ Amazigh calendar:
 * Nwambir
 * Dujembir
 
-Rumi calendars:
+Rumi (Ottoman fiscal) calendar:
 * Mart
 * Nisan
 * Mayıs
@@ -376,7 +376,7 @@ Georgian calendar (Georgian Era)
 * Matthias
 * Paul
 
-Juche:
+Korean:
 * Il-wol
 * I-wol
 * Sam-wol
@@ -389,6 +389,7 @@ Juche:
 * Si-wol
 * Sibil-wol
 * Sibi-wol
+To get the leap month, add "Yun " before the name of the month.
 
 Inca:
 * Intiraymipacha

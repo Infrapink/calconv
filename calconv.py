@@ -91,6 +91,8 @@ import daye
 import wuyin
 import xuanming
 import vietnamese
+import korean
+import dangun
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -976,6 +978,24 @@ def cons_day_julian_todate():
         vietnamese_day_ent.insert(0, vietnamese_date[0])
         vietnamese_month_ent.insert(0, vietnamese_date[1])
         vietnamese_year_ent.insert(0, vietnamese_date[2])
+
+        # Convert a Julian day to a date in the Royal Korean calendar
+        korean_date = korean.fromjd(day)
+        korean_day_ent.delete(0, END)
+        korean_month_ent.delete(0, END)
+        korean_year_ent.delete(0, END)
+        korean_day_ent.insert(0, korean_date[0])
+        korean_month_ent.insert(0, korean_date[1])
+        korean_year_ent.insert(0, korean_date[2])
+
+        # Convert a Julian day to a date in the Dangun (Korean lunisolar) calendar
+        dangun_date = dangun.fromjd(day)
+        dangun_day_ent.delete(0, END)
+        dangun_month_ent.delete(0, END)
+        dangun_year_ent.delete(0, END)
+        dangun_day_ent.insert(0, dangun_date[0])
+        dangun_month_ent.insert(0, dangun_date[1])
+        dangun_year_ent.insert(0, dangun_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1881,6 +1901,24 @@ def vietnamese_converter():
         month = vietnamese_month_ent.get()
         year = int(vietnamese_year_ent.get())
         jday = vietnamese.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def korean_converter():
+        day = int(korean_day_ent.get())
+        month = korean_month_ent.get()
+        year = int(korean_year_ent.get())
+        jday = korean.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def dangun_converter():
+        day = int(dangun_day_ent.get())
+        month = dangun_month_ent.get()
+        year = int(dangun_year_ent.get())
+        jday = dangun.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -3109,7 +3147,7 @@ xuanming_bttn = Button(frame, text = "Calculate", command = xuanming_converter).
 
 # Vietnamese lunisolar calendar                                                                                            
 vietnamese_lbl = Label(frame, text = "Vietnamese lunisolar calendar").grid(row = 88, column = 12, columnspan = 3, sticky = W)
-vietnamese_day_lbl = Label(frame, text = "Day").grid(row = 389, column = 12, sticky = W)
+vietnamese_day_lbl = Label(frame, text = "Day").grid(row = 89, column = 12, sticky = W)
 vietnamese_day_ent = Entry(frame)
 vietnamese_day_ent.grid(row = 90, column = 12, sticky = W)
 vietnamese_month_lbl = Label(frame, text = "Month").grid(row = 89, column = 13, sticky = W)
@@ -3119,6 +3157,32 @@ vietnamese_year_lbl = Label(frame, text = "Year").grid(row = 89, column = 14, st
 vietnamese_year_ent = Entry(frame)
 vietnamese_year_ent.grid(row = 90, column = 14, sticky = W)
 vietnamese_bttn = Button(frame, text = "Calculate", command = vietnamese_converter).grid(row = 91, column = 12, columnspan = 3, sticky = W)
+
+# Royal Korean calendar                                                                                            
+korean_lbl = Label(frame, text = "Royal Korean calendar").grid(row = 93, column = 0, columnspan = 3, sticky = W)
+korean_day_lbl = Label(frame, text = "Day").grid(row = 94, column = 0, sticky = W)
+korean_day_ent = Entry(frame)
+korean_day_ent.grid(row = 95, column = 0, sticky = W)
+korean_month_lbl = Label(frame, text = "Month").grid(row = 94, column = 1, sticky = W)
+korean_month_ent = Entry(frame)
+korean_month_ent.grid(row = 95, column = 1, sticky = W)
+korean_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 2, sticky = W)
+korean_year_ent = Entry(frame)
+korean_year_ent.grid(row = 95, column = 2, sticky = W)
+korean_bttn = Button(frame, text = "Calculate", command = korean_converter).grid(row = 96, column = 0, columnspan = 3, sticky = W)
+
+# Dangun (Korean lunisolar) calendar                                                                                            
+dangun_lbl = Label(frame, text = "Dangun (Korean lunisolar) calendar").grid(row = 93, column = 3, columnspan = 3, sticky = W)
+dangun_day_lbl = Label(frame, text = "Day").grid(row = 94, column = 4, sticky = W)
+dangun_day_ent = Entry(frame)
+dangun_day_ent.grid(row = 95, column = 3, sticky = W)
+dangun_month_lbl = Label(frame, text = "Month").grid(row = 94, column = 4, sticky = W)
+dangun_month_ent = Entry(frame)
+dangun_month_ent.grid(row = 95, column = 4, sticky = W)
+dangun_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 5, sticky = W)
+dangun_year_ent = Entry(frame)
+dangun_year_ent.grid(row = 95, column = 5, sticky = W)
+dangun_bttn = Button(frame, text = "Calculate", command = dangun_converter).grid(row = 96, column = 3, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.42.0")
 root.mainloop()

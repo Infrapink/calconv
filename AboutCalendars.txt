@@ -1249,3 +1249,27 @@ Sources:
 * https://www.vietnam-tour.biz/blog/traditional-calendar-vietnamese-people/
 * https://informatik.uni-leipzig.de/~duc/amlich/calrules_en.html
 * https://informatik.uni-leipzig.de/~duc/amlich/vncal_engl.html
+
+----------------------------------
+DANGUN (KOREAN LUNISOLAR) CALENDAR
+----------------------------------
+
+Like Vietnam, Korea has always imported calendars from China (and then exported them to Japan). The Dangun calendar is the Chinese lunisolar calendar, but calibrated to Korean Standard Time. Korea has used the Gregorian calendar since 1896, with North Korea switching to the Juche calendar for years after 1997 AD; however, the lunisolar calendar continues to be used to set national holidays and observances.
+
+For the epoch, I have chosen 2333 BC, the traditional year in which Korea was founded by the mythical King Dangun.
+
+Sources:
+* https://en.wikipedia.org/wiki/Korean_calendar
+* http://www.lifeinkorea.com/Calendar/holidays.cfm
+* https://books.google.ie/books?id=H4CsWDEi52IC&pg=PA91&redir_esc=y#v=onepage&q&f=false
+* https://ui.adsabs.harvard.edu/abs/2017PKAS...32..407P/abstract
+
+
+---------------------
+KOREAN ROYAL CALENDAR
+---------------------
+
+Korea adopted the Gregorian calendar for official purposes in 1896 AD. For 16 years following World War II, years were officially numbered from the mythical date of the foundation of Gojoseon, the first Korean kingdom, by Dangun, a system which had been used unofficially at a small scale for some years beforehand. And darn it, I do love me an alternate calendar, so it's going in.
+
+Sources:
+* https://en.wikipedia.org/wiki/Korean_calendar

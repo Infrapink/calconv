@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
-# Convert between the Vietnamese lunisolar calendar and Julian Day.
+# Convert between the Korean lunisolar calendar and Julian Day.
 
 from fractions import Fraction
 from math import floor
 from solun import conj, trans
 
-MONTHS = ("Tháng Giêng", "Tháng Hai", "Tháng Ba", "Tháng Tư", "Tháng Năm", "Tháng Sáu", "Tháng Bảy", "Tháng Tám", "Tháng Chín", "Tháng Mười", "Tháng Mười Một", "Tháng Chạp")
+MONTHS = ("Il-wol", "I-wol", "Sam-wol", "Sa-wol", "O-wol", "Yu-wol", "Chil-wol", "Pal-wol", "Gu-wol", "Si-wol", "Sibil-wol", "Sibi-wol")
 
 # Global variables
 
@@ -17,9 +17,9 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = 670610 + Fraction(47, 90)
-lunar_epoch = 670590 + Fraction(3, 16)
-timezone = Fraction(7, 24) # Vietnamese standard time is UTC+7
+solar_epoch = 869302 + Fraction(95,144)
+lunar_epoch = 869301 + Fraction(122,480)
+timezone = Fraction(9, 24) # Korean standard time is UTC+9
 
 def truesun(day, angle):
     day = Fraction(day)
@@ -30,7 +30,7 @@ def truemoon(day):
     return floor(conj(day, timezone))
 
 def fromjd(jday):
-    '''Convert a Julian Day into a date in the Vietnamese lunisolar calendar.'''
+    '''Convert a Julian Day into a date in the Chinese lunisolar calendar.'''
     jday = int(jday)
 
     if jday >= floor(solar_epoch):
@@ -63,25 +63,25 @@ def fromjd(jday):
         lunations = (lunar_epoch - solstice) // lunar_month
         yue = lunar_epoch - (lunations * lunar_month)
 
-    dongchi = truesun(solstice, 270)
-    while truemoon(yue + lunar_month) <= dongchi:
+    dongji = truesun(solstice, 270)
+    while truemoon(yue + lunar_month) <= dongji:
         yue += lunar_month
-    while truemoon(yue) > dongchi:
+    while truemoon(yue) > dongji:
         yue -= lunar_month
 
     prev_solstice = solstice - solar_year
     next_solstice = solstice + solar_year
 
-    prev_dongchi = truesun(prev_solstice, 270)
-    next_dongchi = truesun(next_solstice, 270)
+    prev_dongji = truesun(prev_solstice, 270)
+    next_dongji = truesun(next_solstice, 270)
 
     prev_yue = yue
     next_yue = yue
 
-    while truemoon(prev_yue) > prev_dongchi:
+    while truemoon(prev_yue) > prev_dongji:
         prev_yue -= lunar_month
 
-    while truemoon(next_yue + lunar_month) <= next_dongchi:
+    while truemoon(next_yue + lunar_month) <= next_dongji:
         next_yue += lunar_month
 
     # now to check for leap years
@@ -92,8 +92,8 @@ def fromjd(jday):
     next_leap = None
 
     if yue - prev_yue == year13:
-        # 13 lunations between the new moon on or before the solstice moon preceding last year's tet year, and the solstice moon preceding this year's tet year
-        # It's a leap sui, but is it a leap year?
+        # 13 lunations between the new moon on or before the solstice moon preceding last year's seollal nian, and the solstice moon preceding this year's seollal nian
+        # It's a leap sui, but is it a leap nian?
         # The extra month probably belongs to this year, but it might possibly belong to last year
 
         # prev_yue is the new moon of the 11th month of two years ago
@@ -101,74 +101,74 @@ def fromjd(jday):
         #if (truemoon(prev_yue + (2 * lunar_month)) <= truesun((prev_solstice + solar_term), 300)) or (truemoon(prev_yue + (3 * lunar_month)) <= truesun(prev_solstice + (2 * solar_term), 330)):        
             # The first condition checks if there is a full lunation between Dongzhi and Dahan
             # The second condition checks if there is a full lunation between Dahan and Yushui
-            # In either case, this is a leap sui, in which the leap month belongs to the previous year, which is a leap year
+            # In either case, this is a leap sui, in which the leap month belongs to the previous nian, which is a leap nian
             prev_leap = True
             leap = False
-            tet = prev_yue + (15 * lunar_month)
+            seollal = prev_yue + (15 * lunar_month)
         else:
             prev_leap = False
             leap = True
-            tet = prev_yue + (14 * lunar_month)
+            seollal = prev_yue + (14 * lunar_month)
     else:
         # 12 lunations between the new moon on or before last year's solstice, and the new moon on or before this year's solstice.
-        # Normal sui, probably a normal year
+        # Normal sui, probably a normal nian
         prev_leap = False
-        tet = prev_yue + (14 * lunar_month)
+        seollal = prev_yue + (14 * lunar_month)
 
     
     if next_yue - yue == year13:
-        # 13 lunations between the solstice moon preceding this tet year, and the solstice moon preceding next tet year
-        # It's a leap sui, but is it a leap year?
+        # 13 lunations between the solstice moon preceding this seollal nian, and the solstice moon preceding next seollal nian
+        # It's a leap sui, but is it a leap nian?
         # The extra month probablt belongs to next year, but it might be part of this year
 
         # yue is the new moon of the 11th month of last year
         if (truemoon(yue + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(yue + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
             # The first condition checks if there is a full lunation between Dongzhi and Dahan
             # The second condition checks if there is a full lunation between Dahan and Yushui
-            # In either case, this is a leap sui, in which the leap month belongs to the previous year, which is a leap nean
+            # In either case, this is a leap sui, in which the leap month belongs to the previous nian, which is a leap nean
             leap = True
             next_leap = False
-            next_tet = yue + (15 * lunar_month)
+            next_seollal = yue + (15 * lunar_month)
         else:
             leap = False
             next_leap = True
-            next_tet = yue + (14 * lunar_month)
+            next_seollal = yue + (14 * lunar_month)
     else:
-        # 12 lunations between the solstice moon preceding this year's tet year, and the solstice moon preceding the next sin year
-        # Normal sui, apparently a normal year
+        # 12 lunations between the solstice moon preceding this year's seollal nian, and the solstice moon preceding the next sin nian
+        # Normal sui, apparently a normal nian
         #leap = False
-        next_tet = yue + (14 * lunar_month)
+        next_seollal = yue + (14 * lunar_month)
 
     if leap != True:
         leap = False
 
     # OK
-    # If my calculations are correct, this will give us the ACTUAL, PROPER, CORRECT date of tet year
-    # tet is the time of the first new moon of the Vietnamese year, though the time of the new moon is in UTC.
+    # If my calculations are correct, this will give us the ACTUAL, PROPER, CORRECT date of seollal nian
+    # seollal is the time of the first new moon of the Chinese year, though the time of the new moon is in UTC.
 
-    # But what if tet comes after jday?
-    if truemoon(tet) > jday:
+    # But what if seollal comes after jday?
+    if truemoon(seollal) > jday:
         year -= 1
         if year == 0:
             year = (-1)
             
         next_solstice = solstice
-        next_dongchi = dongchi
+        next_dongji = dongji
         next_yue = yue
-        next_tet = tet
+        next_seollal = seollal
         next_leap = leap
 
         solstice = prev_solstice
-        dongchi = prev_dongchi
+        dongji = prev_dongji
         yue = prev_yue
         leap = prev_leap
 
         if leap == True:
-            tet = next_tet - year13
+            seollal = next_seollal - year13
         else:
-            tet = next_tet - year12
+            seollal = next_seollal - year12
 
-    newmoon = tet
+    newmoon = seollal
     m = 0
 
     if leap == False:
@@ -183,30 +183,30 @@ def fromjd(jday):
         # leap year
         leapt = False # have we passed the leap month?
         angle = 330
-        trungkhi = solstice + (2 * solar_term)
+        zhongqi = solstice + (2 * solar_term)
         # get the first major solar term which doesn't precede the new moon
-        while truesun(trungkhi, angle) < truemoon(tet):
-            trungkhi += solar_term
+        while truesun(zhongqi, angle) < truemoon(seollal):
+            zhongqi += solar_term
             angle = (angle + 30) % 360
 
         while truemoon(newmoon + lunar_month) <= jday:
             if leapt == True:
-                # We're past the leap month so we don't need to worry about trungkhi any more
+                # We're past the leap month so we don't need to worry about zhongqi any more
                 m += 1
                 newmoon += lunar_month
-            elif truemoon(newmoon + lunar_month) <= truesun(trungkhi, angle):
+            elif truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle):
                 # this is the leap month
                 newmoon += lunar_month
                 leapt = True
             else:
                 newmoon += lunar_month
-                while truesun(trungkhi, angle) < truemoon(newmoon):
-                    trungkhi += solar_term
+                while truesun(zhongqi, angle) < truemoon(newmoon):
+                    zhongqi += solar_term
                     angle = (angle + 30) % 360
                 m += 1
 
-        if (leapt == False) and (truemoon(newmoon + lunar_month) <= truesun(trungkhi, angle)):
-            month = "Tháng Nhuận"
+        if (leapt == False) and (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)):
+            month = "Yun " + MONTHS[m - 1]
         else:
             month = MONTHS[m]
 
@@ -230,24 +230,24 @@ def tojd(day, month, year):
         lunations = (solar_epoch - solstice) // lunar_month
 
     yue = lunar_epoch + (lunations * lunar_month)
-    dongchi = truesun(solstice, 270)
-    while truemoon(yue) > dongchi:
+    dongji = truesun(solstice, 270)
+    while truemoon(yue) > dongji:
         yue -= lunar_month
-    while truemoon(yue + lunar_month) <= dongchi:
+    while truemoon(yue + lunar_month) <= dongji:
         yue += lunar_month
 
     next_solstice = solstice + solar_year
-    next_dongchi = truesun(next_solstice, 270)
+    next_dongji = truesun(next_solstice, 270)
     
     prev_solstice = solstice - solar_year
-    prev_dongchi = truesun(prev_solstice, 270)
+    prev_dongji = truesun(prev_solstice, 270)
 
     next_yue = yue + year12
-    while truemoon(next_yue + lunar_month) <= next_dongchi:
+    while truemoon(next_yue + lunar_month) <= next_dongji:
         next_yue += lunar_month
 
     prev_yue = yue - year13
-    while truemoon(prev_yue + lunar_month) <= prev_dongchi:
+    while truemoon(prev_yue + lunar_month) <= prev_dongji:
         prev_yue += lunar_month
 
     # now to check for leap years
@@ -260,38 +260,38 @@ def tojd(day, month, year):
         if (truemoon(prev_yue + (2 * lunar_month)) <= truesun((solstice + solar_term), 300)) or (truemoon(prev_yue + (3 * lunar_month)) <= truesun((solstice + (2 * solar_term)), 330)):
             prev_leap = True
             leap = False
-            tet = prev_yue + (15 * lunar_month)
+            seollal = prev_yue + (15 * lunar_month)
         else:
             prev_leap = False
             leap = True
-            tet = prev_yue + (14 * lunar_month)
+            seollal = prev_yue + (14 * lunar_month)
     else:
         prev_leap = False
-        tet = prev_yue + (14 * lunar_month)
+        seollal = prev_yue + (14 * lunar_month)
         
     if next_yue - yue == year13:
         if (truemoon(yue + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(yue + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
             leap = True
             next_leap = False
-            next_tet = yue + (15 * lunar_month)
+            next_seollal = yue + (15 * lunar_month)
         else:
             leap = False
             next_leap = True
-            next_tet = yue + (14 * lunar_month)
+            next_seollal = yue + (14 * lunar_month)
     else:
-        next_tet = yue + (14 * lunar_month)
+        next_seollal = yue + (14 * lunar_month)
 
     if leap != True:
         leap = False
 
-    newmoon = tet
+    newmoon = seollal
     m = 0
     #print(leap)
     
     if leap == False:
         # normal year
-        if month == "Tháng Nhuận":
-            month = "Tháng Giêng" # no way to determine which month the user actually meant
+        if month[0:3] == "Yun":
+            month = month[4:]
 
         while MONTHS[m] != month:
             m += 1
@@ -300,28 +300,28 @@ def tojd(day, month, year):
         jday = truemoon(newmoon) + day - 1
     else:
         # leap year
-        if month == "Tháng Nhuận":
-            nhuan = True # assuming that if the user enters a leap month, they want the actual leap month
+        if month[0:3] == "Yun":
+            yun = True # assuming that if the user enters a leap month, they want the actual leap month
         else:
-            nhuan = False
+            yun = False
 
-        trungkhi = solstice + (2 * solar_term)
+        zhongqi = solstice + (2 * solar_term)
         angle = 330
 
-        while truesun(trungkhi, angle) < truemoon(newmoon):
-            trungkhi += solar_term
+        while truesun(zhongqi, angle) < truemoon(newmoon):
+            zhongqi += solar_term
             angle = (angle + 30) % 360
 
         while MONTHS[m] != month:
-            if (truemoon(newmoon + lunar_month) <= truesun(trungkhi, angle)) and (nhuan == True):
+            if (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)) and (run == True):
                 # we're in the leap month, which is the month selected
                 break
-            elif (truemoon(newmoon + lunar_month) <= truesun(trungkhi, angle)):
+            elif (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)):
                 newmoon += lunar_month
             else:
                 newmoon += lunar_month
-                while truesun(trungkhi, angle) < truemoon(newmoon):
-                    trungkhi += solar_term
+                while truesun(zhongqi, angle) < truemoon(newmoon):
+                    zhongqi += solar_term
                     angle = (angle + 30) % 360
                 m += 1
 
