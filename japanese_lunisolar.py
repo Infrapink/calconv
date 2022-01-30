@@ -6,7 +6,7 @@ from fractions import Fraction
 from math import floor
 from solun import conj, trans
 
-MONTHS = ("Il-wol", "I-wol", "Sam-wol", "Sa-wol", "O-wol", "Yu-wol", "Chil-wol", "Pal-wol", "Gu-wol", "Si-wol", "Sibil-wol", "Sibi-wol")
+MONTHS = ("Ichigatsu", "Nigatsu", "Sangatsu", "Shigatsu", "Gogatsu", "Rokugatsu", "Shichigatsu", "Hachigatsu", "Kugatsu", "Juugatsu", "Juuichigatsu", "Juunigatsu")
 
 # Global variables
 
@@ -17,8 +17,8 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = 869302 + Fraction(95,144)
-lunar_epoch = 869301 + Fraction(122,480)
+solar_epoch = 1480353 + Fraction(151,160)
+lunar_epoch = 1480348 + Fraction(131,1440)
 timezone = Fraction(9, 24) # Korean standard time is UTC+9
 
 def truesun(day, angle):
@@ -63,25 +63,25 @@ def fromjd(jday):
         lunations = (lunar_epoch - solstice) // lunar_month
         yue = lunar_epoch - (lunations * lunar_month)
 
-    dongji = truesun(solstice, 270)
-    while truemoon(yue + lunar_month) <= dongji:
+    tunji = truesun(solstice, 270)
+    while truemoon(yue + lunar_month) <= tunji:
         yue += lunar_month
-    while truemoon(yue) > dongji:
+    while truemoon(yue) > tunji:
         yue -= lunar_month
 
     prev_solstice = solstice - solar_year
     next_solstice = solstice + solar_year
 
-    prev_dongji = truesun(prev_solstice, 270)
-    next_dongji = truesun(next_solstice, 270)
+    prev_tunji = truesun(prev_solstice, 270)
+    next_tunji = truesun(next_solstice, 270)
 
     prev_yue = yue
     next_yue = yue
 
-    while truemoon(prev_yue) > prev_dongji:
+    while truemoon(prev_yue) > prev_tunji:
         prev_yue -= lunar_month
 
-    while truemoon(next_yue + lunar_month) <= next_dongji:
+    while truemoon(next_yue + lunar_month) <= next_tunji:
         next_yue += lunar_month
 
     # now to check for leap years
@@ -92,7 +92,7 @@ def fromjd(jday):
     next_leap = None
 
     if yue - prev_yue == year13:
-        # 13 lunations between the new moon on or before the solstice moon preceding last year's seollal nian, and the solstice moon preceding this year's seollal nian
+        # 13 lunations between the new moon on or before the solstice moon preceding last year's ganjitsu nian, and the solstice moon preceding this year's ganjitsu nian
         # It's a leap sui, but is it a leap nian?
         # The extra month probably belongs to this year, but it might possibly belong to last year
 
@@ -104,20 +104,20 @@ def fromjd(jday):
             # In either case, this is a leap sui, in which the leap month belongs to the previous nian, which is a leap nian
             prev_leap = True
             leap = False
-            seollal = prev_yue + (15 * lunar_month)
+            ganjitsu = prev_yue + (15 * lunar_month)
         else:
             prev_leap = False
             leap = True
-            seollal = prev_yue + (14 * lunar_month)
+            ganjitsu = prev_yue + (14 * lunar_month)
     else:
         # 12 lunations between the new moon on or before last year's solstice, and the new moon on or before this year's solstice.
         # Normal sui, probably a normal nian
         prev_leap = False
-        seollal = prev_yue + (14 * lunar_month)
+        ganjitsu = prev_yue + (14 * lunar_month)
 
     
     if next_yue - yue == year13:
-        # 13 lunations between the solstice moon preceding this seollal nian, and the solstice moon preceding next seollal nian
+        # 13 lunations between the solstice moon preceding this ganjitsu nian, and the solstice moon preceding next ganjitsu nian
         # It's a leap sui, but is it a leap nian?
         # The extra month probablt belongs to next year, but it might be part of this year
 
@@ -128,47 +128,47 @@ def fromjd(jday):
             # In either case, this is a leap sui, in which the leap month belongs to the previous nian, which is a leap nean
             leap = True
             next_leap = False
-            next_seollal = yue + (15 * lunar_month)
+            next_ganjitsu = yue + (15 * lunar_month)
         else:
             leap = False
             next_leap = True
-            next_seollal = yue + (14 * lunar_month)
+            next_ganjitsu = yue + (14 * lunar_month)
     else:
-        # 12 lunations between the solstice moon preceding this year's seollal nian, and the solstice moon preceding the next sin nian
+        # 12 lunations between the solstice moon preceding this year's ganjitsu nian, and the solstice moon preceding the next sin nian
         # Normal sui, apparently a normal nian
         #leap = False
-        next_seollal = yue + (14 * lunar_month)
+        next_ganjitsu = yue + (14 * lunar_month)
 
     if leap != True:
         leap = False
 
     # OK
-    # If my calculations are correct, this will give us the ACTUAL, PROPER, CORRECT date of seollal nian
-    # seollal is the time of the first new moon of the Chinese year, though the time of the new moon is in UTC.
+    # If my calculations are correct, this will give us the ACTUAL, PROPER, CORRECT date of ganjitsu nian
+    # ganjitsu is the time of the first new moon of the Chinese year, though the time of the new moon is in UTC.
 
-    # But what if seollal comes after jday?
-    if truemoon(seollal) > jday:
+    # But what if ganjitsu comes after jday?
+    if truemoon(ganjitsu) > jday:
         year -= 1
         if year == 0:
             year = (-1)
             
         next_solstice = solstice
-        next_dongji = dongji
+        next_tunji = tunji
         next_yue = yue
-        next_seollal = seollal
+        next_ganjitsu = ganjitsu
         next_leap = leap
 
         solstice = prev_solstice
-        dongji = prev_dongji
+        tunji = prev_tunji
         yue = prev_yue
         leap = prev_leap
 
         if leap == True:
-            seollal = next_seollal - year13
+            ganjitsu = next_ganjitsu - year13
         else:
-            seollal = next_seollal - year12
+            ganjitsu = next_ganjitsu - year12
 
-    newmoon = seollal
+    newmoon = ganjitsu
     m = 0
 
     if leap == False:
@@ -185,7 +185,7 @@ def fromjd(jday):
         angle = 330
         zhongqi = solstice + (2 * solar_term)
         # get the first major solar term which doesn't precede the new moon
-        while truesun(zhongqi, angle) < truemoon(seollal):
+        while truesun(zhongqi, angle) < truemoon(ganjitsu):
             zhongqi += solar_term
             angle = (angle + 30) % 360
 
@@ -206,7 +206,7 @@ def fromjd(jday):
                 m += 1
 
         if (leapt == False) and (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)):
-            month = "Yun " + MONTHS[m - 1]
+            month = "Uruzuki"
         else:
             month = MONTHS[m]
 
@@ -230,24 +230,24 @@ def tojd(day, month, year):
         lunations = (solar_epoch - solstice) // lunar_month
 
     yue = lunar_epoch + (lunations * lunar_month)
-    dongji = truesun(solstice, 270)
-    while truemoon(yue) > dongji:
+    tunji = truesun(solstice, 270)
+    while truemoon(yue) > tunji:
         yue -= lunar_month
-    while truemoon(yue + lunar_month) <= dongji:
+    while truemoon(yue + lunar_month) <= tunji:
         yue += lunar_month
 
     next_solstice = solstice + solar_year
-    next_dongji = truesun(next_solstice, 270)
+    next_tunji = truesun(next_solstice, 270)
     
     prev_solstice = solstice - solar_year
-    prev_dongji = truesun(prev_solstice, 270)
+    prev_tunji = truesun(prev_solstice, 270)
 
     next_yue = yue + year12
-    while truemoon(next_yue + lunar_month) <= next_dongji:
+    while truemoon(next_yue + lunar_month) <= next_tunji:
         next_yue += lunar_month
 
     prev_yue = yue - year13
-    while truemoon(prev_yue + lunar_month) <= prev_dongji:
+    while truemoon(prev_yue + lunar_month) <= prev_tunji:
         prev_yue += lunar_month
 
     # now to check for leap years
@@ -260,38 +260,38 @@ def tojd(day, month, year):
         if (truemoon(prev_yue + (2 * lunar_month)) <= truesun((solstice + solar_term), 300)) or (truemoon(prev_yue + (3 * lunar_month)) <= truesun((solstice + (2 * solar_term)), 330)):
             prev_leap = True
             leap = False
-            seollal = prev_yue + (15 * lunar_month)
+            ganjitsu = prev_yue + (15 * lunar_month)
         else:
             prev_leap = False
             leap = True
-            seollal = prev_yue + (14 * lunar_month)
+            ganjitsu = prev_yue + (14 * lunar_month)
     else:
         prev_leap = False
-        seollal = prev_yue + (14 * lunar_month)
+        ganjitsu = prev_yue + (14 * lunar_month)
         
     if next_yue - yue == year13:
         if (truemoon(yue + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(yue + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
             leap = True
             next_leap = False
-            next_seollal = yue + (15 * lunar_month)
+            next_ganjitsu = yue + (15 * lunar_month)
         else:
             leap = False
             next_leap = True
-            next_seollal = yue + (14 * lunar_month)
+            next_ganjitsu = yue + (14 * lunar_month)
     else:
-        next_seollal = yue + (14 * lunar_month)
+        next_ganjitsu = yue + (14 * lunar_month)
 
     if leap != True:
         leap = False
 
-    newmoon = seollal
+    newmoon = ganjitsu
     m = 0
     #print(leap)
     
     if leap == False:
         # normal year
-        if month[0:3] == "Yun":
-            month = month[4:]
+        if month == "Uruzuki":
+            month = "Ichigatsu"
 
         while MONTHS[m] != month:
             m += 1
@@ -301,9 +301,9 @@ def tojd(day, month, year):
     else:
         # leap year
         if month[0:3] == "Yun":
-            yun = True # assuming that if the user enters a leap month, they want the actual leap month
+            uchu = True # assuming that if the user enters a leap month, they want the actual leap month
         else:
-            yun = False
+            uchu = False
 
         zhongqi = solstice + (2 * solar_term)
         angle = 330
@@ -313,7 +313,7 @@ def tojd(day, month, year):
             angle = (angle + 30) % 360
 
         while MONTHS[m] != month:
-            if (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)) and (yun == True):
+            if (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)) and (uchu == True):
                 # we're in the leap month, which is the month selected
                 break
             elif (truemoon(newmoon + lunar_month) <= truesun(zhongqi, angle)):

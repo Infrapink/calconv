@@ -10,7 +10,7 @@ cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
 
-epoch = 869314
+epoch = 1480365
 
 def tojd(day, month, year):
 
@@ -35,27 +35,27 @@ def tojd(day, month, year):
             elif year - y > 4:
                 y += 4
                 jday += cycle4
-            elif y % 400 == 333:
+            elif y % 400 == 260:
                 y += 1
                 jday += 366
-            elif y % 100 == 33:
+            elif y % 100 == 60:
                 y += 1
                 jday += 365
-            elif y % 4 == 1:
+            elif y % 4 == 0:
                 y += 1
                 jday += 366
             else:
                 y += 1
                 jday += 365
 
-        if year % 400 == 333:
-            m = months.KOREAN_LEAP
-        elif year % 100 == 33:
-            m = months.KOREAN_NORMAL
-        elif year % 4 == 1:
-            m = months.KOREAN_LEAP
+        if year % 400 == 260:
+            m = months.JAPANESE_LEAP
+        elif year % 100 == 60:
+            m = months.JAPANESE_NORMAL
+        elif year % 4 == 0:
+            m = months.JAPANESE_LEAP
         else:
-            m = months.KOREAN_NORMAL
+            m = months.JAPANESE_NORMAL
     else:
         # negative years
         y = 0
@@ -69,23 +69,23 @@ def tojd(day, month, year):
                 jday -= cycle400
             else:
                 y -= 1
-                if abs(y) % 400 == 267:
+                if abs(y) % 400 == 141:
                     jday -= 366
-                elif abs(y) % 100 == 67:
+                elif abs(y) % 100 == 41:
                     jday -= 365
-                elif abs(y) % 4 == 3:
+                elif abs(y) % 4 == 1:
                     jday -= 366
                 else:
                     jday -= 365
 
-        if abs(year) % 400 == 267:
-            m = months.KOREAN_LEAP
-        elif abs(year) % 100 == 67:
-            m = months.KOREAN_NORMAL
-        elif abs(year) % 4 == 3:
-            m = months.KOREAN_LEAP
+        if abs(year) % 400 == 141:
+            m = months.JAPANESE_LEAP
+        elif abs(year) % 100 == 41:
+            m = months.JAPANESE_NORMAL
+        elif abs(year) % 4 == 1:
+            m = months.JAPANESE_LEAP
         else:
-            m = months.KOREAN_NORMAL
+            m = months.JAPANESE_NORMAL
 
     for i in m.keys():
         if i == month:
@@ -101,90 +101,90 @@ def fromjd(jday):
     jday = int(jday)
     year = 0
     month = ""
-    seollal = epoch
+    ganjitsu = epoch
     curryear = False
 
     if jday >= epoch:
         # positive date
         year = 1
-        cycles = (jday - seollal) // cycle400
+        cycles = (jday - ganjitsu) // cycle400
         year += (400 * cycles)
-        seollal += (cycles * cycle400)
+        ganjitsu += (cycles * cycle400)
         while curryear == False:
-            if jday - seollal > cycle400:
+            if jday - ganjitsu > cycle400:
                 year += 400
-                seollal += cycle400
+                ganjitsu += cycle400
             else:
                 #year += 1
-                if year % 400 == 333:
-                    if jday - seollal < 366:
+                if year % 400 == 260:
+                    if jday - ganjitsu < 366:
                         curryear = True
                     else:
-                        seollal += 366
+                        ganjitsu += 366
                         year += 1
-                elif year % 100 == 33:
-                    if jday - seollal < 365:
+                elif year % 100 == 60:
+                    if jday - ganjitsu < 365:
                         curryear = True
                     else:
-                        seollal += 365
+                        ganjitsu += 365
                         year += 1
-                elif year % 4 == 1:
-                    if jday - seollal < 366:
+                elif year % 4 == 0:
+                    if jday - ganjitsu < 366:
                         curryear = True
                     else:
-                        seollal += 366
+                        ganjitsu += 366
                         year += 1
                 else:
-                    if jday - seollal < 365:
+                    if jday - ganjitsu < 365:
                         curryear = True
                     else:
-                        seollal += 365
+                        ganjitsu += 365
                         year +=1
         
-        if year % 400 == 333:
+        if year % 400 == 260:
             # leap year
-            m = months.KOREAN_LEAP
-        elif year % 100 == 33:
+            m = months.JAPANESE_LEAP
+        elif year % 100 == 60:
             # not a leap year
-            m = months.KOREAN_NORMAL
-        elif year % 4 == 1:
+            m = months.JAPANESE_NORMAL
+        elif year % 4 == 0:
             # leap year
-            m = months.KOREAN_LEAP
+            m = months.JAPANESE_LEAP
         else:
             # not a leap year
-            m = months.KOREAN_NORMAL
+            m = months.JAPANESE_NORMAL
 
     else:
         # negative date
-        cycles = (seollal - jday) // cycle400
+        cycles = (ganjitsu - jday) // cycle400
         year -= (400 * cycles)
-        seollal -= (cycles * cycle400)
+        ganjitsu -= (cycles * cycle400)
 
-        while seollal > jday:
+        while ganjitsu > jday:
             year -= 1
-            if abs(year) % 400 == 267:
-                seollal -= 366
-            elif abs(year) % 100 == 67:
-                seollal -= 365
-            elif abs(year) % 4 == 3:
-                seollal -= 366
+            if abs(year) % 400 == 141:
+                ganjitsu -= 366
+            elif abs(year) % 100 == 41:
+                ganjitsu -= 365
+            elif abs(year) % 4 == 1:
+                ganjitsu -= 366
             else:
-                seollal -= 365
+                ganjitsu -= 365
            
-        if abs(year) % 400 == 267:
+        if abs(year) % 400 == 141:
             # leap year
-            m = months.KOREAN_LEAP
-        elif abs(year) % 100 == 67:
+            m = months.JAPANESE_LEAP
+        elif abs(year) % 100 == 41:
             # not a leap year
-            m = months.KOREAN_NORMAL
-        elif abs(year) % 4 == 3:
+            m = months.JAPANESE_NORMAL
+        elif abs(year) % 4 == 1:
             # leap year
-            m = months.KOREAN_LEAP
+            m = months.JAPANESE_LEAP
         else:
             # not leap year
-            m = months.KOREAN_NORMAL
+            m = months.JAPANESE_NORMAL
 
-    delta = jday - seollal
+    delta = jday - ganjitsu
     for i in m.keys():
         if delta < m[i]:
             month = i

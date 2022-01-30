@@ -1273,3 +1273,40 @@ Korea adopted the Gregorian calendar for official purposes in 1896 AD. For 16 ye
 
 Sources:
 * https://en.wikipedia.org/wiki/Korean_calendar
+
+---------------------------
+JAPANESE LUNISOLAR CALENDAR
+---------------------------
+
+All surviving Japanese calendrical records describe calendars as having been imported from Korea, which in turn got them from China. The Nihonkoki, the second-oldest chronicle of Japanese history, describes the court of Emperor Kinmei inviting a scholar from the Korean kingdom of Baekje to Japan to design a calendar; it further states that the calendar, a translation of the Daye calendar, was implemented in the 12th year of Empress Suiko (604 AD). Other calendars followed; indeed, standard practice was to import a stack of almanacs from China or Korea every year and use those. Most notably, the Xuanming calendar was introduced in 862 AD and saw continued use for 823 years, at which point discrepancies between the Xuanming li's algorithms and astronomical observations had become too great for the calendar to be useful. To this end, the first native Japanese calendar was designed in the second year of Jokyo (1685 AD), which corresponds to the 21st year of Emperor Reigen. Unfortunately, I have been unable to find any good information about this calendar. This was itself revised a number of times before the adoption of the Gregorian calendar in 1872, in the fourth year of the Meiji era.
+
+The Japanese lunisolar calendar is not a real calendar; rather, it is a calendar I designed, which takes the rules of the Chinese calendar and adapts them to the Japanese meridian, and thus represents a system for calculating the dates of traditional Japanese festivals if Japan had adopted the same policy towards calendars as Korea and Vietnam did. Due to how timezones work, the day and month in the Japanese lunisolar calendar are identical to those of the Korean lunisolar calendar. For the era, I have chosen 660 BC, the date that Emperor Jimmu is said to have arrived from Korea and founded Japan.
+
+Sources:
+* https://www.ndl.go.jp/koyomi/e/history/index.html
+* https://www.ndl.go.jp/koyomi/e/history/calendar.html
+* https://www.ndl.go.jp/koyomi/e/quiz/index.html
+* https://en.wikipedia.org/wiki/Japanese_calendar
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), p. 277 (ch. 10)
+* https://books.google.ie/books?id=nSNLAAAAIAAJ&pg=PA160&dq=&redir_esc=y#v=onepage&q&f=false
+* https://books.google.ie/books?id=9sawofv6lJsC&pg=PA46&dq=&redir_esc=y#v=onepage&q&f=false
+* https://www.nippon.com/en/japan-glances/jg00122/the-japanese-calendar.html
+* https://smilenihongo.com/months-in-japanese
+
+--------------------------
+JAPANESE IMPERIAL CALENDAR
+--------------------------
+
+The Koki, or Japanese imperial calendar, is a variant of the Gregorian calendar first attested in 1872 AD (Koki 2532), which dates events from the arrival of the mythical Emperor Jimmu in Japan from Korea. It was in popular use during the Meji Contitution, and WWII-era Japanese military equipment was often identified by the IJC year number. This is why the Mitsubishi A6M Carrier Fighter was known as the Zero - since it entered service in 1940 AD, which was Koki 2600, it was given the designation Type 00.
+
+This calendar is still occasionally used by Shinto priests, but is no longer officially used in Japan. Instead, years are officially dated by the reign of the current emperor†, with the Gregorian calendar used for everyday purposes.
+
+†Very strictly speaking, years are dated according to the imperial era. Since 1868 AD (Koki 2528), the rule has been that the era only changes upon the ascension of the new emperor; prior to the Meiji era, the emperor could declare a new era whenever he wanted.
+
+Source:
+* https://en.wikipedia.org/wiki/Japanese_imperial_year
+* https://www.nippon.com/en/japan-glances/jg00122/the-japanese-calendar.html
+* https://www.sljfaq.org/afaq/number-dates.html
+* https://wattention.com/understanding-japanese-eras/
+* https://notesofnomads.com/japanese-date-system/
+* https://smilenihongo.com/months-in-japanese

@@ -93,6 +93,8 @@ import xuanming
 import vietnamese
 import korean
 import dangun
+import japanese
+import japanese_lunisolar
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -996,6 +998,24 @@ def cons_day_julian_todate():
         dangun_day_ent.insert(0, dangun_date[0])
         dangun_month_ent.insert(0, dangun_date[1])
         dangun_year_ent.insert(0, dangun_date[2])
+
+        # Convert a Julian day to a date in the Japanese lunisolar calendar
+        japanese_lunisolar_date = japanese_lunisolar.fromjd(day)
+        japanese_lunisolar_day_ent.delete(0, END)
+        japanese_lunisolar_month_ent.delete(0, END)
+        japanese_lunisolar_year_ent.delete(0, END)
+        japanese_lunisolar_day_ent.insert(0, japanese_lunisolar_date[0])
+        japanese_lunisolar_month_ent.insert(0, japanese_lunisolar_date[1])
+        japanese_lunisolar_year_ent.insert(0, japanese_lunisolar_date[2])
+
+        # Convert a Julian day to a date in the Imperial Japanese calendar
+        japanese_date = japanese.fromjd(day)
+        japanese_day_ent.delete(0, END)
+        japanese_month_ent.delete(0, END)
+        japanese_year_ent.delete(0, END)
+        japanese_day_ent.insert(0, japanese_date[0])
+        japanese_month_ent.insert(0, japanese_date[1])
+        japanese_year_ent.insert(0, japanese_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1919,6 +1939,24 @@ def dangun_converter():
         month = dangun_month_ent.get()
         year = int(dangun_year_ent.get())
         jday = dangun.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def japanese_lunisolar_converter():
+        day = int(japanese_lunisolar_day_ent.get())
+        month = japanese_lunisolar_month_ent.get()
+        year = int(japanese_lunisolar_year_ent.get())
+        jday = japanese_lunisolar.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def japanese_converter():
+        day = int(japanese_day_ent.get())
+        month = japanese_month_ent.get()
+        year = int(japanese_year_ent.get())
+        jday = japanese.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -3183,6 +3221,32 @@ dangun_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 5, sticky 
 dangun_year_ent = Entry(frame)
 dangun_year_ent.grid(row = 95, column = 5, sticky = W)
 dangun_bttn = Button(frame, text = "Calculate", command = dangun_converter).grid(row = 96, column = 3, columnspan = 3, sticky = W)
+
+# Japanese lunisolar calendar                                                                                            
+japanese_lunisolar_lbl = Label(frame, text = "Japanese lunisolar calendar").grid(row = 93, column = 6, columnspan = 3, sticky = W)
+japanese_lunisolar_day_lbl = Label(frame, text = "Day").grid(row = 94, column = 6, sticky = W)
+japanese_lunisolar_day_ent = Entry(frame)
+japanese_lunisolar_day_ent.grid(row = 95, column = 6, sticky = W)
+japanese_lunisolar_month_lbl = Label(frame, text = "Month").grid(row = 94, column = 7, sticky = W)
+japanese_lunisolar_month_ent = Entry(frame)
+japanese_lunisolar_month_ent.grid(row = 95, column = 7, sticky = W)
+japanese_lunisolar_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 8, sticky = W)
+japanese_lunisolar_year_ent = Entry(frame)
+japanese_lunisolar_year_ent.grid(row = 95, column = 8, sticky = W)
+japanese_lunisolar_bttn = Button(frame, text = "Calculate", command = japanese_lunisolar_converter).grid(row = 96, column = 6, columnspan = 3, sticky = W)
+
+# Imperial Japanese calendar                                                                                            
+japanese_lbl = Label(frame, text = "Imperial Japanese calendar").grid(row = 93, column = 9, columnspan = 3, sticky = W)
+japanese_day_lbl = Label(frame, text = "Day").grid(row = 94, column = 9, sticky = W)
+japanese_day_ent = Entry(frame)
+japanese_day_ent.grid(row = 95, column = 9, sticky = W)
+japanese_month_lbl = Label(frame, text = "Month").grid(row = 94, column = 10, sticky = W)
+japanese_month_ent = Entry(frame)
+japanese_month_ent.grid(row = 95, column = 10, sticky = W)
+japanese_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 11, sticky = W)
+japanese_year_ent = Entry(frame)
+japanese_year_ent.grid(row = 95, column = 11, sticky = W)
+japanese_bttn = Button(frame, text = "Calculate", command = japanese_converter).grid(row = 96, column = 9, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.42.0")
 root.mainloop()

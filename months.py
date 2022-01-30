@@ -925,7 +925,7 @@ INCA_SOLAR_LEAP = {"Intiraymipacha": 30,
                    "Aymuraypacha": 30,
                    "Intihuatapacyapanapacha": 6}
 
-N_KOREAN_NORMAL = {"Il-wol": 31,
+KOREAN_NORMAL = {"Il-wol": 31,
                    "I-wol": 28,
                    "Sam-wol": 31,
                    "Sa-wol": 30,
@@ -939,7 +939,7 @@ N_KOREAN_NORMAL = {"Il-wol": 31,
                    "Sibi-wol": 31}
 
 
-N_KOREAN_LEAP = {"Il-wol": 31,
+KOREAN_LEAP = {"Il-wol": 31,
                  "I-wol": 29,
 	         "Sam-wol": 31,
                  "Sa-wol": 30,
@@ -951,3 +951,82 @@ N_KOREAN_LEAP = {"Il-wol": 31,
                  "Si-wol": 31,
                  "Sibil-wol": 30,
                  "Sibi-wol": 31}
+
+# Solar terms, for use in the Chinese solar calendars.
+# These dictionaries list the angle rather than the days
+
+JIEQI = {"Lìchūn": 315,      # Beginning of spring
+         "Yǔshuı̌": 330,      # Rain water
+         "Jı̄ngzhé": 345,     # Waking of insects
+         "Chūnfēn": 0,       # Spring equinox
+         "Qı̄ngmíng": 15,     # Pure brightness
+         "Gǔyǔ": 30,         # Grain rain
+         "Lìxià": 45,        # Beginning of summer
+         "Xiǎomǎn": 60,       # Grain full
+         "Mángzhòng": 75,    # Grain in ear
+         "Xiàzhì": 90,       # Summer solstice
+         "Xiǎoshǔ": 105,     # Slight heat
+         "Dàshǔ": 120,       # Great heat
+         "Lìqiū": 135,       # Beginning of autumn
+         "Chǔshǔ": 150,      # Limit of heat
+         "Báilù": 165,       # White dew
+         "Qiūfēn": 180,      # Autumn equinox
+         "Hánlù": 195,       # Cold dew
+         "Shuāngjiàng": 210, # Descent of frost
+         "Lìdōng": 225,      # Beginning of winter
+         "Xiǎoxuě": 240,     # Slight snow
+         "Dàxuě": 255,       # Great snow
+         "Dōngzhì": 270,     # Winter solstice
+         "Xiǎohán": 285,     # Slight cold
+         "Dàhán": 300}       # Great cold
+
+SOLAR_TERMS = {0:   "Chūnfēn",
+               15:  "Qı̄ngmíng",
+               30:  "Gǔyǔ",
+               45:  "Lìxià",
+               60:  "Xiǎomǎn",
+               75:  "Mángzhòng",
+               90:  "Xiàzhì",
+               105: "Xiǎoshǔ",
+               120: "Dàshǔ",
+               135: "Lìqiū",
+               150: "Chǔshǔ",
+               165: "Báilù",
+               180: "Qiūfēn",
+               195: "Hánlù",
+               210: "Shuāngjiàng",
+               225: "Lìdōng",
+               240: "Xiǎoxuě",
+               255: "Dàxuě",
+               270: "Dōngzhì",
+               285: "Xiǎohán",
+               300: "Dàhán",
+               315: "Lìchūn",
+               330: "Yǔshuı̌",
+               345: "Jı̄ngzhé"}
+
+JAPANESE_NORMAL = {"Ichigatsu": 31,
+                   "Nigatsu": 28,
+                   "Sangatsu": 31,
+                   "Shigatsu": 30,
+                   "Gogatsu": 31,
+                   "Rokugatsu": 30,
+                   "Shichigatsu": 31,
+                   "Hachigatsu": 31,
+                   "Kugatsu": 30,
+                   "Juugatsu": 31,
+                   "Juuichigatsu": 30,
+                   "Juunigatsu": 31}
+
+JAPANESE_LEAP = {"Ichigatsu": 31,
+                 "Nigatsu": 29,
+                 "Sangatsu": 31,
+                 "Shigatsu": 30,
+                 "Gogatsu": 31,
+                 "Rokugatsu": 30,
+                 "Shichigatsu": 31,
+                 "Hachigatsu": 31,
+                 "Kugatsu": 30,
+                 "Juugatsu": 31,
+                 "Juuichigatsu": 30,
+                 "Juunigatsu": 31}

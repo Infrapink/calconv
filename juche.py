@@ -49,13 +49,13 @@ def tojd(day, month, year):
                 jday += 365
 
         if year % 400 == 89:
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         elif year % 100 == 89:
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
         elif year % 4 == 1:
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         else:
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
     else:
         # negative years
         y = 0
@@ -79,13 +79,13 @@ def tojd(day, month, year):
                     jday -= 365
 
         if year % 400 == 89:
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         elif year % 100 == 89:
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
         elif year % 4 == 1:
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         else:
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
 
     for i in m.keys():
         if i == month:
@@ -142,16 +142,16 @@ def fromjd(jday):
         
         if year % 400 == 89:
             # leap year
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         elif year % 100 == 89:
             # not a leap year
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
         elif year % 4 == 1:
             # leap year
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         else:
             # not a leap year
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
 
     else:
         # negative date
@@ -172,16 +172,16 @@ def fromjd(jday):
            
         if year % 400 == 89:
             # leap year
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         elif year % 100 == 89:
             # not a leap year
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
         elif year % 4 == 1:
             # leap year
-            m = months.N_KOREAN_LEAP
+            m = months.KOREAN_LEAP
         else:
             # not leap year
-            m = months.N_KOREAN_NORMAL
+            m = months.KOREAN_NORMAL
 
     delta = jday - nyd
     for i in m.keys():

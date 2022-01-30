@@ -478,6 +478,21 @@ Vietnamese calendar:
 * Tháng Chạp
 * Tháng Nhuận (leap years only)
 
+Japanese calendars:
+* Ichigatsu
+* Nigatsu
+* Sangatsu
+* Shigatsu
+* Gogatsu
+* Rokugatsu
+* Shichigatsu
+* Hachigatsu
+* Kugatsu
+* Juugatsu
+* Juuichigatsu
+* Juunigatsu
+* Uruzuki (lunisolar calendar, leap years only)
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -491,7 +506,6 @@ Replace the text boxes for months with dropdown menus.
 Add the following calendars:
 
 * Byzantine
-* Chinese Lunisolar
 * Shire Reckoning
 * Buddhist
 * Indian
@@ -505,9 +519,7 @@ Add the following calendars:
 * Shaka Samvat
 * Kali Yuga
 * Javanese
-* Korean
 * Minguo
-* ROC
 * Nanakshahi
 * Thai
 * Tibetan
