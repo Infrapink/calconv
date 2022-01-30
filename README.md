@@ -462,6 +462,21 @@ Older Chinese calendars:
 * Lùyuè
 * Rùnyuè (leap years only)
 
+Vietnamese calendar:
+* Tháng Giêng
+* Tháng Hai
+* Tháng Ba
+* Tháng Tư
+* Tháng Năm
+* Tháng Sáu
+* Tháng Bảy
+* Tháng Tám
+* Tháng Chín
+* Tháng Mười
+* Tháng Mười Một
+* Tháng Chạp
+* Tháng Nhuận (leap years only)
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

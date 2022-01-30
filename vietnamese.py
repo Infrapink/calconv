@@ -17,8 +17,8 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = Fraction(8831870069, 12000) # instant of the southern solstice preceding the first year of the reign of Emperor Huangdi, GMT. This corresponds to 21 December 2699 BC and 28 Azar 3320 BH
-lunar_epoch = Fraction(79484762719, 108000) # new moon immediately preceding solar_epoch, GMT
+solar_epoch = 670610 + Fraction(47, 90)
+lunar_epoch = 670590 + Fraction(3, 16)
 timezone = Fraction(7, 24) # Vietnamese standard time is UTC+7
 
 def truesun(day, angle):
