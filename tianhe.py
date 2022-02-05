@@ -134,7 +134,9 @@ def fromjd(jday):
                 m += 1
             newmoon += yue
 
-        if (leapt == False) and (floor(newmoon + yue) <= floor(st)):
+        if m == 12:
+            month = "Rùnyuè"
+        elif (leapt == False) and (floor(newmoon + yue) <= floor(st)):
             month = "Rùnyuè"
         else:
             month = MONTHS[m]

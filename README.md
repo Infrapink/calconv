@@ -493,6 +493,22 @@ Japanese calendars:
 * Juunigatsu
 * Uruzuki (lunisolar calendar, leap years only)
 
+Mongolian traditional calendar:
+* Negdugeer sar
+* Khoyordugaar sar
+* Guravdugaar sar
+* Dörövdugeer sar
+* Tarvdugaar sar
+* Zurgadugaar sar
+* Doldugaar sar
+* Naĭmdugaar sar
+* Yesdugeer sar
+* Aravdugaar sar
+* Arvannegdugeer sar
+* Arvanchaërdugaar sar
+
+To get the leap month, prefix the month name with "Shün ", such as "Shün Negdugeer sar"
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

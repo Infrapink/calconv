@@ -17,8 +17,8 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = 670610 + Fraction(47, 90)
-lunar_epoch = 670590 + Fraction(3, 16)
+solar_epoch = 669880 + Fraction(110, 1440)
+lunar_epoch = 669852 + Fraction(17, 60)
 timezone = Fraction(7, 24) # Vietnamese standard time is UTC+7
 
 def truesun(day, angle):
@@ -45,7 +45,7 @@ def fromjd(jday):
             solstice -= solar_year
 
         lunations = (solstice - lunar_epoch) // lunar_month
-        yue = lunar_epoch + (lunations * lunar_month)
+        trang = lunar_epoch + (lunations * lunar_month)
 
             
     else:
@@ -61,13 +61,13 @@ def fromjd(jday):
         year = 0 - year
 
         lunations = (lunar_epoch - solstice) // lunar_month
-        yue = lunar_epoch - (lunations * lunar_month)
+        trang = lunar_epoch - (lunations * lunar_month)
 
     dongchi = truesun(solstice, 270)
-    while truemoon(yue + lunar_month) <= dongchi:
-        yue += lunar_month
-    while truemoon(yue) > dongchi:
-        yue -= lunar_month
+    while truemoon(trang + lunar_month) <= dongchi:
+        trang += lunar_month
+    while truemoon(trang) > dongchi:
+        trang -= lunar_month
 
     prev_solstice = solstice - solar_year
     next_solstice = solstice + solar_year
@@ -75,14 +75,14 @@ def fromjd(jday):
     prev_dongchi = truesun(prev_solstice, 270)
     next_dongchi = truesun(next_solstice, 270)
 
-    prev_yue = yue
-    next_yue = yue
+    prev_trang = trang
+    next_trang = trang
 
-    while truemoon(prev_yue) > prev_dongchi:
-        prev_yue -= lunar_month
+    while truemoon(prev_trang) > prev_dongchi:
+        prev_trang -= lunar_month
 
-    while truemoon(next_yue + lunar_month) <= next_dongchi:
-        next_yue += lunar_month
+    while truemoon(next_trang + lunar_month) <= next_dongchi:
+        next_trang += lunar_month
 
     # now to check for leap years
     # I know this doesn't look right, but it consistently gives the correct date.
@@ -91,53 +91,53 @@ def fromjd(jday):
     prev_leap = None
     next_leap = None
 
-    if yue - prev_yue == year13:
+    if trang - prev_trang == year13:
         # 13 lunations between the new moon on or before the solstice moon preceding last year's tet year, and the solstice moon preceding this year's tet year
         # It's a leap sui, but is it a leap year?
         # The extra month probably belongs to this year, but it might possibly belong to last year
 
-        # prev_yue is the new moon of the 11th month of two years ago
-        if (truemoon(prev_yue + (2 * lunar_month)) <= truesun((solstice + solar_term), 300)) or (truemoon(prev_yue + (3 * lunar_month)) <= truesun(solstice + (2 * solar_term), 330)):
-        #if (truemoon(prev_yue + (2 * lunar_month)) <= truesun((prev_solstice + solar_term), 300)) or (truemoon(prev_yue + (3 * lunar_month)) <= truesun(prev_solstice + (2 * solar_term), 330)):        
+        # prev_trang is the new moon of the 11th month of two years ago
+        if (truemoon(prev_trang + (2 * lunar_month)) <= truesun((solstice + solar_term), 300)) or (truemoon(prev_trang + (3 * lunar_month)) <= truesun(solstice + (2 * solar_term), 330)):
+        #if (truemoon(prev_trang + (2 * lunar_month)) <= truesun((prev_solstice + solar_term), 300)) or (truemoon(prev_trang + (3 * lunar_month)) <= truesun(prev_solstice + (2 * solar_term), 330)):        
             # The first condition checks if there is a full lunation between Dongzhi and Dahan
             # The second condition checks if there is a full lunation between Dahan and Yushui
             # In either case, this is a leap sui, in which the leap month belongs to the previous year, which is a leap year
             prev_leap = True
             leap = False
-            tet = prev_yue + (15 * lunar_month)
+            tet = prev_trang + (15 * lunar_month)
         else:
             prev_leap = False
             leap = True
-            tet = prev_yue + (14 * lunar_month)
+            tet = prev_trang + (14 * lunar_month)
     else:
         # 12 lunations between the new moon on or before last year's solstice, and the new moon on or before this year's solstice.
         # Normal sui, probably a normal year
         prev_leap = False
-        tet = prev_yue + (14 * lunar_month)
+        tet = prev_trang + (14 * lunar_month)
 
     
-    if next_yue - yue == year13:
+    if next_trang - trang == year13:
         # 13 lunations between the solstice moon preceding this tet year, and the solstice moon preceding next tet year
         # It's a leap sui, but is it a leap year?
         # The extra month probablt belongs to next year, but it might be part of this year
 
-        # yue is the new moon of the 11th month of last year
-        if (truemoon(yue + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(yue + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
+        # trang is the new moon of the 11th month of last year
+        if (truemoon(trang + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(trang + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
             # The first condition checks if there is a full lunation between Dongzhi and Dahan
             # The second condition checks if there is a full lunation between Dahan and Yushui
             # In either case, this is a leap sui, in which the leap month belongs to the previous year, which is a leap nean
             leap = True
             next_leap = False
-            next_tet = yue + (15 * lunar_month)
+            next_tet = trang + (15 * lunar_month)
         else:
             leap = False
             next_leap = True
-            next_tet = yue + (14 * lunar_month)
+            next_tet = trang + (14 * lunar_month)
     else:
         # 12 lunations between the solstice moon preceding this year's tet year, and the solstice moon preceding the next sin year
         # Normal sui, apparently a normal year
         #leap = False
-        next_tet = yue + (14 * lunar_month)
+        next_tet = trang + (14 * lunar_month)
 
     if leap != True:
         leap = False
@@ -154,13 +154,13 @@ def fromjd(jday):
             
         next_solstice = solstice
         next_dongchi = dongchi
-        next_yue = yue
+        next_trang = trang
         next_tet = tet
         next_leap = leap
 
         solstice = prev_solstice
         dongchi = prev_dongchi
-        yue = prev_yue
+        trang = prev_trang
         leap = prev_leap
 
         if leap == True:
@@ -229,12 +229,12 @@ def tojd(day, month, year):
         solstice = solar_epoch + (year * solar_year)
         lunations = (solar_epoch - solstice) // lunar_month
 
-    yue = lunar_epoch + (lunations * lunar_month)
+    trang = lunar_epoch + (lunations * lunar_month)
     dongchi = truesun(solstice, 270)
-    while truemoon(yue) > dongchi:
-        yue -= lunar_month
-    while truemoon(yue + lunar_month) <= dongchi:
-        yue += lunar_month
+    while truemoon(trang) > dongchi:
+        trang -= lunar_month
+    while truemoon(trang + lunar_month) <= dongchi:
+        trang += lunar_month
 
     next_solstice = solstice + solar_year
     next_dongchi = truesun(next_solstice, 270)
@@ -242,13 +242,13 @@ def tojd(day, month, year):
     prev_solstice = solstice - solar_year
     prev_dongchi = truesun(prev_solstice, 270)
 
-    next_yue = yue + year12
-    while truemoon(next_yue + lunar_month) <= next_dongchi:
-        next_yue += lunar_month
+    next_trang = trang + year12
+    while truemoon(next_trang + lunar_month) <= next_dongchi:
+        next_trang += lunar_month
 
-    prev_yue = yue - year13
-    while truemoon(prev_yue + lunar_month) <= prev_dongchi:
-        prev_yue += lunar_month
+    prev_trang = trang - year13
+    while truemoon(prev_trang + lunar_month) <= prev_dongchi:
+        prev_trang += lunar_month
 
     # now to check for leap years
     # as in fromjd(), this looks like it shouldn't work, but it does
@@ -256,30 +256,30 @@ def tojd(day, month, year):
     prev_leap = None
     next_leap = None
 
-    if yue - prev_yue == year13:
-        if (truemoon(prev_yue + (2 * lunar_month)) <= truesun((solstice + solar_term), 300)) or (truemoon(prev_yue + (3 * lunar_month)) <= truesun((solstice + (2 * solar_term)), 330)):
+    if trang - prev_trang == year13:
+        if (truemoon(prev_trang + (2 * lunar_month)) <= truesun((solstice + solar_term), 300)) or (truemoon(prev_trang + (3 * lunar_month)) <= truesun((solstice + (2 * solar_term)), 330)):
             prev_leap = True
             leap = False
-            tet = prev_yue + (15 * lunar_month)
+            tet = prev_trang + (15 * lunar_month)
         else:
             prev_leap = False
             leap = True
-            tet = prev_yue + (14 * lunar_month)
+            tet = prev_trang + (14 * lunar_month)
     else:
         prev_leap = False
-        tet = prev_yue + (14 * lunar_month)
+        tet = prev_trang + (14 * lunar_month)
         
-    if next_yue - yue == year13:
-        if (truemoon(yue + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(yue + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
+    if next_trang - trang == year13:
+        if (truemoon(trang + (2 * lunar_month)) <= truesun((next_solstice + solar_term), 300)) or (truemoon(trang + (3 * lunar_month)) <= truesun((next_solstice + (2 * solar_term)), 330)):
             leap = True
             next_leap = False
-            next_tet = yue + (15 * lunar_month)
+            next_tet = trang + (15 * lunar_month)
         else:
             leap = False
             next_leap = True
-            next_tet = yue + (14 * lunar_month)
+            next_tet = trang + (14 * lunar_month)
     else:
-        next_tet = yue + (14 * lunar_month)
+        next_tet = trang + (14 * lunar_month)
 
     if leap != True:
         leap = False

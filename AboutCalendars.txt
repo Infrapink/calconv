@@ -1241,7 +1241,7 @@ For most of their history, Vietnam has imported calendars from China; the Gregor
 
 Prior to 1967 AD, the Vietnamese calendar was identical to the Chinese one. In 1967, North Vietnam switched from UTC+8, the same as China, to UTC+7 to better match local astronomy. This infamously led to the Tet offensive happening a day earlier than the South Vietnamese forces were expecting; because the new moon happened very close to midnight in 1968, it ended up falling a day earlier in North Vietnam, hence the South's lack of readiness.
 
-For the epoch, I have chosen the reign of the mythical Kinh Dương Vương, traditionally said to be the first king of Văn Lang, the first Vietnamese nation. According to legend, Kinh Dương Vương united the tribes in Xích Quỷ in 2879 BC. However, I am dating years from the southern solstice and accompanying new moon on 2878 BC, which means that year 1 of the calendar is actually the third year of Kinh Dương Vương's reign; this is the first year of the 60-year cycle.
+For the epoch, I have chosen the reign of the mythical Kinh Dương Vương, traditionally said to be the first king of Văn Lang, the first Vietnamese nation. According to legend, Kinh Dương Vương united the tribes in Xích Quỷ in 2879 BC.
 
 Sources:
 * https://ling-app.com/vi/vietnamese-calendar/
@@ -1303,10 +1303,30 @@ This calendar is still occasionally used by Shinto priests, but is no longer off
 
 †Very strictly speaking, years are dated according to the imperial era. Since 1868 AD (Koki 2528), the rule has been that the era only changes upon the ascension of the new emperor; prior to the Meiji era, the emperor could declare a new era whenever he wanted.
 
-Source:
+Sources:
 * https://en.wikipedia.org/wiki/Japanese_imperial_year
 * https://www.nippon.com/en/japan-glances/jg00122/the-japanese-calendar.html
 * https://www.sljfaq.org/afaq/number-dates.html
 * https://wattention.com/understanding-japanese-eras/
 * https://notesofnomads.com/japanese-date-system/
 * https://smilenihongo.com/months-in-japanese
+
+------------------------------
+MONGOLIAN TRADITIONAL CALENDAR
+------------------------------
+
+The Mongolian traditional calendar was designed by Ishbaljir, a Buddhist monk, during the Qing dynasty. It is directly modelled on the Chinese lunisolar calendar; the primary difference is that the Mongolian month ends on the new moon, and so each month starts a day later than the corresponding month in China. Like in China, the Gregorian calendar (referred on Mongolian as 'argyn toolol', or chronology of method) is used for everyday purposes. The traditional calendar (referred to as 'bilgiin toolol', or chronology of wisdom) is used for the setting of traditional festivals and certain national holidays and observances.
+
+For the epoch, there is only one choice. I went with the ascension of Temujin Borjigin to the position of Genghis Khan.
+
+Sources:
+* https://en.wikipedia.org/wiki/Mongolian_calendar
+* http://www.tsalo.fi/Mongolian%20Calendar.html
+* https://publicholidays.asia/mongolia/lunar-new-year/
+* https://www.travelbuddies.info/mongolian-lunar-new-year-tsagaan-sar/
+* https://www.selenatravel.com/mongolia-lunar-new-year
+* https://www.officeholidays.com/holidays/mongolia/tsagaan-sar
+* https://panoramicjourneys.com/experience/the-festivals-of-mongolia
+* https://linguapedia.info/en/phrases/seasons-months-in-mongolian.html
+* https://danielroy.tripod.com/cgi-bin/alternate/mongolia/time-reckoning.html
+* https://www.babelstone.co.uk/Blog/2013/03/todays-date-in.html
