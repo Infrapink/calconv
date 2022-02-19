@@ -95,6 +95,10 @@ import korean
 import dangun
 import japanese
 import japanese_lunisolar
+import mongolian
+import bahai_alg
+import bahai_obs
+import cyrus
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -666,6 +670,33 @@ def cons_day_julian_todate():
         inca_solar_month_ent.insert(0, inca_solar_date[1])
         inca_solar_year_ent.insert(0, inca_solar_date[2])
 
+        # Convert a Julian day to a date in the Old Bahá'í calendar
+        bahai_alg_date = bahai_alg.fromjd(day)
+        bahai_alg_day_ent.delete(0, END)
+        bahai_alg_month_ent.delete(0, END)
+        bahai_alg_year_ent.delete(0, END)
+        bahai_alg_day_ent.insert(0, bahai_alg_date[0])
+        bahai_alg_month_ent.insert(0, bahai_alg_date[1])
+        bahai_alg_year_ent.insert(0, bahai_alg_date[2])
+
+        # Convert a Julian day to a date in the Iranian national calendar
+        cyrus_date = cyrus.fromjd(day)
+        cyrus_day_ent.delete(0, END)
+        cyrus_month_ent.delete(0, END)
+        cyrus_year_ent.delete(0, END)
+        cyrus_day_ent.insert(0, cyrus_date[0])
+        cyrus_month_ent.insert(0, cyrus_date[1])
+        cyrus_year_ent.insert(0, cyrus_date[2])
+
+        # Convert a Julian day to a date in the New Bahí'í calendar
+        bahai_obs_date = bahai_obs.fromjd(day)
+        bahai_obs_day_ent.delete(0, END)
+        bahai_obs_month_ent.delete(0, END)
+        bahai_obs_year_ent.delete(0, END)
+        bahai_obs_day_ent.insert(0, bahai_obs_date[0])
+        bahai_obs_month_ent.insert(0, bahai_obs_date[1])
+        bahai_obs_year_ent.insert(0, bahai_obs_date[2])
+
         # Convert a Julian day to a date in the Chinese lunisolar calendar (Huangdi era)
         chinese_lunisolar_huangdi_date = chinese_lunisolar_huangdi.fromjd(day)
         chinese_lunisolar_huangdi_day_ent.delete(0, END)
@@ -1016,6 +1047,15 @@ def cons_day_julian_todate():
         japanese_day_ent.insert(0, japanese_date[0])
         japanese_month_ent.insert(0, japanese_date[1])
         japanese_year_ent.insert(0, japanese_date[2])
+
+        # Convert a Julian day to a date in the Mongolian traditional calendar
+        mongolian_date = mongolian.fromjd(day)
+        mongolian_day_ent.delete(0, END)
+        mongolian_month_ent.delete(0, END)
+        mongolian_year_ent.delete(0, END)
+        mongolian_day_ent.insert(0, mongolian_date[0])
+        mongolian_month_ent.insert(0, mongolian_date[1])
+        mongolian_year_ent.insert(0, mongolian_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -1609,6 +1649,33 @@ def inca_solar_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
+def bahai_alg_converter():
+        day = int(bahai_alg_day_ent.get())
+        month = bahai_alg_month_ent.get()
+        year = int(bahai_alg_year_ent.get())
+        jday = bahai_alg.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def bahai_obs_converter():
+        day = int(bahai_obs_day_ent.get())
+        month = bahai_obs_month_ent.get()
+        year = int(bahai_obs_year_ent.get())
+        jday = bahai_obs.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def cyrus_converter():
+        day = int(cyrus_day_ent.get())
+        month = cyrus_month_ent.get()
+        year = int(cyrus_year_ent.get())
+        jday = cyrus.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 def chinese_lunisolar_huangdi_converter():
         day = int(chinese_lunisolar_huangdi_day_ent.get())
         month = chinese_lunisolar_huangdi_month_ent.get()
@@ -1957,6 +2024,15 @@ def japanese_converter():
         month = japanese_month_ent.get()
         year = int(japanese_year_ent.get())
         jday = japanese.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def mongolian_converter():
+        day = int(mongolian_day_ent.get())
+        month = mongolian_month_ent.get()
+        year = int(mongolian_year_ent.get())
+        jday = mongolian.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2741,6 +2817,45 @@ inca_solar_year_ent = Entry(frame)
 inca_solar_year_ent.grid(row = 55, column = 5, sticky = W)
 inca_solar_bttn = Button(frame, text = "Calculate", command = inca_solar_converter).grid(row = 56, column = 3, columnspan = 3, sticky = W)
 
+# Old Bahá'í calendar                                                                                            
+bahai_alg_lbl = Label(frame, text = "Old Bahá'í calendar").grid(row = 53, column = 6, columnspan = 3, sticky = W)
+bahai_alg_day_lbl = Label(frame, text = "Day").grid(row = 54, column = 6, sticky = W)
+bahai_alg_day_ent = Entry(frame)
+bahai_alg_day_ent.grid(row = 55, column = 6, sticky = W)
+bahai_alg_month_lbl = Label(frame, text = "Month").grid(row = 54, column = 7, sticky = W)
+bahai_alg_month_ent = Entry(frame)
+bahai_alg_month_ent.grid(row = 55, column = 7, sticky = W)
+bahai_alg_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 8, sticky = W)
+bahai_alg_year_ent = Entry(frame)
+bahai_alg_year_ent.grid(row = 55, column = 8, sticky = W)
+bahai_alg_bttn = Button(frame, text = "Calculate", command = bahai_alg_converter).grid(row = 56, column = 6, columnspan = 3, sticky = W)
+
+# New Bahí'í calendar                                                                                            
+bahai_obs_lbl = Label(frame, text = "New Bahí'í calendar").grid(row = 53, column = 9, columnspan = 3, sticky = W)
+bahai_obs_day_lbl = Label(frame, text = "Day").grid(row = 54, column = 9, sticky = W)
+bahai_obs_day_ent = Entry(frame)
+bahai_obs_day_ent.grid(row = 55, column = 9, sticky = W)
+bahai_obs_month_lbl = Label(frame, text = "Month").grid(row = 54, column = 10, sticky = W)
+bahai_obs_month_ent = Entry(frame)
+bahai_obs_month_ent.grid(row = 55, column = 10, sticky = W)
+bahai_obs_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 11, sticky = W)
+bahai_obs_year_ent = Entry(frame)
+bahai_obs_year_ent.grid(row = 55, column = 11, sticky = W)
+bahai_obs_bttn = Button(frame, text = "Calculate", command = bahai_obs_converter).grid(row = 56, column = 9, columnspan = 3, sticky = W)
+
+# Iranian national calendar                                                                                            
+cyrus_lbl = Label(frame, text = "Iranian national calendar").grid(row = 53, column = 12, columnspan = 3, sticky = W)
+cyrus_day_lbl = Label(frame, text = "Day").grid(row = 54, column = 12, sticky = W)
+cyrus_day_ent = Entry(frame)
+cyrus_day_ent.grid(row = 55, column = 12, sticky = W)
+cyrus_month_lbl = Label(frame, text = "Month").grid(row = 54, column = 13, sticky = W)
+cyrus_month_ent = Entry(frame)
+cyrus_month_ent.grid(row = 55, column = 13, sticky = W)
+cyrus_year_lbl = Label(frame, text = "Year").grid(row = 54, column = 14, sticky = W)
+cyrus_year_ent = Entry(frame)
+cyrus_year_ent.grid(row = 55, column = 14, sticky = W)
+cyrus_bttn = Button(frame, text = "Calculate", command = cyrus_converter).grid(row = 56, column = 12, columnspan = 3, sticky = W)
+
 # Chinese lunisolar calendar (Huangdi era)
 chinese_lunisolar_huangdi_lbl = Label(frame, text = "Chinese lunisolar calendar (Yellow Emperor era)").grid(row = 58, column = 0, columnspan = 3, sticky = W)
 chinese_lunisolar_huangdi_day_lbl = Label(frame, text = "Day").grid(row = 59, column = 0, sticky = W)
@@ -3247,6 +3362,19 @@ japanese_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 11, stic
 japanese_year_ent = Entry(frame)
 japanese_year_ent.grid(row = 95, column = 11, sticky = W)
 japanese_bttn = Button(frame, text = "Calculate", command = japanese_converter).grid(row = 96, column = 9, columnspan = 3, sticky = W)
+
+# Mongolian traditional calendar                                                                                            
+mongolian_lbl = Label(frame, text = "Mongolian traditional calendar").grid(row = 93, column = 12, columnspan = 3, sticky = W)
+mongolian_day_lbl = Label(frame, text = "Day").grid(row = 94, column = 12, sticky = W)
+mongolian_day_ent = Entry(frame)
+mongolian_day_ent.grid(row = 95, column = 12, sticky = W)
+mongolian_month_lbl = Label(frame, text = "Month").grid(row = 94, column = 13, sticky = W)
+mongolian_month_ent = Entry(frame)
+mongolian_month_ent.grid(row = 95, column = 13, sticky = W)
+mongolian_year_lbl = Label(frame, text = "Year").grid(row = 94, column = 14, sticky = W)
+mongolian_year_ent = Entry(frame)
+mongolian_year_ent.grid(row = 95, column = 14, sticky = W)
+mongolian_bttn = Button(frame, text = "Calculate", command = mongolian_converter).grid(row = 96, column = 12, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.42.0")
 root.mainloop()

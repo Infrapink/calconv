@@ -910,6 +910,48 @@ https://en.wikipedia.org/wiki/Pachacuti
 https://es.wikipedia.org/wiki/Pachacútec
 https://www.cachilife.com/inti-raymi-peru-festival/
 
+----------------
+BAHÁ'Í CALENDARS
+----------------
+
+The Bádí, or Báhá'í, calendar is the liturgical calendar of the Bahá'í faith. It combines aspects various traditional Iranian calendars.
+
+It was first described by the Báb, foundational prophet of Bábism and Báhá'í, in the Book of Divine Names and the Persian Bayán, around 1223 AH. The Báb described a calendar consisting of 19 "months" of 19 days each, plus 4 or 5 extra days, but did not describe where the extra days should be placed. In Kitáb-i-Aqdas, published in 1252 AH, Bahá'ulláh clarifies this, stating that the extra days go between the 18th and 19th months. Bahá'ulláh also specified that the year begins on the day the sun enters Aries, which Bahá'ís understand as referring to the northward equinox.
+
+The 19×19 structure appears to be derived from Islam, in which the number 19 is considered significant. Likewise, the day officially begins as sunset, as in the Lunar Hijri calendar. The year beginning on the northward equinox continues the earlier Zoroastrian tradition.
+
+The era is, naturally, the Báhá'í era (BE). 1 BE is the year of publication of the Book of Divine Names, corresponding to 1223 AH (1844 AD). For 140 years or so after the foundation of Bahá'í, there was discrepancy between practice in different countries. In Asia, practitioners were mostly converts from Islam, and commonly observed festivals according the phases of the moon. In Europe and the Americas, they were mostly former Christians, and celebrated Naw-Ruz on the 21st of March. In 171 BE (1393 AH), the Universal House of Justice ruled that the calendar would henceforth begin on the day of the northward equinox according to Iranian Standard Time, bringing worldwise practices into harmony; they also clarified that practitioners would celebrated Naw-Ruz on the day of the equinox according to their local timezones.
+
+And important break with Islam is that Bahá'í allows for intercalation. The year sometimes has an extra day to keep it aligned with the equinoxes. Furthermore, the births of the Báb and Bahá'ulláh are celebrated on the 1st and 2nd days respectively of the 8th new moon after the northward equinox (where new moon appears to refer to the first visible crescent rather than the dark moon).
+
+Suurces:
+* https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_calendar
+* https://www.bahaiblog.net/bahai-calendar/
+* http://www.bahai-ottawa.org/significant_bahai_dates_178_be_2021_2022.pdf
+* https://bahaipedia.org/Calendar
+* https://www.bahai.ca/holy-days/
+* https://bahai-library.com/taylor_novelty_badi_calendar
+* https://bahai-library.com/mihrshahi_wondrous_new_day
+* https://reference.bahai.org/en/t/b/KA/ka-43.html#gr2
+* https://universalhouseofjustice.bahai.org/activities-bahai-community/20140710_001
+* https://bahai-library.com/nakhjavani_ninth_cycle
+* https://web.archive.org/web/20061002101423/http://www.bcca.org/bahaivision/docs/today.html
+* https://web.archive.org/web/20151222225356/http://www.religiouslife.emory.edu/documents/Baha_i%20Holy%20Days%2050%20year%20calendar.pdf
+* https://bahai-library.com/velasco_mihrshahi_badi_calendar
+* https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_Holy_Days
+* https://bahaisofketchikan.org/the-bahai-calendar/
+* https://oceanoflights.org/file/012_ORD_The_Baha'i_Year_en.pdf
+* https://bahaisofketchikan.org/wp-content/uploads/2021/08/20141211_UHJ_50-Yr_Table_of_Dates_English.pdf
+
+-------------------------
+IRANIAN NATIONAL CALENDAR
+-------------------------
+
+The Iranian National Calendar is the name I have given to a variant of the Solar Hijri calendar used briefly in Iran from 1975 to 1979. Shah Pahlavi decided to court nationalist opinion by changing the era to 1181 BH, the year that Cyrus the great ascended the throne. When the Islamic Revolution happened, the Ayatollah Khamenei reverted Iran to counting years from the Hijra to emphasis that Iran was a Muslim country.
+
+Sources:
+* https://iranicaonline.org/articles/calendars
+
 -----------------
 CHINESE CALENDARS
 -----------------
