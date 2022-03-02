@@ -943,11 +943,11 @@ Suurces:
 * https://oceanoflights.org/file/012_ORD_The_Baha'i_Year_en.pdf
 * https://bahaisofketchikan.org/wp-content/uploads/2021/08/20141211_UHJ_50-Yr_Table_of_Dates_English.pdf
 
--------------------------
-IRANIAN NATIONAL CALENDAR
--------------------------
+--------------------
+SHAHANSHAHI CALENDAR
+--------------------
 
-The Iranian National Calendar is the name I have given to a variant of the Solar Hijri calendar used briefly in Iran from 1975 to 1979. Shah Pahlavi decided to court nationalist opinion by changing the era to 1181 BH, the year that Cyrus the great ascended the throne. When the Islamic Revolution happened, the Ayatollah Khamenei reverted Iran to counting years from the Hijra to emphasis that Iran was a Muslim country.
+The Shahanshahi, or Imperial, calendar is a variant of the Solar Hijri calendar used briefly in Iran from 1354 to 1358. Shah Pahlavi and the Parliament decided to court nationalist opinion by changing the era to 1181 BH, the year that Cyrus the great ascended the throne; as such, the year 1354 instantly became 2535. When the Islamic Revolution happened, the Ayatollah Khamenei reverted Iran to counting years from the Hijra to emphasis that Iran was a Muslim country.
 
 Sources:
 * https://iranicaonline.org/articles/calendars

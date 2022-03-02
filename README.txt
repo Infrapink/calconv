@@ -509,6 +509,28 @@ Mongolian traditional calendar:
 
 To get the leap month, prefix the month name with "Shün ", such as "Shün Negdugeer sar"
 
+Bahá'í calendars:
+* Bahá
+* Jalál
+* Jamál
+* ʻAẓamat
+* Núr
+* Raḥmat
+* Kalimát
+* Kamál
+* Asmáʼ
+* ʻIzzat
+* Mas͟híyyat
+* ʻIlm
+* Qudrat
+* Qawl
+* Masáʼil
+* S͟haraf
+* Sulṭán
+* Mulk
+* Ayyám-ul Há
+* ʻAláʼ
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
