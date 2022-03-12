@@ -123,13 +123,14 @@ By simply counting the days between the heliacal risings of Sirius, the Egyptian
 
 The mythology holds that the year was originally 360 days long, but when Nuit became pregnant, she was cursed by Ra, the sun god to never give birth in any month. Thoth, the god of wisdom and thus under whose domain fall legal loopholes, was sympathetic to Nuit and gambled with Khonsu, the god of the moon, to win enough light to create five extra days. Because these five days were not part of any month, Nuit was free to give birth to Osiris, Isis, Seth, Nephthys, and Horus the Elder. The Rosetta Stone records a decree by Pharaoh Ptolemy III to introduce a leap year mechanism which would fix New Year's Day to the heliacal rising of Sirius; however, this was opposed by the priesthood on the grounds that only gods can create new days.
 
-The Egyptians did not have a continuous count of years, instead describing each year by how long the current pharaoh had been in power. I chose the epoch as Julian Day 160332 to make 1 Thoth 6298 coincide with 11 September 2019 AD, as reported in Egpyt Today. the veracity of Egypt Today is questionable at best, but it's at last something.
+The Egyptians did not have a continuous count of years, instead describing each year by how long the current pharaoh had been in power. For the era, I went with 4724 BC based on an article in Egpyt Today. the veracity of Egypt Today is questionable at best, but it's at last something. It is known that Egyptian New Year in 632 AD fell on 16 July (Julian calendar), and so I chose Julian Day 160550 as the epoch to make the dates line up.
 
 https://en.wikipedia.org/wiki/Egyptian_calendar
 http://www.copticchurch.net/easter.html
 https://web.archive.org/web/20060928041231/http://www.copticheritage.org/parameters/copticheritage/calendar/The_Coptic_Calen\
 dar.pdf
 https://www.egypttoday.com/Article/4/22184/September-11-marks-the-beginning-of-a-new-Egyptian-year
+https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
 
 -----------------
 ARMENIAN CALENDAR
