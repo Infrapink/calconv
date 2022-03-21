@@ -70,7 +70,7 @@ def fromjd(jday):
         # negative dates
         y = (jday - epoch) // yearlen
         year = y
-        equinox = epoch - (y * yearlen)
+        equinox = epoch + (y * yearlen)
 
     while round(geteq(equinox)) > jday:
         year -= 1
@@ -83,6 +83,9 @@ def fromjd(jday):
         year += 1
         if year == 0:
             year = 1
+
+    if year == 0:
+        year = (-1)
 
     nowruz = round(geteq(equinox))
     next_nowruz = round(geteq(equinox + yearlen))
