@@ -7,6 +7,7 @@
 import months
 from fractions import *
 from math import floor
+from solun import trans
 
 yearlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
 epoch = 1948319 + Fraction(31379,43200)
@@ -14,61 +15,38 @@ epoch = 1948319 + Fraction(31379,43200)
 YEARTYPE = {365: months.IRANIAN_NORMAL,
             366: months.IRANIAN_LEAP}
 
+tz = Fraction(7,48) # Iran is 3hr 30 min ahead of UTC
+
+def geteq(jday):
+    '''Fire precise insteant of the northward equinox for a given day'''
+    equinox = trans(jday, 0.0, tz)
+    return equinox
+
 def tojd(day,month,year):
-    """Convert a date in the Solar Hijri calendar into a Julian day."""
-    day = int(day)
+    """Convert a date in the Solar Hijri calendar flooro a Julian day."""
+    day = floor(day)
     month = month
-    year = int(year)
+    year = floor(year)
 
     if year >= 1:
-        equinox = epoch + (yearlen * (year - 1))
-        nexteq = equinox + yearlen
-
-        if equinox % 1 > Fraction(1,2):
-            nowruz = int(equinox) + 1
-        else:
-            nowruz = int(equinox)
-
-        if nexteq % 1 > Fraction(1,2):
-            nextnowruz = int(nexteq) + 1
-        else:
-            nextnowruz = int(nexteq)
+        equinox = geteq(epoch + (yearlen * (year - 1)))
+        nexteq = geteq(equinox + yearlen)
 
     else:
-        # negative years
-        equinox = (year * yearlen) + epoch
-        nexteq = equinox + yearlen
-        
-        if equinox > 0:
-            if equinox % 1 > Fraction(1,2):
-                nowruz = int(equinox) + 1
-            else:
-                nowruz = int(equinox)
-        else:
-            if equinox % 1 < Fraction(1,2): # change sign to account for negative division
-                nowruz = floor(equinox) - 1
-            else:
-                nowruz = floor(equinox)
+        equinox = geteq(epoch + (yearlen * year))
+        nexteq = getet(equinox - yearlen)
 
-        if nexteq > 0:
-            if nexteq % 1 > Fraction(1,2):
-                nextnowruz = int(nexteq) + 1
-            else:
-                nextnowruz = int(nexteq)
-        else:
-            if nexteq % 1 < Fraction(1,2): # change sign to account for negative division
-                nextnowruz = floor(nexteq) - 1
-            else:
-                nextnowruz = floor(nexteq)
+    nowruz = round(equinox)
+    next_nowruz = round(nexteq)
 
+    MONTHS = YEARTYPE[next_nowruz - nowruz]
     jday = nowruz
-    m = YEARTYPE[nextnowruz - nowruz]
-    for i in m.keys():
-        if i == month:
+    for m in MONTHS.keys():
+        if m == month:
             jday += day - 1
             break
         else:
-            jday += m[i]
+            jday += MONTHS[i]
 
     return jday
 
@@ -79,65 +57,44 @@ def fromjd(jday):
     month = ""
     year = 0
     
-    jday = int(jday)
+    jday = floor(jday)
     current = False
     
-    if jday >= int(epoch):
+    if jday >= floor(epoch):
         # positive dates
         y = (jday - epoch) // yearlen
         year = y + 1
         equinox = epoch + (y * yearlen)
-        nexteq = equinox + yearlen
-
-        if equinox % 1 > Fraction(1,2):
-            nowruz = int(equinox) + 1
-        else:
-            nowruz = int(equinox)
-
-        if nexteq % 1 > Fraction(1,2):
-            nextnowruz = int(nexteq) + 1
-        else:
-            nextnowruz = int(nexteq)
 
     else:
         # negative dates
         y = (jday - epoch) // yearlen
         year = y
-        equinox = epoch + (year * yearlen)
-        
-        nexteq = equinox + yearlen
+        equinox = epoch - (y * yearlen)
 
-        if equinox > 0:
-            if equinox % 1 > Fraction(1,2):
-                nowruz = int(equinox) + 1
-            else:
-                nowruz = int(equinox)
-        else:
-            if equinox % 1 < Fraction(1,2):  # change sign to account for negative division
-                nowruz = floor(equinox)
-            else:
-                nowruz = floor(equinox) + 1
+    while round(geteq(equinox)) > jday:
+        year -= 1
+        if year == 0:
+            year = (-1)
+        equinox -= yearlen
 
-        if nexteq > 0:
-            if nexteq % 1 > Fraction(1,2):
-                nextnowruz = int(nexteq) + 1
-            else:
-                nextnowruz = int(nexteq)
-        else:
-            if nexteq % 1 < Fraction(1,2): # change sign to account for negative division
-                nextnowruz = floor(nexteq)
-            else:
-                nextnowruz = floor(nexteq) + 1
-            
-    m = YEARTYPE[nextnowruz - nowruz]
-    delta = jday - nowruz
+    while round(geteq(equinox + yearlen)) <= jday:
+        equinox += yearlen
+        year += 1
+        if year == 0:
+            year = 1
 
-    for i in m.keys():
-        if delta < m[i]:
-            month = i
-            day = delta + 1
+    nowruz = round(geteq(equinox))
+    next_nowruz = round(geteq(equinox + yearlen))
+    MONTHS = YEARTYPE[next_nowruz - nowruz]
+    alpha = nowruz
+
+    for m in MONTHS.keys():
+        if alpha + MONTHS[m] > jday:
+            month = m
+            day = jday - alpha + 1
             break
         else:
-            delta -= m[i]
+            alpha += MONTHS[m]
 
     return (day, month, year)
