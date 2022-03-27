@@ -944,9 +944,9 @@ Suurces:
 * https://oceanoflights.org/file/012_ORD_The_Baha'i_Year_en.pdf
 * https://bahaisofketchikan.org/wp-content/uploads/2021/08/20141211_UHJ_50-Yr_Table_of_Dates_English.pdf
 
---------------------
-SHAHANSHAHI CALENDAR
---------------------
+-------------------------
+IRANIAN NATIONAL CALENDAR
+-------------------------
 
 The Shahanshahi, or Imperial, calendar is a variant of the Solar Hijri calendar used briefly in Iran from 1354 to 1358. Shah Pahlavi and the Parliament decided to court nationalist opinion by changing the era to 1181 BH, the year that Cyrus the great ascended the throne; as such, the year 1354 instantly became 2535. When the Islamic Revolution happened, the Ayatollah Khamenei reverted Iran to counting years from the Hijra to emphasis that Iran was a Muslim country.
 
@@ -1373,3 +1373,79 @@ Sources:
 * https://linguapedia.info/en/phrases/seasons-months-in-mongolian.html
 * https://danielroy.tripod.com/cgi-bin/alternate/mongolia/time-reckoning.html
 * https://www.babelstone.co.uk/Blog/2013/03/todays-date-in.html
+
+---------------
+QADIMI CALENDAR
+---------------
+
+The Qadimi ("ancient", "traditional") calendar is the liturgical calendar traditionally used by Iranian Zoroastrians. It is derived from the Vihezakik calendar, when Iranian Zoroastrians stopped performing intercalations afte 385 AH due to their community being in chaos.
+
+Structurally, it is a slight revision of the Young Avestan calendar. A year consists of 365 days with no intercalation at all. Each year consists of 12 months of 30 days plus five extra days, known as the Gathas, placed at the very end of the year.
+
+Three calendar eras are in common use. Before the Muslim conquest, Iranians usually dated events according to how long the current shah had been in power; the Yazdegerdi era continues the count from the reign of Yazdegerd III, the last Zoroastrian shah of Iran, and its epoch is Julian Day 1952062.
+
+Anno Zoroastres dates events from the notional date of Zarathustra's birth, placing its epoch on Julian Day 1579397. This era arose during the Seleucid dynasty; the Zoroastrian priesthood did not care for the Greek ruling class dating things according to the Era of Alexander, and sought to counter this by establishing the Era of Zarathustra. Based on Babylonian records, they determined that Cyrus the Great conquered Babylon when Zarathustra was 30 years old, which would place his birth at 30 years before Alexander.
+
+The final era is the Zoroastrian Religious Era, proposed by the Zarathushtrian Society of Northern California. In this scheme, Zarathstra's mission coincided with the beginning of the Age of Aries, and so the epoch should be the northward equinox of 2360 BH, or Julian Day 1086712. However, I have chosen Julian Day 1086647 in order to keep the months consistent.
+
+* https://en.wikipedia.org/wiki/Zoroastrian_calendar
+* https://iranicaonline.org/articles/calendars
+* https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
+* https://www.jstor.org/stable/4299877
+* https://jihs.ut.ac.ir/article_36130_4d9c41f00283f0368d75be229e4d3af1.pdf
+* http://www.avesta.org/zcal.html
+* https://authenticgathazoroastrianism.org/2021/08/18/1268/
+* https://zoroastrian.org/articles/The%20Precise%20Iranian%20Calendar.htm
+* http://www.heritageinstitute.com/zoroastrianism/calendar/index.htm
+* https://www.iranchamber.com/calendar/articles/calendar_systems_origins.php
+* https://www.iranchamber.com/calendar/articles/iranian_months.php
+* https://www.iranchamber.com/calendar/articles/iranian_months.php
+* http://www.zcserv.com/
+* https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
+* http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
+* http://www3.sympatico.ca/zoroastrian/cal.html
+
+-----------------
+SHENSHAI CALENDAR
+-----------------
+
+The Shenshai, or Shahanshi ("imperial", "royalist") calendar is the one followed by some Indian Zoroastrians. It differs from the Qadimi calendar by being one month behind, due to the Indian Zoroastrians keeping up intercalation for one more cycle than those in Iran. The discrepancy was noticed by Jamasp Peshotan Velati in 1099 AH (1642 SE), and the majority of Indian Zoroastrians decided to adopt the Iranian reckoning on the basis that it came from the Zoroastrian homeland. A minority decided to maintain their own tradition, and this calendar became known as the Shahanshai or Shenshai calendar, while the Iranian calendar was known as the Qadimi.
+
+Calendar eras are the same as the Qadimi calendar.
+
+* https://en.wikipedia.org/wiki/Zoroastrian_calendar
+* https://iranicaonline.org/articles/calendarslendar
+* https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
+* https://www.jstor.org/stable/4299877
+* https://jihs.ut.ac.ir/article_36130_4d9c41f00283f0368d75be229e4d3af1.pdf
+* http://www.avesta.org/zcal.html
+* https://authenticgathazoroastrianism.org/2021/08/18/1268/
+* https://www.ndtv.com/india-news/parsi-new-year-2021-navroz-date-history-significance-and-food-2511333
+* http://www.heritageinstitute.com/zoroastrianism/calendar/index.htm
+* https://www.iranchamber.com/calendar/articles/calendar_systems_origins.php
+* https://www.iranchamber.com/calendar/articles/iranian_months.php
+* https://www.iranchamber.com/calendar/articles/iranian_months.php
+* http://www.zcserv.com/
+* https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
+* http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
+* http://www3.sympatico.ca/zoroastrian/cal.html
+
+----------------------
+YOUNG AVESTAN CALENDAR
+----------------------
+
+The Egyptian calendar was introduced to Iran following the conquest of Egypt by Cambyses. The Zoroastrian priests considered the Egyptian calendar much simpler than their own (too had it was less accurate), and the Young Avestan calendar replaced the Old Avestan calendar as the official calendar of Iran around 1063 BH.
+
+The Young Avestan calendar consists of 12 months of 30 days each plus five Gathas between Aban and Azar. This arises because the Iranians copied the Egyptian calendar exactly, but because at that point the 1st of Choak fell around the northward equinoox, the fourth month of the Egyptian calendar thus became the first month of the Avestan calendar, with both calendars retaining the same says for the start of the month and the position of the extra days.
+
+Calendar eras are the same as for the Qadimi and Shenshai calendars.
+
+* https://iranicaonline.org/articles/calendars
+* https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
+* https://www.jstor.org/stable/4299877
+* https://zoroastrian.org/articles/The%20Precise%20Iranian%20Calendar.htm
+* https://www.iranchamber.com/calendar/articles/iranian_months.php
+* https://www.iranchamber.com/calendar/articles/iranian_months.php
+* https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
+* http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
+* http://www3.sympatico.ca/zoroastrian/cal.html
