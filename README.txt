@@ -131,7 +131,7 @@ Lunar Hijri, Tabular Islamic, and Pre-Islamic Arab calendars:
 * Dhu al-Hijjah
 * Nasiʾ (Pre-Islamic Arab calendar only)
 
-Jalali, Solar Hijri and Ahmad Birashk's Calendars:
+Jalali, Solar Hijri, Ahmad Birashk's, Qadimi, Shenshai, Oshmurtik, Vihezakik, Fasli, and Young Avestan Calendars:
 * Farvardin
 * Ordibehesht
 * Khordad
