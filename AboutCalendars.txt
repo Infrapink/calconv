@@ -1449,3 +1449,55 @@ Calendar eras are the same as for the Qadimi and Shenshai calendars.
 * https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
 * http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
 * http://www3.sympatico.ca/zoroastrian/cal.html
+
+--------------------
+SHAHANSHAHI CALENDAR
+--------------------
+
+The Shahanshahi ("Imperial") calendar is a former fixed solar calendar used by Zoroastrians in Iran and India, and was the liturgical calendar of Iran before the Arab conquest. It consists of 12 months of 30 days each plus five extra days; additionally, an extra month is added every 120 years to keep the start of the year in sync with the northward equinox. As such, its accuracy is equal to that of the Julian calendar. The Shahanshahi calendar is a slight modification of the Vihezakik calendar, implemented when Yazdegerd the Sinner moved the Gathas to the end of the year.
+
+Al-Biruni suggests that there were in fact two variants of the Shahanshahi calendar - one with a leap month every 120 years, and another with a leap month every 116 years, which would sync up well with the sidereal year. However, Antia points out that al-Biruni describes the extra month as falling every 120 years and every 116 years in the same sentence, and he seems to be the sole source for this claim. As such, the majority of scholars believe he was simply mistaken.
+
+Eras are the same as the Qadimi, Shenshai, and Young Avestan calendars.
+
+Soures:
+* https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
+* https://en.wikipedia.org/wiki/Zoroastrian_calendar
+* http://www.avesta.org/zcal.html
+* http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
+
+--------------------
+OLD AVESTAN CALENDAR
+--------------------
+
+The Old Avestan calendar is one of the two earliest known calendars to have been used in Iran; along with the Elamite calendar, it predates even Zoroastrianism. A regular year consists of 12 months of 30 days each; since anybody can tell this is noticeably shorter than the solar year, an extra month is added every six years, and an additional intercalary month is added every 120 years to account for the extra fraction of a day. This means that a normal year is 360 days long while a leap year is 390 days, and the double-leap year reaches a whopping 420 days.
+
+In the absence of any better options, I chose the same eras as the various Zoroastrian calendars. Taqizadeh places the switch from the Old Avestan to the Young Avestan (basically Egyptian) calendar in 441 BC (1063 BH), during the Achaemenid dynasty. I expect that the first day of the Young Avestan calendar in this year would have been the same as the first day of the Old Avestan calendar, and so I have adjusted the epochs by 10 days to make sure that the calendars coincide on Julian Day 1560392.
+
+Sources:
+* https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
+* https://iranicaonline.org/articles/calendars#prettyPhoto[content]/0/
+* https://iranicaonline.org/articles/calendars
+
+--------------
+FASLI CALENDAR
+--------------
+
+The Fasli ("seasonal") calendar is the most modern Zoroastrian calendar. Like the Jalali and Solar Hijri calendars, the year begins on the northward equinox. Days begin at sunrise. Eras are the same as for other Zoroastrian calendars.
+
+The Fasli calendar is standard among modern Zoroastrians, and since it is observational, Nowruz syncs up perfectly with the Solar Hijri calendar. However, it is not without controversy. In particular, prominent Indian Zoroastrians have objected to it, on the grounds that intercalating a full day is forbidden by the Bundahishn, and that the Fasli calendar is an attempt to force the Muslim Jalali calender on Zoroastrians. The second objection is clearly false, since the Jalali and Solar Hijri calendars have completely different monthly structures; furthermore, Antia makes a strong case that the Fasli reckoning was known, and indeed practiced, in ancient times.
+
+Sources:
+* https://en.wikipedia.org/wiki/Zoroastrian_calendar
+* http://www.avesta.org/zcal.html
+* https://zoroastrian.org/articles/The%20Precise%20Iranian%20Calendar.htm
+* https://theguibordcenter.org/zoroastrian-holy-days-and-observances/
+* https://zoroastrian.org/articles/nowruz.htm
+* http://www.heritageinstitute.com/zoroastrianism/calendar/index.htm
+* https://www.iranchamber.com/calendar/articles/calendar_systems_origins.php
+* https://www.iranchamber.com/culture/articles/norooz_iranian_new_year.php
+* https://www.iranchamber.com/culture/articles/norooz_zarathushtrian_new_year.php
+* http://www.zcserv.com/
+* https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
+* http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
+* https://zoroastrians.net/wp-content/uploads/2015/03/jamshedi-navruz-on-march-21st.pdf

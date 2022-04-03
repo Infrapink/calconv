@@ -34,7 +34,7 @@ def tojd(day,month,year):
 
     else:
         equinox = geteq(epoch + (yearlen * year))
-        nexteq = getet(equinox - yearlen)
+        nexteq = geteq(equinox + yearlen)
 
     nowruz = round(equinox)
     next_nowruz = round(nexteq)
@@ -46,7 +46,7 @@ def tojd(day,month,year):
             jday += day - 1
             break
         else:
-            jday += MONTHS[i]
+            jday += MONTHS[m]
 
     return jday
 

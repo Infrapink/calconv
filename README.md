@@ -131,7 +131,7 @@ Lunar Hijri, Tabular Islamic, and Pre-Islamic Arab calendars:
 * Dhu al-Hijjah
 * Nasiʾ (Pre-Islamic Arab calendar only)
 
-Jalali, Solar Hijri, Ahmad Birashk's, Qadimi, Shenshai, Oshmurtik, Vihezakik, Fasli, and Young Avestan Calendars:
+Jalali, Solar Hijri, Ahmad Birashk's, Iranian National, Qadimi, Shenshai, Oshmurtik, Vihezakik, Shahanshahi, Fasli, Young Avestan Calendars:
 * Farvardin
 * Ordibehesht
 * Khordad
@@ -144,6 +144,7 @@ Jalali, Solar Hijri, Ahmad Birashk's, Qadimi, Shenshai, Oshmurtik, Vihezakik, Fa
 * Dey
 * Bahman
 * Esfand
+* Kabizeh (Young Avestan, Shahanshahi, and Vihezakik calendars only)
 
 Armenian Calendar:
 * Nawasard
@@ -531,6 +532,38 @@ Bahá'í calendars:
 * Ayyám-ul Há
 * ʻAláʼ
 
+Old Avestan calendars:
+* Ādukanaisha
+* Thūravāhara
+* Thāigracish
+* Garmapada
+* Thurnabadish
+* Garbashiyash
+* Bāgayādish
+* Vrkazana
+* Āçiyādiya
+* Anāmaka
+* Thwayauvā
+* Vixayana
+* Kabizeh (leap years only)
+* Kabizeh 2 (double leap years only)
+
+Elamite calendars:
+* Mansharki
+* Mansharki 2 (leap years only)
+* Lankelli
+* Shibari
+* Shermi
+* Kutmama
+* Ashshetukpi
+* Ashshetukpi 2 (leap years only)
+* Zikli:
+* Zarpakim
+* Hadar
+* Hallime
+* Zillatam
+* Belilit
+
 LICENSE
 
 calconv is copyright Chris McCrohan.
@@ -548,7 +581,6 @@ Add the following calendars:
 * Buddhist
 * Indian
 * ISO
-* Baha'í
 * Saka
 * Bengali
 * Myanmar
