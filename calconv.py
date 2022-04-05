@@ -120,6 +120,7 @@ import old_avestan_zre
 import fasli_yz
 import fasli_az
 import fasli_zre
+import sogdian
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1257,6 +1258,24 @@ def cons_day_julian_todate():
         fasli_az_day_ent.insert(0, fasli_az_date[0])
         fasli_az_month_ent.insert(0, fasli_az_date[1])
         fasli_az_year_ent.insert(0, fasli_az_date[2])
+
+        # Convert a Julian day to a date in the Krix calendar
+        fasli_zre_date = fasli_zre.fromjd(day)
+        fasli_zre_day_ent.delete(0, END)
+        fasli_zre_month_ent.delete(0, END)
+        fasli_zre_year_ent.delete(0, END)
+        fasli_zre_day_ent.insert(0, fasli_zre_date[0])
+        fasli_zre_month_ent.insert(0, fasli_zre_date[1])
+        fasli_zre_year_ent.insert(0, fasli_zre_date[2])
+
+        # Convert a Julian day to a date in the Sogdian calendar
+        sogdian_date = sogdian.fromjd(day)
+        sogdian_day_ent.delete(0, END)
+        sogdian_month_ent.delete(0, END)
+        sogdian_year_ent.delete(0, END)
+        sogdian_day_ent.insert(0, sogdian_date[0])
+        sogdian_month_ent.insert(0, sogdian_date[1])
+        sogdian_year_ent.insert(0, sogdian_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2414,6 +2433,24 @@ def fasli_az_converter():
         month = fasli_az_month_ent.get()
         year = int(fasli_az_year_ent.get())
         jday = fasli_az.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def fasli_zre_converter():
+        day = int(fasli_zre_day_ent.get())
+        month = fasli_zre_month_ent.get()
+        year = int(fasli_zre_year_ent.get())
+        jday = fasli_zre.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sogdian_converter():
+        day = int(sogdian_day_ent.get())
+        month = sogdian_month_ent.get()
+        year = int(sogdian_year_ent.get())
+        jday = sogdian.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4018,6 +4055,32 @@ fasli_az_year_lbl = Label(frame, text = "Year").grid(row = 114, column = 14, sti
 fasli_az_year_ent = Entry(frame)
 fasli_az_year_ent.grid(row = 115, column = 14, sticky = W)
 fasli_az_bttn = Button(frame, text = "Calculate", command = fasli_az_converter).grid(row = 116, column = 12, columnspan = 3, sticky = W)
+
+# Fasli calendar (Zarathushtrian Religious Era)                                                                                           
+fasli_zre_lbl = Label(frame, text = "Krix calendar").grid(row = 118, column = 0, columnspan = 3, sticky = W)
+fasli_zre_day_lbl = Label(frame, text = "Day").grid(row = 119, column = 0, sticky = W)
+fasli_zre_day_ent = Entry(frame)
+fasli_zre_day_ent.grid(row = 120, column = 0, sticky = W)
+fasli_zre_month_lbl = Label(frame, text = "Month").grid(row = 119, column = 1, sticky = W)
+fasli_zre_month_ent = Entry(frame)
+fasli_zre_month_ent.grid(row = 120, column = 1, sticky = W)
+fasli_zre_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 2, sticky = W)
+fasli_zre_year_ent = Entry(frame)
+fasli_zre_year_ent.grid(row = 120, column = 2, sticky = W)
+fasli_zre_bttn = Button(frame, text = "Calculate", command = fasli_zre_converter).grid(row = 121, column = 0, columnspan = 3, sticky = W)
+
+# Sogdian calendar                                                                                            
+sogdian_lbl = Label(frame, text = "Sogdian calendar").grid(row = 118, column = 3, columnspan = 3, sticky = W)
+sogdian_day_lbl = Label(frame, text = "Day").grid(row = 119, column = 3, sticky = W)
+sogdian_day_ent = Entry(frame)
+sogdian_day_ent.grid(row = 120, column = 3, sticky = W)
+sogdian_month_lbl = Label(frame, text = "Month").grid(row = 119, column = 4, sticky = W)
+sogdian_month_ent = Entry(frame)
+sogdian_month_ent.grid(row = 120, column = 4, sticky = W)
+sogdian_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 5, sticky = W)
+sogdian_year_ent = Entry(frame)
+sogdian_year_ent.grid(row = 120, column = 5, sticky = W)
+sogdian_bttn = Button(frame, text = "Calculate", command = sogdian_converter).grid(row = 121, column = 3, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.50.0")
 root.mainloop()

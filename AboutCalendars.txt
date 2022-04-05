@@ -136,7 +136,7 @@ https://www.iranchamber.com/calendar/articles/old_iranian_calendars1.php
 ARMENIAN CALENDAR
 -----------------
 
-The Old Armenian calendar is another derivative of the ancient Egyptian calendar, which was in use in Armenia until the 11th century AD, when it was replaced by the Julian calendar.
+The Old Armenian calendar is derived from the Zoroastrian calendar, whcih in turn is another derivative of the ancient Egyptian calendar. It was in use in Armenia until the 11th century AD, when it was replaced by the Julian calendar.
 
 Folklore relates how it was established by Hayk, the legendary founder of Armenia, to commemorate his victory of General Belos of Babylon; consensus among historians is that it was introduced by king Artaxias I (188 BC - 161 BC). The calendar epoch is 1922867 (Gregorian: 13 May 552 AD; Solar Hijri: 22 Tir 70 BH), when the Great Armenian Era was declared.
 
@@ -1449,6 +1449,7 @@ Calendar eras are the same as for the Qadimi and Shenshai calendars.
 * https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
 * http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
 * http://www3.sympatico.ca/zoroastrian/cal.html
+* BI Marshak, The Historico-Cultural Significance of the Sogdian Calendar, Iran, Vol. 30 (1992), pp. 145-154
 
 --------------------
 SHAHANSHAHI CALENDAR
@@ -1501,3 +1502,16 @@ Sources:
 * https://parsikhabar.net/education/jamshedi-navruz-a-detailed-explanation-of-the-calendars/3954/
 * http://www.avesta.org/antia/Enigmatic_Response_of_Three_Dasturjis_to_the_United_Zarthoshti_Calendar.pdf
 * https://zoroastrians.net/wp-content/uploads/2015/03/jamshedi-navruz-on-march-21st.pdf
+
+----------------
+SOGDIAN CALENDAR
+----------------
+
+The Sogdian calendar is a derivative of the fixed Zoroastrian calendar. As its name suggests, it was used in Sogdia a pre-Islamic Iranic kingdom in central Asia. Due to the Iranian influence on Sogdia, as well as the fact that Sogdia was part of Iran during the Achaemenid period, the Sogdians adopted one form of the Zoroastrian calendar. It has the same structure as the Egyptian, Qadimi, Shenshai, and Armenian calendars, consisting of 12 months of 30 days plus five extra days. In fact, the Sogdian calendar is actually identical to the Armenian, save that the Armenian calendar has a canonical epoch, which the Sogdian does not (and also the Armenian month names are, obviously, in Armenian); the Sogdian and Armenian calendars' New Years are both five days after that of the Qadimi.
+
+The most commonly-used epoch among modern scholars is the Yazdegerdi era, which I have gone with here. However, for various reasons, the Sogdian year 1 is one year before the Zoroastrian year 1.
+
+Sources:
+* BI Marshak, The Historico-Cultural Significance of the Sogdian Calendar, Iran, ol. 30 (1992), pp. 145-154
+* http://www.rahamasha.net/uploads/2/3/2/8/2328777/the_structure_of_the_later_sogdian_calenda1_1.pdf
+* http://www.rahamasha.net/uploads/2/3/2/8/2328777/scf_m_147_2.pdf
