@@ -548,21 +548,34 @@ Old Avestan calendars:
 * Kabizeh (leap years only)
 * Kabizeh 2 (double leap years only)
 
-Elamite calendars:
-* Mansharki
-* Mansharki 2 (leap years only)
-* Lankelli
-* Shibari
-* Shermi
-* Kutmama
-* Ashshetukpi
-* Ashshetukpi 2 (leap years only)
-* Zikli:
-* Zarpakim
-* Hadar
-* Hallime
-* Zillatam
-* Belilit
+Sogdian calendar:
+* Nausardh
+* Xorezhnic
+* Nisanic
+* Pusākic
+* Shnāk-Xandic
+* Xazānānc
+* Baghakānic
+* Āpānc
+* Bōghic
+* Mushboghic
+* Zhimdic
+* Xshūmic
+* Extra days
+
+Indian civil calendar:
+* Chaitra
+* Vaisākha
+* Jyēshtha
+* Āshādha
+* Shrāvana
+* Bhādra
+* Āshwin
+* Kārtika
+* Agrahāyana
+* Pausha
+* Māgha
+* Phālguna
 
 LICENSE
 
