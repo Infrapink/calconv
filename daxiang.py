@@ -13,8 +13,8 @@ nian13 = 13 * yue
 
 MONTHS = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
 
-solar_epoch = 1932524 + Fraction(10149,12992)
-lunar_epoch = 1932520 + Fraction(5415,53563)
+solar_epoch = 1932525 + Fraction(10149,12992)
+lunar_epoch = 1932521 + Fraction(5415,53563)
 
 def getxin(solstice):
     solstice = Fraction(solstice)

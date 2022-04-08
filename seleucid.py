@@ -15,7 +15,7 @@ year12 = 12 * monlen
 year13 = 13 * monlen
 cycle19 = 235 * monlen
 
-epoch = 1607742 + Fraction(14107, 17280) + Fraction(1,4) # Time of first noumenia of the calendar, Iran Standard
+epoch = 1607743 + Fraction(14107, 17280) + Fraction(1,4) # Time of first noumenia of the calendar, Iran Standard
                                                          # Time, starting the day at 18:00
 
 MONTHS_NORMAL = ("Dios", "Apellaiios", "Audunaios", "Peritios", "Dystros", "Xanthikos", "Artemisios", "Daisios", "Panamos", "Lōios", "Gorpiaios", "Hyperberetaios")

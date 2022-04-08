@@ -16,7 +16,7 @@ monlen = 29 + Fraction(12,24) + Fraction(793, (24 * 1080)) # formal mean synodic
 yearlen12 = 12 * monlen # length of a 12-month year
 yearlen13 = 13 * monlen # length of a 13-month year
 cycle19 = 235 * monlen
-molad_prime = 1122909 + Fraction(11,24) + Fraction(451,25920)
+molad_prime = 1122910 + Fraction(11,24) + Fraction(451,25920)
 
 YEARTYPE = {353: months.SAMARITAN_DEFICIENT_NORMAL,
             354: months.SAMARITAN_REGULAR_NORMAL,
@@ -52,10 +52,10 @@ def tojd(day, month, year):
         else:
             next_hashanah = hashanah + yearlen12
 
-        rosh = int(hashanah)
+        rosh = floor(hashanah)
         molad = hashanah % 1
 
-        next_rosh = int(next_hashanah)
+        next_rosh = floor(next_hashanah)
         next_molad = next_hashanah % 1
 
         m = YEARTYPE[next_rosh - rosh]
@@ -111,7 +111,7 @@ def fromjd(jday):
 
     hashanah = molad_prime
 
-    if jday >= int(molad_prime):
+    if jday >= floor(molad_prime):
         # positive dates
 
         current = False

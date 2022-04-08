@@ -11,11 +11,39 @@ nian12 = 12 * yue
 nian13 = 13 * yue
 cycle76 = 76 * sui # == 940 * yue
 
-solar_epoch = 1551211 + Fraction(1,4)
-lunar_epoch = 1551191 + Fraction(21,470)
+solar_epoch = 1551212 + Fraction(1,4)
+lunar_epoch = 1551192 + Fraction(21,470)
 
 MONTHS_NORMAL = ( "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè")
 MONTHS_LEAP = ( "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Rùnyuè")
+
+def getxin(solstice):
+    '''Figure out the date of Xin Nian from the solstice'''
+    solstice = Fraction(solstice)
+    prev_solstice = solstice - sui
+
+    if floor(solstice) >= floor(lunar_epoch):
+        luns = (solstice - lunar_epoch) // yue
+        moon = lunar_epoch + (luns * yue)
+    else:
+        luns = (lunar_epoch - solstice) // yue
+        moon = lunar_epoch - (luns * yue)
+
+    while floor(moon + yue) <= floor(solstice):
+        moon += yue
+    while floor(moon) > floor(solstice):
+        moon -= yue
+
+    if floor(moon - nian12) <= floor(prev_solstice):
+        # normal year
+        prev_moon = moon - nian12
+        xin = prev_moon + (14 * yue)
+    else:
+        # leap year
+        prev_moon = moon - nian13
+        xin = prev_moon + (15 * yue)
+
+    return xin
 
 def tojd(day, month, year):
     '''Convert a date in the Sifen li into a Julian Day'''
@@ -30,44 +58,28 @@ def tojd(day, month, year):
         # positive dates
         cycles = (year - 1) // 76
         solstice = solar_epoch + (cycle76 * cycles)
-        xin = lunar_epoch + (cycles * cycle76)
         y = (76 * cycles) + 1
         while y < year:
             y += 1
             solstice += sui
-            if floor(xin + nian13) <= floor(solstice):
-                xin += nian13
-            else:
-                xin += nian12
+
     else:
         # negative dates
         cycles = abs(year) // 76
         solstice = solar_epoch - (cycle76 * cycles)
-        xin = lunar_epoch - (cycle76 * cycles)
         y = 0 - (19 * cycles)
         while y > year:
             y -= 1
             solstice -= sui
-            if floor(xin - nian12) > floor(solstice):
-                xin -= nian13
-            else:
-                xin -= nian12
-
-    prev_solstice = solstice - sui
-    if floor(xin - nian12) > floor(prev_solstice):
-        prev_xin = xin - nian13
-        prev_leap = True
-    else:
-        prev_xin = xin - nian12
-        prev_leap = False
+                
+    xin = getxin(solstice)
 
     next_solstice = solstice + sui
-    if floor(xin + nian13) <= floor(next_solstice):
+    next_xin = getxin(next_solstice)
+    if next_xin - xin == nian13:
         leap = True
-        next_xin = xin + (15 * yue)
     else:
         leap = False
-        next_xin = xin + (14 * yue)
 
     jday = xin
     m = 0
@@ -103,10 +115,6 @@ def fromjd(jday):
         while floor(solstice + sui) <= jday:
             year += 1
             solstice += sui
-        luns = (solstice - lunar_epoch) // yue
-        xin = lunar_epoch + (luns * yue)
-        while floor(xin + yue) <= floor(solstice):
-            xin += yue
 
     else:
         # negative dates
@@ -118,21 +126,19 @@ def fromjd(jday):
         while floor(solstice + sui) <= jday:
             year += 1
             solstice += sui
-        luns = (lunar_epoch - solstice) // yue
-        xin = lunar_epoch - (luns * yue)
-        while floor(xin) > floor(solstice):
-            xin -= yue
-        while floor(xin + yue) <= jday:
-            xin += yue
-
+            
+    xin = getxin(solstice)
     next_solstice = solstice + sui
-    if floor(xin + nian13) <= floor(next_solstice):
-        # leap year
-        next_xin = xin + nian13
+    next_xin = getxin(next_solstice)
+
+    if floor(xin) > jday:
+        next_xin = xin
+        solstice -= sui
+        xin = getxin(solstice)
+        
+    if next_xin - xin == nian13:
         leap = True
     else:
-        # regular year
-        next_xin = xin + nian12
         leap = False
 
     newmoon = xin

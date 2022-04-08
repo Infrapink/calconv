@@ -16,7 +16,7 @@ monlen = 29 + Fraction(12,24) + Fraction(793, (24 * 1080)) # formal mean synodic
 yearlen12 = 12 * monlen # length of a 12-month year
 yearlen13 = 13 * monlen # length of a 13-month year
 cycle19 = 235 * monlen
-molad_tohu = 347997 + Fraction(5,24) + Fraction(204,25920)
+molad_tohu = 347998 + Fraction(5,24) + Fraction(204,25920)
 
 YEARTYPE = {353: months.HEBREW_DEFICIENT_NORMAL,
             354: months.HEBREW_REGULAR_NORMAL,
@@ -52,11 +52,11 @@ def tojd(day, month, year):
         else:
             next_year = days + yearlen12
 
-        rosh = int(days)
+        rosh = floor(days)
         molad = days % 1
         r1 = False
 
-        next_rosh = int(next_year)
+        next_rosh = floor(next_year)
         next_molad = next_year % 1
         next_r1 = False
 
@@ -79,14 +79,14 @@ def tojd(day, month, year):
 
         if r1 == False:
             if (year % 19) not in leap_years_am:
-                if rosh % 7 == 0: # "Tuesday"
+                if rosh % 7 == 1: # "Tuesday"
                     if molad > Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         days += 1
                         rosh += 1
 
         if next_r1 == False:
             if (next_year % 19) not in leap_years_am:
-                if next_rosh % 7 == 0: # "Tuesday"
+                if next_rosh % 7 == 1: # "Tuesday"
                     if next_molad > Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         next_rosh += 1
 
@@ -95,23 +95,23 @@ def tojd(day, month, year):
 
         if r1 == False:
             if (prev_year % 19) in leap_years_am:
-                if rosh % 7 == 6: # "Monday"
+                if rosh % 7 == 0: # "Monday"
                     if molad > Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         days += 1
                         rosh += 1
 
         if next_r1 == False:
             if (year % 19) in leap_years_am:
-                if next_rosh % 7 == 6: # "Monday"
+                if next_rosh % 7 == 0: # "Monday"
                     if next_molad > Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         next_rosh += 1
 
         # Rule 4: If Rosh Hashanah would fall on a "Wednesday", "Friday", or "Sunday", it is postponed
-        if (rosh % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if (rosh % 7) in (2,4,6): # "Wednesday", "Friday", "Sunday"
             rosh += 1
             days +=1
 
-        if (next_rosh  % 7) in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if (next_rosh  % 7) in (2,4,6): # "Wednesday", "Friday", "Sunday"
             next_rosh += 1
 
         m = YEARTYPE[next_rosh - rosh]
@@ -122,7 +122,7 @@ def tojd(day, month, year):
                 break
             else:
                 days += m[i]
-        days = int(days)
+        days = floor(days)
 
     else:
         # negative dates
@@ -164,13 +164,13 @@ def tojd(day, month, year):
         # Rule 2: If the molad of Tishri falls on a "Tuesday" after 9 hours chalakim and it's NOT a leap year,
         if r1 == False:
             if abs(year) % 19 not in leap_years_bc:
-                if rosh % 7 == 0: # "Tuesday"
+                if rosh % 7 == 1: # "Tuesday"
                     if molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         rosh += 1
 
         if next_r1 == False:
             if abs(next_year) % 19 not in leap_years_bc:
-                if next_rosh % 7 == 0: # "Tuesday"
+                if next_rosh % 7 == 1: # "Tuesday"
                     if next_molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         next_rosh += 1
 
@@ -179,22 +179,22 @@ def tojd(day, month, year):
 
         if r1 == False:
             if abs(prev_year) % 19 in leap_years_bc:
-                if rosh % 7 == 6: # "Monday" (this apparently works regardless of whether rosh is (+) or (-)
+                if rosh % 7 == 0: # "Monday" (this apparently works regardless of whether rosh is (+) or (-)
                     if molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         rosh += 1
 
         if next_r1 == False:
             if abs(year) % 19 in leap_years_bc:
-                if next_rosh % 7 == 6: # "Monday"
+                if next_rosh % 7 == 0: # "Monday"
                     if next_molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         next_rosh += 1
 
         # Rule 4: If Rosh Hashanah would fall on a "Sunday", "Wednesday", or "Friday", it is posponed
 
-        if rosh % 7 in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if rosh % 7 in (2,4,6): # "Wednesday", "Friday", "Sunday"
             rosh += 1
 
-        if next_rosh % 7 in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if next_rosh % 7 in (2,4,6): # "Wednesday", "Friday", "Sunday"
             next_rosh += 1
 
         days = rosh
@@ -235,7 +235,7 @@ def fromjd(jday):
             else:
                 y = yearlen12
                 
-            if int(hashanah + y) > jday:
+            if floor(hashanah + y) > jday:
                 current = True
             else:
                 hashanah += y
@@ -249,11 +249,11 @@ def fromjd(jday):
         next_year = year + 1
         prev_year = year - 1
 
-        rosh = int(hashanah)
+        rosh = floor(hashanah)
         molad = hashanah % 1
         r1 = False
 
-        next_rosh = int(next_hashanah)
+        next_rosh = floor(next_hashanah)
         next_molad = next_hashanah % 1
         next_r1 = False
         
@@ -271,13 +271,13 @@ def fromjd(jday):
 
         if r1 == False:
             if year % 19 not in leap_years_am:
-                if rosh % 7 == 0: # "Tuesday"
+                if rosh % 7 == 1: # "Tuesday"
                     if molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         rosh += 1
 
         if next_r1 == False:
             if next_year % 19 not in leap_years_am:
-                if next_rosh % 7 == 0: # "Tuesday"
+                if next_rosh % 7 == 1: # "Tuesday"
                     if next_molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         next_rosh += 1
 
@@ -286,22 +286,22 @@ def fromjd(jday):
 
         if r1 == False:
             if prev_year % 19 in leap_years_am:
-                if rosh % 7 == 6: # "Monday"
+                if rosh % 7 == 0: # "Monday"
                     if molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         rosh += 1
 
         if next_r1 == False:
             if year % 19 in leap_years_am:
-                if next_rosh % 7 == 6: # "Monday"
+                if next_rosh % 7 == 0: # "Monday"
                     if next_molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         next_rosh += 1
 
         # Rule 4: If Rosh Hashanah would fall on a "Sunday", "Wednesday", or "Friday", it is postponed
 
-        if rosh % 7 in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if rosh % 7 in (2,4,6): # "Wednesday", "Friday", "Sunday"
             rosh += 1
 
-        if next_rosh % 7 in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if next_rosh % 7 in (2,4,6): # "Wednesday", "Friday", "Sunday"
             next_rosh += 1
 
         delta = jday - rosh + 1
@@ -358,13 +358,13 @@ def fromjd(jday):
 
         if r1 == False:
             if abs(year) % 19 not in leap_years_bc:
-                if rosh % 7 == 0: # "Tuesday"
+                if rosh % 7 == 1: # "Tuesday"
                     if molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         rosh += 1
 
         if next_r1 == False:
             if abs(next_year) % 19 not in leap_years_bc:
-                if next_rosh % 7 == 0: # "Tuesday"
+                if next_rosh % 7 == 1: # "Tuesday"
                     if next_molad >= Fraction(9,24) + Fraction(204,25920): # 9 hours 204 chalakim
                         next_rosh += 1
 
@@ -373,21 +373,21 @@ def fromjd(jday):
 
         if r1 == False:
             if abs(prev_year) % 19 in leap_years_bc:
-                if rosh % 7 == 6: # "Monday"
+                if rosh % 7 == 0: # "Monday"
                     if molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         rosh += 1
 
         if next_r1 == False:
             if abs(year) % 19 in leap_years_bc:
-                if next_rosh % 7 == 6: # "Monday"
+                if next_rosh % 7 == 0: # "Monday"
                     if next_molad >= Fraction(15,24) + Fraction(589,25920): # 15 hours 589 chalakim
                         next_rosh += 1
 
         # Rule 4: Postpone Rosh Hashanah if it would fall on a "Sunday", "Wednesday", or "Friday"
-        if rosh % 7 in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if rosh % 7 in (2,4,6): # "Wednesday", "Friday", "Sunday"
             rosh += 1
 
-        if next_rosh % 7 in (1,3,5): # "Wednesday", "Friday", "Sunday"
+        if next_rosh % 7 in (2,4,6): # "Wednesday", "Friday", "Sunday"
             next_rosh += 1
 
         m = YEARTYPE[next_rosh - rosh]

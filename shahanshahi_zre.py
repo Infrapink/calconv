@@ -5,7 +5,7 @@
 from months import ZOROASTRIAN_NUM as MONTHNO
 from months import NUM_ZOROASTRIAN as NUMON
 
-epoch = 1086687
+epoch = 1086688
 cycle = (120 * 365) + 30
 l = 1 # position of the leap month
 

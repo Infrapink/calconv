@@ -5,7 +5,7 @@
 from months import OLD_AVESTAN_NUM as MONTHNO
 from months import NUM_OLD_AVESTAN as NUMON
 
-epoch = 1086697
+epoch = 1086698
 sexan = (6 * 360) + 30 # six-year cycle
 dozan = (20 * sexan) + 30 # 120-year cycle
 f3 = (3 * sexan) + 30 # first three sexans of the dozan

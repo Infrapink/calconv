@@ -7,7 +7,7 @@
 import months
 import leap_years_birashk
 
-epoch = 1948320
+epoch = 1948321
 
 cycle4 = (4 * 365) + 1
 cycle5 = (365 * 5) + 1

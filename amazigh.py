@@ -6,7 +6,7 @@
 
 import months
 
-epoch = 1374435
+epoch = 1374436
 cycle4 = (4*365) + 1
 
 def tojd(day, month, year):

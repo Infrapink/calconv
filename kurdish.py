@@ -13,7 +13,7 @@ cycle33 = (7 * cycle4) + cycle5
 leap_years_an = (17,21,25,29,33,4,8,12)
 leap_years_bn = (17,13,9,5,1,30,26,22)
 
-epoch = 1497975
+epoch = 1497976
 
 def tojd(day, month, year):
     day = int(day)

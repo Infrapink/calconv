@@ -23,8 +23,8 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = Fraction(708780574297, 432000) # instant of the southern solstice preceding the first year of the reign of Emperor Qin Shi Huang, gMT
-lunar_epoch = Fraction(177192234937, 108000) # new moon immediately preceding solar_epoch, GMT
+solar_epoch = Fraction(708780574297, 432000) + 1 # instant of the southern solstice preceding the first year of the reign of Emperor Qin Shi Huang, gMT
+lunar_epoch = Fraction(177192234937, 108000) + 1 # new moon immediately preceding solar_epoch, GMT
 timezone = Fraction(8, 24) # Chinese standard time is UTC+8
 
 def truesun(day, angle):

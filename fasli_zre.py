@@ -8,7 +8,7 @@ from math import floor
 from solun import trans
 from fractions import Fraction
 
-epoch = 1086713 + Fraction(77,160)
+epoch = 1086714 + Fraction(77,160)
 tropical_year = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
 tz = Fraction(7, 48) # Iranian standard time
 

@@ -20,8 +20,8 @@ year13 = 13 * monlen
 cycle235 = 235 * monlen
 cycle19 = 19 * eqlen
 
-lunar_epoch = 1598617 + Fraction(427549,432000)
-solar_epoch = 1598604 + Fraction(26077,86400)
+lunar_epoch = 1598618 + Fraction(427549,432000)
+solar_epoch = 1598605 + Fraction(26077,86400)
 
 def tojd(day, month, year):
     """Convert a date in the Macedonian calendar to a Julian Day."""

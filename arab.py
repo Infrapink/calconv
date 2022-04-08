@@ -11,7 +11,7 @@ monlen = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000) # mean s
 year12 = 12 * monlen
 year13 = 13 * monlen
 cycle19 = (12 * year12) + (year13 * 7)
-epoch = 1948319 + Fraction(65281, 108000) # Take the Muslim epoch and add 10 years, then subtract 4 leap and 6
+epoch = 1948320 + Fraction(65281, 108000) # Take the Muslim epoch and add 10 years, then subtract 4 leap and 6
                                           # regular years. This all results in Dhu al-Hijjah coinciding in the Arab
                                           # and Islamic calendrs for 1 AH
                                           # If you instead wish for Muharram 10 to coincide, add monlen to epoch
@@ -44,8 +44,6 @@ CALTYPE = {1: months1,
            11: months11,
            0: months12}
 
-#leap_years_ah = (2,5,7,10,13,15,18)
-#leap_years_bh = (2,5,7,10,13,15,18)
 leap_years = (2,5,7,10,13,15,18) # as it turns out, the remainder pattern of leap years is the same whether the year be positive or negative
 
 def tojd(day, month, year):

@@ -7,7 +7,7 @@
 import months
 
 cycle30 = (30 * 354) + 11
-epoch = 1948439
+epoch = 1948440
 
 leap_years_ah = (2,5,7,10,13,16,18,21,24,26,29)
 leap_years_bh = (1,4,6,9,12,15,17,20,23,25,28)

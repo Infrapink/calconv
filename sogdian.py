@@ -5,7 +5,7 @@
 from months import SOGDIAN_NUM as MONTHNO
 from months import NUM_SOGDIAN as NUMON
 
-epoch = 1951702
+epoch = 1951703
 
 def fromjd(jday):
     '''Convert Julian Day into a date in hte Sogdian calendar'''

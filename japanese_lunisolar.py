@@ -17,8 +17,8 @@ solar_term = solar_year / 12
 nen2 = 12 * lunar_month
 nen3 = 13 * lunar_month
 
-solar_epoch = 1480353 + Fraction(151,160)
-lunar_epoch = 1480348 + Fraction(131,1440)
+solar_epoch = 1480354 + Fraction(151,160)
+lunar_epoch = 1480349 + Fraction(131,1440)
 timezone = Fraction(9, 24) # Korean standard time is UTC+9
 
 def truesun(day, angle):

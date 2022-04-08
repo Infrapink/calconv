@@ -8,7 +8,7 @@ cycle4 = (4 * 365) + 1
 cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
 
-epoch = 2394280 # 21 March 1843
+epoch = 2394281 # 21 March 1843
 
 def yearlen(year):
     '''Check the length of a given year'''

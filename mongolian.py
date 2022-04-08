@@ -17,8 +17,8 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = 2161531 + Fraction(1247, 1440) # southern solstice preceding Temujin's ascension to Genghis Khan
-lunar_epoch = 2161529 + Fraction(893, 1440) # first visible crescent preceding solar_epoch
+solar_epoch = 2161532 + Fraction(1247, 1440) # southern solstice preceding Temujin's ascension to Genghis Khan
+lunar_epoch = 2161530 + Fraction(893, 1440) # first visible crescent preceding solar_epoch
 timezone = Fraction(8, 24) # Mongolian standard time is UTC+8
 
 def truesun(day, angle):

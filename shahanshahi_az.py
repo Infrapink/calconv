@@ -5,16 +5,16 @@
 from months import ZOROASTRIAN_NUM as MONTHNO
 from months import NUM_ZOROASTRIAN as NUMON
 
-epoch = 1579402
+epoch = 1579403
 cycle = (120 * 365) + 30
 l = 0 # position of the leap month
 
 def yearlen(y):
     '''Leap or normal year?'''
     y = int(y)
-    if (y < 0) and (y % 120 == 73):
+    if (y < 0) and (y % 120 == 74):
         ans = 395
-    elif (y > 0) and (y % 120 == 74):
+    elif (y > 0) and (y % 120 == 73):
         ans = 395
     else:
         ans = 365

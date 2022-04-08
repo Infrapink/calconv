@@ -10,7 +10,7 @@ from math import floor
 from solun import trans
 
 yearlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-epoch = 1948319 + Fraction(31379,43200)
+epoch = 1948320 + Fraction(31379,43200)
 
 YEARTYPE = {365: months.IRANIAN_NORMAL,
             366: months.IRANIAN_LEAP}

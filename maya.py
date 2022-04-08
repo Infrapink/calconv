@@ -9,7 +9,7 @@ katlen = 20 * tunlen
 baklen = 20 * katlen
 piklen = 20 * baklen
 
-epoch = 584282
+epoch = 584283
 
 def tojd(piktun, baktun, katun, tun, uinal, kin):
     piktun = int(piktun)

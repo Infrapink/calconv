@@ -4,7 +4,7 @@
 
 from fractions import Fraction
 from decimal import Decimal
-from math import floor
+from math import floor, ceil
 import sunmoon
 import numpy as np
 import gregorian
@@ -17,31 +17,31 @@ year13 = 13 * lunar_month
 
 def spos(day):
     '''Ecliptic longitude of the sun'''
-    day = floor(day) + 0.5
+    day = floor(day) - 0.5
     return sunmoon.solar_coords.solar_longitude(day)
 
 def mpos(day):
     '''Ecliptic longitude of the moon'''
-    day = floor(day) + 0.5
+    day = floor(day) - 0.5
     return sunmoon.lunar_coords.lunar_longitude(day)
 
 def trans(day, angle, frtz):
     '''Time the sun hits a particular ecliptic longitude'''
-    day = floor(day) + 0.5
+    day = floor(day) - 0.5
     angle = float(angle)
     frtz = Fraction(frtz) # timezone
     
     minutes = int(sunmoon.solar_coords.solar_time(day, angle))
-    time = int(day) + Fraction(minutes, 1440) + frtz
+    time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
 def conj(day, frtz):
     '''Julian Day and time of the new moon, UTC'''
-    day = floor(day) + 0.5
+    day = floor(day) - 0.5
     frtz = Fraction(frtz) # timezone
 
     minutes = int(sunmoon.lunar_coords.lunar_time(day))
-    time = int(day) + Fraction(minutes, 1440) + frtz
+    time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
 def truesun(day, angle, timezone):

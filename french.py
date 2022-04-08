@@ -8,8 +8,8 @@ import months
 from fractions import *
 
 yearlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-day0 = 2375474 + Fraction(997,5400)
-day1 = 2375839 + Fraction(36877,86400)
+day0 = 2375475 + Fraction(997,5400)
+day1 = 2375840 + Fraction(36877,86400)
 
 YEARTYPE = {365: months.FRENCH_NORMAL,
             366: months.FRENCH_LEAP}

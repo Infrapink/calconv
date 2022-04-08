@@ -5,7 +5,7 @@
 #
 
 import months
-epoch = 2087607
+epoch = 2087608
 m = months.IGBO
 
 def tojd(day, month, year):

@@ -5,7 +5,7 @@
 from months import NUM_ZOROASTRIAN as NUMONTHS
 from months import ZOROASTRIAN_NUM as MONTHNO
 
-epoch = 1086677 #1086742
+epoch = 1086678 #1086742
 
 def fromjd(jday):
     '''Cionvert a Julian Day into a day in the Qadimi calendar'''

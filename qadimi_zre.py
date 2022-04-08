@@ -5,7 +5,7 @@
 from months import NUM_ZOROASTRIAN as NUMONTHS
 from months import ZOROASTRIAN_NUM as MONTHNO
 
-epoch = 1086647 #1086712
+epoch = 1086648 #1086712
 
 def fromjd(jday):
     '''Cionvert a Julian Day into a day in the Oshmurtik calendar'''

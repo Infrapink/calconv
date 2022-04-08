@@ -17,8 +17,8 @@ eqlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
 year12 = 12 * monlen
 year13 = 13 * monlen
 
-solar_epoch = Fraction(6065414981, 2700) - Fraction(5,24) # southern solstice in 1438 AD, corrected for Peruvian time
-lunar_epoch = Fraction(485229140243, 216000) + Fraction(5,24) # new moon before the souther solstice of 1438 AD, corrected for Peruvian time
+solar_epoch = Fraction(6065414981, 2700) - Fraction(5,24) + 1 # southern solstice in 1438 AD, corrected for Peruvian time
+lunar_epoch = Fraction(485229140243, 216000) + Fraction(5,24) + 1 # new moon before the souther solstice of 1438 AD, corrected for Peruvian time
 
 def tojd(day, month, year):
     """Convert a date in the Inca civil calendar to a Julian Day."""

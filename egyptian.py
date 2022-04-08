@@ -5,7 +5,7 @@
 #
 
 import months
-epoch = 160550
+epoch = 160551
 m = months.EGYPTIAN
 
 def tojd(day, month, year):

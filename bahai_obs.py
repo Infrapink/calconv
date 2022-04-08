@@ -6,7 +6,7 @@ from months import BAHAI_NORMAL, BAHAI_LEAP
 from solun import trans
 
 trop = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400) # tropical year
-epoch = 2394280 + Fraction(572, 1440) # northward equinox of 0 BE
+epoch = 2394281 + Fraction(572, 1440) # northward equinox of 0 BE
 tz = Fraction(7,48) # Iranian standard time is UTC+3:30
 
 def getnawruz(equinox):

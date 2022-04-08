@@ -5,7 +5,7 @@
 #
 
 import months
-epoch = 1922867
+epoch = 1922868
 m = months.ARMENIAN
 
 def tojd(day, month, year):

@@ -9,7 +9,7 @@ from solun import truesun
 
 solar_year = 365 + Fraction(5,24) + Fraction(49,1440) + Fraction(328,864000)
 solar_term = solar_year / 24
-solstice = Fraction(8831870069, 12000) # instant of the southern solstice preceding the first year of the reign of Emperor Huangdi, GMT. This corresponds to 21 December 2699 BC and 28 Azar 3320 BH
+solstice = Fraction(8831870069, 12000) + 1 # instant of the southern solstice preceding the first year of the reign of Emperor Huangdi, GMT. This corresponds to 21 December 2699 BC and 28 Azar 3320 BH
 epoch = solstice + (3 * solar_term)
 timezone = Fraction(8,24)
 

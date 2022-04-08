@@ -3,6 +3,7 @@
 from tkinter import *
 from tkinter import ttk
 from decimal import *
+from math import ceil
 
 import months
 
@@ -299,67 +300,67 @@ def cons_day_julian_todate():
         kurdish_year_ent.insert(0,kurdish_year_value)
 
         # True Julian Day
-        tjday = int(day) + Decimal(0.5)
+        tjday = ceil(day) - Decimal(0.5)
         day_julian_ent.delete(0,END)
         day_julian_ent.insert(0,tjday)
 
         # Reduced Julian Day
-        rjday = int(day) + Decimal(0.5) - 2400000
+        rjday = ceil(day) - Decimal(0.5) - 2400000
         red_day_julian_ent.delete(0,END)
         red_day_julian_ent.insert(0,rjday)
 
         # Modified Julian Day
-        mjday = int(day) - 2400000
+        mjday = ceil(day) - 2400001
         mod_day_julian_ent.delete(0,END)
         mod_day_julian_ent.insert(0,mjday)
 
         # Truncated Julian Day
-        tjday = int(day) - 2440000
+        tjday = ceil(day) - 2440000
         trun_day_julian_ent.delete(0,END)
         trun_day_julian_ent.insert(0,tjday)
 
         # Dublin Julian Day
-        djday = int(day) + Decimal(0.5) - 2415020
+        djday = ceil(day) - Decimal(0.5) - 2415020
         dub_day_julian_ent.delete(0,END)
         dub_day_julian_ent.insert(0,djday)
 
         # CNES Julian Day
-        cnes = int(day) - 2433282
+        cnes = ceil(day) - 2433282
         cnes_ent.delete(0,END)
         cnes_ent.insert(0,cnes)
 
         # CCSDS Julian Day
-        ccsds = int(day) - 2436204
+        ccsds = ceil(day) - 2436204
         ccsds_ent.delete(0,END)
         ccsds_ent.insert(0,ccsds)
 
         # Lilian Day
-        lday = int(day) - 2299159
+        lday = ceil(day) - 2299159
         day_lilian_ent.delete(0,END)
         day_lilian_ent.insert(0,lday)
 
         # Rata Die
-        rday = int(day) - 1721424
+        rday = ceil(day) - 1721424
         rata_die_ent.delete(0,END)
         rata_die_ent.insert(0,rday)
 
         # Unix time
-        unix = (int(day) - 2440587) * 86400
+        unix = (ceil(day) - 2440587) * 86400
         unix_time_ent.delete(0,END)
         unix_time_ent.insert(0,unix)
 
         # Julian Sol
-        sol_gangale = round((int(day) - Decimal('2405520.5')) / Decimal(1.02749))
+        sol_gangale = round((ceil(day) - Decimal('2405520.5')) / Decimal('1.02749'))
         sol_gangale_ent.delete(0,END)
         sol_gangale_ent.insert(0,sol_gangale)
 
         # LOP Julian day
-        lop = int(day) - 2448622
+        lop = ceil(day) - 2448622
         lop_ent.delete(0,END)
         lop_ent.insert(0,lop)
 
         # VMS time
-        vms = (int(day) - 2396349) * 86400 * 10000000
+        vms = (ceil(day) - 2396349) * 86400 * 10000000
         vms_time_ent.delete(0,END)
         vms_time_ent.insert(9,vms)
 

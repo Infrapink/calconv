@@ -11,7 +11,7 @@ cycle100 = (100 * 365) + 24
 cycle400 = (400 * 365) + 97
 cycle4000 = (10 * cycle400) - 1
 
-epoch = 1721425
+epoch = 1721426
 
 def tojd(day, month, year):
 

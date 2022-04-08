@@ -9,7 +9,7 @@ from fractions import *
 from math import floor
 
 yearlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-epoch = Fraction(6065414981, 2700) - Fraction(5,24) # southern solstice in 1438 AD, corrected for Peruvian time
+epoch = Fraction(6065414981, 2700) - Fraction(5,24) + 1 # southern solstice in 1438 AD, corrected for Peruvian time
 
 YEARTYPE = {365: months.INCA_SOLAR_NORMAL,
             366: months.INCA_SOLAR_LEAP}

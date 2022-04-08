@@ -2,7 +2,7 @@
 
 # Convert between the Indian national calendar and Julian Day
 
-epoch = 1749629
+epoch = 1749630
 quad = (4 * 365) + 1 # four years, including leap year
 century = (100 * 365) + 24 # 100 years, with leap years
 qc = (400 * 365) + 97 # 400 years, with leap years

@@ -13,8 +13,8 @@ nian13 = 13 * yue
 
 MONTHS = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
 
-solar_epoch = 1802498 + Fraction(189,589)
-lunar_epoch = 1802496 + Fraction(1117,1457)
+solar_epoch = 1802499 + Fraction(189,589)
+lunar_epoch = 1802497 + Fraction(1117,1457)
 
 def getxin(solstice):
     solstice = Fraction(solstice)
@@ -135,7 +135,9 @@ def fromjd(jday):
                 m += 1
             newmoon += yue
 
-        if (leapt == False) and (floor(newmoon + yue) <= floor(st)):
+        if m == 12:
+            month = "Rùnyuè"
+        elif (leapt == False) and (floor(newmoon + yue) <= floor(st)):
             month = "Rùnyuè"
         else:
             month = MONTHS[m]

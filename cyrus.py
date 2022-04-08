@@ -6,7 +6,7 @@ from months import IRANIAN_NORMAL, IRANIAN_LEAP
 from solun import trans
 
 trop = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400) # tropical year
-epoch = 1516968 + Fraction(26,45)
+epoch = 1516969 + Fraction(26,45)
 tz = Fraction(7,48) # Iranian standard time is UTC+3:30
 
 def fromjd(jday):
