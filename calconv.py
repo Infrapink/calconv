@@ -121,6 +121,7 @@ import fasli_yz
 import fasli_az
 import fasli_zre
 import sogdian
+import indian
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1276,6 +1277,15 @@ def cons_day_julian_todate():
         sogdian_day_ent.insert(0, sogdian_date[0])
         sogdian_month_ent.insert(0, sogdian_date[1])
         sogdian_year_ent.insert(0, sogdian_date[2])
+
+        # Convert a Julian day to a date in the Indian national calendar
+        indian_date = indian.fromjd(day)
+        indian_day_ent.delete(0, END)
+        indian_month_ent.delete(0, END)
+        indian_year_ent.delete(0, END)
+        indian_day_ent.insert(0, indian_date[0])
+        indian_month_ent.insert(0, indian_date[1])
+        indian_year_ent.insert(0, indian_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2451,6 +2461,15 @@ def sogdian_converter():
         month = sogdian_month_ent.get()
         year = int(sogdian_year_ent.get())
         jday = sogdian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def indian_converter():
+        day = int(indian_day_ent.get())
+        month = indian_month_ent.get()
+        year = int(indian_year_ent.get())
+        jday = indian.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4081,6 +4100,19 @@ sogdian_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 5, stick
 sogdian_year_ent = Entry(frame)
 sogdian_year_ent.grid(row = 120, column = 5, sticky = W)
 sogdian_bttn = Button(frame, text = "Calculate", command = sogdian_converter).grid(row = 121, column = 3, columnspan = 3, sticky = W)
+
+# Indian national calendar                                                                                            
+indian_lbl = Label(frame, text = "Indian national calendar").grid(row = 118, column = 6, columnspan = 3, sticky = W)
+indian_day_lbl = Label(frame, text = "Day").grid(row = 119, column = 6, sticky = W)
+indian_day_ent = Entry(frame)
+indian_day_ent.grid(row = 120, column = 6, sticky = W)
+indian_month_lbl = Label(frame, text = "Month").grid(row = 119, column = 7, sticky = W)
+indian_month_ent = Entry(frame)
+indian_month_ent.grid(row = 120, column = 7, sticky = W)
+indian_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 8, sticky = W)
+indian_year_ent = Entry(frame)
+indian_year_ent.grid(row = 120, column = 8, sticky = W)
+indian_bttn = Button(frame, text = "Calculate", command = indian_converter).grid(row = 121, column = 6, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.50.0")
 root.mainloop()

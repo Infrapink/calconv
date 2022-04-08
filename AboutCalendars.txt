@@ -1515,3 +1515,19 @@ Sources:
 * BI Marshak, The Historico-Cultural Significance of the Sogdian Calendar, Iran, ol. 30 (1992), pp. 145-154
 * http://www.rahamasha.net/uploads/2/3/2/8/2328777/the_structure_of_the_later_sogdian_calenda1_1.pdf
 * http://www.rahamasha.net/uploads/2/3/2/8/2328777/scf_m_147_2.pdf
+
+------------------------
+INDIAN NATIONAL CALENDAR
+------------------------
+
+The Indian national calendar is a solar calendar used, unsurprisingly, in India, where it is co-official with the Gregorian calendar. Years are counted from the Saka era, which in the case of India begins on 22 March 78 AD (2 Farvardin 544 BH). In a normal year, the first month, Chaitra, has 30 days, the next five months have 31 days, and the last six have 30; this gives it an overall structure reminiscent of the Solar Hijri calendar. In leap years, an extra day is added to Chaitra. The Indian national calendar is by design synchronised with the Gregorian calendar so that New Year's Day falls on 22 March in normal years and 21 March in leap years.
+
+The calendar was designed by a team led by Meghnad Saha and introduced in 1879 SE (1957 AD, 1336 AH); Saha's team also drew up guidelines for determining the dates of traditional and religious observances. In designing the calendar, the team sought to inntegrate elements of the >30 calendars then in use by various groups across India while also keeping pace with the international standard Gregorian. It is the calendar by which the government operates, though regional holidays and observances are still largely set by the various traditional calendars.
+
+Sources:
+* https://en.wikipedia.org/wiki/Indian_national_calendar
+* https://www.fourmilab.ch/documents/calendar/
+* https://www.india.gov.in/calendar?date=2022-04
+* https://knowindia.india.gov.in/national-identity-elements/national-calendar.php
+* https://eclipse.gsfc.nasa.gov/SEhelp/calendars.html
+* https://web.archive.org/web/20180417203122/http://www.math.nus.edu.sg/aslaksen/projects/lcl.pdf, p. 32
