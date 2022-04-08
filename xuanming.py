@@ -18,9 +18,9 @@ jieqi = 15 + Fraction(1835, 8400) + Fraction(5, (8400 * 8)) # solar term
 nian12 = 12 * yue
 nian13 = 13 * yue
 
-solar_epoch = 2021278 + Fraction(213,280) # southern solstice of 821 AD
-lunar_epoch = 2021259 + Fraction(409,600) # new moon immediately preceding solar_epoch
-anom_epoch = 2021242 + Fraction(667349, 840000) # where the anomalistic months are measured from
+solar_epoch = 2021279 + Fraction(213,280) # southern solstice of 821 AD
+lunar_epoch = 2021260 + Fraction(409,600) # new moon immediately preceding solar_epoch
+anom_epoch = 2021243 + Fraction(667349, 840000) # where the anomalistic months are measured from
 
 MONTHS = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
 

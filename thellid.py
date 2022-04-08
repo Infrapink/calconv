@@ -9,7 +9,7 @@ from fractions import *
 from math import floor
 
 yearlen = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-epoch = Fraction(-83419488409, 43200) - yearlen # based on taking the southern solstice moment for 2020 AD and subtraction 12020 * yearlen
+epoch = Fraction(-83419488409, 43200) - yearlen + 1 # based on taking the southern solstice moment for 2020 AD and subtraction 12020 * yearlen
 #epoch = 2375839 + Fraction(36877,86400)
 
 YEARTYPE = {365: months.THELLID_NORMAL,

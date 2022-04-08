@@ -12,8 +12,8 @@ nian12 = 12 * yue
 nian13 = 13 * yue
 cycle76 = 76 * sui # == 940 * yue
 
-solar_epoch = Fraction(135255351893,86400)
-lunar_epoch = Fraction(135255365993,86400)
+solar_epoch = Fraction(135255351893,86400) + 1
+lunar_epoch = Fraction(135255365993,86400) + 1
 
 MONTHS_NORMAL = ( "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè")
 MONTHS_LEAP = ( "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Rùnyuè")

@@ -17,8 +17,8 @@ solar_term = solar_year / 12
 year12 = 12 * lunar_month
 year13 = 13 * lunar_month
 
-solar_epoch = 669880 + Fraction(110, 1440)
-lunar_epoch = 669852 + Fraction(17, 60)
+solar_epoch = 669881 + Fraction(110, 1440)
+lunar_epoch = 669853 + Fraction(17, 60)
 timezone = Fraction(7, 24) # Vietnamese standard time is UTC+7
 
 def truesun(day, angle):

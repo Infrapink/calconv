@@ -19,16 +19,14 @@ cycle76 = 76 * sui # == 940 * yue
 # then fitted the results to the closest matching values in the Callipic table.
 # The actual solstice value is much closer to 3/4, but I figured Chinese astronomers would have
 # cared more about the moon.
-solar_epoch = 1567281 + Fraction(1,2)
-lunar_epoch = 1567256 + Fraction(497,470)
+solar_epoch = 1567282 + Fraction(1,2)
+lunar_epoch = 1567257 + Fraction(497,470)
 
 # Martzloff uses the modern system of inserting the leap month at the point where a full lunation passes
 # without a major solar term. However, every source I can find says that this is a later innovation,
 # so I am taking it that the leap month falls before the 11th month.
 MONTHS_NORMAL = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
 MONTHS_LEAP = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè",  "Júyuè", "Lùyuè", "Rùnyuè")
-
-
 
 def tojd(day, month, year):
     '''Convert a date in the Sifen li into a Julian Day'''

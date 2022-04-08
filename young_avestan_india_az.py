@@ -5,7 +5,7 @@
 from months import NUM_YOUNG_AVESTAN as NUMONTHS
 from months import YOUNG_AVESTAN_NUM as MONTHNO
 
-epoch = 1579427
+epoch = 1579428
 
 def fromjd(jday):
     '''Cionvert a Julian Day into a day in the Oshmurtik calendar'''
