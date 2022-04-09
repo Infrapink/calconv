@@ -1082,3 +1082,69 @@ contains
   end subroutine lunar_time
   
 end module lunar_coords
+
+module precession
+  implicit none
+
+  ! Calculate precession of the equinoxes
+  ! Based on cpater 21 of *Astronomical Algorithms* by Jean Meeus
+  ! 2nd Edition, Willman-Bell, 1991
+
+contains
+  
+  subroutine propmot(jday, ra2000, dec2000, distance, deltara, deltadec, deltadist, answer):
+    ! Calculate the eight ascension and declination for a given star at any date.
+    ! This works by finding the difference between RA and Dec at said point and at J2000.0, and adding them
+    ! According to Meeus, this is more accurate than just calculating the effect of precession
+    
+    real(8), intent(in) :: jday ! Julian Day we're interetested in
+    real(8), intent(in) :: ra2000 ! right ascension at J2000.0
+    real(8), intent(in) :: dec2000 ! declination at J2000.0
+    real(8), intent(in) :: distance ! distance from the sun, in parsecs
+    real(8), intent(in) :: deltadist ! radial velocity, in parsecs per year
+    real(8), intent(in) :: deltara ! right ascension component of proper motion, in seconds of arc. This has to be looked up
+    real(8), intent(in) :: deltadec ! declination component of proper motion, in seconds of time. This has to be looked up.
+    real(8), dimension(2), intent(out) :: answer
+    
+    real(8) :: ra ! right ascension at the time of interest
+    real(8) :: dec ! declination at the time of interest
+
+    real(8) :: t
+    real(8) :: u
+    
+    real(8) :: x
+    real(8) :: y
+    real(8) :: z
+
+    real(8) :: xdelta
+    real(8) :: ydelta
+    real(8) :: zdelta
+
+    real(8) :: xprime
+    real(8) :: yprime
+    real(8) :: zprime
+
+    x = distance * cos(dec2000) * cos(ra2000)
+    y = distance * cos(dec2000) * sin(ra2000)
+    z = distance * sin(dec2000)
+
+    xdelta = ((x / distance) * deltadist) - (z * deltadec * cos(ra2000)) - (y * deltara)
+    ydelta = ((y / distance) * deltadist) - (z * deltadec * sin(ra2000)) + (x * deltara)
+    zdelta = ((z / distance) * deltadist) - (distance * deltadec * cos(delta2000))
+
+    t = (jday - 2451545.0) / 365.25 ! julian years since the year 2000 began at Greenwich Observatory
+
+    xprime = x + (t * xdelta)
+    yprime = y + (t * ydelta)
+    zprime = z + (t * zdelta)
+
+    ra = atan(yprime / xprime)
+
+    u = sqrt((xprime * xprime) + (yprime * yprime))
+    dec = atan(zprime / u)
+
+    answer = (ra, dec)
+  end subroutine propmot
+end module precession
+
+  
