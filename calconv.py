@@ -124,6 +124,7 @@ import fasli_zre
 import sogdian
 import indian
 import mandaean
+import bahai_sid
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1297,6 +1298,15 @@ def cons_day_julian_todate():
         mandaean_day_ent.insert(0, mandaean_date[0])
         mandaean_month_ent.insert(0, mandaean_date[1])
         mandaean_year_ent.insert(0, mandaean_date[2])
+
+        # Convert a Julian day to a date in the Sidereal Bahá'í calendar
+        bahai_sid_date = bahai_sid.fromjd(day)
+        bahai_sid_day_ent.delete(0, END)
+        bahai_sid_month_ent.delete(0, END)
+        bahai_sid_year_ent.delete(0, END)
+        bahai_sid_day_ent.insert(0, bahai_sid_date[0])
+        bahai_sid_month_ent.insert(0, bahai_sid_date[1])
+        bahai_sid_year_ent.insert(0, bahai_sid_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2490,6 +2500,15 @@ def mandaean_converter():
         month = mandaean_month_ent.get()
         year = int(mandaean_year_ent.get())
         jday = mandaean.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def bahai_sid_converter():
+        day = int(bahai_sid_day_ent.get())
+        month = bahai_sid_month_ent.get()
+        year = int(bahai_sid_year_ent.get())
+        jday = bahai_sid.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4147,5 +4166,18 @@ mandaean_year_ent = Entry(frame)
 mandaean_year_ent.grid(row = 120, column = 11, sticky = W)
 mandaean_bttn = Button(frame, text = "Calculate", command = mandaean_converter).grid(row = 121, column = 9, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.50.0")
+# Sidereal Bahá'í calendar                                                                                            
+bahai_sid_lbl = Label(frame, text = "Sidereal Bahá'í calendar").grid(row = 118, column = 12, columnspan = 3, sticky = W)
+bahai_sid_day_lbl = Label(frame, text = "Day").grid(row = 119, column = 12, sticky = W)
+bahai_sid_day_ent = Entry(frame)
+bahai_sid_day_ent.grid(row = 120, column = 12, sticky = W)
+bahai_sid_month_lbl = Label(frame, text = "Month").grid(row = 119, column = 13, sticky = W)
+bahai_sid_month_ent = Entry(frame)
+bahai_sid_month_ent.grid(row = 120, column = 13, sticky = W)
+bahai_sid_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 14, sticky = W)
+bahai_sid_year_ent = Entry(frame)
+bahai_sid_year_ent.grid(row = 120, column = 14, sticky = W)
+bahai_sid_bttn = Button(frame, text = "Calculate", command = bahai_sid_converter).grid(row = 121, column = 12, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.52.0")
 root.mainloop()

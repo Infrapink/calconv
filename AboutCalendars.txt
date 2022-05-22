@@ -923,7 +923,9 @@ The 19×19 structure appears to be derived from Islam, in which the number 19 is
 
 The era is, naturally, the Báhá'í era (BE). 1 BE is the year of publication of the Book of Divine Names, corresponding to 1223 AH (1844 AD). For 140 years or so after the foundation of Bahá'í, there was discrepancy between practice in different countries. In Asia, practitioners were mostly converts from Islam, and commonly observed festivals according the phases of the moon. In Europe and the Americas, they were mostly former Christians, and celebrated Naw-Ruz on the 21st of March. In 171 BE (1393 AH), the Universal House of Justice ruled that the calendar would henceforth begin on the day of the northward equinox according to Iranian Standard Time, bringing worldwise practices into harmony; they also clarified that practitioners would celebrated Naw-Ruz on the day of the equinox according to their local timezones.
 
-And important break with Islam is that Bahá'í allows for intercalation. The year sometimes has an extra day to keep it aligned with the equinoxes. Furthermore, the births of the Báb and Bahá'ulláh are celebrated on the 1st and 2nd days respectively of the 8th new moon after the northward equinox (where new moon appears to refer to the first visible crescent rather than the dark moon).
+An important break with Islam is that Bahá'í allows for intercalation. The year sometimes has an extra day to keep it aligned with the equinoxes. Furthermore, the births of the Báb and Bahá'ulláh are celebrated on the 1st and 2nd days respectively of the 8th new moon after the northward equinox (where new moon appears to refer to the first visible crescent rather than the dark moon).
+
+The sidereal Bahá'í calendar is one invented by me, based on an alternative interpretation of Bahá'ulláh's intruction that Nowruz fall on the First Point of Aries. In the sidereal calanedar, Nowruz falls on the day that the sun enters conjunction with 4 Arietis, the equinoxmost star in Aries.
 
 Suurces:
 * https://en.wikipedia.org/wiki/Bah%C3%A1%CA%BC%C3%AD_calendar
