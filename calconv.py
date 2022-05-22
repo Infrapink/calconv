@@ -123,6 +123,7 @@ import fasli_az
 import fasli_zre
 import sogdian
 import indian
+import mandaean
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1287,6 +1288,15 @@ def cons_day_julian_todate():
         indian_day_ent.insert(0, indian_date[0])
         indian_month_ent.insert(0, indian_date[1])
         indian_year_ent.insert(0, indian_date[2])
+
+        # Convert a Julian day to a date in the Mandaean calendar
+        mandaean_date = mandaean.fromjd(day)
+        mandaean_day_ent.delete(0, END)
+        mandaean_month_ent.delete(0, END)
+        mandaean_year_ent.delete(0, END)
+        mandaean_day_ent.insert(0, mandaean_date[0])
+        mandaean_month_ent.insert(0, mandaean_date[1])
+        mandaean_year_ent.insert(0, mandaean_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2471,6 +2481,15 @@ def indian_converter():
         month = indian_month_ent.get()
         year = int(indian_year_ent.get())
         jday = indian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def mandaean_converter():
+        day = int(mandaean_day_ent.get())
+        month = mandaean_month_ent.get()
+        year = int(mandaean_year_ent.get())
+        jday = mandaean.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4114,6 +4133,19 @@ indian_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 8, sticky
 indian_year_ent = Entry(frame)
 indian_year_ent.grid(row = 120, column = 8, sticky = W)
 indian_bttn = Button(frame, text = "Calculate", command = indian_converter).grid(row = 121, column = 6, columnspan = 3, sticky = W)
+
+# Mandaean calendar                                                                                            
+mandaean_lbl = Label(frame, text = "Mandaean calendar").grid(row = 118, column = 9, columnspan = 3, sticky = W)
+mandaean_day_lbl = Label(frame, text = "Day").grid(row = 119, column = 9, sticky = W)
+mandaean_day_ent = Entry(frame)
+mandaean_day_ent.grid(row = 120, column = 9, sticky = W)
+mandaean_month_lbl = Label(frame, text = "Month").grid(row = 119, column = 10, sticky = W)
+mandaean_month_ent = Entry(frame)
+mandaean_month_ent.grid(row = 120, column = 10, sticky = W)
+mandaean_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 11, sticky = W)
+mandaean_year_ent = Entry(frame)
+mandaean_year_ent.grid(row = 120, column = 11, sticky = W)
+mandaean_bttn = Button(frame, text = "Calculate", command = mandaean_converter).grid(row = 121, column = 9, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.50.0")
 root.mainloop()

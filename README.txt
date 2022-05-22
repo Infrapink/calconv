@@ -577,6 +577,21 @@ Indian civil calendar:
 * Māgha
 * Phālguna
 
+Mandaean calendar:
+* Daula
+* Nuna
+* 'mbra
+* Taura
+* Ṣilmia
+* Sarṭana
+* Aria
+* Shumbulta
+* Extra days
+* Qaina
+* Arqba
+* Hiṭia
+* Gadia
+
 LICENSE
 
 calconv is copyright Chris McCrohan.

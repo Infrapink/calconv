@@ -1531,3 +1531,15 @@ Sources:
 * https://knowindia.india.gov.in/national-identity-elements/national-calendar.php
 * https://eclipse.gsfc.nasa.gov/SEhelp/calendars.html
 * https://web.archive.org/web/20180417203122/http://www.math.nus.edu.sg/aslaksen/projects/lcl.pdf, p. 32
+
+-----------------
+MANDAEAN CALENDAR
+-----------------
+
+The Mandaean calendar is yet another derivative of the traditional Zoroastrian calendar, and thus it ultimately dates back to the Egyptian calendar. The year consists of 12 months of 30 days, plus five extra days between the eighth and ninth months, with no leap years. The day traditionall began at sunset, but nowadays starts at sunrise. The epooch is a little under 480,000 years in the past, and dates from the date of Adam's creation in Mandaean tradition.
+
+Sources:
+* https://en.wikipedia.org/wiki/Mandaean_calendar
+
+
+
