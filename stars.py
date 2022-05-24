@@ -1,0 +1,65 @@
+#!/usr/bin/python3
+
+# This is a list of stars and their attributes for use in sidereal calculations.
+#
+# Unless otherwise stated, data is correct for J2000.0 and it taken from Wikipedia
+
+# Attributes:
+## ra2000: right ascension, in degrees
+## dec2000: declination, in degrees
+## distance: distance from the sun, in parsecs
+## rv: radial velocity, in parsecs per year
+## deltara: RA component of proper motion, in arcseconds per year
+## deltadec: Dec component of proper motion, in arcseconds per year
+
+from decimal import Decimal
+from math import pi
+
+mas2rad = Decimal(pi) / Decimal(180 * 3600000) # convert milliarcseconds to radians
+
+class Star(object):
+    """A celestial body, usually a star, but also works for planets, moons, and galaxies"""
+    def __init__(self, ra, dec, distance, rv, dra, ddec):
+        self.ra = ra # right ascension as of J2000.0, in DEGREES
+        self.dec = dec # declination as of J2000.0, in DEGREES
+        self.distance = distance # distance from the sun as of J2000.0, in PARSECS
+        self.rv = rv # radial velocity as of J2000.0, in PARSECS PER YEAR
+        self.dra = dra # deltaRA, right ascension component of proper motion, in RADIANS PER YEAR
+        self.ddec = ddec # deltaDEC, declination component of peoper motion, in RADIANS PER YEAR
+
+SIRIUS = Star( Decimal('101.2871553'), # ra
+               Decimal('-16.71611586'), # dec
+               Decimal('2.67'), # distance
+               (Decimal('-5.50') / Decimal(977792)), # rv
+               (Decimal('-546.01') * mas2rad), # dra
+               (Decimal('-1223.07') * mas2rad)) # ddec
+
+# Pleiades values are for Alcyone, the brightest star in the cluster
+PLEIADES = Star( Decimal('56.87115417'), # ra
+                 Decimal('24.10513611'), # dec
+                 136, # distance
+                 (Decimal('5.40') / 977792), # rv
+                 (Decimal('19.34') * mas2rad), #dra
+                 (Decimal('-43.67') * mas2rad)) # ddec
+
+SPICA = Star( Decimal('201.2982458'), # ra
+              Decimal('-11.16131944'), # dec
+              77, # distance
+              (Decimal(1) / Decimal(977792)), # rv
+              (Decimal('-42.35') * mas2rad), # dra
+              (Decimal('-30.67') * mas2rad)) # dded
+
+BAQUA = Star( Decimal('322.889715458'), # ra
+              Decimal('-5.57117555556'), # dec
+              167, # distance
+              Decimal('6.451') / 977792, # rv
+              (Decimal('18.77') * mas2rad), # dra
+              (Decimal('-8.21') * mas2rad)) # ddec
+
+# Aries values are for 4 Arietis, the star with the smallest right ascension
+ARIES = Star( Decimal('27.0454166667'), # ra
+              Decimal('16.9556388889'), # dec
+              87, # distance
+              Decimal('5.7') / 977792, # rv
+              (Decimal('65.608') * mas2rad), # dra
+              (Decimal('-29.291') * mas2rad)) # ddec
