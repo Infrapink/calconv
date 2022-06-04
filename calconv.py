@@ -125,6 +125,7 @@ import sogdian
 import indian
 import mandaean
 import bahai_sid
+import sothic
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1263,7 +1264,7 @@ def cons_day_julian_todate():
         fasli_az_month_ent.insert(0, fasli_az_date[1])
         fasli_az_year_ent.insert(0, fasli_az_date[2])
 
-        # Convert a Julian day to a date in the Krix calendar
+        # Convert a Julian day to a date in the Fasli calendar (ZRE)
         fasli_zre_date = fasli_zre.fromjd(day)
         fasli_zre_day_ent.delete(0, END)
         fasli_zre_month_ent.delete(0, END)
@@ -1307,6 +1308,15 @@ def cons_day_julian_todate():
         bahai_sid_day_ent.insert(0, bahai_sid_date[0])
         bahai_sid_month_ent.insert(0, bahai_sid_date[1])
         bahai_sid_year_ent.insert(0, bahai_sid_date[2])
+
+        # Convert a Julian day to a date in the Sothic calendar
+        sothic_date = sothic.fromjd(day)
+        sothic_day_ent.delete(0, END)
+        sothic_month_ent.delete(0, END)
+        sothic_year_ent.delete(0, END)
+        sothic_day_ent.insert(0, sothic_date[0])
+        sothic_month_ent.insert(0, sothic_date[1])
+        sothic_year_ent.insert(0, sothic_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2509,6 +2519,15 @@ def bahai_sid_converter():
         month = bahai_sid_month_ent.get()
         year = int(bahai_sid_year_ent.get())
         jday = bahai_sid.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sothic_converter():
+        day = int(sothic_day_ent.get())
+        month = sothic_month_ent.get()
+        year = int(sothic_year_ent.get())
+        jday = sothic.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4115,7 +4134,7 @@ fasli_az_year_ent.grid(row = 115, column = 14, sticky = W)
 fasli_az_bttn = Button(frame, text = "Calculate", command = fasli_az_converter).grid(row = 116, column = 12, columnspan = 3, sticky = W)
 
 # Fasli calendar (Zarathushtrian Religious Era)                                                                                           
-fasli_zre_lbl = Label(frame, text = "Krix calendar").grid(row = 118, column = 0, columnspan = 3, sticky = W)
+fasli_zre_lbl = Label(frame, text = "Fasli calendar (ZRE)").grid(row = 118, column = 0, columnspan = 3, sticky = W)
 fasli_zre_day_lbl = Label(frame, text = "Day").grid(row = 119, column = 0, sticky = W)
 fasli_zre_day_ent = Entry(frame)
 fasli_zre_day_ent.grid(row = 120, column = 0, sticky = W)
@@ -4178,6 +4197,19 @@ bahai_sid_year_lbl = Label(frame, text = "Year").grid(row = 119, column = 14, st
 bahai_sid_year_ent = Entry(frame)
 bahai_sid_year_ent.grid(row = 120, column = 14, sticky = W)
 bahai_sid_bttn = Button(frame, text = "Calculate", command = bahai_sid_converter).grid(row = 121, column = 12, columnspan = 3, sticky = W)
+
+# Sothic calendar                                                                                            
+sothic_lbl = Label(frame, text = "Sothic calendar").grid(row = 123, column = 0, columnspan = 3, sticky = W)
+sothic_day_lbl = Label(frame, text = "Day").grid(row = 124, column = 0, sticky = W)
+sothic_day_ent = Entry(frame)
+sothic_day_ent.grid(row = 125, column = 0, sticky = W)
+sothic_month_lbl = Label(frame, text = "Month").grid(row = 124, column = 1, sticky = W)
+sothic_month_ent = Entry(frame)
+sothic_month_ent.grid(row = 125, column = 1, sticky = W)
+sothic_year_lbl = Label(frame, text = "Year").grid(row = 124, column = 2, sticky = W)
+sothic_year_ent = Entry(frame)
+sothic_year_ent.grid(row = 125, column = 2, sticky = W)
+sothic_bttn = Button(frame, text = "Calculate", command = sothic_converter).grid(row = 126, column = 0, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.52.0")
 root.mainloop()

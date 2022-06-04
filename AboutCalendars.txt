@@ -1543,5 +1543,25 @@ The Mandaean calendar is yet another derivative of the traditional Zoroastrian c
 Sources:
 * https://en.wikipedia.org/wiki/Mandaean_calendar
 
+---------------
+SOTHIC CALENDAR
+---------------
 
+The Sothic calendar was at no point used in ancient Egypt. It is a calendar I invented, based on Egyptian customs.
 
+The Egyptian civil year, as already described, was 365 days long, no more, no less. Egyptians were aware of the discrepancy between calendar and climate, but they refused to change it because only the gods can create new days. However, this was only really of interest to the priesthood and the royal household. Regular people lived their lives by an agricultural calendar of three seasons, in which akhet, the first season, began on whatever day the Nile flooded. This, naturally, could vary considerably depending on climate, even multiple months in extreme cases.
+
+The flooding ususally happened quite soon after the heliacal rising of Sirius, which in Pharaohnic times roughly coincided with the summer solstice in Egypt and Ethiopia. Around this time, a series on monsoons in the Ethiopian highlands swell the various Nile tributaries, bringing about a long period of flooding all across the river system. Since Sirius is associated with Isis, ancient Egyptians interpreted the rainfall as her weeping for Osiris.
+
+The heliacal rising of Sirius was faithfully recoded in ancient Egpytian annals, since it provided such a reliable indicator of when the Nile was about to flood. Indeed, this was even regionally accurate; due to celestial mechanics, Sirius becomes visible just above the horizon about a day earlier with each degree of latitude one goes south, and so the rising would be observed several days earlier in Aswan than at the delta, which would also flood several days earlier.
+
+This, however, presents a challenge in attempting to actually implement the Sothic calendar, since one must choose a particular latitude on which to base calculations. I went with the Great Pyramid of Giza, because what's more Egyptian than the Great Pyramid? As to when Sirius first becomes visible, Tetley calculates it to be when Sirius is 2º above the horizon while the sun is at least 5.5º below. As it happens, this separation recurs almost exactly every 365 days 6 hours 1 minute, and so the Julian calendar is considerably more accurate to the Sothic calendar than to the equinoxes. Since I was unable to implement an accurate algorithm to determine the altitudes of celestial bodies, I have instead defined the heliacal rising as the first day when Sirius rises at least 30 minutes before the sun.
+
+Sources:
+* M. Christine Tetley, THE RECONSTRUCTED CHRONOLOGY OF THE EGYPTIAN KINGS, 2014, BW Tetley, chapter 3. Available at https://www.egyptchronology.com/pdf-for-download/
+* https://earthsky.org/brightest-stars/sirius-the-brightest-star/
+* https://en.wikipedia.org/wiki/Egyptian_calendar
+* https://en.wikipedia.org/wiki/Flooding_of_the_Nile
+* https://www.space.com/21702-sirius-brightest-star.html
+* https://www.space.com/39638-sirius-dog-star-visible-this-week.html
+* https://web.archive.org/web/20131225071503/https://www.lavia.org/english/archivo/egyptiancalendaren.html

@@ -1869,6 +1869,8 @@ contains
     ltable(60,4) = -2
     ltable(60,5) = 0
 
+    sigma_l = 0.0
+
     do i = 1, 60
 
        Dterm = D * ltable(i, 1)
@@ -2085,7 +2087,7 @@ contains
   end subroutine getsid
 
   subroutine sidstant(jday, inst, answer)
-    ! Calculate sidereal time for any instant a Greenwich
+    ! Calculate sidereal time for any instant at Greenwich
     ! Based on Meeus, chapter 12
     real(8), intent(in) :: jday ! Julian Day in question
     real(8), intent(in) :: inst ! time since midnight that we're interested in
@@ -2099,14 +2101,14 @@ contains
     answer = midnight + inc
   end subroutine sidstant
 
-  subroutine solar_riset(jday, lon, lat, deltat, time)
+  subroutine solar_riset(jday, lon, lat, time)
     ! Calculte the time of sunrise and sunset
     ! Based on Meeus, chapter 15
     
     real(8), intent(in) :: jday ! Julian Day in question
     real(8), intent(in) :: lon ! observer's longitude, in degrees
     real(8), intent(in) :: lat ! observer's latitude, in degrees
-    real(8), intent(in) :: deltat
+    !real(8), intent(in) :: deltat
     real(8), dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
 
     real(8) :: ra2000
@@ -2261,6 +2263,11 @@ contains
     call precession((jday - 1), ra2000, dec2000, distance, rv, deltara, deltadec, yesterday) ! right ascension and declination of the previous day, in degrees
     call precession(jday, ra2000, dec2000, distance, rv, deltara, deltadec, today) ! right ascension and declination of the day in question, in degrees
     call precession((jday + 1), ra2000, dec2000, distance, rv, deltara, deltadec, tomorrow) ! right ascension and declination of the next day, in degrees
+
+    !print *, "Initial values: ", ra2000, dec2000
+    !print *, "Yesterday: ", yesterday
+    !print *, "Today: ", today
+    !print *, "Tomorrow: ", tomorrow
   
     testval = (sin(d2r * h0) - (sin(d2r * lat) * sin(d2r * today(2)))) / (cos(d2r * lat) * cos(d2r * today(2)))
     !print *, yesterday
@@ -2282,6 +2289,7 @@ contains
        time = 25.0
     else
        bigh = acos(testval)
+       !print *, "bigh = ", (r2d * bigh)
        !print *, testval
        !print *, (r2d * bigh)
        call getsid(jday, sid)

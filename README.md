@@ -101,7 +101,7 @@ Coptic Calendar:
 * Mesori
 * Extra days
 
-Egyptian Calendar:
+Egyptian and Sothic Calendars:
 * Thoth
 * Phaophi
 * Hathor
