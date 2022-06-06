@@ -563,7 +563,7 @@ Sogdian calendar:
 * Xshūmic
 * Extra days
 
-Indian civil calendar:
+Indian and Hindu calendars:
 * Chaitra
 * Vaisākha
 * Jyēshtha
@@ -576,6 +576,8 @@ Indian civil calendar:
 * Pausha
 * Māgha
 * Phālguna
+
+(Note: In some calendars, Vaisākha is the first month).
 
 Mandaean calendar:
 * Daula

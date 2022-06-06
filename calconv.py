@@ -126,6 +126,9 @@ import indian
 import mandaean
 import bahai_sid
 import sothic
+import madhyama_solar_ky
+import madhyama_solar_vs
+import madhyama_solar_se
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1317,6 +1320,33 @@ def cons_day_julian_todate():
         sothic_day_ent.insert(0, sothic_date[0])
         sothic_month_ent.insert(0, sothic_date[1])
         sothic_year_ent.insert(0, sothic_date[2])
+
+        # Convert a Julian day to a date in the Traditional Hindu solar calendar (Kali Yuga)
+        madhyama_solar_ky_date = madhyama_solar_ky.fromjd(day)
+        madhyama_solar_ky_day_ent.delete(0, END)
+        madhyama_solar_ky_month_ent.delete(0, END)
+        madhyama_solar_ky_year_ent.delete(0, END)
+        madhyama_solar_ky_day_ent.insert(0, madhyama_solar_ky_date[0])
+        madhyama_solar_ky_month_ent.insert(0, madhyama_solar_ky_date[1])
+        madhyama_solar_ky_year_ent.insert(0, madhyama_solar_ky_date[2])
+
+        # Convert a Julian day to a date in the Traditional Hindu solar calendar (Vikram Samvat)
+        madhyama_solar_vs_date = madhyama_solar_vs.fromjd(day)
+        madhyama_solar_vs_day_ent.delete(0, END)
+        madhyama_solar_vs_month_ent.delete(0, END)
+        madhyama_solar_vs_year_ent.delete(0, END)
+        madhyama_solar_vs_day_ent.insert(0, madhyama_solar_vs_date[0])
+        madhyama_solar_vs_month_ent.insert(0, madhyama_solar_vs_date[1])
+        madhyama_solar_vs_year_ent.insert(0, madhyama_solar_vs_date[2])
+
+        # Convert a Julian day to a date in the Traditional Hindu solar calendar (Shaka Era)
+        madhyama_solar_se_date = madhyama_solar_se.fromjd(day)
+        madhyama_solar_se_day_ent.delete(0, END)
+        madhyama_solar_se_month_ent.delete(0, END)
+        madhyama_solar_se_year_ent.delete(0, END)
+        madhyama_solar_se_day_ent.insert(0, madhyama_solar_se_date[0])
+        madhyama_solar_se_month_ent.insert(0, madhyama_solar_se_date[1])
+        madhyama_solar_se_year_ent.insert(0, madhyama_solar_se_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2528,6 +2558,33 @@ def sothic_converter():
         month = sothic_month_ent.get()
         year = int(sothic_year_ent.get())
         jday = sothic.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def madhyama_solar_ky_converter():
+        day = int(madhyama_solar_ky_day_ent.get())
+        month = madhyama_solar_ky_month_ent.get()
+        year = int(madhyama_solar_ky_year_ent.get())
+        jday = madhyama_solar_ky.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def madhyama_solar_vs_converter():
+        day = int(madhyama_solar_vs_day_ent.get())
+        month = madhyama_solar_vs_month_ent.get()
+        year = int(madhyama_solar_vs_year_ent.get())
+        jday = madhyama_solar_vs.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def madhyama_solar_se_converter():
+        day = int(madhyama_solar_se_day_ent.get())
+        month = madhyama_solar_se_month_ent.get()
+        year = int(madhyama_solar_se_year_ent.get())
+        jday = madhyama_solar_se.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4210,6 +4267,45 @@ sothic_year_lbl = Label(frame, text = "Year").grid(row = 124, column = 2, sticky
 sothic_year_ent = Entry(frame)
 sothic_year_ent.grid(row = 125, column = 2, sticky = W)
 sothic_bttn = Button(frame, text = "Calculate", command = sothic_converter).grid(row = 126, column = 0, columnspan = 3, sticky = W)
+
+# Traditional Hindu solar calendar (Kali Yuga)                                                                                            
+madhyama_solar_ky_lbl = Label(frame, text = "Traditional Hindu solar calendar (Kali Yuga)").grid(row = 123, column = 3, columnspan = 3, sticky = W)
+madhyama_solar_ky_day_lbl = Label(frame, text = "Day").grid(row = 124, column = 3, sticky = W)
+madhyama_solar_ky_day_ent = Entry(frame)
+madhyama_solar_ky_day_ent.grid(row = 125, column = 3, sticky = W)
+madhyama_solar_ky_month_lbl = Label(frame, text = "Month").grid(row = 124, column = 4, sticky = W)
+madhyama_solar_ky_month_ent = Entry(frame)
+madhyama_solar_ky_month_ent.grid(row = 125, column = 4, sticky = W)
+madhyama_solar_ky_year_lbl = Label(frame, text = "Year").grid(row = 124, column = 5, sticky = W)
+madhyama_solar_ky_year_ent = Entry(frame)
+madhyama_solar_ky_year_ent.grid(row = 125, column = 5, sticky = W)
+madhyama_solar_ky_bttn = Button(frame, text = "Calculate", command = madhyama_solar_ky_converter).grid(row = 126, column = 3, columnspan = 3, sticky = W)
+
+# Traditional Hindu solar calendar (Vikram Samvat)                                                                                            
+madhyama_solar_vs_lbl = Label(frame, text = "Traditional Hindu solar calendar (Vikram Samvat)").grid(row = 123, column = 6, columnspan = 3, sticky = W)
+madhyama_solar_vs_day_lbl = Label(frame, text = "Day").grid(row = 124, column = 6, sticky = W)
+madhyama_solar_vs_day_ent = Entry(frame)
+madhyama_solar_vs_day_ent.grid(row = 125, column = 6, sticky = W)
+madhyama_solar_vs_month_lbl = Label(frame, text = "Month").grid(row = 124, column = 7, sticky = W)
+madhyama_solar_vs_month_ent = Entry(frame)
+madhyama_solar_vs_month_ent.grid(row = 125, column = 7, sticky = W)
+madhyama_solar_vs_year_lbl = Label(frame, text = "Year").grid(row = 124, column = 8, sticky = W)
+madhyama_solar_vs_year_ent = Entry(frame)
+madhyama_solar_vs_year_ent.grid(row = 125, column = 8, sticky = W)
+madhyama_solar_vs_bttn = Button(frame, text = "Calculate", command = madhyama_solar_vs_converter).grid(row = 126, column = 6, columnspan = 3, sticky = W)
+
+# Traditional Hindu solar calendar (Shaka Era)                                                                                            
+madhyama_solar_se_lbl = Label(frame, text = "Traditional Hindu solar calendar (Shaka Era)").grid(row = 123, column = 9, columnspan = 3, sticky = W)
+madhyama_solar_se_day_lbl = Label(frame, text = "Day").grid(row = 124, column = 9, sticky = W)
+madhyama_solar_se_day_ent = Entry(frame)
+madhyama_solar_se_day_ent.grid(row = 125, column = 9, sticky = W)
+madhyama_solar_se_month_lbl = Label(frame, text = "Month").grid(row = 124, column = 10, sticky = W)
+madhyama_solar_se_month_ent = Entry(frame)
+madhyama_solar_se_month_ent.grid(row = 125, column = 10, sticky = W)
+madhyama_solar_se_year_lbl = Label(frame, text = "Year").grid(row = 124, column = 11, sticky = W)
+madhyama_solar_se_year_ent = Entry(frame)
+madhyama_solar_se_year_ent.grid(row = 125, column = 11, sticky = W)
+madhyama_solar_se_bttn = Button(frame, text = "Calculate", command = madhyama_solar_se_converter).grid(row = 126, column = 9, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.52.0")
 root.mainloop()

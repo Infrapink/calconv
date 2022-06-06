@@ -1565,3 +1565,17 @@ Sources:
 * https://www.space.com/21702-sirius-brightest-star.html
 * https://www.space.com/39638-sirius-dog-star-visible-this-week.html
 * https://web.archive.org/web/20131225071503/https://www.lavia.org/english/archivo/egyptiancalendaren.html
+
+--------------------------------
+TRADITIONAL HINDU SOLAR CALENDAR
+--------------------------------
+
+The traditional Hindu solar calendar originates with the Vedic culture, in the distant past before there were even kingdoms in India. Before about the 12th century AD/5th century AH, it was a purely arithmetical calendar based on mean values of the sidereal year and rāśi. The year is defined as being 365 + 149/576 days; a rāśi, or sidereal "month", is exactly 1/12 of this, and is the approximate time it takes for the sun to traverse 1/12 of the zodiac. One will quickly spot parallels with the zhongqi of the Chinese calendar, and the tropical months of the Jalali and Solar Hijri calendars.
+
+Days begin at sunrise, which for the purpose of calculations is considered to be precisely halfway between midnight and noon. A day falls within the rāśi which is current at sunrise; thus, if the calculated beginning of the rāśi falls even one truti after calculated sunrise, then the rāśi in question begins the next day.
+
+Three epochs are in common use. The first is the start of the Kali Yuga, the fourth age of the world in the great Yuga Cycle; it is calculated to have begun at sunrise on 18 Februarty 3102 BC in the Julian calendar. The others come from recorded history. The Vikram Samvat dates from Emperor Vikramaditya's defeat of the Shakas. The other, the Shaka era, is also used in the Indian National Calendar, dates from the ascension of King Chashtana as chief of the Western Satraps.
+
+Sources:
+* Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
+* https://en.wikipedia.org/wiki/Hindu_calendar
