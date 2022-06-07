@@ -577,7 +577,7 @@ Indian and Hindu calendars:
 * Māgha
 * Phālguna
 
-(Note: In some calendars, Vaisākha is the first month).
+(Note: In some calendars, Vaisākha is the first month). To specify a leap month in a lunisolar calendar, prefix the month name with "Adhik ".
 
 Mandaean calendar:
 * Daula

@@ -1579,3 +1579,19 @@ Three epochs are in common use. The first is the start of the Kali Yuga, the fou
 Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
 * https://en.wikipedia.org/wiki/Hindu_calendar
+
+------------------------------------
+TRADITIONAL HINDU LUNISOLAR CALENDAR
+------------------------------------
+
+The lunisolar calendar arose in India around the same time as the solar calendar, and developed in parallel with it. Given the number of similarities, I suspect the Indian lunisolar calendar was influential on the Chinese calendar.
+
+As in the solar calendar, a sidereal year is defines as 365 + 149/576, and a rāśi. as 1/12 of this. One synodic month is defined as 1577917500/53433336 days, or 29 + 2362563/4452778 days. Each month takes the name of the rāśi that begins during it, and the first day of each calendar month is the first day on which the sun does not rise before the calculated first visible crescent of the moon. (Some traditions begin the month the day after the full moon, but it is more common to start the month on the day after the new moon). If an entire month passes inside of a single rāśi, it is considered a leap (or "adhik") month, and shares its name with the regular month that follows; this system is almost identical to that of the Chinese calendar, except that the Chinese calendar names the leap month after the previous regular month, and zhongqi are determined by tropical rather than sidereal measurements.
+
+The "days" in the lunisolar calendar are not actual days; rather, they are tithi (sometimes translated as "lunar day", not to be confused with days on the moon), defined as 1/30 of a synodic month, or the time it takes for the ecliptic angle between the sun and the moon to change by 12º. Tithi are counted from the first visible crescent, and the day is given the number of the tithi which is current at sunrise. Because a calendar month can be up to 30 days long and a tithi is slightly shorter than a calendar day, an entire tithi will occasionally pass between one sunrise and the next; in this case, that number is skipped.
+
+Eras are the same as in the solar calendar, though the lunisolar year starts a month earlier than the solar year.
+
+Sources:
+* Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
+* https://en.wikipedia.org/wiki/Hindu_calendar

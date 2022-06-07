@@ -129,6 +129,9 @@ import sothic
 import madhyama_solar_ky
 import madhyama_solar_vs
 import madhyama_solar_se
+import madhyama_lunar_ky
+import madhyama_lunar_vs
+import madhyama_lunar_se
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1347,6 +1350,33 @@ def cons_day_julian_todate():
         madhyama_solar_se_day_ent.insert(0, madhyama_solar_se_date[0])
         madhyama_solar_se_month_ent.insert(0, madhyama_solar_se_date[1])
         madhyama_solar_se_year_ent.insert(0, madhyama_solar_se_date[2])
+
+        # Convert a Julian day to a date in the Traditional Hindu lunisolar calendar (Kali Yuga)
+        madhyama_lunar_ky_date = madhyama_lunar_ky.fromjd(day)
+        madhyama_lunar_ky_day_ent.delete(0, END)
+        madhyama_lunar_ky_month_ent.delete(0, END)
+        madhyama_lunar_ky_year_ent.delete(0, END)
+        madhyama_lunar_ky_day_ent.insert(0, madhyama_lunar_ky_date[0])
+        madhyama_lunar_ky_month_ent.insert(0, madhyama_lunar_ky_date[1])
+        madhyama_lunar_ky_year_ent.insert(0, madhyama_lunar_ky_date[2])
+
+        # Convert a Julian day to a date in the Traditional Hindu lunisolar calendar (Vikram Samvat)
+        madhyama_lunar_vs_date = madhyama_lunar_vs.fromjd(day)
+        madhyama_lunar_vs_day_ent.delete(0, END)
+        madhyama_lunar_vs_month_ent.delete(0, END)
+        madhyama_lunar_vs_year_ent.delete(0, END)
+        madhyama_lunar_vs_day_ent.insert(0, madhyama_lunar_vs_date[0])
+        madhyama_lunar_vs_month_ent.insert(0, madhyama_lunar_vs_date[1])
+        madhyama_lunar_vs_year_ent.insert(0, madhyama_lunar_vs_date[2])
+
+        # Convert a Julian day to a date in the Traditional Hindu lunisolar calendar (Shaka Era)
+        madhyama_lunar_se_date = madhyama_lunar_se.fromjd(day)
+        madhyama_lunar_se_day_ent.delete(0, END)
+        madhyama_lunar_se_month_ent.delete(0, END)
+        madhyama_lunar_se_year_ent.delete(0, END)
+        madhyama_lunar_se_day_ent.insert(0, madhyama_lunar_se_date[0])
+        madhyama_lunar_se_month_ent.insert(0, madhyama_lunar_se_date[1])
+        madhyama_lunar_se_year_ent.insert(0, madhyama_lunar_se_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2585,6 +2615,33 @@ def madhyama_solar_se_converter():
         month = madhyama_solar_se_month_ent.get()
         year = int(madhyama_solar_se_year_ent.get())
         jday = madhyama_solar_se.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def madhyama_lunar_ky_converter():
+        day = int(madhyama_lunar_ky_day_ent.get())
+        month = madhyama_lunar_ky_month_ent.get()
+        year = int(madhyama_lunar_ky_year_ent.get())
+        jday = madhyama_lunar_ky.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def madhyama_lunar_vs_converter():
+        day = int(madhyama_lunar_vs_day_ent.get())
+        month = madhyama_lunar_vs_month_ent.get()
+        year = int(madhyama_lunar_vs_year_ent.get())
+        jday = madhyama_lunar_vs.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def madhyama_lunar_se_converter():
+        day = int(madhyama_lunar_se_day_ent.get())
+        month = madhyama_lunar_se_month_ent.get()
+        year = int(madhyama_lunar_se_year_ent.get())
+        jday = madhyama_lunar_se.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4306,6 +4363,45 @@ madhyama_solar_se_year_lbl = Label(frame, text = "Year").grid(row = 124, column 
 madhyama_solar_se_year_ent = Entry(frame)
 madhyama_solar_se_year_ent.grid(row = 125, column = 11, sticky = W)
 madhyama_solar_se_bttn = Button(frame, text = "Calculate", command = madhyama_solar_se_converter).grid(row = 126, column = 9, columnspan = 3, sticky = W)
+
+# Traditional Hindu lunisolar calendar (Kali Yuga)                                                                                            
+madhyama_lunar_ky_lbl = Label(frame, text = "Traditional Hindu lunisolar calendar (Kali Yuga)").grid(row = 128, column = 0, columnspan = 3, sticky = W)
+madhyama_lunar_ky_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 0, sticky = W)
+madhyama_lunar_ky_day_ent = Entry(frame)
+madhyama_lunar_ky_day_ent.grid(row = 130, column = 0, sticky = W)
+madhyama_lunar_ky_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 1, sticky = W)
+madhyama_lunar_ky_month_ent = Entry(frame)
+madhyama_lunar_ky_month_ent.grid(row = 130, column = 1, sticky = W)
+madhyama_lunar_ky_year_lbl = Label(frame, text = "Year").grid(row = 129, column = 2, sticky = W)
+madhyama_lunar_ky_year_ent = Entry(frame)
+madhyama_lunar_ky_year_ent.grid(row = 130, column = 2, sticky = W)
+madhyama_lunar_ky_bttn = Button(frame, text = "Calculate", command = madhyama_lunar_ky_converter).grid(row = 131, column = 0, columnspan = 3, sticky = W)
+
+# Traditional Hindu lunisolar calendar (Vikram Samvat)                                                                                            
+madhyama_lunar_vs_lbl = Label(frame, text = "Traditional Hindu lunisolar calendar (Vikram Samvat)").grid(row = 128, column = 3, columnspan = 3, sticky = W)
+madhyama_lunar_vs_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 3, sticky = W)
+madhyama_lunar_vs_day_ent = Entry(frame)
+madhyama_lunar_vs_day_ent.grid(row = 130, column = 3, sticky = W)
+madhyama_lunar_vs_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 4, sticky = W)
+madhyama_lunar_vs_month_ent = Entry(frame)
+madhyama_lunar_vs_month_ent.grid(row = 130, column = 4, sticky = W)
+madhyama_lunar_vs_year_lbl = Label(frame, text = "Year").grid(row = 129, column = 5, sticky = W)
+madhyama_lunar_vs_year_ent = Entry(frame)
+madhyama_lunar_vs_year_ent.grid(row = 130, column = 5, sticky = W)
+madhyama_lunar_vs_bttn = Button(frame, text = "Calculate", command = madhyama_lunar_vs_converter).grid(row = 131, column = 3, columnspan = 3, sticky = W)
+
+# Traditional Hindu lunisolar calendar (Shaka Era)                                                                                            
+madhyama_lunar_se_lbl = Label(frame, text = "Traditional Hindu lunisolar calendar (Shaka Era)").grid(row = 128, column = 6, columnspan = 3, sticky = W)
+madhyama_lunar_se_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 6, sticky = W)
+madhyama_lunar_se_day_ent = Entry(frame)
+madhyama_lunar_se_day_ent.grid(row = 130, column = 6, sticky = W)
+madhyama_lunar_se_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 7, sticky = W)
+madhyama_lunar_se_month_ent = Entry(frame)
+madhyama_lunar_se_month_ent.grid(row = 130, column = 7, sticky = W)
+madhyama_lunar_se_year_lbl = Label(frame, text = "Year").grid(row = 129, column = 8, sticky = W)
+madhyama_lunar_se_year_ent = Entry(frame)
+madhyama_lunar_se_year_ent.grid(row = 130, column = 8, sticky = W)
+madhyama_lunar_se_bttn = Button(frame, text = "Calculate", command = madhyama_lunar_se_converter).grid(row = 131, column = 6, columnspan = 3, sticky = W)
 
 root.title("Calendar Converter 0.52.0")
 root.mainloop()
