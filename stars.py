@@ -30,9 +30,9 @@ class Star(object):
 SIRIUS = Star( Decimal('101.2871553'), # ra
                Decimal('-16.71611586'), # dec
                Decimal('2.67'), # distance
-               (Decimal('-5.50') / Decimal(977792)), # rv
-               (Decimal('-546.01') * mas2rad), # dra
-               (Decimal('-1223.07') * mas2rad)) # ddec
+               0 - (Decimal('5.50') / Decimal(977792)), # rv
+               0 - (Decimal('546.01') * mas2rad), # dra
+               0 - (Decimal('1223.07') * mas2rad)) # ddec
 
 # Pleiades values are for Alcyone, the brightest star in the cluster
 PLEIADES = Star( Decimal('56.87115417'), # ra
@@ -40,21 +40,21 @@ PLEIADES = Star( Decimal('56.87115417'), # ra
                  136, # distance
                  (Decimal('5.40') / 977792), # rv
                  (Decimal('19.34') * mas2rad), #dra
-                 (Decimal('-43.67') * mas2rad)) # ddec
+                 0 - (Decimal('43.67') * mas2rad)) # ddec
 
 SPICA = Star( Decimal('201.2982458'), # ra
-              Decimal('-11.16131944'), # dec
+              0 - Decimal('11.16131944'), # dec
               77, # distance
               (Decimal(1) / Decimal(977792)), # rv
-              (Decimal('-42.35') * mas2rad), # dra
-              (Decimal('-30.67') * mas2rad)) # dded
+              0 - (Decimal('42.35') * mas2rad), # dra
+              0 - (Decimal('30.67') * mas2rad)) # dded
 
 BAQUA = Star( Decimal('322.889715458'), # ra
               Decimal('-5.57117555556'), # dec
               167, # distance
               Decimal('6.451') / 977792, # rv
               (Decimal('18.77') * mas2rad), # dra
-              (Decimal('-8.21') * mas2rad)) # ddec
+              0 - (Decimal('8.21') * mas2rad)) # ddec
 
 # Aries values are for 4 Arietis, the star with the smallest right ascension
 ARIES = Star( Decimal('27.0454166667'), # ra
@@ -62,4 +62,11 @@ ARIES = Star( Decimal('27.0454166667'), # ra
               87, # distance
               Decimal('5.7') / 977792, # rv
               (Decimal('65.608') * mas2rad), # dra
-              (Decimal('-29.291') * mas2rad)) # ddec
+              0 - (Decimal('29.291') * mas2rad)) # ddec
+
+REVATI = Star( Decimal('18.4382'), # ra
+               Decimal('7.578382361'), # dec
+               53, #distance
+               Decimal('15.0') / 977792, # rv
+               (Decimal('181.78') * mas2rad), # dra
+               0 - (Decimal('40.34') * mas2rad)) # ddec
