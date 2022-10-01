@@ -1595,3 +1595,21 @@ Eras are the same as in the solar calendar, though the lunisolar year starts a m
 Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
 * https://en.wikipedia.org/wiki/Hindu_calendar
+
+---------------------------
+MODERN HINDU SOLAR CALENDAR
+---------------------------
+
+The modern Hindu solar calendars are based on algorithms written in the Surya Siddhanta, published in around 922 SE (1000 AD, 478 AH); as such, they are not particularly "modern", but they are the basis of how solar dates are calculated in traditional Indian calendars in the modern day. (A few calendarists use modern astronomical techniques and observations, but they are the minority).
+
+The modern solar calendar is a sidereal calendar, in which a year is defined as the calculated time it takes the sun to completely traverse the zodiac. Each month, or rashi, lasts for as long as the calculated time for the sun to traverse 1/12 of the zodiac, or 30º of sky; the names of the rashi roughly correspond to the constellations, but the actual constellations overlap the segments of sky to which they give their names. The beginning of the year is the point on the zodiac corresponding to the northward equinox of 922 SE, when the Surya Siddhanta was first published.
+
+The Surya Siddhanta assumes an epicyclic model of the solar system, in which the sun, moon, and planets all orbit Earth, and as they do they occasionally trace out circles around their overall orbits to account for when they enter retrograde. Even the sun and the moon have associated epicycles, albeit small ones, which account for the fact that their speed relative to Earth changes throughout their orbits. The Surya Siddhanta's algorithms employ those epicycles in elaborate and complex schemes to correct for the true positions of the sun and the moon; for most of history, Indian astronomers used lookup tables derived from the algorithms because the actual process is incredibly long an fiddly, but since this is exactly whey computers were invented, calconv uses the actual algorithms, or at least their descriptions from Dershowitz and Reingold.
+
+Notably, the Surya Siddhanta contains the earliest known descriptions of the jya, koti-jya, and utkrama-jya functions, which are the ancestors of the sine, cosine, and versine functions. Jyas are important in the calculations presented, and so a description is in order. The jya gives the length of a line drawn from one point of an arc perpendicular to a radius intersecting another point on that same arc. This is hard to describe with just words, but when you see it drawn geometrically, it is immediately obvious that if an angle θ subtends an arc AB of a circle with radius r, then jya(AB) == r*sin(θ). The Surya Siddhanta gives the jyas for various angles in increments of 1/24 of a right angle on a circle of radius 3438 units, with interpolation used for intermediate angles. Since jya is a function of the length of an arc, I have opted to define it such that any jya(x) will always return a positive value; hence, the sine and related functions used in this implementation of Dershowitz and Reingold's algorithm will also always return a value between 0 and 1, unlike the modern understanding sines, which can have a value down to (-1).
+
+The precession of the equinoxes was known when the Surya Siddhanta was published, and is even described therein, but is not accounted for in the calendars.
+
+Sources:
+* Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20.
+* https://en.wikipedia.org/wiki/Jy%C4%81,_koti-jy%C4%81_and_utkrama-jy%C4%81
