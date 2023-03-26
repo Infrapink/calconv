@@ -14,7 +14,7 @@ rasi = sid_year * Fraction(1,12) # solar month
 def monstar(inst):
     '''Determine when a month begins'''
     inst = Fraction(inst)
-    if (inst % 1) <= Fraction(6,24):
+    if (inst % 1) >= Fraction(6,24):
         return floor(inst)
     else:
         return ceil(inst)
@@ -41,8 +41,11 @@ def fromjd(jday):
     while monstar(mesha) > jday:
         year -= 1
         mesha -= sid_year
+    #print("Madhyama:", jday - float(mesha))
+    #print("Madhyama:", jday - monstar(mesha))
 
     m = (jday - mesha) // rasi
+    #print("Madhyama:", jday - monstar(mesha + (rasi * m)))
     while monstar(mesha + (rasi * (m + 1))) <= jday:
         m += 1
     while monstar(mesha + (rasi * m)) > jday:

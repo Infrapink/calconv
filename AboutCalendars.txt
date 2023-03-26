@@ -1566,27 +1566,29 @@ Sources:
 * https://www.space.com/39638-sirius-dog-star-visible-this-week.html
 * https://web.archive.org/web/20131225071503/https://www.lavia.org/english/archivo/egyptiancalendaren.html
 
---------------------------------
-TRADITIONAL HINDU SOLAR CALENDAR
---------------------------------
+-----------------------
+MADHYAMA SOLAR CALENDAR
+-----------------------
 
-The traditional Hindu solar calendar originates with the Vedic culture, in the distant past before there were even kingdoms in India. Before about the 12th century AD/5th century AH, it was a purely arithmetical calendar based on mean values of the sidereal year and rāśi. The year is defined as being 365 + 149/576 days; a rāśi, or sidereal "month", is exactly 1/12 of this, and is the approximate time it takes for the sun to traverse 1/12 of the zodiac. One will quickly spot parallels with the zhongqi of the Chinese calendar, and the tropical months of the Jalali and Solar Hijri calendars.
+The Madhyama, or mean, Hindu solar calendar originates with the Vedic culture, in the distant past before there were even kingdoms in India. Before about the 12th century AD/5th century AH, it was a purely arithmetical calendar based on mean values of the sidereal year and rāśi. The year is defined as being 365 + 149/576 days; a rāśi, or sidereal "month", is exactly 1/12 of this, and is the approximate time it takes for the sun to traverse 1/12 of the zodiac. These values are given by the great mathematician and astronomer Aryabhata I in the Ãryabhaṭīya. One will quickly spot parallels with the zhongqi of the Chinese calendar, and the tropical months of the Jalali and Solar Hijri calendars.
 
 Days begin at sunrise, which for the purpose of calculations is considered to be precisely halfway between midnight and noon. A day falls within the rāśi which is current at sunrise; thus, if the calculated beginning of the rāśi falls even one truti after calculated sunrise, then the rāśi in question begins the next day.
 
 Three epochs are in common use. The first is the start of the Kali Yuga, the fourth age of the world in the great Yuga Cycle; it is calculated to have begun at sunrise on 18 Februarty 3102 BC in the Julian calendar. The others come from recorded history. The Vikram Samvat dates from Emperor Vikramaditya's defeat of the Shakas. The other, the Shaka era, is also used in the Indian National Calendar, dates from the ascension of King Chashtana as chief of the Western Satraps.
 
+The value of the mean year is approximately 3 minutes longer than the actual length of the sidereal year, which is an impressive accomplishment for naked-eye astronomy. Over time, however, this discrepancy adds up, and so the calendar would have been occasionally recalibrated by astronomical observations.
+
 Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
 * https://en.wikipedia.org/wiki/Hindu_calendar
 
-------------------------------------
-TRADITIONAL HINDU LUNISOLAR CALENDAR
-------------------------------------
+---------------------------
+MADHYAMA LUNISOLAR CALENDAR
+---------------------------
 
 The lunisolar calendar arose in India around the same time as the solar calendar, and developed in parallel with it. Given the number of similarities, I suspect the Indian lunisolar calendar was influential on the Chinese calendar.
 
-As in the solar calendar, a sidereal year is defines as 365 + 149/576, and a rāśi. as 1/12 of this. One synodic month is defined as 1577917500/53433336 days, or 29 + 2362563/4452778 days. Each month takes the name of the rāśi that begins during it, and the first day of each calendar month is the first day on which the sun does not rise before the calculated first visible crescent of the moon. (Some traditions begin the month the day after the full moon, but it is more common to start the month on the day after the new moon). If an entire month passes inside of a single rāśi, it is considered a leap (or "adhik") month, and shares its name with the regular month that follows; this system is almost identical to that of the Chinese calendar, except that the Chinese calendar names the leap month after the previous regular month, and zhongqi are determined by tropical rather than sidereal measurements.
+As in the solar calendar, a sidereal year is defined as 365 + 149/576 days, and a rāśi as 1/12 of this. One synodic month is defined as 1577917500/53433336 days, or 29 + 2362563/4452778 days; this is only about ½ second longer than the modern value. Each month takes the name of the rāśi during which it begins, and the first day of each calendar month is the day of the first sunrise after the calculated instant of the new moon. (Some traditions begin the month the day after the full moon, but it is more common to start the month on the day after the new moon). If an entire month passes inside of a single rāśi, it is considered a leap (or "adhik") month, and shares its name with the regular month that follows; this system is almost identical to that of the Chinese calendar, except that the Chinese calendar names the leap month after the previous regular month, and zhongqi are determined by tropical rather than sidereal measurements.
 
 The "days" in the lunisolar calendar are not actual days; rather, they are tithi (sometimes translated as "lunar day", not to be confused with days on the moon), defined as 1/30 of a synodic month, or the time it takes for the ecliptic angle between the sun and the moon to change by 12º. Tithi are counted from the first visible crescent, and the day is given the number of the tithi which is current at sunrise. Because a calendar month can be up to 30 days long and a tithi is slightly shorter than a calendar day, an entire tithi will occasionally pass between one sunrise and the next; in this case, that number is skipped.
 
@@ -1596,20 +1598,23 @@ Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
 * https://en.wikipedia.org/wiki/Hindu_calendar
 
----------------------------
-MODERN HINDU SOLAR CALENDAR
----------------------------
+--------------------------
+SIDDHANTIC SOLAR CALENDARS
+--------------------------
 
-The modern Hindu solar calendars are based on algorithms written in the Surya Siddhanta, published in around 922 SE (1000 AD, 478 AH); as such, they are not particularly "modern", but they are the basis of how solar dates are calculated in traditional Indian calendars in the modern day. (A few calendarists use modern astronomical techniques and observations, but they are the minority).
+The more recent Hindu solar calendars are based on algorithms written in the Sūrya Siddhānta, published in around 922 SE (1000 AD, 478 AH).
 
-The modern solar calendar is a sidereal calendar, in which a year is defined as the calculated time it takes the sun to completely traverse the zodiac. Each month, or rashi, lasts for as long as the calculated time for the sun to traverse 1/12 of the zodiac, or 30º of sky; the names of the rashi roughly correspond to the constellations, but the actual constellations overlap the segments of sky to which they give their names. The beginning of the year is the point on the zodiac corresponding to the northward equinox of 922 SE, when the Surya Siddhanta was first published.
+The modern solar calendar is a sidereal calendar, in which a year is defined as the calculated time it takes the sun to completely traverse the zodiac. Each solar month, or raśi, lasts for as long as the calculated time for the sun to traverse 1/12 of the zodiac, or 30° of sky; the names of the raśi roughly correspond to the constellations, but the actual constellations overlap the segments of sky to which they give their names. The beginning of the year is the point on the zodiac corresponding to the northward equinox of 922 SE, when the Sūrya Siddhānta was first published.
 
-The Surya Siddhanta assumes an epicyclic model of the solar system, in which the sun, moon, and planets all orbit Earth, and as they do they occasionally trace out circles around their overall orbits to account for when they enter retrograde. Even the sun and the moon have associated epicycles, albeit small ones, which account for the fact that their speed relative to Earth changes throughout their orbits. The Surya Siddhanta's algorithms employ those epicycles in elaborate and complex schemes to correct for the true positions of the sun and the moon; for most of history, Indian astronomers used lookup tables derived from the algorithms because the actual process is incredibly long an fiddly, but since this is exactly whey computers were invented, calconv uses the actual algorithms, or at least their descriptions from Dershowitz and Reingold.
+The Sūrya Siddhānta describes an epicyclic model of the solar system, in which the sun, moon, and planets all orbit Earth, and as they do they occasionally trace out circles around their overall orbits to account for when they enter retrograde. Even the sun and the moon have associated epicycles, albeit small ones, which account for the fact that their speed relative to Earth changes throughout their orbits. This model appears to have originally been learned from Greece; while the Greeks believed the epicyclic model was a real description of reality, the Hindus assumed it was merely a mathematical technique that gave the right answer, and that in reality the planets sometimes sped up, slowed down, and occasionally moved backwards. The Sūrya Siddhānta's algorithms employ those epicycles in elaborate and complex schemes to correct for the true positions of the sun and the moon; for most of history, Indian astronomers used lookup tables derived from the algorithms because the actual process is incredibly long and fiddly, but since this is exactly why computers were invented, calconv uses the actual algorithms.
 
 Notably, the Surya Siddhanta contains the earliest known descriptions of the jya, koti-jya, and utkrama-jya functions, which are the ancestors of the sine, cosine, and versine functions. Jyas are important in the calculations presented, and so a description is in order. The jya gives the length of a line drawn from one point of an arc perpendicular to a radius intersecting another point on that same arc. This is hard to describe with just words, but when you see it drawn geometrically, it is immediately obvious that if an angle θ subtends an arc AB of a circle with radius r, then jya(AB) == r*sin(θ). The Surya Siddhanta gives the jyas for various angles in increments of 1/24 of a right angle on a circle of radius 3438 units, with interpolation used for intermediate angles. Since jya is a function of the length of an arc, I have opted to define it such that any jya(x) will always return a positive value; hence, the sine and related functions used in this implementation of Dershowitz and Reingold's algorithm will also always return a value between 0 and 1, unlike the modern understanding sines, which can have a value down to (-1).
 
 The precession of the equinoxes was known when the Surya Siddhanta was published, and is even described therein, but is not accounted for in the calendars.
 
+This program uses employs two understandings of the solar cycle, based on different understandings of the anomalistic year, the value of which is given as 365 + 1259083/4319613 days. In the so-called naïve version of the algorithm, it is assumed that the anomalistic year is independent of the sidereal year, and that the sun's nodes traverse the sky independently of the zodiac; this is taken into account when calculating the sun's position, which is done in the same was as the moon in the lunisolar calendar. In the Spaśta version, based on a more careful reading of Ebeneezer Burgess' commentary, the value of the anomalistic year is ignored, and the solar nodes are assumed to occupy fixed positions in the zodiac.
+
 Sources:
+* Surya Siddhanta, chapters 1–3; see https://archive.org/details/SuryaSiddhantaTranslation/mode/2up
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20.
 * https://en.wikipedia.org/wiki/Jy%C4%81,_koti-jy%C4%81_and_utkrama-jy%C4%81
