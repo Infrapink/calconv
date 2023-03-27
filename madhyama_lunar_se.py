@@ -44,7 +44,7 @@ def tojd(day, month, year):
     while (suncheck(jday - syn_month) >= suncheck(sankranti)):
         jday -= syn_month
 
-    if ((adhik == True) and (suncheck(jday + syn_month) < suncheck(sankranti + rasi))):
+    if ((adhik == False) and (suncheck(jday + syn_month) < suncheck(sankranti + rasi))):
         jday += syn_month
 
     jday = suncheck(jday + ((day - 1) * tithi))
