@@ -11,6 +11,7 @@ sid_year = Fraction(1577917828, 4320000) # sidereal year; Surya Siddhanta 1:29-4
 sid_month = Fraction(1577917828, 57753336) # sidereal month; Surya Siddhanta 1:29-40
 syn_month = Fraction(1577917828, 53433336) # synodic month; Surya Siddhanta 1:29-40
 rasi = Fraction(sid_year, 12) # mean time for the sun to cross a constellation
+tithi = Fraction(syn_month, 30)
 
 ky = 588466 # beginning of the Kali Yuga in Julian Days
 se = ky + (3179 * sid_year) # Beginning of the Shaka Era
@@ -323,6 +324,44 @@ def phase(jday):
     angle %= 360
     return angle
 
+def getphase(jday, angle):
+    '''Calculate when the moon hits a given phase, closest to time jday.'''
+    jday = Fraction(jday)
+    angle = Fraction(angle)
+
+    if (phase(jday) == angle):
+        jday = jday # no nothing
+    else:
+        p = 0
+        while (p < 4):
+            if (phase(jday) == angle):
+                p = 4
+            else:
+                f = Fraction(1, (60 ** p))
+                while ((angle <= 90) and (phase(jday) >= 270)):
+                    jday += f
+                while ((angle >= 270) and (phase(jday) <= 90)):
+                    jday -= f
+                while ((angle > phase(jday)) and (phase(jday) < phase(jday + f))):
+                    jday += f
+                while ((angle < phase(jday)) and (phase(jday) > phase(jday - f))):
+                    jday -= f
+                p += 1
+
+    return jday
+
+def getnewmoon(jday):
+    '''Calculate the instant of new moon closest to time jday.'''
+    jday = Fraction(jday)
+    ans = getphase(jday, 0)
+    return ans
+
+def getfullmoon(jday):
+    '''Calculate the instant of full moon closest to time jday.'''
+    jday = Fraction(jday)
+    ans = getphase(jday, 180)
+    return ans
+        
 def rpos(jday, sid, anom, ext):
     '''True position of a celestial body, based on Surya Siddhanta chapter 2, based solely on Fourier functions of anomalistic cycles'''
     jday = Fraction(jday) # Julian Day
@@ -581,4 +620,58 @@ def ntime(jday, angle):
                 jday += f
 
         p += 1
+    #print(jday)
     return jday
+
+def naive_phase(jday):
+    '''Calculate the angle, in DEGREES, between the sun and the moon according to the naïve algorithms; this gives the phase of the moon'''
+    # 0° == new moon
+    # 180° == full moon
+    jday = Fraction(jday)
+
+    sun = naive_sun(jday)
+    moon = truemoon(jday)
+
+    angle = moon - sun
+    while (angle < 0):
+        angle += 360
+    angle %= 360
+
+    return angle
+
+def naive_getphase(jday, angle):
+    '''Calculate the insant of a given angle between the moon and the sun, closest to time jday, according to the naïve algorithms.'''
+    jday = Fraction(jday)
+    angle = Fraction(angle)
+
+    if (naive_phase(jday) == angle):
+        jday = jday # do nothing
+    else:
+        p = 0
+        while p < 4:
+            if (naive_phase(jday) == angle):
+                p = 4
+            else:
+                f = Fraction(1, (60 ** p))
+                while ((angle <= 90) and (naive_phase(jday) >= 270)):
+                    jday += f
+                while ((angle >= 270) and (naive_phase(jday) <= 90)):
+                    jday -= f
+                while ((angle > naive_phase(jday)) and (naive_phase(jday) < naive_phase(jday + f))):
+                    jday += f
+                while ((angle < naive_phase(jday)) and (naive_phase(jday) > naive_phase(jday - f))):
+                    jday -= f
+                p += 1
+    return jday
+
+def n_newmoon(jday):
+    '''Calculate the time of the new moon according to the naïve algorithms.'''
+    jday = Fraction(jday)
+    ans = naive_getphase(jday, 0)
+    return ans
+
+def n_fullmoon(jday):
+    '''Calculate the time of the full moon according to the naïve algorithms.'''
+    jday = Fraction(jday)
+    ans = naive_getphase(jday, 180)
+    return ans
