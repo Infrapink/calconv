@@ -1,6 +1,7 @@
 This is calconv, a program to convert between various calendars. It's my first real program, started in order to teach myself Python when I had downtime during the 2020 Covid-19 pandemic.
 
 REQUIREMENTS
+============
 
 calconv is written mostly in Python 3, and uses Fortran for some of the more intense number crunching. It uses NumPy's f2py module to all Python scripts to interface with Fortran binaries, and the Tkinter toolkit to generate the GUI. Due to issues with f2py, I can't guarantee that calconv will run properly on Microsoft Windows.
 
@@ -14,39 +15,43 @@ All these components should be available through your package manager (called an
 
 Arch (Chakra, Manjaro):
 
-$ sudo pacman -Syu python tk python-numpy gcc-fortran
+    $ sudo pacman -Syu python tk python-numpy gcc-fortran
 
-Debian (Ubuntu, Mint):
+## Debian (Ubuntu, Mint):
 
-$ sudo apt-get install python3 python3-tk python3-numpy gfortran
+    $ sudo apt-get install python3 python3-tk python3-numpy gfortran
 
 Fedora (CentOS, Red Hat Enterprise Linux, PCLinuxOS):
 
-$ sudo dnf install python3 python3-tk python3-numpy gcc-gfortran
+    $ sudo dnf install python3 python3-tk python3-numpy gcc-gfortran
 
-Windows users can download the components from the following links:
+MS Windows users can download the components from the following links:
 * Python (including NumPy and Tk): https://www.anaconda.com/products/individual
 * gfortran: http://www.equation.com/servlet/equation.cmd?fa=fortran
 
 COMPILING
+=========
 
 Before you can run calconv, you will need to compile the Fortran code. In the command line, navigate to the folder where you unpacked the source code (which should be the one containing this Readme file) and type the following:
 
-f2py3 -c sunmoon.f90 -m sunmoon
+    f2py3 -c sunmoon.f90 -m sunmoon
 
 (This only needs to be done once; however, if Python is updated to a new version number, it can break compatibility with binary code, and so a recompile will be necessary)
 
 RUNNING
+=======
 
 From the command line, navigate to the folder where you unpacked the program and type:
 
-./calconv.py
+    ./calconv.py
 
 On Windows, you can instead double-click on calconv.bat
 
 Dates are entered in the indicated text boxes in the order Day, Month, Year; if there is only one text box, input is a simple number. For now, months must be written in full, and entered exactly as listed here, including punctuation and diacritical marks. A later version will replace the text entry fields with selectable dropdown menus. Years before the calendar epoch are entered as negative numbers; so, for example, the year 44 BC would be input as '-44'.
 
 Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, Georgian (Christian era), ADA, and Holocene Calendars:
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 * January
 * February
 * Gormanuary (Gorman calendar only)
@@ -71,6 +76,8 @@ Julian calendars, Gregorian calendars, Parker, Goucher-Parker, Serbian Church, W
 * Olympiad (Georgian calendar only)
 
 Ethiopian Calendar:
+-------------------
+
 * Mäskäräm
 * Ṭəqəmt
 * Ḫədar
@@ -87,6 +94,8 @@ Ethiopian Calendar:
 * Extra Days
 
 Coptic Calendar:
+----------------
+
 * Thout
 * Paopi
 * Hathor
@@ -102,6 +111,8 @@ Coptic Calendar:
 * Extra days
 
 Egyptian and Sothic Calendars:
+------------------------------
+
 * Thoth
 * Phaophi
 * Hathor
@@ -117,6 +128,8 @@ Egyptian and Sothic Calendars:
 * Extra days
 
 Lunar Hijri, Tabular Islamic, and Pre-Islamic Arab calendars:
+---------------------------------------------------------------
+
 * Muharram
 * Safar
 * Rabi' al-awwal
@@ -132,6 +145,8 @@ Lunar Hijri, Tabular Islamic, and Pre-Islamic Arab calendars:
 * Nasiʾ (Pre-Islamic Arab calendar only)
 
 Jalali, Solar Hijri, Ahmad Birashk's, Iranian National, Qadimi, Shenshai, Oshmurtik, Vihezakik, Shahanshahi, Fasli, Young Avestan Calendars:
+--------------------------------------------------------------------------------------------------------------------------------------------
+
 * Farvardin
 * Ordibehesht
 * Khordad
@@ -147,6 +162,8 @@ Jalali, Solar Hijri, Ahmad Birashk's, Iranian National, Qadimi, Shenshai, Oshmur
 * Kabizeh (Young Avestan, Shahanshahi, and Vihezakik calendars only)
 
 Armenian Calendar:
+------------------
+
 * Nawasard
 * Hoṙi
 * Sahmi
@@ -162,6 +179,8 @@ Armenian Calendar:
 * Extra days
 
 Modern Assyrian Calendar
+------------------------
+
 * Nīsān
 * ʾĪyār
 * Ḥzīrān
@@ -176,6 +195,8 @@ Modern Assyrian Calendar
 * Āḏar
 
 Babylonian Calendars:
+---------------------
+
 * Nisānu
 * Āru
 * Simanu
@@ -192,6 +213,8 @@ Babylonian Calendars:
 * Addaru Arku (leap years only)
 
 Hebrew (Jewish and Samaritan) calendars:
+----------------------------------------
+
 * Tishrei
 * Marcheshvan
 * Kislev
@@ -212,6 +235,8 @@ that the year number increments. I have listed the months in this order to avoid
 month of the year in the Samaritan and Karaite calendars).
 
 Kurdish calendar:
+-----------------
+
 * Jejhnan
 * Gullan
 * Zerdan
@@ -226,6 +251,8 @@ Kurdish calendar:
 * Reshemé
 
 Amazigh calendar:
+-----------------
+
 * Yennayer
 * Yebrayer
 * Mares
@@ -240,6 +267,8 @@ Amazigh calendar:
 * Dujembir
 
 Rumi (Ottoman fiscal) calendar:
+-------------------------------
+
 * Mart
 * Nisan
 * Mayıs
@@ -254,6 +283,8 @@ Rumi (Ottoman fiscal) calendar:
 * Şubat
 
 Pax 2020:
+---------
+
 * Initium
 * Rutilante
 * Semen
@@ -269,6 +300,8 @@ Pax 2020:
 * Requiem
 
 Positivist calendar
+-------------------
+
 * Moses
 * Homer
 * Aristotle
@@ -286,6 +319,8 @@ Positivist calendar
 * Festival of Holy Women
 
 French Republican calendars:
+----------------------------
+
 * Vendémiaire
 * Brumaire
 * Frimaire
@@ -301,6 +336,8 @@ French Republican calendars:
 * Sans-culottides
 
 Thellid calendar
+----------------
+
 * Alvakku
 * Bethanis
 * Duvadda
@@ -318,6 +355,8 @@ Thellid calendar
 * Old Year's Day
 
 Igbo calendar
+-------------
+
 * Mbụ
 * Abụo
 * Ife Eke
@@ -333,6 +372,8 @@ Igbo calendar
 * Ụzọ Alụsị
 
 Roman calendar
+--------------
+
 * Martius
 * Aprilis
 * Maia
@@ -347,6 +388,8 @@ Roman calendar
 * Februarius
 
 Macedonian and Seleucid calendars:
+----------------------------------
+
 * Dios
 * Apellaiios
 * Audunaios
@@ -363,6 +406,8 @@ Macedonian and Seleucid calendars:
 * Hyperberetaios Embolimos (only in some leap years)
 
 Georgian calendar (Georgian Era)
+--------------------------------
+
 * Peter
 * Andrew
 * James the Great
@@ -378,6 +423,8 @@ Georgian calendar (Georgian Era)
 * Paul
 
 Korean:
+-------
+
 * Il-wol
 * I-wol
 * Sam-wol
@@ -390,9 +437,12 @@ Korean:
 * Si-wol
 * Sibil-wol
 * Sibi-wol
+
 To get the leap month, add "Yun " before the name of the month.
 
 Inca:
+-----
+
 * Intiraymipacha
 * Pachacyahuarllamapacha
 * Yapuypacha
@@ -408,6 +458,8 @@ Inca:
 * Intihuatapacyapanapacha (leap years only in the civil calendar)
 
 Chinese lunisolar calendars:
+----------------------------
+
 * Zhēngyuè
 * Èryuè
 * Sānyuè
@@ -424,6 +476,8 @@ Chinese lunisolar calendars:
 To get the leap month in the Chinese lunisolar calendar, precede it with "Rùn", for example "Rùn Zhēngyuè". In the Chinese lunisolar calendar, the leap month can occur anywhere in the year. For this reason, if a leap month is specified in a non-leap year, the algorithm assumes the user means the corresponding regular month; conversely, if an incorrect leap month is specified in a leap year, the algorithm assumes that the user means the actual leap month.
 
 Chinese solar calendars:
+------------------------
+
 * Lìchūn
 * Yǔshuı̌
 * Jı̄ngzhé
@@ -450,6 +504,8 @@ Chinese solar calendars:
 * Dàhán
 
 Older Chinese calendars:
+------------------------
+
 * Dōngyuè
 * Bīngyuè
 * Zōuyuè
@@ -465,6 +521,8 @@ Older Chinese calendars:
 * Rùnyuè (leap years only)
 
 Vietnamese calendar:
+--------------------
+
 * Tháng Giêng
 * Tháng Hai
 * Tháng Ba
@@ -480,6 +538,8 @@ Vietnamese calendar:
 * Tháng Nhuận (leap years only)
 
 Japanese calendars:
+-------------------
+
 * Ichigatsu
 * Nigatsu
 * Sangatsu
@@ -495,6 +555,8 @@ Japanese calendars:
 * Uruzuki (lunisolar calendar, leap years only)
 
 Mongolian traditional calendar:
+-------------------------------
+
 * Negdugeer sar
 * Khoyordugaar sar
 * Guravdugaar sar
@@ -511,6 +573,8 @@ Mongolian traditional calendar:
 To get the leap month, prefix the month name with "Shün ", such as "Shün Negdugeer sar"
 
 Bahá'í calendars:
+-----------------
+
 * Bahá
 * Jalál
 * Jamál
@@ -533,6 +597,8 @@ Bahá'í calendars:
 * ʻAláʼ
 
 Old Avestan calendars:
+----------------------
+
 * Ādukanaisha
 * Thūravāhara
 * Thāigracish
@@ -549,6 +615,8 @@ Old Avestan calendars:
 * Kabizeh 2 (double leap years only)
 
 Sogdian calendar:
+-----------------
+
 * Nausardh
 * Xorezhnic
 * Nisanic
@@ -564,6 +632,8 @@ Sogdian calendar:
 * Extra days
 
 Indian and Hindu calendars:
+---------------------------
+
 * Chaitra
 * Vaisākha
 * Jyēshtha
@@ -580,6 +650,8 @@ Indian and Hindu calendars:
 (Note: In some calendars, Vaisākha is the first month). To specify a leap month in a lunisolar calendar, prefix the month name with "Adhik ".
 
 Mandaean calendar:
+------------------
+
 * Daula
 * Nuna
 * 'mbra
@@ -595,12 +667,14 @@ Mandaean calendar:
 * Gadia
 
 LICENSE
+=======
 
 calconv is copyright Chris McCrohan.
 
 calconv is licensed under the GNU General Public License version 3.0 or, at your option, any later version. Full details are contained in the LICENSE file. In short, you are free to alter, copy, and redistribute this software (and even charge a fee for it) as you please, and anybody who received a copy from you has the same rights.
 
 FUTURE GOALS
+============
 
 Replace the text boxes for months with dropdown menus.
 
