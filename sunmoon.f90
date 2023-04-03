@@ -41,10 +41,6 @@ contains
     real(8) :: d2r ! convert degrees to radians
     real(8) :: r2d ! convert radians to degrees
 
-    !print *, "rv = ", rv
-    !print *, "deltara = ", deltara
-    !print *, "deltadec = ", deltadec
-
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0 ! convert degrees to radians
     r2d = 180.0 / pi ! convert radians to degrees
@@ -52,7 +48,6 @@ contains
     x = distance * cos(dec2000 * d2r) * cos(ra2000 * d2r)
     y = distance * cos(dec2000 * d2r) * sin(ra2000 * d2r)
     z = distance * sin(dec2000 * d2r)
-    !print *, x, y, z
 
     xdelta = ((x / distance) * rv) - (z * deltadec * cos(ra2000 * d2r)) - (y * deltara)
     ydelta = ((y / distance) * rv) - (z * deltadec * sin(ra2000 * d2r)) + (x * deltara)
@@ -65,9 +60,6 @@ contains
     zprime = z + (t * zdelta)
 
     ra = r2d * atan(yprime / xprime)
-    !print *, "ra1 = ", ra * r2d
-    !print *, "fraction = ", (yprime / xprime)
-    ! now to account for trrgonometric trickiness
     if ((yprime / xprime) >= 0) then
        if ((ra2000 <= 135.0) .or. (ra2000 >= 315.0)) then ! ra in ALL quadrant
           ra = 0 + ra
@@ -81,30 +73,18 @@ contains
           ra = 360.0 + ra
        end if
     end if
-    
-    !print *, "y' = ", yprime
-    !print *, "ra2 = ", ra
-    !print *, "sin(ra) = ", sin(d2r * ra)
-    !print *, "x' = ", xprime
 
     u = sqrt((xprime * xprime) + (yprime * yprime))
     dec = atan(zprime / u) * r2d
 
-    !print *, ra
-    !print *, dec
-    !print *, "BEGIN PROPMOT"
-    !print *, ra2000
-    !print *, ra
-    !print *, "END PROPMOT"
     answer(1) = ra
     answer(2) = dec
-    !print *, answer
   end subroutine propmot
 
   subroutine nutation(jday, nut)
     ! Calculate the nutation of the obliquity to the ecplitic
     real(8), intent(in) :: jday ! Julian Day in question
-    real(8), dimension(2), intent(out) :: nut ! Nutation to the ecliptic and of longitude
+    real(8), dimension(3), intent(out) :: nut ! Nutation to the ecliptic and of longitude
 
     real(8) :: T ! Julian Centuries since J2000.0
     real(8) :: D ! mean elonation of the moon from the sun
@@ -724,20 +704,6 @@ contains
        a = d2r * ((args(i,1) * D) + (args(i,2) * M) + (args(i,3) * Mprime) + (args(i,4) * F) + (args(i,5) * omega))
        delta_epsilon = delta_epsilon + ((eps_coeffs(i,1) + (T * eps_coeffs(i,2))) * cos(a))
        delta_psi = delta_psi + ((psi_coeffs(i,1) + (T * psi_coeffs(i,2))) * sin(a))
-
-
-       
-       !a = (eps_coeffs(i,1) + (eps_coeffs(i,2) * T))
-       !a = a * cos(d2r * ((args(i,1) * D) + (args(i,2) * M) + (args(i,3) * Mprime) + (args(i,4) * F) + (args(i,5) * omega)))
-       !delta_epsilon = delta_epsilon + a
-
-       !a =  args(i,1) * D
-       !a = a + (args(i,2) * M)
-       !a = a + (args(i,3) * Mprime)
-       !a = a + (args(i,4) * F)
-       !a = a + (args(i,5) * omega)
-       !a = sin(d2r * a)
-       !a = a * (eps_coeffs(i,1) + (eps_coeffs(i,2) * T))
     end do
 
     ! Convert delta_epsilon and delta_psi into arcseconds
@@ -749,7 +715,6 @@ contains
     ! Laskar's method for making this algorithm accurate over many millennia
     U = T / 100.0
     a = 0.0
-    !epsilon0 = (23.0 * 360.0) + (26.0 * 60.0) + 21.448 ! epsilon0 is now in seconds
     a = a - (4680.93 * U)
     a = a - (1.55 * (U ** 2))
     a = a + (1999.25 * (U ** 3))
@@ -762,14 +727,11 @@ contains
     a = a + (2.45 * (U ** 10))
     a = a / 3600.0 ! convert a from arcseconds to degrees
 
-    !epsilon0 = 23.0 + (26.0 / 60.0) + (21.448 / 3600.0) - ((46.8450 * T) / 3600.0) - ((0.00059 * T * T) / 3600.0) + ((0.001813 * T * T * T) / 3600.0)
     epsilon0 = 23.0 + (26.0 / 60.0) + (21.448 / 3600.0) + a + delta_epsilon
 
-    !epsilon0 = epsilon0 + delta_epsilon
-    !epsilon0 = mod(epsilon0, 26.0) ! if the obliquity of the ecliptic is calculated more than 10,000 years from J2000.0. the numbers become silly. This keeps it within sensible boundaries.
-    ! nut = (epsilon0, delta_psi)
     nut(1) = epsilon0
     nut(2) = delta_psi
+    nut(3) = delta_epsilon
   end subroutine nutation
 end module stellar_coords
 
@@ -1261,8 +1223,6 @@ contains
 
     longitude = L + 180
     longitude = mod(longitude, 360.0)
-    !print *, "longitude = ", longitude
-
   end subroutine solar_longitude
 
   subroutine solar_time(jday, angle, time)
@@ -1318,7 +1278,7 @@ contains
 
     real(8) :: lon ! ecliptic longitude
     real(8) :: lat ! ecliptic latitude
-    real(8), dimension(2) :: nut ! nutation factors
+    real(8), dimension(3) :: nut ! nutation factors
 
     real(8) :: pi
     real(8) :: d2r ! convert degrees to radians
@@ -1330,39 +1290,8 @@ contains
 
     call nutation(jday, nut)
     call solar_longitude(jday, lon) ! get ecliptic longitude                                                  
-    !call solar_latitude(jday, lat) ! get ecliptic latitude
-    !print *, lon
-    !print *, lat
-
-    !radec(1) = ((sin(d2r * lon) * cos(d2r * nut(1)) - (tan(d2r * lat) * sin(d2r * nut(1)))))
-    !radec(1) = radec(1) / cos(d2r * lon)
-    !radec(1) = r2d * atan(radec(1))
-    !print *, cos(d2r * nut(1))
-    !print *, tan(d2r * lon)
-    !print *, lon
     radec(1) = cos(d2r * nut(1)) * tan(d2r * lon)
     radec(1) = r2d * atan(radec(1))
-    !print *, lon
-    !print *, radec(1)
-    ! Trig functions only really work between (-90)º and +90º;
-    ! this next bit accounts for that, converting radec(1) to the correct value between 0º and 360º
-    !if ((lon <= 90) .and. (radec(1) < 0)) then ! lambda in ALL quadrant, alpha in SIN quadrant
-     !  radec(1) = 180 + radec(1)
-    !else if ((lon <= 180) .and. (radec(1) < 0)) then ! lambda in SIN quadrant, alpha in SIN quadrant
-     !  radec(1) = 180 + radec(1)
-    !else if ((lon <= 180) .and. (radec(1) > 0)) then ! lambda in SIN quadrant, alpha in TAN quadrant
-     !  radec(1) = 180 + radec(1)
-     !else if ((lon <= 270) .and. (radec(1) > 0)) then ! lambda in TAN quadrant, alpha in TAN quadrant
-      ! radec(1) = 180 + radec(1)
-    !else if ((lon <= 270) .and. (radec(1) < 0)) then ! lambda in TAN quadrant, alpha in COS quadrant
-    !  radec(1) = 360 + radec(1)
-    !else if ((lon > 270) .and. (radec(1) < 0)) then ! lambda in COS quadrant, alpha in COS quadrant
-     !  radec(1) = 360 + radec(1)
-    !else if ((lon > 270) .and. (radec(1) >= 0)) then ! lambda in COS quadrant, alpha in ALL quadrant
-     !  radec(1) = 0 + radec(1)
-    !else if ((lon <= 90) .and. (radec(1) > 0)) then ! lambda in ALL quadrant, alpha in ALL quadrant
-     !  radec(1) = 0 + radec(1)
-    !end if
 
     if (lon <= 90.0) then ! lambda in ALL quadrant
        if (radec(1) >= 0.0) then ! alpha in ALL quadrant
@@ -1890,7 +1819,6 @@ contains
     do while (lambda < 0.0)
        lambda = lambda + 360.0
     end do
-    !lambda = real(8)(lambda)
 
   end subroutine lunar_longitude
 
@@ -1915,8 +1843,6 @@ contains
     call lunar_longitude(jday, moon_today)
     call solar_longitude(jday, sun_today)
 
-    !print *, moon_today
-    !print *, sun_today
     do while ((moon_today > sun_today) .or. ((sun_today >= 270.0) .and. (moon_today <= 90.0))) ! The second one accounds for the respective angles crossing the northward equinox
        day = day - 1.0
        time = time - 1440
@@ -1967,7 +1893,6 @@ contains
     real(8), intent(in) :: rv ! radial velocity, in parsecs per year
     real(8), intent(in) :: deltara ! right ascension component of proper motion, in ARCSECONDS. This has to be looked up
     real(8), intent(in) :: deltadec ! declination component of proper motion,m in ARCSECONDS. This has to be looked up.
-    !integer, intent(in) :: id ! sun or a star?
     real(8), dimension(2), intent(out) :: answer ! RA and Dec for use in calculations
 
     real(8) :: pi
@@ -1987,31 +1912,18 @@ contains
     real(8) :: ra ! right ascension after taking proper motion into account
     real(8) :: dec ! declination after taking proper motion into account
 
-    !real(8), dimension(2) :: nut ! nutation numbers
-
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
     r2d = 180.0 / pi
 
-    !print *, jday, ra2000, dec2000, distance, rv, deltara, deltadec
-    !if (distance /= 0) then
-       !call propmot(jday, ra2000, dec2000, distance, rv, deltara, deltadec, radec)
-    !end if
-    !print *, "Before: ", ra2000, dec2000
-    
     call propmot(jday, ra2000, dec2000, distance, rv, deltara, deltadec, radec)
     ra = radec(1)
     dec = radec(2)
     t = (jday - 2451545.0) / 36525.0
-    !print *, "radec: ", radec
     
     zeta = (2306.2181 * t) + (0.30188 * t * t) + (0.017998 * (t ** 3))
     z = (2306.2181 * t) + (1.09468 * t * t) + (0.018203 * (t ** 3))
     theta = (2004.3109 * t) + (0.42665 * t * t) + (0.041833 * (t ** 3))
-    !print *, zeta
-    !print *, z
-    !print *, theta
-    
     ! zeta, z, and theta are in ARCSECONDS, and so need to be converted into radians for the next bit
     
     a = cos(d2r * dec) * sin(d2r * (ra + (zeta / 3600.0)))    
@@ -2024,11 +1936,6 @@ contains
     c = c * cos(d2r * (ra + (zeta / 3600.0)))
     c = c + (cos(d2r * (theta / 3600.0)) * sin(d2r * dec))
     
-    !print *, a, b, c
-    !print *, a/b
-    !print *, atan(a/b)
-    
-    !answer(1) = z + (r2d * atan(a / b)) ! right ascension, in degrees, taking both proper motion and precession into accont
     answer(1) = atan(a/b)
     if ((a/b) >= 0) then
        if ((ra2000 <= 135.0) .or. (ra2000 >= 315.0)) then ! ra in ALL quadrant
@@ -2045,45 +1952,28 @@ contains
     end if
     
     answer(1) = (z / 3600.0) + (r2d * answer(1))
-    !print *, answer(1)
-    !print *, z
-    
     answer(2) = r2d * asin(c) ! declination, in degrees, taking both proper motion and precession into account
     
-    !ra = radec(1)
-    !dec = radec(2)
-    !print *, radec
-    !print *, ra
-    !print *, dec
-    !print *, "After: ", answer
   end subroutine precession
 
   subroutine getsid(jday, midnight)
     ! Calculate sidereal time at Greenwich
     ! Based on Meeus, chapter 12
     real(8), intent(in) :: jday ! Julian Day in question; must end in 0.5 because we're interested in midnight
-    !real(8), intent(in) :: inst ! time since midnight that we're interested in
-    !real(8), intent(out), dimension(2) :: sid ! Sidereal time at midnight and at the desired moment
     real(8), intent(out) :: midnight
 
     real(8) :: T ! Julian centuries since J2000.0
-    ! real(8) :: midnight ! Sidereal time at midnight
-    ! real(8) :: alpha
     real(8) :: corr ! correction to mean sidereal time to get apparent sidereal time
-    real(8), dimension(2) :: epsi ! nutation factors
+    real(8), dimension(3) :: epsi ! nutation factors
     real(8) :: d2r ! convert degrees to radians
 
     T = (jday - 2451545.0) / 36525.0
     midnight = 100.46061837 + (36000.770053608 * T) + (0.000387933 * T * T) - ((T ** 3) / 38710000.0)
-    !alpha = inst * 1.00273790935
-    !theta = midnight + alpha
 
     d2r = 4.0 * atan(1.0) / 180.0
     call nutation(jday, epsi)
     corr = (epsi(2) * cos(d2r * epsi(1))) / 15.0
     midnight = midnight + corr
-    !theta = theta + corr
-    !sid = (midnight, theta)
   end subroutine getsid
 
   subroutine sidstant(jday, inst, answer)
@@ -2108,7 +1998,6 @@ contains
     real(8), intent(in) :: jday ! Julian Day in question
     real(8), intent(in) :: lon ! observer's longitude, in degrees
     real(8), intent(in) :: lat ! observer's latitude, in degrees
-    !real(8), intent(in) :: deltat
     real(8), dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
 
     real(8) :: ra2000
@@ -2119,23 +2008,16 @@ contains
 
     real(8) :: h0 ! standard altitude, in degrees    
     real(8) :: testval ! initial check
-    ! real(8) :: approx ! approximate time related to sunset
 
     real(8) :: sid ! Sidereal time at midnight on the day in question
     real(8) :: bigh
     
     real(8) :: transit ! time the sun crosses the meridian
-    !real(8) :: theta_r ! sidereal time of the sunrise converted into degrees
-    !real(8) :: theta_s ! sidereal time of the sunset converted into degrees
-
-    !real(8) :: delta_r ! modification to get true rising time
-    !real(8) :: delta_s ! modification to get true setting time
 
     real(8), dimension(2) :: yesterday ! RA and dec of prev day
     real(8), dimension(2) :: today ! RA and dec of day
     real(8), dimension(2) :: tomorrow ! RA and dec of next day
-    !integer :: id ! sun or star!
-    real(8), dimension(2) :: nut ! nutation values for use in calculating the sun's position
+    real(8), dimension(3) :: nut ! nutation values for use in calculating the sun's position
     
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
@@ -2155,15 +2037,9 @@ contains
        time = 25.0
     else
        bigh = acos(testval)
-       !print *, testval
-       !print *, (r2d * bigh)
        call getsid(jday, sid)
-       !sid = mod(sid, 360.0)
-       !print *, "sid = ", sid
-       !print *, (bigh / 360.0)
        
        transit = (today(1) + lon - sid) / 360.0
-       !print *, "transit = ", transit
        time(1) = transit - ((r2d * bigh) / 360.0) ! sunrise
        time(2) = transit + ((r2d * bigh) / 360.0) ! sunset
 
@@ -2190,16 +2066,12 @@ contains
     real(8), intent(in) :: lon ! observer's longitude, in degrees
     real(8), intent(in) :: lat ! observer's latitude, in degrees
     real(8), intent(in) :: deltat ! difference between universal time and dynamical time
-    !real(8), dimension(2), intent(in) :: yesterday ! RA and Dec for the previous day. This algorithm assumes they are in radians
-    !real(8), dimension(2), intent(in) :: today ! RA and Dec for day in question. This algorithm assumes they are in radians
-    !real(8), dimension(2), intent(in) :: tomorrow ! RA and Dec for next day. This algorithm assumes they are in radians
     real(8), intent(in) :: ra2000 ! right ascension at J2000.0, in degrees. This has to be looked up.
     real(8), intent(in) :: dec2000 ! declination at J2000.0, in degrees. This has to be looked up.
     real(8), intent(in) :: distance ! distance from the sun, in parsecs. This has to be looked up.
     real(8), intent(in) :: rv ! radial velocity, in parsecs per year
     real(8), intent(in) :: deltara ! RA component of proper motion, in ARCSECONDS. This has to be looked up.
     real(8), intent(in) :: deltadec ! Dec component of proper motion, in ARCSECONDS. This has to be looked up.
-!    integer, intent(in) :: id !What is actually rising or setting?
     real(8), dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
     
     real(8) :: pi
@@ -2208,36 +2080,11 @@ contains
 
     real(8) :: h0 ! standard altitude, in degrees    
     real(8) :: testval ! initial check
-    ! real(8) :: approx ! approximate time related to sunset
 
     real(8) :: sid ! Sidereal time at midnight on the day in question
     real(8) :: bigh
     
-    !real(8) :: nr ! used in calculating a modification to the rise time
-    !real(8) :: ns ! used in calculating a modification to the set time
-    !real(8) :: a_ra ! used in calculating interpolation
-    !real(8) :: b_ra ! used in calculating interpolation
-    !real(8) :: c_ra  ! used in calculating interpolation
-    !real(8) :: a_dec ! used in calculating interpolation
-    !real(8) :: b_dec ! used in calculating interpolation
-    !real(8) :: c_dec ! used in calculating interpolation
-    !real(8) :: rai_r ! right ascension, interpolated, for sunrise
-    !real(8) :: deci_r ! declination, interpolated, for sunrise
-    !real(8) :: rai_s ! right ascension, interpolated, for sunset
-    !real(8) :: deci_s ! declination, interpolated, for sunset
-    ! real(8), dimension(2) :: inr ! interpolated RA and dec for sunrise
-    ! real(8), dimension(2) :: ins ! interpolated RA and dec for sunset
-    !real(8) :: alt_r ! altitude at sunrise
-    !real(8) :: alt_s ! altitude at sunset
-    !real(8) :: ha_r ! hour angle of rising sun, in degrees
-    !real(8) :: ha_s ! hour angle of setting sun, in degrees
-    
     real(8) :: transit ! time the sun crosses the meridian
-    !real(8) :: theta_r ! sidereal time of the sunrise converted into degrees
-    !real(8) :: theta_s ! sidereal time of the sunset converted into degrees
-
-    !real(8) :: delta_r ! modification to get true rising time
-    !real(8) :: delta_s ! modification to get true setting time
 
     real(8), dimension(2) :: yesterday ! RA and dec of prev day
     real(8), dimension(2) :: today ! RA and dec of day
@@ -2250,55 +2097,20 @@ contains
     r2d = 180.0 / pi
 
     h0 = -0.5667 ! this is in degrees, not radians
-
-       !print *, h0
-       !print *, jday
-       !print *, ra2000
-       !print *, dec2000
-       !print *, distance
-       !print *, rv
-       !print *, deltara
-       !print *, deltadec
     
     call precession((jday - 1), ra2000, dec2000, distance, rv, deltara, deltadec, yesterday) ! right ascension and declination of the previous day, in degrees
     call precession(jday, ra2000, dec2000, distance, rv, deltara, deltadec, today) ! right ascension and declination of the day in question, in degrees
     call precession((jday + 1), ra2000, dec2000, distance, rv, deltara, deltadec, tomorrow) ! right ascension and declination of the next day, in degrees
 
-    !print *, "Initial values: ", ra2000, dec2000
-    !print *, "Yesterday: ", yesterday
-    !print *, "Today: ", today
-    !print *, "Tomorrow: ", tomorrow
-  
     testval = (sin(d2r * h0) - (sin(d2r * lat) * sin(d2r * today(2)))) / (cos(d2r * lat) * cos(d2r * today(2)))
-    !print *, yesterday
-    !print *, today
-    !print *, tomorrow
-    !print *, testval
-    !print *, yesterday
-    !print *, today
-    !print *, tomorrow
-    !print *, sin(d2r * h0)
-    !print *, sin(d2r * lat)
-    !print *, sin(d2r * tomorrow(2))
-    !print *, (sin(d2r * h0) - (sin(d2r * lat) * sin(d2r * tomorrow(2))))
-    !print *, cos(d2r * lat)
-    !print *, cos(d2r * tomorrow(2))
-    !print *, cos(d2r * lat) * cos(d2r * tomorrow(2))
-    !print *, testval
+
     if (abs(testval) > 1.0) then
        time = 25.0
     else
        bigh = acos(testval)
-       !print *, "bigh = ", (r2d * bigh)
-       !print *, testval
-       !print *, (r2d * bigh)
        call getsid(jday, sid)
-       !sid = mod(sid, 360.0)
-       !print *, "sid = ", sid
-       !print *, (bigh / 360.0)
        
        transit = (today(1) + lon - sid) / 360.0
-       !print *, "transit = ", transit
        time(1) = transit - ((r2d * bigh) / 360.0) ! sunrise
        time(2) = transit + ((r2d * bigh) / 360.0) ! sunset
 
