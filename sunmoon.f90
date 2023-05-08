@@ -4,42 +4,42 @@ module stellar_coords
   ! Calculate right ascension and declination of a given star,
   ! taking into account its proper motion and the precession of the equinoxes
   
-  ! Based on cpater 21 of *Astronomical Algorithms* by Jean Meeus
+  ! Based on chapter 21 of *Astronomical Algorithms* by Jean Meeus
   ! 2nd Edition, Willman-Bell, 1991
 contains
   subroutine propmot(jday, ra2000, dec2000, distance, rv, deltara, deltadec, answer)
     ! Calculate the effect of proper motion on a star's right ascension and declination
     
-    real(8), intent(in) :: jday ! Julian Day we're interetested in
-    real(8), intent(in) :: ra2000 ! right ascension at J2000.0
-    real(8), intent(in) :: dec2000 ! declination at J2000.0
-    real(8), intent(in) :: distance ! distance from the sun, in parsecs
-    real(8), intent(in) :: rv ! radial velocity, in parsecs per year
-    real(8), intent(in) :: deltara ! right ascension component of proper motion, in seconds of arc. This has to be looked up
-    real(8), intent(in) :: deltadec ! declination component of proper motion, in seconds of time. This has to be looked up.
-    real(8), dimension(2), intent(out) :: answer
+    double precision, intent(in) :: jday ! Julian Day we're interetested in
+    double precision, intent(in) :: ra2000 ! right ascension at J2000.0
+    double precision, intent(in) :: dec2000 ! declination at J2000.0
+    double precision, intent(in) :: distance ! distance from the sun, in parsecs
+    double precision, intent(in) :: rv ! radial velocity, in parsecs per year
+    double precision, intent(in) :: deltara ! right ascension component of proper motion, in seconds of arc. This has to be looked up
+    double precision, intent(in) :: deltadec ! declination component of proper motion, in seconds of time. This has to be looked up.
+    double precision, dimension(2), intent(out) :: answer
     
-    real(8) :: ra ! right ascension at the time of interest
-    real(8) :: dec ! declination at the time of interest
+    double precision :: ra ! right ascension at the time of interest
+    double precision :: dec ! declination at the time of interest
 
-    real(8) :: t
-    real(8) :: u
+    double precision :: t
+    double precision :: u
     
-    real(8) :: x
-    real(8) :: y
-    real(8) :: z
+    double precision :: x
+    double precision :: y
+    double precision :: z
 
-    real(8) :: xdelta
-    real(8) :: ydelta
-    real(8) :: zdelta
+    double precision :: xdelta
+    double precision :: ydelta
+    double precision :: zdelta
 
-    real(8) :: xprime
-    real(8) :: yprime
-    real(8) :: zprime
+    double precision :: xprime
+    double precision :: yprime
+    double precision :: zprime
 
-    real(8) :: pi
-    real(8) :: d2r ! convert degrees to radians
-    real(8) :: r2d ! convert radians to degrees
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
 
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0 ! convert degrees to radians
@@ -83,30 +83,30 @@ contains
 
   subroutine nutation(jday, nut)
     ! Calculate the nutation of the obliquity to the ecplitic
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), dimension(3), intent(out) :: nut ! Nutation to the ecliptic and of longitude
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, dimension(3), intent(out) :: nut ! Nutation to the ecliptic and of longitude
 
-    real(8) :: T ! Julian Centuries since J2000.0
-    real(8) :: D ! mean elonation of the moon from the sun
-    real(8) :: M ! mean anomaly of the sun
-    real(8) :: Mprime ! mean anomaly of the moon
-    real(8) :: F ! moon's argument of latitude
-    real(8) :: omega ! longitude of the ascending node of the moon's mean orbit on the ecliptic
+    double precision :: T ! Julian Centuries since J2000.0
+    double precision :: D ! mean elonation of the moon from the sun
+    double precision :: M ! mean anomaly of the sun
+    double precision :: Mprime ! mean anomaly of the moon
+    double precision :: F ! moon's argument of latitude
+    double precision :: omega ! longitude of the ascending node of the moon's mean orbit on the ecliptic
 
-    real(8), dimension(64,5) :: args
-    real(8), dimension(64,2) :: psi_coeffs
-    real(8), dimension(64,2) :: eps_coeffs
-    real(8) :: epsilon0 !mean obliquity of the ecliptic, in degrees
-    real(8) :: delta_epsilon ! variation in the obliquity of the ecliptic, in arcseconds
-    real(8) :: delta_psi ! nutation in longitude, in arcseconds
-    real(8) :: U ! Julian Decamillennia since J2000.0
+    double precision, dimension(64,5) :: args
+    double precision, dimension(64,2) :: psi_coeffs
+    double precision, dimension(64,2) :: eps_coeffs
+    double precision :: epsilon0 !mean obliquity of the ecliptic, in degrees
+    double precision :: delta_epsilon ! variation in the obliquity of the ecliptic, in arcseconds
+    double precision :: delta_psi ! nutation in longitude, in arcseconds
+    double precision :: U ! Julian Decamillennia since J2000.0
 
     integer :: i
-    real(8) :: a ! placeholder
+    double precision :: a ! placeholder
 
-    real(8) :: pi
-    real(8) :: d2r ! convert degrees to radians
-    real(8) :: r2d ! convert radians to degrees
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
 
     pi = 4.0 * atan(1.0)
     r2d = 180.0 / pi
@@ -751,8 +751,8 @@ module solar_coords
 contains
   subroutine solar_tau(jday, tau)
     ! tau will be in Julian millennia
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), intent(out) :: tau
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, intent(out) :: tau
 
     tau = (jday - 2451545.0) / 365250
 
@@ -760,29 +760,29 @@ contains
 
   subroutine solar_longitude(jday, longitude)
     ! Ecliptic longitude of Earth
-    real(8), intent(in) :: jday
-    real(8), intent(out) :: longitude
+    double precision, intent(in) :: jday
+    double precision, intent(out) :: longitude
 
     ! Value for each term is given by A cos (B + C*tau)
-    real(8) :: L
-    real(8) :: L0
-    real(8) :: L1
-    real(8) :: L2
-    real(8) :: L3
-    real(8) :: L4
-    real(8) :: L5
+    double precision :: L
+    double precision :: L0
+    double precision :: L1
+    double precision :: L2
+    double precision :: L3
+    double precision :: L4
+    double precision :: L5
 
-    real(8), dimension(64,3) :: L0terms
-    real(8), dimension(34,3) :: L1terms
-    real(8), dimension(20,3) :: L2terms
-    real(8), dimension(7,3) :: L3terms
-    real(8), dimension(3,3) :: L4terms
+    double precision, dimension(64,3) :: L0terms
+    double precision, dimension(34,3) :: L1terms
+    double precision, dimension(20,3) :: L2terms
+    double precision, dimension(7,3) :: L3terms
+    double precision, dimension(3,3) :: L4terms
 
-    real(8) :: tau
+    double precision :: tau
     integer :: i
-    real(8) :: k
-    real(8) :: pi
-    real(8) :: pi2
+    double precision :: k
+    double precision :: pi
+    double precision :: pi2
 
     pi = 4.0 * atan(1.0)
     pi2 = 2 * pi
@@ -1229,13 +1229,13 @@ contains
     ! Get the time of that the sun hits angle, in minutes since midnight UTC.
     ! This can be off by up to 15 minutes in either direction because we live in a chaotic universe.
     ! There does not appear to be any more accurate algorithm that is readily available.
-    real(8), intent(in) :: jday
-    real(8), intent(in) :: angle
-    real(8), intent(out) :: time
+    double precision, intent(in) :: jday
+    double precision, intent(in) :: angle
+    double precision, intent(out) :: time
 
-    real(8) :: angle_today
-    real(8) :: angle_tomorrow
-    real(8) :: div
+    double precision :: angle_today
+    double precision :: angle_tomorrow
+    double precision :: div
 
     time = 0
 
@@ -1272,17 +1272,17 @@ contains
     
   subroutine solar_radec(jday, radec)
     ! Obtain the right ascension and declination of the sun
-    real(8), intent(in) :: jday ! Julian Day in question
-    !real(8), intent(in) :: oblq ! obliquity of the ecliptic
-    real(8), dimension(2), intent(out) :: radec ! right ascension and declination
+    double precision, intent(in) :: jday ! Julian Day in question
+    !double precision, intent(in) :: oblq ! obliquity of the ecliptic
+    double precision, dimension(2), intent(out) :: radec ! right ascension and declination
 
-    real(8) :: lon ! ecliptic longitude
-    real(8) :: lat ! ecliptic latitude
-    real(8), dimension(3) :: nut ! nutation factors
+    double precision :: lon ! ecliptic longitude
+    double precision :: lat ! ecliptic latitude
+    double precision, dimension(3) :: nut ! nutation factors
 
-    real(8) :: pi
-    real(8) :: d2r ! convert degrees to radians
-    real(8) :: r2d ! convert radians to degrees
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
 
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
@@ -1337,8 +1337,8 @@ module lunar_coords
 
 contains
   subroutine getT(jday, T)
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), intent(out) :: T
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, intent(out) :: T
     
     T = (jday - 2451545.0) / 36525.0
     
@@ -1346,13 +1346,13 @@ contains
   
   subroutine getD(T, D)
     ! Mean elonation of the moon
-    real(8), intent(in) :: T
-    real(8) :: v
-    real(8) :: w
-    real(8) :: x
-    real(8) :: y
-    real(8) :: z
-    real(8), intent(out) :: D
+    double precision, intent(in) :: T
+    double precision :: v
+    double precision :: w
+    double precision :: x
+    double precision :: y
+    double precision :: z
+    double precision, intent(out) :: D
     
     v = 297.8501921
     w = 445267.1114034 * T
@@ -1367,10 +1367,10 @@ contains
   
   subroutine getecc(T, ecc)
     ! Eccentricity of Earth's orbit
-    real(8), intent(in) :: T ! Obtained a different module
-    real(8) :: a
-    real(8) :: b
-    real(8), intent(out) :: ecc
+    double precision, intent(in) :: T ! Obtained a different module
+    double precision :: a
+    double precision :: b
+    double precision, intent(out) :: ecc
     
     a = 0.002516 * T
     b = 0.0000074 * (T ** 2)
@@ -1381,13 +1381,13 @@ contains
   
   subroutine getF(T, F)
     ! Moon's argument of latitude
-    real(8), intent(in) :: T ! Obtained a different module
-    real(8) :: v
-    real(8) :: w
-    real(8) :: x
-    real(8) :: y
-    real(8) :: z
-    real(8), intent(out) :: F
+    double precision, intent(in) :: T ! Obtained a different module
+    double precision :: v
+    double precision :: w
+    double precision :: x
+    double precision :: y
+    double precision :: z
+    double precision, intent(out) :: F
     
     v = 93.2720950
     w = 483202.0175233 * T
@@ -1401,13 +1401,13 @@ contains
   
   subroutine getLprime(T, Lprime)
     ! Mean longitude of the moon (AKA mean equinox of date)
-    real(8), intent(in) :: T ! Obtained a different module
-    real(8) :: v
-    real(8) :: w
-    real(8) :: x
-    real(8) :: y
-    real(8) :: z
-    real(8), intent(out) :: Lprime
+    double precision, intent(in) :: T ! Obtained a different module
+    double precision :: v
+    double precision :: w
+    double precision :: x
+    double precision :: y
+    double precision :: z
+    double precision, intent(out) :: Lprime
     
     v = 218.3164477
     w = 481267.88123421 * T
@@ -1422,13 +1422,13 @@ contains
   
   subroutine getM(T, M)
     ! Mean anomaly of the sun
-    real(8), intent(in) :: T ! Obtainem a mifferent momule
-    real(8) :: v
-    real(8) :: w
-    real(8) :: x
-    real(8) :: y
-    !real(8) :: z
-    real(8), intent(out) :: M
+    double precision, intent(in) :: T ! Obtainem a mifferent momule
+    double precision :: v
+    double precision :: w
+    double precision :: x
+    double precision :: y
+    !double precision :: z
+    double precision, intent(out) :: M
     
     v = 357.5291092
     w = 35999.0502909 * T
@@ -1442,13 +1442,13 @@ contains
   
   subroutine getMprime(T, Mprime)
     ! Mean anomaly of the moon
-    real(8), intent(in) :: T ! Obtained a different module
-    real(8) :: v
-    real(8) :: w
-    real(8) :: x
-    real(8) :: y
-    real(8) :: z
-    real(8), intent(out) :: Mprime
+    double precision, intent(in) :: T ! Obtained a different module
+    double precision :: v
+    double precision :: w
+    double precision :: x
+    double precision :: y
+    double precision :: z
+    double precision, intent(out) :: Mprime
     
     v = 134.9633964
     w = 477198.8675055 * T
@@ -1462,25 +1462,25 @@ contains
   end subroutine getMprime
   
   subroutine lunar_longitude(jre, lambda)
-    real(8), intent(in) :: jre
-    real(8), intent(out) :: lambda
-    real(8) :: T
-    real(8) :: Lprime
-    real(8) :: D
-    real(8) :: M
-    real(8) :: Mprime
-    real(8) :: F
-    real(8) :: ecc
-    real(8) :: a1
-    real(8) :: a2
-    real(8) :: a3
+    double precision, intent(in) :: jre
+    double precision, intent(out) :: lambda
+    double precision :: T
+    double precision :: Lprime
+    double precision :: D
+    double precision :: M
+    double precision :: Mprime
+    double precision :: F
+    double precision :: ecc
+    double precision :: a1
+    double precision :: a2
+    double precision :: a3
     integer, dimension(60,5) :: ltable
-    real(8) :: Dterm
-    real(8) :: Mterm
-    real(8) :: Mpterm
-    real(8) :: Fterm
-    real(8) :: term
-    real(8) :: sigma_l
+    double precision :: Dterm
+    double precision :: Mterm
+    double precision :: Mpterm
+    double precision :: Fterm
+    double precision :: term
+    double precision :: sigma_l
     integer :: i
 
     call getT(jre, T)
@@ -1824,17 +1824,17 @@ contains
 
   subroutine lunar_time(jday, time)
     ! Find the minute of the new moon
-    real(8), intent(in) :: jday
+    double precision, intent(in) :: jday
     integer, intent(out) :: time ! in minutes
 
-    real(8) :: moon_today ! ecliptic longitude of the moon at midnight
-    real(8) :: moon_tomorrow ! ecliptic longitude of the moon at midnight tomorrow
-    real(8) :: sun_today ! ecliptic longitude of the sun at midnight
-    real(8) :: sun_tomorrow ! ecliptic longitude of the sun at midnight tomorrow
-    real(8) :: lunar_div
-    real(8) :: solar_div
+    double precision :: moon_today ! ecliptic longitude of the moon at midnight
+    double precision :: moon_tomorrow ! ecliptic longitude of the moon at midnight tomorrow
+    double precision :: sun_today ! ecliptic longitude of the sun at midnight
+    double precision :: sun_tomorrow ! ecliptic longitude of the sun at midnight tomorrow
+    double precision :: lunar_div
+    double precision :: solar_div
     integer :: minutes
-    real(8) :: day
+    double precision :: day
 
     time = 0
     minutes = 0
@@ -1886,31 +1886,31 @@ contains
     ! apply the effect of precession to obtain
     ! the actual right ascension and declination
 
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), intent(in) :: ra2000 ! right ascension at J2000.0, in DEGREES
-    real(8), intent(in) :: dec2000 ! declination at J2000.0, in DEGREES
-    real(8), intent(in) :: distance ! distance from the sun, in PARSECS
-    real(8), intent(in) :: rv ! radial velocity, in parsecs per year
-    real(8), intent(in) :: deltara ! right ascension component of proper motion, in ARCSECONDS. This has to be looked up
-    real(8), intent(in) :: deltadec ! declination component of proper motion,m in ARCSECONDS. This has to be looked up.
-    real(8), dimension(2), intent(out) :: answer ! RA and Dec for use in calculations
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, intent(in) :: ra2000 ! right ascension at J2000.0, in DEGREES
+    double precision, intent(in) :: dec2000 ! declination at J2000.0, in DEGREES
+    double precision, intent(in) :: distance ! distance from the sun, in PARSECS
+    double precision, intent(in) :: rv ! radial velocity, in parsecs per year
+    double precision, intent(in) :: deltara ! right ascension component of proper motion, in ARCSECONDS. This has to be looked up
+    double precision, intent(in) :: deltadec ! declination component of proper motion,m in ARCSECONDS. This has to be looked up.
+    double precision, dimension(2), intent(out) :: answer ! RA and Dec for use in calculations
 
-    real(8) :: pi
-    real(8) :: d2r ! convert degrees to radians
-    real(8) :: r2d ! convert radians to degrees
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
 
-    real(8) :: t ! Julian centuries since J2000.0
-    real(8) :: zeta
-    real(8) :: z
-    real(8) :: theta
+    double precision :: t ! Julian centuries since J2000.0
+    double precision :: zeta
+    double precision :: z
+    double precision :: theta
 
-    real(8) :: a ! placeholder
-    real(8) :: b ! placeholder
-    real(8) :: c ! placeholder
+    double precision :: a ! placeholder
+    double precision :: b ! placeholder
+    double precision :: c ! placeholder
 
-    real(8), dimension(2) :: radec ! RA and Dec after accounting for proper motion but before accounting for precession
-    real(8) :: ra ! right ascension after taking proper motion into account
-    real(8) :: dec ! declination after taking proper motion into account
+    double precision, dimension(2) :: radec ! RA and Dec after accounting for proper motion but before accounting for precession
+    double precision :: ra ! right ascension after taking proper motion into account
+    double precision :: dec ! declination after taking proper motion into account
 
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
@@ -1959,13 +1959,13 @@ contains
   subroutine getsid(jday, midnight)
     ! Calculate sidereal time at Greenwich
     ! Based on Meeus, chapter 12
-    real(8), intent(in) :: jday ! Julian Day in question; must end in 0.5 because we're interested in midnight
-    real(8), intent(out) :: midnight
+    double precision, intent(in) :: jday ! Julian Day in question; must end in 0.5 because we're interested in midnight
+    double precision, intent(out) :: midnight
 
-    real(8) :: T ! Julian centuries since J2000.0
-    real(8) :: corr ! correction to mean sidereal time to get apparent sidereal time
-    real(8), dimension(3) :: epsi ! nutation factors
-    real(8) :: d2r ! convert degrees to radians
+    double precision :: T ! Julian centuries since J2000.0
+    double precision :: corr ! correction to mean sidereal time to get apparent sidereal time
+    double precision, dimension(3) :: epsi ! nutation factors
+    double precision :: d2r ! convert degrees to radians
 
     T = (jday - 2451545.0) / 36525.0
     midnight = 100.46061837 + (36000.770053608 * T) + (0.000387933 * T * T) - ((T ** 3) / 38710000.0)
@@ -1979,12 +1979,12 @@ contains
   subroutine sidstant(jday, inst, answer)
     ! Calculate sidereal time for any instant at Greenwich
     ! Based on Meeus, chapter 12
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), intent(in) :: inst ! time since midnight that we're interested in
-    real(8), intent(out) :: answer ! sidereal time at inst
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, intent(in) :: inst ! time since midnight that we're interested in
+    double precision, intent(out) :: answer ! sidereal time at inst
 
-    real(8) :: midnight ! sidereal time at midnight
-    real(8) :: inc ! amount to add to the time at midnight
+    double precision :: midnight ! sidereal time at midnight
+    double precision :: inc ! amount to add to the time at midnight
 
     call getsid(jday, midnight)
     inc = inst * 1.00273790935
@@ -1995,29 +1995,29 @@ contains
     ! Calculte the time of sunrise and sunset
     ! Based on Meeus, chapter 15
     
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), intent(in) :: lon ! observer's longitude, in degrees
-    real(8), intent(in) :: lat ! observer's latitude, in degrees
-    real(8), dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, intent(in) :: lon ! observer's longitude, in degrees
+    double precision, intent(in) :: lat ! observer's latitude, in degrees
+    double precision, dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
 
-    real(8) :: ra2000
-    real(8) :: dec2000 
-    real(8) :: pi
-    real(8) :: d2r ! convert degrees to radians
-    real(8) :: r2d ! convert radians to degrees
+    double precision :: ra2000
+    double precision :: dec2000 
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
 
-    real(8) :: h0 ! standard altitude, in degrees    
-    real(8) :: testval ! initial check
+    double precision :: h0 ! standard altitude, in degrees    
+    double precision :: testval ! initial check
 
-    real(8) :: sid ! Sidereal time at midnight on the day in question
-    real(8) :: bigh
+    double precision :: sid ! Sidereal time at midnight on the day in question
+    double precision :: bigh
     
-    real(8) :: transit ! time the sun crosses the meridian
+    double precision :: transit ! time the sun crosses the meridian
 
-    real(8), dimension(2) :: yesterday ! RA and dec of prev day
-    real(8), dimension(2) :: today ! RA and dec of day
-    real(8), dimension(2) :: tomorrow ! RA and dec of next day
-    real(8), dimension(3) :: nut ! nutation values for use in calculating the sun's position
+    double precision, dimension(2) :: yesterday ! RA and dec of prev day
+    double precision, dimension(2) :: today ! RA and dec of day
+    double precision, dimension(2) :: tomorrow ! RA and dec of next day
+    double precision, dimension(3) :: nut ! nutation values for use in calculating the sun's position
     
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
@@ -2062,35 +2062,35 @@ contains
 
     ! This ignores the effect of atmospheric refraction because it's very very very small and too unpredicatable.
     
-    real(8), intent(in) :: jday ! Julian Day in question
-    real(8), intent(in) :: lon ! observer's longitude, in degrees
-    real(8), intent(in) :: lat ! observer's latitude, in degrees
-    real(8), intent(in) :: deltat ! difference between universal time and dynamical time
-    real(8), intent(in) :: ra2000 ! right ascension at J2000.0, in degrees. This has to be looked up.
-    real(8), intent(in) :: dec2000 ! declination at J2000.0, in degrees. This has to be looked up.
-    real(8), intent(in) :: distance ! distance from the sun, in parsecs. This has to be looked up.
-    real(8), intent(in) :: rv ! radial velocity, in parsecs per year
-    real(8), intent(in) :: deltara ! RA component of proper motion, in ARCSECONDS. This has to be looked up.
-    real(8), intent(in) :: deltadec ! Dec component of proper motion, in ARCSECONDS. This has to be looked up.
-    real(8), dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, intent(in) :: lon ! observer's longitude, in degrees
+    double precision, intent(in) :: lat ! observer's latitude, in degrees
+    double precision, intent(in) :: deltat ! difference between universal time and dynamical time
+    double precision, intent(in) :: ra2000 ! right ascension at J2000.0, in degrees. This has to be looked up.
+    double precision, intent(in) :: dec2000 ! declination at J2000.0, in degrees. This has to be looked up.
+    double precision, intent(in) :: distance ! distance from the sun, in parsecs. This has to be looked up.
+    double precision, intent(in) :: rv ! radial velocity, in parsecs per year
+    double precision, intent(in) :: deltara ! RA component of proper motion, in ARCSECONDS. This has to be looked up.
+    double precision, intent(in) :: deltadec ! Dec component of proper motion, in ARCSECONDS. This has to be looked up.
+    double precision, dimension(2), intent(out) :: time ! time of sunrise and sunset, in days and fractions of a day
     
-    real(8) :: pi
-    real(8) :: d2r ! convert degrees to radians
-    real(8) :: r2d ! convert radians to degrees
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
 
-    real(8) :: h0 ! standard altitude, in degrees    
-    real(8) :: testval ! initial check
+    double precision :: h0 ! standard altitude, in degrees    
+    double precision :: testval ! initial check
 
-    real(8) :: sid ! Sidereal time at midnight on the day in question
-    real(8) :: bigh
+    double precision :: sid ! Sidereal time at midnight on the day in question
+    double precision :: bigh
     
-    real(8) :: transit ! time the sun crosses the meridian
+    double precision :: transit ! time the sun crosses the meridian
 
-    real(8), dimension(2) :: yesterday ! RA and dec of prev day
-    real(8), dimension(2) :: today ! RA and dec of day
-    real(8), dimension(2) :: tomorrow ! RA and dec of next day
+    double precision, dimension(2) :: yesterday ! RA and dec of prev day
+    double precision, dimension(2) :: today ! RA and dec of day
+    double precision, dimension(2) :: tomorrow ! RA and dec of next day
     !integer :: id ! sun or star!
-    real(8), dimension(2) :: nut ! nutation values for use in calculating the sun's position
+    double precision, dimension(2) :: nut ! nutation values for use in calculating the sun's position
     
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
@@ -2174,8 +2174,334 @@ contains
        ! multiply time(x) by 24 to get the time in hours (which will still have a decimal portion; for example, 06:30 would register as 6.5)
        ! multiply time(x) by 1440 to get the time in minutes, or by 86400 to get the time in seconds.
        ! time(x) can even be multiplied by 25920 to get the time in chalakim.
+
     end if
     !print *, time
   end subroutine stellar_riset
-end module sidereal
 
+  subroutine aberration(jday, ra, dec, radec)
+    ! Calculate aberration of a given star by the Ros-Vondrak algorithm
+    ! See Meeus, 23.4
+    ! After testing, this appears to give inaccurate results.
+    ! DO NOT USE THIS SUBROUTINE!!!!
+    
+    double precision, intent(in) :: jday ! Time in question, in Julian Days
+    double precision, intent(in) :: ra ! right ascension
+    double precision, intent(in) :: dec ! declination
+    double precision, dimension(2), intent(out) :: radec ! right ascension and declination with deltas added
+    
+    double precision :: T ! Julian Centuries since J2000.0
+    double precision :: L2
+    double precision :: L3
+    double precision :: L4
+    double precision :: L5
+    double precision :: L6
+    double precision :: L7
+    double precision :: L8
+    double precision :: Lprime
+    double precision :: D
+    double precision :: Mprime
+    double precision :: F
+    double precision, dimension(36,7) :: valtable
+    double precision :: Xprime
+    double precision :: Yprime
+    double precision :: Zprime
+    integer :: i
+    double precision :: c ! speed of light in 1/10E8 AU/day
+    double precision :: delta_ra ! change in right ascension due to aberration
+    double precision :: delta_dec ! change in declination due to aberrration
+    double precision :: pi
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
+    
+    pi = 4.0 * atan(1.0)
+    d2r = 180.0 / pi
+    r2d = pi / 180.0
+    
+    T = (jday - 2451545.0) / 36525.0
+    L2 = 3.1761467 + (1021.3285546 * T) ! mean longitude of Venus
+    L3 = 1.7534703 + (628.3075849 * T) ! Mean longitude of Earth (?)
+    L4 = 6.2034809 + (334.0612431 * T) ! Mean longitude of Mars
+    L5 = 0.5995465 + (52.9690965 * T) ! Mean longitude of Jupiter
+    L6 = 0.8740168 + (21.3299095 * T) ! Mean longitude of Saturn
+    L7 = 5.4812939 + (7.4781599 * T) ! Mean longitude of Uranus
+    L8 = 5.3118863 + (3.8133036 * T) ! Mean longitude of Neptune
+    Lprime = 3.8103444 + (8399.6847337 * T) ! Mean longitude of the moon
+    D = 5.1984667 + (7771.3771486 * T)
+    Mprime = 2.3555559 + (8328.6914289 * T)
+    F = 1.6279052 + (8433.4661601 * T)
+
+    valtable(1,1) = L3
+    valtable(1,2) = -1719914.0 - (2.0 * T)
+    valtable(1,3) = -25.0
+    valtable(1,4) = 25.0 - (13.0 * T)
+    valtable(1,5) = 1578089.0 + (156.0 * T)
+    valtable(1,6) = 10.0 + (32.0 * T)
+    valtable(1,7) = 684485.0 - (358.0 * T)
+    valtable(2,1) = 2.0 * L3
+    valtable(2,2) = 6434.0 + (141.0 * T)
+    valtable(2,3) = 28007.0 - (107.0 * T)
+    valtable(2,4) = 25697.0 - (95.0 * T)
+    valtable(2,5) = -5904.0 - (130.0 * T)
+    valtable(2,6) = 11141.0 - (48.0 * T)
+    valtable(2,7) = -2559.0 - (55.0 * T)
+    valtable(3,1) = L5
+    valtable(3,2) = 715.0
+    valtable(3,3) = 0.0
+    valtable(3,4) = 6.0
+    valtable(3,5) = -657.0
+    valtable(3,6) = -15.0
+    valtable(3,7) = -282.0
+    valtable(4,1) = Lprime
+    valtable(4,2) = 715.0
+    valtable(4,3) = 0.0
+    valtable(4,4) = 0.0
+    valtable(4,5) = -656.0
+    valtable(4,6) = 0.0
+    valtable(4,7) = -285.0
+    valtable(5,1) = 3.0 * L3
+    valtable(5,2) = 486.0 + (5.0 * T)
+    valtable(5,3) = -236 - (4.0 * T)
+    valtable(5,4) = -216.0 - (4.0 * T)
+    valtable(5,5) = -446.0 + (5.0 * T) 
+    valtable(5,6) = -94.0
+    valtable(5,7) = -193.0
+    valtable(6,1) = L6
+    valtable(6,2) = 159.0
+    valtable(6,3) = 0.0
+    valtable(6,4) = 2.0
+    valtable(6,5) = -147.0
+    valtable(6,6) = -6.0
+    valtable(6,7) = -61.0
+    valtable(7,1) = F
+    valtable(7,2) = 0.0
+    valtable(7,3) = 0.0
+    valtable(7,4) = 0.0
+    valtable(7,5) = 26.0
+    valtable(7,6) = 0.0
+    valtable(7,7) = -59.0
+    valtable(8,1) = Lprime + Mprime
+    valtable(8,2) = 39.0
+    valtable(8,3) = 0.0
+    valtable(8,4) = 0.0
+    valtable(8,5) = -36.0
+    valtable(8,6) = 0.0
+    valtable(8,7) = -16.0
+    valtable(9,1) = 2.0 * L5
+    valtable(9,2) = 33.0
+    valtable(9,3) = -10.0
+    valtable(9,4) = -9.0
+    valtable(9,5) = -30.0
+    valtable(9,6) = -5.0
+    valtable(9,7) = -13.0
+    valtable(10,1) = (2.0 * L3) - L5
+    valtable(10,2) = 31.0
+    valtable(10,3) = 1.0
+    valtable(10,4) = 1.0
+    valtable(10,5) = -28.0
+    valtable(10,6) = 0.0
+    valtable(10,7) = -12.0
+    valtable(11,1) = (3.0 * L3) - (8.0 * L4) + (3.0 * L5)
+    valtable(11,2) = 8.0
+    valtable(11,3) = -28.0
+    valtable(11,4) = 25.0
+    valtable(11,5) = 8.0
+    valtable(11,6) = 11.0
+    valtable(11,7) = 3.0
+    valtable(12,1) = (5.0 * L3) - (8.0 * L4) + (3.0 * L5)
+    valtable(12,2) = 8.0
+    valtable(12,3) = -28.0
+    valtable(12,4) = -25.0
+    valtable(12,5) = -8.0
+    valtable(12,6) = -11.0
+    valtable(12,7) = -3.0
+    valtable(13,1) = (2.0 * L2) - L3
+    valtable(13,2) = 21.0
+    valtable(13,3) = 0.0
+    valtable(13,4) = 0.0
+    valtable(13,5) = -19.0
+    valtable(13,6) = 0.0
+    valtable(13,7) = -8.0
+    valtable(14,1) = L2
+    valtable(14,2) = -19.0
+    valtable(14,3) = 0.0
+    valtable(14,4) = 0.0
+    valtable(14,5) = 17.0
+    valtable(14,6) = 0.0
+    valtable(14,7) = 8.0
+    valtable(15,1) = L7
+    valtable(15,2) = 17.0
+    valtable(15,3) = 0.0
+    valtable(15,4) = 0.0
+    valtable(15,5) = -16.0
+    valtable(15,6) = 0.0
+    valtable(15,7) = -7.0
+    valtable(16,1) = L3 - (2.0 * L5)
+    valtable(16,2) = 16.0
+    valtable(16,3) = 0.0
+    valtable(16,4) = 0.0
+    valtable(16,5) = 15.0
+    valtable(16,6) = 1.0
+    valtable(16,7) = 7.0
+    valtable(17,1) = L8
+    valtable(17,2) = 16.0
+    valtable(17,3) = 0.0
+    valtable(17,4) = 1.0
+    valtable(17,5) = -15.0
+    valtable(17,6) = -3.0
+    valtable(17,7) = -6.0
+    valtable(18,1) = L3 + L5
+    valtable(18,2) = 11.0
+    valtable(18,3) = -1.0
+    valtable(18,4) = -1.0
+    valtable(18,5) = -10.0
+    valtable(18,6) = -1.0
+    valtable(18,7) = -5.0
+    valtable(19,1) = (2.0 * L2) + (2.0 * L3)
+    valtable(19,2) = 0.0
+    valtable(19,3) = -11.0
+    valtable(19,4) = -10.0
+    valtable(19,5) = 0.0
+    valtable(19,6) = -4.0
+    valtable(19,7) = 0.0
+    valtable(20,1) = L3 - L5
+    valtable(20,2) = -11.0
+    valtable(20,3) = -2.0
+    valtable(20,4) = -2.0
+    valtable(20,5) = 9.0
+    valtable(20,6) = -1.0
+    valtable(20,7) = 4.0
+    valtable(21,1) = 4.0 * L3
+    valtable(21,2) = -7.0
+    valtable(21,3) = -8.0
+    valtable(21,4) = -8.0
+    valtable(21,5) = 6.0
+    valtable(21,6) = -3.0
+    valtable(21,7) = 3.0
+    valtable(22,1) = (3.0 * L3 - 2.0 * L5)
+    valtable(22,2) = -10.0
+    valtable(22,3) = 0.0
+    valtable(22,4) = 0.0
+    valtable(22,5) = 9.0
+    valtable(22,6) = 0.0
+    valtable(22,7) = 4.0
+    valtable(23,1) = L2 - (2.0 * L3)
+    valtable(23,2) = -9.0
+    valtable(23,3) = 0.0
+    valtable(23,4) = 0.0
+    valtable(23,5) = -9.0
+    valtable(23,6) = 0.0
+    valtable(23,7) = -4.0
+    valtable(24,1) = (2.0 * L2) - (3.0 * L3)
+    valtable(24,2) = -9.0
+    valtable(24,3) = 0.0
+    valtable(24,4) = 0.0
+    valtable(24,5) = -8.0
+    valtable(24,6) = 0.0
+    valtable(24,7) = -4.0
+    valtable(25,1) = 2.0 * L6
+    valtable(25,2) = 0.0
+    valtable(25,3) = -9.0
+    valtable(25,4) = -8.0
+    valtable(25,5) = 0.0
+    valtable(25,6) = -3.0
+    valtable(25,7) = 0.0
+    valtable(26,1) = (2.0 * L2) - (4.0 * L3)
+    valtable(26,2) = 0.0
+    valtable(26,3) = -9.0
+    valtable(26,4) = 8.0
+    valtable(26,5) = 0.0
+    valtable(26,6) = 3.0
+    valtable(26,7) = 0.0
+    valtable(27,1) = (3.0 * L3) - (2.0 * L4)
+    valtable(27,2) = 8.0
+    valtable(27,3) = 0.0
+    valtable(27,4) = 0.0
+    valtable(27,5) = -8.0
+    valtable(27,6) = 0.0
+    valtable(27,7) = -3.0
+    valtable(28,1) = Lprime + (2.0 * D) - Mprime
+    valtable(28,2) = 8.0
+    valtable(28,3) = 0.0
+    valtable(28,4) = 0.0
+    valtable(28,5) = -7.0
+    valtable(28,6) = 0.0
+    valtable(28,7) = -3.0
+    valtable(29,1) = (8.0 * L2) - (12.0 * L3)
+    valtable(29,2) = -4.0
+    valtable(29,3) = -7.0
+    valtable(29,4) = -6.0
+    valtable(29,5) = 4.0
+    valtable(29,6) = -3.0
+    valtable(29,7) = 2.0
+    valtable(30,1) = (8.0 * L2) - (14.0 * L3)
+    valtable(30,2) = -4.0
+    valtable(30,3) = -7.0
+    valtable(30,4) = 6.0
+    valtable(30,5) = -4.0
+    valtable(30,6) = 3.0
+    valtable(30,7) = -2.0
+    valtable(31,1) = 2.0 * L4
+    valtable(31,2) = -6.0
+    valtable(31,3) = -5.0
+    valtable(31,4) = -4.0
+    valtable(31,5) = 5.0
+    valtable(31,6) = -2.0
+    valtable(31,7) = 2.0
+    valtable(32,1) = (3.0 * L2) - (4.0 * L3)
+    valtable(32,2) = -1.0
+    valtable(32,3) = -1.0
+    valtable(32,4) = -2.0
+    valtable(32,5) = -7.0
+    valtable(32,6) = 1.0
+    valtable(32,7) = -4.0
+    valtable(33,1) = (2.0 * L3) - (2.0 * L5)
+    valtable(33,2) = 4.0
+    valtable(33,3) = -6.0
+    valtable(33,4) = -5.0
+    valtable(33,5) = -4.0
+    valtable(33,6) = -2.0
+    valtable(33,7) = -2.0
+    valtable(34,1) = (3.0 * L2) - (3.0 * L3)
+    valtable(34,2) = 0.0
+    valtable(34,3) = -7.0
+    valtable(34,4) = -6.0
+    valtable(34,5) = 0.0
+    valtable(34,6) = -3.0
+    valtable(34,7) = 0.0
+    valtable(35,1) = (2.0 * L3) - (2.0 * L4)
+    valtable(35,2) = 5.0
+    valtable(35,3) = -5.0
+    valtable(35,4) = -4.0
+    valtable(35,5) = -5.0
+    valtable(35,6) = -2.0
+    valtable(35,7) = -2.0
+    valtable(36,1) = Lprime - (2.0 * D)
+    valtable(36,2) = 5.0
+    valtable(36,3) = 0.0
+    valtable(36,4) = 0.0
+    valtable(36,5) = -5.0
+    valtable(36,6) = 0.0
+    valtable(36,7) = -2.0
+
+    ! This next part gives values in units of 10E-8 AU/day
+    Xprime = 0
+    Yprime = 0
+    Zprime = 0
+    
+    do i = 1,37
+       Xprime = Xprime + (valtable(i, 2) * sin(d2r * valtable(i, 1))) + (valtable(i, 3) * cos(d2r * valtable(i, 1)))
+       Yprime = Yprime + (valtable(i, 4) * sin(d2r * valtable(i, 1))) + (valtable(i, 5) * cos(d2r * valtable(i, 1)))
+       Zprime = Zprime + (valtable(i, 6) * sin(d2r * valtable(i, 1))) + (valtable(i, 7) * cos(d2r * valtable(i, 1)))
+    end do
+
+    c = 17314463350.0 ! speed of light in 10E-8 AU/day
+
+    delta_ra = ((Yprime * cos(d2r * ra)) - (Xprime * sin(d2r * ra))) / (c * cos(d2r * dec)) ! change to right ascension due to aberration, in RADIANS
+    delta_dec = 0 - (((Xprime * cos(d2r * ra) + (Yprime * sin(d2r * ra))) * sin(d2r * dec)) - (Zprime * cos(d2r * dec))) / c
+
+    radec(1) = ra + (delta_ra * r2d) ! convert to degrees
+    radec(2) = dec + (delta_dec * r2d) ! convert to degrees
+  end subroutine aberration
+    
+end module sidereal
