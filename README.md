@@ -17,7 +17,7 @@ Arch (Chakra, Manjaro):
 
     $ sudo pacman -Syu python tk python-numpy gcc-fortran
 
-## Debian (Ubuntu, Mint):
+Debian (Ubuntu, Mint):
 
     $ sudo apt-get install python3 python3-tk python3-numpy gfortran
 
@@ -35,6 +35,7 @@ COMPILING
 Before you can run calconv, you will need to compile the Fortran code. In the command line, navigate to the folder where you unpacked the source code (which should be the one containing this Readme file) and type the following:
 
     f2py3 -c sunmoon.f90 -m sunmoon
+    f2py3 -c zodiac.f90 -m zodiac
 
 (This only needs to be done once; however, if Python is updated to a new version number, it can break compatibility with binary code, and so a recompile will be necessary)
 
