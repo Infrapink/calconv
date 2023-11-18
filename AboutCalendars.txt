@@ -1598,26 +1598,32 @@ Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
 * https://en.wikipedia.org/wiki/Hindu_calendar
 
---------------------------
-SIDDHANTIC SOLAR CALENDARS
---------------------------
+----------------------------------
+TRADITIONAL INDIAN SOLAR CALENDARS
+----------------------------------
 
-The more recent Hindu solar calendars are based on algorithms written in the Sūrya Siddhānta, published in around 922 SE (1000 AD, 478 AH).
+The more recent Hindu solar calendars are based on algorithms written in the Sūrya Siddhānta, published in around 400 SE (c 500 AD, 100 BH).
 
-The modern solar calendar is a sidereal calendar, in which a year is defined as the calculated time it takes the sun to completely traverse the zodiac. Each solar month, or raśi, lasts for as long as the calculated time for the sun to traverse 1/12 of the zodiac, or 30° of sky; the names of the raśi roughly correspond to the constellations, but the actual constellations overlap the segments of sky to which they give their names. The beginning of the year is the point on the zodiac corresponding to the northward equinox of 922 SE, when the Sūrya Siddhānta was first published.
+The modern solar calendar is a sidereal calendar, in which a year is defined as the calculated time it takes the sun to completely traverse the zodiac. Each solar month, or raśi, lasts for as long as the calculated time for the sun to traverse 1/12 of the zodiac, or 30° of sky; the names of the raśi correspond to the constellations, but only roughly correspond to the actual locations of the constellations. The beginning of the year is the point on the zodiac corresponding to the northward equinox when the Sūrya Siddhānta was first published.
 
-The Sūrya Siddhānta describes an epicyclic model of the solar system, in which the sun, moon, and planets all orbit Earth, and as they do they occasionally trace out circles around their overall orbits to account for when they enter retrograde. Even the sun and the moon have associated epicycles, albeit small ones, which account for the fact that their speed relative to Earth changes throughout their orbits. This model appears to have originally been learned from Greece; while the Greeks believed the epicyclic model was a real description of reality, the Hindus assumed it was merely a mathematical technique that gave the right answer, and that in reality the planets sometimes sped up, slowed down, and occasionally moved backwards. The Sūrya Siddhānta's algorithms employ those epicycles in elaborate and complex schemes to correct for the true positions of the sun and the moon; for most of history, Indian astronomers used lookup tables derived from the algorithms because the actual process is incredibly long and fiddly, but since this is exactly why computers were invented, calconv uses the actual algorithms.
+The Sūrya Siddhānta describes a geocentric model of the solar system, in which the sun, moon, and planets all orbit Earth. As they do so, they trace out epicycles, which accounts for the variable speeds and occasional retrogression of celestial bodies. Of note, the epicycles of the sun, moon, and planets progress according to the anomalistic year and not the sidereal (or even tropical) year; as such, this makes it a very basic [Fourier transform](https://en.wikipedia.org/wiki/Fourier_transform) to represent the ellipses that the planets actually move in.
 
-Notably, the Surya Siddhanta contains the earliest known descriptions of the jya, koti-jya, and utkrama-jya functions, which are the ancestors of the sine, cosine, and versine functions. Jyas are important in the calculations presented, and so a description is in order. The jya gives the length of a line drawn from one point of an arc perpendicular to a radius intersecting another point on that same arc. This is hard to describe with just words, but when you see it drawn geometrically, it is immediately obvious that if an angle θ subtends an arc AB of a circle with radius r, then jya(AB) == r*sin(θ). The Surya Siddhanta gives the jyas for various angles in increments of 1/24 of a right angle on a circle of radius 3438 units, with interpolation used for intermediate angles. Since jya is a function of the length of an arc, I have opted to define it such that any jya(x) will always return a positive value; hence, the sine and related functions used in this implementation of Dershowitz and Reingold's algorithm will also always return a value between 0 and 1, unlike the modern understanding sines, which can have a value down to (-1).
+Based on certain technical terms' resemblence to Greek works (specifically, कॅड्नअ is a loanword from the Greek χενδρος) the model appears to have originally been learned from the Greeks; while the Greeks believed the epicyclic model was a real description of reality, the Indians assumed it was merely a mathematical technique that gave the right answer, and that the planets really did sometimes speed up, slow down, and occasionally move backwards. The Sūrya Siddhānta's algorithms employ those epicycles in elaborate and complex schemes to correct for the true positions of the sun and the moon; for most of history, Indian astronomers used lookup tables derived from the algorithms because the actual process is incredibly long and fiddly, but since this is exactly why computers were invented, calconv uses the actual algorithms.
 
-The precession of the equinoxes was known when the Surya Siddhanta was published, and is even described therein, but is not accounted for in the calendars.
+Notably, the Surya Siddhanta contains the earliest known descriptions of the jya, koti-jya, and utkrama-jya functions, which are the ancestors of the sine, cosine, and versine functions. Jyas are important in the calculations presented, and so a description is in order. The jya gives the length of a line drawn from one point of an arc perpendicular to a radius intersecting another point on that same arc. This is hard to describe with just words, but when you see it drawn geometrically, it is immediately obvious that if an angle θ subtends an arc AB of a circle with radius r, then jya(AB) == r×sin(θ). The Sūrya Siddhānta gives the jyas for various angles in increments of 1/24 of a right angle on a circle of radius 3438 units, with interpolation used for intermediate angles. Since jya is a function of the length of an arc, I have opted to define it such that any jya(x) will always return a positive value; hence, the sine and related functions used in this implementation will also always return a value between 0 and 1, unlike the modern understanding of sines, which can have a value down to (-1).
 
-This program uses employs two understandings of the solar cycle, based on different understandings of the anomalistic year, the value of which is given as 365 + 1259083/4319613 days. In the so-called naïve version of the algorithm, it is assumed that the anomalistic year is independent of the sidereal year, and that the sun's nodes traverse the sky independently of the zodiac; this is taken into account when calculating the sun's position, which is done in the same was as the moon in the lunisolar calendar. In the Spaśta version, based on a more careful reading of Ebeneezer Burgess' commentary, the value of the anomalistic year is ignored, and the solar nodes are assumed to occupy fixed positions in the zodiac.
+Extant editions descibe the precession of the equinoxes, but as Burgess notes, the awkward placement and description of the phenomenon suggests it was not present in the earliest versions, and was instead interpolated in two parts at later dates, possibly in order to incorporate Roman astronomical knowledge. The calendar is sidereal, and as such the precession of the equinoxes is only used to determine the sun's true declination, which is used to determine the times of sunrise and sunset. A careful reading of the description of the precession shows that the Indians imagined it a librational system; in other words, rather than the equinoxes gradually moving backward through the zodiac, the zodiac osicallates about the equinoxes such that, over the course of a kalpa, the tropical and sidereal years work out the same. It also advises the astronomer to use a sundial to determine the days of the equinoxes and the direction of precession, and indeed the language suggests that at one point, it described a constant rate and direction of precession rather than a libration. Nonetheless, I have gone with a librational algorithm, because that is what the siddhānta describes.
+
+Days begin at sunrise. The mean sidereal year lasts 365+279457/1080000 days, and a mean month is 1/12 of that. Month start on the day that the sun rises in their corresponding raśi.
 
 Sources:
-* Surya Siddhanta, chapters 1–3; see https://archive.org/details/SuryaSiddhantaTranslation/mode/2up
-* Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20.
+* Surya Siddhanta, chapters 1–3; see:
+** https://archive.org/details/SuryaSiddhantaTranslation/mode/2up
+** https://archive.org/details/suryasiddhantaandsiddhantasiromanibimalaprasadsidhhnatasarasvatidanvirgoswamyiskon_202003_23_r
+** https://archive.org/details/suryasiddhantaenglishtranslationlancelotwilkinsonbapudevasastri1861_727_C
 * https://en.wikipedia.org/wiki/Jy%C4%81,_koti-jy%C4%81_and_utkrama-jy%C4%81
+
+DO NOT SEE Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20. Because Reingold and Dershowitz are idiots with no idea what they're talking about and don't understand what they're reading.
 
 ------------------------------
 SIDDHANTIC LUNISOLAR CALENDARS
@@ -1634,3 +1640,28 @@ Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20.
 * https://en.wikipedia.org/wiki/Jy%C4%81,_koti-jy%C4%81_and_utkrama-jy%C4%81
 
+---------------------------------
+CALIBRATED INDIAN SOLAR CALENDARS
+---------------------------------
+
+The calibrated Indian solar calendars are sidereal calendars basd on the Sūrya Siddhānta, but which are periodically adjusted to keep the time of Meṣa Saṃkranti approximately in sync with the sun's opposition to Spica. These were tricky to work out, since every source agrees that Meṣa Saṃkranti falls on 14 April in the Gregrorian calendar, but my computations kept giving a date of 12 April, which does agree with observations. In the end, I looked up various Indian sources, most of which agreed that the sun officially entered Meṣa at 15:12 Indian time on 14 April 2023 AD, at which time the sun was approximately 1.78° past opposition with Spica. As such, I chose this relative angle as the zero-point of the zodiac and based all other calculations on that.
+
+Of course, the Siddhāntic method also gives the wrong answer for the date of Sūrya Siddānta, placing it on 17 April 2023 AD (which is the current date of solar new year in several traditional southeast Asian calendars). To get the dates of the months right, I found the difference between the observed and traditionally-calculated times of Meṣa Saṃkranti; all dates are calculated according to the Sūrya Siddhānta and subtracting the difference. This still gives the wrong answer for the date of Tulā Saṃkranti, but I just attribute that to the Sūrya Siddānta having built up inaccuracies over the centuries.
+
+This set of calendars are not themselves used anywhere in India, but the Bengali solar calendar is based on it.
+
+Sources:
+• Sūrya Siddānta, ch 1–3 (translated by Ebeneezer Burgess)
+• 1955 Report of the Indian Calendar Reform Committee
+• https://www.indiatoday.in/information/story/mesha-sankranti-2023-date-time-significance-and-all-you-need-to-know-2359839-2023-04-14
+• https://www.jagranjosh.com/general-knowledge/solar-new-year-or-mesha-sankranti-1681443910-1
+• https://blog.devdarshanapp.com/festivals/mesha-sankranti/
+• https://www.prokerala.com/festivals/tula-sankranti.html
+• https://www.mpanchang.com/vrats/sankranti/?date=2023
+• https://en.wikipedia.org/wiki/Mesha_Sankranti
+• https://en.wikipedia.org/wiki/Indian_New_Year%27s_days
+• https://planetcalc.com/9166/
+• https://timesofindia.indiatimes.com/religion/festivals/mesha-sankranti-2021-date-time-and-significance/articleshow/82060121.cms
+• https://www.ganeshaspeaks.com/festival-calendars/information/mesha-sankranti/
+• https://www.news18.com/news/lifestyle/mesha-sankranti-2022-rituals-importance-and-all-you-need-to-know-about-the-solar-new-year-4977763.html
+• https://www.prokerala.com/festivals/mesha-sankranti.html

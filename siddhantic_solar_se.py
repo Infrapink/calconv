@@ -1,63 +1,76 @@
 #!/usr/bin/python
 
-# Convert between the True Hindu solar calendar and Julian Day
+# Convert between the tradition Indian solar calendar and Julian Day, dating from Śaka Era, using methods described in the Sūrya Siddhānta
 
-from math import floor, ceil
+# When reading the comments, Indian days run from sunrise to sunrise, and Roman days run from midnight to midnight.
+
 from fractions import Fraction
-from months import NUM_HINDU as NUMON
-from months import HINDU_NUM as MONTHNO
-from hindu_functions import uj_lon as lon
-from hindu_functions import uj_lat as lat
-from hindu_functions import sunrise, creation, sid_year, ztime, rasi
-from hindu_functions import se as epoch
+from math import floor, ceil
+from surya_siddhanta import se as epoch, sunrise, sunset, sankranti, t_sid_year as sid_year, t_rasi as rasi
+from months import INDIAN_SOLAR_NUM as MONTHNO, NUM_INDIAN_SOLAR as NUMON
 
-def suncheck(jday):
-    '''Check if a given instant is before or after sunrise'''
+def dayof(jday):
+    # In traditional Indian reckoning, the days begins at sunrise.
+    # Also, zodiacal months are determined by the sign in which the sun is present at sunrise
+    # Hence, if an astronomical event (which for the purpose of this file will always be a Saṁkrānti)
+    # happens after midnight but before sunrise,
+    # the Roman day beginning with that midnight marks the start of the month.
+    # Otherwise, the month starts on the day of the sunrise following the next midnight.
     jday = Fraction(jday)
-    dawn = sunrise(jday, lat) # instant of sunrise
-    if dawn >= jday:
+    #print(float(sunrise(jday)))
+
+    if (sunrise(jday) <= jday):
+        # event happens before sunrise, hence the period it indicates is the current Roman day
         ans = floor(jday)
     else:
+        # event happens after sunrise, hence the period it indicates is the next Roman day.
         ans = ceil(jday)
+
     return ans
 
 def fromjd(jday):
-    '''Convert a Julian Day into a date in the True Hindu solar calendar'''
-    jday = Fraction(jday) # Julian Day in question
+    '''Convert a Julian Day into a date in the traditional Indian solar calendar, dating from the Śaka'''
+    jday = Fraction(jday) # Julian Day we are interested in
 
+    # compute the year
     year = (jday - epoch) // sid_year
-    sankranti = epoch + (year * sid_year) # approximate time the sun enters crosses Revati
-
-    while suncheck(ztime(sankranti, 0)) > jday:
-        sankranti -= sid_year
-        year -= 1
-    while suncheck(ztime(sankranti + sid_year, 0)) <= jday:
-        sankranti += sid_year
+    mesha = epoch + (year * sid_year) # estimated time of Meṣa Saṁkrānti
+    while (dayof(sankranti((mesha + sid_year), 0)) <= jday):
+        mesha += sid_year
         year += 1
-    m = (jday - sankranti) // rasi # month number
+        #print(float(sunrise(mesha)))
+    while (dayof(sankranti(mesha, 0)) > jday):
+        mesha -= sid_year
+        year -= 1
+        #print(float(sunrise(mesha)))
 
-    while suncheck(ztime(sankranti + (m * rasi), (m * 30))) > jday:
-        m -= 1            
-    while suncheck(ztime(sankranti + ((m + 1) * rasi), ((m + 1) * 30))) <= jday:
-        m += 1        
+    #print(float((jday - mesha) / sid_year))
 
+    # compute the month
+    cigra = (jday - sankranti(mesha, 0)) // rasi # number of the zodiacal month, starting from 0
+    angle = cigra * 30 # solar zodiacal longitude, in degrees
+    while (dayof(sankranti(mesha + ((cigra + 1) * rasi), (angle + 30))) <= jday):
+        #print(cigra)
+        cigra += 1
+        angle += 30
+    while (dayof(sankranti(mesha, angle)) > jday):
+        cigra -= 1
+        angle -= 30
+    month = MONTHNO[cigra]
 
-    month = NUMON[m]
-    mu = suncheck(ztime(sankranti + (m * rasi), (m * 30)))
-    day = jday - mu + 1
+    # compute the day
+    day = jday - dayof(sankranti((mesha + (rasi * cigra)), angle)) + 1
 
     return (day, month, year)
 
 def tojd(day, month, year):
-    '''Convert a date in the True Hindu solar calendar into a Julian Day'''
+    '''Convert a date in the traditional Indian solar calendar (Śaka) into a Julian Day'''
     day = int(day)
     month = str(month)
     year = int(year)
 
-    m = MONTHNO[month] # month number
+    cigra = NUMON[month] # number of the month, starting from 0
+    angle = 30 * cigra # zodiacal angle at which the month begins
 
-    jday = epoch + (year * sid_year)
-    jday = jday + (m * rasi)
-    jday = suncheck(ztime(jday, (m * 30))) + day - 1
-
+    jday = dayof(sankranti((epoch + (year * sid_year) + (cigra * rasi)), angle)) + day - 1
     return jday

@@ -632,7 +632,22 @@ Sogdian calendar:
 * Xshūmic
 * Extra days
 
-Indian and Hindu calendars:
+Indian solar calendars:
+-----------------------
+* Meṣa
+* Vṛṣabha
+* Mithuna
+* Karkaṭa
+* Siṃha
+* Kanyā
+* Tulā
+* Vṛścika
+* Dhanu
+* Makara
+* Kumbha
+* Mīna
+
+Indian lunisolar calendars:
 ---------------------------
 
 * Chaitra
