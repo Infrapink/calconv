@@ -4,8 +4,8 @@
 
 from math import floor, ceil
 from fractions import Fraction
-from months import NUM_HINDU as NUMON
-from months import HINDU_NUM as MONTHNO
+from months import NUM_INDIAN_SOLAR as MONTHNO
+from months import INDIAN_SOLAR_NUM as NUMON
 
 epoch = 1701044 + Fraction(55,288)
 sid_year = 365 + Fraction(149,576) # mean sidereal year

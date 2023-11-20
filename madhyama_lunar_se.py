@@ -4,8 +4,8 @@
 
 from math import floor, ceil
 from fractions import Fraction
-from months import NUM_HINDU as NUMON
-from months import HINDU_NUM as MONTHNO
+from months import NUM_INDIAN_LUNAR as MONTHNO
+from months import INDIAN_LUNAR_NUM as NUMON
 
 solar_epoch = 1749623 + Fraction(343, 576) # in Julian Days
 sid_year = 365 + Fraction(149,576) # mean sidereal year

@@ -353,10 +353,12 @@ def newmoon(jday):
         while ((phase(jday) >= 180) and (phase(jday + Fraction(1, (60 ** p)) > phase(jday)))):
             jday += Fraction(1, (60 ** p))
             if (phase(jday) == 0):
+                p = 4
                 break
         while ((phase(jday) < 180) and (phase(jday - Fraction(1, (60 ** p)) < phase(jday)))):
             jday -= Fraction(1, (60 ** p))
             if (phase(jday) == 0):
+                p = 4
                 break
         p += 1
     return jday
@@ -374,6 +376,28 @@ def fullmoon(jday):
             jday -= Fraction(1, (60 ** p))
         p += 1
     return jday
+
+def phasetime(jday, angle):
+    '''Zero in on the time of a given angle between the sun and the moon'''
+    jday = Fraction(jday) # time we start with. find the time closest to jday when the angle between the sun and the moon is equal to angle.
+    angle = Fraction(angle) # desired angle between the sun and the moon
+
+    p = 0
+    while (p < 4):
+        f = Fraction(1, (60 ** p))
+        while (phase(jday + f) <= angle):
+            #print("Sweet")
+            #print(float(phase(jday)), float(angle))
+            jday += f
+        while (phase(jday - f) >= angle):
+            #print("Dude")
+            #print(float(phase(jday)), float(angle))
+            jday -= f
+        p += 1
+    return jday
+
+    return jday
+        
 
 def sankranti(jday, angle):
     '''Compute the time the sun hits a given zodiacal angle'''

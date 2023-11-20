@@ -135,15 +135,18 @@ import madhyama_lunar_se
 import siddhantic_solar_ky
 import siddhantic_solar_se
 import siddhantic_solar_vs
-import nsidd_solar_ky
-import nsidd_solar_se
-import nsidd_solar_vs
+import siddhantic_lunisolar_ky
+import siddhantic_lunisolar_se
+import siddhantic_lunisolar_vs
 import nsidd_lunar_ky
 import nsidd_lunar_se
 import nsidd_lunar_vs
 import siddhantic_lunar_ky
 import siddhantic_lunar_se
 import siddhantic_lunar_vs
+import cal_indian_solar_ky
+import cal_indian_solar_se
+import cal_indian_solar_vs
 
 
 def cons_day_julian_todate():
@@ -1391,7 +1394,7 @@ def cons_day_julian_todate():
         madhyama_lunar_se_month_ent.insert(0, madhyama_lunar_se_date[1])
         madhyama_lunar_se_year_ent.insert(0, madhyama_lunar_se_date[2])
 
-        # Convert a Julian day to a date in the Siddhantic solar calendar (Kali Yuga) calendar
+        # Convert a Julian day to a date in the traditional Indian solar calendar (Kali Yuga)
         siddhantic_solar_ky_date = siddhantic_solar_ky.fromjd(day)
         siddhantic_solar_ky_day_ent.delete(0, END)
         siddhantic_solar_ky_month_ent.delete(0, END)
@@ -1400,7 +1403,7 @@ def cons_day_julian_todate():
         siddhantic_solar_ky_month_ent.insert(0, siddhantic_solar_ky_date[1])
         siddhantic_solar_ky_year_ent.insert(0, siddhantic_solar_ky_date[2])
 
-        # Convert a Julian day to a date in the Siddhantic solar calendar (Saka Era) calendar
+        # Convert a Julian day to a date in the traditional Indian solar calendar (Saka Era)
         siddhantic_solar_se_date = siddhantic_solar_se.fromjd(day)
         siddhantic_solar_se_day_ent.delete(0, END)
         siddhantic_solar_se_month_ent.delete(0, END)
@@ -1409,7 +1412,7 @@ def cons_day_julian_todate():
         siddhantic_solar_se_month_ent.insert(0, siddhantic_solar_se_date[1])
         siddhantic_solar_se_year_ent.insert(0, siddhantic_solar_se_date[2])
 
-        # Convert a Julian day to a date in the Siddhantic solar calendar (Vikram Samvat) calendar
+        # Convert a Julian day to a date in the traditional Indian solar calendar (Vikram Samvat)
         siddhantic_solar_vs_date = siddhantic_solar_vs.fromjd(day)
         siddhantic_solar_vs_day_ent.delete(0, END)
         siddhantic_solar_vs_month_ent.delete(0, END)
@@ -1418,32 +1421,32 @@ def cons_day_julian_todate():
         siddhantic_solar_vs_month_ent.insert(0, siddhantic_solar_vs_date[1])
         siddhantic_solar_vs_year_ent.insert(0, siddhantic_solar_vs_date[2])        
 
-	# Convert a Julian day to a date in the Naïve Siddhantic solar calendar (Kali Yuga)
-        nsidd_solar_ky_date = nsidd_solar_ky.fromjd(day)
-        nsidd_solar_ky_day_ent.delete(0, END)
-        nsidd_solar_ky_month_ent.delete(0, END)
-        nsidd_solar_ky_year_ent.delete(0, END)
-        nsidd_solar_ky_day_ent.insert(0, nsidd_solar_ky_date[0])
-        nsidd_solar_ky_month_ent.insert(0, nsidd_solar_ky_date[1])
-        nsidd_solar_ky_year_ent.insert(0, nsidd_solar_ky_date[2])
+	# Convert a Julian day to a date in the traditional Indian lunicalendar (Kali Yuga)
+        siddhantic_lunisolar_ky_date = siddhantic_lunisolar_ky.fromjd(day)
+        siddhantic_lunisolar_ky_day_ent.delete(0, END)
+        siddhantic_lunisolar_ky_month_ent.delete(0, END)
+        siddhantic_lunisolar_ky_year_ent.delete(0, END)
+        siddhantic_lunisolar_ky_day_ent.insert(0, siddhantic_lunisolar_ky_date[0])
+        siddhantic_lunisolar_ky_month_ent.insert(0, siddhantic_lunisolar_ky_date[1])
+        siddhantic_lunisolar_ky_year_ent.insert(0, siddhantic_lunisolar_ky_date[2])
 
-        # Convert a Julian day to a date in the Naïve Siddhantic solar calendar (Ṡaka Era)
-        nsidd_solar_se_date = nsidd_solar_se.fromjd(day)
-        nsidd_solar_se_day_ent.delete(0, END)
-        nsidd_solar_se_month_ent.delete(0, END)
-        nsidd_solar_se_year_ent.delete(0, END)
-        nsidd_solar_se_day_ent.insert(0, nsidd_solar_se_date[0])
-        nsidd_solar_se_month_ent.insert(0, nsidd_solar_se_date[1])
-        nsidd_solar_se_year_ent.insert(0, nsidd_solar_se_date[2])
+        # Convert a Julian day to a date in the traditional Indian lunisolar calendar (Ṡaka Era)
+        siddhantic_lunisolar_se_date = siddhantic_lunisolar_se.fromjd(day)
+        siddhantic_lunisolar_se_day_ent.delete(0, END)
+        siddhantic_lunisolar_se_month_ent.delete(0, END)
+        siddhantic_lunisolar_se_year_ent.delete(0, END)
+        siddhantic_lunisolar_se_day_ent.insert(0, siddhantic_lunisolar_se_date[0])
+        siddhantic_lunisolar_se_month_ent.insert(0, siddhantic_lunisolar_se_date[1])
+        siddhantic_lunisolar_se_year_ent.insert(0, siddhantic_lunisolar_se_date[2])
 
-        # Convert a Julian day to a date in the Naïve Siddhantic solar calendar (Vikram Samvat)
-        nsidd_solar_vs_date = nsidd_solar_vs.fromjd(day)
-        nsidd_solar_vs_day_ent.delete(0, END)
-        nsidd_solar_vs_month_ent.delete(0, END)
-        nsidd_solar_vs_year_ent.delete(0, END)
-        nsidd_solar_vs_day_ent.insert(0, nsidd_solar_vs_date[0])
-        nsidd_solar_vs_month_ent.insert(0, nsidd_solar_vs_date[1])
-        nsidd_solar_vs_year_ent.insert(0, nsidd_solar_vs_date[2])
+        # Convert a Julian day to a date in the traditional Indian lunisolar calendar (Vikram Samvat)
+        siddhantic_lunisolar_vs_date = siddhantic_lunisolar_vs.fromjd(day)
+        siddhantic_lunisolar_vs_day_ent.delete(0, END)
+        siddhantic_lunisolar_vs_month_ent.delete(0, END)
+        siddhantic_lunisolar_vs_year_ent.delete(0, END)
+        siddhantic_lunisolar_vs_day_ent.insert(0, siddhantic_lunisolar_vs_date[0])
+        siddhantic_lunisolar_vs_month_ent.insert(0, siddhantic_lunisolar_vs_date[1])
+        siddhantic_lunisolar_vs_year_ent.insert(0, siddhantic_lunisolar_vs_date[2])
 
        # Convert a Julian day to a date in the Naïve Siddhantic lunisolar calendar (Kali Yuga)
         nsidd_lunar_ky_date = nsidd_lunar_ky.fromjd(day)
@@ -1498,6 +1501,33 @@ def cons_day_julian_todate():
         siddhantic_lunar_vs_day_ent.insert(0, siddhantic_lunar_vs_date[0])
         siddhantic_lunar_vs_month_ent.insert(0, siddhantic_lunar_vs_date[1])
         siddhantic_lunar_vs_year_ent.insert(0, siddhantic_lunar_vs_date[2])
+
+        # Convert a Julian day to a date in the Calibrated Indian solar calendar (Kali Yuga) calendar
+        cal_indian_solar_ky_date = cal_indian_solar_ky.fromjd(day)
+        cal_indian_solar_ky_day_ent.delete(0, END)
+        cal_indian_solar_ky_month_ent.delete(0, END)
+        cal_indian_solar_ky_year_ent.delete(0, END)
+        cal_indian_solar_ky_day_ent.insert(0, cal_indian_solar_ky_date[0])
+        cal_indian_solar_ky_month_ent.insert(0, cal_indian_solar_ky_date[1])
+        cal_indian_solar_ky_year_ent.insert(0, cal_indian_solar_ky_date[2])
+
+        # Convert a Julian day to a date in the Calibrated Indian solar calendar (Śaka Era) calendar
+        cal_indian_solar_se_date = cal_indian_solar_se.fromjd(day)
+        cal_indian_solar_se_day_ent.delete(0, END)
+        cal_indian_solar_se_month_ent.delete(0, END)
+        cal_indian_solar_se_year_ent.delete(0, END)
+        cal_indian_solar_se_day_ent.insert(0, cal_indian_solar_se_date[0])
+        cal_indian_solar_se_month_ent.insert(0, cal_indian_solar_se_date[1])
+        cal_indian_solar_se_year_ent.insert(0, cal_indian_solar_se_date[2])
+
+        # Convert a Julian day to a date in the Calibrated Indian solar calendar (Vikram Samvat) calendar
+        cal_indian_solar_vs_date = cal_indian_solar_vs.fromjd(day)
+        cal_indian_solar_vs_day_ent.delete(0, END)
+        cal_indian_solar_vs_month_ent.delete(0, END)
+        cal_indian_solar_vs_year_ent.delete(0, END)
+        cal_indian_solar_vs_day_ent.insert(0, cal_indian_solar_vs_date[0])
+        cal_indian_solar_vs_month_ent.insert(0, cal_indian_solar_vs_date[1])
+        cal_indian_solar_vs_year_ent.insert(0, cal_indian_solar_vs_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2794,29 +2824,29 @@ def siddhantic_solar_vs_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def nsidd_solar_ky_converter():
-        day = int(nsidd_solar_ky_day_ent.get())
-        month = nsidd_solar_ky_month_ent.get()
-        year = int(nsidd_solar_ky_year_ent.get())
-        jday = nsidd_solar_ky.tojd(day, month, year)
+def siddhantic_lunisolar_ky_converter():
+        day = int(siddhantic_lunisolar_ky_day_ent.get())
+        month = siddhantic_lunisolar_ky_month_ent.get()
+        year = int(siddhantic_lunisolar_ky_year_ent.get())
+        jday = siddhantic_lunisolar_ky.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def nsidd_solar_se_converter():
-        day = int(nsidd_solar_se_day_ent.get())
-        month = nsidd_solar_se_month_ent.get()
-        year = int(nsidd_solar_se_year_ent.get())
-        jday = nsidd_solar_se.tojd(day, month, year)
+def siddhantic_lunisolar_se_converter():
+        day = int(siddhantic_lunisolar_se_day_ent.get())
+        month = siddhantic_lunisolar_se_month_ent.get()
+        year = int(siddhantic_lunisolar_se_year_ent.get())
+        jday = siddhantic_lunisolar_se.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def nsidd_solar_vs_converter():
-        day = int(nsidd_solar_vs_day_ent.get())
-        month = nsidd_solar_vs_month_ent.get()
-        year = int(nsidd_solar_vs_year_ent.get())
-        jday = nsidd_solar_vs.tojd(day, month, year)
+def siddhantic_lunisolar_vs_converter():
+        day = int(siddhantic_lunisolar_vs_day_ent.get())
+        month = siddhantic_lunisolar_vs_month_ent.get()
+        year = int(siddhantic_lunisolar_vs_year_ent.get())
+        jday = siddhantic_lunisolar_vs.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -2871,6 +2901,33 @@ def siddhantic_lunar_vs_converter():
         month = siddhantic_lunar_vs_month_ent.get()
         year = int(siddhantic_lunar_vs_year_ent.get())
         jday = siddhantic_lunar_vs.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def cal_indian_solar_ky_converter():
+        day = int(cal_indian_solar_ky_day_ent.get())
+        month = cal_indian_solar_ky_month_ent.get()
+        year = int(cal_indian_solar_ky_year_ent.get())
+        jday = cal_indian_solar_ky.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def cal_indian_solar_se_converter():
+        day = int(cal_indian_solar_se_day_ent.get())
+        month = cal_indian_solar_se_month_ent.get()
+        year = int(cal_indian_solar_se_year_ent.get())
+        jday = cal_indian_solar_se.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def cal_indian_solar_vs_converter():
+        day = int(cal_indian_solar_vs_day_ent.get())
+        month = cal_indian_solar_vs_month_ent.get()
+        year = int(cal_indian_solar_vs_year_ent.get())
+        jday = cal_indian_solar_vs.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4631,8 +4688,8 @@ madhyama_lunar_se_year_ent = Entry(frame)
 madhyama_lunar_se_year_ent.grid(row = 130, column = 8, sticky = W)
 madhyama_lunar_se_bttn = Button(frame, text = "Calculate", command = madhyama_lunar_se_converter).grid(row = 131, column = 6, columnspan = 3, sticky = W)
 
-# Spaśta Siddhantic solar calendar (Kali Yuga)                                                                                        
-siddhantic_solar_ky_lbl = Label(frame, text = "Spaśta Siddhantic solar calendar (Kali Yuga)").grid(row = 133, column = 0, columnspan = 3, sticky = W)
+# Traditional Indian solar calendar (Kali Yuga)                                                                                        
+siddhantic_solar_ky_lbl = Label(frame, text = "Traditional Indian solar calendar (Kali Yuga)").grid(row = 133, column = 0, columnspan = 3, sticky = W)
 siddhantic_solar_ky_day_lbl = Label(frame, text = "Day").grid(row = 134, column = 0, sticky = W)
 siddhantic_solar_ky_day_ent = Entry(frame)
 siddhantic_solar_ky_day_ent.grid(row = 135, column = 0, sticky = W)
@@ -4644,8 +4701,8 @@ siddhantic_solar_ky_year_ent = Entry(frame)
 siddhantic_solar_ky_year_ent.grid(row = 135, column = 2, sticky = W)
 siddhantic_solar_ky_bttn = Button(frame, text = "Calculate", command = siddhantic_solar_ky_converter).grid(row = 136, column = 0, columnspan = 3, sticky = W)
 
-# Spaśta Siddhantic solar calendar (Saka Era)                                                                                       
-siddhantic_solar_se_lbl = Label(frame, text = "Spaśta Siddhantic solar calendar (Shaka Era)").grid(row = 133, column = 3, columnspan = 3, sticky = W)
+# Traditional Indian solar calendar (Saka Era)                                                                                       
+siddhantic_solar_se_lbl = Label(frame, text = "Traditional Indian solar calendar (Śaka Era)").grid(row = 133, column = 3, columnspan = 3, sticky = W)
 siddhantic_solar_se_day_lbl = Label(frame, text = "Day").grid(row = 134, column = 3, sticky = W)
 siddhantic_solar_se_day_ent = Entry(frame)
 siddhantic_solar_se_day_ent.grid(row = 135, column = 3, sticky = W)
@@ -4657,8 +4714,8 @@ siddhantic_solar_se_year_ent = Entry(frame)
 siddhantic_solar_se_year_ent.grid(row = 135, column = 5, sticky = W)
 siddhantic_solar_se_bttn = Button(frame, text = "Calculate", command = siddhantic_solar_se_converter).grid(row = 136, column = 3, columnspan = 3, sticky = W)
 
-# Spaśta Siddhantic solar calendar (Vikram Samvat)                                                                                        
-siddhantic_solar_vs_lbl = Label(frame, text = "Spaśta Siddhantic solar calendar (Vikram Samvat)").grid(row = 133, column = 6, columnspan = 3, sticky = W)
+# Traditional Indian solar calendar (Vikram Samvat)                                                                                        
+siddhantic_solar_vs_lbl = Label(frame, text = "Traditional Indian solar calendar (Vikram Samvat)").grid(row = 133, column = 6, columnspan = 3, sticky = W)
 siddhantic_solar_vs_day_lbl = Label(frame, text = "Day").grid(row = 134, column = 6, sticky = W)
 siddhantic_solar_vs_day_ent = Entry(frame)
 siddhantic_solar_vs_day_ent.grid(row = 135, column = 6, sticky = W)
@@ -4670,44 +4727,44 @@ siddhantic_solar_vs_year_ent = Entry(frame)
 siddhantic_solar_vs_year_ent.grid(row = 135, column = 8, sticky = W)
 siddhantic_solar_vs_bttn = Button(frame, text = "Calculate", command = siddhantic_solar_vs_converter).grid(row = 136, column = 6, columnspan = 3, sticky = W)
 
-# Naïve Siddhantic solar calendar (Kali Yuga)                                                                                            
-nsidd_solar_ky_lbl = Label(frame, text = "Naïve Siddhantic solar calendar (Kali Yuga)").grid(row = 138, column = 0, columnspan = 3, sticky = W)
-nsidd_solar_ky_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 0, sticky = W)
-nsidd_solar_ky_day_ent = Entry(frame)
-nsidd_solar_ky_day_ent.grid(row = 140, column = 0, sticky = W)
-nsidd_solar_ky_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 1, sticky = W)
-nsidd_solar_ky_month_ent = Entry(frame)
-nsidd_solar_ky_month_ent.grid(row = 140, column = 1, sticky = W)
-nsidd_solar_ky_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 2, sticky = W)
-nsidd_solar_ky_year_ent = Entry(frame)
-nsidd_solar_ky_year_ent.grid(row = 140, column = 2, sticky = W)
-nsidd_solar_ky_bttn = Button(frame, text = "Calculate", command = nsidd_solar_ky_converter).grid(row = 141, column = 0, columnspan = 3, sticky = W)
+# Traditional Indian lunisolar calendar (Kali Yuga)                                                                                            
+siddhantic_lunisolar_ky_lbl = Label(frame, text = "Naïve Siddhantic solar calendar (Kali Yuga)").grid(row = 138, column = 0, columnspan = 3, sticky = W)
+siddhantic_lunisolar_ky_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 0, sticky = W)
+siddhantic_lunisolar_ky_day_ent = Entry(frame)
+siddhantic_lunisolar_ky_day_ent.grid(row = 140, column = 0, sticky = W)
+siddhantic_lunisolar_ky_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 1, sticky = W)
+siddhantic_lunisolar_ky_month_ent = Entry(frame)
+siddhantic_lunisolar_ky_month_ent.grid(row = 140, column = 1, sticky = W)
+siddhantic_lunisolar_ky_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 2, sticky = W)
+siddhantic_lunisolar_ky_year_ent = Entry(frame)
+siddhantic_lunisolar_ky_year_ent.grid(row = 140, column = 2, sticky = W)
+siddhantic_lunisolar_ky_bttn = Button(frame, text = "Calculate", command = siddhantic_lunisolar_ky_converter).grid(row = 141, column = 0, columnspan = 3, sticky = W)
 
-# Naïve Siddhantic solar calendar (Ṡaka Era)                                                                                            
-nsidd_solar_se_lbl = Label(frame, text = "Naïve Siddhantic solar calendar (Ṡaka Era)").grid(row = 138, column = 3, columnspan = 3, sticky = W)
-nsidd_solar_se_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 3, sticky = W)
-nsidd_solar_se_day_ent = Entry(frame)
-nsidd_solar_se_day_ent.grid(row = 140, column = 3, sticky = W)
-nsidd_solar_se_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 4, sticky = W)
-nsidd_solar_se_month_ent = Entry(frame)
-nsidd_solar_se_month_ent.grid(row = 140, column = 4, sticky = W)
-nsidd_solar_se_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 5, sticky = W)
-nsidd_solar_se_year_ent = Entry(frame)
-nsidd_solar_se_year_ent.grid(row = 140, column = 5, sticky = W)
-nsidd_solar_se_bttn = Button(frame, text = "Calculate", command = nsidd_solar_se_converter).grid(row = 141, column = 3, columnspan = 3, sticky = W)
+# Traditional Indian lunisolar calendar (Ṡaka Era)                                                                                            
+siddhantic_lunisolar_se_lbl = Label(frame, text = "Naïve Siddhantic solar calendar (Ṡaka Era)").grid(row = 138, column = 3, columnspan = 3, sticky = W)
+siddhantic_lunisolar_se_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 3, sticky = W)
+siddhantic_lunisolar_se_day_ent = Entry(frame)
+siddhantic_lunisolar_se_day_ent.grid(row = 140, column = 3, sticky = W)
+siddhantic_lunisolar_se_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 4, sticky = W)
+siddhantic_lunisolar_se_month_ent = Entry(frame)
+siddhantic_lunisolar_se_month_ent.grid(row = 140, column = 4, sticky = W)
+siddhantic_lunisolar_se_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 5, sticky = W)
+siddhantic_lunisolar_se_year_ent = Entry(frame)
+siddhantic_lunisolar_se_year_ent.grid(row = 140, column = 5, sticky = W)
+siddhantic_lunisolar_se_bttn = Button(frame, text = "Calculate", command = siddhantic_lunisolar_se_converter).grid(row = 141, column = 3, columnspan = 3, sticky = W)
 
-# Naïve Siddhantic solar calendar (Vikram Samvat)                                                                                            
-nsidd_solar_vs_lbl = Label(frame, text = "Naïve Siddhantic solar calendar (Vikram Samvat)").grid(row = 138, column = 6, columnspan = 3, sticky = W)
-nsidd_solar_vs_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 6, sticky = W)
-nsidd_solar_vs_day_ent = Entry(frame)
-nsidd_solar_vs_day_ent.grid(row = 140, column = 6, sticky = W)
-nsidd_solar_vs_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 7, sticky = W)
-nsidd_solar_vs_month_ent = Entry(frame)
-nsidd_solar_vs_month_ent.grid(row = 140, column = 7, sticky = W)
-nsidd_solar_vs_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 8, sticky = W)
-nsidd_solar_vs_year_ent = Entry(frame)
-nsidd_solar_vs_year_ent.grid(row = 140, column = 8, sticky = W)
-nsidd_solar_vs_bttn = Button(frame, text = "Calculate", command = nsidd_solar_vs_converter).grid(row = 141, column = 6, columnspan = 3, sticky = W)
+# Traditional Indian lunisolar calendar (Vikram Samvat)                                                                                            
+siddhantic_lunisolar_vs_lbl = Label(frame, text = "Naïve Siddhantic solar calendar (Vikram Samvat)").grid(row = 138, column = 6, columnspan = 3, sticky = W)
+siddhantic_lunisolar_vs_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 6, sticky = W)
+siddhantic_lunisolar_vs_day_ent = Entry(frame)
+siddhantic_lunisolar_vs_day_ent.grid(row = 140, column = 6, sticky = W)
+siddhantic_lunisolar_vs_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 7, sticky = W)
+siddhantic_lunisolar_vs_month_ent = Entry(frame)
+siddhantic_lunisolar_vs_month_ent.grid(row = 140, column = 7, sticky = W)
+siddhantic_lunisolar_vs_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 8, sticky = W)
+siddhantic_lunisolar_vs_year_ent = Entry(frame)
+siddhantic_lunisolar_vs_year_ent.grid(row = 140, column = 8, sticky = W)
+siddhantic_lunisolar_vs_bttn = Button(frame, text = "Calculate", command = siddhantic_lunisolar_vs_converter).grid(row = 141, column = 6, columnspan = 3, sticky = W)
 
 # Naïve Siddhantic lunisolar calendar (Kali Yuga)                                                                                            
 nsidd_lunar_ky_lbl = Label(frame, text = "Naïve Siddhantic lunisolar calendar (Kali Yuga)").grid(row = 143, column = 0, columnspan = 3, sticky = W)
@@ -4787,5 +4844,44 @@ siddhantic_lunar_vs_year_ent = Entry(frame)
 siddhantic_lunar_vs_year_ent.grid(row = 150, column = 8, sticky = W)
 siddhantic_lunar_vs_bttn = Button(frame, text = "Calculate", command = siddhantic_lunar_vs_converter).grid(row = 151, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.53.0")
+# Calibrated Indian solar calendar (Kali Yuga) calendar                                                                                            
+cal_indian_solar_ky_lbl = Label(frame, text = "Calibrated Indian solar calendar (Kali Yuga)").grid(row = 153, column = 0, columnspan = 3, sticky = W)
+cal_indian_solar_ky_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 0, sticky = W)
+cal_indian_solar_ky_day_ent = Entry(frame)
+cal_indian_solar_ky_day_ent.grid(row = 155, column = 0, sticky = W)
+cal_indian_solar_ky_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 1, sticky = W)
+cal_indian_solar_ky_month_ent = Entry(frame)
+cal_indian_solar_ky_month_ent.grid(row = 155, column = 1, sticky = W)
+cal_indian_solar_ky_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 2, sticky = W)
+cal_indian_solar_ky_year_ent = Entry(frame)
+cal_indian_solar_ky_year_ent.grid(row = 155, column = 2, sticky = W)
+cal_indian_solar_ky_bttn = Button(frame, text = "Calculate", command = cal_indian_solar_ky_converter).grid(row = 156, column = 0, columnspan = 3, sticky = W)
+
+# Calibrated Indian solar calendar (Śaka Era) calendar                                                                                            
+cal_indian_solar_se_lbl = Label(frame, text = "Calibrated Indian solar calendar (Śaka Era)").grid(row = 153, column = 3, columnspan = 3, sticky = W)
+cal_indian_solar_se_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 3, sticky = W)
+cal_indian_solar_se_day_ent = Entry(frame)
+cal_indian_solar_se_day_ent.grid(row = 155, column = 3, sticky = W)
+cal_indian_solar_se_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 4, sticky = W)
+cal_indian_solar_se_month_ent = Entry(frame)
+cal_indian_solar_se_month_ent.grid(row = 155, column = 4, sticky = W)
+cal_indian_solar_se_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 5, sticky = W)
+cal_indian_solar_se_year_ent = Entry(frame)
+cal_indian_solar_se_year_ent.grid(row = 155, column = 5, sticky = W)
+cal_indian_solar_se_bttn = Button(frame, text = "Calculate", command = cal_indian_solar_se_converter).grid(row = 156, column = 3, columnspan = 3, sticky = W)
+
+# Calibrated Indian solar calendar (Vikram Samvat) calendar                                                                                            
+cal_indian_solar_vs_lbl = Label(frame, text = "Calibrated Indian solar calendar (Vikram Samvat)").grid(row = 153, column = 6, columnspan = 3, sticky = W)
+cal_indian_solar_vs_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 6, sticky = W)
+cal_indian_solar_vs_day_ent = Entry(frame)
+cal_indian_solar_vs_day_ent.grid(row = 155, column = 6, sticky = W)
+cal_indian_solar_vs_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 7, sticky = W)
+cal_indian_solar_vs_month_ent = Entry(frame)
+cal_indian_solar_vs_month_ent.grid(row = 155, column = 7, sticky = W)
+cal_indian_solar_vs_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 8, sticky = W)
+cal_indian_solar_vs_year_ent = Entry(frame)
+cal_indian_solar_vs_year_ent.grid(row = 155, column = 8, sticky = W)
+cal_indian_solar_vs_bttn = Button(frame, text = "Calculate", command = cal_indian_solar_vs_converter).grid(row = 156, column = 6, columnspan = 3, sticky = W)
+
+root.title("Calendar Converter 0.54.0")
 root.mainloop()
