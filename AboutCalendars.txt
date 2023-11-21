@@ -1625,20 +1625,22 @@ Sources:
 
 DO NOT SEE Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20. Because Reingold and Dershowitz are idiots with no idea what they're talking about and don't understand what they're reading.
 
-------------------------------
-SIDDHANTIC LUNISOLAR CALENDARS
-------------------------------
+--------------------------------------
+TRADITIONAL INDIAN LUNISOLAR CALENDARS
+--------------------------------------
 
-The Siddhantic lunisolar calendars are, like the Siddhantic solar calendars, based on the values and algorithms described in the Sūrya Siddhānta. As with the solar calendars, I have implemented two versions - the so-called naïve version is based on a reading that treats the anomalistic year as distinct from the sidereal year, and the so-called Siddhantic version ignores the value given for the anomalistic year in favour of assuming the locations of the sun's apsides are fixed (which they are not, but that is apparently how ancient Indian astronomers thought). These calendars assume a mean synodic month of 29+7087771/13358334 days, which is approximately ½ second longer than the modern measured mean synodic month; a sidereal month of 27+4644439/14438334 days, approximately 1.1 second longer than the modern measured mean sidereal month; and an anomalistic month of 27+31759129/57265137 days, about 4.165 seconds longer than the modern measured mean anomalistic month. The differences between the three evident even to naked-eye astronomers, and so the different values of the sidereal and anomalistic months are always taken into account when determining the position of the moon; the difference between the naïve and "true" algorithsm is entirely based on determining the position of the sun.
+The traditional Indian lunisolar calendars are, like the solar calendars, based on the values and algorithms described in the Sūrya Siddhānta. These calendars assume a mean synodic month of 29+7087771/13358334 days, which is approximately ½ second longer than the modern measured mean synodic month; a sidereal month of 27+4644439/14438334 days, approximately 1.1 second longer than the modern measured mean sidereal month; and an anomalistic month of 27+31759129/57265137 days, about 4.165 seconds longer than the modern measured mean anomalistic month.
 
-Days begin at sunrise. The first day of the month is the day when the sun rises when the moon is new; to put it another way, days end on the day of the full moon. The month is determined by the position of the sun in the zodiac at sunrise on the first day of the month; thus, if the sun is in Mīna when it rises, the month is Chaitra; if the sun rises in Meṣa, it's Vaisākha, and so on. If two lunar months begin while the sun is in the same sign, the second is the "official" month; the first is a leap month, and is prefixed with "Adhik", a word meaning "empty". In some cases, it is possible for the sun to cross an entire sign within a single lunar month; in this case, the lunar month corresponding to that sign is skipped. Such a rare event is made up for with a leap month elsewhen in the year.
-
-The Siddhantic calendars do not appear to be used on their own in India, since the calculated date of Mīna Saṁkrānti as of 1945 SE is approximately three days later than the astronomical date. This discrepancy has been known since the Middle Ages, and the calendars were periodically adjusted to keep the calculated dates in line with observation. Most modern pañcāṅgam makers use modern ephemerides and astronomical data; a few continue to use values from the Sūrya Siddhānta, but even they mark the astronomical date of Meṣa Sankrānti as solar new year. However, traditional calendars in southeast Asia are entirely algorithmic and continue to use values based solely on those from some form of the Sūrya Siddhanta.
+Days begin at sunrise. The first day of the month is the day when the sun rises when the moon is new; to put it another way, months end of the day of the new moon. The month is determined by the position of the sun in the zodiac at sunrise on the first day of the month; thus, if the sun is in Mīna when it rises, the month is Chaitra; if the sun rises in Meṣa, it's Vaisākha, and so on. If two lunar months begin while the sun is in the same sign, the second is the "official" month; the first is a leap month, and is prefixed with "Adhik", a word meaning "empty". In some cases, it is possible for the sun to cross an entire sign within a single lunar month; in this case, the lunar month corresponding to that sign is skipped. Such a rare event is compensated with a leap month elsewhen in the year.
 
 Sources:
-* Sūrya Siddhānta, chapters 1–3; see https://archive.org/details/SuryaSiddhantaTranslation/mode/2up
-* Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20.
+* Sūrya Siddhānta, chapters 1–3; see:
+** https://archive.org/details/SuryaSiddhantaTranslation/mode/2up
+** https://archive.org/details/suryasiddhantaandsiddhantasiromanibimalaprasadsidhhnatasarasvatidanvirgoswamyiskon_202003_23_r
+** https://archive.org/details/suryasiddhantaenglishtranslationlancelotwilkinsonbapudevasastri1861_727_C
 * https://en.wikipedia.org/wiki/Jy%C4%81,_koti-jy%C4%81_and_utkrama-jy%C4%81
+
+DO NOT SEE Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20. Because Reingold and Dershowitz are idiots with no idea what they're talking about and don't understand what they're reading.
 
 ---------------------------------
 CALIBRATED INDIAN SOLAR CALENDARS
