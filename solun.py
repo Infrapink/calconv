@@ -10,6 +10,7 @@ import numpy as np
 import gregorian
 from tdiff import DIFF
 import stars
+from surya_siddhanta import uj_lon, uj_lat
 
 tropical_year = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
 lunar_month = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000)
@@ -284,4 +285,18 @@ def get_indian_spos(jday, angle):
 
     ans = get_solar_zpos(jday, SPICA, True, ((angle - eqm) % 360)) # time in UTC
     ans += Fraction(11,48) # convert from UTC to IST
+    return ans
+
+def indian_sunrise(jday):
+    '''Compute the time of sunrise for a given day in Ujjain'''
+    jday = Fraction(jday)
+
+    ans = sunrise(jday, uj_lon, uj_lat) - Fraction(11,48) # subtract 11/48 to account for the time difference between Ujjain and Greenwich
+    return ans
+
+def indian_sunset(jday):
+    '''Compute the time of sunset for a given day in Ujjain'''
+    jday = Fraction(jday)
+
+    ans = sunset(jday, uj_lon, uj_lat) - Fraction(11,48) # subtract 11/48 to account for the time difference between Ujjain and Greenwich
     return ans
