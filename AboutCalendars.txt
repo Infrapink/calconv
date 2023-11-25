@@ -1642,15 +1642,15 @@ Sources:
 
 DO NOT SEE Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20. Because Reingold and Dershowitz are idiots with no idea what they're talking about and don't understand what they're reading.
 
----------------------------------
-CALIBRATED INDIAN SOLAR CALENDARS
----------------------------------
+------------------------------------
+OBSERVATIONAL INDIAN SOLAR CALENDARS
+------------------------------------
 
-The calibrated Indian solar calendars are sidereal calendars basd on the Sūrya Siddhānta, but which are periodically adjusted to keep the time of Meṣa Saṃkranti approximately in sync with the sun's opposition to Spica. These were tricky to work out, since every source agrees that Meṣa Saṃkranti falls on 14 April in the Gregrorian calendar, but my computations kept giving a date of 12 April, which does agree with observations. In the end, I looked up various Indian sources, most of which agreed that the sun officially entered Meṣa at 15:12 Indian time on 14 April 2023 AD, at which time the sun was approximately 1.78° past opposition with Spica. As such, I chose this relative angle as the zero-point of the zodiac and based all other calculations on that.
+The observational Indian calendars are based on the same ideas as the traditional calendars, but they use modern observational data, ephemerides, astronomical values, and forecasting techniques.
 
-Of course, the Siddhāntic method also gives the wrong answer for the date of Sūrya Siddānta, placing it on 17 April 2023 AD (which is the current date of solar new year in several traditional southeast Asian calendars). To get the dates of the months right, I found the difference between the observed and traditionally-calculated times of Meṣa Saṃkranti; all dates are calculated according to the Sūrya Siddhānta and subtracting the difference. This still gives the wrong answer for the date of Tulā Saṃkranti, but I just attribute that to the Sūrya Siddānta having built up inaccuracies over the centuries.
+The solar calendar, like the traditional calendar, is sidereal. Nominally, the start point of the sun's journey across the zodiac is the point opposite Spica; however, the sun is normally opposite Spica on 12 April (Gregorian), while Indian calendar makers put the first day of the solar calendar on the 14th, give or take a day. The Calendar Reform Committee, in proposing a switch from sidereal to tropical years for the timing of Hindu festivals, reccomended that the beginning of the tropical year for religious purposes be set at the point when the sun's ecliptic longitude is 23°15'. In 1955, this occurred when the sun was 0.6749121716696571° past counter-Spica (by my calculations), and so I have taken this point on the zodiac as the zero point.
 
-This set of calendars are not themselves used anywhere in India, but the Bengali solar calendar is based on it.
+Days begin at sunrise. The first day of the month is the day when the sun is in the corresponding star sign at sunrise.
 
 Sources:
 • Sūrya Siddānta, ch 1–3 (translated by Ebeneezer Burgess)
