@@ -278,7 +278,7 @@ def indian_spos(jday):
     ans = (solar_zpos(jday, SPICA, True) - eqm) % 360
     return ans
 
-def get_indian_spos(jday, angle):
+def sankranti(jday, angle):
     '''Zero in on the time the sun hits a given zodiacal longitude as used in modern Indian calendars'''
     jday = Fraction(jday)
     angle = float(angle)
