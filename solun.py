@@ -110,6 +110,29 @@ def antiphase(jday, tz):
     ans = (phase(jday, tz) + 180) % 360
     return ans
 
+def phasetime(jday, angle, tz):
+    '''Time the angle between the sun and the moon hits a specified value'''
+
+    jday = Fraction(jday) # Julian Day we are starting with
+    angle = Fraction(angle) # desired angle between the sun and the moon
+    tz = Fraction(tz)
+
+    p = 0
+    while (p < 4):
+        f = Fraction(1, (60 ** p))
+        if (angle <= 90):
+            while (phase((jday + f), tz) >= 270):
+                jday += f
+        elif (angle >= 270):
+            while (phase((jday - f), tz) <= 90):
+                jday -= f
+        while (phase((jday + f), tz) <= angle):
+            jday += f
+        while (phase((jday - f), tz) >= angle):
+            jday -= f
+        p += 1
+    return jday
+
 def truesun(day, angle, timezone):
     day = Fraction(day)
     angle = int(angle)

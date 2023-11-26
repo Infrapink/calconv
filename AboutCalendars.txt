@@ -1650,7 +1650,9 @@ The observational Indian calendars are based on the same ideas as the traditiona
 
 The solar calendar, like the traditional calendar, is sidereal. Nominally, the start point of the sun's journey across the zodiac is the point opposite Spica; however, the sun is normally opposite Spica on 12 April (Gregorian), while Indian calendar makers put the first day of the solar calendar on the 14th, give or take a day. The Calendar Reform Committee, in proposing a switch from sidereal to tropical years for the timing of Hindu festivals, reccomended that the beginning of the tropical year for religious purposes be set at the point when the sun's ecliptic longitude is 23°15'. In 1955, this occurred when the sun was 0.6749121716696571° past counter-Spica (by my calculations), and so I have taken this point on the zodiac as the zero point.
 
-Days begin at sunrise. The first day of the month is the day when the sun is in the corresponding star sign at sunrise.
+Days begin at sunrise. In the solar calendars, months begin on the day that the sun rises in the corresponding zodiac sign.
+
+In the lunisolar calendars, months begin on the day of the first sunrise after the new moon. Months are named according to the star sign in which said sunrise falls. If there are two new moons while the moon is in the same star sign, the first of these is designated as a leap month, and its name is preceded by "Adhik". Due to orbital mechanics, it is possible for the sun to cross an entire zodiac sign in between two new moons; in such a case, the corresponding month is skipped, and the difference is made up by a leap month elsewhere in the year.
 
 Sources:
 • Sūrya Siddānta, ch 1–3 (translated by Ebeneezer Burgess)
