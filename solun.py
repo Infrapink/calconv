@@ -40,7 +40,6 @@ def dtan(angle):
     ans = tan(angle * d2r)
     return ans
 
-
 def udt(jday):
     '''Get the difference between Universal Time and Dynamical Time for a given Julian Day'''
     jday = floor(jday)
@@ -93,6 +92,24 @@ def conj(day, frtz):
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
+def phase(jday, tz):
+    '''Angle between the sun and the moon at a given time'''
+    # 0° → new moon
+    # 180° → full moon
+    jday = Fraction(jday) # the instant we are interested in
+    tz = Fraction(tz) # time zone we are considering
+    ans = (mpos(jday) - spos(jday)) % 360
+    return ans
+
+def antiphase(jday, tz):
+    '''Angle between the sun and the moon, with the full moon taken as 0'''
+    # 0° → full moon
+    # 180° → new moon
+    jday = Fraction(jday) # the instant we are interested in
+    tz = Fraction(tz) # timezone under consideration
+    ans = (phase(jday, tz) + 180) % 360
+    return ans
+
 def truesun(day, angle, timezone):
     day = Fraction(day)
     angle = int(angle)
@@ -103,7 +120,6 @@ def truemoon(day, timezone):
     day = Fraction(day)
     timezone = Fraction(timezone)
     return(floor(conj(day, timezone)))
-
 
 def angsep(ra1, dec1, ra2, dec2):
     '''Determine the angular separation between two bodies, given their right ascensions and declinations'''
@@ -158,7 +174,6 @@ def starrise(jday, lon, lat, ra2000, dec2000, distance, rv, deltara, deltadec):
 
     s = sunmoon.sidereal.stellar_riset(jday, lon, lat, deltat, ra2000, dec2000, distance, rv, deltara, deltadec)
     return(s[0])
-
 
 def starrise2(jday, lon, lat, star):
     '''Time of a star rising for a given longitude and latitude.'''
@@ -275,7 +290,7 @@ def get_solar_zpos(jday, star, opp, angle):
 def indian_spos(jday):
     '''Compute the zodiacal position of the sun for modern Indian calendars'''
     jday = Fraction(jday) - Fraction(11,48) # convert IST to UTC
-    ans = (solar_zpos(jday, SPICA, True) - eqm) % 360
+    ans = (solar_zpos(jday, stars.SPICA, True) - eqm) % 360
     return ans
 
 def sankranti(jday, angle):
@@ -283,7 +298,7 @@ def sankranti(jday, angle):
     jday = Fraction(jday)
     angle = float(angle)
 
-    ans = get_solar_zpos(jday, SPICA, True, ((angle - eqm) % 360)) # time in UTC
+    ans = get_solar_zpos(jday, stars.SPICA, True, ((angle - eqm) % 360)) # time in UTC
     ans += Fraction(11,48) # convert from UTC to IST
     return ans
 
