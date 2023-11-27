@@ -1,15 +1,15 @@
 #!/usr/bin/python
 
-# A programme to convert between Julian Days and dates in the traditional Indian lunisolar calendar (Śaka era), according to methods described in the Sūrya Siddhānta
+# A programme to convert between Julian Days and dates in the traditional Indian lunisolar calendar (Kali Yuga era), according to methods described in the Sūrya Siddhānta
 
 # Indian days start at sunrise
 # Roman days start at midnight
-# Days are numbered according to the tithi which is active at sunrise.
-# As such, some day numbered may be skipped.
+# Since this is a lunisolar calendar, days are numbered according to the tithi which is active at sunrise
+# As such, some days numbers may be skipped
 
 from math import floor, ceil
 from fractions import Fraction
-from surya_siddhanta import sankranti, newmoon, se as epoch, t_sid_year as sid_year, t_tithi as tithi, t_rasi as rasi, t_syn_month as syn_month, spos, mpos, sunrise, phasetime, phase
+from surya_siddhanta import sankranti, newmoon, se as epoch, t_sid_year as sid_year, t_rasi as rasi, t_syn_month as syn_month, spos, mpos, sunrise, phasetime, phase
 from months import INDIAN_LUNAR_NUM as MONTHNO, NUM_INDIAN_LUNAR as NUMON
 
 def dayof(jday):
@@ -82,13 +82,13 @@ def fromjd(jday):
     # a tithi is the time it takes the moon to gain 12° on the sun
     # the number of a day's tithi is that tithi which is active at sunrise
     #day = (((mpos(sunrise(jday)) - spos(sunrise(jday))) % 360) // 12) + 1
-    day = (phase(jday) // 12) + 1
+    tithi = (phase(sunrise(jday)) // 12) + 1
 
-    return(day, month, year)
+    return(tithi, month, year)
 
-def tojd(day, month, year):
+def tojd(tithi, month, year):
     '''Given a date in the traditional Indian lunisolar calendar (Kali Yuga era), compute the corresponding Julian Day.'''
-    day = int(day) - 1 # this is a tithi rather than a tropical day. subtract 1 because computers count from 0
+    tithi = int(tithi) - 1 # this is a tithi rather than a tropical day. subtract 1 because computers count from 0
     month = str(month)
     year = int(year)
 
@@ -118,6 +118,15 @@ def tojd(day, month, year):
         crescent += syn_month
 
     # count the tithis
-    jday = dayof(phasetime((crescent + (day * tithi)), (day * 12)))
+    #jday = dayof(phasetime((crescent + (day * tithi)), (day * 12)))
+    lunar_angle = tithi * 12
+    t = crescent + (tithi * Fraction(syn_month, 30))
+    m = phasetime(t, lunar_angle)
+    jday = m
+    while (sunrise(jday) < m):
+        jday += 1
+    while (sunrise(jday - 1) >= m):
+        jday -= 1
+    jday = floor(jday)
 
     return jday
