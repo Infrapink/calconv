@@ -159,7 +159,7 @@ def angsep(ra1, dec1, ra2, dec2):
     return sigma
 
 def sunrise(jday, lon, lat):
-    '''Time of sunrise on a given day for a given longitude and latitude'''
+    '''Time of sunrise on a given day for a given longitude and latitude, in UTC'''
     deltat = udt(int(jday))
     jday = float(jday) - 0.5 # Julian Day in question
     lon = float(lon) # observer's longitude
@@ -171,7 +171,7 @@ def sunrise(jday, lon, lat):
     return(r[0])
 
 def sunset(jday, lon, lat):
-    '''Time of sunset on a given day for a given longitude and latitude'''
+    '''Time of sunset on a given day for a given longitude and latitude, in UTC'''
     deltat = udt(int(jday))
     jday = int(jday) - 0.5 # Julian Day in question
     lon = float(lon) # observer's longitude
@@ -181,6 +181,26 @@ def sunset(jday, lon, lat):
     
     s =	sunmoon.sidereal.solar_riset(jday, lon, lat)
     return(s[1])
+
+def local_sunrise(jday, lon, lat, tz):
+    '''Time of sunrise at a given location, in local time rather than UTC.'''
+    # This function gives the time of sunrise as (cJD + time), rather than just JD
+    jday = Fraction(jday) # consecutive Julian Day in question
+    lon = float(lon) # observer's longitude
+    lat = float(lat) # observer's latitude
+    tz = Fraction(tz) # local timezone
+    ans = floor(jday) + sunrise(jday, lon, lat) - tz
+    return ans
+
+def local_sunset(jday, lon, lat, tz):
+    '''Time of sunset at a given location, in local time rather than UTC'''
+    # This function gives the time of sunset as (cJD + time), rather than just JD
+    jday = Fraction(jday) # consecutive Julian Day in question
+    lon = float(lon) # observer's longitude
+    lat = float(lat) # observer's latitude
+    tz = Fraction(tz) # local timezone
+    ans = floor(jday) + sunset(jday, lon, lat) - tz
+    return ans
 
 def starrise(jday, lon, lat, ra2000, dec2000, distance, rv, deltara, deltadec):
     '''Time of a star rising for a given longitude and latitude'''
@@ -329,12 +349,12 @@ def indian_sunrise(jday):
     '''Compute the time of sunrise for a given day in Ujjain'''
     jday = Fraction(jday)
 
-    ans = sunrise(jday, uj_lon, uj_lat) - Fraction(11,48) # subtract 11/48 to account for the time difference between Ujjain and Greenwich
+    ans = local_sunrise(jday, uj_lon, uj_lat, Fraction(11,48))
     return ans
 
 def indian_sunset(jday):
     '''Compute the time of sunset for a given day in Ujjain'''
     jday = Fraction(jday)
 
-    ans = sunset(jday, uj_lon, uj_lat) - Fraction(11,48) # subtract 11/48 to account for the time difference between Ujjain and Greenwich
+    ans = local_sunset(jday, uj_lon, uj_lat, Fraction(11,48))
     return ans

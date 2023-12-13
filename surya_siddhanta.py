@@ -549,3 +549,32 @@ def sunset(jday):
 
 # 2:64—66 explains how to find the yogas, nakshatras, and tithis
 
+def dayof_sunrise(jday):
+    '''Compute the Julian Day associated with an astronomical event, where the civil day begins at sunrise'''
+    # The first day of a solar month is the day that the sun rises while already in the associated star sign
+    # The first day of a normal synodic month is the day beginning with the first sunrise following the instant of the new moon
+    # In some calendrs, the first day of the synodic month is the day beginning with the first sunrise following the instant of the full moon
+    jday = Fraction(jday)
+    ans = round(jday)
+
+    while (sunrise(ans) < jday):
+        jday += 1
+    while (sunrise(ans - 1) >= jday):
+        jday -= 1
+
+    return ans
+
+def dayof_sunset(jday):
+    '''Compute the Julian Day associated with an astronomical event, where the civil day begins at sunset'''
+    # The first day of the solar month is the day whose midnight follows the first sunset when the sun is in the associated star sign
+    # Tne first day of a normal synodic month is the day whose midnight comes after the first sunset following the instant of the new moon
+    # In some calendars, the first day of the synodic month is the day whose midnight follows the first sunset following the instant of the full moon
+    jday = Fraction(jday)
+    ans = round(jday)
+
+    while (sunset(ans) < jday):
+        ans += 1
+    while (sunset(ans - 1) >= jday):
+        ans -= 1
+
+    return (ans + 1) # have to add 1 because the algorithms model the tropical day as running from midnight to midnight
