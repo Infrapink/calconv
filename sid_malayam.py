@@ -12,7 +12,7 @@ from months import INDIAN_SOLAR_NUM as MONTHNO, NUM_INDIAN_SOLAR as NUMON
 epoch = ky + (3926 * sid_year) + (4 * rasi) # add 4 rasi because they year starts in Siṃha
 
 def fromjd(jday):
-    '''Convert a Julian Day into a date in the traditional Indian solar calendar, dating from the start of the Kali Yuga'''
+    '''Convert a Julian Day into a date in the traditional Malayam calendar'''
     jday = Fraction(jday) # Julian Day we are interested in
 
     # compute the year
@@ -43,7 +43,7 @@ def fromjd(jday):
     return (day, month, year)
 
 def tojd(day, month, year):
-    '''Convert a date in the traditional Indian solar calendar (Kali Yuga epoch) into a Julian Day'''
+    '''Convert a date in the traditional Malayam calendar into a Julian Day'''
     day = int(day)
     month = str(month)
     year = int(year)
