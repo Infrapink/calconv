@@ -358,3 +358,32 @@ def indian_sunset(jday):
 
     ans = local_sunset(jday, uj_lon, uj_lat, Fraction(11,48))
     return ans
+
+def dayof_hindi(jday):
+    '''Compute the day associated with an astronomical event, where days begin at sunrise'''
+    # The first day of a solar month is the day beginning with the first sunrise after the sun enters the star sign in question.
+    # The first day of a synodic month is normally the day beginning with the first sunrise after the instant of the new moon.
+    # In some calendars, the first day of a synodic month is the day beginning with the first sunrise after the full moon
+    jday = Fraction(jday)
+
+    ans = round(jday)
+    while (indian_sunrise(ans) < jday):
+        ans += 1
+    while (indian_sunrise(ans - 1) >= jday):
+        ans -= 1
+
+    return ans
+
+def dayof_tamil(jday):
+    '''Compute the day associated with an astronomical event, where days begin at sunset'''
+    # The first day of a solar month is the day whose midnight follows the first sunset after the sun enters the star sign in question
+    # The first day of a synodic month is normally the day whose midnight follows the first sunset after the instant of the new moon
+    # In some calendars, the first day of a synodic month is the day whose midnight follows the first sunset after the full moon
+    jday = Fraction(jday)
+
+    ans = round(jday)
+    while (indian_sunset(ans) < jday):
+        ans += 1
+    while (indian_sunset(ans - 1) >= jday):
+        ans -= 1
+    return (ans + 1) # add 1 to the answer because the rest of these functions assume the day to begin at midnight rather than the previous sunset
