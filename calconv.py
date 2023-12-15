@@ -147,6 +147,7 @@ import obs_indian_lunisolar_vs
 import sid_malayam
 import obs_malayam
 import alt_malayam
+import tamil
 
 
 def cons_day_julian_todate():
@@ -1393,6 +1394,15 @@ def cons_day_julian_todate():
         madhyama_lunar_se_day_ent.insert(0, madhyama_lunar_se_date[0])
         madhyama_lunar_se_month_ent.insert(0, madhyama_lunar_se_date[1])
         madhyama_lunar_se_year_ent.insert(0, madhyama_lunar_se_date[2])
+
+        # Convert a Julian day to a date in the Tamil calendar
+        tamil_date = tamil.fromjd(day)
+        tamil_day_ent.delete(0, END)
+        tamil_month_ent.delete(0, END)
+        tamil_year_ent.delete(0, END)
+        tamil_day_ent.insert(0, tamil_date[0])
+        tamil_month_ent.insert(0, tamil_date[1])
+        tamil_year_ent.insert(0, tamil_date[2])
 
         # Convert a Julian day to a date in the traditional Indian solar calendar (Kali Yuga)
         siddhantic_solar_ky_date = siddhantic_solar_ky.fromjd(day)
@@ -2766,6 +2776,15 @@ def madhyama_solar_se_converter():
         month = madhyama_solar_se_month_ent.get()
         year = int(madhyama_solar_se_year_ent.get())
         jday = madhyama_solar_se.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def tamil_converter():
+        day = int(tamil_day_ent.get())
+        month = tamil_month_ent.get()
+        year = int(tamil_year_ent.get())
+        jday = tamil.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4648,6 +4667,19 @@ madhyama_solar_se_year_lbl = Label(frame, text = "Year").grid(row = 124, column 
 madhyama_solar_se_year_ent = Entry(frame)
 madhyama_solar_se_year_ent.grid(row = 125, column = 11, sticky = W)
 madhyama_solar_se_bttn = Button(frame, text = "Calculate", command = madhyama_solar_se_converter).grid(row = 126, column = 9, columnspan = 3, sticky = W)
+
+# Tamil calendar                                                                                            
+tamil_lbl = Label(frame, text = "Tamil calendar").grid(row = 123, column = 12, columnspan = 3, sticky = W)
+tamil_day_lbl = Label(frame, text = "Day").grid(row = 124, column = 12, sticky = W)
+tamil_day_ent = Entry(frame)
+tamil_day_ent.grid(row = 125, column = 12, sticky = W)
+tamil_month_lbl = Label(frame, text = "Month").grid(row = 124, column = 13, sticky = W)
+tamil_month_ent = Entry(frame)
+tamil_month_ent.grid(row = 125, column = 13, sticky = W)
+tamil_year_lbl = Label(frame, text = "Year").grid(row = 124, column = 14, sticky = W)
+tamil_year_ent = Entry(frame)
+tamil_year_ent.grid(row = 125, column = 14, sticky = W)
+tamil_bttn = Button(frame, text = "Calculate", command = tamil_converter).grid(row = 126, column = 12, columnspan = 3, sticky = W)
 
 # Madhyama lunisolar calendar (Kali Yuga)                                                                                            
 madhyama_lunar_ky_lbl = Label(frame, text = "Madhyama lunisolar calendar (Kali Yuga)").grid(row = 128, column = 0, columnspan = 3, sticky = W)

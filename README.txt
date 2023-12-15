@@ -647,6 +647,8 @@ Indian solar calendars:
 * Kumbha
 * Mīna
 
+(Note: In the Keralite/Malayam calendars, Siṃha is the first month)
+
 Indian lunisolar calendars:
 ---------------------------
 
@@ -664,6 +666,37 @@ Indian lunisolar calendars:
 * Phālguna
 
 (Note: In some calendars, Vaisākha is the first month). To specify a leap month in a lunisolar calendar, prefix the month name with "Adhik ".
+
+Malayam calendar (Uthara Malayala Panchangam):
+----------------------------------------------
+
+* Kanni
+* Thulam
+* Vrischikam
+* Dhanu
+* Makaram
+* Kumbham
+* Meenam
+* Medam
+* Edavam
+* Midhunam
+* Karkitaka
+* Chingam
+
+Tamil calendar:
+---------------
+* Chittirai
+* Vaikāsi
+* Ãni
+* Ãdi
+* Ãvani
+* Purattāsi
+* Aippasi
+* Kartikai
+* Mārgazhi
+* Thai
+* Māsi
+* Panguni
 
 Mandaean calendar:
 ------------------

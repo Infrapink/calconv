@@ -1582,6 +1582,24 @@ Sources:
 * Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 10.
 * https://en.wikipedia.org/wiki/Hindu_calendar
 
+--------------
+TAMIL CALENDAR
+--------------
+
+The Tamil calendar is the traditional calendar used by the Tamil people, primarily in Tamil Nadu, Paducherry, Sri Lanka, and Malaysia. It is a sidereal, purely solar calendar; the Calendar Reform Committee Report includes two Tamil-language panchangams that are described as lunisolar, but from my research, these are more likely to be solar calendars which include religious celebrations tied to the phases of the moon. (As an analogy, Christian celebrations and observances related to Jesus' death and resurrection are also synched with the phase of the moon, but that doesn't mean the Gregorian calendar is lunisolar).
+
+Days begin at sunrise, but the reckoning of months is a bit unusual. If the sun enters a constellation after sunset, the corresponding month officially begins the following day; otherwise, it begins on the same day, even if the sun enters the constellation well after sunrise.
+
+There is no consensus as to which epoch should be used, and indeed Tamils in Tamil Nadu often just go by the year's position in the 60-year cycle, while using the Gregorian calendar for everyday purposes. Among those who do use an era when working in the Tamil calendar, the Śaka era seems to be the most popular, so that is the one I went with.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+* The Calendrical System in Tamil Nadu, CJ Fuller, The Journal of the Royal Asiatic Society of Great Britain and Ireland, № 1 (1980), pp 52–63
+* https://www.prokerala.com/general/calendar/tamilcalendar.php
+* http://world.clndr.org/calendars/Tamil-calendar
+* https://tamil.calendarin.com/tamil-daily-calendar
+* https://www.tamildailycalendar.com/tamil_monthly_calendar.php?msg=Tamil%20Monthly%20Calendar%202022
+
 ---------------------------
 MADHYAMA LUNISOLAR CALENDAR
 ---------------------------
@@ -1656,7 +1674,7 @@ In the lunisolar calendars, months begin on the day of the first sunrise after t
 
 Sources:
 * Sūrya Siddhānta, ch 1–3 (translated by Ebeneezer Burgess)
-* 1955 Report of the Indian Calendar Reform Committee
+* 1954 Report of the Indian Calendar Reform Committee
 * https://www.indiatoday.in/information/story/mesha-sankranti-2023-date-time-significance-and-all-you-need-to-know-2359839-2023-04-14
 * https://www.jagranjosh.com/general-knowledge/solar-new-year-or-mesha-sankranti-1681443910-1
 * https://blog.devdarshanapp.com/festivals/mesha-sankranti/
@@ -1691,3 +1709,4 @@ Sources:
 * http://vaikhari.org/kollavarsham.html
 * https://www.keralatourism.org/malayalam-calendar
 * http://world.clndr.org/calendars/Malayalam-calendar
+
