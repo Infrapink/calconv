@@ -53,5 +53,5 @@ def tojd(day, month, year):
     cigra = (NUMON[month] - 4) % 12 # number of the rasi we're currently in; subtract 4 and mod 12 to account for the fact that Siṃha is the 4th zodiac sign
     angle = 30 * ((cigra + 4) % 12) # zodiacal angle of the cusp of the specified star sign
 
-    jday = dayof(sankranti((epoch + (year * sid_year)) + (((cigra * rasi) - 4) % 12), angle)) - 1
+    jday = day + dayof(sankranti((epoch + (year * sid_year) + (cigra * rasi)), angle)) - 1
     return jday

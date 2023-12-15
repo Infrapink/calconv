@@ -144,9 +144,9 @@ import obs_indian_solar_vs
 import obs_indian_lunisolar_ky
 import obs_indian_lunisolar_se
 import obs_indian_lunisolar_vs
-import cal_indian_solar_ky
-import cal_indian_solar_se
-import cal_indian_solar_vs
+import sid_malayam
+import obs_malayam
+import alt_malayam
 
 
 def cons_day_julian_todate():
@@ -1502,32 +1502,32 @@ def cons_day_julian_todate():
         obs_indian_lunisolar_vs_month_ent.insert(0, obs_indian_lunisolar_vs_date[1])
         obs_indian_lunisolar_vs_year_ent.insert(0, obs_indian_lunisolar_vs_date[2])
 
-        # Convert a Julian day to a date in the Calibrated Indian solar calendar (Kali Yuga) calendar
-        cal_indian_solar_ky_date = cal_indian_solar_ky.fromjd(day)
-        cal_indian_solar_ky_day_ent.delete(0, END)
-        cal_indian_solar_ky_month_ent.delete(0, END)
-        cal_indian_solar_ky_year_ent.delete(0, END)
-        cal_indian_solar_ky_day_ent.insert(0, cal_indian_solar_ky_date[0])
-        cal_indian_solar_ky_month_ent.insert(0, cal_indian_solar_ky_date[1])
-        cal_indian_solar_ky_year_ent.insert(0, cal_indian_solar_ky_date[2])
+        # Convert a Julian day to a date in the traditional Malayam calendar
+        sid_malayam_date = sid_malayam.fromjd(day)
+        sid_malayam_day_ent.delete(0, END)
+        sid_malayam_month_ent.delete(0, END)
+        sid_malayam_year_ent.delete(0, END)
+        sid_malayam_day_ent.insert(0, sid_malayam_date[0])
+        sid_malayam_month_ent.insert(0, sid_malayam_date[1])
+        sid_malayam_year_ent.insert(0, sid_malayam_date[2])
 
-        # Convert a Julian day to a date in the Calibrated Indian solar calendar (Śaka Era) calendar
-        cal_indian_solar_se_date = cal_indian_solar_se.fromjd(day)
-        cal_indian_solar_se_day_ent.delete(0, END)
-        cal_indian_solar_se_month_ent.delete(0, END)
-        cal_indian_solar_se_year_ent.delete(0, END)
-        cal_indian_solar_se_day_ent.insert(0, cal_indian_solar_se_date[0])
-        cal_indian_solar_se_month_ent.insert(0, cal_indian_solar_se_date[1])
-        cal_indian_solar_se_year_ent.insert(0, cal_indian_solar_se_date[2])
+        # Convert a Julian day to a date in the modern Malayam calendar
+        obs_malayam_date = obs_malayam.fromjd(day)
+        obs_malayam_day_ent.delete(0, END)
+        obs_malayam_month_ent.delete(0, END)
+        obs_malayam_year_ent.delete(0, END)
+        obs_malayam_day_ent.insert(0, obs_malayam_date[0])
+        obs_malayam_month_ent.insert(0, obs_malayam_date[1])
+        obs_malayam_year_ent.insert(0, obs_malayam_date[2])
 
-        # Convert a Julian day to a date in the Calibrated Indian solar calendar (Vikram Samvat) calendar
-        cal_indian_solar_vs_date = cal_indian_solar_vs.fromjd(day)
-        cal_indian_solar_vs_day_ent.delete(0, END)
-        cal_indian_solar_vs_month_ent.delete(0, END)
-        cal_indian_solar_vs_year_ent.delete(0, END)
-        cal_indian_solar_vs_day_ent.insert(0, cal_indian_solar_vs_date[0])
-        cal_indian_solar_vs_month_ent.insert(0, cal_indian_solar_vs_date[1])
-        cal_indian_solar_vs_year_ent.insert(0, cal_indian_solar_vs_date[2])
+        # Convert a Julian day to a date in the alternative Malayam calendar
+        alt_malayam_date = alt_malayam.fromjd(day)
+        alt_malayam_day_ent.delete(0, END)
+        alt_malayam_month_ent.delete(0, END)
+        alt_malayam_year_ent.delete(0, END)
+        alt_malayam_day_ent.insert(0, alt_malayam_date[0])
+        alt_malayam_month_ent.insert(0, alt_malayam_date[1])
+        alt_malayam_year_ent.insert(0, alt_malayam_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -2905,29 +2905,29 @@ def obs_indian_lunisolar_vs_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def cal_indian_solar_ky_converter():
-        day = int(cal_indian_solar_ky_day_ent.get())
-        month = cal_indian_solar_ky_month_ent.get()
-        year = int(cal_indian_solar_ky_year_ent.get())
-        jday = cal_indian_solar_ky.tojd(day, month, year)
+def sid_malayam_converter():
+        day = int(sid_malayam_day_ent.get())
+        month = sid_malayam_month_ent.get()
+        year = int(sid_malayam_year_ent.get())
+        jday = sid_malayam.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def cal_indian_solar_se_converter():
-        day = int(cal_indian_solar_se_day_ent.get())
-        month = cal_indian_solar_se_month_ent.get()
-        year = int(cal_indian_solar_se_year_ent.get())
-        jday = cal_indian_solar_se.tojd(day, month, year)
+def obs_malayam_converter():
+        day = int(obs_malayam_day_ent.get())
+        month = obs_malayam_month_ent.get()
+        year = int(obs_malayam_year_ent.get())
+        jday = obs_malayam.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def cal_indian_solar_vs_converter():
-        day = int(cal_indian_solar_vs_day_ent.get())
-        month = cal_indian_solar_vs_month_ent.get()
-        year = int(cal_indian_solar_vs_year_ent.get())
-        jday = cal_indian_solar_vs.tojd(day, month, year)
+def alt_malayam_converter():
+        day = int(alt_malayam_day_ent.get())
+        month = alt_malayam_month_ent.get()
+        year = int(alt_malayam_year_ent.get())
+        jday = alt_malayam.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4844,44 +4844,44 @@ obs_indian_lunisolar_vs_year_ent = Entry(frame)
 obs_indian_lunisolar_vs_year_ent.grid(row = 150, column = 8, sticky = W)
 obs_indian_lunisolar_vs_bttn = Button(frame, text = "Calculate", command = obs_indian_lunisolar_vs_converter).grid(row = 151, column = 6, columnspan = 3, sticky = W)
 
-# Calibrated Indian solar calendar (Kali Yuga) calendar                                                                                            
-cal_indian_solar_ky_lbl = Label(frame, text = "Calibrated Indian solar calendar (Kali Yuga)").grid(row = 153, column = 0, columnspan = 3, sticky = W)
-cal_indian_solar_ky_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 0, sticky = W)
-cal_indian_solar_ky_day_ent = Entry(frame)
-cal_indian_solar_ky_day_ent.grid(row = 155, column = 0, sticky = W)
-cal_indian_solar_ky_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 1, sticky = W)
-cal_indian_solar_ky_month_ent = Entry(frame)
-cal_indian_solar_ky_month_ent.grid(row = 155, column = 1, sticky = W)
-cal_indian_solar_ky_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 2, sticky = W)
-cal_indian_solar_ky_year_ent = Entry(frame)
-cal_indian_solar_ky_year_ent.grid(row = 155, column = 2, sticky = W)
-cal_indian_solar_ky_bttn = Button(frame, text = "Calculate", command = cal_indian_solar_ky_converter).grid(row = 156, column = 0, columnspan = 3, sticky = W)
+# Traditional Malayam calendar
+sid_malayam_lbl = Label(frame, text = "Traditional Malayam calendar").grid(row = 153, column = 0, columnspan = 3, sticky = W)
+sid_malayam_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 0, sticky = W)
+sid_malayam_day_ent = Entry(frame)
+sid_malayam_day_ent.grid(row = 155, column = 0, sticky = W)
+sid_malayam_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 1, sticky = W)
+sid_malayam_month_ent = Entry(frame)
+sid_malayam_month_ent.grid(row = 155, column = 1, sticky = W)
+sid_malayam_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 2, sticky = W)
+sid_malayam_year_ent = Entry(frame)
+sid_malayam_year_ent.grid(row = 155, column = 2, sticky = W)
+sid_malayam_bttn = Button(frame, text = "Calculate", command = sid_malayam_converter).grid(row = 156, column = 0, columnspan = 3, sticky = W)
 
-# Calibrated Indian solar calendar (Śaka Era) calendar                                                                                            
-cal_indian_solar_se_lbl = Label(frame, text = "Calibrated Indian solar calendar (Śaka Era)").grid(row = 153, column = 3, columnspan = 3, sticky = W)
-cal_indian_solar_se_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 3, sticky = W)
-cal_indian_solar_se_day_ent = Entry(frame)
-cal_indian_solar_se_day_ent.grid(row = 155, column = 3, sticky = W)
-cal_indian_solar_se_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 4, sticky = W)
-cal_indian_solar_se_month_ent = Entry(frame)
-cal_indian_solar_se_month_ent.grid(row = 155, column = 4, sticky = W)
-cal_indian_solar_se_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 5, sticky = W)
-cal_indian_solar_se_year_ent = Entry(frame)
-cal_indian_solar_se_year_ent.grid(row = 155, column = 5, sticky = W)
-cal_indian_solar_se_bttn = Button(frame, text = "Calculate", command = cal_indian_solar_se_converter).grid(row = 156, column = 3, columnspan = 3, sticky = W)
+# Modern Malayam calendar (Jyothir Deepika)
+obs_malayam_lbl = Label(frame, text = "Modern Malayam calendar (Jyothir Deepika)").grid(row = 153, column = 3, columnspan = 3, sticky = W)
+obs_malayam_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 3, sticky = W)
+obs_malayam_day_ent = Entry(frame)
+obs_malayam_day_ent.grid(row = 155, column = 3, sticky = W)
+obs_malayam_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 4, sticky = W)
+obs_malayam_month_ent = Entry(frame)
+obs_malayam_month_ent.grid(row = 155, column = 4, sticky = W)
+obs_malayam_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 5, sticky = W)
+obs_malayam_year_ent = Entry(frame)
+obs_malayam_year_ent.grid(row = 155, column = 5, sticky = W)
+obs_malayam_bttn = Button(frame, text = "Calculate", command = obs_malayam_converter).grid(row = 156, column = 3, columnspan = 3, sticky = W)
 
-# Calibrated Indian solar calendar (Vikram Samvat) calendar                                                                                            
-cal_indian_solar_vs_lbl = Label(frame, text = "Calibrated Indian solar calendar (Vikram Samvat)").grid(row = 153, column = 6, columnspan = 3, sticky = W)
-cal_indian_solar_vs_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 6, sticky = W)
-cal_indian_solar_vs_day_ent = Entry(frame)
-cal_indian_solar_vs_day_ent.grid(row = 155, column = 6, sticky = W)
-cal_indian_solar_vs_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 7, sticky = W)
-cal_indian_solar_vs_month_ent = Entry(frame)
-cal_indian_solar_vs_month_ent.grid(row = 155, column = 7, sticky = W)
-cal_indian_solar_vs_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 8, sticky = W)
-cal_indian_solar_vs_year_ent = Entry(frame)
-cal_indian_solar_vs_year_ent.grid(row = 155, column = 8, sticky = W)
-cal_indian_solar_vs_bttn = Button(frame, text = "Calculate", command = cal_indian_solar_vs_converter).grid(row = 156, column = 6, columnspan = 3, sticky = W)
+# Modern Malayam calendar (Uthara Malayala)
+alt_malayam_lbl = Label(frame, text = "Modern Malayam calendar (Uthara Malayala)").grid(row = 153, column = 6, columnspan = 3, sticky = W)
+alt_malayam_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 6, sticky = W)
+alt_malayam_day_ent = Entry(frame)
+alt_malayam_day_ent.grid(row = 155, column = 6, sticky = W)
+alt_malayam_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 7, sticky = W)
+alt_malayam_month_ent = Entry(frame)
+alt_malayam_month_ent.grid(row = 155, column = 7, sticky = W)
+alt_malayam_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 8, sticky = W)
+alt_malayam_year_ent = Entry(frame)
+alt_malayam_year_ent.grid(row = 155, column = 8, sticky = W)
+alt_malayam_bttn = Button(frame, text = "Calculate", command = alt_malayam_converter).grid(row = 156, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.56.0")
+root.title("Calendar Converter 0.57.0")
 root.mainloop()

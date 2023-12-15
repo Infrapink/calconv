@@ -1655,17 +1655,39 @@ Days begin at sunrise. In the solar calendars, months begin on the day that the 
 In the lunisolar calendars, months begin on the day of the first sunrise after the new moon. Months are named according to the star sign in which said sunrise falls. If there are two new moons while the moon is in the same star sign, the first of these is designated as a leap month, and its name is preceded by "Adhik". Due to orbital mechanics, it is possible for the sun to cross an entire zodiac sign in between two new moons; in such a case, the corresponding month is skipped, and the difference is made up by a leap month elsewhere in the year.
 
 Sources:
-• Sūrya Siddānta, ch 1–3 (translated by Ebeneezer Burgess)
-• 1955 Report of the Indian Calendar Reform Committee
-• https://www.indiatoday.in/information/story/mesha-sankranti-2023-date-time-significance-and-all-you-need-to-know-2359839-2023-04-14
-• https://www.jagranjosh.com/general-knowledge/solar-new-year-or-mesha-sankranti-1681443910-1
-• https://blog.devdarshanapp.com/festivals/mesha-sankranti/
-• https://www.prokerala.com/festivals/tula-sankranti.html
-• https://www.mpanchang.com/vrats/sankranti/?date=2023
-• https://en.wikipedia.org/wiki/Mesha_Sankranti
-• https://en.wikipedia.org/wiki/Indian_New_Year%27s_days
-• https://planetcalc.com/9166/
-• https://timesofindia.indiatimes.com/religion/festivals/mesha-sankranti-2021-date-time-and-significance/articleshow/82060121.cms
-• https://www.ganeshaspeaks.com/festival-calendars/information/mesha-sankranti/
-• https://www.news18.com/news/lifestyle/mesha-sankranti-2022-rituals-importance-and-all-you-need-to-know-about-the-solar-new-year-4977763.html
-• https://www.prokerala.com/festivals/mesha-sankranti.html
+* Sūrya Siddhānta, ch 1–3 (translated by Ebeneezer Burgess)
+* 1955 Report of the Indian Calendar Reform Committee
+* https://www.indiatoday.in/information/story/mesha-sankranti-2023-date-time-significance-and-all-you-need-to-know-2359839-2023-04-14
+* https://www.jagranjosh.com/general-knowledge/solar-new-year-or-mesha-sankranti-1681443910-1
+* https://blog.devdarshanapp.com/festivals/mesha-sankranti/
+* https://www.prokerala.com/festivals/tula-sankranti.html
+* https://www.mpanchang.com/vrats/sankranti/?date=2023
+* https://en.wikipedia.org/wiki/Mesha_Sankranti
+* https://en.wikipedia.org/wiki/Indian_New_Year%27s_days
+* https://planetcalc.com/9166/
+* https://timesofindia.indiatimes.com/religion/festivals/mesha-sankranti-2021-date-time-and-significance/articleshow/82060121.cms
+* https://www.ganeshaspeaks.com/festival-calendars/information/mesha-sankranti/
+* https://www.news18.com/news/lifestyle/mesha-sankranti-2022-rituals-importance-and-all-you-need-to-know-about-the-solar-new-year-4977763.html
+* https://www.prokerala.com/festivals/mesha-sankranti.html
+
+----------------------------
+MALAYAM (KERALITE) CALENDARS
+----------------------------
+
+The Indian Calendar Reform Committee received desriptions of five Keralite calendars in response to their survey, but as far as I can tell, these only represent three distinct calendars. All are purely solar calendars, apparently descended from the Tamil solar calendar. In contrast to most Indian calendars, and to every solar calendar I have come across, days in the Keralite calendars begin at sunset rather than sunrise or midnight.
+
+The Keralite calendars are also distinguished by not starting the year upon the sun's entry into Meṣa. The Uthara Malayala Panchangam uses modern observations and techniques to calculate the position of the sun, and the year begins with the sun's entry into the sign of Kanni (Kanyā in Hindi; Greek Virgo). It also has different names for the months, some (but not all) of which are clearly related to the Hindi names. The Jogakshemam Panchangam and Jyothir Deepika, meanwhile, begin the year with the sun's entry into Siṃha; the difference is that the Jogakshemam Panchangam calculates dates and times according to the Sūrya Siddhānta, while the Jyothir Deepika uses modern methods.
+
+The Jyolsyabharanam and Vidyabhivardhini Kanakajoobili Prasasti uses modern methods and seems to be the same as the Jyothir Deepika. Its descriptions in the Committee Report includes very slight differences in the length of the sidereal year and amount of precession as of the northward equinox of 1954 AD, but because both calendars rely on modern methods, such differences will be ironed out by observation.
+
+The Nava Bharathi Panchangam takes an altogether different tack. From what I understand, rather than casting an entire calendar, it uses the methods of the Sūrya Siddhānta to determine the dates of traditional festivals in the Gregorian calendar.
+
+The Keralite calendars use the Kollam era, which begins in 3927 Kali Yuga (748 Śaka Era, 881 Vikram Samvat, 826 Anno Domini, 205 Anno Hejirae). The origin of this era is obscure; the most plausible explanation I found is that it comemorates the construction of the temple to Shiva in Kandiyoor by king Cheraman Perumal.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+* https://www.mpanchang.com/calendar/malayalm-festivals/
+* https://kerala.me/language/malayalam-calendar
+* http://vaikhari.org/kollavarsham.html
+* https://www.keralatourism.org/malayalam-calendar
+* http://world.clndr.org/calendars/Malayalam-calendar
