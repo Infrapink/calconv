@@ -374,7 +374,7 @@ def dayof_hindi(jday):
 
     return ans
 
-def dayof_tamil(jday):
+def dayof_kerala(jday):
     '''Compute the day associated with an astronomical event, where days begin at sunset'''
     # The first day of a solar month is the day whose midnight follows the first sunset after the sun enters the star sign in question
     # The first day of a synodic month is normally the day whose midnight follows the first sunset after the instant of the new moon

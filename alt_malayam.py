@@ -8,7 +8,7 @@
 ## Ordinal numbers go 0th, 1st, 2nd, etc
 
 from fractions import Fraction
-from solun import sid_year, rasi, dayof_tamil as dayof, sankranti
+from solun import sid_year, rasi, dayof_kerala as dayof, sankranti
 from surya_siddhanta import ky
 
 MONTHS = ("Kanni", "Thulam", "Vrischikam", "Dhanu", "Makaram", "Kumbham", "Meenam", "Medam", "Edavam", "Midhunam", "Karkitaka", "Chingam")
