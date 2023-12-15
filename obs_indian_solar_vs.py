@@ -41,11 +41,9 @@ def fromjd(jday):
     cigra = spos(jday) // 30 # star sign we're in
     angle = cigra * 30 # zodiacal angle of the sun at saṁkrānti
     while (dayof(sankranti((mesha + ((cigra + 1) * rasi)), (angle + 30))) <= dayof(jday)):
-        print("Sweet")
         cigra += 1
         angle += 30
     while (dayof(sankranti((mesha + (cigra * rasi)), angle)) > dayof(jday)):
-        print("Dude")
         cigra -= 1
         angle -= 30
     month = MONTHNO[cigra]
