@@ -687,9 +687,9 @@ Tamil calendar:
 ---------------
 * Chittirai
 * Vaikāsi
-* Ãni
-* Ãdi
-* Ãvani
+* Āni
+* Ādi
+* Āvani
 * Purattāsi
 * Aippasi
 * Kartikai
