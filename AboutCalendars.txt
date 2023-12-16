@@ -1600,6 +1600,29 @@ Sources:
 * https://tamil.calendarin.com/tamil-daily-calendar
 * https://www.tamildailycalendar.com/tamil_monthly_calendar.php?msg=Tamil%20Monthly%20Calendar%202022
 
+-----------------
+BENGALI CALENDARS
+-----------------
+
+The Bengali calendar is the traditional calendar of the Bengali people, and is primarily used in West Bengal. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
+
+The Bengali calendar is the quintessential Indian solar calendar. Days begin at sunrise, the year begins with the sun's entry into Meṣa, and each month lasts as long as it takes the sun to cross one sign of the zodiac. Its introduction is variously attributed to either King Shashanka or Emperor Akbar, but some form of it most likely predates both. Its era is the Bengali Era, which seems to date from the accession of Shashanka to the throne of Gauda.
+
+Sources:
+* https://en.wikipedia.org/wiki/Bengali_calendars
+* https://www.cuttingthechai.com/2019/04/8125/pohela-boishakh-a-brief-history-of-the-bengali-calendar/
+* https://bengalicalendar.com/#
+* https://www.prokerala.com/calendar/bengalicalendar.html
+* https://www.fluentin3months.com/bengali-calendar/
+* https://www.prokerala.com/calendar/bengalicalendar-2022.html
+* https://www.prokerala.com/calendar/bengalicalendar-2021.html
+* https://www.theworldcalendar.org/bengali-calendar/
+* https://bn.wikipedia.org/wiki/%E0%A6%AC%E0%A6%99%E0%A7%8D%E0%A6%97%E0%A6%BE%E0%A6%AC%E0%A7%8D%E0%A6%A6#%E0%A6%AC%E0%A6%B0%E0%A7%8D%E0%A6%B7%E0%A6%AA%E0%A6%9E%E0%A7%8D%E0%A6%9C%E0%A6%BF
+* https://en.wikibooks.org/wiki/Bengali/Months
+* https://www.fluentin3months.com/bengali-calendar/
+* https://netkibaten.com/bengali-month-name/
+* http://world.clndr.org/calendars/bengali-calendar/
+
 ---------------------------
 MADHYAMA LUNISOLAR CALENDAR
 ---------------------------

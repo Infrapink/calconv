@@ -698,6 +698,21 @@ Tamil calendar:
 * Māsi
 * Panguni
 
+Bengali calendars:
+------------------
+* Boisak
+* Joiśṭo
+* Aśaṭ
+* Śrabon
+* Bhadro
+* Aśhin
+* Kartik
+* Ogrohayon
+* Pouś
+* Magh
+* Falgun
+* Choitro
+
 Mandaean calendar:
 ------------------
 

@@ -148,6 +148,8 @@ import sid_malayam
 import obs_malayam
 import alt_malayam
 import tamil
+import sid_bengali
+import obs_bengali
 
 
 def cons_day_julian_todate():
@@ -1394,6 +1396,24 @@ def cons_day_julian_todate():
         madhyama_lunar_se_day_ent.insert(0, madhyama_lunar_se_date[0])
         madhyama_lunar_se_month_ent.insert(0, madhyama_lunar_se_date[1])
         madhyama_lunar_se_year_ent.insert(0, madhyama_lunar_se_date[2])
+
+        # Convert a Julian day to a date in the traditional Bengali calendar
+        sid_bengali_date = sid_bengali.fromjd(day)
+        sid_bengali_day_ent.delete(0, END)
+        sid_bengali_month_ent.delete(0, END)
+        sid_bengali_year_ent.delete(0, END)
+        sid_bengali_day_ent.insert(0, sid_bengali_date[0])
+        sid_bengali_month_ent.insert(0, sid_bengali_date[1])
+        sid_bengali_year_ent.insert(0, sid_bengali_date[2])
+
+        # Convert a Julian day to a date in the modern Bengali calendar
+        obs_bengali_date = obs_bengali.fromjd(day)
+        obs_bengali_day_ent.delete(0, END)
+        obs_bengali_month_ent.delete(0, END)
+        obs_bengali_year_ent.delete(0, END)
+        obs_bengali_day_ent.insert(0, obs_bengali_date[0])
+        obs_bengali_month_ent.insert(0, obs_bengali_date[1])
+        obs_bengali_year_ent.insert(0, obs_bengali_date[2])
 
         # Convert a Julian day to a date in the Tamil calendar
         tamil_date = tamil.fromjd(day)
@@ -2812,6 +2832,24 @@ def madhyama_lunar_se_converter():
         month = madhyama_lunar_se_month_ent.get()
         year = int(madhyama_lunar_se_year_ent.get())
         jday = madhyama_lunar_se.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sid_bengali_converter():
+        day = int(sid_bengali_day_ent.get())
+        month = sid_bengali_month_ent.get()
+        year = int(sid_bengali_year_ent.get())
+        jday = sid_bengali.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def obs_bengali_converter():
+        day = int(obs_bengali_day_ent.get())
+        month = obs_bengali_month_ent.get()
+        year = int(obs_bengali_year_ent.get())
+        jday = obs_bengali.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4720,6 +4758,32 @@ madhyama_lunar_se_year_ent = Entry(frame)
 madhyama_lunar_se_year_ent.grid(row = 130, column = 8, sticky = W)
 madhyama_lunar_se_bttn = Button(frame, text = "Calculate", command = madhyama_lunar_se_converter).grid(row = 131, column = 6, columnspan = 3, sticky = W)
 
+# traditional Bengali calendar                                                                                            
+sid_bengali_lbl = Label(frame, text = "traditional Bengali calendar").grid(row = 128, column = 9, columnspan = 3, sticky = W)
+sid_bengali_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 9, sticky = W)
+sid_bengali_day_ent = Entry(frame)
+sid_bengali_day_ent.grid(row = 130, column = 9, sticky = W)
+sid_bengali_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 10, sticky = W)
+sid_bengali_month_ent = Entry(frame)
+sid_bengali_month_ent.grid(row = 130, column = 10, sticky = W)
+sid_bengali_year_lbl = Label(frame, text = "Year").grid(row = 129, column = 11, sticky = W)
+sid_bengali_year_ent = Entry(frame)
+sid_bengali_year_ent.grid(row = 130, column = 11, sticky = W)
+sid_bengali_bttn = Button(frame, text = "Calculate", command = sid_bengali_converter).grid(row = 131, column = 9, columnspan = 3, sticky = W)
+
+# modern Bengali calendar                                                                                            
+obs_bengali_lbl = Label(frame, text = "modern Bengali calendar").grid(row = 128, column = 12, columnspan = 3, sticky = W)
+obs_bengali_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 12, sticky = W)
+obs_bengali_day_ent = Entry(frame)
+obs_bengali_day_ent.grid(row = 130, column = 12, sticky = W)
+obs_bengali_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 13, sticky = W)
+obs_bengali_month_ent = Entry(frame)
+obs_bengali_month_ent.grid(row = 130, column = 13, sticky = W)
+obs_bengali_year_lbl = Label(frame, text = "Year").grid(row = 129, column = 14, sticky = W)
+obs_bengali_year_ent = Entry(frame)
+obs_bengali_year_ent.grid(row = 130, column = 14, sticky = W)
+obs_bengali_bttn = Button(frame, text = "Calculate", command = obs_bengali_converter).grid(row = 131, column = 12, columnspan = 3, sticky = W)
+
 # Traditional Indian solar calendar (Kali Yuga)                                                                                        
 siddhantic_solar_ky_lbl = Label(frame, text = "Traditional Indian solar calendar (Kali Yuga)").grid(row = 133, column = 0, columnspan = 3, sticky = W)
 siddhantic_solar_ky_day_lbl = Label(frame, text = "Day").grid(row = 134, column = 0, sticky = W)
@@ -4915,5 +4979,5 @@ alt_malayam_year_ent = Entry(frame)
 alt_malayam_year_ent.grid(row = 155, column = 8, sticky = W)
 alt_malayam_bttn = Button(frame, text = "Calculate", command = alt_malayam_converter).grid(row = 156, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.57.0")
+root.title("Calendar Converter 0.58.0")
 root.mainloop()
