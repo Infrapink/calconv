@@ -558,9 +558,9 @@ def dayof_sunrise(jday):
     ans = round(jday)
 
     while (sunrise(ans) < jday):
-        jday += 1
+        ans += 1
     while (sunrise(ans - 1) >= jday):
-        jday -= 1
+        ans -= 1
 
     return ans
 
