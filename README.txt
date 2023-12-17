@@ -700,18 +700,18 @@ Tamil calendar:
 
 Bengali calendars:
 ------------------
-* Boisak
-* Joiśṭo
-* Aśaṭ
-* Śrabon
-* Bhadro
-* Aśhin
+* Bôishakh
+* Jyôishțhô
+* Āshāḍh
+* Srabôn
+* Bhadrô
+* Aśvin
 * Kartik
-* Ogrohayon
-* Pouś
+* Ôgrôhayôn
+* Poush
 * Magh
 * Falgun
-* Choitro
+* Chôitrô
 
 Mandaean calendar:
 ------------------

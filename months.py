@@ -1309,3 +1309,19 @@ NUM_INDIAN_SOLAR = {"Meṣa": 0,
                     "Makara": 9,
                     "Kumbha": 10,
                     "Mīna": 11}
+
+
+BENGALI_NUM = ("Bôishakh", "Jyôishțhô", "Āshāḍh", "Srabôn", "Bhadrô", "Aśvin", "Kartik", "Ôgrôhayôn", "Poush", "Magh", "Falgun", "Choitrô")
+
+NUM_BENGALI = {"Bôishakh": 0,
+               "Jyôishțhô": 1,
+               "Āshāḍh": 2,
+               "Srabôn": 3,
+               "Bhadrô": 4,
+               "Aśvin": 5,
+               "Kartik": 6,
+               "Ôgrôhayôn": 7,
+               "Poush": 8,
+               "Magh": 9,
+               "Falgun": 10,
+               "Chôitrô": 11}
