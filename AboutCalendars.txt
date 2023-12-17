@@ -1623,6 +1623,24 @@ Sources:
 * https://netkibaten.com/bengali-month-name/
 * http://world.clndr.org/calendars/bengali-calendar/
 
+--------------------
+BANGLADESHI CALENDAR
+--------------------
+
+A radical redesign of the Bengali calendar was designed by a committe at Bangla Academy, led by Muhammad Shahidullah, and first presented in late 1372 BE (1887 SE, 1344 AH, early 1966 AD). The new calendar would exactly synchronise with the Gregorian, such that Pohela Bôisakh (Bengali New Year) would always fall on 14 April. The first five months of the year have 31 days, the next six have 30, and the last month has 30 in normal years and 31 in leap years. The new calendar was officially adopted in Bangladesh in 1393 BE and made coöfficial with the Gregorian calendar; it was also considered by rejected in West Bengal, because the traditional calendar is too deeply intwined with local culture and Hindu tradition.
+
+The calendar was slightly revised in 1426 BE (1398 AH, 1941 SE, 2019 AH), resulting in a calendar that more closely resembles the Solar Hijri calendar. In the new Bangladeshi calendar, the first six months of the year have 31 days each, the next five have 30, and the last month has 29 days in normal years and 30 in leap years. This and the Gregorian calendar are the official calendars in use in Bangladesh today.
+
+Sources:
+* https://www.tbsnews.net/thoughts/saga-bangla-calendar-403202
+* https://www.daily-bangladesh.com/english/national/30081
+* https://en.wikipedia.org/wiki/Bangladeshi_calendar
+* https://en.wikipedia.org/wiki/Bengali_calendars
+* https://en.wikipedia.org/wiki/Pohela_Boishakh
+* https://books.google.ie/books?id=QVOFAAAAQBAJ&pg=PA114&redir_esc=y#v=onepage&q&f=false
+* http://en.banglapedia.org/index.php?title=Bangabda
+* http://en.banglapedia.org/index.php?title=Panjika
+
 ---------------------------
 MADHYAMA LUNISOLAR CALENDAR
 ---------------------------
