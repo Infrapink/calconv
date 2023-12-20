@@ -578,3 +578,34 @@ def dayof_sunset(jday):
         ans -= 1
 
     return (ans + 1) # have to add 1 because the algorithms model the tropical day as running from midnight to midnight
+
+def dayof_malayali(jday):
+    '''Compute the Julian Day associated with a given astronomical event, as per the Malayali (Keralan) rule'''
+    # Here's how it works in Kerala.
+    # Compute the instant ⅗ between sunrise and sunset; this is termed the aparahna
+    # If the instant happens after the aparahna, the corresponding day is tomorrow
+    # Otherwise, it's today
+    # Source: http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+    jday = Fraction(jday) # instant we are interested in
+
+    aparahna = sunrise(jday) + ((sunset(jday) - sunrise(jday)) * Fraction(3,5))
+    if (jday > aparahna):
+        ans = ceil(jday)
+    else:
+        ans = floor(jday)
+
+    return ans
+
+def dayof_tamil(jday):
+    '''Compute the Julian Day associated with an astronomical event, as per the Tamil rule'''
+    # If the even happens between sunset and sunrise, it belongs to the following day
+    # If it happens while the sun is up, it belongs to the current day
+    # Source: http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+    jday = Fraction(jday) # instant we're interested in
+
+    if (jday > sunset(jday)):
+        ans = ceil(jday)
+    else:
+        ans = floor(jday)
+
+    return ans

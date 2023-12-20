@@ -1599,12 +1599,13 @@ Sources:
 * http://world.clndr.org/calendars/Tamil-calendar
 * https://tamil.calendarin.com/tamil-daily-calendar
 * https://www.tamildailycalendar.com/tamil_monthly_calendar.php?msg=Tamil%20Monthly%20Calendar%202022
+* http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
 
 -----------------
 BENGALI CALENDARS
 -----------------
 
-The Bengali calendar is the traditional calendar of the Bengali people, and is primarily used in West Bengal. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
+The Bengali calendar is the traditional calendar of West Bengal and Assam. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
 
 The Bengali calendar is the quintessential Indian solar calendar. Days begin at sunrise, the year begins with the sun's entry into Meṣa, and each month lasts as long as it takes the sun to cross one sign of the zodiac. Its introduction is variously attributed to either King Shashanka or Emperor Akbar, but some form of it most likely predates both. Its era is the Bengali Era, which seems to date from the accession of Shashanka to the throne of Gauda.
 
@@ -1622,6 +1623,7 @@ Sources:
 * https://www.fluentin3months.com/bengali-calendar/
 * https://netkibaten.com/bengali-month-name/
 * http://world.clndr.org/calendars/bengali-calendar/
+* http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
 
 --------------------
 BANGLADESHI CALENDAR
@@ -1741,6 +1743,8 @@ The Jyolsyabharanam and Vidyabhivardhini Kanakajoobili Prasasti uses modern meth
 
 The Nava Bharathi Panchangam takes an altogether different tack. From what I understand, rather than casting an entire calendar, it uses the methods of the Sūrya Siddhānta to determine the dates of traditional festivals in the Gregorian calendar.
 
+The Keralite calendars use a very unusual method for determining the month. Rather than taking the sun's position at sunrise, sunset, midnight, or even noon as important, the critical time is the aparahna, the instant ⅗ between sunrise and sunset (which Dershowitz and Reingold misunderstand as meaning 13:12; this is true only on the days of the equinoxes).
+
 The Keralite calendars use the Kollam era, which begins in 3927 Kali Yuga (748 Śaka Era, 881 Vikram Samvat, 826 Anno Domini, 205 Anno Hejirae). The origin of this era is obscure; the most plausible explanation I found is that it comemorates the construction of the temple to Shiva in Kandiyoor by king Cheraman Perumal.
 
 Sources:
@@ -1750,4 +1754,4 @@ Sources:
 * http://vaikhari.org/kollavarsham.html
 * https://www.keralatourism.org/malayalam-calendar
 * http://world.clndr.org/calendars/Malayalam-calendar
-
+* http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf

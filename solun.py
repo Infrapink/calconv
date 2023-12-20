@@ -375,15 +375,31 @@ def dayof_hindi(jday):
     return ans
 
 def dayof_kerala(jday):
-    '''Compute the day associated with an astronomical event, where days begin at sunset'''
-    # The first day of a solar month is the day whose midnight follows the first sunset after the sun enters the star sign in question
-    # The first day of a synodic month is normally the day whose midnight follows the first sunset after the instant of the new moon
-    # In some calendars, the first day of a synodic month is the day whose midnight follows the first sunset after the full moon
+    '''Compute the Julian Day associated with an astronomical event, as per the Malayali (Kerala) rule'''
+    # First, calculate the aparahna; this is the moment ⅗ between sunrise and sunset
+    # If the instant in question falls after aparahna, it is associated with the following day
+    # Otherwise, it is associated with the current day
+    # Source: http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
     jday = Fraction(jday)
 
-    ans = round(jday)
-    while (indian_sunset(ans) < jday):
-        ans += 1
-    while (indian_sunset(ans - 1) >= jday):
-        ans -= 1
-    return (ans + 1) # add 1 to the answer because the rest of these functions assume the day to begin at midnight rather than the previous sunset
+    aparahna = indian_sunrise(jday) + ((indian_sunset(jday) - indian_sunrise(jday)) * Fraction(3,5))
+    if (jday > aparahna):
+        ans = ceil(jday)
+    else:
+        ans = floor(jday)
+
+    return ans
+
+def dayof_tamil(jday):
+    '''Compute the day associated with an astronomical event, as per the Tamil rule'''
+    # In the Tamil calendar, days begin at sunrise.
+    # However, an astronomical even belongs to the tropical day in which it falls unless it falls after sunset, in which case it is assigned to the following day.
+    # So, for example, if the sun enters Tulā at noon, then that day is the first day is the first day of Aipassi even though it is after sunrise.
+    jday = Fraction(jday)
+
+    if (jday >= indian_sunset(jday)):
+        ans = ceil(jday)
+    else:
+        ans = floor(jday)
+
+    return ans
