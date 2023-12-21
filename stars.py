@@ -70,3 +70,12 @@ REVATI = Star( Decimal('18.4382'), # ra
                Decimal('15.0') / 977792, # rv
                (Decimal('181.78') * mas2rad), # dra
                0 - (Decimal('40.34') * mas2rad)) # ddec
+
+# Ashvin refers to Hamal, AKA Alpha Arietis
+ASHVIN = Star( (30 + (7 * Decimal(15/60)) + (Decimal('10.4057') * Decimal(15/(60 * 60)))), # ra
+               (23 + Decimal(27/60) + (Decimal('44.7032') / (60 * 60))), # dec
+               Decimal('20.2'), # distance
+               Decimal('-14.2') / 977792, # rv
+               Decimal('188.55') * mas2rad, # dra
+               Decimal('-148.08') * mas2rad)
+               
