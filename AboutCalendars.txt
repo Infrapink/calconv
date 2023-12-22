@@ -1703,6 +1703,21 @@ Sources:
 
 DO NOT SEE Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20. Because Reingold and Dershowitz are idiots with no idea what they're talking about and don't understand what they're reading.
 
+-----------------
+TRIPURI CALENDARS
+-----------------
+
+The sidereal Tripuri calendar is the traditional calendar of Tripura. It is a very slight variant of the Bengali calendar; its era begins three years earlier, and it uses the Hindi rather than Bengali month names. It was commonly used up until the end of British rule in India; since the accession of Tripura to the Republic of India, the Gregorian and Bengali calendars have been in standard use in Tripura. More recently, a revival of the Tripuri calendar has been promoted by Tripura nationalists.
+
+In researching it, I found scattered references to a Tripuri calendar linked to the southern solstice. I was not able to find anything concrete, and so this appears to be an idea some Tripurans have that has no published definition. As such, the tropical Tripuri calendar here is one of my own design. Its epoch is consecutive Julian Day 1936544, corresponding to the southern solstice preceding the epoch of the sidereal calendar. Each month lasts as long as it takes the sun to cross 30° of the ecliptic, and each month begins on the day of the sunrise immediately at or following the sun's entry into that segment of the ecliptic.
+
+Sources:
+* https://en.wikipedia.org/wiki/Tripuri_calendar
+* https://thenortheasttoday.com/states/tripura/tripura-5-facts-on-the-history-behind-tring-tripuri-new/cid2552853.htm
+* https://www.telegraphindia.com/india/tripura-tribal-front-rewrites-calendar/cid/937480
+* http://www.tripura.org.in/truthoftringe1.htm
+* http://www.packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+
 ------------------------------------
 OBSERVATIONAL INDIAN SOLAR CALENDARS
 ------------------------------------
@@ -1755,3 +1770,5 @@ Sources:
 * https://www.keralatourism.org/malayalam-calendar
 * http://world.clndr.org/calendars/Malayalam-calendar
 * http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+* https://www.narit.or.th/files/JAHH/2018JAHHvol21/2018JAHH...21..134G.pdf
+* Kollam Era, KV Sarna, Indian Journal of the History of Science 31(1), 1996

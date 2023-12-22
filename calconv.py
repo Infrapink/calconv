@@ -152,6 +152,8 @@ import sid_bengali
 import obs_bengali
 import bangladeshi1373
 import bangladeshi1426
+import sid_tripuri
+import trop_tripuri
 
 
 def cons_day_julian_todate():
@@ -1579,6 +1581,24 @@ def cons_day_julian_todate():
         bangladeshi1426_month_ent.insert(0, bangladeshi1426_date[1])
         bangladeshi1426_year_ent.insert(0, bangladeshi1426_date[2])
 
+        # Convert a Julian day to a date in the Sidereal Tripuri calendar
+        sid_tripuri_date = sid_tripuri.fromjd(day)
+        sid_tripuri_day_ent.delete(0, END)
+        sid_tripuri_month_ent.delete(0, END)
+        sid_tripuri_year_ent.delete(0, END)
+        sid_tripuri_day_ent.insert(0, sid_tripuri_date[0])
+        sid_tripuri_month_ent.insert(0, sid_tripuri_date[1])
+        sid_tripuri_year_ent.insert(0, sid_tripuri_date[2])
+
+        # Convert a Julian day to a date in the Tropical Tripuri calendar
+        trop_tripuri_date = trop_tripuri.fromjd(day)
+        trop_tripuri_day_ent.delete(0, END)
+        trop_tripuri_month_ent.delete(0, END)
+        trop_tripuri_year_ent.delete(0, END)
+        trop_tripuri_day_ent.insert(0, trop_tripuri_date[0])
+        trop_tripuri_month_ent.insert(0, trop_tripuri_date[1])
+        trop_tripuri_year_ent.insert(0, trop_tripuri_date[2])
+
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
         day = int(day) + 1
@@ -2897,6 +2917,24 @@ def siddhantic_solar_vs_converter():
         month = siddhantic_solar_vs_month_ent.get()
         year = int(siddhantic_solar_vs_year_ent.get())
         jday = siddhantic_solar_vs.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sid_tripuri_converter():
+        day = int(sid_tripuri_day_ent.get())
+        month = sid_tripuri_month_ent.get()
+        year = int(sid_tripuri_year_ent.get())
+        jday = sid_tripuri.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def trop_tripuri_converter():
+        day = int(trop_tripuri_day_ent.get())
+        month = trop_tripuri_month_ent.get()
+        year = int(trop_tripuri_year_ent.get())
+        jday = trop_tripuri.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -4926,6 +4964,32 @@ siddhantic_lunisolar_vs_year_lbl = Label(frame, text = "Year").grid(row = 139, c
 siddhantic_lunisolar_vs_year_ent = Entry(frame)
 siddhantic_lunisolar_vs_year_ent.grid(row = 140, column = 8, sticky = W)
 siddhantic_lunisolar_vs_bttn = Button(frame, text = "Calculate", command = siddhantic_lunisolar_vs_converter).grid(row = 141, column = 6, columnspan = 3, sticky = W)
+
+# Sidereal Tripuri calendar                                                                                            
+sid_tripuri_lbl = Label(frame, text = "Sidereal Tripuri calendar").grid(row = 138, column = 9, columnspan = 3, sticky = W)
+sid_tripuri_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 9, sticky = W)
+sid_tripuri_day_ent = Entry(frame)
+sid_tripuri_day_ent.grid(row = 140, column = 9, sticky = W)
+sid_tripuri_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 10, sticky = W)
+sid_tripuri_month_ent = Entry(frame)
+sid_tripuri_month_ent.grid(row = 140, column = 10, sticky = W)
+sid_tripuri_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 11, sticky = W)
+sid_tripuri_year_ent = Entry(frame)
+sid_tripuri_year_ent.grid(row = 140, column = 11, sticky = W)
+sid_tripuri_bttn = Button(frame, text = "Calculate", command = sid_tripuri_converter).grid(row = 141, column = 9, columnspan = 3, sticky = W)
+
+# Tropical Tripuri calendar                                                                                            
+trop_tripuri_lbl = Label(frame, text = "Tropical Tripuri calendar").grid(row = 138, column = 12, columnspan = 3, sticky = W)
+trop_tripuri_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 12, sticky = W)
+trop_tripuri_day_ent = Entry(frame)
+trop_tripuri_day_ent.grid(row = 140, column = 12, sticky = W)
+trop_tripuri_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 13, sticky = W)
+trop_tripuri_month_ent = Entry(frame)
+trop_tripuri_month_ent.grid(row = 140, column = 13, sticky = W)
+trop_tripuri_year_lbl = Label(frame, text = "Year").grid(row = 139, column = 14, sticky = W)
+trop_tripuri_year_ent = Entry(frame)
+trop_tripuri_year_ent.grid(row = 140, column = 14, sticky = W)
+trop_tripuri_bttn = Button(frame, text = "Calculate", command = trop_tripuri_converter).grid(row = 141, column = 12, columnspan = 3, sticky = W)
 
 # Observational Indian solar calendar (Kali Yuga)                                                                                            
 obs_indian_solar_ky_lbl = Label(frame, text = "Observational Indian solar calendar (Kali Yuga)").grid(row = 143, column = 0, columnspan = 3, sticky = W)
