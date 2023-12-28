@@ -154,6 +154,7 @@ import bangladeshi1373
 import bangladeshi1426
 import sid_tripuri
 import trop_tripuri
+import assamese
 
 
 def cons_day_julian_todate():
@@ -1599,6 +1600,15 @@ def cons_day_julian_todate():
         trop_tripuri_month_ent.insert(0, trop_tripuri_date[1])
         trop_tripuri_year_ent.insert(0, trop_tripuri_date[2])
 
+        # Convert a Julian day to a date in the Assamese calendar
+        assamese_date = assamese.fromjd(day)
+        assamese_day_ent.delete(0, END)
+        assamese_month_ent.delete(0, END)
+        assamese_year_ent.delete(0, END)
+        assamese_day_ent.insert(0, assamese_date[0])
+        assamese_month_ent.insert(0, assamese_date[1])
+        assamese_year_ent.insert(0, assamese_date[2])
+
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
         day = int(day) + 1
@@ -3016,6 +3026,15 @@ def obs_indian_lunisolar_vs_converter():
         month = obs_indian_lunisolar_vs_month_ent.get()
         year = int(obs_indian_lunisolar_vs_year_ent.get())
         jday = obs_indian_lunisolar_vs.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def assamese_converter():
+        day = int(assamese_day_ent.get())
+        month = assamese_month_ent.get()
+        year = int(assamese_year_ent.get())
+        jday = assamese.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5029,6 +5048,19 @@ obs_indian_solar_vs_year_lbl = Label(frame, text = "Year").grid(row = 144, colum
 obs_indian_solar_vs_year_ent = Entry(frame)
 obs_indian_solar_vs_year_ent.grid(row = 145, column = 8, sticky = W)
 obs_indian_solar_vs_bttn = Button(frame, text = "Calculate", command = obs_indian_solar_vs_converter).grid(row = 146, column = 6, columnspan = 3, sticky = W)
+
+# Assamese calendar                                                                                            
+assamese_lbl = Label(frame, text = "Assamese calendar").grid(row = 143, column = 9, columnspan = 3, sticky = W)
+assamese_day_lbl = Label(frame, text = "Day").grid(row = 144, column = 9, sticky = W)
+assamese_day_ent = Entry(frame)
+assamese_day_ent.grid(row = 145, column = 9, sticky = W)
+assamese_month_lbl = Label(frame, text = "Month").grid(row = 144, column = 10, sticky = W)
+assamese_month_ent = Entry(frame)
+assamese_month_ent.grid(row = 145, column = 10, sticky = W)
+assamese_year_lbl = Label(frame, text = "Year").grid(row = 144, column = 11, sticky = W)
+assamese_year_ent = Entry(frame)
+assamese_year_ent.grid(row = 145, column = 11, sticky = W)
+assamese_bttn = Button(frame, text = "Calculate", command = assamese_converter).grid(row = 146, column = 9, columnspan = 3, sticky = W)
 
 # Observational Indian lunisolar calendar (Kali Yuga)                                                                                            
 obs_indian_lunisolar_ky_lbl = Label(frame, text = "Observational Indian lunisolar calendar (Kali Yuga)").grid(row = 148, column = 0, columnspan = 3, sticky = W)

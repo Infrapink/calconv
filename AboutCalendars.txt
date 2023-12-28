@@ -1624,6 +1624,16 @@ Sources:
 * https://netkibaten.com/bengali-month-name/
 * http://world.clndr.org/calendars/bengali-calendar/
 * http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+* https://drive.google.com/file/d/183xBV5EgCJsNmiv3bsVd9PUXbZiOkDs1/view?pli=1
+* https://ganpatisevak.in/assamese-calendar-pdf-assam-govt-festivals-holidays-list/
+* https://www.getbengal.com/details/a-few-bengali-calendar-basics-as-we-begin-1429
+* https://www.opindia.com/2020/04/bengali-new-year-noboborsho-akbar-calendar-shashanka-deva-dynasty/
+* https://beautifulbengal.com/bengali-calendar.html
+* https://www.tbsnews.net/thoughts/saga-bangla-calendar-403202
+* https://tanmoy.tripod.com/bengcal.html
+* https://www.newindianexpress.com/nation/2023/aug/23/kolkata-diary-state-decides-to-adopt-bengali-lunar-calender-2607988.html
+* https://www.cuttingthechai.com/2019/04/8125/pohela-boishakh-a-brief-history-of-the-bengali-calendar/
+* https://www.wb.gov.in/pdf/Holiday-2021.pdf
 
 --------------------
 BANGLADESHI CALENDAR
@@ -1745,6 +1755,31 @@ Sources:
 * https://www.ganeshaspeaks.com/festival-calendars/information/mesha-sankranti/
 * https://www.news18.com/news/lifestyle/mesha-sankranti-2022-rituals-importance-and-all-you-need-to-know-about-the-solar-new-year-4977763.html
 * https://www.prokerala.com/festivals/mesha-sankranti.html
+
+-----------------
+ASSAMESE CALENDAR
+-----------------
+
+The Assamese calendar is the traditional calendar of Assam. A variant of the Bengali calendar, it is a solar calendar which shares the epoch and the New Year's Day rule; the difference is that where the Bengali calendar's months are determined by observation, the Assamese calendar has months of fixed length. In leap years, the extra day is added to the final month, Söt. It is commonly described as a lunisolar calendar, but this is false; it is a purely solar calendar, but traditional calendar makers include the phases of the moon for the purposes of observation of Hindu and Buddhist festivals (which is also useful for Muslim observances).
+
+The calendar made headlines in 1428 BE (1943 SE, 2021 AD) when the state legislative assembly announced that it would be made coöfficial with the Gregorian and Indian National calendars; this was widely (and incorrectly) reported as the local calendar becoming the *only* official calendar. The actual result was rather less dramatic; all official Assamese government communications carry the Assamese date alongside the Indian and Gregorian dates.
+
+Sources:
+* https://www.nextias.com/ca/current-affairs/21-10-2021/bhaskarabda-calendar
+* https://www.adda247.com/upsc-exam/bhaskarabda-calendar/
+* https://web.archive.org/web/20230104023923/https://testbook.com/current-affairs/bhaskarabda-calendar-to-be-added-to-official-assam-calendar/
+* https://www.drishtiias.com/daily-updates/daily-news-analysis/bhaskarabda-a-luni-solar-calendar
+* https://iasscore.in/current-affairs/prelims/bhaskarabda-a-luni-solar-calendar
+* https://www.pratidintime.com/latest-assam-news-breaking-news-assam/bhaskarabda-calendar-official-calendar
+* https://www.vishvasnews.com/english/viral/fact-check-bhaskaravda-will-not-be-used-as-an-official-calendar-in-assam-but-as-a-part-of-the-official-calendar-viral-posts-are-misleading-2/
+* https://www.pratidintime.com/latest-assam-news-breaking-news-assam/bhaskarabda-calendar-official-calendar
+* https://www.thehindu.com/news/national/other-states/bhaskarabda-to-be-added-to-official-assam-calendar/article37068273.ece
+* https://www.sentinelassam.com/north-east-india-news/assam-news/bhaskarabda-luni-solar-calendar-to-be-used-in-official-calendar-assam-cm-himanta-biswa-sarma-559383
+* https://www.iastoppers.com/articles/bhaskarabda-to-be-added-to-official-assam-calendar
+* https://www.adda247.com/upsc-exam/bhaskarabda-calendar/
+* https://web.archive.org/web/20211019093335/https://www.thehindu.com/news/national/other-states/bhaskarabda-to-be-added-to-official-assam-calendar/article37068273.ece
+* https://assam.gov.in/sites/default/files/dms/notificationholidaylist2022.pdf
+* https://www.assamgovernmentjob.com/assam-govt-holiday-list-2024-gad-assam/
 
 ----------------------------
 MALAYAM (KERALITE) CALENDARS

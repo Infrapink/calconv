@@ -713,6 +713,21 @@ Bengali calendars:
 * Falgun
 * Chôitrô
 
+Assamese calendar:
+------------------
+* Böhag
+* Zeth
+* Ahar
+* Xaün
+* Bhado
+* Ahin
+* Kati
+* Aghün
+* Puh
+* Magh
+* Fagun
+* Söt": 30
+
 Mandaean calendar:
 ------------------
 

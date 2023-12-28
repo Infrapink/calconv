@@ -83,7 +83,7 @@ def trans(day, angle, frtz):
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
-def conj(day, frtz):
+def newmoon(day, frtz):
     '''Julian Day and time of the new moon, UTC'''
     day = floor(day) - 0.5
     frtz = Fraction(frtz) # timezone
@@ -91,6 +91,13 @@ def conj(day, frtz):
     minutes = int(sunmoon.lunar_coords.lunar_time(day))
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
+
+def conj(day, frtz):
+    '''This function is deprecated. Use newmoon() instead'''
+    day = floor(day) - 0.5
+    frtz = Fraction(frtz)
+    ans = newmoon(day, frtz)
+    return ans
 
 def phase(jday, tz):
     '''Angle between the sun and the moon at a given time'''
@@ -333,7 +340,7 @@ def get_solar_zpos(jday, star, opp, angle):
 def indian_spos(jday):
     '''Compute the zodiacal position of the sun for modern Indian calendars'''
     jday = Fraction(jday) - Fraction(11,48) # convert IST to UTC
-    ans = (solar_zpos(jday, stars.SPICA, True) - eqm) % 360
+    ans = (solar_zpos(jday, stars.SPICA, True) + eqm) % 360
     return ans
 
 def sankranti(jday, angle):
@@ -341,7 +348,7 @@ def sankranti(jday, angle):
     jday = Fraction(jday)
     angle = float(angle)
 
-    ans = get_solar_zpos(jday, stars.SPICA, True, ((angle - eqm) % 360)) # time in UTC
+    ans = get_solar_zpos(jday, stars.SPICA, True, ((angle + eqm) % 360)) # time in UTC
     ans += Fraction(11,48) # convert from UTC to IST
     return ans
 
