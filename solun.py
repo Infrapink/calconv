@@ -117,6 +117,22 @@ def antiphase(jday, tz):
     ans = (phase(jday, tz) + 180) % 360
     return ans
 
+def fullmoon(jday, tz):
+    '''Zero in on the time of full moon'''
+    jday = Fraction(jday) # instant we're interested in
+    tz = Fraction(tz) # timezone
+
+    ans = jday
+    p = 0
+    while (p < 4):
+        f = Fraction(1, (60 ** p))
+        while (phase((jday + f), tz) <= 180):
+            ans += f
+        while (phase((jday - f), tz) >= 180):
+            ans -= f
+        p += 1
+    return ans
+
 def phasetime(jday, angle, tz):
     '''Time the angle between the sun and the moon hits a specified value'''
 
