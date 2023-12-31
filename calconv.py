@@ -155,6 +155,7 @@ import bangladeshi1426
 import sid_tripuri
 import trop_tripuri
 import assamese
+import odia
 
 
 def cons_day_julian_todate():
@@ -1608,6 +1609,15 @@ def cons_day_julian_todate():
         assamese_day_ent.insert(0, assamese_date[0])
         assamese_month_ent.insert(0, assamese_date[1])
         assamese_year_ent.insert(0, assamese_date[2])
+
+        # Convert a Julian day to a date in the Odia calendar
+        odia_date = odia.fromjd(day)
+        odia_day_ent.delete(0, END)
+        odia_month_ent.delete(0, END)
+        odia_year_ent.delete(0, END)
+        odia_day_ent.insert(0, odia_date[0])
+        odia_month_ent.insert(0, odia_date[1])
+        odia_year_ent.insert(0, odia_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3080,6 +3090,15 @@ def bangladeshi1426_converter():
         month = bangladeshi1426_month_ent.get()
         year = int(bangladeshi1426_year_ent.get())
         jday = bangladeshi1426.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def odia_converter():
+        day = int(odia_day_ent.get())
+        month = odia_month_ent.get()
+        year = int(odia_year_ent.get())
+        jday = odia.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5061,6 +5080,19 @@ assamese_year_lbl = Label(frame, text = "Year").grid(row = 144, column = 11, sti
 assamese_year_ent = Entry(frame)
 assamese_year_ent.grid(row = 145, column = 11, sticky = W)
 assamese_bttn = Button(frame, text = "Calculate", command = assamese_converter).grid(row = 146, column = 9, columnspan = 3, sticky = W)
+
+# Odia calendar                                                                                            
+odia_lbl = Label(frame, text = "Odia calendar").grid(row = 143, column = 12, columnspan = 3, sticky = W)
+odia_day_lbl = Label(frame, text = "Day").grid(row = 144, column = 12, sticky = W)
+odia_day_ent = Entry(frame)
+odia_day_ent.grid(row = 145, column = 12, sticky = W)
+odia_month_lbl = Label(frame, text = "Month").grid(row = 144, column = 13, sticky = W)
+odia_month_ent = Entry(frame)
+odia_month_ent.grid(row = 145, column = 13, sticky = W)
+odia_year_lbl = Label(frame, text = "Year").grid(row = 144, column = 14, sticky = W)
+odia_year_ent = Entry(frame)
+odia_year_ent.grid(row = 145, column = 14, sticky = W)
+odia_bttn = Button(frame, text = "Calculate", command = odia_converter).grid(row = 146, column = 12, columnspan = 3, sticky = W)
 
 # Observational Indian lunisolar calendar (Kali Yuga)                                                                                            
 obs_indian_lunisolar_ky_lbl = Label(frame, text = "Observational Indian lunisolar calendar (Kali Yuga)").grid(row = 148, column = 0, columnspan = 3, sticky = W)

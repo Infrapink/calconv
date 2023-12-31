@@ -1781,6 +1781,28 @@ Sources:
 * https://assam.gov.in/sites/default/files/dms/notificationholidaylist2022.pdf
 * https://www.assamgovernmentjob.com/assam-govt-holiday-list-2024-gad-assam/
 
+-------------
+ODIA CALENDAR
+-------------
+
+The Odia calendar is the version of the traditional Indian solar calendar used in Odisha, Punjab, and Haryana. Like other Indian calendars, it uses the sidereal year; unlike others Indian calendars, it reckons dates by the Chinese method. Days run from midnight to midnight, and the day of an astronomical event is the day that the event occurs, regardless of when in the day it falls. The epoch is one year earlier than the Bengali epoch.
+
+For determining the dates of religious festivals, it uses the purnimanta system, in which lunar months run from full moon to full moon.
+
+Sources:
+* Leow Choon Lian, Indian Calendars, National University of Singapore: https://web.archive.org/web/20180417203122/http://www.math.nus.edu.sg/aslaksen/projects/lcl.pdf
+* GM Ballabh, Indian Calendars, Kerala Positional Astronomy Centre
+* https://en.wikipedia.org/wiki/Odia_calendar
+* https://www.odiacalendar.com/
+* https://jantrajyotisha.com/odia-calendar/
+* http://shreekhetra.com/oriyacalender.html
+* https://incredibleodisha.in/odia-months-name-list-seasons-rutus/
+* https://nijuktiodisha.in/odia-calender
+* https://jagannath.co.in/jagannath-odia-calendar/
+* https://www.odiacalendar.com/odia-calendar-2020/
+* https://web.archive.org/web/20110419195447/http://www.odishanewstoday.com/features/354-odisha-celebrates-maha-vishuba-sankranti-with-fervor-.html
+* https://www.odiacalendar.com/blog/odia-months-name/
+
 ----------------------------
 MALAYAM (KERALITE) CALENDARS
 ----------------------------

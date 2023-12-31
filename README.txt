@@ -726,7 +726,22 @@ Assamese calendar:
 * Puh
 * Magh
 * Fagun
-* Söt": 30
+* Söt
+
+Odia calendar:
+--------------
+* Baiśākha
+* Jyeṣṭha
+* Āṣāḍha
+* Śrābaṇa
+* Bhādraba
+* Āświna
+* Kārttika
+* Mārgaśira
+* Pauṣa
+* Māgha
+* Phālguna
+* Caitra
 
 Mandaean calendar:
 ------------------
