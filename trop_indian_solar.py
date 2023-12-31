@@ -1,25 +1,12 @@
 #!/usr/bin/python3
 
 from fractions import Fraction
-from solun import dayof_hindi as dayof, solar_term as rasi, trans, tropical_year, spos
+from solun import dayof_hindi as dayof, solar_term as rasi, trans, tropical_year, spos, tropical_sankranti as sankranti
 from surya_siddhanta import se
 from months import INDIAN_LUNAR_NUM as NUMON, NUM_INDIAN_LUNAR as MONTHNO # the tropical solar calendar uses the lunar month names
 
 tz = Fraction(11, 48) # India is 5hr 30min ahead of UTC
 epoch = trans(se, (23 + Fraction(15,60)), tz)
-
-def sankranti(jday, angle):
-    '''Compute the time the sun hits a given ecliptic longitude, where 0° is defined as 23°15' past the northward equinox'''
-    jday = Fraction(jday)
-    angle = (Fraction(angle) + (23 + Fraction(15,60))) % 360 # convert from given angle to equinox-anchored angle
-    ans = trans(jday, angle, tz)
-    return ans
-
-def saurya(jday):
-    '''Compute the ecliptic longitude of the sun at a given time, where 0° is defined as 23°15' past the northward equinox'''
-    jday = Fraction(jday)
-    ans = spos(jday - tz)
-    return ans
 
 def tojd(day, month, year):
     '''Convert a date in the tropical Indian solar calendar to Julian Day'''

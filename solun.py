@@ -382,6 +382,19 @@ def indian_sunset(jday):
     ans = local_sunset(jday, uj_lon, uj_lat, Fraction(11,48))
     return ans
 
+def tropical_sankranti(jday, angle):
+    '''Compute the time the sun hits a given ecliptic longitude, where 0° is defined as 23°15' past the northward equinox'''
+    jday = Fraction(jday)
+    angle = (Fraction(angle) + (23 + Fraction(15,60))) % 360 # convert from given angle to equinox-anchored angle
+    ans = trans(jday, angle, tz)
+    return ans
+
+def saurya(jday):
+    '''Compute the ecliptic longitude of the sun at a given time, where 0° is defined as 23°15' past the northward equinox'''
+    jday = Fraction(jday)
+    ans = spos(jday - tz)
+    return ans
+
 def dayof_hindi(jday):
     '''Compute the day associated with an astronomical event, where days begin at sunrise'''
     # The first day of a solar month is the day beginning with the first sunrise after the sun enters the star sign in question.
