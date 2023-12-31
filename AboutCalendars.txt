@@ -1803,6 +1803,17 @@ Sources:
 * https://web.archive.org/web/20110419195447/http://www.odishanewstoday.com/features/354-odisha-celebrates-maha-vishuba-sankranti-with-fervor-.html
 * https://www.odiacalendar.com/blog/odia-months-name/
 
+-----------------------------
+TOPICAL INDIAN SOLAR CALENDAR
+-----------------------------
+
+The tropical Indian solar calendar was proposed by the Calendar Reform Committee in their 1954 report. Intended to facilitate as seamless as possible a transition from the use of the sidereal year to the tropical year for religious and cultural festivals, this calendar begins on the day that the sun hits an ecliptic longitude of 23°15', which was the sun's ecliptic longitude as of Meṣa Saṃkrānti in 1878 SE (1956 AD); each month lasts as long as it takes the sun to cross 30° of the ecliptic, reminiscent of how months are determined in the Jalali calendar. This was intended as a temporary measure to facilitate prevent solar and lunar festivals from drifting further from their seasons, and the Committee intended that, at a future date, the calendar might be reformed again to restore traditional festivals to their original seasons. However, traditional calendar makers rejected this proposal and kept on determining dates of festivals by sidereal markers.
+
+While civil days in India today run from midnight to midnight, the Calendar Reform Committee reccomended that the religious tropical calendar continue to reckon days from sunrise to sunrise, and I have implemented that convention. Years are counted per the Śaka Era.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+
 ----------------------------
 MALAYAM (KERALITE) CALENDARS
 ----------------------------
