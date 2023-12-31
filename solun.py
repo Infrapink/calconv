@@ -356,7 +356,7 @@ def get_solar_zpos(jday, star, opp, angle):
 def indian_spos(jday):
     '''Compute the zodiacal position of the sun for modern Indian calendars'''
     jday = Fraction(jday) - Fraction(11,48) # convert IST to UTC
-    ans = (solar_zpos(jday, stars.SPICA, True) + eqm) % 360
+    ans = (solar_zpos(jday, stars.SPICA, True) - eqm) % 360
     return ans
 
 def sankranti(jday, angle):
