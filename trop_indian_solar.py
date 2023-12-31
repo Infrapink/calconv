@@ -46,7 +46,7 @@ def fromjd(jday):
         r -= rasi
         angle -= 30
         m -= 1
-    while (dayof(sankranti((r + rasi), (angle + 30))) <= jday):
+    while (dayof(sankranti((r + rasi), ((angle + 30) % 360))) <= jday):
         r += rasi
         m += 1
         angle += 30
