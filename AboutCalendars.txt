@@ -1814,6 +1814,17 @@ While civil days in India today run from midnight to midnight, the Calendar Refo
 Sources:
 * 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
 
+----------------------------------
+TROPICAL INDIAN LUNISOLAR CALENDAR
+----------------------------------
+
+The tropical Indian lunisolar calendar was proposed by the Calendar Reform Committee in their 1954 AD report as a replacement for existing traditional calendars. The goal was to shift the calculation of the dates of Hindu and Buddhist religious observances from a sidereal to a tropical basis, and thus prevent the dates of traditional festivals from drifting any further away from their intended seasons. It uses the tropical solar calendar (described above) as its basis, and from there uses the phases of the moon to determine the months. It was intended as a temporary measure, with a future reform moving the dates of festivals back to their original seasons; however, panchanga makers considered even the switch to a tropical system to be too much, and so the new calendar was never officially adopted.
+
+Days begin at sunrise. Years are numbered from the Śaka Era.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+
 ----------------------------
 MALAYAM (KERALITE) CALENDARS
 ----------------------------

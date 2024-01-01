@@ -156,6 +156,8 @@ import sid_tripuri
 import trop_tripuri
 import assamese
 import odia
+import trop_indian_solar
+import trop_indian_lunisolar
 
 
 def cons_day_julian_todate():
@@ -1627,6 +1629,15 @@ def cons_day_julian_todate():
         trop_indian_solar_day_ent.insert(0, trop_indian_solar_date[0])
         trop_indian_solar_month_ent.insert(0, trop_indian_solar_date[1])
         trop_indian_solar_year_ent.insert(0, trop_indian_solar_date[2])
+
+        # Convert a Julian day to a date in the Tropical Indian lunisolar calendar
+        trop_indian_lunisolar_date = trop_indian_lunisolar.fromjd(day)
+        trop_indian_lunisolar_day_ent.delete(0, END)
+        trop_indian_lunisolar_month_ent.delete(0, END)
+        trop_indian_lunisolar_year_ent.delete(0, END)
+        trop_indian_lunisolar_day_ent.insert(0, trop_indian_lunisolar_date[0])
+        trop_indian_lunisolar_month_ent.insert(0, trop_indian_lunisolar_date[1])
+        trop_indian_lunisolar_year_ent.insert(0, trop_indian_lunisolar_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3117,6 +3128,15 @@ def trop_indian_solar_converter():
         month = trop_indian_solar_month_ent.get()
         year = int(trop_indian_solar_year_ent.get())
         jday = trop_indian_solar.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def trop_indian_lunisolar_converter():
+        day = int(trop_indian_lunisolar_day_ent.get())
+        month = trop_indian_lunisolar_month_ent.get()
+        year = int(trop_indian_lunisolar_year_ent.get())
+        jday = trop_indian_lunisolar.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5164,6 +5184,19 @@ trop_indian_solar_year_ent = Entry(frame)
 trop_indian_solar_year_ent.grid(row = 150, column = 11, sticky = W)
 trop_indian_solar_bttn = Button(frame, text = "Calculate", command = trop_indian_solar_converter).grid(row = 151, column = 9, columnspan = 3, sticky = W)
 
+# Tropical Indian lunisolar calendar                                                                                            
+trop_indian_lunisolar_lbl = Label(frame, text = "Tropical Indian lunisolar calendar").grid(row = 148, column = 12, columnspan = 3, sticky = W)
+trop_indian_lunisolar_day_lbl = Label(frame, text = "Tithi").grid(row = 149, column = 12, sticky = W)
+trop_indian_lunisolar_day_ent = Entry(frame)
+trop_indian_lunisolar_day_ent.grid(row = 150, column = 12, sticky = W)
+trop_indian_lunisolar_month_lbl = Label(frame, text = "Month").grid(row = 149, column = 13, sticky = W)
+trop_indian_lunisolar_month_ent = Entry(frame)
+trop_indian_lunisolar_month_ent.grid(row = 150, column = 13, sticky = W)
+trop_indian_lunisolar_year_lbl = Label(frame, text = "Year").grid(row = 149, column = 14, sticky = W)
+trop_indian_lunisolar_year_ent = Entry(frame)
+trop_indian_lunisolar_year_ent.grid(row = 150, column = 14, sticky = W)
+trop_indian_lunisolar_bttn = Button(frame, text = "Calculate", command = trop_indian_lunisolar_converter).grid(row = 151, column = 12, columnspan = 3, sticky = W)
+
 # Traditional Malayam calendar
 sid_malayam_lbl = Label(frame, text = "Traditional Malayam calendar").grid(row = 153, column = 0, columnspan = 3, sticky = W)
 sid_malayam_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 0, sticky = W)
@@ -5202,5 +5235,5 @@ alt_malayam_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 8, s
 alt_malayam_year_ent = Entry(frame)
 alt_malayam_year_ent.grid(row = 155, column = 8, sticky = W)
 alt_malayam_bttn = Button(frame, text = "Calculate", command = alt_malayam_converter).grid(row = 156, column = 6, columnspan = 3, sticky = W)
-root.title("Calendar Converter 0.59.0")
+root.title("Calendar Converter 0.60.0")
 root.mainloop()
