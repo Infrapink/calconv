@@ -1605,7 +1605,7 @@ Sources:
 BENGALI CALENDARS
 -----------------
 
-The Bengali calendar is the traditional calendar of West Bengal and Assam. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
+The Bengali calendar is the traditional calendar of West Bengal. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
 
 The Bengali calendar is the quintessential Indian solar calendar. Days begin at sunrise, the year begins with the sun's entry into Meṣa, and each month lasts as long as it takes the sun to cross one sign of the zodiac. Its introduction is variously attributed to either King Shashanka or Emperor Akbar, but some form of it most likely predates both. Its era is the Bengali Era, which seems to date from the accession of Shashanka to the throne of Gauda.
 
@@ -1704,12 +1704,15 @@ The traditional Indian lunisolar calendars are, like the solar calendars, based 
 
 Days begin at sunrise. The first day of the month is the day when the sun rises when the moon is new; to put it another way, months end of the day of the new moon. The month is determined by the position of the sun in the zodiac at sunrise on the first day of the month; thus, if the sun is in Mīna when it rises, the month is Chaitra; if the sun rises in Meṣa, it's Vaisākha, and so on. If two lunar months begin while the sun is in the same sign, the second is the "official" month; the first is a leap month, and is prefixed with "Adhik", a word meaning "empty". In some cases, it is possible for the sun to cross an entire sign within a single lunar month; in this case, the lunar month corresponding to that sign is skipped. Such a rare event is compensated with a leap month elsewhen in the year.
 
+This is the traditional calendar used by the Telugu minorities in Tamil Nadu (who use the Śaka era) and Delhi (where dates are counted as to the Vikram Samvat), as well as Kolhapur; it is also used by some in Mumbai, though the observational calendar is far more common there.
+
 Sources:
 * Sūrya Siddhānta, chapters 1–3; see:
 ** https://archive.org/details/SuryaSiddhantaTranslation/mode/2up
 ** https://archive.org/details/suryasiddhantaandsiddhantasiromanibimalaprasadsidhhnatasarasvatidanvirgoswamyiskon_202003_23_r
 ** https://archive.org/details/suryasiddhantaenglishtranslationlancelotwilkinsonbapudevasastri1861_727_C
 * https://en.wikipedia.org/wiki/Jy%C4%81,_koti-jy%C4%81_and_utkrama-jy%C4%81
+* Calendar Reform Committee Report, 1954: https://archive.org/details/calendar_reform_comittee_report
 
 DO NOT SEE Edward M. Reingold and Nachum Dershowitz, *Calendrical Calculations: The Ultimate Edition*, Cambridge University Press, 2018, chapter 20. Because Reingold and Dershowitz are idiots with no idea what they're talking about and don't understand what they're reading.
 
@@ -1803,6 +1806,19 @@ Sources:
 * https://web.archive.org/web/20110419195447/http://www.odishanewstoday.com/features/354-odisha-celebrates-maha-vishuba-sankranti-with-fervor-.html
 * https://www.odiacalendar.com/blog/odia-months-name/
 
+----------------------------------------
+OBSERVATIONAL INDIAN LUNISOLAR CALENDARS
+----------------------------------------
+
+The modern Indian lunisolar calendar is based on the same principles as the traditional calendars, but uses modern ephemerides, observational data, and computational methods to calculate the date.
+
+Days begin at sunrise, and the month begins on the first day following the new moon; in other words, when the sun rises after the moon passes between Earth and the sun. The name of the month is determined by the sign of the zodiac in which the sun rises, beginning with Chaitra in Mīna (Pisces), followed by Vaisākha in Meṣa (Aries), and so on. If two months begin within the same star sign, the second one is the official month; the first is given the prefix "Adhik" and is considered a leap month. Occasionally, no new moon will fall within a sign; in that case, the corresponding month is skipped, and is called kshaya. A kshaya month will always be balanced out by an adhik month elsewhen in the year.
+
+Three eras are in common use: Kali Yuga, Śaka, and Vikram Samvat, of which the Śaka era is the most common. The observational lunisolar calendar, dating as to the Śaka era, is the calendar used for traditional purposes in Andhra Pradesh, Uttar Pradesh, and most of Maharashtra. The 1954 Calendar Reform Committee Report mentions that two panchangas, published by Siddhanta Panchangam and Sri Saptarishi Panchang, report using the tropical rather than sidereal year; however, this appears to be because the respondants misread the survey question, as their other answers correspond to a sidereal reference frame.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+
 -----------------------------
 TOPICAL INDIAN SOLAR CALENDAR
 -----------------------------
@@ -1851,3 +1867,12 @@ Sources:
 * http://packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
 * https://www.narit.or.th/files/JAHH/2018JAHHvol21/2018JAHH...21..134G.pdf
 * Kollam Era, KV Sarna, Indian Journal of the History of Science 31(1), 1996
+
+----------------
+JALGAON CALENDAR
+----------------
+
+The Jalgaon calendar is a variant of the modern Indian lunisolar calendar, used in Jalgaon. In Jalgaon, each month falls a month early, such that Chaitra in Jalgaon corresponds to Phālguna elsewhere, Vaisākha corresponds to Chaitra, and so on. It uses the Śaka era.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report

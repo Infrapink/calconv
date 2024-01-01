@@ -4,26 +4,12 @@
 
 from math import floor, ceil
 from fractions import Fraction
-from solun import sankranti, conj, indian_sunrise as sunrise, conj as newmoon, phase, sid_year, lunar_month as syn_month, rasi, phasetime
+from solun import sankranti, conj, indian_sunrise as sunrise, conj as newmoon, phase, sid_year, lunar_month as syn_month, rasi, phasetime, dayof_hindi as dayof
 from surya_siddhanta import ky
 from months import INDIAN_LUNAR_NUM as NUMON, NUM_INDIAN_LUNAR as MONTHNO
 
 epoch = sankranti((ky - rasi + (3179 * sid_year)), 330) # Mīna Saṁkrānti of the year 0
 tz = Fraction(11,48) # Indian timezone; UTC+5:30
-
-def dayof(jday):
-    '''Compute the Julian Day to which an astronomical event belongs.'''
-    # If an even occurs before sunrise, its day is that day
-    # If it happens after sunrise, its day is the next day
-
-    jday = Fraction(jday) # Julian Day we are interested in
-    if (sunrise(jday) <= (jday % 1)):
-        # event is before sunrise
-        ans = floor(jday)
-    else:
-        # event is after sunrise
-        ans = ceil(jday)
-    return ans
 
 def fromjd(jday):
     '''Given a Julian Day, compute the date in the Indian lunisolar calendar'''
@@ -95,13 +81,7 @@ def tojd(tithi, month, year):
         # we're in the leap month, but shouldn't be
         crescent += syn_month
 
-    lunar_angle = tithi * 12 # angle between the sun and the moon, in degrees
-    t = crescent + (tithi * Fraction(syn_month, 30))
-    p = phasetime(t, lunar_angle, tz) # time the tithi specified begins
-    jday = floor(p) + sunrise(p) # sunrise at or after the start of the specified tithi
-    while (dayof(jday) < dayof(p)):
-        jday += 1
-    jday = floor(jday)
+    jday = dayof(phasetime((crescent + (tithi * Fraction(syn_month, 30))), (12 * tithi), tz))
 
     return jday
     
