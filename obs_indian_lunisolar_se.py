@@ -38,11 +38,11 @@ def fromjd(jday):
     s = mina + (rasi * cigra) # approximate time of the saṁkrānti immediatelly preceding the current lunar cycle
     while (dayof(sankranti(s, angle)) > dayof(newmoon(crescent, tz))):
         s -= rasi
-        cigra -= 1
+        cigra = (cigra - 1) % 12
         angle = (angle - 30) % 360
     while (dayof(sankranti((s + rasi), ((angle + 30) % 360))) <= dayof(newmoon(crescent, tz))):
         s += rasi
-        cigra += 1
+        cigra = (cigra + 1) % 12
         angle = (angle + 30) % 360
     month = NUMON[cigra]
     if (dayof(newmoon((crescent + syn_month), tz)) <= dayof(sankranti((s + rasi), ((angle + 30) % 360)))):
