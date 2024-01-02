@@ -23,6 +23,10 @@ r2d = 180 / pi # convert radians to degrees
 d2r = pi / 180 # convert degrees to radians
 eqm = 0.6749121716696571 # Difference between the celestial longitudes of the sun and counterspica when the sun hit an ecliptic angle of 23°15' in 1955. This is used in computing the instant of Meṣa Saṁkrānti
 
+ky = 588466 # Consecutive Julian Day on which the Kali Yuga begins.
+se = ky + (3179 * sid_year) # Beginning of the Śaka Era
+vs = ky + (3044 * sid_year) # Beginning of the Vikram Samvat
+
 def dsin(angle):
     '''sine of an angle in degrees'''
     angle = float(angle)
@@ -382,14 +386,14 @@ def indian_sunset(jday):
     ans = local_sunset(jday, uj_lon, uj_lat, Fraction(11,48))
     return ans
 
-def tropical_sankranti(jday, angle):
+def tropical_sankranti(jday, angle, tz):
     '''Compute the time the sun hits a given ecliptic longitude, where 0° is defined as 23°15' past the northward equinox'''
     jday = Fraction(jday)
     angle = (Fraction(angle) + (23 + Fraction(15,60))) % 360 # convert from given angle to equinox-anchored angle
     ans = trans(jday, angle, tz)
     return ans
 
-def saurya(jday):
+def saurya(jday, tz):
     '''Compute the ecliptic longitude of the sun at a given time, where 0° is defined as 23°15' past the northward equinox'''
     jday = Fraction(jday)
     ans = spos(jday - tz)

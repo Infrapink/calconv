@@ -1876,3 +1876,25 @@ The Jalgaon calendar is a variant of the modern Indian lunisolar calendar, used 
 
 Sources:
 * 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+
+-----------------
+GUJARATI CALENDAR
+-----------------
+
+In Gujarat, a variant of the observational Indian lunisolar calendar is used in which the year begins with Kārtika, in the constellation of Tulā (Libra); once upon a time, this would have corresponded to the first new moon after the southward equinox. The era is Vikram Samvat.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+* The Calendars of India, Vinod K. Mishra: https://web3.arxiv.org/pdf/1007.0062.pdf
+* Indian Calendars, Leow Choon Lian: https://telibrary.com/wp-content/uploads/2022/08/Indian-Calender-Article.pdf
+
+--------------
+KUTCH CALENDAR
+--------------
+
+The Kutch calendar is a local variant of the observational Indian lunisolar calendar, used in Kutch and Saurashtra. The year begins with Āṣāḍha, the first moon in Mithuna (Gemini), which in times past would have corresponded to the northern solstice. The era is Vikram Samvat.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+* The Calendars of India, Vinod K. Mishra: https://web3.arxiv.org/pdf/1007.0062.pdf
+* Indian Calendars, Leow Choon Lian: https://telibrary.com/wp-content/uploads/2022/08/Indian-Calender-Article.pdf

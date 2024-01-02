@@ -159,6 +159,8 @@ import odia
 import trop_indian_solar
 import trop_indian_lunisolar
 import jalgaon
+import gujarat
+import kutch
 
 
 def cons_day_julian_todate():
@@ -1648,6 +1650,24 @@ def cons_day_julian_todate():
         jalgaon_day_ent.insert(0, jalgaon_date[0])
         jalgaon_month_ent.insert(0, jalgaon_date[1])
         jalgaon_year_ent.insert(0, jalgaon_date[2])
+
+        # Convert a Julian day to a date in the Gujarat calendar
+        gujarat_date = gujarat.fromjd(day)
+        gujarat_day_ent.delete(0, END)
+        gujarat_month_ent.delete(0, END)
+        gujarat_year_ent.delete(0, END)
+        gujarat_day_ent.insert(0, gujarat_date[0])
+        gujarat_month_ent.insert(0, gujarat_date[1])
+        gujarat_year_ent.insert(0, gujarat_date[2])
+
+        # Convert a Julian day to a date in the Kutch calendar
+        kutch_date = kutch.fromjd(day)
+        kutch_day_ent.delete(0, END)
+        kutch_month_ent.delete(0, END)
+        kutch_year_ent.delete(0, END)
+        kutch_day_ent.insert(0, kutch_date[0])
+        kutch_month_ent.insert(0, kutch_date[1])
+        kutch_year_ent.insert(0, kutch_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3156,6 +3176,24 @@ def jalgaon_converter():
         month = jalgaon_month_ent.get()
         year = int(jalgaon_year_ent.get())
         jday = jalgaon.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def gujarat_converter():
+        day = int(gujarat_day_ent.get())
+        month = gujarat_month_ent.get()
+        year = int(gujarat_year_ent.get())
+        jday = gujarat.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def kutch_converter():
+        day = int(kutch_day_ent.get())
+        month = kutch_month_ent.get()
+        year = int(kutch_year_ent.get())
+        jday = kutch.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5153,7 +5191,7 @@ odia_bttn = Button(frame, text = "Calculate", command = odia_converter).grid(row
 
 # Observational Indian lunisolar calendar (Kali Yuga)                                                                                            
 obs_indian_lunisolar_ky_lbl = Label(frame, text = "Observational Indian lunisolar calendar (Kali Yuga)").grid(row = 148, column = 0, columnspan = 3, sticky = W)
-obs_indian_lunisolar_ky_day_lbl = Label(frame, text = "Day").grid(row = 149, column = 0, sticky = W)
+obs_indian_lunisolar_ky_day_lbl = Label(frame, text = "Tithi").grid(row = 149, column = 0, sticky = W)
 obs_indian_lunisolar_ky_day_ent = Entry(frame)
 obs_indian_lunisolar_ky_day_ent.grid(row = 150, column = 0, sticky = W)
 obs_indian_lunisolar_ky_month_lbl = Label(frame, text = "Month").grid(row = 149, column = 1, sticky = W)
@@ -5166,7 +5204,7 @@ obs_indian_lunisolar_ky_bttn = Button(frame, text = "Calculate", command = obs_i
 
 # Observational Indian lunisolar calendar (Śaka Era)                                                                         
 obs_indian_lunisolar_se_lbl = Label(frame, text = "Observational Indian lunisolar calendar (Śaka Era)").grid(row = 148, column = 3, columnspan = 3, sticky = W)
-obs_indian_lunisolar_se_day_lbl = Label(frame, text = "Day").grid(row = 149, column = 3, sticky = W)
+obs_indian_lunisolar_se_day_lbl = Label(frame, text = "Tithi").grid(row = 149, column = 3, sticky = W)
 obs_indian_lunisolar_se_day_ent = Entry(frame)
 obs_indian_lunisolar_se_day_ent.grid(row = 150, column = 3, sticky = W)
 obs_indian_lunisolar_se_month_lbl = Label(frame, text = "Month").grid(row = 149, column = 4, sticky = W)
@@ -5179,7 +5217,7 @@ obs_indian_lunisolar_se_bttn = Button(frame, text = "Calculate", command = obs_i
 
 # Observational Indian lunisolar calendar (Vikram Samvat)                                                                                            
 obs_indian_lunisolar_vs_lbl = Label(frame, text = "Observational Indian lunisolar calendar (Vikram Samvat)").grid(row = 148, column = 6, columnspan = 3, sticky = W)
-obs_indian_lunisolar_vs_day_lbl = Label(frame, text = "Day").grid(row = 149, column = 6, sticky = W)
+obs_indian_lunisolar_vs_day_lbl = Label(frame, text = "Tithi").grid(row = 149, column = 6, sticky = W)
 obs_indian_lunisolar_vs_day_ent = Entry(frame)
 obs_indian_lunisolar_vs_day_ent.grid(row = 150, column = 6, sticky = W)
 obs_indian_lunisolar_vs_month_lbl = Label(frame, text = "Month").grid(row = 149, column = 7, sticky = W)
@@ -5268,6 +5306,32 @@ jalgaon_year_ent = Entry(frame)
 jalgaon_year_ent.grid(row = 155, column = 11, sticky = W)
 jalgaon_bttn = Button(frame, text = "Calculate", command = jalgaon_converter).grid(row = 156, column = 9, columnspan = 3, sticky = W)
 
+# Gujarat calendar                                                                                            
+gujarat_lbl = Label(frame, text = "Gujarat calendar").grid(row = 158, column = 0, columnspan = 3, sticky = W)
+gujarat_day_lbl = Label(frame, text = "Tithi").grid(row = 159, column = 0, sticky = W)
+gujarat_day_ent = Entry(frame)
+gujarat_day_ent.grid(row = 160, column = 0, sticky = W)
+gujarat_month_lbl = Label(frame, text = "Month").grid(row = 159, column = 1, sticky = W)
+gujarat_month_ent = Entry(frame)
+gujarat_month_ent.grid(row = 160, column = 1, sticky = W)
+gujarat_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 2, sticky = W)
+gujarat_year_ent = Entry(frame)
+gujarat_year_ent.grid(row = 160, column = 2, sticky = W)
+gujarat_bttn = Button(frame, text = "Calculate", command = gujarat_converter).grid(row = 161, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.61.0")
+# Kutch calendar                                                                                            
+kutch_lbl = Label(frame, text = "Kutch calendar").grid(row = 158, column = 3, columnspan = 3, sticky = W)
+kutch_day_lbl = Label(frame, text = "Tithi").grid(row = 159, column = 3, sticky = W)
+kutch_day_ent = Entry(frame)
+kutch_day_ent.grid(row = 160, column = 3, sticky = W)
+kutch_month_lbl = Label(frame, text = "Month").grid(row = 159, column = 4, sticky = W)
+kutch_month_ent = Entry(frame)
+kutch_month_ent.grid(row = 160, column = 4, sticky = W)
+kutch_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 5, sticky = W)
+kutch_year_ent = Entry(frame)
+kutch_year_ent.grid(row = 160, column = 5, sticky = W)
+kutch_bttn = Button(frame, text = "Calculate", command = kutch_converter).grid(row = 161, column = 3, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.62.0")
 root.mainloop()
