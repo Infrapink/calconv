@@ -56,7 +56,7 @@ def fromjd(jday):
 
 def tojd(tithi, month, year):
     '''Given a tithi, a month, and a day, compute the corresponding Julian Day'''
-    tithi = int(tithi)
+    tithi = int(tithi) - 1
     month = str(month)
     year = int(year)
 
