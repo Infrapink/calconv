@@ -1704,7 +1704,7 @@ The traditional Indian lunisolar calendars are, like the solar calendars, based 
 
 Days begin at sunrise. The first day of the month is the day when the sun rises when the moon is new; to put it another way, months end of the day of the new moon. The month is determined by the position of the sun in the zodiac at sunrise on the first day of the month; thus, if the sun is in Mīna when it rises, the month is Chaitra; if the sun rises in Meṣa, it's Vaisākha, and so on. If two lunar months begin while the sun is in the same sign, the second is the "official" month; the first is a leap month, and is prefixed with "Adhik", a word meaning "empty". In some cases, it is possible for the sun to cross an entire sign within a single lunar month; in this case, the lunar month corresponding to that sign is skipped. Such a rare event is compensated with a leap month elsewhen in the year.
 
-This is the traditional calendar used by the Telugu minorities in Tamil Nadu (who use the Śaka era) and Delhi (where dates are counted as to the Vikram Samvat), as well as Kolhapur; it is also used by some in Mumbai, though the observational calendar is far more common there.
+This is the traditional calendar used by the Telugu minorities in Tamil Nadu (who use the Śaka era), Delhi, and Karnataka (where dates are counted as to the Vikram Samvat), as well as Kolhapur; it is also used by some in Maharashtra, though the observational calendar is far more common there.
 
 Sources:
 * Sūrya Siddhānta, chapters 1–3; see:
@@ -1814,14 +1814,14 @@ The modern Indian lunisolar calendar is based on the same principles as the trad
 
 Days begin at sunrise, and the month begins on the first day following the new moon; in other words, when the sun rises after the moon passes between Earth and the sun. The name of the month is determined by the sign of the zodiac in which the sun rises, beginning with Chaitra in Mīna (Pisces), followed by Vaisākha in Meṣa (Aries), and so on. If two months begin within the same star sign, the second one is the official month; the first is given the prefix "Adhik" and is considered a leap month. Occasionally, no new moon will fall within a sign; in that case, the corresponding month is skipped, and is called kshaya. A kshaya month will always be balanced out by an adhik month elsewhen in the year.
 
-Three eras are in common use: Kali Yuga, Śaka, and Vikram Samvat, of which the Śaka era is the most common. The observational lunisolar calendar, dating as to the Śaka era, is the calendar used for traditional purposes in Andhra Pradesh, Uttar Pradesh, and most of Maharashtra. The 1954 Calendar Reform Committee Report mentions that two panchangas, published by Siddhanta Panchangam and Sri Saptarishi Panchang, report using the tropical rather than sidereal year; however, this appears to be because the respondants misread the survey question, as their other answers correspond to a sidereal reference frame.
+Three eras are in common use: Kali Yuga, Śaka, and Vikram Samvat, of which the Śaka era is the most common. The observational lunisolar calendar, dating as to the Śaka era, is the calendar used for traditional purposes in Andhra Pradesh, Uttar Pradesh, Manipur, Karnataka, and most of Maharashtra; it is also used to an extent in Tamil Nadu to calculate the dates of religious observances. The 1954 Calendar Reform Committee Report mentions that two panchangas, published by Siddhanta Panchangam and Sri Saptarishi Panchang, report using the tropical rather than sidereal year; however, this appears to be because the respondants misread the survey question, as their other answers correspond to a sidereal reference frame.
 
 Sources:
 * 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
 
------------------------------
-TOPICAL INDIAN SOLAR CALENDAR
------------------------------
+------------------------------
+TROPICAL INDIAN SOLAR CALENDAR
+------------------------------
 
 The tropical Indian solar calendar was proposed by the Calendar Reform Committee in their 1954 report. Intended to facilitate as seamless as possible a transition from the use of the sidereal year to the tropical year for religious and cultural festivals, this calendar begins on the day that the sun hits an ecliptic longitude of 23°15', which was the sun's ecliptic longitude as of Meṣa Saṃkrānti in 1878 SE (1956 AD); each month lasts as long as it takes the sun to cross 30° of the ecliptic, reminiscent of how months are determined in the Jalali calendar. This was intended as a temporary measure to facilitate prevent solar and lunar festivals from drifting further from their seasons, and the Committee intended that, at a future date, the calendar might be reformed again to restore traditional festivals to their original seasons. However, traditional calendar makers rejected this proposal and kept on determining dates of festivals by sidereal markers.
 
@@ -1878,6 +1878,15 @@ Sources:
 * 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
 
 -----------------
+MANIPURI CALENDAR
+-----------------
+
+The Manipuri calendar is the local calendar of Manipur. It is a minor variation on the observational Indian lunisolar calendar, with its own era starting in 710 SE. Days begin at sunrise and month names are in Manipuri.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+
+-----------------
 GUJARATI CALENDAR
 -----------------
 
@@ -1898,3 +1907,31 @@ Sources:
 * 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
 * The Calendars of India, Vinod K. Mishra: https://web3.arxiv.org/pdf/1007.0062.pdf
 * Indian Calendars, Leow Choon Lian: https://telibrary.com/wp-content/uploads/2022/08/Indian-Calender-Article.pdf
+
+--------------------------------------------------
+TRADITIONAL INDIAN LUNISOLAR CALENDAR (PURNIMANTA)
+--------------------------------------------------
+
+All traditional Indian lunisolar calendars described thus far use the amanta scheme; each month ends on the day in which the new moon falls. In the purnimanta scheme, months instead end of the day when the full moon falls. Festivals and observances fall on the same day regardless of whether the amanta or purnimanta scheme is used; a festival which falls on the first day of an amanta month will be celebrated on the same day by people who use purnimanta months, but the purnimanta people will consider that day to be in the middle of the month.
+
+As with the amanta scheme, in the purnimanta scheme, the name of the month is determined by the zodiacal position of the sun at the first sunrise after the new moon. The month begins on the day of the first sunrise following the full moon immediately prior to that full moon; as such, the month can begin up a fortnight before the sun enters the corresponding star sign. As far as I can tell, leap months are determined by the same method as in the amanta scheme.
+
+According to the Calendar Reform Committee Report, a version based on the Sūrya Siddhānta is used in parts of Uttar Pradesh, and years are numbered according to Vikram Samvat.
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+* The Calendars of India, Vinod K. Mishra: https://web3.arxiv.org/pdf/1007.0062.pdf
+* Indian Calendars, Leow Choon Lian: https://telibrary.com/wp-content/uploads/2022/08/Indian-Calender-Article.pdf
+* Indian Calendars, GM Ballabh: http://www.packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+
+----------------------------------------------------
+OBSERVATIONAL INDIAN LUNISOLAR CALENDAR (PURNIMANTA)
+----------------------------------------------------
+
+The Calendar Reform Committee Report describes a version of the purnimanta scheme as being standard in Uttar Pradesh and Himachal Pradesh. Mishra, Lian, and Ballabh each describe it as also being standard in Jammu and Kashmir, Rajasthan, Madhya Pradesh, and Bihar; they also agree that states and communities whose traditional calendars are purely solar also use the purnimanta scheme to determine the dates of lunar festivals. As with the traditional version, Vikram Samvat seems to be the standard era for lunisolar calendars using the 
+
+Sources:
+* 1954 Report of the Calendar Reform Committee: https://archive.org/details/calendar_reform_comittee_report
+* The Calendars of India, Vinod K. Mishra: https://web3.arxiv.org/pdf/1007.0062.pdf
+* Indian Calendars, Leow Choon Lian: https://telibrary.com/wp-content/uploads/2022/08/Indian-Calender-Article.pdf
+* Indian Calendars, GM Ballabh:	http://www.packolkata.gov.in/INDIAN_CALADAR_PAC.pdf

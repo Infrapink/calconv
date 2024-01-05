@@ -161,7 +161,9 @@ import trop_indian_lunisolar
 import jalgaon
 import gujarat
 import kutch
-
+import manipuri
+import sid_purnimanta
+import obs_purnimanta
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1651,6 +1653,15 @@ def cons_day_julian_todate():
         jalgaon_month_ent.insert(0, jalgaon_date[1])
         jalgaon_year_ent.insert(0, jalgaon_date[2])
 
+        # Convert a Julian day to a date in the Manipuri calendar
+        manipuri_date = manipuri.fromjd(day)
+        manipuri_day_ent.delete(0, END)
+        manipuri_month_ent.delete(0, END)
+        manipuri_year_ent.delete(0, END)
+        manipuri_day_ent.insert(0, manipuri_date[0])
+        manipuri_month_ent.insert(0, manipuri_date[1])
+        manipuri_year_ent.insert(0, manipuri_date[2])
+
         # Convert a Julian day to a date in the Gujarat calendar
         gujarat_date = gujarat.fromjd(day)
         gujarat_day_ent.delete(0, END)
@@ -1668,6 +1679,24 @@ def cons_day_julian_todate():
         kutch_day_ent.insert(0, kutch_date[0])
         kutch_month_ent.insert(0, kutch_date[1])
         kutch_year_ent.insert(0, kutch_date[2])
+
+        # Convert a Julian day to a date in the Traditional Indian lunisolar calendar (purnimanta)
+        sid_purnimanta_date = sid_purnimanta.fromjd(day)
+        sid_purnimanta_day_ent.delete(0, END)
+        sid_purnimanta_month_ent.delete(0, END)
+        sid_purnimanta_year_ent.delete(0, END)
+        sid_purnimanta_day_ent.insert(0, sid_purnimanta_date[0])
+        sid_purnimanta_month_ent.insert(0, sid_purnimanta_date[1])
+        sid_purnimanta_year_ent.insert(0, sid_purnimanta_date[2])
+
+        # Convert a Julian day to a date in the Indian lunisolar calendar (purnimanta)
+        obs_purnimanta_date = obs_purnimanta.fromjd(day)
+        obs_purnimanta_day_ent.delete(0, END)
+        obs_purnimanta_month_ent.delete(0, END)
+        obs_purnimanta_year_ent.delete(0, END)
+        obs_purnimanta_day_ent.insert(0, obs_purnimanta_date[0])
+        obs_purnimanta_month_ent.insert(0, obs_purnimanta_date[1])
+        obs_purnimanta_year_ent.insert(0, obs_purnimanta_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3180,6 +3209,15 @@ def jalgaon_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
+def manipuri_converter():
+        day = int(manipuri_day_ent.get())
+        month = manipuri_month_ent.get()
+        year = int(manipuri_year_ent.get())
+        jday = manipuri.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 def gujarat_converter():
         day = int(gujarat_day_ent.get())
         month = gujarat_month_ent.get()
@@ -3194,6 +3232,24 @@ def kutch_converter():
         month = kutch_month_ent.get()
         year = int(kutch_year_ent.get())
         jday = kutch.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sid_purnimanta_converter():
+        day = int(sid_purnimanta_day_ent.get())
+        month = sid_purnimanta_month_ent.get()
+        year = int(sid_purnimanta_year_ent.get())
+        jday = sid_purnimanta.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def obs_purnimanta_converter():
+        day = int(obs_purnimanta_day_ent.get())
+        month = obs_purnimanta_month_ent.get()
+        year = int(obs_purnimanta_year_ent.get())
+        jday = obs_purnimanta.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5306,6 +5362,19 @@ jalgaon_year_ent = Entry(frame)
 jalgaon_year_ent.grid(row = 155, column = 11, sticky = W)
 jalgaon_bttn = Button(frame, text = "Calculate", command = jalgaon_converter).grid(row = 156, column = 9, columnspan = 3, sticky = W)
 
+# Manipuri calendar                                                                                            
+manipuri_lbl = Label(frame, text = "Manipuri calendar").grid(row = 153, column = 12, columnspan = 3, sticky = W)
+manipuri_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 12, sticky = W)
+manipuri_day_ent = Entry(frame)
+manipuri_day_ent.grid(row = 155, column = 12, sticky = W)
+manipuri_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 13, sticky = W)
+manipuri_month_ent = Entry(frame)
+manipuri_month_ent.grid(row = 155, column = 13, sticky = W)
+manipuri_year_lbl = Label(frame, text = "Year").grid(row = 154, column = 14, sticky = W)
+manipuri_year_ent = Entry(frame)
+manipuri_year_ent.grid(row = 155, column = 14, sticky = W)
+manipuri_bttn = Button(frame, text = "Calculate", command = manipuri_converter).grid(row = 156, column = 12, columnspan = 3, sticky = W)
+
 # Gujarat calendar                                                                                            
 gujarat_lbl = Label(frame, text = "Gujarat calendar").grid(row = 158, column = 0, columnspan = 3, sticky = W)
 gujarat_day_lbl = Label(frame, text = "Tithi").grid(row = 159, column = 0, sticky = W)
@@ -5332,6 +5401,32 @@ kutch_year_ent = Entry(frame)
 kutch_year_ent.grid(row = 160, column = 5, sticky = W)
 kutch_bttn = Button(frame, text = "Calculate", command = kutch_converter).grid(row = 161, column = 3, columnspan = 3, sticky = W)
 
+# Traditional Indian lunisolar calendar (purnimanta)                                                                                            
+sid_purnimanta_lbl = Label(frame, text = "Traditional Indian lunisolar calendar (purnimanta)").grid(row = 158, column = 6, columnspan = 3, sticky = W)
+sid_purnimanta_day_lbl = Label(frame, text = "Tithi").grid(row = 159, column = 6, sticky = W)
+sid_purnimanta_day_ent = Entry(frame)
+sid_purnimanta_day_ent.grid(row = 160, column = 6, sticky = W)
+sid_purnimanta_month_lbl = Label(frame, text = "Month").grid(row = 159, column = 7, sticky = W)
+sid_purnimanta_month_ent = Entry(frame)
+sid_purnimanta_month_ent.grid(row = 160, column = 7, sticky = W)
+sid_purnimanta_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 8, sticky = W)
+sid_purnimanta_year_ent = Entry(frame)
+sid_purnimanta_year_ent.grid(row = 160, column = 8, sticky = W)
+sid_purnimanta_bttn = Button(frame, text = "Calculate", command = sid_purnimanta_converter).grid(row = 161, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.62.0")
+# Indian lunisolar calendar (purnimanta)                                                                                            
+obs_purnimanta_lbl = Label(frame, text = "Indian lunisolar calendar (purnimanta)").grid(row = 158, column = 9, columnspan = 3, sticky = W)
+obs_purnimanta_day_lbl = Label(frame, text = "Tithi").grid(row = 159, column = 9, sticky = W)
+obs_purnimanta_day_ent = Entry(frame)
+obs_purnimanta_day_ent.grid(row = 160, column = 9, sticky = W)
+obs_purnimanta_month_lbl = Label(frame, text = "Month").grid(row = 159, column = 10, sticky = W)
+obs_purnimanta_month_ent = Entry(frame)
+obs_purnimanta_month_ent.grid(row = 160, column = 10, sticky = W)
+obs_purnimanta_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 11, sticky = W)
+obs_purnimanta_year_ent = Entry(frame)
+obs_purnimanta_year_ent.grid(row = 160, column = 11, sticky = W)
+obs_purnimanta_bttn = Button(frame, text = "Calculate", command = obs_purnimanta_converter).grid(row = 161, column = 9, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.63.0")
 root.mainloop()

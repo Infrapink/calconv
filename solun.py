@@ -130,9 +130,9 @@ def fullmoon(jday, tz):
     p = 0
     while (p < 4):
         f = Fraction(1, (60 ** p))
-        while (phase((jday + f), tz) <= 180):
+        while (phase((ans + f), tz) <= 180):
             ans += f
-        while (phase((jday - f), tz) >= 180):
+        while (phase((ans - f), tz) >= 180):
             ans -= f
         p += 1
     return ans
@@ -156,6 +156,27 @@ def phasetime(jday, angle, tz):
         while (phase((jday + f), tz) <= angle):
             jday += f
         while (phase((jday - f), tz) >= angle):
+            jday -= f
+        p += 1
+    return jday
+
+def antiphasetime(jday, angle, tz):
+    '''Time the angle between the sun and the moon hits a given value, where opposition is taken as 0°'''
+    jday = Fraction(jday) # Julian Day we are starting with
+    angle = Fraction(angle) # desired angle
+    tz = Fraction(tz) # timezone
+
+    while ((antiphase(jday, tz) <= 90) and (angle >= 270)):
+        jday -= 1
+    while ((antiphase(jday, tz) >= 270) and (angle <= 90)):
+        jday += 1
+
+    p = 0
+    while (p < 4):
+        f = Fraction(1, (60 ** p))
+        while (antiphase((jday + f), tz) <= angle):
+            jday += f
+        while (antiphase((jday - f), tz) >= angle):
             jday -= f
         p += 1
     return jday
