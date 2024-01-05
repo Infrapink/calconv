@@ -54,7 +54,7 @@ s_prec_q = Fraction(s_prec_cycle, 4) # sidereal days in 1/4 of the precessional 
 # Epochs
 ky = 588466 # Consecutive Julian Day on which the Kali Yuga begins.
 se = ky + (3179 * t_sid_year) # Beginning of the Shaka Era
-vs = ky + (3046 * t_sid_year) # Beginning of the Vikram Samvat
+vs = ky + (3044 * t_sid_year) # Beginning of the Vikram Samvat
 ty = ky - (t_sid_year * 5 * 432000) # Moment the Treta Yuga begins, when everything is in conjunction except for the moon's nodes; Sūrya Siddhānta 1:57
 # As of the start of the Treta Yuga, the moon's node of apsis was at 0° Makara (Capricorn), or 270°
 # The moon's node of declination was at 0° Tula (Libra), or 180°
@@ -319,8 +319,6 @@ def lunar_phala(jday):
 def spos(jday):
     '''Compute the true position of the sun, as described in Sūrya Siddhānta chapter 2'''
     jday = Fraction(jday)
-    #print("Yo!")
-    #print(float(jday))
 
     mean = 360 * Fraction(((jday - ty) % t_sid_year), t_sid_year) # mean position of the sun
     tpos = (mean + solar_phala(jday)) % 360 # true position of the sun
@@ -405,12 +403,17 @@ def antiphasetime(jday, angle):
     jday = Fraction(jday) # time we start with. find the time closest to jday when the angle between the sun and the moon is equal to angle
     angle = Fraction(angle) # desired angle between the sun and the moon
 
+    while ((antiphase(jday) >= 270) and (angle <= 90)):
+        jday += 1
+    while ((antiphase(jday) <= 90) and (angle >= 270)):
+        jday -= 1
+
     p = 0
     while (p < 4):
         f = Fraction(1, (60 ** p))
         while (antiphase(jday + f) <= angle):
             jday += f
-        while (phase(jday - f) >= angle):
+        while (antiphase(jday - f) >= angle):
             jday -= f
         p += 1
     return jday
