@@ -1776,6 +1776,16 @@ Sources:
 * https://www.news18.com/news/lifestyle/mesha-sankranti-2022-rituals-importance-and-all-you-need-to-know-about-the-solar-new-year-4977763.html
 * https://www.prokerala.com/festivals/mesha-sankranti.html
 
+---------------------
+MUGHAL FAṢLĪ CALENDAR
+---------------------
+
+Not to be confused with the Zoroastrian Faṣlī calendar, the Mughal Faṣlī calendar was introduced in India by Emperor Akbar in order to try and make the traditional Indian lunisolar calendar conform to the Lunar Hijri calendar, for the same reason the Solar Hijri was introduced in Iran. This most noticeable change was changing the calendar era to count from Muhammad's flight to Medina. For this converter, I have also set days to begin at sunset in accordance with Islamic practice.
+
+Sources:
+* https://en.wikipedia.org/wiki/Fasli_calendar
+* https://www.britannica.com/topic/Fasli-era
+
 -------------
 ODIA CALENDAR
 -------------

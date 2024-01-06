@@ -154,7 +154,7 @@ import bangladeshi1373
 import bangladeshi1426
 import sid_tripuri
 import trop_tripuri
-import assamese
+import mughal
 import odia
 import trop_indian_solar
 import trop_indian_lunisolar
@@ -1610,14 +1610,14 @@ def cons_day_julian_todate():
         trop_tripuri_month_ent.insert(0, trop_tripuri_date[1])
         trop_tripuri_year_ent.insert(0, trop_tripuri_date[2])
 
-        # Convert a Julian day to a date in the Assamese calendar
-        assamese_date = assamese.fromjd(day)
-        assamese_day_ent.delete(0, END)
-        assamese_month_ent.delete(0, END)
-        assamese_year_ent.delete(0, END)
-        assamese_day_ent.insert(0, assamese_date[0])
-        assamese_month_ent.insert(0, assamese_date[1])
-        assamese_year_ent.insert(0, assamese_date[2])
+        # Convert a Julian day to a date in the Mughal Faṣlī calendar
+        mughal_date = mughal.fromjd(day)
+        mughal_day_ent.delete(0, END)
+        mughal_month_ent.delete(0, END)
+        mughal_year_ent.delete(0, END)
+        mughal_day_ent.insert(0, mughal_date[0])
+        mughal_month_ent.insert(0, mughal_date[1])
+        mughal_year_ent.insert(0, mughal_date[2])
 
         # Convert a Julian day to a date in the Odia calendar
         odia_date = odia.fromjd(day)
@@ -1700,7 +1700,7 @@ def cons_day_julian_todate():
         obs_purnimanta_month_ent.insert(0, obs_purnimanta_date[1])
         obs_purnimanta_year_ent.insert(0, obs_purnimanta_date[2])
 
-        # Convert a Julian day to a date in the Original Nanakshahi calendar
+        # Convert a Julian day to a date in the Original Nnanakshahi calendar
         mool_nanakshahi_date = mool_nanakshahi.fromjd(day)
         mool_nanakshahi_day_ent.delete(0, END)
         mool_nanakshahi_month_ent.delete(0, END)
@@ -1709,14 +1709,14 @@ def cons_day_julian_todate():
         mool_nanakshahi_month_ent.insert(0, mool_nanakshahi_date[1])
         mool_nanakshahi_year_ent.insert(0, mool_nanakshahi_date[2])
 
-        # Convert a Julian day to a date in the Sidereal Nanakshahi calendar
-        sid_anakshahi_date = sid_anakshahi.fromjd(day)
-        sid_anakshahi_day_ent.delete(0, END)
-        sid_anakshahi_month_ent.delete(0, END)
-        sid_anakshahi_year_ent.delete(0, END)
-        sid_anakshahi_day_ent.insert(0, sid_anakshahi_date[0])
-        sid_anakshahi_month_ent.insert(0, sid_anakshahi_date[1])
-        sid_anakshahi_year_ent.insert(0, sid_anakshahi_date[2])
+        # Convert a Julian day to a date in the Sidereal Nnanakshahi calendar
+        sid_nanakshahi_date = sid_nanakshahi.fromjd(day)
+        sid_nanakshahi_day_ent.delete(0, END)
+        sid_nanakshahi_month_ent.delete(0, END)
+        sid_nanakshahi_year_ent.delete(0, END)
+        sid_nanakshahi_day_ent.insert(0, sid_nanakshahi_date[0])
+        sid_nanakshahi_month_ent.insert(0, sid_nanakshahi_date[1])
+        sid_nanakshahi_year_ent.insert(0, sid_nanakshahi_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3139,11 +3139,11 @@ def obs_indian_lunisolar_vs_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def assamese_converter():
-        day = int(assamese_day_ent.get())
-        month = assamese_month_ent.get()
-        year = int(assamese_year_ent.get())
-        jday = assamese.tojd(day, month, year)
+def mughal_converter():
+        day = int(mughal_day_ent.get())
+        month = mughal_month_ent.get()
+        year = int(mughal_year_ent.get())
+        jday = mughal.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -3283,11 +3283,11 @@ def mool_nanakshahi_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def sid_anakshahi_converter():
-        day = int(sid_anakshahi_day_ent.get())
-        month = sid_anakshahi_month_ent.get()
-        year = int(sid_anakshahi_year_ent.get())
-        jday = sid_anakshahi.tojd(day, month, year)
+def sid_nanakshahi_converter():
+        day = int(sid_nanakshahi_day_ent.get())
+        month = sid_nanakshahi_month_ent.get()
+        year = int(sid_nanakshahi_year_ent.get())
+        jday = sid_nanakshahi.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5024,7 +5024,7 @@ tamil_bttn = Button(frame, text = "Calculate", command = tamil_converter).grid(r
 
 # Madhyama lunisolar calendar (Kali Yuga)                                                                                            
 madhyama_lunar_ky_lbl = Label(frame, text = "Madhyama lunisolar calendar (Kali Yuga)").grid(row = 128, column = 0, columnspan = 3, sticky = W)
-madhyama_lunar_ky_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 0, sticky = W)
+madhyama_lunar_ky_day_lbl = Label(frame, text = "Tithi").grid(row = 129, column = 0, sticky = W)
 madhyama_lunar_ky_day_ent = Entry(frame)
 madhyama_lunar_ky_day_ent.grid(row = 130, column = 0, sticky = W)
 madhyama_lunar_ky_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 1, sticky = W)
@@ -5037,7 +5037,7 @@ madhyama_lunar_ky_bttn = Button(frame, text = "Calculate", command = madhyama_lu
 
 # Madhyama lunisolar calendar (Vikram Samvat)                                                                                            
 madhyama_lunar_vs_lbl = Label(frame, text = "Madhyama lunisolar calendar (Vikram Samvat)").grid(row = 128, column = 3, columnspan = 3, sticky = W)
-madhyama_lunar_vs_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 3, sticky = W)
+madhyama_lunar_vs_day_lbl = Label(frame, text = "Tithi").grid(row = 129, column = 3, sticky = W)
 madhyama_lunar_vs_day_ent = Entry(frame)
 madhyama_lunar_vs_day_ent.grid(row = 130, column = 3, sticky = W)
 madhyama_lunar_vs_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 4, sticky = W)
@@ -5050,7 +5050,7 @@ madhyama_lunar_vs_bttn = Button(frame, text = "Calculate", command = madhyama_lu
 
 # Madhyama lunisolar calendar (Shaka Era)                                                                                            
 madhyama_lunar_se_lbl = Label(frame, text = "Madhyama lunisolar calendar (Shaka Era)").grid(row = 128, column = 6, columnspan = 3, sticky = W)
-madhyama_lunar_se_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 6, sticky = W)
+madhyama_lunar_se_day_lbl = Label(frame, text = "Tithi").grid(row = 129, column = 6, sticky = W)
 madhyama_lunar_se_day_ent = Entry(frame)
 madhyama_lunar_se_day_ent.grid(row = 130, column = 6, sticky = W)
 madhyama_lunar_se_month_lbl = Label(frame, text = "Month").grid(row = 129, column = 7, sticky = W)
@@ -5061,7 +5061,7 @@ madhyama_lunar_se_year_ent = Entry(frame)
 madhyama_lunar_se_year_ent.grid(row = 130, column = 8, sticky = W)
 madhyama_lunar_se_bttn = Button(frame, text = "Calculate", command = madhyama_lunar_se_converter).grid(row = 131, column = 6, columnspan = 3, sticky = W)
 
-# traditional Bengali calendar                                                                                            
+# Traditional Bengali calendar                                                                                            
 sid_bengali_lbl = Label(frame, text = "Traditional Bengali calendar").grid(row = 128, column = 9, columnspan = 3, sticky = W)
 sid_bengali_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 9, sticky = W)
 sid_bengali_day_ent = Entry(frame)
@@ -5074,7 +5074,7 @@ sid_bengali_year_ent = Entry(frame)
 sid_bengali_year_ent.grid(row = 130, column = 11, sticky = W)
 sid_bengali_bttn = Button(frame, text = "Calculate", command = sid_bengali_converter).grid(row = 131, column = 9, columnspan = 3, sticky = W)
 
-# modern Bengali calendar                                                                                            
+# Modern Bengali calendar                                                                                            
 obs_bengali_lbl = Label(frame, text = "Modern Bengali calendar").grid(row = 128, column = 12, columnspan = 3, sticky = W)
 obs_bengali_day_lbl = Label(frame, text = "Day").grid(row = 129, column = 12, sticky = W)
 obs_bengali_day_ent = Entry(frame)
@@ -5155,7 +5155,7 @@ bangladeshi1426_bttn = Button(frame, text = "Calculate", command = bangladeshi14
 
 # Traditional Indian lunisolar calendar (Kali Yuga)                                                                                            
 siddhantic_lunisolar_ky_lbl = Label(frame, text = "Traditional Indian lunisolar calendar (Kali Yuga)").grid(row = 138, column = 0, columnspan = 3, sticky = W)
-siddhantic_lunisolar_ky_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 0, sticky = W)
+siddhantic_lunisolar_ky_day_lbl = Label(frame, text = "Tithi").grid(row = 139, column = 0, sticky = W)
 siddhantic_lunisolar_ky_day_ent = Entry(frame)
 siddhantic_lunisolar_ky_day_ent.grid(row = 140, column = 0, sticky = W)
 siddhantic_lunisolar_ky_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 1, sticky = W)
@@ -5168,7 +5168,7 @@ siddhantic_lunisolar_ky_bttn = Button(frame, text = "Calculate", command = siddh
 
 # Traditional Indian lunisolar calendar (Ṡaka Era)                                                                                            
 siddhantic_lunisolar_se_lbl = Label(frame, text = "Traditional Indian lunisolar calendar (Ṡaka Era)").grid(row = 138, column = 3, columnspan = 3, sticky = W)
-siddhantic_lunisolar_se_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 3, sticky = W)
+siddhantic_lunisolar_se_day_lbl = Label(frame, text = "Tithi").grid(row = 139, column = 3, sticky = W)
 siddhantic_lunisolar_se_day_ent = Entry(frame)
 siddhantic_lunisolar_se_day_ent.grid(row = 140, column = 3, sticky = W)
 siddhantic_lunisolar_se_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 4, sticky = W)
@@ -5181,7 +5181,7 @@ siddhantic_lunisolar_se_bttn = Button(frame, text = "Calculate", command = siddh
 
 # Traditional Indian lunisolar calendar (Vikram Samvat)                                                                                            
 siddhantic_lunisolar_vs_lbl = Label(frame, text = "Traditional Indian lunisolar calendar (Vikram Samvat)").grid(row = 138, column = 6, columnspan = 3, sticky = W)
-siddhantic_lunisolar_vs_day_lbl = Label(frame, text = "Day").grid(row = 139, column = 6, sticky = W)
+siddhantic_lunisolar_vs_day_lbl = Label(frame, text = "Tithi").grid(row = 139, column = 6, sticky = W)
 siddhantic_lunisolar_vs_day_ent = Entry(frame)
 siddhantic_lunisolar_vs_day_ent.grid(row = 140, column = 6, sticky = W)
 siddhantic_lunisolar_vs_month_lbl = Label(frame, text = "Month").grid(row = 139, column = 7, sticky = W)
@@ -5257,18 +5257,18 @@ obs_indian_solar_vs_year_ent = Entry(frame)
 obs_indian_solar_vs_year_ent.grid(row = 145, column = 8, sticky = W)
 obs_indian_solar_vs_bttn = Button(frame, text = "Calculate", command = obs_indian_solar_vs_converter).grid(row = 146, column = 6, columnspan = 3, sticky = W)
 
-# Assamese calendar                                                                                            
-assamese_lbl = Label(frame, text = "Assamese calendar").grid(row = 143, column = 9, columnspan = 3, sticky = W)
-assamese_day_lbl = Label(frame, text = "Day").grid(row = 144, column = 9, sticky = W)
-assamese_day_ent = Entry(frame)
-assamese_day_ent.grid(row = 145, column = 9, sticky = W)
-assamese_month_lbl = Label(frame, text = "Month").grid(row = 144, column = 10, sticky = W)
-assamese_month_ent = Entry(frame)
-assamese_month_ent.grid(row = 145, column = 10, sticky = W)
-assamese_year_lbl = Label(frame, text = "Year").grid(row = 144, column = 11, sticky = W)
-assamese_year_ent = Entry(frame)
-assamese_year_ent.grid(row = 145, column = 11, sticky = W)
-assamese_bttn = Button(frame, text = "Calculate", command = assamese_converter).grid(row = 146, column = 9, columnspan = 3, sticky = W)
+# Mughal Faṣlī calendar                                                                                            
+mughal_lbl = Label(frame, text = "Mughal Faṣlī calendar").grid(row = 143, column = 9, columnspan = 3, sticky = W)
+mughal_day_lbl = Label(frame, text = "Day").grid(row = 144, column = 9, sticky = W)
+mughal_day_ent = Entry(frame)
+mughal_day_ent.grid(row = 145, column = 9, sticky = W)
+mughal_month_lbl = Label(frame, text = "Month").grid(row = 144, column = 10, sticky = W)
+mughal_month_ent = Entry(frame)
+mughal_month_ent.grid(row = 145, column = 10, sticky = W)
+mughal_year_lbl = Label(frame, text = "Year").grid(row = 144, column = 11, sticky = W)
+mughal_year_ent = Entry(frame)
+mughal_year_ent.grid(row = 145, column = 11, sticky = W)
+mughal_bttn = Button(frame, text = "Calculate", command = mughal_converter).grid(row = 146, column = 9, columnspan = 3, sticky = W)
 
 # Odia calendar                                                                                            
 odia_lbl = Label(frame, text = "Odia calendar").grid(row = 143, column = 12, columnspan = 3, sticky = W)
@@ -5402,7 +5402,7 @@ jalgaon_bttn = Button(frame, text = "Calculate", command = jalgaon_converter).gr
 
 # Manipuri calendar                                                                                            
 manipuri_lbl = Label(frame, text = "Manipuri calendar").grid(row = 153, column = 12, columnspan = 3, sticky = W)
-manipuri_day_lbl = Label(frame, text = "Day").grid(row = 154, column = 12, sticky = W)
+manipuri_day_lbl = Label(frame, text = "Tithi").grid(row = 154, column = 12, sticky = W)
 manipuri_day_ent = Entry(frame)
 manipuri_day_ent.grid(row = 155, column = 12, sticky = W)
 manipuri_month_lbl = Label(frame, text = "Month").grid(row = 154, column = 13, sticky = W)
@@ -5465,8 +5465,8 @@ obs_purnimanta_year_ent = Entry(frame)
 obs_purnimanta_year_ent.grid(row = 160, column = 11, sticky = W)
 obs_purnimanta_bttn = Button(frame, text = "Calculate", command = obs_purnimanta_converter).grid(row = 161, column = 9, columnspan = 3, sticky = W)
 
-# Original Nanakshahi calendar                                                                                            
-mool_nanakshahi_lbl = Label(frame, text = "Original Nanakshahi calendar").grid(row = 163, column = 0, columnspan = 3, sticky = W)
+# Original Nnanakshahi calendar                                                                                            
+mool_nanakshahi_lbl = Label(frame, text = "Original Nnanakshahi calendar").grid(row = 163, column = 0, columnspan = 3, sticky = W)
 mool_nanakshahi_day_lbl = Label(frame, text = "Day").grid(row = 164, column = 0, sticky = W)
 mool_nanakshahi_day_ent = Entry(frame)
 mool_nanakshahi_day_ent.grid(row = 165, column = 0, sticky = W)
@@ -5478,18 +5478,18 @@ mool_nanakshahi_year_ent = Entry(frame)
 mool_nanakshahi_year_ent.grid(row = 165, column = 2, sticky = W)
 mool_nanakshahi_bttn = Button(frame, text = "Calculate", command = mool_nanakshahi_converter).grid(row = 166, column = 0, columnspan = 3, sticky = W)
 
-# Sidereal Nanakshahi calendar                                                                                            
-sid_anakshahi_lbl = Label(frame, text = "Sidereal Nanakshahi calendar").grid(row = 163, column = 3, columnspan = 3, sticky = W)
-sid_anakshahi_day_lbl = Label(frame, text = "Day").grid(row = 164, column = 3, sticky = W)
-sid_anakshahi_day_ent = Entry(frame)
-sid_anakshahi_day_ent.grid(row = 165, column = 3, sticky = W)
-sid_anakshahi_month_lbl = Label(frame, text = "Month").grid(row = 164, column = 4, sticky = W)
-sid_anakshahi_month_ent = Entry(frame)
-sid_anakshahi_month_ent.grid(row = 165, column = 4, sticky = W)
-sid_anakshahi_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 5, sticky = W)
-sid_anakshahi_year_ent = Entry(frame)
-sid_anakshahi_year_ent.grid(row = 165, column = 5, sticky = W)
-sid_anakshahi_bttn = Button(frame, text = "Calculate", command = sid_anakshahi_converter).grid(row = 166, column = 3, columnspan = 3, sticky = W)
+# Sidereal Nnanakshahi calendar                                                                                            
+sid_nanakshahi_lbl = Label(frame, text = "Sidereal Nnanakshahi calendar").grid(row = 163, column = 3, columnspan = 3, sticky = W)
+sid_nanakshahi_day_lbl = Label(frame, text = "Tithi").grid(row = 164, column = 3, sticky = W)
+sid_nanakshahi_day_ent = Entry(frame)
+sid_nanakshahi_day_ent.grid(row = 165, column = 3, sticky = W)
+sid_nanakshahi_month_lbl = Label(frame, text = "Month").grid(row = 164, column = 4, sticky = W)
+sid_nanakshahi_month_ent = Entry(frame)
+sid_nanakshahi_month_ent.grid(row = 165, column = 4, sticky = W)
+sid_nanakshahi_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 5, sticky = W)
+sid_nanakshahi_year_ent = Entry(frame)
+sid_nanakshahi_year_ent.grid(row = 165, column = 5, sticky = W)
+sid_nanakshahi_bttn = Button(frame, text = "Calculate", command = sid_nanakshahi_converter).grid(row = 166, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.63.0")
