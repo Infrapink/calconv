@@ -1325,3 +1325,18 @@ NUM_BENGALI = {"Bôishakh": 0,
                "Magh": 9,
                "Falgun": 10,
                "Chôitrô": 11}
+
+NUM_NANAKSHAHI = ("Chet", "Vaisakh", "Jeth", "Harh", "Sawan", "Bhadon", "Asu", "Katik", "Maghar", "Poh", "Magh", "Phagun")
+
+NANAKSHAHI_NUM = {"Chet": 0,
+                  "Vaisakh": 1,
+                  "Jeth": 2,
+                  "Harh": 3,
+                  "Sawan": 4,
+                  "Bhadon": 5,
+                  "Asu": 6,
+                  "Kartik": 7,
+                  "Maghar": 8,
+                  "Poh": 9,
+                  "Magh": 10,
+                  "Phagun": 11}

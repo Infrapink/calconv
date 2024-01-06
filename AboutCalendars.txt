@@ -1605,11 +1605,28 @@ Sources:
 BENGALI CALENDARS
 -----------------
 
-The Bengali calendar is the traditional calendar of West Bengal. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
+The Bengali calendar is the traditional calendar of West Bengal and Assam. The 1954 Calendar Reform Committee report describes five variants; two of these are slightly different wordings of calculations based on the Sūrya Siddhānta, and three are the modern method with very minor discrepancies that will be ironed out by observation.
 
 The Bengali calendar is the quintessential Indian solar calendar. Days begin at sunrise, the year begins with the sun's entry into Meṣa, and each month lasts as long as it takes the sun to cross one sign of the zodiac. Its introduction is variously attributed to either King Shashanka or Emperor Akbar, but some form of it most likely predates both. Its era is the Bengali Era, which seems to date from the accession of Shashanka to the throne of Gauda.
 
+The calendar made headlines in 1428 BE (1943 SE, 2021 AD) when the state legislative assembly of Assam announced that it would be made coöfficial with the Gregorian and Indian National calendars; this was widely (and incorrectly) reported as the local calendar becoming the *only* official calendar. The actual result was rather less dramatic; all official Assamese government communications carry the Assamese date alongside the Indian and Gregorian dates.
+
 Sources:
+* https://www.nextias.com/ca/current-affairs/21-10-2021/bhaskarabda-calendar
+* https://www.adda247.com/upsc-exam/bhaskarabda-calendar/
+* https://web.archive.org/web/20230104023923/https://testbook.com/current-affairs/bhaskarabda-calendar-to-be-added-to-official-assam-calendar/
+* https://www.drishtiias.com/daily-updates/daily-news-analysis/bhaskarabda-a-luni-solar-calendar
+* https://iasscore.in/current-affairs/prelims/bhaskarabda-a-luni-solar-calendar
+* https://www.pratidintime.com/latest-assam-news-breaking-news-assam/bhaskarabda-calendar-official-calendar
+* https://www.vishvasnews.com/english/viral/fact-check-bhaskaravda-will-not-be-used-as-an-official-calendar-in-assam-but-as-a-part-of-the-official-calendar-viral-posts-are-misleading-2/
+* https://www.pratidintime.com/latest-assam-news-breaking-news-assam/bhaskarabda-calendar-official-calendar
+* https://www.thehindu.com/news/national/other-states/bhaskarabda-to-be-added-to-official-assam-calendar/article37068273.ece
+* https://www.sentinelassam.com/north-east-india-news/assam-news/bhaskarabda-luni-solar-calendar-to-be-used-in-official-calendar-assam-cm-himanta-biswa-sarma-559383
+* https://www.iastoppers.com/articles/bhaskarabda-to-be-added-to-official-assam-calendar
+* https://www.adda247.com/upsc-exam/bhaskarabda-calendar/
+* https://web.archive.org/web/20211019093335/https://www.thehindu.com/news/national/other-states/bhaskarabda-to-be-added-to-official-assam-calendar/article37068273.ece
+* https://assam.gov.in/sites/default/files/dms/notificationholidaylist2022.pdf
+* https://www.assamgovernmentjob.com/assam-govt-holiday-list-2024-gad-assam/
 * https://en.wikipedia.org/wiki/Bengali_calendars
 * https://www.cuttingthechai.com/2019/04/8125/pohela-boishakh-a-brief-history-of-the-bengali-calendar/
 * https://bengalicalendar.com/#
@@ -1739,7 +1756,7 @@ The observational Indian calendars are based on the same ideas as the traditiona
 
 The solar calendar, like the traditional calendar, is sidereal. Nominally, the start point of the sun's journey across the zodiac is the point opposite Spica; however, the sun is normally opposite Spica on 12 April (Gregorian), while Indian calendar makers put the first day of the solar calendar on the 14th, give or take a day. The Calendar Reform Committee, in proposing a switch from sidereal to tropical years for the timing of Hindu festivals, reccomended that the beginning of the tropical year for religious purposes be set at the point when the sun's ecliptic longitude is 23°15'. In 1955, this occurred when the sun was 0.6749121716696571° past counter-Spica (by my calculations), and so I have taken this point on the zodiac as the zero point.
 
-Days begin at sunrise. In the solar calendars, months begin on the day that the sun rises in the corresponding zodiac sign.
+Days begin at sunrise. In the solar calendars, months begin on the day that the sun rises in the corresponding zodiac sign. This is the traditional calendar of Punjab, where the Vikram Samvat era is used.
 
 In the lunisolar calendars, months begin on the day of the first sunrise after the new moon. Months are named according to the star sign in which said sunrise falls. If there are two new moons while the moon is in the same star sign, the first of these is designated as a leap month, and its name is preceded by "Adhik". Due to orbital mechanics, it is possible for the sun to cross an entire zodiac sign in between two new moons; in such a case, the corresponding month is skipped, and the difference is made up by a leap month elsewhere in the year.
 
@@ -1758,31 +1775,6 @@ Sources:
 * https://www.ganeshaspeaks.com/festival-calendars/information/mesha-sankranti/
 * https://www.news18.com/news/lifestyle/mesha-sankranti-2022-rituals-importance-and-all-you-need-to-know-about-the-solar-new-year-4977763.html
 * https://www.prokerala.com/festivals/mesha-sankranti.html
-
------------------
-ASSAMESE CALENDAR
------------------
-
-The Assamese calendar is the traditional calendar of Assam. A variant of the Bengali calendar, it is a solar calendar which shares the epoch and the New Year's Day rule; the difference is that where the Bengali calendar's months are determined by observation, the Assamese calendar has months of fixed length. In leap years, the extra day is added to the final month, Söt. It is commonly described as a lunisolar calendar, but this is false; it is a purely solar calendar, but traditional calendar makers include the phases of the moon for the purposes of observation of Hindu and Buddhist festivals (which is also useful for Muslim observances).
-
-The calendar made headlines in 1428 BE (1943 SE, 2021 AD) when the state legislative assembly announced that it would be made coöfficial with the Gregorian and Indian National calendars; this was widely (and incorrectly) reported as the local calendar becoming the *only* official calendar. The actual result was rather less dramatic; all official Assamese government communications carry the Assamese date alongside the Indian and Gregorian dates.
-
-Sources:
-* https://www.nextias.com/ca/current-affairs/21-10-2021/bhaskarabda-calendar
-* https://www.adda247.com/upsc-exam/bhaskarabda-calendar/
-* https://web.archive.org/web/20230104023923/https://testbook.com/current-affairs/bhaskarabda-calendar-to-be-added-to-official-assam-calendar/
-* https://www.drishtiias.com/daily-updates/daily-news-analysis/bhaskarabda-a-luni-solar-calendar
-* https://iasscore.in/current-affairs/prelims/bhaskarabda-a-luni-solar-calendar
-* https://www.pratidintime.com/latest-assam-news-breaking-news-assam/bhaskarabda-calendar-official-calendar
-* https://www.vishvasnews.com/english/viral/fact-check-bhaskaravda-will-not-be-used-as-an-official-calendar-in-assam-but-as-a-part-of-the-official-calendar-viral-posts-are-misleading-2/
-* https://www.pratidintime.com/latest-assam-news-breaking-news-assam/bhaskarabda-calendar-official-calendar
-* https://www.thehindu.com/news/national/other-states/bhaskarabda-to-be-added-to-official-assam-calendar/article37068273.ece
-* https://www.sentinelassam.com/north-east-india-news/assam-news/bhaskarabda-luni-solar-calendar-to-be-used-in-official-calendar-assam-cm-himanta-biswa-sarma-559383
-* https://www.iastoppers.com/articles/bhaskarabda-to-be-added-to-official-assam-calendar
-* https://www.adda247.com/upsc-exam/bhaskarabda-calendar/
-* https://web.archive.org/web/20211019093335/https://www.thehindu.com/news/national/other-states/bhaskarabda-to-be-added-to-official-assam-calendar/article37068273.ece
-* https://assam.gov.in/sites/default/files/dms/notificationholidaylist2022.pdf
-* https://www.assamgovernmentjob.com/assam-govt-holiday-list-2024-gad-assam/
 
 -------------
 ODIA CALENDAR
@@ -1935,3 +1927,19 @@ Sources:
 * The Calendars of India, Vinod K. Mishra: https://web3.arxiv.org/pdf/1007.0062.pdf
 * Indian Calendars, Leow Choon Lian: https://telibrary.com/wp-content/uploads/2022/08/Indian-Calender-Article.pdf
 * Indian Calendars, GM Ballabh:	http://www.packolkata.gov.in/INDIAN_CALADAR_PAC.pdf
+
+--------------------
+NANAKSHAHI CALENDARS
+--------------------
+
+The Nanakshahi calendars are a two calendars used by Sikhs for the timing of religious rituals, festivals, and observances.
+
+Prior to 2060 VS (2003 AD), most Sikhs used one of the Indian lunisolar calendars to schedule events. The first Sikh-specific calendar was designed by Pal Singh Purewal in 2056 VS; he discarded the use of the stars and the phases of the moon for timekeeping in favour of a purely solar calendar, synchronised with the Gregorian calendar. New Year's Day always falls on 14 March. The first five months of the year have 31 days and the rest have 30, with leap day being added to the last day. The era is 1526 VS (1469 AD), the birth of Guru Nanak Dev. It is usually just referred to as the Nanakshahi calendar, but is sometimes called the Moon (original) Nanakshahi calendar when ambiguity is possible.
+
+The Mool Nanakshahi calendar was officially adopted by all Sikh governing bodies in 535 NE (2060 VS, 2003 AD), but did not immediately filter through to every practitioner. In 542 NE (2067 VS, 2010 AD), a group of conservatives expressed opposition on the grounds that Nanak himself used the traditional Indian lunisolar calendar, and they further objected that the Mool Nanakshahi calendar is Christian in origin. This faction's argument that Sikhs should date their festivals by traditional Indian lunisolar methods was rejected by Sikh governing bodies; nonetheless, I have included it here on the grounds that it is used by a small number of practitioners. It is simply the observational Indian lunisolar calendar, but dating years from the birth of Guru Nanak Dev.
+
+Sources:
+* http://www.purewal.biz/Gurbani_and_Nanakshahi_Calendar.pdf
+* https://www.bbc.co.uk/religion/religions/sikhism/customs/nanakshahi.shtml
+* https://www.hindustantimes.com/punjab/ht-explainer-know-about-the-controversial-nanakshahi-calendar/story-UeKm0yTcDtat1FCRIel86K.html
+ http://www.purewal.biz/RepLamba.pdf

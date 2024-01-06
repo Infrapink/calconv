@@ -164,6 +164,8 @@ import kutch
 import manipuri
 import sid_purnimanta
 import obs_purnimanta
+import mool_nanakshahi
+import sid_nanakshahi
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1697,6 +1699,24 @@ def cons_day_julian_todate():
         obs_purnimanta_day_ent.insert(0, obs_purnimanta_date[0])
         obs_purnimanta_month_ent.insert(0, obs_purnimanta_date[1])
         obs_purnimanta_year_ent.insert(0, obs_purnimanta_date[2])
+
+        # Convert a Julian day to a date in the Original Nanakshahi calendar
+        mool_nanakshahi_date = mool_nanakshahi.fromjd(day)
+        mool_nanakshahi_day_ent.delete(0, END)
+        mool_nanakshahi_month_ent.delete(0, END)
+        mool_nanakshahi_year_ent.delete(0, END)
+        mool_nanakshahi_day_ent.insert(0, mool_nanakshahi_date[0])
+        mool_nanakshahi_month_ent.insert(0, mool_nanakshahi_date[1])
+        mool_nanakshahi_year_ent.insert(0, mool_nanakshahi_date[2])
+
+        # Convert a Julian day to a date in the Sidereal Nanakshahi calendar
+        sid_anakshahi_date = sid_anakshahi.fromjd(day)
+        sid_anakshahi_day_ent.delete(0, END)
+        sid_anakshahi_month_ent.delete(0, END)
+        sid_anakshahi_year_ent.delete(0, END)
+        sid_anakshahi_day_ent.insert(0, sid_anakshahi_date[0])
+        sid_anakshahi_month_ent.insert(0, sid_anakshahi_date[1])
+        sid_anakshahi_year_ent.insert(0, sid_anakshahi_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3250,6 +3270,24 @@ def obs_purnimanta_converter():
         month = obs_purnimanta_month_ent.get()
         year = int(obs_purnimanta_year_ent.get())
         jday = obs_purnimanta.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def mool_nanakshahi_converter():
+        day = int(mool_nanakshahi_day_ent.get())
+        month = mool_nanakshahi_month_ent.get()
+        year = int(mool_nanakshahi_year_ent.get())
+        jday = mool_nanakshahi.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sid_anakshahi_converter():
+        day = int(sid_anakshahi_day_ent.get())
+        month = sid_anakshahi_month_ent.get()
+        year = int(sid_anakshahi_year_ent.get())
+        jday = sid_anakshahi.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5426,6 +5464,32 @@ obs_purnimanta_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 1
 obs_purnimanta_year_ent = Entry(frame)
 obs_purnimanta_year_ent.grid(row = 160, column = 11, sticky = W)
 obs_purnimanta_bttn = Button(frame, text = "Calculate", command = obs_purnimanta_converter).grid(row = 161, column = 9, columnspan = 3, sticky = W)
+
+# Original Nanakshahi calendar                                                                                            
+mool_nanakshahi_lbl = Label(frame, text = "Original Nanakshahi calendar").grid(row = 163, column = 0, columnspan = 3, sticky = W)
+mool_nanakshahi_day_lbl = Label(frame, text = "Day").grid(row = 164, column = 0, sticky = W)
+mool_nanakshahi_day_ent = Entry(frame)
+mool_nanakshahi_day_ent.grid(row = 165, column = 0, sticky = W)
+mool_nanakshahi_month_lbl = Label(frame, text = "Month").grid(row = 164, column = 1, sticky = W)
+mool_nanakshahi_month_ent = Entry(frame)
+mool_nanakshahi_month_ent.grid(row = 165, column = 1, sticky = W)
+mool_nanakshahi_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 2, sticky = W)
+mool_nanakshahi_year_ent = Entry(frame)
+mool_nanakshahi_year_ent.grid(row = 165, column = 2, sticky = W)
+mool_nanakshahi_bttn = Button(frame, text = "Calculate", command = mool_nanakshahi_converter).grid(row = 166, column = 0, columnspan = 3, sticky = W)
+
+# Sidereal Nanakshahi calendar                                                                                            
+sid_anakshahi_lbl = Label(frame, text = "Sidereal Nanakshahi calendar").grid(row = 163, column = 3, columnspan = 3, sticky = W)
+sid_anakshahi_day_lbl = Label(frame, text = "Day").grid(row = 164, column = 3, sticky = W)
+sid_anakshahi_day_ent = Entry(frame)
+sid_anakshahi_day_ent.grid(row = 165, column = 3, sticky = W)
+sid_anakshahi_month_lbl = Label(frame, text = "Month").grid(row = 164, column = 4, sticky = W)
+sid_anakshahi_month_ent = Entry(frame)
+sid_anakshahi_month_ent.grid(row = 165, column = 4, sticky = W)
+sid_anakshahi_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 5, sticky = W)
+sid_anakshahi_year_ent = Entry(frame)
+sid_anakshahi_year_ent.grid(row = 165, column = 5, sticky = W)
+sid_anakshahi_bttn = Button(frame, text = "Calculate", command = sid_anakshahi_converter).grid(row = 166, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.63.0")

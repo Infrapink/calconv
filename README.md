@@ -743,6 +743,21 @@ Odia calendar:
 * Phālguna
 * Caitra
 
+Manipuri calendar:
+------------------
+* Sajibhu
+* Kalen
+* Inga
+* Ingel
+* Thawan
+* Langban
+* Mera
+* Hiyangei
+* Poineu
+* Wakching
+* Phairen
+* Lamda
+
 Mandaean calendar:
 ------------------
 
@@ -759,6 +774,21 @@ Mandaean calendar:
 * Arqba
 * Hiṭia
 * Gadia
+
+Nanakshahi calendars:
+---------------------
+* Chet
+* Vaisakh
+* Jeth
+* Harh
+* Sawan
+* Bhadon
+* Asu
+* Kartik
+* Maghar
+* Poh
+* Magh
+* Phagun
 
 LICENSE
 =======
