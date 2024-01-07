@@ -166,6 +166,8 @@ import sid_purnimanta
 import obs_purnimanta
 import mool_nanakshahi
 import sid_nanakshahi
+import jain_shvetambara
+import jain_digambaras
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1717,6 +1719,24 @@ def cons_day_julian_todate():
         sid_nanakshahi_day_ent.insert(0, sid_nanakshahi_date[0])
         sid_nanakshahi_month_ent.insert(0, sid_nanakshahi_date[1])
         sid_nanakshahi_year_ent.insert(0, sid_nanakshahi_date[2])
+
+        # Convert a Julian day to a date in the Śvetāmbara Jain calendar
+        jain_shvetambara_date = jain_shvetambara.fromjd(day)
+        jain_shvetambara_day_ent.delete(0, END)
+        jain_shvetambara_month_ent.delete(0, END)
+        jain_shvetambara_year_ent.delete(0, END)
+        jain_shvetambara_day_ent.insert(0, jain_shvetambara_date[0])
+        jain_shvetambara_month_ent.insert(0, jain_shvetambara_date[1])
+        jain_shvetambara_year_ent.insert(0, jain_shvetambara_date[2])
+
+        # Convert a Julian day to a date in the Digambaras Jain calendar
+        jain_digambaras_date = jain_digambaras.fromjd(day)
+        jain_digambaras_day_ent.delete(0, END)
+        jain_digambaras_month_ent.delete(0, END)
+        jain_digambaras_year_ent.delete(0, END)
+        jain_digambaras_day_ent.insert(0, jain_digambaras_date[0])
+        jain_digambaras_month_ent.insert(0, jain_digambaras_date[1])
+        jain_digambaras_year_ent.insert(0, jain_digambaras_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3288,6 +3308,24 @@ def sid_nanakshahi_converter():
         month = sid_nanakshahi_month_ent.get()
         year = int(sid_nanakshahi_year_ent.get())
         jday = sid_nanakshahi.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def jain_shvetambara_converter():
+        day = int(jain_shvetambara_day_ent.get())
+        month = jain_shvetambara_month_ent.get()
+        year = int(jain_shvetambara_year_ent.get())
+        jday = jain_shvetambara.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def jain_digambaras_converter():
+        day = int(jain_digambaras_day_ent.get())
+        month = jain_digambaras_month_ent.get()
+        year = int(jain_digambaras_year_ent.get())
+        jday = jain_digambaras.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5490,6 +5528,32 @@ sid_nanakshahi_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 5
 sid_nanakshahi_year_ent = Entry(frame)
 sid_nanakshahi_year_ent.grid(row = 165, column = 5, sticky = W)
 sid_nanakshahi_bttn = Button(frame, text = "Calculate", command = sid_nanakshahi_converter).grid(row = 166, column = 3, columnspan = 3, sticky = W)
+
+# Śvetāmbara Jain calendar                                                                                            
+jain_shvetambara_lbl = Label(frame, text = "Śvetāmbara Jain calendar").grid(row = 163, column = 6, columnspan = 3, sticky = W)
+jain_shvetambara_day_lbl = Label(frame, text = "Day").grid(row = 164, column = 6, sticky = W)
+jain_shvetambara_day_ent = Entry(frame)
+jain_shvetambara_day_ent.grid(row = 165, column = 6, sticky = W)
+jain_shvetambara_month_lbl = Label(frame, text = "Month").grid(row = 164, column = 7, sticky = W)
+jain_shvetambara_month_ent = Entry(frame)
+jain_shvetambara_month_ent.grid(row = 165, column = 7, sticky = W)
+jain_shvetambara_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 8, sticky = W)
+jain_shvetambara_year_ent = Entry(frame)
+jain_shvetambara_year_ent.grid(row = 165, column = 8, sticky = W)
+jain_shvetambara_bttn = Button(frame, text = "Calculate", command = jain_shvetambara_converter).grid(row = 166, column = 6, columnspan = 3, sticky = W)
+
+# Digambaras Jain calendar                                                                                            
+jain_digambaras_lbl = Label(frame, text = "Digambaras Jain calendar").grid(row = 163, column = 9, columnspan = 3, sticky = W)
+jain_digambaras_day_lbl = Label(frame, text = "Day").grid(row = 164, column = 9, sticky = W)
+jain_digambaras_day_ent = Entry(frame)
+jain_digambaras_day_ent.grid(row = 165, column = 9, sticky = W)
+jain_digambaras_month_lbl = Label(frame, text = "Month").grid(row = 164, column = 10, sticky = W)
+jain_digambaras_month_ent = Entry(frame)
+jain_digambaras_month_ent.grid(row = 165, column = 10, sticky = W)
+jain_digambaras_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 11, sticky = W)
+jain_digambaras_year_ent = Entry(frame)
+jain_digambaras_year_ent.grid(row = 165, column = 11, sticky = W)
+jain_digambaras_bttn = Button(frame, text = "Calculate", command = jain_digambaras_converter).grid(row = 166, column = 9, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.63.0")

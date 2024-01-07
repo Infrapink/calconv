@@ -1953,3 +1953,12 @@ Sources:
 * https://www.bbc.co.uk/religion/religions/sikhism/customs/nanakshahi.shtml
 * https://www.hindustantimes.com/punjab/ht-explainer-know-about-the-controversial-nanakshahi-calendar/story-UeKm0yTcDtat1FCRIel86K.html
  http://www.purewal.biz/RepLamba.pdf
+
+--------------
+JAIN CALENDARS
+--------------
+
+Jains use traditional Indian lunisolar calendars to set the dates of festivals and observances. Vikram Samvat is a common era, but there are also attestations of an era dating from the year that Mahavira achieved Nirvana. This year is given as -470 VS (527 BC) in the Śvetāmbara tradition, and as -605 VS (662 BC) in the Digimbaras tradition. Both versions are included here.
+
+Sources:
+* https://jainpedia.org/themes/practices/festivals/jain-calendar/
