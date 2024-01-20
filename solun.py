@@ -464,3 +464,33 @@ def dayof_tamil(jday):
         ans = floor(jday)
 
     return ans
+
+def heliacal_rising(jday, lon, lat, star):
+    '''Compute the nearest day of the heliacal rising of a given star at a given plance.'''
+    jday = Fraction(jday) # the time we start with
+    lon = Fraction(lon) # geographical longitude; East of Greenwich is positive, West is negative
+    lat = Fraction(lat) # geographical latitude
+    # star is an object of Star class as defined in stars.py
+    
+    tz = Fraction(lat, 360) # difference in local noons, in DAYS, between Greenwich and location in question
+
+    # first, roughly zero in on the day when the sun and the star are in alignment
+    if (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) > ((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360)):
+        # sun is behind star, so step forward
+        jday = jday + (sid_year * (((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360) / 360))
+    else:
+        # sun is opposite or ahead of star, so step backward
+        jday = jday - (sid_year * (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) / 360))
+
+    
+    # we're at the point where the sun and the star are approximately in conjunction
+    # now, zero in on a more exact time
+    # assume that the heliacal rising is the day when the star rises about 30 minutes before the sun
+    ans = round(jday) # we are, ultimately, looking for an integer consecutive Julian Day.
+
+    while ((starrise2(ans, lon, lat, star) - sunrise(ans, lon, lat)) < Fraction(30, 1440)):
+        ans += 1
+    while ((starrise2((ans - 1), lon, lat, star) - sunrise(ans, lon, lat)) >= Fraction(30, 1440)):
+        ans -= 1
+
+    return ans
