@@ -77,5 +77,12 @@ ASHVIN = Star( (30 + (7 * Decimal(15/60)) + (Decimal('10.4057') * Decimal(15/(60
                Decimal('20.2'), # distance
                Decimal('-14.2') / 977792, # rv
                Decimal('188.55') * mas2rad, # dra
-               Decimal('-148.08') * mas2rad)
+               Decimal('-148.08') * mas2rad) # ddec
                
+# Shravishtha refers to Sualocin, AKA the brightest star in Alpha Delphini
+SHRAVISHTHA = Star( ((20 * 15) + (39 * Decimal(15/60)) + (Decimal('38.28720') * Decimal(15/(60 * 60)))), # ra
+                    (15 + Decimal(54/60) + (Decimal('43.4637') /(60 * 60))), # dec
+                    78, # distance
+                    Decimal('-3.40'), # rv
+                    Decimal('53.82'), # dra
+                    Decimal('8.47')) # ddec
