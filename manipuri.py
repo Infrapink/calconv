@@ -1,17 +1,31 @@
 #!/usr/bin/python3
 
-# A programme to convert between Julian Days and dates in the Śvetāmbara Jain calendar
+# A programme to convert between Julian Days and dates in modern Indian lunisolar calendars (Śaka era)
 
 from math import floor, ceil
 from fractions import Fraction
-from solun import sankranti, conj, indian_sunrise as sunrise, conj as newmoon, phase, sid_year, lunar_month as syn_month, rasi, phasetime, dayof_hindi as dayof, vs
-from months import INDIAN_LUNAR_NUM as NUMON, NUM_INDIAN_LUNAR as MONTHNO
+from solun import sankranti, conj, indian_sunrise as sunrise, conj as newmoon, phase, sid_year, lunar_month as syn_month, rasi, phasetime, dayof_hindi as dayof, se
+from surya_siddhanta import ky
 
-epoch = sankranti((vs - (470 * sid_year) + (6 * rasi)), 180) # Tulā Saṁkrānti of the year 0
+MONTHS = ("Sajibhu", "Kalen", "Inga", "Ingel", "Thawan", "Langban", "Mera", "Hiyangei", "Poineu", "Wakching", "Phairen", "Lamda")
+MONTHNO = {"Sajibhu": 0,
+           "Kalen": 1,
+           "Inga": 2,
+           "Ingel": 3,
+           "Thawan": 4,
+           "Langban": 5,
+           "Mera": 6,
+           "Hiyangei": 7,
+           "Poineu": 8,
+           "Wakching": 9,
+           "Phairen": 10,
+           "Lamda": 11}
+
+epoch = sankranti((se - rasi + (710 * sid_year)), 330) # Mīna Saṁkrānti of the year 0
 tz = Fraction(11,48) # Indian timezone; UTC+5:30
 
 def fromjd(jday):
-    '''Given a Julian Day, compute the date in the Śvetāmbara Jain calendar'''
+    '''Given a Julian Day, compute the date in the Indian lunisolar calendar'''
     jday = Fraction(jday)
 
     # start with the new moon
@@ -23,18 +37,18 @@ def fromjd(jday):
 
     # now we can sort out the year
     year = (crescent - epoch) // sid_year
-    tula = epoch + (year * sid_year) # Tulā Saṁkrānti
-    while (dayof(sankranti(tula, 180)) > dayof(newmoon(crescent, tz))):
+    mina = epoch + (year * sid_year) # Mīna Saṁkrānti
+    while (dayof(sankranti(mina, 330)) > dayof(newmoon(crescent, tz))):
         year -= 1
-        tula -= sid_year
-    while (dayof(sankranti((tula + sid_year), 180)) <= dayof(newmoon(crescent, tz))):
+        mina -= sid_year
+    while (dayof(sankranti((mina + sid_year), 330)) <= dayof(newmoon(crescent, tz))):
         year += 1
-        tula += sid_year
+        mina += sid_year
 
     # now to figure out the month
-    cigra = (crescent - tula) // rasi # number of the star sign the new moon falls in
-    angle = ((cigra + 6) * 30) % 360  # zodiacal angle of the cusp of the star sign we're in; note that in the case of the Jain calendar, we start at 180°
-    s = tula + (rasi * cigra) # approximate time of the saṁkrānti immediately preceding the current lunar cycle
+    cigra = (crescent - mina) // rasi # number of the star sign the new moon falls in
+    angle = ((cigra * 30) - 30) % 360  # zodiacal angle of the cusp of the star sign we're in; note that in the case of lunisolar calendars, we start at 330°
+    s = mina + (rasi * cigra) # approximate time of the saṁkrānti immediatelly preceding the current lunar cycle
     while (dayof(sankranti(s, angle)) > dayof(newmoon(crescent, tz))):
         s -= rasi
         cigra = (cigra - 1) % 12
@@ -43,7 +57,7 @@ def fromjd(jday):
         s += rasi
         cigra = (cigra + 1) % 12
         angle = (angle + 30) % 360
-    month = NUMON[(cigra + 7) % 12]
+    month = MONTHS[cigra]
     if (dayof(newmoon((crescent + syn_month), tz)) <= dayof(sankranti((s + rasi), ((angle + 30) % 360)))):
         # we're in the leap month
         month = "Adhik " + month
@@ -67,10 +81,10 @@ def tojd(tithi, month, year):
     else:
         adhik = False
 
-    m = (MONTHNO[month] - 7) % 12 # number of the star sign that the month begins in; subtract 6 because we start at 180°
+    m = MONTHNO[month] # number of the star sign that the month begins in
 
     jday = epoch + (year * sid_year) + (m * rasi) # approximate saṁkrānti of the month specified
-    angle = ((m + 6) * 30) % 360 # zodiacal angle of the beginning of the star sign we're interested in
+    angle = ((m * 30) - 30) % 360 # zodiacal angle of the beginning of the star sign we're interested in
     crescent = newmoon(jday, tz)
     while (dayof(newmoon(crescent, tz)) < dayof(sankranti(jday, angle))):
         crescent += syn_month

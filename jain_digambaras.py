@@ -80,7 +80,11 @@ def tojd(tithi, month, year):
         # we're in the leap month, but shouldn't be
         crescent += syn_month
 
-    jday = dayof(phasetime((crescent + (tithi * Fraction(syn_month, 30))), (12 * tithi), tz))
+    if (tithi == 0):
+        # for some reason, it gets stuck in an infinite loop if it's the first tithi of the month
+        jday = dayof(newmoon(crescent, tz))
+    else:
+        jday = dayof(phasetime((crescent + (tithi * Fraction(syn_month, 30))), (12 * tithi), tz))
 
     return jday
     
