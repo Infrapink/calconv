@@ -168,6 +168,7 @@ import mool_nanakshahi
 import sid_nanakshahi
 import jain_shvetambara
 import jain_digambaras
+import vj
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1737,6 +1738,15 @@ def cons_day_julian_todate():
         jain_digambaras_day_ent.insert(0, jain_digambaras_date[0])
         jain_digambaras_month_ent.insert(0, jain_digambaras_date[1])
         jain_digambaras_year_ent.insert(0, jain_digambaras_date[2])
+
+        # Convert a Julian day to a date in the Vedāṅga Jyotiṣa calendar
+        vj_date = vj.fromjd(day)
+        vj_day_ent.delete(0, END)
+        vj_month_ent.delete(0, END)
+        vj_year_ent.delete(0, END)
+        vj_day_ent.insert(0, vj_date[0])
+        vj_month_ent.insert(0, vj_date[1])
+        vj_year_ent.insert(0, vj_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3326,6 +3336,15 @@ def jain_digambaras_converter():
         month = jain_digambaras_month_ent.get()
         year = int(jain_digambaras_year_ent.get())
         jday = jain_digambaras.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def vj_converter():
+        day = int(vj_day_ent.get())
+        month = vj_month_ent.get()
+        year = int(vj_year_ent.get())
+        jday = vj.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5502,6 +5521,19 @@ obs_purnimanta_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 1
 obs_purnimanta_year_ent = Entry(frame)
 obs_purnimanta_year_ent.grid(row = 160, column = 11, sticky = W)
 obs_purnimanta_bttn = Button(frame, text = "Calculate", command = obs_purnimanta_converter).grid(row = 161, column = 9, columnspan = 3, sticky = W)
+
+# Vedāṅga Jyotiṣa calendar                                                                                            
+vj_lbl = Label(frame, text = "Vedāṅga Jyotiṣa calendar").grid(row = 158, column = 12, columnspan = 3, sticky = W)
+vj_day_lbl = Label(frame, text = "Day").grid(row = 159, column = 12, sticky = W)
+vj_day_ent = Entry(frame)
+vj_day_ent.grid(row = 160, column = 12, sticky = W)
+vj_month_lbl = Label(frame, text = "Month").grid(row = 159, column = 13, sticky = W)
+vj_month_ent = Entry(frame)
+vj_month_ent.grid(row = 160, column = 13, sticky = W)
+vj_year_lbl = Label(frame, text = "Year").grid(row = 159, column = 14, sticky = W)
+vj_year_ent = Entry(frame)
+vj_year_ent.grid(row = 160, column = 14, sticky = W)
+vj_bttn = Button(frame, text = "Calculate", command = vj_converter).grid(row = 161, column = 12, columnspan = 3, sticky = W)
 
 # Original Nnanakshahi calendar                                                                                            
 mool_nanakshahi_lbl = Label(frame, text = "Original Nnanakshahi calendar").grid(row = 163, column = 0, columnspan = 3, sticky = W)

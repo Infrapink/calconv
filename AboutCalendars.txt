@@ -1962,3 +1962,19 @@ Jains use traditional Indian lunisolar calendars to set the dates of festivals a
 
 Sources:
 * https://jainpedia.org/themes/practices/festivals/jain-calendar/
+
+---------------
+VEDĀṄGA JYOTIṢA
+---------------
+
+The Vedāṅga Jyotiṣa is the oldest known Indian astronomical text; based on its descriptions of various phenomena, TS Kuppanna Sastry estimates it was composed around 1450 BS (1370 BC).
+
+The Vedāṅga Jyotiṣa describes a 5-year yuga as containing 1830 tropical days and 62 synodic months; this equates to 366 days per year, but Sastry argues, quite reasonably, that rulers and astronomers back then knew full well that a sidereal and a tropical year contained about 365 days. Rather, this yuga was only intended to give a rough relation between units of time which could be used for scheduling secular events, while religious events proceded according to direct observations, which would be periodically used to correct the secular forecasts.
+
+The tropical year begins on the day of the heliacal rising of Śraviṣṭhā (Alpha and Delta Delphini), with the first month of the year most likely being the next visible crescent. Since the conjunction of the sun with Śraviṣṭhā is stated to fall in the month of Māgha, it follows that Phālguna is the first month of the year.
+
+Leap months are stated to be inserted every 2½ years, either in the middle of the year or at the end; the leap month is always named Adhikmasa. Since the calendar was frequently recalibrated to match observations, I have opted to determine leap years according to when new moons occur in relation to the heliacal rising of Śraviṣṭhā, with the position of Adhikmasa being determined by the year's position in a five-year cycle.
+
+Sources:
+* https://web.archive.org/web/20110501084408/http://www.new.dli.ernet.in/rawdataupload/upload/insa/INSA_1/20005abd_s1.pdf
+* https://archive.org/details/VedangaJyotisha/page/n17/mode/2up
