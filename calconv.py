@@ -169,6 +169,8 @@ import sid_nanakshahi
 import jain_shvetambara
 import jain_digambaras
 import vj
+import newar
+import nepali_solar
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1747,6 +1749,24 @@ def cons_day_julian_todate():
         vj_day_ent.insert(0, vj_date[0])
         vj_month_ent.insert(0, vj_date[1])
         vj_year_ent.insert(0, vj_date[2])
+
+        # Convert a Julian day to a date in the Nepali lunisolar calendar
+        newar_date = newar.fromjd(day)
+        newar_day_ent.delete(0, END)
+        newar_month_ent.delete(0, END)
+        newar_year_ent.delete(0, END)
+        newar_day_ent.insert(0, newar_date[0])
+        newar_month_ent.insert(0, newar_date[1])
+        newar_year_ent.insert(0, newar_date[2])
+
+        # Convert a Julian day to a date in the Nepali solar calendar
+        nepali_solar_date = nepali_solar.fromjd(day)
+        nepali_solar_day_ent.delete(0, END)
+        nepali_solar_month_ent.delete(0, END)
+        nepali_solar_year_ent.delete(0, END)
+        nepali_solar_day_ent.insert(0, nepali_solar_date[0])
+        nepali_solar_month_ent.insert(0, nepali_solar_date[1])
+        nepali_solar_year_ent.insert(0, nepali_solar_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3345,6 +3365,24 @@ def vj_converter():
         month = vj_month_ent.get()
         year = int(vj_year_ent.get())
         jday = vj.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def newar_converter():
+        day = int(newar_day_ent.get())
+        month = newar_month_ent.get()
+        year = int(newar_year_ent.get())
+        jday = newar.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def nepali_solar_converter():
+        day = int(nepali_solar_day_ent.get())
+        month = nepali_solar_month_ent.get()
+        year = int(nepali_solar_year_ent.get())
+        jday = nepali_solar.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5586,6 +5624,32 @@ jain_digambaras_year_lbl = Label(frame, text = "Year").grid(row = 164, column = 
 jain_digambaras_year_ent = Entry(frame)
 jain_digambaras_year_ent.grid(row = 165, column = 11, sticky = W)
 jain_digambaras_bttn = Button(frame, text = "Calculate", command = jain_digambaras_converter).grid(row = 166, column = 9, columnspan = 3, sticky = W)
+
+# Nepali lunisolar calendar                                                                                            
+newar_lbl = Label(frame, text = "Nepali lunisolar calendar").grid(row = 168, column = 0, columnspan = 3, sticky = W)
+newar_day_lbl = Label(frame, text = "Day").grid(row = 169, column = 0, sticky = W)
+newar_day_ent = Entry(frame)
+newar_day_ent.grid(row = 170, column = 0, sticky = W)
+newar_month_lbl = Label(frame, text = "Month").grid(row = 169, column = 1, sticky = W)
+newar_month_ent = Entry(frame)
+newar_month_ent.grid(row = 170, column = 1, sticky = W)
+newar_year_lbl = Label(frame, text = "Year").grid(row = 169, column = 2, sticky = W)
+newar_year_ent = Entry(frame)
+newar_year_ent.grid(row = 170, column = 2, sticky = W)
+newar_bttn = Button(frame, text = "Calculate", command = newar_converter).grid(row = 171, column = 0, columnspan = 3, sticky = W)
+
+# Nepali solar calendar                                                                                            
+nepali_solar_lbl = Label(frame, text = "Nepali solar calendar").grid(row = 168, column = 3, columnspan = 3, sticky = W)
+nepali_solar_day_lbl = Label(frame, text = "Day").grid(row = 169, column = 3, sticky = W)
+nepali_solar_day_ent = Entry(frame)
+nepali_solar_day_ent.grid(row = 170, column = 3, sticky = W)
+nepali_solar_month_lbl = Label(frame, text = "Month").grid(row = 169, column = 4, sticky = W)
+nepali_solar_month_ent = Entry(frame)
+nepali_solar_month_ent.grid(row = 170, column = 4, sticky = W)
+nepali_solar_year_lbl = Label(frame, text = "Year").grid(row = 169, column = 5, sticky = W)
+nepali_solar_year_ent = Entry(frame)
+nepali_solar_year_ent.grid(row = 170, column = 5, sticky = W)
+nepali_solar_bttn = Button(frame, text = "Calculate", command = nepali_solar_converter).grid(row = 171, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.63.0")

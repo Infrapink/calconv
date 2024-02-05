@@ -1978,3 +1978,43 @@ Leap months are stated to be inserted every 2½ years, either in the middle of t
 Sources:
 * https://web.archive.org/web/20110501084408/http://www.new.dli.ernet.in/rawdataupload/upload/insa/INSA_1/20005abd_s1.pdf
 * https://archive.org/details/VedangaJyotisha/page/n17/mode/2up
+
+---------------------------------
+NEPALI LUNISOLAR (NEWAR) CALENDAR
+---------------------------------
+
+Indian calendars have been used in Nepal for centuries, of which the Vikram Samvat has long been popular.
+
+The lunisolar calendar included here is the one primarily used by the Newar minority, though it known throughout Nepal, and its advocates are very clear that it is for all Nepalis, not just the Newar.
+
+The structure is basically the same as the Gujarati calendar, but I have adjusted it to base its calculations on the coördinates of Kathmandu rather than Ujjain. Days begin at sunrise, and months begin on the day which begins with the sunrise following the new moon.
+
+The solar epoch, known as Nepal Sambat, is consecutive Julian Day 2042401. This corresponds to the date that legendary merchant Sankhadhar Sākhwā paid off the debts on everybody in Nepal.
+
+Sources:
+* https://en.wikipedia.org/wiki/Nepal_Sambat
+* https://web.archive.org/web/20120706163359/http://www.gorkhapatra.org.np/gopa.detail.php?article_id=25573&cat_id=10
+* https://web.archive.org/web/20100102032418/http://www.myrepublica.com/portal/index.php?action=news_details&news_id=10891
+* https://web.archive.org/web/20150610231101/http://www.ekantipur.com/the-kathmandu-post/2012/01/28/free-the-words/the-sands-of-time/230946.html
+* https://web.archive.org/web/20140808053114/http://www.gorkhapatra.org.np/gopa.detail.php?article_id=9026&cat_id=29
+* https://web.archive.org/web/20111027091055/http://www.myrepublica.com/portal/index.php?action=news_details&news_id=37568
+* https://web.archive.org/web/20150610193828/http://www.ekantipur.com/2011/10/27/top-story/mha-puja-today-nepal-sambat-1132-being-observed/342845.html
+* http://world.clndr.org/calendars/nepal-calendar/
+* https://nepalipatro.com.np/blog/en/nepal-sambat/
+* https://web.archive.org/web/20201004205943/https://medium.com/@hyoojala/overalls-of-nepal-sambat-3f63e514c984
+* https://web.archive.org/web/20240204234745/https://old.risingnepaldaily.com/nation/lmc-brings-nepal-sambat-into-official-use
+* https://www.ashesh.com.np/nepali-calendar/
+
+---------------------
+NEPALI SOLAR CALENDAR
+---------------------
+
+The Nepali solar calendar was introduced in 1141 NS (2077 BS, 2020 AD). It is an algorithmic calendar, structured so that the year always begins on 20 October in the Gregorian calendar.
+
+Month names are the same as in the lunisolar calendar. The last six months of the year always have 31 days, the first five have 30, and the sixth has 29 in normal years and 30 in leap years.
+
+Sources:
+* https://web.archive.org/web/20201004205943/https://medium.com/@hyoojala/overalls-of-nepal-sambat-3f63e514c984
+* https://web.archive.org/web/20230324213834/https://old.risingnepaldaily.com/main-news/nepal-sambat-gets-solar-calendar-for-the-first-time
+* https://web.archive.org/web/20220815104429/https://old.risingnepaldaily.com/nation/nepal-sambat-calendar-completes-one-year
+* http://nepalsambat.org/solar-calendar/

@@ -664,6 +664,7 @@ Indian lunisolar calendars:
 * Pausha
 * Māgha
 * Phālguna
+* Adhikmasa (Vedāṅga Jyotiṣa only)
 
 (Note: In some calendars, Vaisākha is the first month). To specify a leap month in a lunisolar calendar, prefix the month name with "Adhik ".
 
@@ -789,6 +790,22 @@ Nanakshahi calendars:
 * Poh
 * Magh
 * Phagun
+
+Nepali calendars:
+-----------------
+* Kachhalā
+* Thinlā
+* Pwanhelā
+* Silā
+* Chilā
+* Chaulā
+* Bachhalā
+* Tachhalā
+* Dilā
+* Gunlā
+* Tanlā
+* Kaulā
+* Analā (leap years in the lunisolar calendar only)
 
 LICENSE
 =======
