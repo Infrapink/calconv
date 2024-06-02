@@ -2429,5 +2429,32 @@ contains
     double precision, dimension(2), intent(out) :: time ! time of sunrise and sunset
     call stellar_riset(jday, lon, lat, deltat, ra2000, dec2000, distance, rv, deltara, deltadec, time)
   end subroutine pub_stellar_riset
+
+  subroutine pub_propmot(jday, ra, dec, distance, rv, dra, ddec, answer)
+    ! Returns the proper motion of a star
+    double precision, intent(in)  :: jday
+    double precision, intent(in)  :: ra
+    double precision, intent(in)  :: dec
+    double precision, intent(in)  :: distance
+    double precision, intent(in)  :: rv
+    double precision, intent(in)  :: dra
+    double precision, intent(in)  :: ddec
+    double precision, dimension(2), intent(out) :: answer
+    call propmot(jday, ra, dec, distance, rv, dra, ddec, answer)
+  end subroutine pub_propmot
+
+  subroutine pub_nutation(jday, nut)
+    ! Returns the nutation at a given time
+    double precision, intent(in)  :: jday
+    double precision, dimension(2), intent(out) :: nut
+    call nutation(jday, nut)
+  end subroutine pub_nutation
+
+  subroutine pub_solar_radec(jday, radec)
+    ! Returns the right ascension and declination of the sun at a given time
+    double precision, intent(in)  :: jday
+    double precision, dimension(2), intent(out) :: radec
+    call solar_radec(jday, radec)
+  end subroutine pub_solar_radec
 end module pub
 
