@@ -104,7 +104,7 @@ contains
   subroutine nutation(jday, nut)
     ! Calculate the nutation of the obliquity to the ecplitic
     real(8), intent(in) :: jday ! Julian Day in question
-    real(8), dimension(2), intent(out) :: nut ! Nutation to the ecliptic and of longitude
+    real(8), dimension(0:2), intent(out) :: nut ! Nutation to the ecliptic and of longitude
 
     real(8) :: T ! Julian Centuries since J2000.0
     real(8) :: D ! mean elonation of the moon from the sun
@@ -768,8 +768,9 @@ contains
     !epsilon0 = epsilon0 + delta_epsilon
     !epsilon0 = mod(epsilon0, 26.0) ! if the obliquity of the ecliptic is calculated more than 10,000 years from J2000.0. the numbers become silly. This keeps it within sensible boundaries.
     ! nut = (epsilon0, delta_psi)
-    nut(1) = epsilon0
-    nut(2) = delta_psi
+    nut(0) = epsilon0
+    nut(1) = delta_psi
+    nut(2) = delta_epsilon
   end subroutine nutation
 end module stellar_coords
 
@@ -1317,7 +1318,7 @@ contains
 
     real(8) :: lon ! ecliptic longitude
     real(8) :: lat ! ecliptic latitude
-    real(8), dimension(2) :: nut ! nutation factors
+    real(8), dimension(3) :: nut ! nutation factors
 
     real(8) :: pi
     real(8) :: d2r ! convert degrees to radians
@@ -2068,7 +2069,7 @@ contains
     ! real(8) :: midnight ! Sidereal time at midnight
     ! real(8) :: alpha
     real(8) :: corr ! correction to mean sidereal time to get apparent sidereal time
-    real(8), dimension(2) :: epsi ! nutation factors
+    real(8), dimension(3) :: epsi ! nutation factors
     real(8) :: d2r ! convert degrees to radians
 
     T = (jday - 2451545.0) / 36525.0
@@ -2133,7 +2134,7 @@ contains
     real(8), dimension(2) :: today ! RA and dec of day
     real(8), dimension(2) :: tomorrow ! RA and dec of next day
     !integer :: id ! sun or star!
-    real(8), dimension(2) :: nut ! nutation values for use in calculating the sun's position
+    real(8), dimension(3) :: nut ! nutation values for use in calculating the sun's position
     
     pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
@@ -2446,7 +2447,7 @@ contains
   subroutine pub_nutation(jday, nut)
     ! Returns the nutation at a given time
     double precision, intent(in)  :: jday
-    double precision, dimension(2), intent(out) :: nut
+    double precision, dimension(0:2), intent(out) :: nut
     call nutation(jday, nut)
   end subroutine pub_nutation
 
