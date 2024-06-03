@@ -70,12 +70,12 @@ def udt(jday):
 def spos(day):
     '''Ecliptic longitude of the sun'''
     day = floor(day) - 0.5
-    return sunmoon.solar_coords.solar_longitude(day)
+    return sunmoon.pub.pub_solar_longitude(day)
 
 def mpos(day):
     '''Ecliptic longitude of the moon'''
     day = floor(day) - 0.5
-    return sunmoon.lunar_coords.lunar_longitude(day)
+    return sunmoon.pub.pub_lunar_longitude(day)
 
 def trans(day, angle, frtz):
     '''Time the sun hits a particular ecliptic longitude'''
@@ -83,7 +83,7 @@ def trans(day, angle, frtz):
     angle = float(angle)
     frtz = Fraction(frtz) # timezone
     
-    minutes = int(sunmoon.solar_coords.solar_time(day, angle))
+    minutes = int(sunmoon.pub.pub_solar_time(day, angle))
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
@@ -92,7 +92,7 @@ def newmoon(day, frtz):
     day = floor(day) - 0.5
     frtz = Fraction(frtz) # timezone
 
-    minutes = int(sunmoon.lunar_coords.lunar_time(day))
+    minutes = int(sunmoon.pub.pub_lunar_time(day))
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
@@ -215,7 +215,7 @@ def sunrise(jday, lon, lat):
     ra2000 = 281.29 # https://astronomy.stackexchange.com/questions/35779/ra-and-dec-of-the-sun-at-j2000
     dec2000 = 0 - 23 - (2/60) - (8.2/3600) # https://astronomy.stackexchange.com/questions/35779/ra-and-dec-of-the-sun-at-j2000
 
-    r = sunmoon.sidereal.solar_riset(jday, lon, lat)
+    r = sunmoon.pub.pub_solar_riset(jday, lon, lat)
     return(r[0])
 
 def sunset(jday, lon, lat):
@@ -227,7 +227,7 @@ def sunset(jday, lon, lat):
     ra2000 = 281.29 # https://astronomy.stackexchange.com/questions/35779/ra-and-dec-of-the-sun-at-j2000
     dec2000 = 0	- 23 - (2/60) -	(8.2/3600) # https://astronomy.stackexchange.com/questions/35779/ra-and-dec-of-the-sun-at-j2000
     
-    s =	sunmoon.sidereal.solar_riset(jday, lon, lat)
+    s = sunmoon.pub.pub_solar_riset(jday, lon, lat)
     return(s[1])
 
 def local_sunrise(jday, lon, lat, tz):
@@ -263,7 +263,7 @@ def starrise(jday, lon, lat, ra2000, dec2000, distance, rv, deltara, deltadec):
     deltara = float(deltara)
     deltadec = float(deltadec)
 
-    s = sunmoon.sidereal.stellar_riset(jday, lon, lat, deltat, ra2000, dec2000, distance, rv, deltara, deltadec)
+    s = sunmoon.pub.pub_stellar_riset(jday, lon, lat, deltat, ra2000, dec2000, distance, rv, deltara, deltadec)
     return(s[0])
 
 def starrise2(jday, lon, lat, star):
@@ -273,7 +273,7 @@ def starrise2(jday, lon, lat, star):
     lon = float(lon)
     lat = float(lat)
 
-    s = sunmoon.sidereal.stellar_riset(jday, lon, lat, deltat, star.ra, star.dec, star.distance, star.rv, star.dra, star.ddec)
+    s = sunmoon.pub.pub_stellar_riset(jday, lon, lat, deltat, star.ra, star.dec, star.distance, star.rv, star.dra, star.ddec)
     return(s[0])
 
 def starpos(jday, star):
@@ -281,12 +281,12 @@ def starpos(jday, star):
     jday = Fraction(jday) - Fraction(12,24) # convert from midnight-to-midnight to noon-to-noon denotation
 
     # first, the effect of proper motion
-    radec = sunmoon.stellar_coords.propmot(jday, star.ra, star.dec, star.distance, star.rv, star.dra, star.ddec)
+    radec = sunmoon.pub.pub_propmot(jday, star.ra, star.dec, star.distance, star.rv, star.dra, star.ddec)
     ra = radec[0]
     dec = radec[1]
 
     # next, apply the effect of nutation
-    nut = sunmoon.stellar_coords.nutation(jday)
+    nut = sunmoon.pub.pub_nutation(jday)
     epsilon = nut[0]
     delta_psi = nut[1]
     delta_epsilon = nut[2]
@@ -299,7 +299,7 @@ def starpos(jday, star):
     per = 102.93735 + (1.71946 * T) + (0.00046 * T * T) # longitude of perihelion, in DEGREES
     kappa = 20.49552 / 3600 # constant of aberration, in DEGREES
 
-    solar_radec = sunmoon.solar_coords.solar_radec(jday)
+    solar_radec = sunmoon.pub.pub_solar_radec(jday)
     solar_ra = solar_radec[0]
     solar_dec = solar_radec[1]
 
@@ -329,7 +329,7 @@ def counterstar(jday, star):
 
 def solar_cel_coords(jday):
     '''Get the right ascension and declination of the sun'''
-    ans = sunmoon.solar_coords.solar_radec(jday)
+    ans = sunmoon.pub.pub_solar_radec(jday)
     return ans
 
 def solar_zpos(jday, star, opp):
