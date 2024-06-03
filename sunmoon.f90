@@ -2457,5 +2457,18 @@ contains
     double precision, dimension(2), intent(out) :: radec
     call solar_radec(jday, radec)
   end subroutine pub_solar_radec
+
+  subroutine pub_precession(jday, ra2000, dec2000, distance, rv, deltara, deltadec, answer)
+    ! Return the precession at a given time
+    double precision, intent(in)  :: jday
+    double precision, intent(in)  :: ra2000
+    double precision, intent(in)  :: dec2000
+    double precision, intent(in)  :: distance
+    double precision, intent(in)  :: rv
+    double precision, intent(in)  :: deltara
+    double precision, intent(in)  :: deltadec
+    double precision, dimension(2), intent(out) :: answer
+    call precession(jday, ra2000, dec2000, distance, rv, deltara, deltadec, answer)
+  end subroutine pub_precession
 end module pub
 

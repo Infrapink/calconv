@@ -21,7 +21,7 @@ epoch = 2394673 + Fraction(69103,86400) # instant when the sun crossed Aries on 
 def sunra(jday):
     '''Determine the right ascension of the sun'''
     jday = float(jday) - 0.5
-    radec = sunmoon.solar_coords.solar_radec(jday)
+    radec = sunmoon.pub.pub_solar_radec(jday)
     return radec[0]
 
 def starra(jday):
@@ -34,7 +34,7 @@ def starra(jday):
     dra = ARIES.dra
     ddec = ARIES.ddec
 
-    radec = sunmoon.sidereal.precession(jday, ra, dec, distance, rv, dra, ddec)
+    radec = sunmoon.pub.pub_precession(jday, ra, dec, distance, rv, dra, ddec)
     return radec[0]
 
 def dusk(jday):

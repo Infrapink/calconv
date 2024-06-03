@@ -1340,3 +1340,19 @@ NANAKSHAHI_NUM = {"Chet": 0,
                   "Poh": 9,
                   "Magh": 10,
                   "Phagun": 11}
+
+NUM_NEPALI = ("Kachhalā", "Thinlā", "Pwanhelā", "Silā", "Chilā", "Chaulā", "Bachhalā", "Tachhalā", "Dilā", "Gunlā", "Tanlā", "Kaulā", "Analā")
+
+NEPALI_NUM = {"Kachhalā": 1,
+              "Thinlā": 2,
+              "Pwanhelā": 3,
+              "Silā": 4,
+              "Chilā": 5,
+              "Chaulā": 6,
+              "Bachhalā": 7,
+              "Tachhalā": 8,
+              "Dilā": 9,
+              "Gunlā": 10,
+              "Tanlā": 11,
+              "Kaulā": 12,
+              "Analā": 13}
