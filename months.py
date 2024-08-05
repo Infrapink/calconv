@@ -1356,3 +1356,18 @@ NEPALI_NUM = {"Kachhalā": 1,
               "Tanlā": 11,
               "Kaulā": 12,
               "Analā": 13}
+
+NUM_TIBETAN = ("Mchu", "Dbo", "Nag pa", "Sa ga", "Snron", "Chu stod", "Gro Bzhin", "Khrums", "Tha skar", "Smin drug", "Mgo", "Rgyal")
+
+TIBETAN_NUM = {"Mchu": 0,
+	       "Dbo": 1,
+               "Nag pa": 2,
+               "Sa ga": 3,
+               "Snron": 4,
+               "Chu stod": 5,
+               "Gro Bzhin": 6,
+               "Khrums": 7,
+               "Tha skar": 8,
+               "Smin drug": 9,
+               "Mgo": 10,
+               "Rgyal": 11}
