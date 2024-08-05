@@ -34,8 +34,9 @@ COMPILING
 
 Before you can run calconv, you will need to compile the Fortran code. In the command line, navigate to the folder where you unpacked the source code (which should be the one containing this Readme file) and type the following:
 
-    f2py3 -c sunmoon.f90 -m sunmoon
-    f2py3 -c zodiac.f90 -m zodiac
+    f2py -c sunmoon.f90 -m sunmoon
+    f2py -c zodiac.f90 -m zodiac
+    f2py -c tibetan.f90 -m tibetan
 
 (This only needs to be done once; however, if Python is updated to a new version number, it can break compatibility with binary code, and so a recompile will be necessary)
 
@@ -807,6 +808,23 @@ Nepali calendars:
 * Kaulā
 * Analā (leap years in the lunisolar calendar only)
 
+Tibetan and Bhutanese calendars:
+------------------
+* Mchu
+* Dbo
+* Nag pa
+* Sa ga
+* Snron
+* Chu stod
+* Gro Bzhin
+* Khrums
+* Tha skar
+* Smin drug
+* Mgo
+* Rgyal
+
+To specify a leap month, put "Leap " before the month name
+
 LICENSE
 =======
 
@@ -824,20 +842,13 @@ Add the following calendars:
 * Byzantine
 * Shire Reckoning
 * Buddhist
-* Indian
 * ISO
-* Saka
-* Bengali
 * Myanmar
 * Discordian
-* Vikram Samvat
-* Shaka Samvat
-* Kali Yuga
 * Javanese
 * Minguo
 * Nanakshahi
 * Thai
-* Tibetan
 * Julian Period
 * Muisca
 * Mandean (Reingold and Dershowitz, p 129)
