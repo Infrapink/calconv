@@ -2058,3 +2058,20 @@ Sources:
 * http://www.kalacakra.org/calendar/epochs.htm
 * http://www.kalacakra.org/calendar/bhutlist.htm
 * http://www.kalacakra.org/calendar/bhut_art.htm
+
+---------------------------
+HENNING'S TIBETAN CALENDARS
+---------------------------
+
+The late Edward Henning, author of *Kālachakra Trantra and the Tibetan Calendar*, designed a new Tibetan calendar based on observations. Unfortunately, he had passed away before I started my project, and so I was unable to contact him directly; all I have to go on is his source code.
+
+From reading it, I surmise that hs proposal is largely based on the Chinese calendar, but structured so as to correspond (and mostly synchronise with) the Tibetan calendar. As with Tibetan and Chinese calendars, and unlike Indian calendars, there is no more than one leap month per year, and no skipped months. Days begin at 05:00 Xinjiang time; while Tibet legally uses Beijing time, Xinjiang time is closer to reality and gives more correct answers. A month ends on the day that a new moon occurs; or, equally, a month begins on the first day to begin after a new moon.
+
+As in the Chinese calendar, the ecliptic is divided into 12 major solar terms, each 30° of wide, starting with the northward equinox. The leap month is the first month of the year during which the sun does not cross into a new major solar term.
+
+Henning's source code suggests variants using the mean sun and mean moon, mean sun and true moon, and true sun and true moon. I have chosen to only implement the true sun and moon, as I see little reason to use mean measurements.
+
+His code also provides two different rules for the leap month: either it takes the name of the following month, as in Tibet and India (which I call the Indian-style system); or it takes the name of the previous month, as in Bhutan an dChina, which is also the system used in the original Kālachakra Tantra (I call this one the Chinese-style system). The leap year rules necessarily mean that the definition of the beginning of the year is slightly different between the two: in the Indian-style system, the first month of the year is the one containing the northward equinox, while in the Chinese-style system, it is the first lunation after the sun crosses 330° of ecliptic. These two are usually the same, but are not always.
+
+Sources:
+* http://www.kalacakra.org/calendar/downcal.htm

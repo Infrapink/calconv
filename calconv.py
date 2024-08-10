@@ -177,6 +177,8 @@ import bhutanese
 import sherab_ling
 import sarnath
 import yellow
+import henning_i
+import henning_c
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1836,6 +1838,24 @@ def cons_day_julian_todate():
         sarnath_day_ent.insert(0, sarnath_date[0])
         sarnath_month_ent.insert(0, sarnath_date[1])
         sarnath_year_ent.insert(0, sarnath_date[2])
+
+        # Convert a Julian day to a date in the Henning's reformed Tibetan calendar (Indian-style)
+        henning_i_date = henning_i.fromjd(day)
+        henning_i_day_ent.delete(0, END)
+        henning_i_month_ent.delete(0, END)
+        henning_i_year_ent.delete(0, END)
+        henning_i_day_ent.insert(0, henning_i_date[0])
+        henning_i_month_ent.insert(0, henning_i_date[1])
+        henning_i_year_ent.insert(0, henning_i_date[2])
+
+        # Convert a Julian day to a date in the Henning's reformed Tibetan calendar (Chinese-style)
+        henning_c_date = henning_c.fromjd(day)
+        henning_c_day_ent.delete(0, END)
+        henning_c_month_ent.delete(0, END)
+        henning_c_year_ent.delete(0, END)
+        henning_c_day_ent.insert(0, henning_c_date[0])
+        henning_c_month_ent.insert(0, henning_c_date[1])
+        henning_c_year_ent.insert(0, henning_c_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3515,6 +3535,24 @@ def sarnath_converter():
         month = sarnath_month_ent.get()
         year = int(sarnath_year_ent.get())
         jday = sarnath.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def henning_i_converter():
+        day = int(henning_i_day_ent.get())
+        month = henning_i_month_ent.get()
+        year = int(henning_i_year_ent.get())
+        jday = henning_i.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def henning_c_converter():
+        day = int(henning_c_day_ent.get())
+        month = henning_c_month_ent.get()
+        year = int(henning_c_year_ent.get())
+        jday = henning_c.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -5863,6 +5901,32 @@ sarnath_year_lbl = Label(frame, text = "Year").grid(row = 195, column = 5, stick
 sarnath_year_ent = Entry(frame)
 sarnath_year_ent.grid(row = 196, column = 5, sticky = W)
 sarnath_bttn = Button(frame, text = "Calculate", command = sarnath_converter).grid(row = 197, column = 3, columnspan = 3, sticky = W)
+
+# Henning's reformed Tibetan calendar (Indian-style)                                                                                            
+henning_i_lbl = Label(frame, text = "Henning's reformed Tibetan calendar (Indian-style)").grid(row = 194, column = 6, columnspan = 3, sticky = W)
+henning_i_day_lbl = Label(frame, text = "Day").grid(row = 195, column = 6, sticky = W)
+henning_i_day_ent = Entry(frame)
+henning_i_day_ent.grid(row = 196, column = 6, sticky = W)
+henning_i_month_lbl = Label(frame, text = "Month").grid(row = 195, column = 7, sticky = W)
+henning_i_month_ent = Entry(frame)
+henning_i_month_ent.grid(row = 196, column = 7, sticky = W)
+henning_i_year_lbl = Label(frame, text = "Year").grid(row = 195, column = 8, sticky = W)
+henning_i_year_ent = Entry(frame)
+henning_i_year_ent.grid(row = 196, column = 8, sticky = W)
+henning_i_bttn = Button(frame, text = "Calculate", command = henning_i_converter).grid(row = 197, column = 6, columnspan = 3, sticky = W)
+
+# Henning's reformed Tibetan calendar (Chinese-style)                                                                                            
+henning_c_lbl = Label(frame, text = "Henning's reformed Tibetan calendar (Chinese-style)").grid(row = 194, column = 9, columnspan = 3, sticky = W)
+henning_c_day_lbl = Label(frame, text = "Day").grid(row = 195, column = 9, sticky = W)
+henning_c_day_ent = Entry(frame)
+henning_c_day_ent.grid(row = 196, column = 9, sticky = W)
+henning_c_month_lbl = Label(frame, text = "Month").grid(row = 195, column = 10, sticky = W)
+henning_c_month_ent = Entry(frame)
+henning_c_month_ent.grid(row = 196, column = 10, sticky = W)
+henning_c_year_lbl = Label(frame, text = "Year").grid(row = 195, column = 11, sticky = W)
+henning_c_year_ent = Entry(frame)
+henning_c_year_ent.grid(row = 196, column = 11, sticky = W)
+henning_c_bttn = Button(frame, text = "Calculate", command = henning_c_converter).grid(row = 197, column = 9, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.63.0")
