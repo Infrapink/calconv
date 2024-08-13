@@ -42,25 +42,25 @@ def fromjd(jday):
 
     # now account for the year
     year = (c - solar_epoch) // trop_year
-    mesha = trans( (solar_epoch + (year * trop_year)), 330, tz)
-    while( dayof(trans(mesha, 330, tz)) > c):
-        mesha -= trop_year
+    mina = trans( (solar_epoch + (year * trop_year)), 330, tz)
+    while( dayof(trans(mina, 330, tz)) > c):
+        mina -= trop_year
         year -= 1
-    while( dayof(trans((mesha + trop_year), 330, tz)) <= c):
-        mesha += trop_year
+    while( dayof(trans((mina + trop_year), 330, tz)) <= c):
+        mina += trop_year
         year += 1
-    next_mesha = mesha + trop_year
-    d = moonof(trans(next_mesha, 330, tz))
+    next_mina = mina + trop_year
+    d = moonof(trans(next_mina, 330, tz))
     if( round( (newmoon(d, tz) - newmoon(c, tz)) / syn_month) == 12):
         # normal year
-        month = MONTHS[round( (newmoon(c) - newmoon(moonof(trans(mesha, 330, tz)))) / syn_month) - 1]
+        month = MONTHS[round( (newmoon(c) - newmoon(moonof(trans(mina, 330, tz)))) / syn_month) - 1]
     else:
         # leap year
         m = 0 # number of the month
         z = 0 # ecliptic longitude of the next solar term, starting with the northward equinox
         l = False # have we passed the leap month?
-        zhongqi = mesha + st # next zhongqi the lunation has to straddle to count, starting with the northward equinox
-        crescent = newmoon((moonof(mesha) + syn_month), tz) # time of the new moon, starting with losar
+        zhongqi = mina + st # next zhongqi the lunation has to straddle to count, starting with the northward equinox
+        crescent = newmoon((moonof(mina) + syn_month), tz) # time of the new moon, starting with losar
 
         while(moonof(crescent + syn_month) <= jday):
             if(l):
@@ -97,11 +97,11 @@ def tojd(tithi, month, year):
     else:
         leap = False
 
-    mesha = solar_epoch + (year * trop_year)
-    next_mesha = mesha + trop_year
+    mina = solar_epoch + (year * trop_year)
+    next_mina = mina + trop_year
 
-    jday = newmoon((moonof(mesha) + syn_month), tz) # losar
-    next_losar = newmoon((moonof(next_mesha) + syn_month), tz) # next losar
+    jday = newmoon((moonof(mina) + syn_month), tz) # losar
+    next_losar = newmoon((moonof(next_mina) + syn_month), tz) # next losar
 
     if( round( (next_losar - jday) / syn_month) == 12):
         # normal year
@@ -111,7 +111,7 @@ def tojd(tithi, month, year):
         m = 0 # number of the current month
         z = 0 # ecliptic longitude of the next zhongqi, starting with the northward equinox
         l = False # have we passed the leap month?
-        zhongqi = mesha + st # time of the next zhongqi, starting with the northward equinox
+        zhongqi = mina + st # time of the next zhongqi, starting with the northward equinox
         
         while( MONTHS[m] != month ):
             if(l):
