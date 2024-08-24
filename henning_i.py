@@ -53,7 +53,7 @@ def fromjd(jday):
     d = moonof(trans(next_mina, 330, tz))
     if( round( (newmoon(d, tz) - newmoon(c, tz)) / syn_month) == 12):
         # normal year
-        month = MONTHS[round( (newmoon(c) - newmoon(moonof(trans(mina, 330, tz)))) / syn_month) - 1]
+        month = MONTHS[round( (newmoon(c, tz) - newmoon(moonof(trans(mina, 330, tz)), tz)) / syn_month) - 1]
     else:
         # leap year
         m = 0 # number of the month
