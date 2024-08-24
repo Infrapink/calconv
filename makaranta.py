@@ -37,13 +37,13 @@ def lny(year):
     ratha = (year * sid_year) + Fraction(373, 800) # the extra fraction is the time from midnight to Meṣa Saṁkrānti
     ata_yet = solar_epoch + ratha # Meṣa Saṁkrānti for this year
     haragon = ceil(ratha) # Irwin, 4:57
-    kaya = Fraction( (11 * haragon), 692) + Fraction(650, 692) # total tithis minus total days; Irwin, 4:59
+    kaya = floor(Fraction( (11 * haragon), 692) + Fraction(650, 692)) # total tithis minus total days; Irwin, 4:59
+    awaman = (Fraction( (11 * haragon), 692) + Fraction(650, 692)) % 1 # Iwin, 4:59
     total_tithis = haragon + kaya # tithis since new moon preceding solar epoch; Irwin, 4:60
     luns = total_tithis // 30 # total months since the new moon preceding the epoch; Irwin, 4:60
     yet_lun = Fraction(total_tithis, 30) % 1 # time from preceding new moon to Meṣa Saṁkrānti, in fractions of a mean synodic month
     adimath = floor(luns * Fraction(7, 235)) # total leap months that have passed as of Meṣa Saṁkrānti; Irwin, 4:61
     adimath_theta = (luns * Fraction(7, 235)) % 1 # Irwin, 4:62
-    awaman = yet_lun * 692
     epact = yet_lun * syn_month
     
     rasis = luns - adimath # Irwin, 4:61
