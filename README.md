@@ -809,7 +809,7 @@ Nepali calendars:
 * Analā (leap years in the lunisolar calendar only)
 
 Tibetan and Bhutanese calendars:
-------------------
+--------------------------------
 * Mchu
 * Dbo
 * Nag pa
@@ -824,6 +824,23 @@ Tibetan and Bhutanese calendars:
 * Rgyal
 
 To specify a leap month, put "Leap " before the month name
+
+Myanmar calendars:
+------------------
+* Tagu
+* Kason
+* Nayon
+* Wahso
+* Wahgaung
+* Tawthalin
+* Thadinkyut
+* Tazaungmon
+* Natdaw
+* Pyatho
+* Tabodwe
+* Tabaung
+
+Leap months are indicated by adding " 2" to the end of Wahso (or Tagu in the case of the Arakan calendar). If it's a date in Tagu before solar new year, add an "*" to the year number to indicate that the lunar year has begun but the year number has not yet incremented.
 
 LICENSE
 =======

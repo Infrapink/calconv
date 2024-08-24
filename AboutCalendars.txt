@@ -2075,3 +2075,29 @@ His code also provides two different rules for the leap month: either it takes t
 
 Sources:
 * http://www.kalacakra.org/calendar/downcal.htm
+
+---------
+MAKARANTA
+---------
+
+The Makaranta system is the older calculation system underpinning the Myanmar lunisolar calendar, and to this day is the basis of the traditional calendar of the Arakan people of Rakhine state. It is based on an older version of the Sūrya Siddhānta, using mean values of the sidereal year and synodic months, with no accounting for epicycles. Unlike the traditional calendars of India, Tibet, and China, months in the Makaranta system are of fixed length and leap years are assigned according to the Metonic cycle. Furthermore, the leap month always falls in the same place; in Pagan, it was placed after Wahso, approximately when the sun is in Cancer (as is also the case under the Thandeikta system); in Arakan, it is instead placed after Tagu, around when the sun is in Aries. As such, the Makaranta traditional calendars (especially the Arakan) bear a surprising resemblence to later Babylonian calendars.
+
+However, because the Metonic cycle approximates the tropical year much better than the sidereal year, the Makaranta system sometimes (apparently 11 times in 57 years, but I haven't done the maths to confirm) adds an extra day to Nayon in leap years to keep the cycles more or less in sync.
+
+Civil days begin at sunrise, but calendrical calculations assume the day begins at midnight, which simplifies things a bit. An interesting quirk of Myanmar calendars (which I think is common throughout southeast Asia, but I have yet to confirm) is that the year number increments on Thingyan Tet (Solar New Year's Day); as such, the first several days of Tagu (and occasionally all of Tagu and a bit of Kason) are assigned to the previous year, and some days of Tagu can happen at both the start and the end of the year. As in India, Thingyan Tet falls on the first day to begin when the sun is (calculated to be) in Aries. While the calculations make use of tithis, dates are given as days.
+
+Several eras have been used over the years. The most common one is the Myanmar Era (ME; also called the Burmese Era, or BE), which began on Julian Day 1954168; this corresponds to 29 Adhik Chaitra SE (22 March 638 AD, 2 Farvardin 17 AH), adopted simultaneously by kings Popa Sawrahan of Pagan and Thareyarenu of Dhanyawaddy; this era is also used in Thailand, where it is known as Chulasakarat ("lesser era", in contrast to the Śaka Era, called the Mahasakarat {"Great Era"} in Cambodia). Other eras include the Anchansakarat (1328 BME), Buddhist Era (1183 BME, dating from Buddha's death), and the Śaka Era. King Mohnyin declared a new era which began in 798 ME, but this didn't really catch on.
+
+The sidereal year is given as 365.25875 days, which is 3 minutes 26 seconds longer than the modern value. It assumes a value of 29.5315585106383 days for the mean synodic month, which is 1 minute 24 seconds longer than the modern synodic month, though this is only used in computing the epact of solar new year.
+
+Sources:
+* The Burmese and Arakanese Calendars, AMB Iwin, Hanthawaddy Printing Works, 1909: https://archive.org/details/burmesearakanese00irwiiala
+* Calendrical Systems of Mainland Sout-East Asia, JC Eade, E.J. Brill, 1995: https://cahc.jainuniversity.ac.in/assets/ijhs/Vol33_2_6_SKChatterjee.pdf
+* Traditional Calendar of Myanmar (Burma), GK Chatterjee, Indian Journal of the History of Science, 33(2)1998
+* The Burmese Calendar, JC Clancey, The Observatory 366 (January 1906), pp. 54—59: https://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?db_key=AST&bibcode=1906Obs....29...54C&letter=0&classic=YES&defaultprint=YES&whole_paper=YES&page=54&epage=54&send=Send+PDF&filetype=.pdf
+* https://calenworld.com/religion/buddhist-calendar
+* https://www.timeanddate.com/calendar/buddhist-calendar.html
+* https://www.timeanddate.com/date/buddhist-leap-year.html
+* https://www.myanmarimmigration.org/news/myanmar-calendar-interesting-information-for-visitors-to-myanmar
+* https://www.frontiermyanmar.net/en/the-myanmar-calendar/
+* https://www.gnlm.com.mm/myanmar-calendar-advisory-board-publishes-thingyan-and-buddhist-lent-days/
