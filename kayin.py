@@ -79,8 +79,9 @@ def lny(year):
     luns = total_tithis // 30 # Irwin, 4:59
     yet_lun = total_tithis % 30
 
-    ata_yet = ceil(solar_epoch + ((year) * sid_year)) # solar new year
-    darkmoon = ata_yet - (syn_month * Fraction(yet_lun, 30)) # computed new moon 
+    thingyan = solar_epoch + (year * sid_year)
+    ata_yet = ceil(thingyan)
+    darkmoon = thingyan - (syn_month * Fraction(yet_lun, 30)) - awaman # computed new moon 
     newmoon = ceil(darkmoon) - 89
 
     return(ata_yet, yet_lun, newmoon)

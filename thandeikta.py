@@ -30,13 +30,16 @@ def lny(year):
     days_expired = Fraction((year * 292207), 800) + Fraction(year, (193 * 800)) + Fraction(17742, 800) # Irwin, 4:55
     haragon = ceil(days_expired) # Irwin, 4:57
     kaya = ceil(Fraction((11 * haragon), 692) - Fraction(year, (25 * 692)) + Fraction(176,692)) # total tithis less total days; Irwin, 4:59
-    #awaman = (Fraction((11 * haragon), 692) - Fraction(year, (25 * 692)) + Fraction(176,692)) % 1 # Irwin, 4:59
+    awaman = (Fraction((11 * haragon), 692) - Fraction(year, (25 * 692)) + Fraction(176,692)) % 1 # Irwin, 4:59
     total_tithis = haragon + kaya # Irwin, 4:59
     #luns = total_tithis // 30 # Irwin, 4:59
     yet_lun = total_tithis % 30
 
-    ata_yet = ceil(solar_epoch + (year * sid_year))
-    darkmoon = ata_yet - (syn_month * Fraction(yet_lun, 30))
+    thingyan = solar_epoch + (year * sid_year)
+    ata_yet = ceil(thingyan)
+    #ata_yet = ceil(solar_epoch + (year * sid_year))
+    #darkmoon = ata_yet - (syn_month * Fraction(yet_lun, 30))
+    darkmoon = ata_yet - awaman - (syn_month * Fraction(yet_lun, 30))
     newmoon = ceil(darkmoon)
 
     return (ata_yet, yet_lun, newmoon)
