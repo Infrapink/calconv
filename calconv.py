@@ -179,6 +179,10 @@ import sarnath
 import yellow
 import henning_i
 import henning_c
+import makaranta
+import arakan
+import thandeikta
+import kayin
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1856,6 +1860,42 @@ def cons_day_julian_todate():
         henning_c_day_ent.insert(0, henning_c_date[0])
         henning_c_month_ent.insert(0, henning_c_date[1])
         henning_c_year_ent.insert(0, henning_c_date[2])
+
+        # Convert a Julian day to a date in the Myanmar lunisolar calendar (Makaranta system)
+        makaranta_date = makaranta.fromjd(day)
+        makaranta_day_ent.delete(0, END)
+        makaranta_month_ent.delete(0, END)
+        makaranta_year_ent.delete(0, END)
+        makaranta_day_ent.insert(0, makaranta_date[0])
+        makaranta_month_ent.insert(0, makaranta_date[1])
+        makaranta_year_ent.insert(0, makaranta_date[2])
+
+        # Convert a Julian day to a date in the Arakan calendar
+        arakan_date = arakan.fromjd(day)
+        arakan_day_ent.delete(0, END)
+        arakan_month_ent.delete(0, END)
+        arakan_year_ent.delete(0, END)
+        arakan_day_ent.insert(0, arakan_date[0])
+        arakan_month_ent.insert(0, arakan_date[1])
+        arakan_year_ent.insert(0, arakan_date[2])
+
+        # Convert a Julian day to a date in the Myanma lunisolar calendar (Thandeikta version)
+        thandeikta_date = thandeikta.fromjd(day)
+        thandeikta_day_ent.delete(0, END)
+        thandeikta_month_ent.delete(0, END)
+        thandeikta_year_ent.delete(0, END)
+        thandeikta_day_ent.insert(0, thandeikta_date[0])
+        thandeikta_month_ent.insert(0, thandeikta_date[1])
+        thandeikta_year_ent.insert(0, thandeikta_date[2])
+
+        # Convert a Julian day to a date in the Kayin calendar
+        kayin_date = kayin.fromjd(day)
+        kayin_day_ent.delete(0, END)
+        kayin_month_ent.delete(0, END)
+        kayin_year_ent.delete(0, END)
+        kayin_day_ent.insert(0, kayin_date[0])
+        kayin_month_ent.insert(0, kayin_date[1])
+        kayin_year_ent.insert(0, kayin_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3556,6 +3596,43 @@ def henning_c_converter():
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
+
+def makaranta_converter():
+        day = int(makaranta_day_ent.get())
+        month = makaranta_month_ent.get()
+        year = int(makaranta_year_ent.get())
+        jday = makaranta.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def arakan_converter():
+        day = int(arakan_day_ent.get())
+        month = arakan_month_ent.get()
+        year = int(arakan_year_ent.get())
+        jday = arakan.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def thandeikta_converter():
+        day = int(thandeikta_day_ent.get())
+        month = thandeikta_month_ent.get()
+        year = int(thandeikta_year_ent.get())
+        jday = thandeikta.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def kayin_converter():
+        day = int(kayin_day_ent.get())
+        month = kayin_month_ent.get()
+        year = int(kayin_year_ent.get())
+        jday = kayin.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 
 
 root = Tk()
@@ -5774,7 +5851,7 @@ jain_digambaras_bttn = Button(frame, text = "Calculate", command = jain_digambar
 
 # Nepali lunisolar calendar                                                                                            
 newar_lbl = Label(frame, text = "Nepali lunisolar calendar").grid(row = 186, column = 0, columnspan = 3, sticky = W)
-newar_day_lbl = Label(frame, text = "Day").grid(row = 187, column = 0, sticky = W)
+newar_day_lbl = Label(frame, text = "Tithi").grid(row = 187, column = 0, sticky = W)
 newar_day_ent = Entry(frame)
 newar_day_ent.grid(row = 188, column = 0, sticky = W)
 newar_month_lbl = Label(frame, text = "Month").grid(row = 187, column = 1, sticky = W)
@@ -5800,7 +5877,7 @@ nepali_solar_bttn = Button(frame, text = "Calculate", command = nepali_solar_con
 
 # Karana calendar                                                                                            
 karana_lbl = Label(frame, text = "Karana system").grid(row = 186, column = 6, columnspan = 3, sticky = W)
-karana_day_lbl = Label(frame, text = "Day").grid(row = 187, column = 6, sticky = W)
+karana_day_lbl = Label(frame, text = "Tithi").grid(row = 187, column = 6, sticky = W)
 karana_day_ent = Entry(frame)
 karana_day_ent.grid(row = 188, column = 6, sticky = W)
 karana_month_lbl = Label(frame, text = "Month").grid(row = 187, column = 7, sticky = W)
@@ -5813,7 +5890,7 @@ karana_bttn = Button(frame, text = "Calculate", command = karana_converter).grid
 
 # Tibetan calendar (Phugpa tradition)                                                                                           
 phugpa_lbl = Label(frame, text = "Tibetan calendar (Phugpa tradition)").grid(row = 186, column = 9, columnspan = 3, sticky = W)
-phugpa_day_lbl = Label(frame, text = "Day").grid(row = 187, column = 9, sticky = W)
+phugpa_day_lbl = Label(frame, text = "Tithi").grid(row = 187, column = 9, sticky = W)
 phugpa_day_ent = Entry(frame)
 phugpa_day_ent.grid(row = 188, column = 9, sticky = W)
 phugpa_month_lbl = Label(frame, text = "Month").grid(row = 187, column = 10, sticky = W)
@@ -5826,7 +5903,7 @@ phugpa_bttn = Button(frame, text = "Calculate", command = phugpa_converter).grid
 
 # Tibetan calendar (Tsurphu tradition)                                                                                            
 tsurphu_lbl = Label(frame, text = "Tibetan calendar (Tsurphu tradition)").grid(row = 190, column = 0, columnspan = 3, sticky = W)
-tsurphu_day_lbl = Label(frame, text = "Day").grid(row = 191, column = 0, sticky = W)
+tsurphu_day_lbl = Label(frame, text = "Tithi").grid(row = 191, column = 0, sticky = W)
 tsurphu_day_ent = Entry(frame)
 tsurphu_day_ent.grid(row = 192, column = 0, sticky = W)
 tsurphu_month_lbl = Label(frame, text = "Month").grid(row = 191, column = 1, sticky = W)
@@ -5839,7 +5916,7 @@ tsurphu_bttn = Button(frame, text = "Calculate", command = tsurphu_converter).gr
 
 # Mongolian traditional calendar                                                                                            
 mongolian_lbl = Label(frame, text = "Mongolian traditional calendar").grid(row = 190, column = 3, columnspan = 3, sticky = W)
-mongolian_day_lbl = Label(frame, text = "Day").grid(row = 191, column = 3, sticky = W)
+mongolian_day_lbl = Label(frame, text = "Tithi").grid(row = 191, column = 3, sticky = W)
 mongolian_day_ent = Entry(frame)
 mongolian_day_ent.grid(row = 192, column = 3, sticky = W)
 mongolian_month_lbl = Label(frame, text = "Month").grid(row = 191, column = 4, sticky = W)
@@ -5852,7 +5929,7 @@ mongolian_bttn = Button(frame, text = "Calculate", command = mongolian_converter
 
 # Bhutanese calendar                                                                                            
 bhutanese_lbl = Label(frame, text = "Bhutanese calendar").grid(row = 190, column = 6, columnspan = 3, sticky = W)
-bhutanese_day_lbl = Label(frame, text = "Day").grid(row = 191, column = 6, sticky = W)
+bhutanese_day_lbl = Label(frame, text = "Tithi").grid(row = 191, column = 6, sticky = W)
 bhutanese_day_ent = Entry(frame)
 bhutanese_day_ent.grid(row = 192, column = 6, sticky = W)
 bhutanese_month_lbl = Label(frame, text = "Month").grid(row = 191, column = 7, sticky = W)
@@ -5878,7 +5955,7 @@ yellow_bttn = Button(frame, text = "Calculate", command = yellow_converter).grid
 
 # Sherab Ling calendar                                                                                            
 sherab_ling_lbl = Label(frame, text = "Sherab Ling calendar").grid(row = 194, column = 0, columnspan = 3, sticky = W)
-sherab_ling_day_lbl = Label(frame, text = "Day").grid(row = 195, column = 0, sticky = W)
+sherab_ling_day_lbl = Label(frame, text = "Tithi").grid(row = 195, column = 0, sticky = W)
 sherab_ling_day_ent = Entry(frame)
 sherab_ling_day_ent.grid(row = 196, column = 0, sticky = W)
 sherab_ling_month_lbl = Label(frame, text = "Month").grid(row = 195, column = 1, sticky = W)
@@ -5891,7 +5968,7 @@ sherab_ling_bttn = Button(frame, text = "Calculate", command = sherab_ling_conve
 
 # Sarnath calendar                                                                                            
 sarnath_lbl = Label(frame, text = "Sarnath calendar").grid(row = 194, column = 3, columnspan = 3, sticky = W)
-sarnath_day_lbl = Label(frame, text = "Day").grid(row = 195, column = 3, sticky = W)
+sarnath_day_lbl = Label(frame, text = "Tithi").grid(row = 195, column = 3, sticky = W)
 sarnath_day_ent = Entry(frame)
 sarnath_day_ent.grid(row = 196, column = 3, sticky = W)
 sarnath_month_lbl = Label(frame, text = "Month").grid(row = 195, column = 4, sticky = W)
@@ -5904,7 +5981,7 @@ sarnath_bttn = Button(frame, text = "Calculate", command = sarnath_converter).gr
 
 # Henning's reformed Tibetan calendar (Indian-style)                                                                                            
 henning_i_lbl = Label(frame, text = "Henning's reformed Tibetan calendar (Indian-style)").grid(row = 194, column = 6, columnspan = 3, sticky = W)
-henning_i_day_lbl = Label(frame, text = "Day").grid(row = 195, column = 6, sticky = W)
+henning_i_day_lbl = Label(frame, text = "Tithi").grid(row = 195, column = 6, sticky = W)
 henning_i_day_ent = Entry(frame)
 henning_i_day_ent.grid(row = 196, column = 6, sticky = W)
 henning_i_month_lbl = Label(frame, text = "Month").grid(row = 195, column = 7, sticky = W)
@@ -5917,7 +5994,7 @@ henning_i_bttn = Button(frame, text = "Calculate", command = henning_i_converter
 
 # Henning's reformed Tibetan calendar (Chinese-style)                                                                                            
 henning_c_lbl = Label(frame, text = "Henning's reformed Tibetan calendar (Chinese-style)").grid(row = 194, column = 9, columnspan = 3, sticky = W)
-henning_c_day_lbl = Label(frame, text = "Day").grid(row = 195, column = 9, sticky = W)
+henning_c_day_lbl = Label(frame, text = "Tithi").grid(row = 195, column = 9, sticky = W)
 henning_c_day_ent = Entry(frame)
 henning_c_day_ent.grid(row = 196, column = 9, sticky = W)
 henning_c_month_lbl = Label(frame, text = "Month").grid(row = 195, column = 10, sticky = W)
@@ -5928,6 +6005,58 @@ henning_c_year_ent = Entry(frame)
 henning_c_year_ent.grid(row = 196, column = 11, sticky = W)
 henning_c_bttn = Button(frame, text = "Calculate", command = henning_c_converter).grid(row = 197, column = 9, columnspan = 3, sticky = W)
 
+# Myanmar lunisolar calendar (Makaranta system)                                                                                            
+makaranta_lbl = Label(frame, text = "Myanma lunisolar calendar (Makaranta system)").grid(row = 198, column = 0, columnspan = 3, sticky = W)
+makaranta_day_lbl = Label(frame, text = "Day").grid(row = 199, column = 0, sticky = W)
+makaranta_day_ent = Entry(frame)
+makaranta_day_ent.grid(row = 200, column = 0, sticky = W)
+makaranta_month_lbl = Label(frame, text = "Month").grid(row = 199, column = 1, sticky = W)
+makaranta_month_ent = Entry(frame)
+makaranta_month_ent.grid(row = 200, column = 1, sticky = W)
+makaranta_year_lbl = Label(frame, text = "Year").grid(row = 199, column = 2, sticky = W)
+makaranta_year_ent = Entry(frame)
+makaranta_year_ent.grid(row = 200, column = 2, sticky = W)
+makaranta_bttn = Button(frame, text = "Calculate", command = makaranta_converter).grid(row = 201, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.63.0")
+# Arakan calendar                                                                                            
+arakan_lbl = Label(frame, text = "Arakan calendar").grid(row = 198, column = 3, columnspan = 3, sticky = W)
+arakan_day_lbl = Label(frame, text = "Day").grid(row = 199, column = 3, sticky = W)
+arakan_day_ent = Entry(frame)
+arakan_day_ent.grid(row = 200, column = 3, sticky = W)
+arakan_month_lbl = Label(frame, text = "Month").grid(row = 199, column = 4, sticky = W)
+arakan_month_ent = Entry(frame)
+arakan_month_ent.grid(row = 200, column = 4, sticky = W)
+arakan_year_lbl = Label(frame, text = "Year").grid(row = 199, column = 5, sticky = W)
+arakan_year_ent = Entry(frame)
+arakan_year_ent.grid(row = 200, column = 5, sticky = W)
+arakan_bttn = Button(frame, text = "Calculate", command = arakan_converter).grid(row = 201, column = 3, columnspan = 3, sticky = W)
+
+# Myanma lunisolar calendar (Thandeikta version)                                                                                            
+thandeikta_lbl = Label(frame, text = "Myanma lunisolar calendar (Thandeikta version)").grid(row = 198, column = 6, columnspan = 3, sticky = W)
+thandeikta_day_lbl = Label(frame, text = "Day").grid(row = 199, column = 6, sticky = W)
+thandeikta_day_ent = Entry(frame)
+thandeikta_day_ent.grid(row = 200, column = 6, sticky = W)
+thandeikta_month_lbl = Label(frame, text = "Month").grid(row = 199, column = 7, sticky = W)
+thandeikta_month_ent = Entry(frame)
+thandeikta_month_ent.grid(row = 200, column = 7, sticky = W)
+thandeikta_year_lbl = Label(frame, text = "Year").grid(row = 199, column = 8, sticky = W)
+thandeikta_year_ent = Entry(frame)
+thandeikta_year_ent.grid(row = 200, column = 8, sticky = W)
+thandeikta_bttn = Button(frame, text = "Calculate", command = thandeikta_converter).grid(row = 201, column = 6, columnspan = 3, sticky = W)
+
+# Kayin calendar                                                                                            
+kayin_lbl = Label(frame, text = "Kayin calendar").grid(row = 198, column = 9, columnspan = 3, sticky = W)
+kayin_day_lbl = Label(frame, text = "Day").grid(row = 199, column = 9, sticky = W)
+kayin_day_ent = Entry(frame)
+kayin_day_ent.grid(row = 200, column = 9, sticky = W)
+kayin_month_lbl = Label(frame, text = "Month").grid(row = 199, column = 10, sticky = W)
+kayin_month_ent = Entry(frame)
+kayin_month_ent.grid(row = 200, column = 10, sticky = W)
+kayin_year_lbl = Label(frame, text = "Year").grid(row = 199, column = 11, sticky = W)
+kayin_year_ent = Entry(frame)
+kayin_year_ent.grid(row = 200, column = 11, sticky = W)
+kayin_bttn = Button(frame, text = "Calculate", command = kayin_converter).grid(row = 201, column = 9, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.65.0")
 root.mainloop()

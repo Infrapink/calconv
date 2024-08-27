@@ -2080,7 +2080,7 @@ Sources:
 MAKARANTA
 ---------
 
-The Makaranta system is the older calculation system underpinning the Myanmar lunisolar calendar, and to this day is the basis of the traditional calendar of the Arakan people of Rakhine state. It is based on an older version of the Sūrya Siddhānta, using mean values of the sidereal year and synodic months, with no accounting for epicycles. Unlike the traditional calendars of India, Tibet, and China, months in the Makaranta system are of fixed length and leap years are assigned according to the Metonic cycle. Furthermore, the leap month always falls in the same place; in Pagan, it was placed after Wahso, approximately when the sun is in Cancer (as is also the case under the Thandeikta system); in Arakan, it is instead placed after Tagu, around when the sun is in Aries. As such, the Makaranta traditional calendars (especially the Arakan) bear a surprising resemblence to later Babylonian calendars.
+The Makaranta system is the older calculation system underpinning the Myanmar lunisolar calendar. It is based on an older version of the Sūrya Siddhānta, using mean values of the sidereal year and synodic months, with no accounting for epicycles. Unlike the traditional calendars of India, Tibet, and China, months in the Makaranta system are of fixed length and leap years are assigned according to the Metonic cycle. Furthermore, the leap month always falls in the same place; in Pagan, it was placed after Wahso, approximately when the sun is in Cancer (as is also the case under the Thandeikta system). As such, the Makaranta traditional calendars (especially the Arakan) bear a surprising resemblence to later Babylonian calendars.
 
 However, because the Metonic cycle approximates the tropical year much better than the sidereal year, the Makaranta system sometimes (apparently 11 times in 57 years, but I haven't done the maths to confirm) adds an extra day to Nayon in leap years to keep the cycles more or less in sync.
 
@@ -2095,9 +2095,51 @@ Sources:
 * Calendrical Systems of Mainland Sout-East Asia, JC Eade, E.J. Brill, 1995: https://cahc.jainuniversity.ac.in/assets/ijhs/Vol33_2_6_SKChatterjee.pdf
 * Traditional Calendar of Myanmar (Burma), GK Chatterjee, Indian Journal of the History of Science, 33(2)1998
 * The Burmese Calendar, JC Clancey, The Observatory 366 (January 1906), pp. 54—59: https://articles.adsabs.harvard.edu/cgi-bin/nph-iarticle_query?db_key=AST&bibcode=1906Obs....29...54C&letter=0&classic=YES&defaultprint=YES&whole_paper=YES&page=54&epage=54&send=Send+PDF&filetype=.pdf
+
+---------------
+ARAKAN CALENDAR
+---------------
+
+The Arakan calendar is the traditional calendar of the Arakan minority, who mostly live in Rahkine state. It is a variant of the Makaranta system which places the leap month after Tagu instead of Wahso, about when the sun is in Aries.
+
+Sources:
+* The Burmese and Arakanese Calendars, AMB Iwin, Hanthawaddy Printing Works, 1909: https://archive.org/details/burmesearakanese00irwiiala
+
+----------
+THANDEIKTA
+----------
+
+The Thandeikta system is the newer calculation system used to determine the traditional lunisolar calendar of Myanmar. It is more closely based on later versions of the Sūrya Siddhānta, but retains many of the simplifications from the Makaranta system. Most notable, it assumes fixed values of the sidereal year and synodic month, and always places the leap month after Wahso. It takes slightly longer values of the sidereal year (365.2587564766839 days) and synodic month (29.53059346381426) days.
+
+It also does not make any use of the Metonic cycle. Irwin describes several schemes to determine when to add leap months and days; the system used in the calendar adds a leap month depending on the age of the moon at solar new year, and leap days are determined by the calculated zodiacal longitude of the full moon of the leap month.
+
+This is not the official traditional calendar used in Myanmar today; that is determined by the Calendar Advisory Board, and I have been unable to find any information about their methods beyond a single unsourced statement on Wikipedia that leap years are determined by excess days in the first eight months of the year. The calendar advisory board appear to base their computations on astrological and religious concerns, and as such claim the calendar cannot be worked out more than five years in advance.
+
+Sources:
+* The Burmese and Arakanese Calendars, AMB Iwin, Hanthawaddy Printing Works, 1909: https://archive.org/details/burmesearakanese00irwiiala
+* Calendrical Systems of Mainland Sout-East Asia, JC Eade, E.J. Brill, 1995: https://cahc.jainuniversity.ac.in/assets/ijhs/Vol33_2_6_SKChatterjee.pdf
+* Traditional Calendar of Myanmar (Burma), GK Chatterjee, Indian Journal of the History of Science, 33(2)1998
 * https://calenworld.com/religion/buddhist-calendar
 * https://www.timeanddate.com/calendar/buddhist-calendar.html
 * https://www.timeanddate.com/date/buddhist-leap-year.html
 * https://www.myanmarimmigration.org/news/myanmar-calendar-interesting-information-for-visitors-to-myanmar
 * https://www.frontiermyanmar.net/en/the-myanmar-calendar/
 * https://www.gnlm.com.mm/myanmar-calendar-advisory-board-publishes-thingyan-and-buddhist-lent-days/
+
+----------------------
+KAYIN (KAREN) CALENDAR
+----------------------
+
+The Kayin calendar is the traditional calendar of the Kayin (AKA Karen) peoples of Kayin state. It is a variant on the Thandeikta system, in which the first month of the year is Pyatho, which is the 10th month in the rest of Myanmar. Kayin New Year is a national holiday in Myanmar, but is set to 11 January; contrary to what you will read online, the national holiday does NOT fall on 1 Pyatho.
+
+The Kayin year 0 falls towards the end of 1379 BME (820 BSE, 742 BC), on Julian Day 1450729. I have not been able to determine the significance of this epoch.
+
+Sources:
+* https://publicholidays.asia/myanmar/kayin-new-year-day/
+* https://www.myanmarimmigration.org/news/karen-new-year-in-myanmar
+* https://ozoutback.com.au/Myanmar/karen/index.html
+* https://www.irrawaddy.com/news/burma/karen-new-year-celebrations-held-in-burma-and-abroad.html
+* https://www.burmalink.org/karen-new-year-2755/
+* https://web.archive.org/web/20111019014837/http://www.mmtimes.com/2011/news/557/news55708.html
+* https://evisa.moip.gov.mm/Home/publicHoliday
+* https://web.archive.org/web/20090319072936/http://burmalibrary.org/docskaren/Karen%20Heritage%20Web/pdf/Karen%20Culture%202005.pdf
