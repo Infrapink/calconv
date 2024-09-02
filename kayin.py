@@ -81,7 +81,7 @@ def lny(year):
 
     thingyan = solar_epoch + (year * sid_year)
     ata_yet = ceil(thingyan)
-    darkmoon = thingyan - (syn_month * Fraction(yet_lun, 30)) - awaman # computed new moon 
+    darkmoon = ata_yet - (syn_month * Fraction(yet_lun, 30)) # computed new moon 
     newmoon = ceil(darkmoon) - 89
 
     return(ata_yet, yet_lun, newmoon)
@@ -172,6 +172,8 @@ def fromjd(jday):
     MONTHS = MONTH_LENGTHS[figures[0]]
     newmoon = ceil(figures[1])
     year += 2478 # add 1100 to years since the epoch to get the calendar year
+    if ( (figures[0] == 354) and (month == "Wahso 2") ):
+        month = "Wahso"
 
     # compute the month
     if(newmoon + 30 >= jday):
