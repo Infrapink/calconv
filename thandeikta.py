@@ -39,7 +39,7 @@ def lny(year):
     ata_yet = ceil(thingyan)
     #ata_yet = ceil(solar_epoch + (year * sid_year))
     #darkmoon = ata_yet - (syn_month * Fraction(yet_lun, 30))
-    darkmoon = ata_yet (syn_month * Fraction(yet_lun, 30))
+    darkmoon = ata_yet - (syn_month * Fraction(yet_lun, 30))
     newmoon = ceil(darkmoon)
 
     return(ata_yet, yet_lun, newmoon)

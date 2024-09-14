@@ -840,7 +840,37 @@ Myanmar calendars:
 * Tabodwe
 * Tabaung
 
-Leap months are indicated by adding " 2" to the end of Wahso (or Tagu in the case of the Arakan calendar). If it's a date in Tagu before solar new year, add an "*" to the year number to indicate that the lunar year has begun but the year number has not yet incremented.
+Leap months are indicated by adding " 2" to the end of Wahso (or Tagu in the case of the Arakan calendar). If it's a date in Tagu before solar new year, add an "*" to the year number to indicate that the lunar year has begun but the year number has not yet incremented. The Kayin calendar year begins on 1 Pyatho, and not on solar near year.
+
+Thai sidereal calendars:
+------------------------
+* Meesaă
+* Phrɯ́tsaphaa
+* Míthùnaa
+* Kàrákàdaa
+* Sǐnghǎa
+* Kanyaa
+* Tùlaa
+* Phrɯ́tsacìkaa
+* Thanwaa
+* Mákàraa
+* Kumphaa
+* Miinaa
+
+Thai tropical calendars:
+------------------------
+* Mákàraa-khom
+* Kumphaa-phan
+* Miinaa-khom
+* Meesaǎ-yon
+* Phrɯ́tsaphaa-khom
+* Míthùnaa-yon
+* Kàrákàdaa-khom
+* Sǐnghǎa-khom
+* Kanyaa-yon
+* Tùlaa-khom
+* Phrɯ́tsacìkaa-yon
+* Thanwaa-khom
 
 LICENSE
 =======
