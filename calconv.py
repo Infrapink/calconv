@@ -183,6 +183,14 @@ import makaranta
 import arakan
 import thandeikta
 import kayin
+import thai_sid
+import rattanokisin
+import thai_tropical_2455
+import thai_tropical_2483
+import sukothai
+import keng_tung
+import chiang_mai
+import khmer
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1896,6 +1904,78 @@ def cons_day_julian_todate():
         kayin_day_ent.insert(0, kayin_date[0])
         kayin_month_ent.insert(0, kayin_date[1])
         kayin_year_ent.insert(0, kayin_date[2])
+
+        # Convert a Julian day to a date in the Thai sidereal calendar
+        thai_sid_date = thai_sid.fromjd(day)
+        thai_sid_day_ent.delete(0, END)
+        thai_sid_month_ent.delete(0, END)
+        thai_sid_year_ent.delete(0, END)
+        thai_sid_day_ent.insert(0, thai_sid_date[0])
+        thai_sid_month_ent.insert(0, thai_sid_date[1])
+        thai_sid_year_ent.insert(0, thai_sid_date[2])
+
+        # Convert a Julian day to a date in the Thai sidereal calendar (Rattanokisin era)
+        rattanokisin_date = rattanokisin.fromjd(day)
+        rattanokisin_day_ent.delete(0, END)
+        rattanokisin_month_ent.delete(0, END)
+        rattanokisin_year_ent.delete(0, END)
+        rattanokisin_day_ent.insert(0, rattanokisin_date[0])
+        rattanokisin_month_ent.insert(0, rattanokisin_date[1])
+        rattanokisin_year_ent.insert(0, rattanokisin_date[2])
+
+        # Convert a Julian day to a date in the Thai tropical calendar (2455)
+        thai_tropical_2455_date = thai_tropical_2455.fromjd(day)
+        thai_tropical_2455_day_ent.delete(0, END)
+        thai_tropical_2455_month_ent.delete(0, END)
+        thai_tropical_2455_year_ent.delete(0, END)
+        thai_tropical_2455_day_ent.insert(0, thai_tropical_2455_date[0])
+        thai_tropical_2455_month_ent.insert(0, thai_tropical_2455_date[1])
+        thai_tropical_2455_year_ent.insert(0, thai_tropical_2455_date[2])
+
+        # Convert a Julian day to a date in the Thai tropical calendar (2483)
+        thai_tropical_2483_date = thai_tropical_2483.fromjd(day)
+        thai_tropical_2483_day_ent.delete(0, END)
+        thai_tropical_2483_month_ent.delete(0, END)
+        thai_tropical_2483_year_ent.delete(0, END)
+        thai_tropical_2483_day_ent.insert(0, thai_tropical_2483_date[0])
+        thai_tropical_2483_month_ent.insert(0, thai_tropical_2483_date[1])
+        thai_tropical_2483_year_ent.insert(0, thai_tropical_2483_date[2])
+
+       # Convert a Julian day to a date in the Thai lunisolar calendar (Lao)
+        sukothai_date = sukothai.fromjd(day)
+        sukothai_day_ent.delete(0, END)
+        sukothai_month_ent.delete(0, END)
+        sukothai_year_ent.delete(0, END)
+        sukothai_day_ent.insert(0, sukothai_date[0])
+        sukothai_month_ent.insert(0, sukothai_date[1])
+        sukothai_year_ent.insert(0, sukothai_date[2])
+
+        # Convert a Julian day to a date in the Thai lunisolar calendar (Keng Tung)
+        keng_tung_date = keng_tung.fromjd(day)
+        keng_tung_day_ent.delete(0, END)
+        keng_tung_month_ent.delete(0, END)
+        keng_tung_year_ent.delete(0, END)
+        keng_tung_day_ent.insert(0, keng_tung_date[0])
+        keng_tung_month_ent.insert(0, keng_tung_date[1])
+        keng_tung_year_ent.insert(0, keng_tung_date[2])
+
+        # Convert a Julian day to a date in the Thai lunisolar calendar (Chiang Mai)
+        chiang_mai_date = chiang_mai.fromjd(day)
+        chiang_mai_day_ent.delete(0, END)
+        chiang_mai_month_ent.delete(0, END)
+        chiang_mai_year_ent.delete(0, END)
+        chiang_mai_day_ent.insert(0, chiang_mai_date[0])
+        chiang_mai_month_ent.insert(0, chiang_mai_date[1])
+        chiang_mai_year_ent.insert(0, chiang_mai_date[2])
+
+        # Convert a Julian day to a date in the Cambodian lunisolar calendar
+        khmer_date = khmer.fromjd(day)
+        khmer_day_ent.delete(0, END)
+        khmer_month_ent.delete(0, END)
+        khmer_year_ent.delete(0, END)
+        khmer_day_ent.insert(0, khmer_date[0])
+        khmer_month_ent.insert(0, khmer_date[1])
+        khmer_year_ent.insert(0, khmer_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3618,7 +3698,7 @@ def arakan_converter():
 def thandeikta_converter():
         day = int(thandeikta_day_ent.get())
         month = thandeikta_month_ent.get()
-        year = int(thandeikta_year_ent.get())
+        year = str(thandeikta_year_ent.get())
         jday = thandeikta.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
@@ -3629,6 +3709,78 @@ def kayin_converter():
         month = kayin_month_ent.get()
         year = int(kayin_year_ent.get())
         jday = kayin.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def thai_sid_converter():
+        day = int(thai_sid_day_ent.get())
+        month = thai_sid_month_ent.get()
+        year = int(thai_sid_year_ent.get())
+        jday = thai_sid.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def rattanokisin_converter():
+        day = int(rattanokisin_day_ent.get())
+        month = rattanokisin_month_ent.get()
+        year = int(rattanokisin_year_ent.get())
+        jday = rattanokisin.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def thai_tropical_2455_converter():
+        day = int(thai_tropical_2455_day_ent.get())
+        month = thai_tropical_2455_month_ent.get()
+        year = int(thai_tropical_2455_year_ent.get())
+        jday = thai_tropical_2455.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def thai_tropical_2483_converter():
+        day = int(thai_tropical_2483_day_ent.get())
+        month = thai_tropical_2483_month_ent.get()
+        year = int(thai_tropical_2483_year_ent.get())
+        jday = thai_tropical_2483.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sukothai_converter():
+        day = int(sukothai_day_ent.get())
+        month = sukothai_month_ent.get()
+        year = str(sukothai_year_ent.get())
+        jday = sukothai.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def keng_tung_converter():
+        day = int(keng_tung_day_ent.get())
+        month = keng_tung_month_ent.get()
+        year = str(keng_tung_year_ent.get())
+        jday = keng_tung.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def chiang_mai_converter():
+        day = int(chiang_mai_day_ent.get())
+        month = chiang_mai_month_ent.get()
+        year = str(chiang_mai_year_ent.get())
+        jday = chiang_mai.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def khmer_converter():
+        day = int(khmer_day_ent.get())
+        month = khmer_month_ent.get()
+        year = str(khmer_year_ent.get())
+        jday = khmer.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -6057,6 +6209,110 @@ kayin_year_ent = Entry(frame)
 kayin_year_ent.grid(row = 200, column = 11, sticky = W)
 kayin_bttn = Button(frame, text = "Calculate", command = kayin_converter).grid(row = 201, column = 9, columnspan = 3, sticky = W)
 
+# Thai sidereal calendar (Chulasakarat)                                                                                    
+thai_sid_lbl = Label(frame, text = "Thai sidereal calendar (Chulasakarat)").grid(row = 202, column = 0, columnspan = 3, sticky = W)
+thai_sid_day_lbl = Label(frame, text = "Day").grid(row = 203, column = 0, sticky = W)
+thai_sid_day_ent = Entry(frame)
+thai_sid_day_ent.grid(row = 204, column = 0, sticky = W)
+thai_sid_month_lbl = Label(frame, text = "Month").grid(row = 203, column = 1, sticky = W)
+thai_sid_month_ent = Entry(frame)
+thai_sid_month_ent.grid(row = 204, column = 1, sticky = W)
+thai_sid_year_lbl = Label(frame, text = "Year").grid(row = 203, column = 2, sticky = W)
+thai_sid_year_ent = Entry(frame)
+thai_sid_year_ent.grid(row = 204, column = 2, sticky = W)
+thai_sid_bttn = Button(frame, text = "Calculate", command = thai_sid_converter).grid(row = 205, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.65.0")
+# Thai sidereal calendar (Rattanokisin era)                                                                                            
+rattanokisin_lbl = Label(frame, text = "Thai sidereal calendar (Rattanokisin era)").grid(row = 202, column = 3, columnspan = 3, sticky = W)
+rattanokisin_day_lbl = Label(frame, text = "Day").grid(row = 203, column = 3, sticky = W)
+rattanokisin_day_ent = Entry(frame)
+rattanokisin_day_ent.grid(row = 204, column = 3, sticky = W)
+rattanokisin_month_lbl = Label(frame, text = "Month").grid(row = 203, column = 4, sticky = W)
+rattanokisin_month_ent = Entry(frame)
+rattanokisin_month_ent.grid(row = 204, column = 4, sticky = W)
+rattanokisin_year_lbl = Label(frame, text = "Year").grid(row = 203, column = 5, sticky = W)
+rattanokisin_year_ent = Entry(frame)
+rattanokisin_year_ent.grid(row = 204, column = 5, sticky = W)
+rattanokisin_bttn = Button(frame, text = "Calculate", command = rattanokisin_converter).grid(row = 205, column = 3, columnspan = 3, sticky = W)
+
+# Thai tropical calendar (2455)                                                                                            
+thai_tropical_2455_lbl = Label(frame, text = "Thai tropical calendar (2455)").grid(row = 202, column = 6, columnspan = 3, sticky = W)
+thai_tropical_2455_day_lbl = Label(frame, text = "Day").grid(row = 203, column = 6, sticky = W)
+thai_tropical_2455_day_ent = Entry(frame)
+thai_tropical_2455_day_ent.grid(row = 204, column = 6, sticky = W)
+thai_tropical_2455_month_lbl = Label(frame, text = "Month").grid(row = 203, column = 7, sticky = W)
+thai_tropical_2455_month_ent = Entry(frame)
+thai_tropical_2455_month_ent.grid(row = 204, column = 7, sticky = W)
+thai_tropical_2455_year_lbl = Label(frame, text = "Year").grid(row = 203, column = 8, sticky = W)
+thai_tropical_2455_year_ent = Entry(frame)
+thai_tropical_2455_year_ent.grid(row = 204, column = 8, sticky = W)
+thai_tropical_2455_bttn = Button(frame, text = "Calculate", command = thai_tropical_2455_converter).grid(row = 205, column = 6, columnspan = 3, sticky = W)
+
+# Thai tropical calendar (2483)                                                                                            
+thai_tropical_2483_lbl = Label(frame, text = "Thai tropical calendar (2483)").grid(row = 202, column = 9, columnspan = 3, sticky = W)
+thai_tropical_2483_day_lbl = Label(frame, text = "Day").grid(row = 203, column = 9, sticky = W)
+thai_tropical_2483_day_ent = Entry(frame)
+thai_tropical_2483_day_ent.grid(row = 204, column = 9, sticky = W)
+thai_tropical_2483_month_lbl = Label(frame, text = "Month").grid(row = 203, column = 10, sticky = W)
+thai_tropical_2483_month_ent = Entry(frame)
+thai_tropical_2483_month_ent.grid(row = 204, column = 10, sticky = W)
+thai_tropical_2483_year_lbl = Label(frame, text = "Year").grid(row = 203, column = 11, sticky = W)
+thai_tropical_2483_year_ent = Entry(frame)
+thai_tropical_2483_year_ent.grid(row = 204, column = 11, sticky = W)
+thai_tropical_2483_bttn = Button(frame, text = "Calculate", command = thai_tropical_2483_converter).grid(row = 205, column = 9, columnspan = 3, sticky = W)
+
+# Thai lunisolar calendar (Lao)                                                                                            
+sukothai_lbl = Label(frame, text = "Thai lunisolar calendar (Lao)").grid(row = 206, column = 0, columnspan = 3, sticky = W)
+sukothai_day_lbl = Label(frame, text = "Day").grid(row = 207, column = 0, sticky = W)
+sukothai_day_ent = Entry(frame)
+sukothai_day_ent.grid(row = 208, column = 0, sticky = W)
+sukothai_month_lbl = Label(frame, text = "Month").grid(row = 207, column = 1, sticky = W)
+sukothai_month_ent = Entry(frame)
+sukothai_month_ent.grid(row = 208, column = 1, sticky = W)
+sukothai_year_lbl = Label(frame, text = "Year").grid(row = 207, column = 2, sticky = W)
+sukothai_year_ent = Entry(frame)
+sukothai_year_ent.grid(row = 208, column = 2, sticky = W)
+sukothai_bttn = Button(frame, text = "Calculate", command = sukothai_converter).grid(row = 209, column = 0, columnspan = 3, sticky = W)
+
+# Thai lunisolar calendar (Keng Tung)                                                                                            
+keng_tung_lbl = Label(frame, text = "Thai lunisolar calendar (Keng Tung)").grid(row = 206, column = 3, columnspan = 3, sticky = W)
+keng_tung_day_lbl = Label(frame, text = "Day").grid(row = 207, column = 3, sticky = W)
+keng_tung_day_ent = Entry(frame)
+keng_tung_day_ent.grid(row = 208, column = 3, sticky = W)
+keng_tung_month_lbl = Label(frame, text = "Month").grid(row = 207, column = 4, sticky = W)
+keng_tung_month_ent = Entry(frame)
+keng_tung_month_ent.grid(row = 208, column = 4, sticky = W)
+keng_tung_year_lbl = Label(frame, text = "Year").grid(row = 207, column = 5, sticky = W)
+keng_tung_year_ent = Entry(frame)
+keng_tung_year_ent.grid(row = 208, column = 5, sticky = W)
+keng_tung_bttn = Button(frame, text = "Calculate", command = keng_tung_converter).grid(row = 209, column = 3, columnspan = 3, sticky = W)
+
+# Thai lunisolar calendar (Chiang Mai)                                                                                            
+chiang_mai_lbl = Label(frame, text = "Thai lunisolar calendar (Chiang Mai)").grid(row = 206, column = 6, columnspan = 3, sticky = W)
+chiang_mai_day_lbl = Label(frame, text = "Day").grid(row = 207, column = 6, sticky = W)
+chiang_mai_day_ent = Entry(frame)
+chiang_mai_day_ent.grid(row = 208, column = 6, sticky = W)
+chiang_mai_month_lbl = Label(frame, text = "Month").grid(row = 207, column = 7, sticky = W)
+chiang_mai_month_ent = Entry(frame)
+chiang_mai_month_ent.grid(row = 208, column = 7, sticky = W)
+chiang_mai_year_lbl = Label(frame, text = "Year").grid(row = 207, column = 8, sticky = W)
+chiang_mai_year_ent = Entry(frame)
+chiang_mai_year_ent.grid(row = 208, column = 8, sticky = W)
+chiang_mai_bttn = Button(frame, text = "Calculate", command = chiang_mai_converter).grid(row = 209, column = 6, columnspan = 3, sticky = W)
+
+# Cambodian lunisolar calendar                                                                                            
+khmer_lbl = Label(frame, text = "Cambodian lunisolar calendar").grid(row = 206, column = 9, columnspan = 3, sticky = W)
+khmer_day_lbl = Label(frame, text = "Day").grid(row = 207, column = 9, sticky = W)
+khmer_day_ent = Entry(frame)
+khmer_day_ent.grid(row = 208, column = 9, sticky = W)
+khmer_month_lbl = Label(frame, text = "Month").grid(row = 207, column = 10, sticky = W)
+khmer_month_ent = Entry(frame)
+khmer_month_ent.grid(row = 208, column = 10, sticky = W)
+khmer_year_lbl = Label(frame, text = "Year").grid(row = 207, column = 11, sticky = W)
+khmer_year_ent = Entry(frame)
+khmer_year_ent.grid(row = 208, column = 11, sticky = W)
+khmer_bttn = Button(frame, text = "Calculate", command = khmer_converter).grid(row = 209, column = 9, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.67.0")
 root.mainloop()
