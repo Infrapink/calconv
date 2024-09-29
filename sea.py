@@ -37,7 +37,7 @@ def lny(year):
 
     if (next_moon[0] - curr_moon[0] > 380):
         # leap year
-        year_length = 385
+        year_length = 384
         newmoon = curr_moon[0]
     elif (curr_moon[0] - prev_moon[0] == 385):
         # last year would have had a leap day but it was a leap year, and so the leap day is added to this year
