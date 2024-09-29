@@ -910,6 +910,21 @@ Cambodian months:
 * Meak
 * Phagaun
 
+Pranata Mangsa:
+---------------
+* Mangsa Kasa
+* Mangsa Karo
+* Mangsa Katelu
+* Mangsa Kapat
+* Mangsa Kalima
+* Mangsa Kanem
+* Mangsa Kapitu
+* Mangsa Kawolu
+* Mangsa Kasanga
+* Mangsa Kasadasa
+* Mangsa Desta
+* Mangsa Saddha
+
 LICENSE
 =======
 

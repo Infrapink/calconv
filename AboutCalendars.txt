@@ -2190,3 +2190,16 @@ The Cambodian lunisolar calendar is the same as the Lao, except that the months 
 Sources:
 * The Calendrical Systems of Mainland South-East Asia, JC Eade,	E.J. Brill, 1995
 * https://khmer-calendar.tovnah.com/calendar
+
+--------------
+PRANATA MANGSA
+--------------
+
+Pranata Mangsa refers to traditional knowledge of the rural people of Java about the optimum times for various agricultural and fishing tasks; once upon a time, it was based on astronomical and meteorological observations. In 1856 AD, this knowledge was standardised by Susuhunan Pakubuwana VII into a formal calendar, synchronised with the Gregorian calendar, which spread across all of Indonesia. It begins on 22 June; since the equator runs through the middle of Indonesia, this is technically the summer and winter solstice in different parts of the archipelago, but there is little noticeable difference in daylight over the course of the year. The months of the calendar show unusual variation, ranging from 24 to 41 days.
+
+Nowadays, the Gregorian calendar is most commonly used for civil purposes, but Pranata Mangsa is still known on Java and Bali, and is sometimes used for divination.
+
+Sources:
+* https://id.wikipedia.org/wiki/Pranata_mangsa
+* http://world.clndr.org/calendars/javanese-calendar/
+* Balinese Traditional Calendar, SK Chatterjee, Indian Journal of the History of Science, 32(4), 1997 (pp 325—346)
