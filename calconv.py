@@ -191,6 +191,7 @@ import sukothai
 import keng_tung
 import chiang_mai
 import khmer
+import pranata_mangsa
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -1976,6 +1977,15 @@ def cons_day_julian_todate():
         khmer_day_ent.insert(0, khmer_date[0])
         khmer_month_ent.insert(0, khmer_date[1])
         khmer_year_ent.insert(0, khmer_date[2])
+
+        # Convert a Julian day to a date in the Pranata Mangsa
+        pranata_mangsa_date = pranata_mangsa.fromjd(day)
+        pranata_mangsa_day_ent.delete(0, END)
+        pranata_mangsa_month_ent.delete(0, END)
+        pranata_mangsa_year_ent.delete(0, END)
+        pranata_mangsa_day_ent.insert(0, pranata_mangsa_date[0])
+        pranata_mangsa_month_ent.insert(0, pranata_mangsa_date[1])
+        pranata_mangsa_year_ent.insert(0, pranata_mangsa_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -3781,6 +3791,15 @@ def khmer_converter():
         month = khmer_month_ent.get()
         year = str(khmer_year_ent.get())
         jday = khmer.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def pranata_mangsa_converter():
+        day = int(pranata_mangsa_day_ent.get())
+        month = pranata_mangsa_month_ent.get()
+        year = int(pranata_mangsa_year_ent.get())
+        jday = pranata_mangsa.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -6312,6 +6331,19 @@ khmer_year_lbl = Label(frame, text = "Year").grid(row = 207, column = 11, sticky
 khmer_year_ent = Entry(frame)
 khmer_year_ent.grid(row = 208, column = 11, sticky = W)
 khmer_bttn = Button(frame, text = "Calculate", command = khmer_converter).grid(row = 209, column = 9, columnspan = 3, sticky = W)
+
+# Pranata Mangsa                                                                                            
+pranata_mangsa_lbl = Label(frame, text = "Pranata Mangsa").grid(row = 210, column = 0, columnspan = 3, sticky = W)
+pranata_mangsa_day_lbl = Label(frame, text = "Day").grid(row = 211, column = 0, sticky = W)
+pranata_mangsa_day_ent = Entry(frame)
+pranata_mangsa_day_ent.grid(row = 212, column = 0, sticky = W)
+pranata_mangsa_month_lbl = Label(frame, text = "Month").grid(row = 211, column = 1, sticky = W)
+pranata_mangsa_month_ent = Entry(frame)
+pranata_mangsa_month_ent.grid(row = 212, column = 1, sticky = W)
+pranata_mangsa_year_lbl = Label(frame, text = "Year").grid(row = 211, column = 2, sticky = W)
+pranata_mangsa_year_ent = Entry(frame)
+pranata_mangsa_year_ent.grid(row = 212, column = 2, sticky = W)
+pranata_mangsa_bttn = Button(frame, text = "Calculate", command = pranata_mangsa_converter).grid(row = 213, column = 0, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.67.0")

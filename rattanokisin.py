@@ -5,7 +5,7 @@
 from math import ceil
 from fractions import Fraction
 from months import THAI_SID as MONTHS, THAI_SID_NUM as MONTHNO
-from constants import southeast_asian_sidereal_year as sid_year, chulasakarat, southeast_asian_rasi as rasi
+from sea import sid_year, chulasakarat, rasi
 
 epoch = chulasakarat + (1044 * sid_year)
 
