@@ -1457,27 +1457,86 @@ THAI_SID_NUM = {"Meesaă": 0,
                 "Miinaa": 11}
 
 THAI_TROPICAL_NORMAL = {"Mákàraa-khom": 31,
-                     "Kumphaa-phan": 28,
-                     "Miinaa-khom": 31,
-                     "Meesaǎ-yon": 30,
-                     "Phrɯ́tsaphaa-khom": 31,
-                     "Míthùnaa-yon": 30,
-                     "Kàrákàdaa-khom": 31,
-                     "Sǐnghǎa-khom": 31,
-                     "Kanyaa-yon": 30,
-                     "Tùlaa-khom": 31,
-                     "Phrɯ́tsacìkaa-yon": 30,
-                     "Thanwaa-khom": 31}
+                        "Kumphaa-phan": 28,
+                        "Miinaa-khom": 31,
+                        "Meesaǎ-yon": 30,
+                        "Phrɯ́tsaphaa-khom": 31,
+                        "Míthùnaa-yon": 30,
+                        "Kàrákàdaa-khom": 31,
+                        "Sǐnghǎa-khom": 31,
+                        "Kanyaa-yon": 30,
+                        "Tùlaa-khom": 31,
+                        "Phrɯ́tsacìkaa-yon": 30,
+                        "Thanwaa-khom": 31}
 
 THAI_TROPICAL_LEAP = {"Mákàraa-khom": 31,
-                   "Kumphaa-phan": 28,
-                   "Miinaa-khom": 31,
-                   "Meesaǎ-yon": 30,
-                   "Phrɯ́tsaphaa-khom": 31,
-                   "Míthùnaa-yon": 30,
-                   "Kàrákàdaa-khom": 31,
-                   "Sǐnghǎa-khom": 31,
-                   "Kanyaa-yon": 30,
-                   "Tùlaa-khom": 31,
-                   "Phrɯ́tsacìkaa-yon": 30,
-                   "Thanwaa-khom": 31}
+                      "Kumphaa-phan": 28,
+                      "Miinaa-khom": 31,
+                      "Meesaǎ-yon": 30,
+                      "Phrɯ́tsaphaa-khom": 31,
+                      "Míthùnaa-yon": 30,
+                      "Kàrákàdaa-khom": 31,
+                      "Sǐnghǎa-khom": 31,
+                      "Kanyaa-yon": 30,
+                      "Tùlaa-khom": 31,
+                      "Phrɯ́tsacìkaa-yon": 30,
+                      "Thanwaa-khom": 31}
+
+# note that the Thai lunar calendar increments in the month numbered 5 in Central Thailand, 6 in Keng Tung, and 7 in Chaing Mai
+THAI_LUNAR_NORMAL = ("Deuan hâa",              #  5
+                     "Deuan hòk",              #  6
+                     "Deuan jèt",              #  7
+                     "Deuan bpàaet",           #  8
+                     "Deuan gâo",              #  9
+                     "Deuan sip",              # 10
+                     "Deuan sip nùeng",        # 11
+                     "Deuan sip sǎawng",       # 12
+                     "Deuan aai",              #  1
+                     "Deuan yi",               #  2
+                     "Deuan sǎam",             #  3
+                     "Deuan sìi")              #  4
+
+THAI_LUNAR_LEAP = ("Deuan hâa",              #  5                                                                  
+                   "Deuan hòk",              #  6                                                                  
+                   "Deuan jèt",              #  7                                                                  
+                   "Deuan bpàaet",           #  8                                                                  
+                   "Deuan bpàaet song khan", #  8.2                                                                
+                   "Deuan gâo",              #  9
+                   "Deuan sip",              # 10                                                           
+                   "Deuan sip nùeng",        # 11                                                                  
+                   "Deuan sip sǎawng",       # 12                                                                  
+                   "Deuan aai",     	     #  1                                                                 
+                   "Deuan yi",      	     #  2                                                                 
+                   "Deuan sǎam",             #  3                                                                 
+                   "Deuan sìi")     	     #  4
+
+KENG_TUNG_LEAP = ("Deuan hòk",              #  6                                                                    
+                  "Deuan jèt",              #  7                                                                    
+                  "Deuan bpàaet",           #  8                                                                    
+                  "Deuan gâo",              #  9
+                  "Deuan gào song khan",    #  9.2
+                  "Deuan sip",              # 10                                                                    
+                  "Deuan sip nùeng",        # 11                                                                    
+                  "Deuan sip sǎawng",       # 12                                                                    
+                  "Deuan aai",              #  1                                                                    
+                  "Deuan yi",               #  2                                                                    
+                  "Deuan sǎam",             #  3                                                                    
+                  "Deuan sìi",              #  4
+                  "Deuan hâa")              #  5
+
+CHIANG_MAI_LEAP = ("Deuan jèt",              #  7                                                                   
+                   "Deuan bpàaet",           #  8                                                                   
+                   "Deuan gâo",              #  9                                                                   
+                   "Deuan sip",              # 10
+                   "Deuan sip song khan",    # 10.2
+                   "Deuan sip nùeng",        # 11                                                                   
+                   "Deuan sip sǎawng",       # 12                                                                   
+                   "Deuan aai",              #  1                                                                   
+                   "Deuan yi",               #  2                                                                   
+                   "Deuan sǎam",             #  3                                                                  
+                   "Deuan sìi",              #  4
+                   "Deuan hâa",              #  5
+                   "Deuan hòk")              #  6
+
+KHMER_NORMAL = ("Chaet", "Vesak", "Jais", "Ashad",                    "Srap", "Phutrobot", "Asuj", "Kadhek", "Mekasay", "Bos", "Meak", "Phagaun")
+KHMER_LEAP  =  ("Chaet", "Vesak", "Jais", "Bhadamasad", "Thutiyasad", "Srap", "Phutrobot", "Asuj", "Kadhek", "Mekasay", "Bos", "Meak", "Phagaun")

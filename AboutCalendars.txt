@@ -2164,3 +2164,29 @@ The final change was in 2492 BE (1912 AD), when Plaek Phibunsongkhram, prime min
 
 Sources:
 * https://en.wikipedia.org/wiki/Thai_solar_calendar
+
+---------------------------------
+THAI (AND LAO) LUNISOLAR CALENDAR
+---------------------------------
+
+The traditional lunisolar calendars of Thailand and Laos share and origin with the Myanma calendar, as they use the same values of the sidereal year and mean synodic month as the Makaranta and Arakanese calendars, the fixed lengths of the months, and the position of the leap month.
+
+However, they differ in important ways. Most noticeably, while Myanma calendars always assign leap day to years with a leap month, Thai and Lao calendars never do, which means that dates in Thailand and Laos are often a day ahead of Myanmar. The Thai and Lao calendars also do not strictly follow the Metonic cycle; while they usually match up, they assign leap days and leap months according to the solar and lunar epacts as of solar new year.
+
+Months are numbered instead of named, and the numbers do not agree across Thailand. In Central Thailand and Laos, the month corresponding to the Indian Chaitra and Myanma Tagu is numbered 5; in Keng Tung, it is 6; and in Chiang Mai, it is 7. The year number increments on solar new year, as in Myanmar; this means that, like in the Jewish calendar, first month is approximately half a year before the year number increments.
+
+A variety of epochs have been used in Thailand and Laos. The most common is Chulasakarat (the so-called lesser era, in contrast to the Śaka era, called the greater era), and so that is the era I have used in this implementation. Other eras include the Śaka Era, the Buddhist Era, and the Einzang Era (the last dates from Buddha's grandfather, and is only occasionally used by people who *really* want to avoid using negative numbers when discussing the life of Buddha).
+
+Sources:
+* The Calendrical Systems of Mainland South-East Asia, JC Eade, E.J. Brill, 1995
+* On Lunisolar Calendars and Intercalation Schemes in Southeast Asia, Lars Gislén, Journal of Astronomical History and Heritage, 21(1), 2—6 (2018)
+
+--------------------------
+CAMBODIAN (KHMER) CALENDAR
+--------------------------
+
+The Cambodian lunisolar calendar is the same as the Lao, except that the months have names. Eade reports that the Śaka Era is standard in Cambodia, but I saw far more use of the Buddhist Era in my own research, so that is the era I went with.
+
+Sources:
+* The Calendrical Systems of Mainland South-East Asia, JC Eade,	E.J. Brill, 1995
+* https://khmer-calendar.tovnah.com/calendar

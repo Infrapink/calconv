@@ -872,6 +872,44 @@ Thai tropical calendars:
 * Phrɯ́tsacìkaa-yon
 * Thanwaa-khom
 
+Thai lunisolar calendars:
+-------------------------
+* Deuan hâa
+* Deuan hòk
+* Deuan jèt
+* Deuan bpàaet
+* Deuan gâo
+* Deuan sip
+* Deuan sip nùeng
+* Deuan sip sǎawng
+* Deuan aai
+* Deuan yi
+* Deuan sǎam
+* Deuan sì
+
+Thai months are a bit weird. Deuan aai means "Month the first", but the year doesn't increment until Songkran, or solar new year, which falls several months afterward. The lunar month containing solar year year is called Deuan hâa in Laos and Central Thailand, Deuan hòk in Keng Tung, and Deuan jèt in Chiang Mai; note that these are the same month and all correspond to the Indian Chaitra, it's just that the month called "Month 5" in Central Thailand is called "Month 6" in Keng Tung and "Month 7" in Chiang Mai.
+
+The leap month always follows the 5th month of lunar year; it is formed by appending " song khan" to the end. Thus, it is called Deuan bpàaet song khan in Central Thailand and Laos, Deuan gào song khan in Keng Tung, and Deuan sip song khan in Chiang Mai.
+
+To specify that a date comes on or after lunar new year but before solar new year, add an '*' to the year to specify that the year number has yet to increment.
+
+Cambodian months:
+-----------------
+* Chaet
+* Vesak
+* Jais
+* Ashad (technically not in leap years)
+* Bhadamasad (replaces Ashad in leap years)
+* Thutiyasad (leap month)
+* Srap
+* Phutrobot
+* Asuj
+* Kadhek
+* Mekasay
+* Bos
+* Meak
+* Phagaun
+
 LICENSE
 =======
 
@@ -888,14 +926,11 @@ Add the following calendars:
 
 * Byzantine
 * Shire Reckoning
-* Buddhist
 * ISO
-* Myanmar
 * Discordian
 * Javanese
 * Minguo
 * Nanakshahi
-* Thai
 * Julian Period
 * Muisca
 * Mandean (Reingold and Dershowitz, p 129)
