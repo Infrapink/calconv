@@ -29,9 +29,9 @@ def qtype(year):
     '''Compute the days in a 4-year period starting with year'''
     year = int(year)
 
-    if (year % 400 == 145):
+    if (year % 400 == 144):
         ans = (4 * 365) + 1
-    elif (year % 100 == 45):
+    elif (year % 100 == 44):
         ans = 4 * 365
     else:
         ans = (4 * 365) + 1
