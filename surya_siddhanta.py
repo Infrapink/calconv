@@ -36,8 +36,10 @@ s_anom_year = Fraction(1582237820000, (4320000000 - 387)) # sidereal days in an 
 t_sid_month = Fraction(1577917828, 57753336) # tropical days in a sidereal month
 s_sid_month = Fraction(1582237820, 57753336) # sidereal days in a sidereal month
 
-t_syn_month = Fraction(1577917828, 51840000) # tropical days in a synodic month
-s_syn_month = Fraction(1582237820, 51840000) # sidereal sayd in a synodic month
+#t_syn_month = Fraction(1577917828, 51840000) # tropical days in a synodic month
+#s_syn_month = Fraction(1582237820, 51840000) # sidereal sayd in a synodic month
+t_syn_month = Fraction(1577917828, 53433336) # tropical days in a synodic month
+s_syn_month = Fraction(1582237820, 53433336) # sidereal days in a synodic month
 
 t_anom_month = Fraction(1577917828, (57753336 - 488203)) # tropical days in an anomalistic month
 s_anom_month = Fraction(1582237820, (57753336 - 488203)) # sidereal days in an anomalistic month
