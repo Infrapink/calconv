@@ -53,16 +53,12 @@ def udt(jday):
     #print(year)
 
     if year in DIFF.keys():
-        print("Link")
         deltat = DIFF[year]
     elif year in range(1621,2000):
-        print("Zelda")
         deltat = Decimal('0.5') * (DIFF[year - 1] + DIFF[year + 1])
     else:
         # approximate value
-        print("Ganondorf")
         t = Decimal(year - 2000) / 100
-        print(year)
         if year < 948:
             deltat = 2177 + (497 * t) + (t * t * Decimal('77.1'))
         #elif (year <= 1600) or (year > 2000):
@@ -70,7 +66,6 @@ def udt(jday):
             deltat = 102 + (102 * t) + (t * t * Decimal('25.3'))
             if year <= 2100:
                 deltat = deltat + (Decimal('0.37') * (year - 2100))
-        #print(deltat)
 
     return deltat
 
