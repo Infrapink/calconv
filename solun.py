@@ -50,20 +50,27 @@ def udt(jday):
 
     gdate = gregorian.fromjd(jday)
     year = gdate[2]
+    #print(year)
 
     if year in DIFF.keys():
+        print("Link")
         deltat = DIFF[year]
     elif year in range(1621,2000):
+        print("Zelda")
         deltat = Decimal('0.5') * (DIFF[year - 1] + DIFF[year + 1])
     else:
         # approximate value
+        print("Ganondorf")
         t = Decimal(year - 2000) / 100
+        print(year)
         if year < 948:
             deltat = 2177 + (497 * t) + (t * t * Decimal('77.1'))
-        elif (year <= 1600) or (year > 2000):
+        #elif (year <= 1600) or (year > 2000):
+        else:
             deltat = 102 + (102 * t) + (t * t * Decimal('25.3'))
             if year <= 2100:
                 deltat = deltat + (Decimal('0.37') * (year - 2100))
+        #print(deltat)
 
     return deltat
 
@@ -208,15 +215,16 @@ def angsep(ra1, dec1, ra2, dec2):
 
 def sunrise(jday, lon, lat):
     '''Time of sunrise on a given day for a given longitude and latitude, in UTC'''
-    deltat = udt(int(jday))
     jday = float(jday) - 0.5 # Julian Day in question
+    deltat = udt(ceil(jday))
+    #print(deltat)
     lon = float(lon) # observer's longitude
     lat = float(lat) # observer's latitude
     ra2000 = 281.29 # https://astronomy.stackexchange.com/questions/35779/ra-and-dec-of-the-sun-at-j2000
     dec2000 = 0 - 23 - (2/60) - (8.2/3600) # https://astronomy.stackexchange.com/questions/35779/ra-and-dec-of-the-sun-at-j2000
 
     r = sunmoon.pub.pub_solar_riset(jday, lon, lat)
-    return(r[0])
+    return(float(r[0]))
 
 def sunset(jday, lon, lat):
     '''Time of sunset on a given day for a given longitude and latitude, in UTC'''
@@ -234,6 +242,7 @@ def local_sunrise(jday, lon, lat, tz):
     '''Time of sunrise at a given location, in local time rather than UTC.'''
     # This function gives the time of sunrise as (cJD + time), rather than just JD
     jday = Fraction(jday) # consecutive Julian Day in question
+    #print(float(jday))    
     lon = float(lon) # observer's longitude
     lat = float(lat) # observer's latitude
     tz = Fraction(tz) # local timezone
