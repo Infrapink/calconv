@@ -191,6 +191,10 @@ import sukothai
 import keng_tung
 import chiang_mai
 import khmer
+import bali_lunisolar_sid_old
+import bali_lunisolar_sid_new
+import bali_lunisolar_obs_old
+import bali_lunisolar_obs_new
 import pranata_mangsa
 
 def cons_day_julian_todate():
@@ -1977,6 +1981,42 @@ def cons_day_julian_todate():
         khmer_day_ent.insert(0, khmer_date[0])
         khmer_month_ent.insert(0, khmer_date[1])
         khmer_year_ent.insert(0, khmer_date[2])
+
+        # Convert a Julian day to a date in the Old Balinese lunisolar calendar (Siddhantic version)
+        bali_lunisolar_sid_old_date = bali_lunisolar_sid_old.fromjd(day)
+        bali_lunisolar_sid_old_day_ent.delete(0, END)
+        bali_lunisolar_sid_old_month_ent.delete(0, END)
+        bali_lunisolar_sid_old_year_ent.delete(0, END)
+        bali_lunisolar_sid_old_day_ent.insert(0, bali_lunisolar_sid_old_date[0])
+        bali_lunisolar_sid_old_month_ent.insert(0, bali_lunisolar_sid_old_date[1])
+        bali_lunisolar_sid_old_year_ent.insert(0, bali_lunisolar_sid_old_date[2])
+
+        # Convert a Julian day to a date in the New Balinese lunisolar calendar (Siddhantic version)
+        bali_lunisolar_sid_new_date = bali_lunisolar_sid_new.fromjd(day)
+        bali_lunisolar_sid_new_day_ent.delete(0, END)
+        bali_lunisolar_sid_new_month_ent.delete(0, END)
+        bali_lunisolar_sid_new_year_ent.delete(0, END)
+        bali_lunisolar_sid_new_day_ent.insert(0, bali_lunisolar_sid_new_date[0])
+        bali_lunisolar_sid_new_month_ent.insert(0, bali_lunisolar_sid_new_date[1])
+        bali_lunisolar_sid_new_year_ent.insert(0, bali_lunisolar_sid_new_date[2])
+
+        # Convert a Julian day to a date in the Old Balinese lunisolar calendar (observational version)
+        bali_lunisolar_obs_old_date = bali_lunisolar_obs_old.fromjd(day)
+        bali_lunisolar_obs_old_day_ent.delete(0, END)
+        bali_lunisolar_obs_old_month_ent.delete(0, END)
+        bali_lunisolar_obs_old_year_ent.delete(0, END)
+        bali_lunisolar_obs_old_day_ent.insert(0, bali_lunisolar_obs_old_date[0])
+        bali_lunisolar_obs_old_month_ent.insert(0, bali_lunisolar_obs_old_date[1])
+        bali_lunisolar_obs_old_year_ent.insert(0, bali_lunisolar_obs_old_date[2])
+
+        # Convert a Julian day to a date in the New Balinese lunisolar calendar (observational version)
+        bali_lunisolar_obs_new_date = bali_lunisolar_obs_new.fromjd(day)
+        bali_lunisolar_obs_new_day_ent.delete(0, END)
+        bali_lunisolar_obs_new_month_ent.delete(0, END)
+        bali_lunisolar_obs_new_year_ent.delete(0, END)
+        bali_lunisolar_obs_new_day_ent.insert(0, bali_lunisolar_obs_new_date[0])
+        bali_lunisolar_obs_new_month_ent.insert(0, bali_lunisolar_obs_new_date[1])
+        bali_lunisolar_obs_new_year_ent.insert(0, bali_lunisolar_obs_new_date[2])
 
         # Convert a Julian day to a date in the Pranata Mangsa
         pranata_mangsa_date = pranata_mangsa.fromjd(day)
@@ -3800,6 +3840,42 @@ def pranata_mangsa_converter():
         month = pranata_mangsa_month_ent.get()
         year = int(pranata_mangsa_year_ent.get())
         jday = pranata_mangsa.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def bali_lunisolar_sid_old_converter():
+        day = int(bali_lunisolar_sid_old_day_ent.get())
+        month = bali_lunisolar_sid_old_month_ent.get()
+        year = int(bali_lunisolar_sid_old_year_ent.get())
+        jday = bali_lunisolar_sid_old.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def bali_lunisolar_sid_new_converter():
+        day = int(bali_lunisolar_sid_new_day_ent.get())
+        month = bali_lunisolar_sid_new_month_ent.get()
+        year = int(bali_lunisolar_sid_new_year_ent.get())
+        jday = bali_lunisolar_sid_new.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def bali_lunisolar_obs_old_converter():
+        day = int(bali_lunisolar_obs_old_day_ent.get())
+        month = bali_lunisolar_obs_old_month_ent.get()
+        year = int(bali_lunisolar_obs_old_year_ent.get())
+        jday = bali_lunisolar_obs_old.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def bali_lunisolar_obs_new_converter():
+        day = int(bali_lunisolar_obs_new_day_ent.get())
+        month = bali_lunisolar_obs_new_month_ent.get()
+        year = int(bali_lunisolar_obs_new_year_ent.get())
+        jday = bali_lunisolar_obs_new.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -6332,18 +6408,70 @@ khmer_year_ent = Entry(frame)
 khmer_year_ent.grid(row = 208, column = 11, sticky = W)
 khmer_bttn = Button(frame, text = "Calculate", command = khmer_converter).grid(row = 209, column = 9, columnspan = 3, sticky = W)
 
+# Old Balinese lunisolar calendar (Siddhantic version)                                                                                            
+bali_lunisolar_sid_old_lbl = Label(frame, text = "Old Balinese lunisolar calendar (Siddhantic version)").grid(row = 210, column = 0, columnspan = 3, sticky = W)
+bali_lunisolar_sid_old_day_lbl = Label(frame, text = "Tithi").grid(row = 211, column = 0, sticky = W)
+bali_lunisolar_sid_old_day_ent = Entry(frame)
+bali_lunisolar_sid_old_day_ent.grid(row = 212, column = 0, sticky = W)
+bali_lunisolar_sid_old_month_lbl = Label(frame, text = "Month").grid(row = 211, column = 1, sticky = W)
+bali_lunisolar_sid_old_month_ent = Entry(frame)
+bali_lunisolar_sid_old_month_ent.grid(row = 212, column = 1, sticky = W)
+bali_lunisolar_sid_old_year_lbl = Label(frame, text = "Year").grid(row = 211, column = 2, sticky = W)
+bali_lunisolar_sid_old_year_ent = Entry(frame)
+bali_lunisolar_sid_old_year_ent.grid(row = 212, column = 2, sticky = W)
+bali_lunisolar_sid_old_bttn = Button(frame, text = "Calculate", command = bali_lunisolar_sid_old_converter).grid(row = 213, column = 0, columnspan = 3, sticky = W)
+
+# New Balinese lunisolar calendar (Siddhantic version)                                                                                            
+bali_lunisolar_sid_new_lbl = Label(frame, text = "New Balinese lunisolar calendar (Siddhantic version)").grid(row = 210, column = 3, columnspan = 3, sticky = W)
+bali_lunisolar_sid_new_day_lbl = Label(frame, text = "Tithi").grid(row = 211, column = 3, sticky = W)
+bali_lunisolar_sid_new_day_ent = Entry(frame)
+bali_lunisolar_sid_new_day_ent.grid(row = 212, column = 3, sticky = W)
+bali_lunisolar_sid_new_month_lbl = Label(frame, text = "Month").grid(row = 211, column = 4, sticky = W)
+bali_lunisolar_sid_new_month_ent = Entry(frame)
+bali_lunisolar_sid_new_month_ent.grid(row = 212, column = 4, sticky = W)
+bali_lunisolar_sid_new_year_lbl = Label(frame, text = "Year").grid(row = 211, column = 5, sticky = W)
+bali_lunisolar_sid_new_year_ent = Entry(frame)
+bali_lunisolar_sid_new_year_ent.grid(row = 212, column = 5, sticky = W)
+bali_lunisolar_sid_new_bttn = Button(frame, text = "Calculate", command = bali_lunisolar_sid_new_converter).grid(row = 213, column = 3, columnspan = 3, sticky = W)
+
+# Old Balinese lunisolar calendar (observational version)                                                                                            
+bali_lunisolar_obs_old_lbl = Label(frame, text = "Old Balinese lunisolar calendar (observational version)").grid(row = 210, column = 6, columnspan = 3, sticky = W)
+bali_lunisolar_obs_old_day_lbl = Label(frame, text = "Tithi").grid(row = 211, column = 6, sticky = W)
+bali_lunisolar_obs_old_day_ent = Entry(frame)
+bali_lunisolar_obs_old_day_ent.grid(row = 212, column = 6, sticky = W)
+bali_lunisolar_obs_old_month_lbl = Label(frame, text = "Month").grid(row = 211, column = 7, sticky = W)
+bali_lunisolar_obs_old_month_ent = Entry(frame)
+bali_lunisolar_obs_old_month_ent.grid(row = 212, column = 7, sticky = W)
+bali_lunisolar_obs_old_year_lbl = Label(frame, text = "Year").grid(row = 211, column = 8, sticky = W)
+bali_lunisolar_obs_old_year_ent = Entry(frame)
+bali_lunisolar_obs_old_year_ent.grid(row = 212, column = 8, sticky = W)
+bali_lunisolar_obs_old_bttn = Button(frame, text = "Calculate", command = bali_lunisolar_obs_old_converter).grid(row = 213, column = 6, columnspan = 3, sticky = W)
+
+# New Balinese lunisolar calendar (observational version)                                                                                            
+bali_lunisolar_obs_new_lbl = Label(frame, text = "New Balinese lunisolar calendar (observational version)").grid(row = 210, column = 9, columnspan = 3, sticky = W)
+bali_lunisolar_obs_new_day_lbl = Label(frame, text = "Tithi").grid(row = 211, column = 9, sticky = W)
+bali_lunisolar_obs_new_day_ent = Entry(frame)
+bali_lunisolar_obs_new_day_ent.grid(row = 212, column = 9, sticky = W)
+bali_lunisolar_obs_new_month_lbl = Label(frame, text = "Month").grid(row = 211, column = 10, sticky = W)
+bali_lunisolar_obs_new_month_ent = Entry(frame)
+bali_lunisolar_obs_new_month_ent.grid(row = 212, column = 10, sticky = W)
+bali_lunisolar_obs_new_year_lbl = Label(frame, text = "Year").grid(row = 211, column = 11, sticky = W)
+bali_lunisolar_obs_new_year_ent = Entry(frame)
+bali_lunisolar_obs_new_year_ent.grid(row = 212, column = 11, sticky = W)
+bali_lunisolar_obs_new_bttn = Button(frame, text = "Calculate", command = bali_lunisolar_obs_new_converter).grid(row = 213, column = 9, columnspan = 3, sticky = W)
+
 # Pranata Mangsa                                                                                            
-pranata_mangsa_lbl = Label(frame, text = "Pranata Mangsa").grid(row = 210, column = 0, columnspan = 3, sticky = W)
-pranata_mangsa_day_lbl = Label(frame, text = "Day").grid(row = 211, column = 0, sticky = W)
+pranata_mangsa_lbl = Label(frame, text = "Pranata Mangsa").grid(row = 214, column = 0, columnspan = 3, sticky = W)
+pranata_mangsa_day_lbl = Label(frame, text = "Day").grid(row = 215, column = 0, sticky = W)
 pranata_mangsa_day_ent = Entry(frame)
-pranata_mangsa_day_ent.grid(row = 212, column = 0, sticky = W)
-pranata_mangsa_month_lbl = Label(frame, text = "Month").grid(row = 211, column = 1, sticky = W)
+pranata_mangsa_day_ent.grid(row = 216, column = 0, sticky = W)
+pranata_mangsa_month_lbl = Label(frame, text = "Month").grid(row = 215, column = 1, sticky = W)
 pranata_mangsa_month_ent = Entry(frame)
-pranata_mangsa_month_ent.grid(row = 212, column = 1, sticky = W)
-pranata_mangsa_year_lbl = Label(frame, text = "Year").grid(row = 211, column = 2, sticky = W)
+pranata_mangsa_month_ent.grid(row = 216, column = 1, sticky = W)
+pranata_mangsa_year_lbl = Label(frame, text = "Year").grid(row = 215, column = 2, sticky = W)
 pranata_mangsa_year_ent = Entry(frame)
-pranata_mangsa_year_ent.grid(row = 212, column = 2, sticky = W)
-pranata_mangsa_bttn = Button(frame, text = "Calculate", command = pranata_mangsa_converter).grid(row = 213, column = 0, columnspan = 3, sticky = W)
+pranata_mangsa_year_ent.grid(row = 216, column = 2, sticky = W)
+pranata_mangsa_bttn = Button(frame, text = "Calculate", command = pranata_mangsa_converter).grid(row = 217, column = 0, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.67.0")

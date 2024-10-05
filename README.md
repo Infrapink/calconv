@@ -910,8 +910,11 @@ Cambodian months:
 * Meak
 * Phagaun
 
-Pranata Mangsa:
+Indonesian calendars:
 ---------------
+* Mangsa Kasadasa
+* Mangsa Desta
+* Mangsa Saddha
 * Mangsa Kasa
 * Mangsa Karo
 * Mangsa Katelu
@@ -921,9 +924,9 @@ Pranata Mangsa:
 * Mangsa Kapitu
 * Mangsa Kawolu
 * Mangsa Kasanga
-* Mangsa Kasadasa
-* Mangsa Desta
-* Mangsa Saddha
+
+In the case of leap years, add a " 2" to the end of the repeated month.
+
 
 LICENSE
 =======

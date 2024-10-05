@@ -1540,3 +1540,18 @@ CHIANG_MAI_LEAP = ("Deuan jèt",              #  7
 
 KHMER_NORMAL = ("Chaet", "Vesak", "Jais", "Ashad",                    "Srap", "Phutrobot", "Asuj", "Kadhek", "Mekasay", "Bos", "Meak", "Phagaun")
 KHMER_LEAP  =  ("Chaet", "Vesak", "Jais", "Bhadamasad", "Thutiyasad", "Srap", "Phutrobot", "Asuj", "Kadhek", "Mekasay", "Bos", "Meak", "Phagaun")
+
+BALINESE_LUNAR = ("Mengsa Kadasa", "Mengsa Desta", "Mengsa Sada", "Mengsa Kaso", "Mengsa Karo", "Mengsa Katiga", "Mengsa Kapat", "Mengsa Kalima", "Mengsa Kanem", "Mengsa Kapitu", "Mengsa Kaulu", "Mengsa Kasanga")
+
+NUM_BALINESE = {"Mengsa Kadasa":   0,
+                "Mengsa Desta":    1,
+                "Mengsa Sada":     2,
+                "Mengsa Kaso":     3,
+                "Mengsa Karo":     4,
+                "Mengsa Katiga":   5,
+                "Mengsa Kapat":    6,
+                "Mengsa Kalima" :  7,
+                "Mengsa Kanem":    8,
+                "Mengsa Kapitu":   9,
+                "Mengsa Kaulu":   10,
+                "Mengsa Kasanga": 11}
