@@ -2211,6 +2211,46 @@ While the beginnings of the months are determined by observation and modern meth
 Sources:
 * Balinese Traditional Calendar, SK Chatterjee, Indian Journal of the History of Science, 32(4), 1997 (pp 325—346)
 
+------------------------
+JAVANESE LUNAR CALENDARS
+------------------------
+
+The Javanese lunar calendar was introduced by Sultan Agung in 1555 SE (1633 AD). It is an algorithmic, purely lunar calendar which closely approximates the Lunar Hijri calendar, but the calculations are rather more complex and intricate than those of the tabular Islamic calendar.
+
+The epoch of calculations is consecutive Julian Day 2317690, corresponding to 1 Sura 1555 SE, and 1 Muharram of the same year. Prior to Agung's reform, Java used a lunisolar calendar derived from the Sūrya Siddhānta, which continued to be used by Indonesian Hindus, and years were dated from the Śaka era. While the Javanese calendar closely corresponds to the Arab Islamic calendar, Agung decided to retain the Śaka era numbering for the sake of continuity despite the definition of the year changing entirely, and thus the Javanese calendar is 700 years ahead of the Islamic era. The new calendar was intended to be used for government purposes and to set the dates of cultural festivals, while religious festivals and observances would be set by observation of the moon. However, many Javanese people uses Agung's calendar to determine the dates of religious observances as well, despite them not matching the dates proclaimed by the Ministry of Religion.
+
+A year comprises 12 months, of which the odd-numbered months have 30 days and the even-numbered months have 29 days. In a normal year, this is 354 days. If the year yields a remainder of 1, 4, or 7 when divided by 8, it is a leap year of 355 days, and the last month is 30 days long.
+
+Eight years make a windu of 2835 days, and 15 windus (120 years) make a kurup. The last year of a kurup always has 354 days, even though it would normally be a leap year.
+
+Kurups are grouped into grand cycles of 552 years, consisting of four kurups plus one shortened kurup of 72 years (9 windus), which are named Awahgi, Amiswon, Aboge, Asapon, and Anening. Prabowo, Amitarwati, and Sukono describe two versions of the cycle; in one of these, Amiswon is the short kurup, while in the other, it is Awahgi. These are listed as Javanese 1 and Javanese 2 respectively.
+
+The overall result is a mean month of 29.530495169082126 days, which is approximately 8.1 seconds longer than the actual synodic month.
+
+The Javanese calendars are less popular nowadays as the Gregorian calendar is used for secular purposes and computers make it much easier to forecast the actual dates and times of the new moon for religious observation. However, it is still used to some extent to determine local events and observances in Java.
+
+Sources:
+* Beginning of Fasting Based on the Javanese Aboge and Asapon Calendars. Agung Prabowo, Diah Paramita Amitarwati, and Sukono, International Journal of Ethno-Sciences and Education Research, vol 2, № 4, 2022, pp. 165—174. https://journal.rescollacomm.com/index.php/ijeer/index
+* https://www.kompas.id/baca/english/2018/09/12/differences-between-islamic-and-javanese-calendars/
+* https://web.archive.org/web/20100327143456/http://www.joglosemar.co.id/kejawen/calendar.html
+
+--------------
+ABOGE CALENDAR
+--------------
+
+The "Aboge calendar" refers to a pattern of observation in some Javanese communities. Essentially, they did not switch to the Asapon kurup when they should have, and instead continued performing calendrical calculations as if it was still the Aboge kurup. The difference here mostly affects local customs and traditional market days.
+
+Sources:
+* Beginning of Fasting Based on the Javanese Aboge and Asapon Calendars. Agung Prabowo, Diah Paramita Amitarwati, and Sukono, International Journal of Ethno-Sciences and Education Research, vol 2, № 4, 2022,	pp. 165—174. https://journal.
+rescollacomm.com/index.php/ijeer/index
+* https://www.kompas.id/baca/english/2018/09/12/differences-between-islamic-and-javanese-calendars/
+
+----------------
+JABVALI CALENDAR
+----------------
+
+The Jabvali calendar is a lunisolar calendar of my own invention. It combines the intricate calculations for the lengths of the months from the Javanese lunar calendar with the intricate Metonic cycle of the Balinese lunisolar calendar. The name is a portmanteau of Java and Bali.
+
 --------------
 PRANATA MANGSA
 --------------

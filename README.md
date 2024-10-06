@@ -910,8 +910,8 @@ Cambodian months:
 * Meak
 * Phagaun
 
-Indonesian calendars:
----------------
+Balinese calendars:
+-------------------
 * Mangsa Kasadasa
 * Mangsa Desta
 * Mangsa Saddha
@@ -926,6 +926,21 @@ Indonesian calendars:
 * Mangsa Kasanga
 
 In the case of leap years, add a " 2" to the end of the repeated month.
+
+Javanese calendars:
+-------------------
+* Sura
+* Sapar
+* Mulud
+* Bakda Mulud
+* Jumadil Awal
+* Jumadil Akhir
+* Rejeb
+* Ruwah
+* Pasa
+* Sawa
+* Dulkangidah
+* Besar
 
 
 LICENSE
@@ -946,9 +961,7 @@ Add the following calendars:
 * Shire Reckoning
 * ISO
 * Discordian
-* Javanese
 * Minguo
-* Nanakshahi
 * Julian Period
 * Muisca
 * Mandean (Reingold and Dershowitz, p 129)

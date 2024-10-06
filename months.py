@@ -1550,8 +1550,12 @@ NUM_BALINESE = {"Mengsa Kadasa":   0,
                 "Mengsa Karo":     4,
                 "Mengsa Katiga":   5,
                 "Mengsa Kapat":    6,
-                "Mengsa Kalima" :  7,
+                "Mengsa Kalima":   7,
                 "Mengsa Kanem":    8,
                 "Mengsa Kapitu":   9,
                 "Mengsa Kaulu":   10,
                 "Mengsa Kasanga": 11}
+
+JAVANESE = ("Sura", "Sapar", "Mulud", "Bakda Mulud", "Jumadil Awal", "Jumadil Akhir", "Rejeb", "Ruwah", "Pasa", "Sawal", "Dulkangidah", "Besar")
+
+
