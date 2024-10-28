@@ -100,7 +100,7 @@ def fromjd(jday):
         year += 1
     while (months_past > months_to_nyd):
         months_past -= 1
-        newmoon -= days_in_month(months_passed)
+        newmoon -= days_in_month(months_past)
     year += 1555 # add 1555 to get calendar year
 
     # now account for the actual months
