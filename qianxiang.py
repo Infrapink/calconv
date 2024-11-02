@@ -1,200 +1,169 @@
 #!/usr/bin/python3
 
-# Convert between the Qianxiang calendar and Julian Day
+# Convert between the Sifen calendar and Julian Day
 
 from math import floor
 from fractions import Fraction
 
-sui = 365 + Fraction(145,589) # tropical year
-yue = 29 + Fraction(773,1457) # synodic month
+sui = 365 + Fraction(145, 589) # tropical year
+yue = 29 + Fraction(773, 1457) # synodic month
 zhongqi = sui / 12 # major solar term
-nian12 = 12 * yue
-nian13 = 13 * yue
 
 MONTHS = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
+MONTHNO = {"Dōngyuè": 0,
+           "Bīngyuè": 1,
+           "Zōuyuè":  2,
+           "Xìngyuè": 3,
+           "Táoyuè":  4,
+           "Méiyuè":  5,
+           "Liúyuè":  6,
+           "Héyuè":   7,
+           "Lányuè":  8,
+           "Guìyuè":  9,
+           "Júyuè":  10,
+           "Lùyuè":  11}
 
-solar_epoch = 1802499 + Fraction(189,589)
-lunar_epoch = 1802497 + Fraction(1117,1457)
+solar_epoch = 1802499 + Fraction(417, 589)
+lunar_epoch = 1802498 + Fraction(224, 1457)
 
-def getxin(solstice):
-    solstice = Fraction(solstice)
-    if floor(solstice) >= floor(solar_epoch):
-        luns = (solstice - lunar_epoch) // yue
-        moon = lunar_epoch + (luns * yue)
-    else:
-        luns = (lunar_epoch - solstice) // yue
-        moon = lunar_epoch - (luns * yue)
-        
-    while floor(moon) > floor(solstice):
-        moon -= yue
-    while floor(moon + yue) <= floor(solstice):
-        moon += yue
+def xinnian(year):
+    '''Compute New Year's Day of a given year'''
+    year = int(year)
+    if (year > 0):
+        year -= 1 # assuming there is no year 0
 
-    prev_solstice = solstice - sui
-    if floor(prev_solstice) >= floor(solar_epoch):
-        luns = (prev_solstice - lunar_epoch) // yue
-        prev_moon = lunar_epoch + (luns * yue)
-    else:
-        luns = (lunar_epoch - solstice) // yue
-        prev_moon = lunar_epoch - (luns * yue)
-        
-    while floor(prev_moon) > floor(prev_solstice):
-        prev_moon -= yue
-    while floor(prev_moon + yue) <= floor(prev_solstice):
-        prev_moon += yue
-
-    if moon - prev_moon == nian12:
-        # previous year was normal
-        xin = prev_moon + (14 * yue)
-    elif (floor(prev_moon + (2 * yue)) <= floor(solstice + zhongqi)) or (floor(prev_moon + (3 * yue)) <= floor(solstice + (2 * zhongqi))):
-        # previous year was leap
-        xin = prev_moon + (15 * yue)
-    else:
-        # previous year was normal
-        xin = prev_moon + (14 * yue)
-
-    return xin
-
-def fromjd(jday):
-    jday = int(jday)
-
-    day = 0
-    month = ""
-    year = 0
-
-    if jday >= floor(solar_epoch):
-        # positice dates... probably
-        orbits = (jday - solar_epoch) // sui
-        year = orbits + 1
-        solstice = solar_epoch + (orbits * sui)
-        while floor(solstice + sui) <= jday:
-            year += 1
-            solstice += sui
-        luns = (solstice - lunar_epoch) // yue
-        solstice_moon = lunar_epoch + (luns * yue)
-        while floor(solstice_moon + yue) <= floor(solstice):
-            solstice_moon += yue
-    else:
-        # negative dates
-        year = 0 - ((solar_epoch - jday) // sui)
-        solstice = solar_epoch + (year * sui)
-        while floor(solstice) > jday:
-            year -= 1
-            solstice -= sui
-        luns = (lunar_epoch - solstice) // yue
-        solstice_moon = lunar_epoch - (luns * yue)
-        while floor(solstice_moon) > floor(solstice):
-            solstice_moon -= yue
+    solstice = solar_epoch + (year * sui)
+    luns = (solstice - lunar_epoch) // yue
+    solmoon = lunar_epoch + (yue * luns) # solstice moon
+    while (floor(solmoon) > floor(solstice)):
+        solmoon -= yue
+    while (floor(solmoon + yue) <= floor(solstice)):
+        solmoon += yue
 
     next_solstice = solstice + sui
-    prev_solstice = solstice - sui
-    xin = getxin(solstice)
-    next_xin = getxin(next_solstice)
-
-    if floor(xin) > jday:
-        year -= 1
-        if year == 0:
-            year = (-1)
-
-        next_solstice = solstice
-        next_xin = xin
-
-        solstice = prev_solstice
-
-        xin = getxin(solstice)
-
-    if next_xin - xin == nian13:
-        leap = True
+    next_moon = solmoon + (12 * yue)
+    if (floor(next_moon + yue) > floor(next_solstice)):
+        # no leap month here
+        ans = solmoon + (2 * yue)
     else:
-        leap = False
-
-    newmoon = xin
-    m = 0
-
-    #print(leap)
-    if leap == False:
-        # normal year
-        while floor(newmoon + yue) <= jday:
-            newmoon += yue
-            m += 1
-        month = MONTHS[m]
-        day = jday - floor(newmoon) + 1
-    else:
-        # leap year
-        leapt = False # have we past the leap month?
-        st = solstice # solar term
-        while floor(st) < floor(newmoon):
-            st += zhongqi
-
-        #print(m)
-        while floor(newmoon + yue) <= jday:
-            if (floor(newmoon + yue) <= floor(st)) and (leapt == False):
-                leapt = True
-            else:
-                st += zhongqi
-                m += 1
-            newmoon += yue
-
-        if m == 12:
-            month = "Rùnyuè"
-        elif (leapt == False) and (floor(newmoon + yue) <= floor(st)):
-            month = "Rùnyuè"
+        # there is a leap month somewhere
+        if ( (solmoon + (2 * yue) < solstice + zhongqi) or (solmoon + (3 * yue) < solstice + (2 * zhongqi)) ):
+            # leap month falls between the solstice and New Year's Day
+            ans = solmoon + (3 * yue)
         else:
-            month = MONTHS[m]
-        
-        day = jday - floor(newmoon) + 1
+            # leap month falls during the year to come
+            ans = solmoon + (2 * yue)
 
-    return(day, month, year)
+    return ans
+
+def lny(year):
+    '''Return the new moon of lunar new year, and whether the year is leap'''
+    year = int(year)
+
+    return ( xinnian(year), bool( (xinnian(year + 1) - xinnian(year)) / yue) )
 
 def tojd(day, month, year):
-    day = int(day)
+    '''Convert a date in the Sifen li to a Julian Day'''
+    day = int(day) - 1 # subtract 1 because computers count from 0
     month = str(month)
     year = int(year)
 
-    if year == 0:
-        year = (-1)
+    # account for the year
+    y = lny(year)
+    jday = y[0]
 
-    if year > 0:
-        solstice = solar_epoch + ((year - 1) * sui)
+    # account for the month
+    # first, did the user specify the leap month?
+    if (month[:3] == "Rùn"):
+        month = month[4:]
+        run = True
     else:
-        solstice = solar_epoch + (year * sui)
+        run = False
 
-    next_solstice = solstice + sui
-    xin = getxin(solstice)
-    next_xin = getxin(next_solstice)
-    if (next_xin - xin) == nian13:
-        leap = True
-    else:
-        leap = False
-
-    jday = xin
-    m = 0
-
-    if leap == False:
+    if (not(y[1])):
         # normal year
-        if month == "Rùnyuè":
-            month = "Dōngyuè"
-        while MONTHS[m] != month:
-            m += 1
-            jday += yue
+        jday += (MONTHNO[month] * yue)
     else:
         # leap year
-        leapt = False # have we passed the leap month?
-        st = solstice # major solar term
-        while floor(st) < floor(jday):
-            st += zhongqi
+        m = 0 # number of the month
+        l = False # have we passed the leap month?
+        z = solar_epoch + (year * sui) + (2 * zhongqi) # major solar term that the month contains
+        if (year > 0):
+            z -= sui
+        while( floor(z) < floor(jday) ):
+            z += zhongqi
+        while( floor(z - zhongqi) >= floor(jday) ):
+            z -= zhongqi
 
-        while MONTHS[m] != month:
-            if (month == "Rùnyuè") and (floor(jday + yue) <= st):
-                break
-            else:
+        while (MONTHS[m] != month):
+            m += 1
+            jday += yue
+            if ( (not l) and (floor(jday + yue) < floor(z)) ):
+                # we have not yet past the leap month
+                l = True # now we are past the leap month
                 jday += yue
-                if (floor(jday) < floor(st)) and (leapt == False):
-                    leapt = True
-                else:
-                    st += zhongqi
-                    m += 1
+            z += zhongqi
 
-    jday = floor(jday) + day - 1
+        if ( run and (not l) and (floor(jday + (2 * yue)) < floor(z + zhongqi)) ):
+            # we are in the normal month, but the user specified the corresponding leap month
+            jday += yue
+
+    # compute the day
+    jday = floor(jday) + day
 
     return jday
+            
+def fromjd(jday):
+    '''Convert a Julian Day into a date in the Sifen li'''
+    jday = int(jday)
+
+    # compute the year
+    year = (jday - solar_epoch) // sui
+    while (floor(xinnian(year)) > jday):
+        year -= 1
+    while (floor(xinnian(year + 1)) <= jday):
+        year += 1
+
+    # compute the month
+    y = lny(year)
+    xinyue = y[0]
+    if (not(y[1])):
+        # normal year
+        m = (jday - xinyue) // yue
+        while (floor(xinyue + yue) <= jday):
+            m += 1
+            xinyue += yue
+        month = MONTHS[m]
+    else:
+        # leap year
+        m = 0 # number of the month
+        l = False # have we passed the leap month?
+        z = solar_epoch + (year * sui) + (2 * zhongqi) # marker of the major solar term
+
+        if (year > 0):
+            z -= sui
+        while (floor(z) < floor(xinyue)):
+            z += zhongqi
+        while (floor(z - zhongqi) >= floor(xinyue)):
+            z -= zhongqi
+
+        while (floor(xinyue + yue) <= jday):
+            xinyue += yue
+            if(l):
+                m += 1
+            elif((not l) and (floor(xinyue) > floor(z))):
+                m += 1
+                z += zhongqi
+            else:
+                # this is the leap month
+                l = True
+                m -= 1 # the month has the same name as the previous month
+        month = MONTHS[m]
+        if ( (not l) and (floor(xinyue + yue) < floor(z)) ):
+            # it's the leap month
+            month = "Rùn " + month
+
+    # compute the day
+    day = jday - floor(xinyue) + 1 # add 1 because humans don't count from 0
+
+    return (day, month, year)

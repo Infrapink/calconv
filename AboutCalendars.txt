@@ -1091,15 +1091,16 @@ Sources:
 SANTONG CALENDAR
 ----------------
 
-The Santong, or Triple Concordance, calendar is an adjustment to the Taichu calendar, introduced by Liu Xin. This system establishes that the southern solstice coincided with the new moon 143,126 years before the calendar was introduced... which also means they coincided in the 37th year of Emperor Wu. Needless to say, this is inaccurate, but the basic principle would continue to be used for centuries after until better methods of predicting the exact positions of the sun and the moon were discovered.
+The Santong, or Triple Concordance, calendar is an adjustment to the Taichu calendar, introduced by Liu Xin. The epoch of calculation is Julian Day 1683430.0, just before the 37th year of Emperor Wu, when the southern solstice and new moon both fell very close to midnight. The nominal epoch is 143,126 years beforehand, which was the last time they were calculated to have coïncided.
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B8%89%E7%B5%B1%E6%9B%86
 * https://link.springer.com/content/pdf/10.1007%2F978-1-4614-6141-8_225.pdf
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC — AD 1644. Jean-Claude Martzloff (English translation), Springer, 2016 AD (originally published in French in 2009 AD), chapters 2—4 and Appendices D—G
 
-------------------------------
-HAN QUARTER REMAINDER CALENDAR
-------------------------------
+--------------------------------------
+SIFEN (HAN QUARTER REMAINDER) CALENDAR
+--------------------------------------
 
 In the 10th year of Emperor Zhang, Han China reverted to the Quarter Remainder system of the Warring States era. In this version, compiled by Li Fan, the tropical year is 365¼ days long, and the synodic month is fixed at 29 + ⁴⁹⁹/₉₄₀ days. As in the Xia calendar, the southern solstice falls in the 11th month. As in the Triple Concordance calendar, solar terms are a key part of the calendar; each solar term lasts exactly ¹/₂₄ of a tropical year, and the leap month is the first month of the year which does not contain the beginning of a major solar term.
 
@@ -1111,13 +1112,12 @@ Sources:
 QIANXIANG CALENDAR
 ------------------
 
-The Qianxiang calendar was designed by Liu Hong towards the end of the Han dynasty, and was the official calendar of Sun Wu during the Three Kingdoms Era. It was notably accurate in predicting the phase of the moon and the dates of eclises; indeed, it was so accurate it was adopted as the official calendar of the Han Empire as soon as Liu published it.
-
-The Qianliang calendar defines the tropical year as 365 + ¹⁸⁹/₅₈₉ days (365 days 7 hours 42 minutes 4.278 seconds), and the synodic month as 29 + ¹¹¹⁷/₁₄₅₇ days (29 days 17 hours 54 minutes 28.14Z seconds); this is about 2 hours 7 minutes 43 seconds longer than the mean tropical year, and 4 hours 49 minutes 29 seconds longer than the mean synodic month, and the fractions preserve the equivalence of 19 tropical years to 235 synodic months yet is still less accurate than the Quarter Remainder calendar. The Qian Lian Li is notably the first ever work to make use of the argument of perigee for calculating the new moon.
+The Qianxiang calendar was adopted by the state of Wu during the so-called Three Kingdoms Era. It defines the tropical year as 365¹⁴⁵/₅₈₉ days, and the synodic month as 29⁷⁷³/₁₄₅₇ days. Martzloff does not provide any epochs, so I had to work it out for myself. I took the southern solstice of 222 AD as my starting point; based on ratios between the tropical year and synodic month, I assigned the solstice to Julian Day 1802499⁴¹⁷/₅₈₉ and the previous new moon to Julian Day 1802498²²⁴/₁₄₅₇. This provides incredibly close correlation with the actual lunar cycle, and almost perfectly matches my algorithms for the modern Chinese calendar.
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B9%BE%E8%B1%A1%E6%9B%86
 * https://en.wikipedia.org/wiki/Liu_Hong_(astronomer)
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), chapters 2—4 and Appendices F and G
 
 ----------------
 JINGCHU CALENDAR
