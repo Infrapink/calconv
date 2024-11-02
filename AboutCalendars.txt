@@ -1125,7 +1125,7 @@ JINGCHU CALENDAR
 
 The Luminous Inception, or Jingchu, calendar was introduced by Cao Rui, the second king of Cao Wei, during the Three Kingdoms period. The introduction of the calendar marked the beginning of Rui's third era, Jingchu, for which the calendar is named.
 
-It defines the tropical year as 365 + ⁴⁵⁵/₁₈₄₃ days, the synodic month as 29 + ²⁴¹⁹/₄₅₅₉ days, and the anomalistic month as 27 + ²⁵²⁸/₄₅₅₉ days. It is thus somewhat more accurate than the Qianxiang calendar, but still less accurate than the Quarter Remainder calendar. Still, it remained in use for a remarkably long time - after the reunification of China, it was adopted as the official calendar by the Sima Jin, Liu Song, and Toba Wei. It was in the Eastern Jin that the calendar lasted the longest, persisting until the 8th year of Emperor Wu of Liang, for a total of 274 years (that's a long time for a Chinese calendar).
+It defines the tropical year as 365 + ⁴⁵⁵/₁₈₄₃ days and the synodic month as 29 + ²⁴¹⁹/₄₅₅₉ days. It is thus somewhat more accurate than the Qianxiang calendar, and based on my own testing, agrees quite well with the modern calendar. It remained in use for a remarkably long time - after the reunification of China, it was adopted as the official calendar by the Sima Jin, Liu Song, and Toba Wei. It was in the Eastern Jin that the calendar lasted the longest, persisting until the 8th year of Emperor Wu of Liang, for a total of 274 years (that's a long time for a Chinese calendar).
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E6%99%AF%E5%88%9D%E6%9B%86

@@ -1559,3 +1559,17 @@ NUM_BALINESE = {"Mengsa Kadasa":   0,
 JAVANESE = ("Sura", "Sapar", "Mulud", "Bakda Mulud", "Jumadil Awal", "Jumadil Akhir", "Rejeb", "Ruwah", "Pasa", "Sawal", "Dulkangidah", "Besar")
 
 
+OLD_CHINESE = ("Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè", "Dōngyuè", "Bīngyuè")
+
+NUM_OLD_CHINESE = {"Dōngyuè": 10,
+                   "Bīngyuè": 11,
+                   "Zōuyuè":   0,
+                   "Xìngyuè":  1,
+                   "Táoyuè":   2,
+                   "Méiyuè":   3,
+                   "Liúyuè":   4,
+                   "Héyuè":    5,
+                   "Lányuè":   6,
+                   "Guìyuè":   7,
+                   "Júyuè":    8,
+                   "Lùyuè":    9}

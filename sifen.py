@@ -4,27 +4,12 @@
 
 from math import floor
 from fractions import Fraction
+from months import OLD_CHINESE as MONTHS, NUM_OLD_CHINESE as MONTHNO
 
 sui = 365 + Fraction(1,4) # tropical year
 yue = 29 + Fraction(499,940) # synodic month
 zhongqi = sui / 12 # major solar term
 
-MONTHS = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
-MONTHNO = {"Dōngyuè": 0,
-           "Bīngyuè": 1,
-           "Zōuyuè":  2,
-           "Xìngyuè": 3,
-           "Táoyuè":  4,
-           "Méiyuè":  5,
-           "Liúyuè":  6,
-           "Héyuè":   7,
-           "Lányuè":  8,
-           "Guìyuè":  9,
-           "Júyuè":  10,
-           "Lùyuè":  11}
-
-#solar_epoch = 1752095 + Fraction(2,4)
-#lunar_epoch = solar_epoch - (18 + Fraction(153,235))
 solar_epoch = 1752095 + Fraction(1,4)
 lunar_epoch = solar_epoch - (7 + Fraction(450,940))
 

@@ -1,27 +1,14 @@
 #!/usr/bin/python3
 
-# Convert between the Sifen calendar and Julian Day
+# Convert between the Qianxiang calendar and Julian Day
 
 from math import floor
 from fractions import Fraction
+from months import OLD_CHINESE as MONTHS, NUM_OLD_CHINESE as MONTHNO
 
 sui = 365 + Fraction(145, 589) # tropical year
 yue = 29 + Fraction(773, 1457) # synodic month
 zhongqi = sui / 12 # major solar term
-
-MONTHS = ("Dōngyuè", "Bīngyuè", "Zōuyuè", "Xìngyuè", "Táoyuè", "Méiyuè", "Liúyuè", "Héyuè", "Lányuè", "Guìyuè", "Júyuè", "Lùyuè")
-MONTHNO = {"Dōngyuè": 0,
-           "Bīngyuè": 1,
-           "Zōuyuè":  2,
-           "Xìngyuè": 3,
-           "Táoyuè":  4,
-           "Méiyuè":  5,
-           "Liúyuè":  6,
-           "Héyuè":   7,
-           "Lányuè":  8,
-           "Guìyuè":  9,
-           "Júyuè":  10,
-           "Lùyuè":  11}
 
 solar_epoch = 1802499 + Fraction(417, 589)
 lunar_epoch = 1802498 + Fraction(224, 1457)
@@ -63,7 +50,7 @@ def lny(year):
     return ( xinnian(year), bool( (xinnian(year + 1) - xinnian(year)) / yue) )
 
 def tojd(day, month, year):
-    '''Convert a date in the Sifen li to a Julian Day'''
+    '''Convert a date in the Qianxiang li to a Julian Day'''
     day = int(day) - 1 # subtract 1 because computers count from 0
     month = str(month)
     year = int(year)
@@ -114,7 +101,7 @@ def tojd(day, month, year):
     return jday
             
 def fromjd(jday):
-    '''Convert a Julian Day into a date in the Sifen li'''
+    '''Convert a Julian Day into a date in the Qianxiang li'''
     jday = int(jday)
 
     # compute the year
