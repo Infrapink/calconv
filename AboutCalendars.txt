@@ -1135,10 +1135,13 @@ Sources:
 SANJI CALENDAR
 --------------
 
-The Sanji calendar was introduced in Yao Qin, one of the Sixteen Kingdoms in existence after the fragmentation of Sima Jin, by King Wuzhao at the very start of his reign. It was the first algorithmic calendar to be more accurate than the Quarter Remainder calendar - it defined the tropical year to be 365 + ⁶⁰⁵/₂₄₅₁ days long, and the synodic month as 29 + ³²¹⁷/₆₀6₃ days, an arrangement that maintains the convention of exactly 235 months in 19 years. Thus, the calculated year is about 6 min 18 sec, and the calculated month is less than 1.5 seconds longer than the actual mean synodic month.
+The Sanji Jiazi Yuan li was introduced in Yao Qin, one of the Sixteen Kingdoms in existence after the fragmentation of Sima Jin, by King Wuzhao at the very start of his reign. It defines the tropical year to be 365 + ⁶⁰⁵/₂₄₅₁ days long, and the synodic month as 29 + ³²¹⁷/₆₀₆₃ days, an arrangement that maintains the convention of exactly 235 months in 19 years. Thus, the calculated year is about 6 min 18 sec longer than the true tropical year, and the calculated month is less than 1.5 seconds longer than the actual mean synodic month.
+
+Again, Martzloff does not give any epochs, so I had to work them out for myself. Starting from the southern solstice of 383 AD, I determined that the best-fitting epochal values were JD 1861303¹⁸¹/₈₁₇ for the solar epoch and 1861293¹⁸¹¹/₂₀₂₁ for the lunar epoch.
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B8%89%E7%B4%80%E6%9B%86
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), chapters 2—4 and Appendices D,F,G
 
 ----------------
 YUANJIA CALENDAR
@@ -1155,9 +1158,11 @@ XUANSHI CALENDAR
 
 The Xuanshi calendar (also called the Yuanshi, but this can also refer to a later calendar introduced during the Yuan dynasty) was introduced at the very beginning of the Xuanshi era, the second era of King Juqu Mengxun of Bei Liang, and was also used in Tuoba Wei. It is most notable for breaking with the 19:235 year:month ratio; instead, 600 years in this calendar comprise 7421 months. The synodic month is defined as 29 + ⁴⁷²⁵¹/₈₉₀₅₂ days, which is a little less than 1 second longer than the mean synodic month. The tropical year is defined as 365 + ¹⁷⁵⁹/₇₂₀₀ days, almost exactly 5 minutes longer than the mean tropical year. (Chinese Wikipedia gives the tropical year as 365 + ¹⁷⁵⁸⁹/₇₂₀₀₀ days, but the maths do not work with this value. I suspect it is a typo, especially since Martzloff gives the correct answer in his book).
 
+Martzloff does not provide any epochs, so by my usual procedure, I arrived at a solar epoch of JD 1871530²⁹⁷⁸/₇₂₀₀ and a lunar epoch of JD 1871511⁵⁴⁵⁴¹/₈₉₀₅₂.
+
 Sources:
 * https://zh.wikipedia.org/wiki/%E7%8E%84%E5%A7%8B%E6%9B%86
-* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Chapter 2—4 and Appendices D,F,G
 
 ---------------
 DAMING CALENDAR
