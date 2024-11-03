@@ -1147,10 +1147,13 @@ Sources:
 YUANJIA CALENDAR
 ----------------
 
-The Yuanjia calendar was developed by He Chengtian and introduced in the 22nd year of Emperor Wen of the Liu Song dynasty. It refines the Sanji calendar with more accurate approximations of the tropical year and synodic month, which still maintain the 19:235 ratio. The tropical year is defined as 365 + ⁷⁵/₃₀₄ days, which is about 6 minutes 29 seconds longer than the mean tropical year. The synodic month is defined as 29 + ³⁹⁹/₇₅₂ days, less than half a second longer than the mean synodic month. Its use persisted into the Southern Liang dynasty, until it was replaced by the Daming calendar during the reign of Emperor Wu.
+The Yuanjia calendar was developed by He Chengtian and introduced in the 22nd year of Emperor Wen of the Liu Song dynasty. It refines the Sanji calendar with more accurate approximations of the tropical year and synodic month, which still maintain the 19:235 ratio. The tropical year is defined as 365¹⁵⁰/₆₀₈ days, which is about 6 minutes 29 seconds longer than the mean tropical year. The synodic month is defined as 29³⁹⁹/₇₅₂ days, less than half a second longer than the mean synodic month. Its use persisted into the Southern Liang dynasty, until it was replaced by the Daming calendar during the reign of Emperor Wu.
+
+Martzloff does not provide any epochs, so by my usual procedure, I arrived at a solar epoch of JD 1883586¹²⁶/₆₀₈ and a lunar epoch of JD 1883562⁴²/₄₇.
 
 Sources:
 * https://zh.wikipedia.org/wiki/%E5%85%83%E5%98%89%E6%9B%86
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Chapter 2—4 and Appendices D,F,G
 
 ----------------
 XUANSHI CALENDAR
@@ -1170,10 +1173,10 @@ DAMING CALENDAR
 
 The Daming calendar was designed by Zu Chongzhi and presented to Emperor Xiaowu of Liu Song during the fifth year of the Daming era (462 AD, 162 BH). However, it was not implemented during his lifetime, only coming into use during the 8th year of Emperor Wu of Liang.
 
-The Daming calendar defines the synodic month as 29 + ¹⁰⁹⁰/₃₉₃₉ days, which is just 0.107 seconds longer than the true mean synodic month. The tropical year is defined as 365 + ⁹⁵⁸⁹/₃₉₄₉₁ days, less than 2 minutes longer than the actual tropical year; this works out to 144 leap months in 391 years. Zu furthermore defined the draconic month as 27 + ⁵⁵⁹⁸/₂₆₃₇₇ days, a mere 0.9 seconds less than the true mean value.
+The Daming calendar defines the synodic month as 29²⁰⁹⁰/₃₉₃₉ days, which is just 0.107 seconds longer than the true mean synodic month. The tropical year is defined as 365⁹⁵⁸⁹/₃₉₄₉₁ days, less than 2 minutes longer than the actual tropical year; this works out to 144 leap months in 391 years. Zu furthermore defined the draconic month as 27⁵⁵⁹⁸/₂₆₃₇₇ days, a mere 0.9 seconds less than the true mean value, though this plays no role in calendrical calculations and is only of use in predicting eclipses.
 
 Sources:
-* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendix F
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Chapters 2—4, Appendices D—G
 * https://zh.wikipedia.org/wiki/%E5%A4%A7%E6%98%8E%E6%9B%86_(%E7%A5%96%E6%B2%96%E4%B9%8B)
 * http://www.herongyang.com/1000124_Zu_Chongzhi_and_the_Chinese_Calendar_Reform_of_462_AD.html
 
@@ -1183,17 +1186,21 @@ ZHENGGUANG CALENDAR
 
 The Zhengguang calendar was worked out by a council of scholars appointed by Emperor Xuanwu of Tuoba Wei at the very end of his reign, when errors in the Xuanshi calendar had started to become apparent. It is also known as the Tortoise calendar after the Shengui (Divine Tortoise) era, when it was first presented to Emperor Xiaoming. It was finally implemented halfway through the Zhengguang era, hence the name.
 
-The Zhengguang calendar defines the tropical year as 365 + ¹⁴⁷⁷/₆₀₆₀ days, which is about 1 minute 13 seconds longer than the mean tropical year. The synodic month is defined as 29 + ³⁹⁷⁶⁹/₇₄₉₅₂ days, just 0.4 seconds longer than the actual mean synodic month.
+The Zhengguang calendar defines the tropical year as 365¹⁴⁷⁷/₆₀₆₀ days, which is about 1 minute 13 seconds longer than the mean tropical year. The synodic month is defined as 29³⁹⁷⁶⁹/₇₄₉₅₂ days, just 0.4 seconds longer than the actual mean synodic month.
+
+Per standard procedure, I determined the solar epoch to be JD 1912071⁶⁵⁷/₆₀₆₀ and the lunar epoch to be 1912055¹⁰³⁷⁵/₁₈₇₃₈
 
 Sources:
-* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices F and G
+* Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Chapters 2—4, Appendices F and G
 * https://zh.wikipedia.org/wiki/%E6%AD%A3%E5%85%89%E6%9B%86
 
 ---------------
 XINGHE CALENDAR
 ---------------
 
-The Xinghe calendar was compiled by Lin Yexing towards the Dong Wei dynasty and introduced in the first year of Xinghe, the second era of King Heliuhun (AKA Gao Huan, Xianwu). It defines the tropical year as 365 + ⁴¹¹⁷/₁₉₈₆₀ days, which is slightly under 2 minutes longer than the mean tropical year. The synodic month is defined as 29 + ¹⁰⁰⁶⁴⁷/₂₀₈₅₃₀ days, approximately 1.25 seconds longer than the modern mean synodic month. It is thus slightly less accurate than the Zhengguan calendar. This results in 6951 months in 562 years.
+The Xinghe calendar was compiled by Lin Yexing towards the Dong Wei dynasty and introduced in the first year of Xinghe, the second era of King Heliuhun (AKA Gao Huan, Xianwu). It defines the tropical year as 365⁴¹¹⁷/₁₉₈₆₀ days, which is slightly under 2 minutes longer than the mean tropical year. The synodic month is defined as 29¹⁰⁰⁶⁴⁷/₂₀₈₅₃₀ days, approximately 1.25 seconds longer than the modern mean synodic month. It is thus slightly less accurate than the Zhengguan calendar. This results in 6951 months in 562 years.
+
+Per my usual procedure, the solar epoch is JD 1912071²¹⁹/₂₀₂₀ and the lunar epoch is JD 1912055¹⁰³⁷⁵/₁₈₇₃₈.
 
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
@@ -1203,7 +1210,9 @@ Sources:
 TIANBAO CALENDAR
 ----------------
 
-The Tianbao calendar was designed by Song Jing and introduced by Emperor Wenxuan at the very start of his reign. The tropical year is defined as 365 + ⁵⁷⁸⁷/₂₃₆₆₀ days, about 3 minutes 10 seconds longer than the mean tropical year. The synodic month is defined as 29 + ¹⁵⁵²⁷²/₂₉₂₆₃₅ days, just 0.8 seconds longer than the actual mean synodic month. This worked out to 8361 months in 676 years. It was thus better than the Xinghe calendar, but still less accurate than the Zhengguang calendar.
+The Tianbao calendar was designed by Song Jing and introduced by Emperor Wenxuan at the very start of his reign. The tropical year is defined as 365⁵⁷⁸⁷/₂₃₆₆₀ days, about 3 minutes 10 seconds longer than the mean tropical year. The synodic month is defined as 29¹⁵⁵²⁷²/₂₉₂₆₃₅ days, just 0.8 seconds longer than the actual mean synodic month. This worked out to 8361 months in 676 years. It was thus better than the Xinghe calendar, but still less accurate than the Zhengguang calendar.
+
+Per my usual procedure, the solar epoch is JD 1918281²⁵⁴⁹/₅₆₂₀ and the lunar epoch is JD 1918258⁹³/₃₃₁.
 
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
@@ -1213,7 +1222,7 @@ Sources:
 TIANHE CALENDAR
 ---------------
 
-The Tianhe calendar was designed by Zhen Luan and introduced at the beginning of Tianhe, the second era of Emperor Wu of Bei Zhou. It adopts the Zhengguang calendar's convention of 4836 months in 391 years, but redefines the lengths of the tropical year and synodic month. The tropical year is defined as 365 + ⁵⁷³¹/₂₃₄₆₀ days, less than 40 seconds longer than the modern mean tropical year (Martzloff's book has a typo; on p. 362, it gives the numerator of the fractional part as 5761, which is incorrect). The synodic month is defined as 29 + ¹⁵³⁹⁹¹/₂₉₀₁₆₀ days, a little over 10 seconds longer than the modern mean synodic month. The Tianhe calendar thus trades solar for lunar accuracy.
+The Tianhe calendar was designed by Zhen Luan and introduced at the beginning of Tianhe, the second era of Emperor Wu of Bei Zhou. It adopts the Zhengguang calendar's convention of 4836 months in 391 years, but redefines the lengths of the tropical year and synodic month. The tropical year is defined as 365⁵⁷³¹/₂₃₄₆₀ days, less than 40 seconds longer than the modern mean tropical year (Martzloff's book has a typo; on p. 362, it gives the numerator of the fractional part as 5761, which is incorrect). The synodic month is defined as 29¹⁵³⁹⁹¹/₂₉₀₁₆₀ days, a little over 10 seconds longer than the modern mean synodic month. The Tianhe calendar thus trades solar for lunar accuracy.
 
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, and G
@@ -1223,7 +1232,9 @@ Sources:
 DAXIANG CALENDAR
 ----------------
 
-The Daxiang, or Bingyin Yuan, calendar was designed by Ma Xiang and introduced at the beginning of the reign of Emperor Jing of Bei Zhou; it continued to be used into the early Sui dynasty. The tropical year is defined as 365 + ³¹⁶⁷/₁₂₉₉₂ days, which is about 1 minute 16 seconds longer than the modern mean tropical year. The synodic month is defined as 29 + ²⁸⁴²²/₅₃₅₆₃ days, about 2.5 seconds longer than the modern mean synodic month. There are 5541 months in 448 years.
+The Daxiang, or Bingyin Yuan, calendar was designed by Ma Xiang and introduced at the beginning of the reign of Emperor Jing of Bei Zhou; it continued to be used into the early Sui dynasty. The tropical year is defined as 365³¹⁶⁷/₁₂₉₉₂ days, which is about 1 minute 16 seconds longer than the modern mean tropical year. The synodic month is defined as 29²⁸⁴²²/₅₃₅₆₃ days, about 2.5 seconds longer than the modern mean synodic month. There are 5541 months in 448 years.
+
+Per my standard procedure, the solar epoch is JS 1927777⁸⁶¹⁷/₁₁₇₃₀ and the lunar epoch is 1932521¹¹²⁴⁴⁷/₂₉₀₁₆₀.
 
 Sources:
 * Astronomy and Calendars: The Other Chinese Mathematics 104 BC - AD 1644; Jean-Claude Martzloff, Springer, 2009 (French), 2016 (English), Appendices D, F, and G
