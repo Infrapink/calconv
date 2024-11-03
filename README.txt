@@ -508,8 +508,6 @@ Chinese solar calendars:
 Older Chinese calendars:
 ------------------------
 
-* Dōngyuè
-* Bīngyuè
 * Zōuyuè
 * Xìngyuè
 * Táoyuè
@@ -520,7 +518,11 @@ Older Chinese calendars:
 * Guìyuè
 * Júyuè
 * Lùyuè
-* Rùnyuè (leap years only)
+* Dōngyuè
+* Bīngyuè
+* Rùnyuè (leap years only in the ancient calendars only)
+
+Leap months in the Metonic calendars from the Han dynasty onwards are named by prefixing the month name with Rùn.
 
 Vietnamese calendar:
 --------------------
