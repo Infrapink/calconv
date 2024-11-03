@@ -1114,6 +1114,8 @@ QIANXIANG CALENDAR
 
 The Qianxiang calendar was adopted by the state of Wu during the so-called Three Kingdoms Era. It defines the tropical year as 365¹⁴⁵/₅₈₉ days, and the synodic month as 29⁷⁷³/₁₄₅₇ days. Martzloff does not provide any epochs, so I had to work it out for myself. I took the southern solstice of 222 AD as my starting point; based on ratios between the tropical year and synodic month, I assigned the solstice to Julian Day 1802499⁴¹⁷/₅₈₉ and the previous new moon to Julian Day 1802498²²⁴/₁₄₅₇. This provides incredibly close correlation with the actual lunar cycle, and almost perfectly matches my algorithms for the modern Chinese calendar.
 
+The Qianxiang li also introduced the anomalistic month, but this was only used for positional astronomy, not calendrical calculations.
+
 Sources:
 * https://zh.wikipedia.org/wiki/%E4%B9%BE%E8%B1%A1%E6%9B%86
 * https://en.wikipedia.org/wiki/Liu_Hong_(astronomer)
@@ -1270,7 +1272,7 @@ WUYIN CALENDAR
 
 The Wuyin, or Wuyin Yuan, calendar, is the last historical Chinese calendar to use exclusively mean values. Designed by Fu Renjun and Cui Shan, it was introduced early in the Tang dynasty, in the second year of Emperor Gaozu.
 
-There are 249 leap years in 676 year. The tropical year is defined as 365 + ²³¹⁵/₉₄₆₄ days, about 2½ minutes longer than the modern tropical year. The synodic month was defined as 29 + ⁶⁹⁰¹/₁₃₀₀₆ days, just under a second longer than the mean synodic month.
+There are 249 leap years in 676 years. The tropical year is defined as 365²³¹⁵/₉₄₆₄ days, about 2½ minutes longer than the modern tropical year. The synodic month was defined as 29⁶⁹⁰¹/₁₃₀₀₆ days, just under a second longer than the mean synodic month.
 
 While it was a step back from the Daye calendar, further calendar reforms in the Tang dynasty would make the calendar ever more accurate as the variable speed of the sun and the moon across the zodiac were taken into account to generate incredibly precise almanacs.
 
