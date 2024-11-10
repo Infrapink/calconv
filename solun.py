@@ -280,6 +280,16 @@ def starrise2(jday, lon, lat, star):
     s = sunmoon.pub.pub_stellar_riset(jday, lon, lat, deltat, star.ra, star.dec, star.distance, star.rv, star.dra, star.ddec)
     return(s[0])
 
+def local_starrise(jday, lon, lat, star, tz):
+    '''Time of a star rising at a given longitude and latitude, in local time'''
+    jday = Fraction(jday)
+    lon = float(lon)
+    lat = float(lat)
+    tz = Fraction(tz)
+
+    ans = floor(jday) + starrise2(jday, lon, lat, star) - tz
+    return ans
+
 def starpos(jday, star):
     '''Determine the right ascension and declination of a given star as of jday. See Meeus, chapter 23'''
     jday = Fraction(jday) - Fraction(12,24) # convert from midnight-to-midnight to noon-to-noon denotation
@@ -469,8 +479,21 @@ def dayof_tamil(jday):
 
     return ans
 
+def dayof_arab(jday, lon, lat, tz):
+    '''Compute the day associated with an astronomical event, as per the Arab rule'''
+    # The Arab rule is that days begin at sunset
+    jday = Fraction(jday) # instant of the event in question
+    lon = Fraction(lon) # local longitude
+    lat = Fraction(lat) # local latitude
+    tz = Fraction(tz) # timezone
+
+    if (jday <= local_sunrise(jday, lon, lat, tz)):
+        ans = floor(jday)
+    else:
+        ans = ceil(jday)
+
 def heliacal_rising(jday, lon, lat, star):
-    '''Compute the nearest day of the heliacal rising of a given star at a given plance.'''
+    '''Compute the nearest day of the heliacal rising of a given star at a given place.'''
     jday = Fraction(jday) # the time we start with
     lon = Fraction(lon) # geographical longitude; East of Greenwich is positive, West is negative
     lat = Fraction(lat) # geographical latitude
@@ -495,6 +518,34 @@ def heliacal_rising(jday, lon, lat, star):
     while ((starrise2(ans, lon, lat, star) - sunrise(ans, lon, lat)) < Fraction(30, 1440)):
         ans += 1
     while ((starrise2((ans - 1), lon, lat, star) - sunrise(ans, lon, lat)) >= Fraction(30, 1440)):
+        ans -= 1
+
+    return ans
+
+def acronycal_rising(jday, lon, lat, star, tz):
+    '''Compute the nearest day of the acronycal rising of a given star at a given place.'''
+    jday = Fraction(jday) # the time we start with
+    lon = Fraction(lon) # geographical longitude; east of Greenwich is postive, west is negative
+    lat = Fraction(lat) # geographical latitude
+    tz = Fraction(tz)
+    # star is an object of Star class as defined in stars.py
+
+    # first, roughly zero in on the day when the sun and the star are in opposition
+    if (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) > ((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360)):
+        # sun is ahead of opposition, so step backward
+        jday = jday - (sid_year * (((180 + (solar_cel_coords(jday)[0] - starpos(jday, star)[0])) % 360) / 360))
+    else:
+        # sun is behind opposition, so step forward
+        jday = jday + (sid_year * (((180 + (starpos(jday, star)[0] - solar_cel_coords(jday)[0])) % 360) / 360))
+
+    # we're at the point where the sun and the star are approximately in opposition
+    # now, zero in on a more exacttime
+    # assume the the achronycal rising is the day beginning with the sunset about 30 minutes after starrise
+    ans = round(jday)
+
+    while (local_sunset(ans, lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) < Fraction(30,1440)):
+        ans += 1
+    while (local_sunset((ans - 1), lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) >= Fraction(30,1440)):
         ans -= 1
 
     return ans
