@@ -515,9 +515,11 @@ def heliacal_rising(jday, lon, lat, star):
     # assume that the heliacal rising is the day when the star rises about 30 minutes before the sun
     ans = round(jday) # we are, ultimately, looking for an integer consecutive Julian Day.
 
-    while ((starrise2(ans, lon, lat, star) - sunrise(ans, lon, lat)) < Fraction(30, 1440)):
+    #while ((starrise2(ans, lon, lat, star) - sunrise(ans, lon, lat)) < Fraction(30, 1440)):
+    while (sunrise(ans, lon, lat) - starrise2(ans, lon, lat, star) < Fraction(30, 1440)):
         ans += 1
-    while ((starrise2((ans - 1), lon, lat, star) - sunrise(ans, lon, lat)) >= Fraction(30, 1440)):
+    #while ((starrise2((ans - 1), lon, lat, star) - sunrise(ans, lon, lat)) >= Fraction(30, 1440)):
+    while (sunrise((ans - 1), lon, lat) - starrise2((ans - 1), lon, lat, star) >= Fraction(30, 1440)):
         ans -= 1
 
     return ans
@@ -543,9 +545,10 @@ def acronycal_rising(jday, lon, lat, star, tz):
     # assume the the achronycal rising is the day beginning with the sunset about 30 minutes after starrise
     ans = round(jday)
 
-    while (local_sunset(ans, lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) < Fraction(30,1440)):
+    while (local_starrise(ans, lon, lat, star, tz) - local_sunset(ans, lon, lat, tz) < Fraction(30, 1440)):
         ans += 1
-    while (local_sunset((ans - 1), lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) >= Fraction(30,1440)):
+    while (local_starrise((ans - 1), lon, lat, star, tz) - local_sunset((ans - 1), lon, lat, tz) >= Fraction(30, 1440)):
         ans -= 1
 
     return ans
+    
