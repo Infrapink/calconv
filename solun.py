@@ -525,7 +525,7 @@ def heliacal_rising(jday, lon, lat, star):
     return ans
 
 def acronycal_rising(jday, lon, lat, star, tz):
-    '''Compute the nearest day of the acronycal rising of a given star at a given place.'''
+    '''Compute the nearest day of the acronycal rising of a given star at a given place, assuming the day begins at sunset.'''
     jday = Fraction(jday) # the time we start with
     lon = Fraction(lon) # geographical longitude; east of Greenwich is postive, west is negative
     lat = Fraction(lat) # geographical latitude
@@ -543,12 +543,12 @@ def acronycal_rising(jday, lon, lat, star, tz):
     # we're at the point where the sun and the star are approximately in opposition
     # now, zero in on a more exacttime
     # assume the the achronycal rising is the day beginning with the sunset about 30 minutes after starrise
-    ans = round(jday)
+    ans = local_sunset(jday, lon, lat, tz)
 
     while (local_starrise(ans, lon, lat, star, tz) - local_sunset(ans, lon, lat, tz) < Fraction(30, 1440)):
         ans += 1
     while (local_starrise((ans - 1), lon, lat, star, tz) - local_sunset((ans - 1), lon, lat, tz) >= Fraction(30, 1440)):
         ans -= 1
 
-    return ans
+    return ceil(ans)
     
