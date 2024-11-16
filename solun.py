@@ -90,13 +90,21 @@ def trans(day, angle, frtz):
     return time
 
 def newmoon(day, frtz):
-    '''Julian Day and time of the new moon, UTC'''
+    '''Julian Day and time of the new moon, in local time'''
     day = floor(day) - 0.5
     frtz = Fraction(frtz) # timezone
 
     minutes = int(sunmoon.pub.pub_lunar_time(day))
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
+
+def first_visible_crescent(jday, tz):
+    '''Approximate Julian Day and time of the first visible crescent, in local time'''
+    jday = Fraction(jday)
+    tz = Fraction(tz)
+
+    ans = newmoon(jday, tz) + 1
+    return ans
 
 def conj(day, frtz):
     '''This function is deprecated. Use newmoon() instead'''
@@ -533,12 +541,11 @@ def acronycal_rising(jday, lon, lat, star, tz):
     # star is an object of Star class as defined in stars.py
 
     # first, roughly zero in on the day when the sun and the star are in opposition
-    if (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) > ((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360)):
-        # sun is ahead of opposition, so step backward
-        jday = jday - (sid_year * (((180 + (solar_cel_coords(jday)[0] - starpos(jday, star)[0])) % 360) / 360))
+    theta = (solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360
+    if (theta < 180):
+        jday += (180 - theta)
     else:
-        # sun is behind opposition, so step forward
-        jday = jday + (sid_year * (((180 + (starpos(jday, star)[0] - solar_cel_coords(jday)[0])) % 360) / 360))
+        jday -= (theta - 180)
 
     # we're at the point where the sun and the star are approximately in opposition
     # now, zero in on a more exacttime
@@ -546,9 +553,9 @@ def acronycal_rising(jday, lon, lat, star, tz):
     ans = local_sunset(jday, lon, lat, tz)
 
     while (local_starrise(ans, lon, lat, star, tz) - local_sunset(ans, lon, lat, tz) < Fraction(30, 1440)):
-        ans += 1
-    while (local_starrise((ans - 1), lon, lat, star, tz) - local_sunset((ans - 1), lon, lat, tz) >= Fraction(30, 1440)):
         ans -= 1
+    while (local_starrise((ans - 1), lon, lat, star, tz) - local_sunset((ans - 1), lon, lat, tz) >= Fraction(30, 1440)):
+        ans += 1
 
     return ceil(ans)
     
