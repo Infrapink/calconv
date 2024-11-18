@@ -500,6 +500,8 @@ def dayof_arab(jday, lon, lat, tz):
     else:
         ans = ceil(jday)
 
+    return ans
+
 def heliacal_rising(jday, lon, lat, star):
     '''Compute the nearest day of the heliacal rising of a given star at a given place.'''
     jday = Fraction(jday) # the time we start with

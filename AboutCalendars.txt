@@ -2308,3 +2308,42 @@ Sources:
 * https://id.wikipedia.org/wiki/Pranata_mangsa
 * http://world.clndr.org/calendars/javanese-calendar/
 * Balinese Traditional Calendar, SK Chatterjee, Indian Journal of the History of Science, 32(4), 1997 (pp 325—346)
+
+-------------------
+HAWAI'IAN CALENDARS
+-------------------
+
+Polynesian peoples traditionally make use of lunisolar calendars anchored to the acronycal rising of the Pleiades. It is fallacious to view these as the kind of precise, highly-structured and regulated calendars used by civilisations: Polynesian calendars tend to be more freewheeling, with agreed-upon structures that vary from community to community; they tend to lack standard eras, and months are considered more important than years. Leilehua Yuen describes this with a beautiful simile: "like the tides of the ocean, the Hawaiian months gently ebb and flow across the Gregorian calendar". Still, the details are usually similar enough to generate dates.
+
+This means that a variety of traditional calendars, similar but not identical, are used across Hawai'i. Common features are that each month begins with the first visible waxing crescent, and days begin at sunset.
+
+What appears to be the most common variant was described by David Malo in the 1900s; the year begins with the first visible crescent after the acronycal rising of the Pleiades. The Western Pacific Regional Fishery Management Council (WPRFMC) associates this with O'ahu. The WPRFMC also describes a variant from Kaua'i, which appears to be identical to the one on O'ahu but with different month names.
+
+In Ka'ū, the first visible crescent after the acronycal rising of the Pleiades is the second month of the year (excluding leap months). The Ka'ū variant thus agrees with the O'ahu version on which month it is, but differs in when the year begins.
+
+In Napo'opo'o, the year begins four months after the acronycal rising of the Pleiades, at the start of the calm season (around the northward equinox). The Napo'opo'o version has the same month names as in O'ahu (with the exception of Māhoe Hope, which is called Māhoe 'e Lua) in mostly the same cyclic order, but the positions of Welehu and Kā'elo are swapped.
+
+Another variant was described by Kepelino (AKA Zepherin Kahōʻāliʻi Keauokalani), which uses the same months as the O'ahu version but begins two months after the acronycal rising of the Pleiades, around January; Leilehua Yuen suggests Kepelino was influenced by Christianity, though it might just have been the dominance of the Gregorian calendar.
+
+Hawai'ians traditionally had little use for calendar eras, and indeed Hawai'i as a political unit didn't exist until the end of the 18th century AD. My converter requires a year number to work, but I should stress that applying one is an external imposition that is not part of traditional Hawai'ian timekeeping. I initially hoped to use the date of the initial settlement of Hawai'i as my epoch; alas, archaeological evidence can't pin this down to a band narrower than a century. As such, I went with the year that Kamehameha I united the Hawai'ian Islands into a single kingdom.
+
+Sources:
+* https://www.kaahelehawaii.com/kaulana-mahina-the-hawaiian-lunar-calendar/
+* https://issuu.com/wpcouncil/docs/2023_hawaii-lunarcalendar_high-res
+* http://www.ahamoku.org/wp-content/uploads/2020/05/Hawn_LunarCal-2015_web_SECURED.pdf
+* https://kawaiola.news/columns/e-hoololi-i-ke-kulana/shine-on-the-legacy-of-the-hawaiian-moon-calendar/
+* https://archive.hokulea.com/ike/hookele/hawaiian_lunar_month.html
+* https://archive.hokulea.com/ike/hookele/hawaiian_star_lines.html
+* https://www.hawaii.edu/climate-data-portal/hawaiian-lunar-calendar/
+* https://www.wpcouncil.org/educational-resources/lunar-calendars/
+* https://www.pkhcc.org/mooncalendar/
+* https://www.wpcouncil.org/wp-content/uploads/2023/12/2024_Hawaii-LunarCalendar_WEB.pdf
+* https://www.wpcouncil.org/wp-content/uploads/2023/12/2024_Hawaii-LunarCalendar-Fishermen_WEB.pdf
+* https://nupepa-hawaii.com/2013/11/21/poepoes-chart-of-the-traditional-month-names-1906/
+* https://nupepa-hawaii.com/2013/11/21/traditional-month-names-1895/
+* https://guides.library.kapiolani.hawaii.edu/apdl/oahu/months
+* https://blog.bishopmuseum.org/nupepa/traditional-knowledge/
+* https://www.khon2.com/aloha-authentic/traditional-hawaiian-lunar-months/
+* https://nupepa-hawaii.com/2019/04/03/month-names-on-maui-and-hawaii-1890/
+* https://imagesofoldhawaii.com/months/
+* https://core.ac.uk/download/pdf/5014374.pdf
