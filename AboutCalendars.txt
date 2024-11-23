@@ -2347,3 +2347,17 @@ Sources:
 * https://nupepa-hawaii.com/2019/04/03/month-names-on-maui-and-hawaii-1890/
 * https://imagesofoldhawaii.com/months/
 * https://core.ac.uk/download/pdf/5014374.pdf
+
+------------------------
+HAWAI'IAN SOLAR CALENDAR
+------------------------
+
+In my research, I encountered a few scattered references to a Hawai'ian solar calendar, having a similar structure to the Ethiopian. Given what else I read of indigenous Hawai'ian culture, as well as the cultures and timekeeping practices of Polynesia more broadly, I suspect this is a very recent innovation. Still, I found two different sources, so I guess there is at least a little bit of fire behind this smoke.
+
+The Hawai'ian solar calendar consists of 12 months of 30 days each plus 5 or 6 extra days, beginning on the day of the acronycal rising of the Pleiades. Days begin at sunset.
+
+Sources:
+* https://hilo.hawaii.edu/news/kekalahea/spring-2023/march/mahina-vs-gregorian.php
+* Eldon Best, The Maori Division of Time, 1922, p. 15. Available online:
+** https://en.wikisource.org/wiki/The_Maori_Division_of_Time
+** https://archive.org/details/maoridivisionoft00bestuoft/page/2/mode/2up

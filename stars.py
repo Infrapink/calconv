@@ -86,3 +86,10 @@ SHRAVISHTHA = Star( ((20 * 15) + (39 * Decimal(15/60)) + (Decimal('38.28720') * 
                     Decimal('-3.40'), # rv
                     Decimal('53.82'), # dra
                     Decimal('8.47')) # ddec
+
+RIGEL = Star( ((5 * 15) + (14 * Decimal(15/60)) + (Decimal('32.27210') * Decimal(15/(60 * 60))) ), # ra
+              0 - (8 + (12 * Decimal(15/60)) + (Decimal('5.8981') * Decimal(15/(60 * 60)))), # dec
+              260, # distance
+              Decimal('17.8'), # rv
+              Decimal('1.31'), # dra
+              Decimal('0.5')) # ddec

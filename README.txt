@@ -958,6 +958,8 @@ Hawai'ian calendars:
 * Māhoe Mua
 * Māhoe Hope
 * ʻIkuā
+* Malama Pili (leap years only)
+* Extra days (solar calendar only)
 
 Kaua'i:
 -------
@@ -973,6 +975,7 @@ Kaua'i:
 * Hinaiaʻeleʻele
 * Māhoe Mua
 * Māhoe Hope
+* Malama Pili (leap years only)
 
 
 LICENSE
