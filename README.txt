@@ -944,6 +944,36 @@ Javanese calendars:
 * Dulkangidah
 * Besar
 
+Hawai'ian calendars:
+--------------------
+* Welehu
+* Makaliʻi
+* Kāʻelo
+* Kaulua
+* Nana
+* Welo
+* Ikiiki
+* Kaʻaona
+* Hinaiaʻeleʻele
+* Māhoe Mua
+* Māhoe Hope
+* ʻIkuā
+
+Kaua'i:
+-------
+* Hilinamā
+* Hilinehu
+* Hilioholo
+* Hilionalu
+* Hukipau
+* ʻIkuā
+* Welehu
+* Kāʻelo
+* Ikiiki
+* Hinaiaʻeleʻele
+* Māhoe Mua
+* Māhoe Hope
+
 
 LICENSE
 =======

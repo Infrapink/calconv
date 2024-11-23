@@ -1573,3 +1573,64 @@ NUM_OLD_CHINESE = {"Dōngyuè": 10,
                    "Guìyuè":   7,
                    "Júyuè":    8,
                    "Lùyuè":    9}
+
+CHINESE = ("Zhēngyuè", "Èryuè", "Sānyuè", "Sìyuè", "Wǔyuè", "Liùyuè", "Qīyuè", "Bāyuè", "Jiǔyuè", "Shíyuè", "Shíyīyuè", "Làyuè")
+
+NUM_CHINESE = {"Zhēngyuè":  0,
+               "Èryuè":     1,
+               "Sānyuè":    2,
+               "Sìyuè":     3,
+               "Wǔyuè":     4,
+               "Liùyuè":    5,
+               "Qīyuè":     6,
+               "Bāyuè":     7,
+               "Jiǔyuè":    8,
+               "Shíyuè":    9,
+               "Shíyīyuè": 10,
+               "Làyuè":    11}
+
+HAWAIIAN = ("Welehu", "Makaliʻi", "Kāʻelo", "Kaulua", "Nana", "Welo", "Ikiiki", "Kaʻaona", "Hinaiaʻeleʻele", "Māhoe Mua", "Māhoe Hope", "ʻIkuā")
+
+NUM_HAWAIIAN = {"Welehu":         0,
+                "Makaliʻi":       1,
+                "Kāʻelo":         2,
+                "Kaulua":         3,
+                "Nana":           4,
+                "Welo":           5,
+                "Ikiiki":         6,
+                "Kaʻaona":        7,
+                "Hinaiaʻeleʻele": 8,
+                "Māhoe Mua":      9,
+                "Māhoe Hope":    10,
+                "ʻIkuā":         11}
+
+KAUAI = ("Hilinamā", "Hilinehu", "Hilioholo", "Hilionalu", "Hukipau", "ʻIkuā", "Welehu", "Kāʻelo", "Ikiiki", "Hinaiaʻeleʻele", "Māhoe Mua", "Māhoe Hope")
+
+NUM_KAUAI = {"Hilinamā":       0,
+             "Hilinehu":       1,
+             "Hilioholo":      2,
+             "Hilionalu":      3,
+             "Hukipau":        4,
+             "ʻIkuā":          5,
+             "Welehu":         6,
+             "Kāʻelo":         7,
+             "Ikiiki":         8,
+             "Hinaiaʻeleʻele": 9,
+             "Māhoe Mua":     10,
+             "Māhoe Hope":    11}
+
+NAPOOPOO = ("Nana", "Welo", "Ikiiki", "Kaʻaona", "Hinaiaʻeleʻele", "Māhoe Mua", "Māhoe ʻe Lua", "ʻIkuā", "Kāʻelo", "Makaliʻi", "Welehu", "Kaulua")
+
+NUM_NAPOOPOO = {"Nana":           0,
+                "Welo":           1,
+                "Ikiiki":         2,
+                "Kaʻaona":        3,
+                "Hinaiaʻeleʻele": 4,
+                "Māhoe Mua":      5,
+                "Māhoe ʻe Lua":   6,
+                "ʻIkuā":          7,
+                "Kāʻelo":         8,
+                "Makaliʻi":       9,
+                "Welehu":        10,
+                "Kaulua":        11}
+
