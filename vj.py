@@ -12,12 +12,12 @@ lat = 27 + Fraction(19, 60) + Fraction(20, 3600) # latitude of Mohenjo Daro
 lon = 68 + Fraction(8, 60) + Fraction(20, 3600) # longitude of Mohenjo Daro
 tz = Fraction(lon, 360) # local timezone, or rather the absolute offset from UTC, in fractions of a day
 
-epoch = heliacal_rising(ky, lon, lat, s)
+epoch = heliacal_rising(ky, lon, lat, s, tz)
 
 def hr(jday):
     '''heliacal_rising() but always for SHRAVISHTHA at local coördinates; this makes the code much cleaner'''
     jday = Fraction(jday)
-    ans = heliacal_rising(jday, lon, lat, s)
+    ans = heliacal_rising(jday, lon, lat, s, tz)
     return ans
 
 def dayof(jday):

@@ -502,14 +502,15 @@ def dayof_arab(jday, lon, lat, tz):
 
     return ans
 
-def heliacal_rising(jday, lon, lat, star):
+def heliacal_rising(jday, lon, lat, star, tz):
     '''Compute the nearest day of the heliacal rising of a given star at a given place.'''
     jday = Fraction(jday) # the time we start with
     lon = Fraction(lon) # geographical longitude; East of Greenwich is positive, West is negative
     lat = Fraction(lat) # geographical latitude
+    tz = Fraction(tz) # local timezone
     # star is an object of Star class as defined in stars.py
     
-    tz = Fraction(lat, 360) # difference in local noons, in DAYS, between Greenwich and location in question
+    #tz = Fraction(lat, 360) # difference in local noons, in DAYS, between Greenwich and location in question
 
     # first, roughly zero in on the day when the sun and the star are in alignment
     if (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) > ((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360)):
@@ -526,10 +527,10 @@ def heliacal_rising(jday, lon, lat, star):
     ans = round(jday) # we are, ultimately, looking for an integer consecutive Julian Day.
 
     #while ((starrise2(ans, lon, lat, star) - sunrise(ans, lon, lat)) < Fraction(30, 1440)):
-    while (sunrise(ans, lon, lat) - starrise2(ans, lon, lat, star) < Fraction(30, 1440)):
+    while (local_sunrise(ans, lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) < Fraction(30, 1440)):
         ans += 1
     #while ((starrise2((ans - 1), lon, lat, star) - sunrise(ans, lon, lat)) >= Fraction(30, 1440)):
-    while (sunrise((ans - 1), lon, lat) - starrise2((ans - 1), lon, lat, star) >= Fraction(30, 1440)):
+    while (local_sunrise((ans - 1), lon, lat, tz) - local_starrise((ans - 1), lon, lat, star, tz) >= Fraction(30, 1440)):
         ans -= 1
 
     return ans
