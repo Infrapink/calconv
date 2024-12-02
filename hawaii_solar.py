@@ -9,7 +9,7 @@ from stars import PLEIADES
 
 epoch = 2376621 - 365 # November 1793 AD, the approximate start of year 0
 tz = Fraction(-10,24) # Hawai'i's timezone
-lon = -155 - Fraction(30,60) # longitude of the centre of Hawai'i Island
+lon = 155 - Fraction(30,60) # longitude of the centre of Hawai'i Island
 lat = 19 + Fraction(36,60) # latitude of the centre of Hawai'i Island
 
 def acris(jday):

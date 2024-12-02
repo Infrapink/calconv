@@ -7,7 +7,7 @@ from stars import PLEIADES
 from solun import lunar_month as syn_month, sid_year, acronycal_rising, first_visible_crescent, dayof_arab
 from months import NAPOOPOO as MONTHS, NUM_NAPOOPOO as MONTHNO
 
-lon = -155 - Fraction(30,60) # longitude of the centre of Hawai'i Island
+lon = 155 - Fraction(30,60) # longitude of the centre of Hawai'i Island
 lat = 19 + Fraction(36,60) # latitude of the centre of Hawai'i Island
 tz = Fraction(-10,24) # Hawai'i's timezone
 epoch = 2376621 - 365 # year 1 is 1795 AD, starting in November 1794; this is the start of year 0

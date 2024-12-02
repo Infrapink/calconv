@@ -9,7 +9,7 @@ from months import NUM_NEPALI as MONTHS, NEPALI_NUM as MONTHNO
 from math import floor, ceil
 
 tz = Fraction(5,24) + Fraction(45,1440) # Nepal's timezone is 5hr 45min ahead of UTC
-lon = 52 + Fraction(32,100) # longitude of Kathmandu
+lon = -52 - Fraction(32,100) # longitude of Kathmandu
 lat = 27 + Fraction(71,100) # latitude of Kathmandu
 epoch = 2042401
 

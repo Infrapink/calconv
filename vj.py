@@ -9,7 +9,7 @@ from stars import SHRAVISHTHA as s
 from months import INDIAN_LUNAR_NUM as NUMON, NUM_INDIAN_LUNAR as MONTHNO
 
 lat = 27 + Fraction(19, 60) + Fraction(20, 3600) # latitude of Mohenjo Daro
-lon = 68 + Fraction(8, 60) + Fraction(20, 3600) # longitude of Mohenjo Daro
+lon = -(68 + Fraction(8, 60) + Fraction(20, 3600)) # longitude of Mohenjo Daro
 tz = Fraction(lon, 360) # local timezone, or rather the absolute offset from UTC, in fractions of a day
 
 epoch = heliacal_rising(ky, lon, lat, s, tz)
