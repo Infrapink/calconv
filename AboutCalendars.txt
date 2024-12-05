@@ -2358,6 +2358,27 @@ The Hawai'ian solar calendar consists of 12 months of 30 days each plus 5 or 6 e
 
 Sources:
 * https://hilo.hawaii.edu/news/kekalahea/spring-2023/march/mahina-vs-gregorian.php
-* Eldon Best, The Maori Division of Time, 1922, p. 15. Available online:
+* Eldon Best, The Maori Division of Time, 1922, p. 10. Available online:
 ** https://en.wikisource.org/wiki/The_Maori_Division_of_Time
 ** https://archive.org/details/maoridivisionoft00bestuoft/page/2/mode/2up
+
+-------------------------------------------------
+MARAMATAKA (MÃORI AND MORIORI LUNISOLAR CALENDAR)
+-------------------------------------------------
+
+The timekeeping traditions of the Māori of Aotearoa (New Zealand) and the Moriori of Rēhoku (Chatham Islands) are similar to those of Native Hawai‘ians. Time is tracked by the phase of the moon, for which the Māori have a name for each day, cognate with the Hawai‘ian names.
+
+The beginning of the year is heralded by the heliacal rising of either the Pleiades (on most of the North Island) or Rigel (on the South Island, as well as Te Tai Tokerau (Northland) and Rēhoku). Months of the year are associated with the visibility of particular stars, but this is correlative, not definitive; months are more properly defined by weather, sunlight, and which plants are flowering, and the exact structure of the calendar varies from iwi to iwi. Indeed, before colonialism, the Māori had no real concept of a "year"; Eldon Best describes an anecdote where a white man asked a knowledgeable Māori elder in what year a particular even took place, and the elder replied that the Māori simply do not understand time in that way.
+
+Best describes a variety of months used by various iwi. The Tūhoe months are the most representative of the North Island, though the Ngāti Awa and people of Te Tai Tokerau and Te Matau-a-Māui have their own month names. Different month names are also in use on the South Island and Rēhoku.
+
+Days begin at sunset, and Māori and Moriori use 'night' in the same sense that English speakers use the word 'day'.
+
+Sources:
+* Eldon Best, The Maori Division of Time, 1922, p. 10. Available online:
+** https://en.wikisource.org/wiki/The_Maori_Division_of_Time
+** https://archive.org/details/maoridivisionoft00bestuoft/page/2/mode/2up
+* https://www.tepapa.govt.nz/discover-collections/read-watch-play/matariki-maori-new-year/matariki-regional-variations/difference
+* https://www.tepapa.govt.nz/discover-collections/read-watch-play/maori/matariki-maori-new-year/what-maramataka-maori-lunar
+* https://www.tepapa.govt.nz/discover-collections/read-watch-play/maori/matariki-maori-new-year/how-use-maramataka-maori-lunar
+* https://www.tepapa.govt.nz/discover-collections/read-watch-play/maori/matariki-maori-new-year/months-maramataka-maori-lunar

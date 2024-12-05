@@ -1589,6 +1589,7 @@ NUM_CHINESE = {"Zhēngyuè":  0,
                "Shíyīyuè": 10,
                "Làyuè":    11}
 
+# Hawai'ian month names
 HAWAIIAN = ("Welehu", "Makaliʻi", "Kāʻelo", "Kaulua", "Nana", "Welo", "Ikiiki", "Kaʻaona", "Hinaiaʻeleʻele", "Māhoe Mua", "Māhoe Hope", "ʻIkuā")
 
 NUM_HAWAIIAN = {"Welehu":         0,
@@ -1634,3 +1635,111 @@ NUM_NAPOOPOO = {"Nana":           0,
                 "Welehu":        10,
                 "Kaulua":        11}
 
+# Māori month names
+TUHOE = ("Pipiri", "Hōngongoi", "Here-turi-kōkā", "Mahuru", "Whiringa-ā-nuku", "Whiringa-ā-rangi", "Hakihea", "Kohitātea", "Hui-tanguru", "Poutū-te-rangi", "Paenga-whāwhā", "Haratua")
+
+NUM_TUHOE = {"Pipiri":           0,
+             "Hōngongoi":        1,
+             "Here-turi-kōkā":   2,
+             "Mahuru":           3,
+             "Whiringa-ā-nuku":  4,
+             "Whiringa-ā-rangi": 5,
+             "Hakihea":          6,
+             "Kohitātea":        7,
+             "Hui-tanguru":      8,
+             "Poutū-te-rangi":   9,
+             "Paenga-whāwhā":   10,
+             "Haratua":         11}
+
+NGATIAWA = ("Te Tahi o Pipiri", "Te Rua o Takurua", "Te Toru o Here-turi-koka", "Te Wha o Mahuru", "Te Rima o Kopu", "Whitianaunau", "Hakihea", "Kai-tatea", "Ruhi-te-rangi", "Poutu-te-rangi", "Paenga-whawha", "Haki-haratua")
+
+NUM_NGATIAWA = {"Te Tahi o Pipiri":         0,
+                "Te Rua o Takurua":         1,
+                "Te Toru o Here-turi-koka": 2,
+                "Te Wha o Mahuru":          3,
+                "Te Rima o Kopu":           4,
+                "Whitianaunau":             5,
+                "Hakihea":                  6,
+                "Kai-tatea":                7,
+                "Ruhi-te-rangi":            8,
+                "Poutu-te-rangi":           9,
+                "Paenga-whawha":           10,
+                "Haki-haratua":            11}
+
+KAHUNGUNU = ("Aonui", "Te Aho-turuturu", "Te Ihomatua", "Tapere-wai", "Tatau-urutahi", "Tatau-uruora", "Akāka-nui", "Akuahu-mataora", "Te Ihonui", "Putoki-nui-o-tau", "Tikaka-muturangi", "Uruwhenhua")
+
+NUM_KAHUNGUNU = {"Aonui":             0,
+                 "Te Aho-turuturu":   1,
+                 "Te Ihomatua":       2,
+                 "Tapere-wai":        3,
+                 "Tatau-urutahi":     4,
+                 "Tatau-uruora":      5,
+                 "Akāka-nui":         6,
+                 "Akuahu-mataora":    7,
+                 "Te Ihonui":         8,
+                 "Putoki-nui-o-tau":  9,
+                 "Tikaka-muturangi": 10,
+                 "Uruwhenhua":       11}
+
+SOUTH_MAORI = ("Matahi o Pouaka", "Maruaroa", "Te Toru", "Te Wha", "Te Rima", "Te Ono", "Te Whitu", "Te Waru", "Te Iwa", "Te Ngahuru", "Ngahuru-nui", "Matahi o te tau", "Matahi o Mahurihuri")
+
+NUM_SOUTH_MAORI = {"Matahi o Pouaka":      0,
+                   "Maruaroa":             1,
+                   "Te Toru":              2,
+                   "Te Wha":               3,
+                   "Te Rima":              4,
+                   "Te Ono":               5,
+                   "Te Whitu":             6,
+                   "Te Waru":              7,
+                   "Te Iwa":               8,
+                   "Te Ngahuru":           9,
+                   "Ngahuru-nui":         10,
+                   "Matahi o te tau":     11,
+                   "Matahi o Mahurihuri": 12}
+
+MORIORI = ("Kahu", "Rongo", "Tahei", "Keitanga", "Tauaropoti", "Wareahe", "Tchuhe a Takarore", "Wairehu", "Moro", "Mihi-torekau", "Ta Upoko o T'etchiao", "Tumatehea")
+
+NUM_MORIORI = {"Kahu":                  0,
+               "Rongo":                 1,
+               "Tahei":                 2,
+               "Keitanga":              3,
+               "Tauaropoti":            4,
+               "Wareahe":               5,
+               "Tchuhe a Takarore":     6,
+               "Wairehu":               7,
+               "Moro":                  8,
+               "Mihi-torekau":          9,
+               "Ta Upoko o T'etchiao": 10,
+               "Tumatehea":            11}
+
+SAMOAN = ("Toe-taumafa", "Utuva-mua", "Utuva-muli", "Fa'aafu", "Lo", "Aununu", "Oloamanu", "Palolo-mua", "Palolo-muli", "Mulifa", "Lotuanga", "Taumafa-mua", "Leap month")
+
+NUM_SAMOAN = {"Toe-taumafa":  0,
+              "Utuva-mua":    1,
+              "Utuva-muli":   2,
+              "Fa'aafu":      3,
+              "Lo":           4,
+              "Aununu":       5,
+              "Oloamanu":     6,
+              "Palolo-mua":   7,
+              "Palolo-muli":  8,
+              "Mulifa":       9,
+              "Lotuanga":    10,
+              "Taumafa-mua": 11,
+              "Leap month":  12}
+
+RAPANUI = ("Anekena", "Hora-iti", "Hora-nui", "Tangarouri", "Kotuti", "Ruti", "Koro", "Tuaharo", "Tetuupu", "Tarahao", "Vaitu-nui", "Vaitu-poto", "Maro")
+
+NUM_RAPANUI = {"Anekena":     0,
+               "Hora-iti":    1,
+               "Hora-nui":    2,
+               "Tangarouri":  3,
+               "Kotuti":      4,
+               "Ruti":        5,
+               "Koro":        6,
+               "Tuaharo":     7,
+               "Tetuupu":     8,
+               "Tarahao":     9,
+               "Vaitu-nui":  10,
+               "Vaitu-poto": 11,
+               "Maro":       12}
