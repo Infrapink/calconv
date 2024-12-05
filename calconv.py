@@ -205,6 +205,13 @@ import hawaii_kau
 import hawaii_kauai
 import hawaii_napoopoo
 import hawaii_kepelino
+import hawaii_solar
+import maori_tuhoe
+import maori_ngati_awa
+import maori_kahungunu
+import maori_north
+import maori_south
+import moriori
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2116,6 +2123,69 @@ def cons_day_julian_todate():
         hawaii_kepelino_day_ent.insert(0, hawaii_kepelino_date[0])
         hawaii_kepelino_month_ent.insert(0, hawaii_kepelino_date[1])
         hawaii_kepelino_year_ent.insert(0, hawaii_kepelino_date[2])
+
+        # Convert a Julian day to a date in the Hawai'ian solar calendar
+        hawaii_solar_date = hawaii_solar.fromjd(day)
+        hawaii_solar_day_ent.delete(0, END)
+        hawaii_solar_month_ent.delete(0, END)
+        hawaii_solar_year_ent.delete(0, END)
+        hawaii_solar_day_ent.insert(0, hawaii_solar_date[0])
+        hawaii_solar_month_ent.insert(0, hawaii_solar_date[1])
+        hawaii_solar_year_ent.insert(0, hawaii_solar_date[2])
+
+        # Convert a Julian day to a date in the Maramataka (Tūhoe)
+        maori_tuhoe_date = maori_tuhoe.fromjd(day)
+        maori_tuhoe_day_ent.delete(0, END)
+        maori_tuhoe_month_ent.delete(0, END)
+        maori_tuhoe_year_ent.delete(0, END)
+        maori_tuhoe_day_ent.insert(0, maori_tuhoe_date[0])
+        maori_tuhoe_month_ent.insert(0, maori_tuhoe_date[1])
+        maori_tuhoe_year_ent.insert(0, maori_tuhoe_date[2])
+
+        # Convert a Julian day to a date in the Maramataka (Ngāti Awa)
+        maori_ngati_awa_date = maori_ngati_awa.fromjd(day)
+        maori_ngati_awa_day_ent.delete(0, END)
+        maori_ngati_awa_month_ent.delete(0, END)
+        maori_ngati_awa_year_ent.delete(0, END)
+        maori_ngati_awa_day_ent.insert(0, maori_ngati_awa_date[0])
+        maori_ngati_awa_month_ent.insert(0, maori_ngati_awa_date[1])
+        maori_ngati_awa_year_ent.insert(0, maori_ngati_awa_date[2])
+
+        # Convert a Julian day to a date in the Maramataka (Te Tai Tokenau)
+        maori_north_date = maori_north.fromjd(day)
+        maori_north_day_ent.delete(0, END)
+        maori_north_month_ent.delete(0, END)
+        maori_north_year_ent.delete(0, END)
+        maori_north_day_ent.insert(0, maori_north_date[0])
+        maori_north_month_ent.insert(0, maori_north_date[1])
+        maori_north_year_ent.insert(0, maori_north_date[2])
+
+        # Convert a Julian day to a date in the Maramataka (South Island)
+        maori_south_date = maori_south.fromjd(day)
+        maori_south_day_ent.delete(0, END)
+        maori_south_month_ent.delete(0, END)
+        maori_south_year_ent.delete(0, END)
+        maori_south_day_ent.insert(0, maori_south_date[0])
+        maori_south_month_ent.insert(0, maori_south_date[1])
+        maori_south_year_ent.insert(0, maori_south_date[2])
+
+        # Convert a Julian day to a date in the Maramataka (Kakungunu)
+        maori_kahungunu_date = maori_kahungunu.fromjd(day)
+        maori_kahungunu_day_ent.delete(0, END)
+        maori_kahungunu_month_ent.delete(0, END)
+        maori_kahungunu_year_ent.delete(0, END)
+        maori_kahungunu_day_ent.insert(0, maori_kahungunu_date[0])
+        maori_kahungunu_month_ent.insert(0, maori_kahungunu_date[1])
+        maori_kahungunu_year_ent.insert(0, maori_kahungunu_date[2])
+
+        # Convert a Julian day to a date in the Moriori calendar
+        moriori_date = moriori.fromjd(day)
+        moriori_day_ent.delete(0, END)
+        moriori_month_ent.delete(0, END)
+        moriori_year_ent.delete(0, END)
+        moriori_day_ent.insert(0, moriori_date[0])
+        moriori_month_ent.insert(0, moriori_date[1])
+        moriori_year_ent.insert(0, moriori_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4047,6 +4117,69 @@ def hawaii_kepelino_converter():
         month = hawaii_kepelino_month_ent.get()
         year = int(hawaii_kepelino_year_ent.get())
         jday = hawaii_kepelino.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def hawaii_solar_converter():
+        day = int(hawaii_solar_day_ent.get())
+        month = hawaii_solar_month_ent.get()
+        year = int(hawaii_solar_year_ent.get())
+        jday = hawaii_solar.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def maori_tuhoe_converter():
+        day = int(maori_tuhoe_day_ent.get())
+        month = maori_tuhoe_month_ent.get()
+        year = int(maori_tuhoe_year_ent.get())
+        jday = maori_tuhoe.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def maori_ngati_awa_converter():
+        day = int(maori_ngati_awa_day_ent.get())
+        month = maori_ngati_awa_month_ent.get()
+        year = int(maori_ngati_awa_year_ent.get())
+        jday = maori_ngati_awa.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def maori_north_converter():
+        day = int(maori_north_day_ent.get())
+        month = maori_north_month_ent.get()
+        year = int(maori_north_year_ent.get())
+        jday = maori_north.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def maori_south_converter():
+        day = int(maori_south_day_ent.get())
+        month = maori_south_month_ent.get()
+        year = int(maori_south_year_ent.get())
+        jday = maori_south.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def maori_kahungunu_converter():
+        day = int(maori_kahungunu_day_ent.get())
+        month = maori_kahungunu_month_ent.get()
+        year = int(maori_kahungunu_year_ent.get())
+        jday = maori_kahungunu.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def moriori_converter():
+        day = int(moriori_day_ent.get())
+        month = moriori_month_ent.get()
+        year = int(moriori_year_ent.get())
+        jday = moriori.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -6761,6 +6894,97 @@ hawaii_kepelino_year_ent = Entry(frame)
 hawaii_kepelino_year_ent.grid(row = 228, column = 2, sticky = W)
 hawaii_kepelino_bttn = Button(frame, text = "Calculate", command = hawaii_kepelino_converter).grid(row = 229, column = 0, columnspan = 3, sticky = W)
 
+# Hawai'ian solar calendar                                                                                            
+hawaii_solar_lbl = Label(frame, text = "Hawai'ian solar calendar").grid(row = 226, column = 3, columnspan = 3, sticky = W)
+hawaii_solar_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 3, sticky = W)
+hawaii_solar_day_ent = Entry(frame)
+hawaii_solar_day_ent.grid(row = 228, column = 3, sticky = W)
+hawaii_solar_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 4, sticky = W)
+hawaii_solar_month_ent = Entry(frame)
+hawaii_solar_month_ent.grid(row = 228, column = 4, sticky = W)
+hawaii_solar_year_lbl = Label(frame, text = "Year").grid(row = 227, column = 5, sticky = W)
+hawaii_solar_year_ent = Entry(frame)
+hawaii_solar_year_ent.grid(row = 228, column = 5, sticky = W)
+hawaii_solar_bttn = Button(frame, text = "Calculate", command = hawaii_solar_converter).grid(row = 229, column = 3, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.71.0")
+# Maramataka (Tūhoe)                                                                                            
+maori_tuhoe_lbl = Label(frame, text = "Maramataka (Tūhoe)").grid(row = 226, column = 6, columnspan = 3, sticky = W)
+maori_tuhoe_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 6, sticky = W)
+maori_tuhoe_day_ent = Entry(frame)
+maori_tuhoe_day_ent.grid(row = 228, column = 6, sticky = W)
+maori_tuhoe_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 7, sticky = W)
+maori_tuhoe_month_ent = Entry(frame)
+maori_tuhoe_month_ent.grid(row = 228, column = 7, sticky = W)
+maori_tuhoe_year_lbl = Label(frame, text = "Year").grid(row = 227, column = 8, sticky = W)
+maori_tuhoe_year_ent = Entry(frame)
+maori_tuhoe_year_ent.grid(row = 228, column = 8, sticky = W)
+maori_tuhoe_bttn = Button(frame, text = "Calculate", command = maori_tuhoe_converter).grid(row = 229, column = 6, columnspan = 3, sticky = W)
+
+# Maramataka (Ngāti Awa)                                                                                            
+maori_ngati_awa_lbl = Label(frame, text = "Maramataka (Ngāti Awa)").grid(row = 226, column = 9, columnspan = 3, sticky = W)
+maori_ngati_awa_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 9, sticky = W)
+maori_ngati_awa_day_ent = Entry(frame)
+maori_ngati_awa_day_ent.grid(row = 228, column = 9, sticky = W)
+maori_ngati_awa_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 10, sticky = W)
+maori_ngati_awa_month_ent = Entry(frame)
+maori_ngati_awa_month_ent.grid(row = 228, column = 10, sticky = W)
+maori_ngati_awa_year_lbl = Label(frame, text = "Year").grid(row = 227, column = 11, sticky = W)
+maori_ngati_awa_year_ent = Entry(frame)
+maori_ngati_awa_year_ent.grid(row = 228, column = 11, sticky = W)
+maori_ngati_awa_bttn = Button(frame, text = "Calculate", command = maori_ngati_awa_converter).grid(row = 229, column = 9, columnspan = 3, sticky = W)
+
+# Maramataka (Te Tai Tokenau)                                                                                            
+maori_north_lbl = Label(frame, text = "Maramataka (Te Tai Tokenau)").grid(row = 230, column = 0, columnspan = 3, sticky = W)
+maori_north_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 0, sticky = W)
+maori_north_day_ent = Entry(frame)
+maori_north_day_ent.grid(row = 232, column = 0, sticky = W)
+maori_north_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 1, sticky = W)
+maori_north_month_ent = Entry(frame)
+maori_north_month_ent.grid(row = 232, column = 1, sticky = W)
+maori_north_year_lbl = Label(frame, text = "Year").grid(row = 231, column = 2, sticky = W)
+maori_north_year_ent = Entry(frame)
+maori_north_year_ent.grid(row = 232, column = 2, sticky = W)
+maori_north_bttn = Button(frame, text = "Calculate", command = maori_north_converter).grid(row = 233, column = 0, columnspan = 3, sticky = W)
+
+# Maramataka (South Island)                                                                                            
+maori_south_lbl = Label(frame, text = "Maramataka (South Island)").grid(row = 230, column = 3, columnspan = 3, sticky = W)
+maori_south_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 3, sticky = W)
+maori_south_day_ent = Entry(frame)
+maori_south_day_ent.grid(row = 232, column = 3, sticky = W)
+maori_south_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 4, sticky = W)
+maori_south_month_ent = Entry(frame)
+maori_south_month_ent.grid(row = 232, column = 4, sticky = W)
+maori_south_year_lbl = Label(frame, text = "Year").grid(row = 231, column = 5, sticky = W)
+maori_south_year_ent = Entry(frame)
+maori_south_year_ent.grid(row = 232, column = 5, sticky = W)
+maori_south_bttn = Button(frame, text = "Calculate", command = maori_south_converter).grid(row = 233, column = 3, columnspan = 3, sticky = W)
+
+# Maramataka (Kakungunu)                                                                                            
+maori_kahungunu_lbl = Label(frame, text = "Maramataka (Kakungunu)").grid(row = 230, column = 6, columnspan = 3, sticky = W)
+maori_kahungunu_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 6, sticky = W)
+maori_kahungunu_day_ent = Entry(frame)
+maori_kahungunu_day_ent.grid(row = 232, column = 6, sticky = W)
+maori_kahungunu_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 7, sticky = W)
+maori_kahungunu_month_ent = Entry(frame)
+maori_kahungunu_month_ent.grid(row = 232, column = 7, sticky = W)
+maori_kahungunu_year_lbl = Label(frame, text = "Year").grid(row = 231, column = 8, sticky = W)
+maori_kahungunu_year_ent = Entry(frame)
+maori_kahungunu_year_ent.grid(row = 232, column = 8, sticky = W)
+maori_kahungunu_bttn = Button(frame, text = "Calculate", command = maori_kahungunu_converter).grid(row = 233, column = 6, columnspan = 3, sticky = W)
+
+# Moriori calendar                                                                                            
+moriori_lbl = Label(frame, text = "Moriori calendar").grid(row = 230, column = 9, columnspan = 3, sticky = W)
+moriori_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 9, sticky = W)
+moriori_day_ent = Entry(frame)
+moriori_day_ent.grid(row = 232, column = 9, sticky = W)
+moriori_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 10, sticky = W)
+moriori_month_ent = Entry(frame)
+moriori_month_ent.grid(row = 232, column = 10, sticky = W)
+moriori_year_lbl = Label(frame, text = "Year").grid(row = 231, column = 11, sticky = W)
+moriori_year_ent = Entry(frame)
+moriori_year_ent.grid(row = 232, column = 11, sticky = W)
+moriori_bttn = Button(frame, text = "Calculate", command = moriori_converter).grid(row = 233, column = 9, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.72.0")
 root.mainloop()
