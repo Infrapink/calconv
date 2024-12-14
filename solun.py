@@ -351,7 +351,14 @@ def counterstar(jday, star):
 
 def solar_cel_coords(jday):
     '''Get the right ascension and declination of the sun'''
-    ans = sunmoon.pub.pub_solar_radec(jday)
+    radec = sunmoon.pub.pub_solar_radec(float(jday))
+    # yes this step is necessary for reasons I am completely unable to discern.
+    # if you think it is unnecessary, try taking out the next non-comment line
+    # and replacing the return statement with "return radec"
+    # then pass the value 2460576 to this function
+    # radec will have the value (179.9776911256796, 0.00967182122046539)
+    # but the function will return (1.79977691e+02, 9.67182122e-03)
+    ans = (radec[0], radec[1])
     return ans
 
 def solar_zpos(jday, star, opp):
@@ -510,27 +517,29 @@ def heliacal_rising(jday, lon, lat, star, tz):
     tz = Fraction(tz) # local timezone
     # star is an object of Star class as defined in stars.py
     
-    #tz = Fraction(lat, 360) # difference in local noons, in DAYS, between Greenwich and location in question
-
     # first, roughly zero in on the day when the sun and the star are in alignment
-    if (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) > ((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360)):
+    #jday = jday + (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) / 360) * sid_year)
+    #if (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) > ((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360)):
+    s = (solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360
+    #t = solar_cel_coords(jday)[0] - starpos(jday, star)[0]
+    #print(starpos(jday, star)[0])
+    if ( s >= 180 ):
         # sun is behind star, so step forward
-        jday = jday + (sid_year * (((starpos(jday, star)[0] - solar_cel_coords(jday)[0]) % 360) / 360))
+        #print("Sweet")
+        jday = jday + (sid_year * (s / 360))
     else:
         # sun is opposite or ahead of star, so step backward
-        jday = jday - (sid_year * (((solar_cel_coords(jday)[0] - starpos(jday, star)[0]) % 360) / 360))
+        #print("Dude")
+        jday = jday - (sid_year * (s / 360))
 
-    
     # we're at the point where the sun and the star are approximately in conjunction
     # now, zero in on a more exact time
     # assume that the heliacal rising is the day when the star rises about 30 minutes before the sun
     ans = round(jday) # we are, ultimately, looking for an integer consecutive Julian Day.
 
-    #while ((starrise2(ans, lon, lat, star) - sunrise(ans, lon, lat)) < Fraction(30, 1440)):
     while (local_sunrise(ans, lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) < Fraction(30, 1440)):
         ans += 1
-    #while ((starrise2((ans - 1), lon, lat, star) - sunrise(ans, lon, lat)) >= Fraction(30, 1440)):
-    while (local_sunrise((ans - 1), lon, lat, tz) - local_starrise((ans - 1), lon, lat, star, tz) >= Fraction(30, 1440)):
+    while (local_sunrise(ans, lon, lat, tz) - local_starrise(ans, lon, lat, star, tz) > Fraction(30, 1440)):
         ans -= 1
 
     return ans
@@ -556,8 +565,10 @@ def acronycal_rising(jday, lon, lat, star, tz):
     ans = local_sunset(jday, lon, lat, tz)
 
     while (local_starrise(ans, lon, lat, star, tz) - local_sunset(ans, lon, lat, tz) < Fraction(30, 1440)):
+    #while (starrise2(ans, lon, lat, star) - sunset(ans, lon, lat) < Fraction(30, 1440)):
         ans -= 1
     while (local_starrise((ans - 1), lon, lat, star, tz) - local_sunset((ans - 1), lon, lat, tz) >= Fraction(30, 1440)):
+    #while (starrise2((ans - 1), lon, lat, star) - sunset((ans - 1), lon, lat) >= Fraction(30, 1440)):
         ans += 1
 
     return ceil(ans)
