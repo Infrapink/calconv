@@ -1743,3 +1743,34 @@ NUM_RAPANUI = {"Anekena":     0,
                "Vaitu-nui":  10,
                "Vaitu-poto": 11,
                "Maro":       12}
+
+FIJI = ("Vula i Kelikeli", "Vula i Gasau", "Vula i Doi", "Vula i Werewere", "Vula i Cukicuki", "Vula i Se-ni-drala", "Vula i Vavakada", "Vula i Balolo Lailai", "Vula i Balolo Levu", "Vula i Nuqa Lailai", "Vula i Nuqa Levu", "Vula i Sevu")
+
+NUM_FIJI = {"Vula i Kelikeli":      0,
+            "Vula i Gasau":         1,
+            "Vula i Doi":           2,
+            "Vula i Werewere":      3,
+            "Vula i Cukicuki":      4,
+            "Vula i Se-ni-drala":   5,
+            "Vula i Vavakada":      6,
+            "Vula i Balolo Lailai": 7,
+            "Vula i Balolo Levu":   8,
+            "Vula i Nuqa Lailai":   9,
+            "Vula i Nuqa Levu":    10,
+            "Vula i Sevu":         11}
+
+TAHITIAN = ("Te-tai", "Avarehu", "Fā‘ahu", "Pipiri", "Tāoa", "Aununu", "Apa‘apa", "Paroro mua", "Paroro mui", "Muriaha", "Hiaia", "Tema", "Te-eri")
+
+NUM_TAHITIAN = {"Avarehu":    1,
+                "Fā‘ahu":     2,
+                "Pipiri":     3,
+                "Tāoa":       4,
+                "Aununu":     5,
+                "Apa‘apa":    6,
+                "Paroro mua": 7,
+                "Paroro mui": 8,
+                "Muriaha":    9,
+                "Hiaia":     10,
+                "Tema":      11,
+                "Te-eri":    12,
+                "Te-tai":     0}

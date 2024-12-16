@@ -977,6 +977,102 @@ Kaua'i:
 * Māhoe Hope
 * Malama Pili (leap years only)
 
+Tūhoe and Te Tai Tokenau Māori:
+-------------------------------
+* Pipiri
+* Hōngongoi
+* Here-turi-kōkā
+* Mahuru
+* Whiringa-ā-nuku
+* Whiringa-ā-rangi
+* Hakihea
+* Kohitātea
+* Hui-tanguru
+* Poutū-te-rangi
+* Paenga-whāwhā
+* Haratua
+* Te Tahi o Pipiri
+
+Ngāti Awa Māori:
+----------------
+* Te Tahi o Pipiri
+* Te Rua o Takurua
+* Te Toru o Here-turi-koka
+* Te Wha o Mahuru
+* Te Rima o Kopu
+* Whitianaunau
+* Hakihea
+* Kai-tatea
+* Ruhi-te-rangi
+* Poutu-te-rangi
+* Paenga-whawha
+* Haki-haratua
+* Matahi o Mahurikuri (leap years only)
+
+Kahununu Māori:
+---------------
+* Aonui
+* Te Aho-turuturu
+* Te Ihomatua
+* Tapere-wai
+* Tatau-urutahi
+* Tatau-uruora
+* Akāka-nui
+* Akuahu-mataora
+* Te Ihonui
+* Putoki-nui-o-tau
+* Tikaka-muturangi
+* Uruwhenhua
+* Te Tahi o Aonui (leap years only)
+
+South Island Māori:
+-------------------
+* Matahi o Pouaka
+* Maruaroa
+* Te Toru
+* Te Wha
+* Te Rima
+* Te Ono
+* Te Whitu
+* Te Waru
+* Te Iwa
+* Te Ngahuru
+* Ngahuru-nui
+* Matahi o te tau
+* Matahi o Mahurihuri (leap years only)
+
+Moriori:
+--------
+* Kahu
+* Rongo
+* Tahei
+* Keitanga
+* Tauaropoti
+* Wareahe
+* Tchuhe a Takarore
+* Wairehu
+* Moro
+* Mihi-torekau
+* Ta Upoko o T'etchiao
+* Tumatehea
+* Leap month
+
+Tahitian:
+---------
+* Te-tai
+* Avarehu
+* Fā‘ahu
+* Pipiri
+* Tāoa
+* Aununu
+* Apa‘apa
+* Paroro mua
+* Paroro mui
+* Muriaha
+* Hiaia
+* Tema
+* Te-eri
+
 
 LICENSE
 =======

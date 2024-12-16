@@ -2382,3 +2382,35 @@ Sources:
 * https://www.tepapa.govt.nz/discover-collections/read-watch-play/maori/matariki-maori-new-year/what-maramataka-maori-lunar
 * https://www.tepapa.govt.nz/discover-collections/read-watch-play/maori/matariki-maori-new-year/how-use-maramataka-maori-lunar
 * https://www.tepapa.govt.nz/discover-collections/read-watch-play/maori/matariki-maori-new-year/months-maramataka-maori-lunar
+
+------
+TAHITI
+------
+
+Tahitians traditionally recognise two different types of seasons. One scheme is more or less tropical and consists of the seasons of Tetau (harvest), Te tau miti rahi (high seas), and Te tau Poai (hunger). These correspond to agricultural and fishing cycles.
+
+The astronomical seasons consist of Matarii i nia (Pleiades above), which begins with the acronycal rising of the Pleiades and lasts as long as the Pleiades as visible in the night sky, ending with the heliacal rising. The other season, Matarii i rora (Pleiades below) is the portion of the year during which the Pleiades are not visible.
+
+On pages 86—87 1831 book *Polynesian Researches, During a Residence of Nearly Eight Years in the Society and Sandwich Islands*, William Ellis vaguely describes two calendrical systems. The first quotes a Mr. Davis, who wrote in 1819 that the calendar which was made official by King Pomare I begins with the month of Avarehu around the southern solstice, and he places the month of Te-Tai last. I suspect Ellis misunderstood here, as Eldon Best on page 13 of The Maori Division of Time points out that Te-Tai is cognate with the Māori Te Tahi, meaning 'The First'. If Te-Tai is the first month of the year, rather than the last month, the year would begin with the first visible waxing crescent following the acronycal rising of the Pleiades, as is the case in Hawai‘i and much of the rest of Polynesia. As such, I have defined Te-Tai as the first month of the Tahitian year heralded by the acronycal rising of the Pleiades.
+
+Ellis also mentions another calendar, heralded with the heliacal rising of the Pleiades, as is the case in Aotearoa. This one begins with the month of Apaapa. I have included both of them. This one apparently has different month names, but Ellis doesn't list them and I have been unable to find them, so I have just used the same month names. Days begin at sunset.
+
+As for the era, the whole idea of measuring time by years is not part of traditional Tahitian culture, but I needed to count years for the converter to work properly. I chose 1788 AD, the year that Pomare I united Tahiti, as the starting year.
+
+Sources:
+* Eldon Best, The Maori Division of Time, 1922, p. 12. Available online:
+** https://en.wikisource.org/wiki/The_Maori_Division_of_Time
+** https://archive.org/details/maoridivisionoft00bestuoft/page/2/mode/2up
+* William Ellis, Polynesian Researches, 1831, pp 86—87.
+
+-----------------------
+OTHER PACIFIC CALENDARS
+-----------------------
+
+Traditional timekeeping systems across the Pacific islands follow similar conventions to those of Hawai‘i, Aotearoa, and Tahiti, but are even less consistent. Samoans traditionall reckon time by the phases of the moon, but the names of the months are entirely reflective of the seasons, with no stellar correlations; furthermore, they do not reckon time in terms of years at all. The same pattern is seen in Fiji, Tonga, Micronesia, Vanuatu, and the Solomon Islands. Moreover, conventions vary from community to community; timekeeping is entirely a local affair, with no need to keep things consistent across an entire civilisation. As such, trying to construct computable calendars for these people is an exercise in futility, since so much depends on weather, climate, and how that impacts agriculture and fishing.
+
+Further reading:
+* Lynda E. Chambers, Roan D. Plotz, Siosinamele Lui: Seasonal Calendars Enhance Climate Communication in the Pacific. DOI: 10.1175/WCAS-D-20-0035.1 Available at https://www.researchgate.net/publication/347171582_Seasonal_Calendars_Enhance_Climate_Communication_in_the_Pacific#pfd
+* Penehuro Fatu Lefale: Ua ‘afa le Aso Stormy weather today: traditional ecological knowledge of weather and climate. The Samoa experience. Climatic Change vol 100 (30 September 2009), pp 317—335. Available at https://link.springer.com/article/10.1007/s10584-009-9722-z
+* Finau Savelio Pole: Traditional Tonga Farming System: Past and Present
+* https://ichcourier.unesco-ichcap.org/traditional-farming-systems/

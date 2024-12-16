@@ -212,6 +212,8 @@ import maori_kahungunu
 import maori_north
 import maori_south
 import moriori
+import tahiti_nia
+import tahiti_raro
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2042,6 +2044,24 @@ def cons_day_julian_todate():
         pranata_mangsa_day_ent.insert(0, pranata_mangsa_date[0])
         pranata_mangsa_month_ent.insert(0, pranata_mangsa_date[1])
         pranata_mangsa_year_ent.insert(0, pranata_mangsa_date[2])
+
+        # Convert a Julian day to a date in the Tahitian calendar (Matarii i nia)
+        tahiti_nia_date = tahiti_nia.fromjd(day)
+        tahiti_nia_day_ent.delete(0, END)
+        tahiti_nia_month_ent.delete(0, END)
+        tahiti_nia_year_ent.delete(0, END)
+        tahiti_nia_day_ent.insert(0, tahiti_nia_date[0])
+        tahiti_nia_month_ent.insert(0, tahiti_nia_date[1])
+        tahiti_nia_year_ent.insert(0, tahiti_nia_date[2])
+
+        # Convert a Julian day to a date in the Tahitian calendar (Matarii i rora)
+        tahiti_raro_date = tahiti_raro.fromjd(day)
+        tahiti_raro_day_ent.delete(0, END)
+        tahiti_raro_month_ent.delete(0, END)
+        tahiti_raro_year_ent.delete(0, END)
+        tahiti_raro_day_ent.insert(0, tahiti_raro_date[0])
+        tahiti_raro_month_ent.insert(0, tahiti_raro_date[1])
+        tahiti_raro_year_ent.insert(0, tahiti_raro_date[2])
 
         # Convert a Julian day to a date in the Javanese lunar calendar (type 1)
         javanese1_date = javanese1.fromjd(day)
@@ -4000,6 +4020,24 @@ def pranata_mangsa_converter():
         month = pranata_mangsa_month_ent.get()
         year = int(pranata_mangsa_year_ent.get())
         jday = pranata_mangsa.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def tahiti_nia_converter():
+        day = int(tahiti_nia_day_ent.get())
+        month = tahiti_nia_month_ent.get()
+        year = int(tahiti_nia_year_ent.get())
+        jday = tahiti_nia.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def tahiti_raro_converter():
+        day = int(tahiti_raro_day_ent.get())
+        month = tahiti_raro_month_ent.get()
+        year = int(tahiti_raro_year_ent.get())
+        jday = tahiti_raro.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -6829,9 +6867,35 @@ pranata_mangsa_year_ent = Entry(frame)
 pranata_mangsa_year_ent.grid(row = 220, column = 2, sticky = W)
 pranata_mangsa_bttn = Button(frame, text = "Calculate", command = pranata_mangsa_converter).grid(row = 221, column = 0, columnspan = 3, sticky = W)
 
+# Tahitian calendar (Matarii i nia)                                                                                            
+tahiti_nia_lbl = Label(frame, text = "Tahitian calendar (Matarii i nia)").grid(row = 218, column = 3, columnspan = 3, sticky = W)
+tahiti_nia_day_lbl = Label(frame, text = "Night").grid(row = 219, column = 3, sticky = W)
+tahiti_nia_day_ent = Entry(frame)
+tahiti_nia_day_ent.grid(row = 220, column = 3, sticky = W)
+tahiti_nia_month_lbl = Label(frame, text = "Month").grid(row = 219, column = 4, sticky = W)
+tahiti_nia_month_ent = Entry(frame)
+tahiti_nia_month_ent.grid(row = 220, column = 4, sticky = W)
+tahiti_nia_year_lbl = Label(frame, text = "Year").grid(row = 219, column = 5, sticky = W)
+tahiti_nia_year_ent = Entry(frame)
+tahiti_nia_year_ent.grid(row = 220, column = 5, sticky = W)
+tahiti_nia_bttn = Button(frame, text = "Calculate", command = tahiti_nia_converter).grid(row = 221, column = 3, columnspan = 3, sticky = W)
+
+# Tahitian calendar (Matarii i rora)                                                                                            
+tahiti_raro_lbl = Label(frame, text = "Tahitian calendar (Matarii i rora)").grid(row = 218, column = 6, columnspan = 3, sticky = W)
+tahiti_raro_day_lbl = Label(frame, text = "Night").grid(row = 219, column = 6, sticky = W)
+tahiti_raro_day_ent = Entry(frame)
+tahiti_raro_day_ent.grid(row = 220, column = 6, sticky = W)
+tahiti_raro_month_lbl = Label(frame, text = "Month").grid(row = 219, column = 7, sticky = W)
+tahiti_raro_month_ent = Entry(frame)
+tahiti_raro_month_ent.grid(row = 220, column = 7, sticky = W)
+tahiti_raro_year_lbl = Label(frame, text = "Year").grid(row = 219, column = 8, sticky = W)
+tahiti_raro_year_ent = Entry(frame)
+tahiti_raro_year_ent.grid(row = 220, column = 8, sticky = W)
+tahiti_raro_bttn = Button(frame, text = "Calculate", command = tahiti_raro_converter).grid(row = 221, column = 6, columnspan = 3, sticky = W)
+
 # Hawaiʻian calendar (Oʻahu)                                                                                            
 hawaii_oahu_lbl = Label(frame, text = "Hawaiʻian calendar (Oʻahu)").grid(row = 222, column = 0, columnspan = 3, sticky = W)
-hawaii_oahu_day_lbl = Label(frame, text = "Day").grid(row = 223, column = 0, sticky = W)
+hawaii_oahu_day_lbl = Label(frame, text = "Night").grid(row = 223, column = 0, sticky = W)
 hawaii_oahu_day_ent = Entry(frame)
 hawaii_oahu_day_ent.grid(row = 224, column = 0, sticky = W)
 hawaii_oahu_month_lbl = Label(frame, text = "Month").grid(row = 223, column = 1, sticky = W)
@@ -6844,7 +6908,7 @@ hawaii_oahu_bttn = Button(frame, text = "Calculate", command = hawaii_oahu_conve
 
 # Hawaiʻian calendar (Kauaʻi)                                                                                            
 hawaii_kauai_lbl = Label(frame, text = "Hawaiʻian calendar (Kauaʻi)").grid(row = 222, column = 3, columnspan = 3, sticky = W)
-hawaii_kauai_day_lbl = Label(frame, text = "Day").grid(row = 223, column = 3, sticky = W)
+hawaii_kauai_day_lbl = Label(frame, text = "Night").grid(row = 223, column = 3, sticky = W)
 hawaii_kauai_day_ent = Entry(frame)
 hawaii_kauai_day_ent.grid(row = 224, column = 3, sticky = W)
 hawaii_kauai_month_lbl = Label(frame, text = "Month").grid(row = 223, column = 4, sticky = W)
@@ -6857,7 +6921,7 @@ hawaii_kauai_bttn = Button(frame, text = "Calculate", command = hawaii_kauai_con
 
 # Hawaiʻian calendar (Kaʻū)                                                                                            
 hawaii_kau_lbl = Label(frame, text = "Hawaiʻian calendar (Kaʻū)").grid(row = 222, column = 6, columnspan = 3, sticky = W)
-hawaii_kau_day_lbl = Label(frame, text = "Day").grid(row = 223, column = 6, sticky = W)
+hawaii_kau_day_lbl = Label(frame, text = "Night").grid(row = 223, column = 6, sticky = W)
 hawaii_kau_day_ent = Entry(frame)
 hawaii_kau_day_ent.grid(row = 224, column = 6, sticky = W)
 hawaii_kau_month_lbl = Label(frame, text = "Month").grid(row = 223, column = 7, sticky = W)
@@ -6870,7 +6934,7 @@ hawaii_kau_bttn = Button(frame, text = "Calculate", command = hawaii_kau_convert
 
 # Hawaiʻian calendar (Napoʻopoʻo)                                                                                            
 hawaii_napoopoo_lbl = Label(frame, text = "Hawaiʻian calendar (Napoʻopoʻo)").grid(row = 222, column = 9, columnspan = 3, sticky = W)
-hawaii_napoopoo_day_lbl = Label(frame, text = "Day").grid(row = 223, column = 9, sticky = W)
+hawaii_napoopoo_day_lbl = Label(frame, text = "Night").grid(row = 223, column = 9, sticky = W)
 hawaii_napoopoo_day_ent = Entry(frame)
 hawaii_napoopoo_day_ent.grid(row = 224, column = 9, sticky = W)
 hawaii_napoopoo_month_lbl = Label(frame, text = "Month").grid(row = 223, column = 10, sticky = W)
@@ -6883,7 +6947,7 @@ hawaii_napoopoo_bttn = Button(frame, text = "Calculate", command = hawaii_napoop
 
 # Hawaiʻian calendar (Kepelino)                                                                                            
 hawaii_kepelino_lbl = Label(frame, text = "Hawaiʻian calendar (Kepelino)").grid(row = 226, column = 0, columnspan = 3, sticky = W)
-hawaii_kepelino_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 0, sticky = W)
+hawaii_kepelino_day_lbl = Label(frame, text = "Night").grid(row = 227, column = 0, sticky = W)
 hawaii_kepelino_day_ent = Entry(frame)
 hawaii_kepelino_day_ent.grid(row = 228, column = 0, sticky = W)
 hawaii_kepelino_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 1, sticky = W)
@@ -6896,7 +6960,7 @@ hawaii_kepelino_bttn = Button(frame, text = "Calculate", command = hawaii_kepeli
 
 # Hawai'ian solar calendar                                                                                            
 hawaii_solar_lbl = Label(frame, text = "Hawai'ian solar calendar").grid(row = 226, column = 3, columnspan = 3, sticky = W)
-hawaii_solar_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 3, sticky = W)
+hawaii_solar_day_lbl = Label(frame, text = "Night").grid(row = 227, column = 3, sticky = W)
 hawaii_solar_day_ent = Entry(frame)
 hawaii_solar_day_ent.grid(row = 228, column = 3, sticky = W)
 hawaii_solar_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 4, sticky = W)
@@ -6909,7 +6973,7 @@ hawaii_solar_bttn = Button(frame, text = "Calculate", command = hawaii_solar_con
 
 # Maramataka (Tūhoe)                                                                                            
 maori_tuhoe_lbl = Label(frame, text = "Maramataka (Tūhoe)").grid(row = 226, column = 6, columnspan = 3, sticky = W)
-maori_tuhoe_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 6, sticky = W)
+maori_tuhoe_day_lbl = Label(frame, text = "Night").grid(row = 227, column = 6, sticky = W)
 maori_tuhoe_day_ent = Entry(frame)
 maori_tuhoe_day_ent.grid(row = 228, column = 6, sticky = W)
 maori_tuhoe_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 7, sticky = W)
@@ -6922,7 +6986,7 @@ maori_tuhoe_bttn = Button(frame, text = "Calculate", command = maori_tuhoe_conve
 
 # Maramataka (Ngāti Awa)                                                                                            
 maori_ngati_awa_lbl = Label(frame, text = "Maramataka (Ngāti Awa)").grid(row = 226, column = 9, columnspan = 3, sticky = W)
-maori_ngati_awa_day_lbl = Label(frame, text = "Day").grid(row = 227, column = 9, sticky = W)
+maori_ngati_awa_day_lbl = Label(frame, text = "Night").grid(row = 227, column = 9, sticky = W)
 maori_ngati_awa_day_ent = Entry(frame)
 maori_ngati_awa_day_ent.grid(row = 228, column = 9, sticky = W)
 maori_ngati_awa_month_lbl = Label(frame, text = "Month").grid(row = 227, column = 10, sticky = W)
@@ -6935,7 +6999,7 @@ maori_ngati_awa_bttn = Button(frame, text = "Calculate", command = maori_ngati_a
 
 # Maramataka (Te Tai Tokenau)                                                                                            
 maori_north_lbl = Label(frame, text = "Maramataka (Te Tai Tokenau)").grid(row = 230, column = 0, columnspan = 3, sticky = W)
-maori_north_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 0, sticky = W)
+maori_north_day_lbl = Label(frame, text = "Night").grid(row = 231, column = 0, sticky = W)
 maori_north_day_ent = Entry(frame)
 maori_north_day_ent.grid(row = 232, column = 0, sticky = W)
 maori_north_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 1, sticky = W)
@@ -6948,7 +7012,7 @@ maori_north_bttn = Button(frame, text = "Calculate", command = maori_north_conve
 
 # Maramataka (South Island)                                                                                            
 maori_south_lbl = Label(frame, text = "Maramataka (South Island)").grid(row = 230, column = 3, columnspan = 3, sticky = W)
-maori_south_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 3, sticky = W)
+maori_south_day_lbl = Label(frame, text = "Night").grid(row = 231, column = 3, sticky = W)
 maori_south_day_ent = Entry(frame)
 maori_south_day_ent.grid(row = 232, column = 3, sticky = W)
 maori_south_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 4, sticky = W)
@@ -6961,7 +7025,7 @@ maori_south_bttn = Button(frame, text = "Calculate", command = maori_south_conve
 
 # Maramataka (Kakungunu)                                                                                            
 maori_kahungunu_lbl = Label(frame, text = "Maramataka (Kakungunu)").grid(row = 230, column = 6, columnspan = 3, sticky = W)
-maori_kahungunu_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 6, sticky = W)
+maori_kahungunu_day_lbl = Label(frame, text = "Night").grid(row = 231, column = 6, sticky = W)
 maori_kahungunu_day_ent = Entry(frame)
 maori_kahungunu_day_ent.grid(row = 232, column = 6, sticky = W)
 maori_kahungunu_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 7, sticky = W)
@@ -6974,7 +7038,7 @@ maori_kahungunu_bttn = Button(frame, text = "Calculate", command = maori_kahungu
 
 # Moriori calendar                                                                                            
 moriori_lbl = Label(frame, text = "Moriori calendar").grid(row = 230, column = 9, columnspan = 3, sticky = W)
-moriori_day_lbl = Label(frame, text = "Day").grid(row = 231, column = 9, sticky = W)
+moriori_day_lbl = Label(frame, text = "Night").grid(row = 231, column = 9, sticky = W)
 moriori_day_ent = Entry(frame)
 moriori_day_ent.grid(row = 232, column = 9, sticky = W)
 moriori_month_lbl = Label(frame, text = "Month").grid(row = 231, column = 10, sticky = W)
