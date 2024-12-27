@@ -2414,3 +2414,20 @@ Further reading:
 * Penehuro Fatu Lefale: Ua ‘afa le Aso Stormy weather today: traditional ecological knowledge of weather and climate. The Samoa experience. Climatic Change vol 100 (30 September 2009), pp 317—335. Available at https://link.springer.com/article/10.1007/s10584-009-9722-z
 * Finau Savelio Pole: Traditional Tonga Farming System: Past and Present
 * https://ichcourier.unesco-ichcap.org/traditional-farming-systems/
+
+------
+KAZAKH
+------
+
+The nomadic Kazakh people have a unique and very unusual calendar. Unlike every other calendar I know of, it is entirely lunar, and is not descended from a lunisolar calendar. Furthermore, it uses sidereal, rather than synodic, months.
+
+Each month begins on the day that the moon is in conjunction with the Pleiades. The year begins on the day that this conjunction coïncides with the new moon. This conjunction happens on average once per solar year, which means there are 13 months in a normal year and 14 in a leap year. It also means that the calendar stays appoximately synchronised with the seasons despite having no direct solar component.
+
+Months are neither named nor numbered. Instead, they are identified by the togys, or the time from the most recent new moon until the start of the current month. Thus, the togys (month "number") starts at 1, then jumps to 27 and counts down by two or three each month until the next month begins.
+
+If there is an official epoch, I am not aware of it. I have chosen the year of the Hijra, as Kazakhstan is majority Muslim. To speed up calculations, I made use of some pseudo-Metonic relations. 254 sidereal months is about 10 minutes longer than 235 synodic months, making it about 2 hr 24 min 30 sec longer than 19 tropical years, or 4 hr 3 min 20 sec shorter than 19 sidereal years. As such, I decided that 254 months was equivalent to 19 years.
+
+My main source defines the civil day as beginning at midnight. I have implemented this convention, and also a version in which the days begins at sunset, dagain because Kazakhstan is majority Muslim.
+
+Sources:
+* https://hermetic.ch/cal_stud/knc/Kazakh_Nomad_Calendar.htm

@@ -113,9 +113,10 @@ contains
     double precision :: F ! moon's argument of latitude
     double precision :: omega ! longitude of the ascending node of the moon's mean orbit on the ecliptic
 
-    double precision, dimension(64,5) :: args
-    double precision, dimension(64,2) :: psi_coeffs
-    double precision, dimension(64,2) :: eps_coeffs
+    !double precision, dimension(64,5) :: args
+    !double precision, dimension(64,2) :: psi_coeffs
+    !double precision, dimension(64,2) :: eps_coeffs
+    double precision, dimension(63,9) :: deltable
     double precision :: epsilon0 !mean obliquity of the ecliptic, in degrees
     double precision :: delta_epsilon ! variation in the obliquity of the ecliptic, in arcseconds
     double precision :: delta_psi ! nutation in longitude, in arcseconds
@@ -139,591 +140,81 @@ contains
     F = 93.27191 + (483202.017538 * T) - (0.0036825 * T * T) + ((T ** 3) / 327270.0)
     omega = 125.04452 - (1934.136261 * T) + (0.0020708 * T * T) + ((T ** 3) / 450000.0)
 
-    args(1,1) = 0
-    args(1,2) = 0
-    args(1,3) = 0
-    args(1,4) = 0
-    args(1,5) = 1
-    args(2,1) = -2
-    args(2,2) = 0
-    args(2,3) = 0
-    args(2,4) = 2
-    args(2,5) = 2
-    args(3,1) = 0
-    args(3,2) = 0
-    args(3,3) = 0
-    args(3,4) = 2
-    args(3,5) = 2
-    args(4,1) = 0
-    args(4,2) = 0
-    args(4,3) = 0
-    args(4,4) = 0
-    args(4,5) = 2
-    args(5,1) = 0
-    args(5,2) = 1
-    args(5,3) = 0
-    args(5,4) = 0
-    args(5,5) = 0
-    args(6,1) = 0
-    args(6,2) = 0
-    args(6,3) = 1
-    args(6,4) = 0
-    args(6,5) = 0
-    args(7,1) = -2
-    args(7,2) = 1
-    args(7,3) = 0
-    args(7,4) = 2
-    args(7,5) = 2
-    args(8,1) = 0
-    args(8,2) = 0
-    args(8,3) = 0
-    args(8,4) = 2
-    args(8,5) = 1
-    args(9,1) = 0
-    args(9,2) = 0
-    args(9,3) = 1
-    args(9,4) = 2
-    args(9,5) = 2
-    args(10,1) = -2
-    args(10,2) = -1
-    args(10,3) = 0
-    args(10,4) = 2
-    args(10,5) = 2
-    args(11,1) = -2
-    args(11,2) = 0
-    args(11,3) = 1
-    args(11,4) = 0
-    args(11,5) = 0
-    args(12,1) = -2
-    args(12,2) = 0
-    args(12,3) = 0
-    args(12,4) = 2
-    args(12,5) = 1
-    args(13,1) = 0
-    args(13,2) = 0
-    args(13,3) = -1
-    args(13,4) = 2
-    args(13,5) = 2
-    args(14,1) = 2
-    args(14,2) = 0
-    args(14,3) = 0
-    args(14,4) = 0
-    args(14,5) = 0
-    args(15,1) = 0
-    args(15,2) = 0
-    args(15,3) = 1
-    args(15,4) = 0
-    args(15,5) = 1
-    args(16,1) = 2
-    args(16,2) = 0
-    args(16,3) = -1
-    args(16,4) = 2
-    args(16,5) = 2
-    args(17,1) = 0
-    args(17,2) = 0
-    args(17,3) = -1
-    args(17,4) = 0
-    args(17,5) = 1
-    args(18,1) = 0
-    args(18,2) = 0
-    args(18,3) = 1
-    args(18,4) = 2
-    args(18,5) = 1
-    args(19,1) = -2
-    args(19,2) = 0
-    args(19,3) = 2
-    args(19,4) = 0
-    args(19,5) = 0
-    args(20,1) = 0
-    args(20,2) = 0
-    args(20,3) = -2
-    args(20,4) = 2
-    args(20,5) = 1
-    args(21,1) = 2
-    args(21,2) = 0
-    args(21,3) = 0
-    args(21,4) = 2
-    args(21,5) = 2
-    args(22,1) = 0
-    args(22,2) = 0
-    args(22,3) = 2
-    args(22,4) = 2
-    args(22,5) = 2
-    args(23,1) = 0
-    args(23,2) = 0
-    args(23,3) = 2
-    args(23,4) = 0
-    args(23,5) = 0
-    args(24,1) = -2
-    args(24,2) = 0
-    args(24,3) = 1
-    args(24,4) = 2
-    args(24,5) = 2
-    args(25,1) = 0
-    args(25,2) = 0
-    args(25,3) = 0
-    args(25,4) = 2
-    args(25,5) = 0
-    args(26,1) = -2
-    args(26,2) = 0
-    args(26,3) = 0
-    args(26,4) = 2
-    args(26,5) = 0
-    args(27,1) = 0
-    args(27,2) = 0
-    args(27,3) = -1
-    args(27,4) = 2
-    args(27,5) = 1
-    args(28,1) = 0
-    args(28,2) = 0
-    args(28,3) = -1
-    args(28,4) = 2
-    args(28,5) = 1
-    args(29,1) = 0
-    args(29,2) = 2
-    args(29,3) = 0
-    args(29,4) = 0
-    args(29,5) = 0
-    args(30,1) = 2
-    args(30,2) = 0
-    args(30,3) = -1
-    args(30,4) = 0
-    args(30,5) = 1
-    args(31,1) = -2
-    args(31,2) = 2
-    args(31,3) = 0
-    args(31,4) = 2
-    args(31,5) = 2
-    args(32,1) = 0
-    args(32,2) = 1
-    args(32,3) = 0
-    args(32,4) = 0
-    args(32,5) = 1
-    args(33,1) = -2
-    args(33,2) = 0
-    args(33,3) = 1
-    args(33,4) = 0
-    args(33,5) = 1
-    args(34,1) = 0
-    args(34,2) = -1
-    args(34,3) = 0
-    args(34,4) = 0
-    args(34,5) = 1
-    args(35,1) = 0
-    args(35,2) = 0
-    args(35,3) = 2
-    args(35,4) = -2
-    args(35,5) = 0
-    args(36,1) = 2
-    args(36,2) = 0
-    args(36,3) = -1
-    args(36,4) = 2
-    args(36,5) = 1
-    args(37,1) = 2
-    args(37,2) = 0
-    args(37,3) = 1
-    args(37,4) = 2
-    args(37,5) = 2
-    args(38,1) = 0
-    args(38,2) = 1
-    args(38,3) = 0
-    args(38,4) = 2
-    args(38,5) = 2
-    args(39,1) = -2
-    args(39,2) = 1
-    args(39,3) = 1
-    args(39,4) = 0
-    args(39,5) = 0
-    args(40,1) = 0
-    args(40,2) = -1
-    args(40,3) = 0
-    args(40,4) = 2
-    args(40,5) = 2
-    args(41,1) = 2
-    args(41,2) = 0
-    args(41,3) = 0
-    args(41,4) = 2
-    args(41,5) = 1
-    args(42,1) = 2
-    args(42,2) = 0
-    args(42,3) = 1
-    args(42,4) = 0
-    args(42,5) = 0
-    args(43,1) = -2
-    args(43,2) = 0
-    args(43,3) = 2
-    args(43,4) = 2
-    args(43,5) = 2
-    args(44,1) = -2
-    args(44,2) = 0
-    args(44,3) = 1
-    args(44,4) = 2
-    args(44,5) = 1
-    args(45,1) = 2
-    args(45,2) = 0
-    args(45,3) = -2
-    args(45,4) = 0
-    args(45,5) = 1
-    args(46,1) = 2
-    args(46,2) = 0
-    args(46,3) = 0
-    args(46,4) = 0
-    args(46,5) = 1
-    args(47,1) = 0
-    args(47,2) = -1
-    args(47,3) = 1
-    args(47,4) = 0
-    args(47,5) = 0
-    args(48,1) = -2
-    args(48,2) = -1
-    args(48,3) = 0
-    args(48,4) = 2
-    args(48,5) = 1
-    args(49,1) = -2
-    args(49,2) = 0
-    args(49,3) = 0
-    args(49,4) = 0
-    args(49,5) = 1
-    args(50,1) = 0
-    args(50,2) = 0
-    args(50,3) = 2
-    args(50,4) = 2
-    args(50,5) = 1
-    args(51,1) = -2
-    args(51,2) = 0
-    args(51,3) = 2
-    args(51,4) = 0
-    args(51,5) = 1
-    args(52,1) = -2
-    args(52,2) = 1
-    args(52,3) = 0
-    args(52,4) = 2
-    args(52,5) = 1
-    args(53,1) = 0
-    args(53,2) = 0
-    args(53,3) = 1
-    args(53,4) = -2
-    args(53,5) = 0
-    args(54,1) = -1
-    args(54,2) = 0
-    args(54,3) = 1
-    args(54,4) = 0
-    args(54,5) = 0
-    args(55,1) = -2
-    args(55,2) = 1
-    args(55,3) = 0
-    args(55,4) = 0
-    args(55,5) = 0
-    args(56,1) = 1
-    args(56,2) = 0
-    args(56,3) = 0
-    args(56,4) = 0
-    args(56,5) = 0
-    args(57,1) = 0
-    args(57,2) = 0
-    args(57,3) = 1
-    args(57,4) = 2
-    args(57,5) = 0
-    args(58,1) = 0
-    args(58,2) = 0
-    args(58,3) = -2
-    args(58,4) = 2
-    args(58,5) = 2
-    args(59,1) = -1
-    args(59,2) = -1
-    args(59,3) = 1
-    args(59,4) = 0
-    args(59,5) = 0
-    args(60,1) = 0
-    args(60,2) = 1
-    args(60,3) = 1
-    args(60,4) = 0
-    args(60,5) = 0
-    args(61,1) = 0
-    args(61,2) = -1
-    args(61,3) = 1
-    args(61,4) = 2
-    args(61,5) = 2
-    args(62,1) = 2
-    args(62,2) = -1
-    args(62,3) = -1
-    args(62,4) = 2
-    args(62,5) = 2
-    args(63,1) = 0
-    args(63,2) = 0
-    args(63,3) = 3
-    args(63,4) = 2
-    args(63,5) = 2
-    args(64,1) = 2
-    args(64,2) = -1
-    args(64,3) = 0
-    args(64,4) = 2
-    args(64,5) = 2
+    ! now for deltable
+    ! See Meeus, pp. 145 - 146
+    deltable( 1,:) = [ 0.0,  0.0,  0.0,  0.0, 1.0, -171996.0, -174.2, 92025.0,  8.9]
+    deltable( 2,:) = [-2.0,  0.0,  0.0,  2.0, 2.0,  -13187.0,   -1.6,  5736.0, -3.1]
+    deltable( 3,:) = [ 0.0,  0.0,  0.0,  2.0, 2.0,   -2274.0,   -0.2,   977.0, -0.5]
+    deltable( 4,:) = [ 0.0,  0.0,  0.0,  0.0, 2.0,    2062.0,    0.2,  -895.0,  0.5]
+    deltable( 5,:) = [ 0.0,  1.0,  0.0,  0.0, 0.0,    1426.0,   -3.4,    54.0, -0.1]
+    deltable( 6,:) = [ 0.0,  0.0,  1.0,  0.0, 0.0,     712.0,    0.1,    -7.0,  0.0]
+    deltable( 7,:) = [-2.0,  1.0,  0.0,  2.0, 2.0,    -517.0,    1.2,   224.0, -0.6]
+    deltable( 8,:) = [ 0.0,  0.0,  0.0,  2.0, 1.0,    -386.0,   -0.4,   200.0,  0.0]
+    deltable( 9,:) = [ 0.0,  0.0,  1.0,  2.0, 2.0,    -301.0,    0.0,   129.0, -0.1]
+    deltable(10,:) = [-2.0, -1.0,  0.0,  2.0, 2.0,     217.0,   -0.5,   -95.0,  0.3]
+    deltable(11,:) = [-2.0,  0.0,  1.0,  0.0, 0.0,    -158.0,    0.0,     0.0,  0.0]
+    deltable(12,:) = [-2.0,  0.0,  0.0,  2.0, 1.0,     129.0,    0.1,   -70.0,  0.0]
+    deltable(13,:) = [ 0.0,  0.0, -1.0,  2.0, 2.0,     123.0,    0.0,   -53.0,  0.0]
+    deltable(14,:) = [ 2.0,  0.0,  0.0,  0.0, 0.0,      63.0,    0.0,     0.0,  0.0]
+    deltable(15,:) = [ 0.0,  0.0,  1.0,  0.0, 1.0,      63.0,    0.1,   -35.0,  0.0]
+    deltable(16,:) = [ 2.0,  0.0, -1.0,  2.0, 2.0,     -59.0,    0.0,    26.0,  0.0]
+    deltable(17,:) = [ 0.0,  0.0, -1.0,  0.0, 1.0,     -58.0,   -0.1,    32.0,  0.0]
+    deltable(18,:) = [ 0.0,  0.0,  1.0,  2.0, 1.0,     -51.0,    0.0,    27.0,  0.0]
+    deltable(19,:) = [-2.0,  0.0,  2.0,  0.0, 0.0,      48.0,    0.0,     0.0,  0.0]
+    deltable(20,:) = [ 0.0,  0.0, -2.0,  2.0, 1.0,      46.0,    0.0,   -24.0,  0.0]
+    deltable(21,:) = [ 2.0,  0.0,  0.0,  2.0, 2.0,     -38.0,    0.0,    16.0,  0.0]
+    deltable(22,:) = [ 0.0,  0.0,  2.0,  2.0, 2.0,     -31.0,    0.0,    13.0,  0.0]
+    deltable(23,:) = [ 0.0,  0.0,  2.0,  0.0, 0.0,      29.0,    0.0,     0.0,  0.0]
+    deltable(24,:) = [-2.0,  0.0,  1.0,  2.0, 2.0,      29.0,    0.0,   -12.0,  0.0]
+    deltable(25,:) = [ 0.0,  0.0,  2.0,  2.0, 0.0,      26.0,    0.0,     0.0,  0.0]
+    deltable(26,:) = [-2.0,  0.0,  0.0,  2.0, 0.0,     -22.0,    0.0,     0.0,  0.0]
+    deltable(27,:) = [ 0.0,  0.0, -1.0,  2.0, 1.0,      21.0,    0.0,   -10.0,  0.0]
+    deltable(28,:) = [ 0.0,  2.0,  0.0,  0.0, 0.0,      17.0,   -0.1,     0.0,  0.0]
+    deltable(29,:) = [ 2.0,  0.0, -1.0,  0.0, 1.0,      16.0,    0.0,    -8.0,  0.0]
+    deltable(30,:) = [-2.0,  2.0,  0.0,  2.0, 2.0,     -16.0,    0.1,     7.0,  0.0]
+    deltable(31,:) = [ 0.0,  1.0,  0.0,  0.0, 1.0,      15.0,    0.0,     9.0,  0.0]
+    deltable(32,:) = [-2.0,  0.0,  1.0,  0.0, 1.0,     -13.0,    0.0,     7.0,  0.0]
+    deltable(33,:) = [ 0.0, -1.0,  0.0,  0.0, 1.0,     -12.0,    0.0,     6.0,  0.0]
+    deltable(34,:) = [ 0.0,  0.0,  2.0, -2.0, 0.0,      11.0,    0.0,     0.0,  0.0]
+    deltable(35,:) = [ 2.0,  0.0, -1.0,  2.0, 1.0,     -10.0,    0.0,     5.0,  0.0]
+    deltable(36,:) = [ 2.0,  0.0,  1.0,  2.0, 2.0,      -8.0,    0.0,     3.0,  0.0]
+    deltable(37,:) = [ 0.0,  1.0,  0.0,  2.0, 2.0,       7.0,    0.0,    -3.0,  0.0]
+    deltable(38,:) = [-2.0,  1.0,  1.0,  0.0, 0.0,      -7.0,    0.0,     0.0,  0.0]
+    deltable(39,:) = [ 0.0, -1.0,  0.0,  2.0, 2.0,      -7.0,    0.0,     3.0,  0.0]
+    deltable(40,:) = [ 2.0,  0.0,  0.0,  2.0, 1.0,      -7.0,    0.0,     3.0,  0.0]
+    deltable(41,:) = [ 2.0,  0.0,  1.0,  0.0, 0.0,       6.0,    0.0,     0.0,  0.0]
+    deltable(42,:) = [-2.0,  0.0,  2.0,  2.0, 2.0,       6.0,    0.0,    -3.0,  0.0]
+    deltable(43,:) = [-2.0,  0.0,  1.0,  2.0, 1.0,       6.0,    0.0,    -3.0,  0.0]
+    deltable(44,:) = [ 2.0,  0.0, -2.0,  0.0, 1.0,      -6.0,    0.0,     3.0,  0.0]
+    deltable(45,:) = [ 2.0,  0.0,  0.0,  0.0, 1.0,      -6.0,    0.0,     3.0,  0.0]
+    deltable(46,:) = [ 0.0, -1.0,  1.0,  0.0, 0.0,       5.0,    0.0,     0.0,  0.0]
+    deltable(47,:) = [-2.0, -1.0,  0.0,  2.0, 1.0,      -5.0,    0.0,     3.0,  0.0]
+    deltable(48,:) = [-2.0,  0.0,  0.0,  0.0, 1.0,      -5.0,    0.0,     3.0,  0.0]
+    deltable(49,:) = [ 0.0,  0.0,  2.0,  2.0, 1.0,      -5.0,    0.0,     3.0,  0.0]
+    deltable(50,:) = [-2.0,  0.0,  2.0,  0.0, 1.0,       4.0,    0.0,     0.0,  0.0]
+    deltable(51,:) = [-2.0,  1.0,  0.0,  2.0, 1.0,       4.0,    0.0,     0.0,  0.0]
+    deltable(52,:) = [ 0.0,  0.0,  1.0, -2.0, 0.0,       4.0,    0.0,     0.0,  0.0]
+    deltable(53,:) = [-1.0,  0.0,  1.0,  0.0, 0.0,      -4.0,    0.0,     0.0,  0.0]
+    deltable(54,:) = [-2.0,  1.0,  0.0,  0.0, 0.0,      -4.0,    0.0,     0.0,  0.0]
+    deltable(55,:) = [ 1.0,  0.0,  0.0,  0.0, 0.0,      -4.0,    0.0,     0.0,  0.0]
+    deltable(56,:) = [ 0.0,  0.0,  1.0,  2.0, 0.0,       3.0,    0.0,     0.0,  0.0]
+    deltable(57,:) = [ 0.0,  0.0, -2.0,  2.0, 2.0,      -3.0,    0.0,     0.0,  0.0]
+    deltable(58,:) = [-1.0, -1.0,  1.0,  0.0, 0.0,      -3.0,    0.0,     0.0,  0.0]
+    deltable(59,:) = [ 0.0,  1.0,  1.0,  0.0, 1.0,      -3.0,    0.0,     0.0,  0.0]
+    deltable(60,:) = [ 0.0, -1.0,  1.0,  2.0, 2.0,      -3.0,    0.0,     0.0,  0.0]
+    deltable(61,:) = [ 2.0, -1.0, -1.0,  2.0, 2.0,      -3.0,    0.0,     0.0,  0.0]
+    deltable(62,:) = [ 0.0,  0.0,  3.0,  2.0, 2.0,      -3.0,    0.0,     0.0,  0.0]
+    deltable(63,:) = [ 2.0, -1.0,  0.0,  2.0, 2.0,      -3.0,    0.0,     0.0,  0.0]
 
-    psi_coeffs(1,1) = 171996
-    psi_coeffs(1, 2) = -174.27
-    psi_coeffs(2, 1) = -13187
-    psi_coeffs(2, 2) = -1.67
-    psi_coeffs(3, 1) = -2274
-    psi_coeffs(3, 2) = -0.27
-    psi_coeffs(4, 1) = 2062
-    psi_coeffs(4, 2) = 0.27
-    psi_coeffs(5, 1) = 1426
-    psi_coeffs(5, 2) = -3.47
-    psi_coeffs(6, 1) = 712
-    psi_coeffs(6, 2) = 0.17
-    psi_coeffs(7, 1) = -517
-    psi_coeffs(7, 2) = 1.27
-    psi_coeffs(8, 1) = -368
-    psi_coeffs(8, 2) = -0.47
-    psi_coeffs(9, 1) = -301
-    psi_coeffs(9, 2) = 0
-    psi_coeffs(10, 1) = 217
-    psi_coeffs(10, 2) = -0.57
-    psi_coeffs(11, 1) = -158
-    psi_coeffs(11, 2) = 0
-    psi_coeffs(12, 1) = 129
-    psi_coeffs(12, 2) = 0.17
-    psi_coeffs(13, 1) = 123
-    psi_coeffs(13, 2) = 0
-    psi_coeffs(14, 1) = 63
-    psi_coeffs(14, 2) = 0
-    psi_coeffs(15, 1) = 63
-    psi_coeffs(15, 2) = 0.17
-    psi_coeffs(16, 1) = -59
-    psi_coeffs(16, 2) = 0
-    psi_coeffs(17, 1) = -58
-    psi_coeffs(17, 2) = -0.17
-    psi_coeffs(18, 1) = -51
-    psi_coeffs(18, 2) = 0
-    psi_coeffs(19, 1) = 48
-    psi_coeffs(19, 2) = 0
-    psi_coeffs(20, 1) = 46
-    psi_coeffs(20, 2) = 0
-    psi_coeffs(21, 1) = -38
-    psi_coeffs(21, 2) = 0
-    psi_coeffs(22, 1) = -31
-    psi_coeffs(22, 2) = 0
-    psi_coeffs(23, 1) = 29
-    psi_coeffs(23, 2) = 0
-    psi_coeffs(24, 1) = 29
-    psi_coeffs(24, 2) = 0
-    psi_coeffs(25, 1) = 26
-    psi_coeffs(25, 2) = 0
-    psi_coeffs(26, 1) = -22
-    psi_coeffs(26, 2) = 0
-    psi_coeffs(27, 1) = 21
-    psi_coeffs(27, 2) = 0
-    psi_coeffs(28, 1) = 17
-    psi_coeffs(28, 2) = 0.17
-    psi_coeffs(29, 1) = 16
-    psi_coeffs(29, 2) = 0
-    psi_coeffs(30, 1) = -16
-    psi_coeffs(30, 2) = 0.17
-    psi_coeffs(31, 1) = -15
-    psi_coeffs(31, 2) = 0
-    psi_coeffs(32, 1) = -13
-    psi_coeffs(32, 2) = 0
-    psi_coeffs(33, 1) = -12
-    psi_coeffs(33, 2) = 0
-    psi_coeffs(34, 1) = 11
-    psi_coeffs(34, 2) = 0
-    psi_coeffs(35, 1) = -10
-    psi_coeffs(35, 2) = 0
-    psi_coeffs(36, 1) = -8
-    psi_coeffs(36, 2) = 0
-    psi_coeffs(37, 1) = 7
-    psi_coeffs(37, 2) = 0
-    psi_coeffs(38, 1) = -7
-    psi_coeffs(38, 2) = 0
-    psi_coeffs(39, 1) = -7
-    psi_coeffs(39, 2) = 0
-    psi_coeffs(40, 1) = -7
-    psi_coeffs(40, 2) = 0
-    psi_coeffs(41, 1) = 6
-    psi_coeffs(41, 2) = 0
-    psi_coeffs(42, 1) = 6
-    psi_coeffs(42, 2) = 0
-    psi_coeffs(43, 1) = 6
-    psi_coeffs(43, 2) = 0
-    psi_coeffs(44, 1) = -6
-    psi_coeffs(44, 2) = 0
-    psi_coeffs(45, 1) = -6
-    psi_coeffs(45, 2) = 0
-    psi_coeffs(46, 1) = 5
-    psi_coeffs(46, 2) = 0
-    psi_coeffs(47, 1) = -5
-    psi_coeffs(47, 2) = 0
-    psi_coeffs(48, 1) = -5
-    psi_coeffs(48, 2) = 0
-    psi_coeffs(49, 1) = -5
-    psi_coeffs(49, 2) = 0
-    psi_coeffs(50, 1) = 4
-    psi_coeffs(50, 2) = 0
-    psi_coeffs(51, 1) = 4
-    psi_coeffs(51, 2) = 0
-    psi_coeffs(52, 1) = 4
-    psi_coeffs(52, 2) = 0
-    psi_coeffs(53, 1) = -4
-    psi_coeffs(53, 2) = 0
-    psi_coeffs(54, 1) = -4
-    psi_coeffs(54, 2) = 0
-    psi_coeffs(55, 1) = -4
-    psi_coeffs(55, 2) = 0
-    psi_coeffs(56, 1) = 3
-    psi_coeffs(56, 2) = 0
-    psi_coeffs(57, 1) = -3
-    psi_coeffs(57, 2) = 0
-    psi_coeffs(58, 1) = -3
-    psi_coeffs(58, 2) = 0
-    psi_coeffs(59, 1) = -3
-    psi_coeffs(59, 2) = 0
-    psi_coeffs(60, 1) = -3
-    psi_coeffs(60, 2) = 0
-    psi_coeffs(61, 1) = -3
-    psi_coeffs(61, 2) = 0
-    psi_coeffs(62, 1) = -3
-    psi_coeffs(62, 2) = 0
-    psi_coeffs(63, 1) = -3
-    psi_coeffs(63, 2) = 0
-    psi_coeffs(64, 1) = -3
-    psi_coeffs(64, 2) = 0
-    
-    eps_coeffs(1,1) = 92025
-    eps_coeffs(1,2) = 8.9
-    eps_coeffs(2,1) = 5736
-    eps_coeffs(2,2) = 3.1
-    eps_coeffs(3,1) = 977
-    eps_coeffs(3,2) = 0.5
-    eps_coeffs(4,1) = -895
-    eps_coeffs(4,2) = 0.5
-    eps_coeffs(5,1) = 54
-    eps_coeffs(5,2) = 0.17
-    eps_coeffs(6,1) = -7
-    eps_coeffs(6,2) = 0
-    eps_coeffs(7,1) = 224
-    eps_coeffs(7,2) = -0.6
-    eps_coeffs(8,1) = 200
-    eps_coeffs(8,2) = 0
-    eps_coeffs(9,1) = 129
-    eps_coeffs(9,2) = -0.1
-    eps_coeffs(10,1) = -95
-    eps_coeffs(10,2) = 0.3
-    eps_coeffs(11,1) = 0
-    eps_coeffs(11,2) = 0
-    eps_coeffs(12,1) = -70
-    eps_coeffs(12,2) = 0
-    eps_coeffs(13,1) = -53
-    eps_coeffs(13,2) = 0
-    eps_coeffs(14,1) = 0
-    eps_coeffs(14,2) = 0
-    eps_coeffs(15,1) = -33
-    eps_coeffs(15,2) = 0
-    eps_coeffs(16,1) = 26
-    eps_coeffs(16,2) = 0
-    eps_coeffs(17,1) = 32
-    eps_coeffs(17,2) = 0
-    eps_coeffs(18,1) = 27
-    eps_coeffs(18,2) = 0
-    eps_coeffs(19,1) = 0
-    eps_coeffs(19,2) = 0
-    eps_coeffs(20,1) = -24
-    eps_coeffs(20,2) = 0
-    eps_coeffs(21,1) = 16
-    eps_coeffs(21,2) = 0
-    eps_coeffs(22,1) = 13
-    eps_coeffs(22,2) = 0
-    eps_coeffs(23,1) = 0
-    eps_coeffs(23,2) = 0
-    eps_coeffs(24,1) = -12
-    eps_coeffs(24,2) = 0
-    eps_coeffs(25,1) = 0
-    eps_coeffs(25,2) = 0
-    eps_coeffs(26,1) = 0
-    eps_coeffs(26,2) = 0
-    eps_coeffs(27,1) = -10
-    eps_coeffs(27,2) = 0
-    eps_coeffs(28,1) = 0
-    eps_coeffs(28,2) = 0
-    eps_coeffs(29,1) = -8
-    eps_coeffs(29,2) = 0
-    eps_coeffs(30,1) = 7
-    eps_coeffs(30,2) = 0
-    eps_coeffs(31,1) = 9
-    eps_coeffs(31,2) = 0
-    eps_coeffs(32,1) = 7
-    eps_coeffs(32,2) = 0
-    eps_coeffs(33,1) = 6
-    eps_coeffs(33,2) = 0
-    eps_coeffs(34,1) = 0
-    eps_coeffs(34,2) = 0
-    eps_coeffs(35,1) = 5
-    eps_coeffs(35,2) = 0
-    eps_coeffs(36,1) = 3
-    eps_coeffs(36,2) = 0
-    eps_coeffs(37,1) = -3
-    eps_coeffs(37,2) = 0
-    eps_coeffs(38,1) = 0
-    eps_coeffs(38,2) = 0
-    eps_coeffs(39,1) = 3
-    eps_coeffs(39,2) = 0
-    eps_coeffs(40,1) = 3
-    eps_coeffs(40,2) = 0
-    eps_coeffs(41,1) = 0
-    eps_coeffs(41,2) = 0
-    eps_coeffs(42,1) = -3
-    eps_coeffs(42,2) = 0
-    eps_coeffs(43,1) = -3
-    eps_coeffs(43,2) = 0
-    eps_coeffs(44,1) = 3
-    eps_coeffs(44,2) = 0
-    eps_coeffs(45,1) = 3
-    eps_coeffs(45,2) = 0
-    eps_coeffs(46,1) = 0
-    eps_coeffs(46,2) = 0
-    eps_coeffs(47,1) = 3
-    eps_coeffs(47,2) = 0
-    eps_coeffs(48,1) = 3
-    eps_coeffs(48,2) = 0
-    eps_coeffs(49,1) = 3
-    eps_coeffs(49,2) = 0
-    eps_coeffs(50,1) = 0
-    eps_coeffs(50,2) = 0
-    eps_coeffs(51,1) = 0
-    eps_coeffs(51,2) = 0
-    eps_coeffs(52,1) = 0
-    eps_coeffs(52,2) = 0
-    eps_coeffs(53,1) = 0
-    eps_coeffs(53,2) = 0
-    eps_coeffs(54,1) = 0
-    eps_coeffs(54,2) = 0
-    eps_coeffs(55,1) = 0
-    eps_coeffs(55,2) = 0
-    eps_coeffs(56,1) = 0
-    eps_coeffs(56,2) = 0
-    eps_coeffs(57,1) = 0
-    eps_coeffs(57,2) = 0
-    eps_coeffs(58,1) = 0
-    eps_coeffs(58,2) = 0
-    eps_coeffs(59,1) = 0
-    eps_coeffs(59,2) = 0
-    eps_coeffs(60,1) = 0
-    eps_coeffs(60,2) = 0
-    eps_coeffs(61,1) = 0
-    eps_coeffs(61,2) = 0
-    eps_coeffs(62,1) = 0
-    eps_coeffs(62,2) = 0
-    eps_coeffs(63,1) = 0
-    eps_coeffs(63,2) = 0
-    eps_coeffs(64,1) = 0
-    eps_coeffs(64,2) = 0
-
-    delta_epsilon = 0.0
-    delta_psi = 0.0
-    do i = 1, 64
-       a = d2r * ((args(i,1) * D) + (args(i,2) * M) + (args(i,3) * Mprime) + (args(i,4) * F) + (args(i,5) * omega))
-       delta_epsilon = delta_epsilon + ((eps_coeffs(i,1) + (T * eps_coeffs(i,2))) * cos(a))
-       delta_psi = delta_psi + ((psi_coeffs(i,1) + (T * psi_coeffs(i,2))) * sin(a))
+    delta_epsilon = 0.0 ! nutation in obliquity, at this point in tenths of milliarcseconds
+    delta_psi     = 0.0 ! nutation in longitude, at this point in tenths of milliarcseconds
+    do i = 1, 63
+       delta_psi     = delta_psi     + ( (deltable(i,6) + (T * deltable(i,7))) * dsind( (D * deltable(i,1)) + (M * deltable(i,2)) + (Mprime * deltable(i,3)) + (F * deltable(i, 4)) + (omega * deltable(i, 5)) ) )
+       delta_epsilon = delta_epsilon + ( (deltable(i,8) + (T * deltable(i,9))) * dcosd( (D * deltable(i,1)) + (M * deltable(i,2)) + (Mprime * deltable(i,3)) + (F * deltable(i, 4)) + (omega * deltable(i, 5)) ) )
+       
+       !a = d2r * ((args(i,1) * D) + (args(i,2) * M) + (args(i,3) * Mprime) + (args(i,4) * F) + (args(i,5) * omega))
+       !delta_epsilon = delta_epsilon + ((eps_coeffs(i,1) + (T * eps_coeffs(i,2))) * cos(a))
+       !delta_psi = delta_psi + ((psi_coeffs(i,1) + (T * psi_coeffs(i,2))) * sin(a))
 
 
        
@@ -740,9 +231,8 @@ contains
        !a = a * (eps_coeffs(i,1) + (eps_coeffs(i,2) * T))
     end do
 
-    ! Convert delta_epsilon and delta_psi into arcseconds
-    delta_epsilon = delta_epsilon / 10000.0
-    delta_psi = delta_psi / 1000.0
+    delta_epsilon = delta_epsilon / 10000.0 ! convert to arcseconds
+    delta_psi = delta_psi / 10000.0 ! convert to arcseconds
     delta_epsilon = delta_epsilon / 3600.0 ! convert delta_epsilon into degrees
     delta_psi = delta_psi / 3600.0 ! convert delta_psi into degrees
 
@@ -763,7 +253,7 @@ contains
     a = a / 3600.0 ! convert a from arcseconds to degrees
 
     !epsilon0 = 23.0 + (26.0 / 60.0) + (21.448 / 3600.0) - ((46.8450 * T) / 3600.0) - ((0.00059 * T * T) / 3600.0) + ((0.001813 * T * T * T) / 3600.0)
-    epsilon0 = 23.0 + (26.0 / 60.0) + (21.448 / 3600.0) + a + delta_epsilon
+    epsilon0 = 23.0 + (26.0 / 60.0) + (21.448 / 3600.0) + a + delta_epsilon ! true obliquity of the ecliptic
 
     !epsilon0 = epsilon0 + delta_epsilon
     !epsilon0 = mod(epsilon0, 26.0) ! if the obliquity of the ecliptic is calculated more than 10,000 years from J2000.0. the numbers become silly. This keeps it within sensible boundaries.
@@ -1312,36 +802,29 @@ contains
     
   subroutine solar_radec(jday, radec)
     ! Obtain the right ascension and declination of the sun
+    ! Based on Meeus, chapter 13
     double precision, intent(in) :: jday ! Julian Day in question
-    !double precision, intent(in) :: oblq ! obliquity of the ecliptic
     double precision, dimension(2), intent(out) :: radec ! right ascension and declination
 
     double precision :: lon ! ecliptic longitude
-    double precision :: lat ! ecliptic latitude
+    !double precision :: lat ! ecliptic latitude
     double precision, dimension(3) :: nut ! nutation factors
 
-    double precision :: pi
+    double precision :: pi = 4.0 * atan(1.0)
     double precision :: d2r ! convert degrees to radians
     double precision :: r2d ! convert radians to degrees
 
-    pi = 4.0 * atan(1.0)
     d2r = pi / 180.0
     r2d = 180.0 / pi
 
     call nutation(jday, nut)
     call solar_longitude(jday, lon) ! get ecliptic longitude                                                  
-    !call solar_latitude(jday, lat) ! get ecliptic latitude
-    !print *, lon
-    !print *, lat
 
-    !radec(1) = ((sin(d2r * lon) * cos(d2r * nut(1)) - (tan(d2r * lat) * sin(d2r * nut(1)))))
-    !radec(1) = radec(1) / cos(d2r * lon)
-    !radec(1) = r2d * atan(radec(1))
-    !print *, cos(d2r * nut(1))
-    !print *, tan(d2r * lon)
-    !print *, lon
-    radec(1) = cos(d2r * nut(1)) * tan(d2r * lon)
-    radec(1) = r2d * atan(radec(1))
+    ! compute the right ascension.
+    ! Because the sun's ecliptic latitude is always 0 by definition, Meeus' equation simplifies to this in the case of the sun
+    
+    radec(1) = datand(dcosd(nut(1)) * dtand(lon))
+
     !print *, lon
     !print *, radec(1)
     ! Trig functions only really work between (-90)º and +90º;
@@ -1363,51 +846,38 @@ contains
     !else if ((lon <= 90) .and. (radec(1) > 0)) then ! lambda in ALL quadrant, alpha in ALL quadrant
      !  radec(1) = 0 + radec(1)
     !end if
-!    print *, "lon == ", lon
- !   print *, "radec(1) == ", radec(1)
 
     if (lon <= 90.0) then ! lambda in ALL quadrant
-  !     print *, "John"
        if (radec(1) >= 0.0) then ! alpha in ALL quadrant
-   !       print *, "Sweet"
           radec(1) = 0.0 + radec(1)
        else if (radec(1) < 0.0) then ! alpha in SIN quadrant
-    !      print *, "Dude"
           radec(1) = 180.0 + radec(1)
-       end if
-    else if (lon <= 180.0) then ! lambda in SIN quadrant
-     !  print *, "Paul"
-       if (radec(1) < 0.0) then !alpha in SIN quadrant
-      !    print *, "Sweet"
-          radec(1) = 180.0 + radec(1)
-       else if (radec(1) >= 0.0) then ! alpha in TAN quadrant
-       !   print *, "Dude"
-          radec(1) = 180.0 + radec(1)
-       end if
-    else if (lon <= 270.0) then ! lambda in TAN quadrant
-!       print *, "George"
-       if (radec(1) >= 0.0) then ! alpha in TAN quadrant
- !         print *, "Sweet"
-          radec(1) = 180.0 + radec(1)
-       else if (radec(1) < 0.0) then ! alpha in COS quadrant
-  !        print *, "Dude"
-          radec(1) = 360.0 + radec(1)
-       end if
-    else if (lon <= 360.0) then ! lambda in COS quadrant
-   !    print *, "Ringo"
-       if (radec(1) < 0.0) then ! alpha in COS quadrant
-    !      print *, "Sweet"
-          radec(1) = 360.0 + radec(1)
-       else if (radec(1) >= 0.0) then !alpha in ALL quadrant
-     !     print *, "Dude"
-          radec(1) = 0.0 + radec(1)
-       end if
-    end if
-    radec(1) = modulo(radec(1), 360.0)
-    
-    radec(2) = sin(d2r * nut(1)) * sin(d2r * lon)
-    radec(2) = r2d * asin(radec(2))
-    !print *, radec
+     end if
+  else if (lon <= 180.0) then ! lambda in SIN quadrant
+     if (radec(1) < 0.0) then !alpha in SIN quadrant
+        radec(1) = 180.0 + radec(1)
+     else if (radec(1) >= 0.0) then ! alpha in TAN quadrant
+        radec(1) = 180.0 + radec(1)
+     end if
+  else if (lon <= 270.0) then ! lambda in TAN quadrant
+     if (radec(1) >= 0.0) then ! alpha in TAN quadrant
+        radec(1) = 180.0 + radec(1)
+     else if (radec(1) < 0.0) then ! alpha in COS quadrant
+        radec(1) = 360.0 + radec(1)
+     end if
+  else if (lon <= 360.0) then ! lambda in COS quadrant
+     if (radec(1) < 0.0) then ! alpha in COS quadrant
+        radec(1) = 360.0 + radec(1)
+     else if (radec(1) >= 0.0) then !alpha in ALL quadrant
+        radec(1) = 0.0 + radec(1)
+     end if
+  end if
+  radec(1) = modulo(radec(1), 360.0)
+  
+    ! compute the declination
+    ! Again, because the sun's ecliptic latitude is always 0, the standard equation reduced to this
+    radec(2) = asind(sind(nut(1)) * sind(lon))
+    !radec(2) = modulo(radec(2), 360.0)
   end subroutine solar_radec
 end module solar_coords
 
@@ -1546,27 +1016,157 @@ contains
     
   end subroutine getMprime
   
-  subroutine lunar_longitude(jre, lambda)
+  subroutine lunar_lonlat(jre, lonlat)
     double precision, intent(in) :: jre
-    double precision, intent(out) :: lambda
+    double precision, dimension(2), intent(out) :: lonlat
     double precision :: T
     double precision :: Lprime
     double precision :: D
     double precision :: M
     double precision :: Mprime
     double precision :: F
-    double precision :: ecc
+    double precision :: ecc ! solar eccentricity
     double precision :: a1
     double precision :: a2
     double precision :: a3
-    integer, dimension(60,5) :: ltable
-    double precision :: Dterm
-    double precision :: Mterm
-    double precision :: Mpterm
-    double precision :: Fterm
-    double precision :: term
-    double precision :: sigma_l
+    integer, dimension(60,6) :: ltable
+    integer, dimension(60,5) :: btable
+    !double precision :: Dterm
+    !double precision :: Mterm
+    !double precision :: Mpterm
+    !double precision :: Fterm
+    !double precision :: term
+    double precision :: sigma_l ! used to calculate lunar longitude
+    double precision :: sigma_b ! used to calculate lunar latitude
     integer :: i
+    double precision :: pi = 4.0 * atan(1.0)
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
+
+    d2r = 180.0 / pi
+    r2d = pi / 180.0
+
+    ltable(1,:) =  [0,  0,  1,  0, 6288774, -20905355]
+    ltable(2,:) =  [2,  0, -1,  0, 1274027,  -3699111]
+    ltable(3,:) =  [2,  0,  0,  0,  658314,  -2955968]
+    ltable(4,:) =  [0,  0,  2,  0,  213618,   -569925]
+    ltable(5,:) =  [0,  1,  0,  0, -185116,     48888]
+    ltable(6,:) =  [0,  0,  0,  2, -114332,     -3149]
+    ltable(7,:) =  [2,  0, -2,  0,   58793,    246158]
+    ltable(8,:) =  [2, -1, -1,  0,   57066,   -152138]
+    ltable(9,:) =  [2,  0,  1,  0,   53322,   -170733]
+    ltable(10,:) = [2, -1,  0,  0,   45758,   -204586]
+    ltable(11,:) = [0,  1, -1,  0,  -40923,   -129620]
+    ltable(12,:) = [1,  0,  0,  0,  -34720,    108743]
+    ltable(13,:) = [0,  1,  1,  0,  -30383,    104755]
+    ltable(14,:) = [2,  0,  0, -2,   15327,     10321]
+    ltable(15,:) = [0,  0,  1,  2,  -12528,         0]
+    ltable(16,:) = [0,  0,  1, -2,   10980,     79661]
+    ltable(17,:) = [4,  0, -1,  0,   10675,    -34782]
+    ltable(18,:) = [0,  0,  3,  0,   10034,    -23210]
+    ltable(19,:) = [4,  0, -2,  0,    8548,    -21636]
+    ltable(20,:) = [2,  1, -1,  0,   -7888,     24208]
+    ltable(21,:) = [2,  1,  0,  0,   -6766,     30824]
+    ltable(22,:) = [1,  0, -1,  0,   -5163,     -8379]
+    ltable(23,:) = [1,  1,  0,  0,    4987,    -16675]
+    ltable(24,:) = [2, -1,  1,  0,    4036,    -12831]
+    ltable(25,:) = [2,  0,  2,  0,    3994,    -10445]
+    ltable(26,:) = [4,  0,  0,  0,    3861,    -11650]
+    ltable(27,:) = [2,  0, -3,  0,    3665,     14403]
+    ltable(28,:) = [0,  1, -2,  0,   -2689,     -7003]
+    ltable(29,:) = [2,  0, -1,  2,   -2602,         0]
+    ltable(30,:) = [2, -1, -2,  0,    2390,     10056]
+    ltable(31,:) = [1,  0,  1,  0,   -2348,      6322]
+    ltable(32,:) = [2, -2,  0,  0,    2236,     -9884]
+    ltable(33,:) = [0,  1,  2,  0,   -2120,      5751]
+    ltable(34,:) = [0,  2,  0,  0,   -2069,         0]
+    ltable(35,:) = [2, -2, -1,  0,    2048,     -4950]
+    ltable(36,:) = [2,  0,  1, -2,   -1773,      4130]
+    ltable(37,:) = [2,  0,  0,  2,   -1595,         0]
+    ltable(38,:) = [4, -1, -1,  0,    1215,     -3958]
+    ltable(39,:) = [0,  0,  2,  2,   -1110,         0]
+    ltable(40,:) = [3,  0, -1,  0,    -892,      3258]
+    ltable(41,:) = [2,  1,  1,  0,    -810,      2616]
+    ltable(42,:) = [4, -1, -2,  0,     759,     -1897]
+    ltable(43,:) = [0,  2, -1,  0,    -713,     -2117]
+    ltable(44,:) = [2,  2, -1,  0,    -700,      2354]
+    ltable(45,:) = [2,  1, -2,  0,     691,         0]
+    ltable(46,:) = [2, -1,  0, -2,     596,         0]
+    ltable(47,:) = [4,  0,  1,  0,     549,     -1423]
+    ltable(48,:) = [0,  0,  4,  0,     537,     -1117]
+    ltable(49,:) = [4, -1,  0,  0,     520,     -1571]
+    ltable(50,:) = [1,  0, -2,  0,    -487,     -1739]
+    ltable(51,:) = [2,  1,  0, -2,    -399,         0]
+    ltable(52,:) = [0,  0,  2, -2,    -381,     -4421]
+    ltable(53,:) = [1,  1,  1,  0,     351,         0]
+    ltable(54,:) = [3,  0, -2,  0,    -340,         0]
+    ltable(55,:) = [4,  0, -3,  0,     330,         0]
+    ltable(56,:) = [2, -1,  2,  0,     327,         0]
+    ltable(57,:) = [0,  2,  1,  0,    -323,      1165]
+    ltable(58,:) = [1,  1, -1,  0,     299,         0]
+    ltable(59,:) = [2,  0,  3,  0,     294,         0]
+    ltable(60,:) = [2,  0, -1, -2,       0,      8752]
+
+    btable( 1,:) = [0,  0,  0,  1, 5128122]
+    btable( 2,:) = [0,  0,  1,  1,  280602]
+    btable( 3,:) = [0,  0,  1, -1,  277693]
+    btable( 4,:) = [2,  0,  2, -1,  173237]
+    btable( 5,:) = [2,  0, -1,  1,   55413]
+    btable( 6,:) = [2,  0, -1, -1,   46271]
+    btable( 7,:) = [2,  0,  0,  0,   32573]
+    btable( 8,:) = [0,  0,  2,  1,   17198]
+    btable( 9,:) = [2,  0,  1, -1,    9266]
+    btable(10,:) = [0,  0,  2, -1,    8822]
+    btable(11,:) = [2, -1,  0, -1,    8216]
+    btable(12,:) = [2,  0, -2, -1,    4324]
+    btable(13,:) = [2,  0,  1,  1,    4200]
+    btable(14,:) = [2,  1,  0, -1,   -3359]
+    btable(15,:) = [2, -1, -1,  1,    2463]
+    btable(16,:) = [2, -1,  0,  1,    2211]
+    btable(17,:) = [2, -1, -1, -1,    2065]
+    btable(18,:) = [0,  1, -1, -1,   -1870]
+    btable(19,:) = [4,  0, -1, -1,    1828]
+    btable(20,:) = [0,  1,  0,  1,   -1794]
+    btable(21,:) = [0,  0,  0,  3,   -1749]
+    btable(22,:) = [0,  1, -1,  1,   -1565]
+    btable(23,:) = [1,  0,  0,  0,   -1491]
+    btable(24,:) = [0,  1,  1,  1,   -1475]
+    btable(25,:) = [0,  1,  1, -1,   -1410]
+    btable(26,:) = [0,  1,  0, -1,   -1344]
+    btable(27,:) = [1,  0,  0, -1,   -1335]
+    btable(28,:) = [0,  0,  3,  1,    1107]
+    btable(29,:) = [4,  0,  0, -1,    1021]
+    btable(30,:) = [4,  0, -1,  1,     833]
+    btable(31,:) = [0,  0,  1, -3,     777]
+    btable(32,:) = [4,  0, -2,  1,     671]
+    btable(33,:) = [2,  0,  0, -3,     607]
+    btable(34,:) = [2,  0,  2, -1,     596]
+    btable(35,:) = [2, -1,  1, -1,     491]
+    btable(36,:) = [2,  0, -2,  1,    -451]
+    btable(37,:) = [0,  0,  3, -1,     439]
+    btable(38,:) = [2,  0,  2,  1,     422]
+    btable(39,:) = [2,  0, -3, -1,     421]
+    btable(40,:) = [2,  1, -1,  1,    -366]
+    btable(41,:) = [2,  1,  0,  1,    -351]
+    btable(42,:) = [4,  0,  0,  1,     331]
+    btable(43,:) = [2, -1,  1,  1,     315]
+    btable(44,:) = [2, -2,  0, -1,     302]
+    btable(45,:) = [0,  0,  1,  3,    -283]
+    btable(46,:) = [2,  1,  1, -1,    -229]
+    btable(47,:) = [1,  1,  0, -1,     223]
+    btable(48,:) = [1,  1,  0,  1,     223]
+    btable(49,:) = [0,  1, -2, -1,    -220]
+    btable(50,:) = [2,  1, -1, -1,    -220]
+    btable(51,:) = [1,  0,  1,  1,    -185]
+    btable(52,:) = [2, -1, -2, -1,     181]
+    btable(53,:) = [0,  1,  2,  1,    -177]
+    btable(54,:) = [4,  0, -2, -1,     176]
+    btable(55,:) = [4, -1, -1, -1,     166]
+    btable(56,:) = [1,  0,  1, -1,    -164]
+    btable(57,:) = [4,  0,  1, -1,     132]
+    btable(58,:) = [1,  0, -1, -1,    -119]
+    btable(59,:) = [4, -1,  0,  1,     115]
+    btable(60,:) = [2, -2,  0,  1,     107]    
 
     call getT(jre, T)
     
@@ -1581,332 +1181,64 @@ contains
     a2 = 53.09 + (479264.290 * T)
     a3 = 313.45 + (481266.484 * T)
 
-    
-    ltable(1,1) = 0
-    ltable(1,2) = 0
-    ltable(1,3) = 1
-    ltable(1,4) = 0
-    ltable(1,5) = 6288774
-    ltable(2,1) = 2
-    ltable(2,2) = 0
-    ltable(2,3) = -1
-    ltable(2,4) = 0
-    ltable(2,5) = 1274027
-    ltable(3,1) = 2
-    ltable(3,2) = 0
-    ltable(3,3) = 0
-    ltable(3,4) = 0
-    ltable(3,5) = 658314
-    ltable(4,1) = 0
-    ltable(4,2) = 0
-    ltable(4,3) = 2
-    ltable(4,4) = 0
-    ltable(4,5) = 213618
-    ltable(5,1) = 0
-    ltable(5,2) = 1
-    ltable(5,3) = 0
-    ltable(5,4) = 0
-    ltable(5,5) = -185116
-    ltable(6,1) = 0
-    ltable(6,2) = 0
-    ltable(6,3) = 0
-    ltable(6,4) = 2
-    ltable(6,5) = -114332
-    ltable(7,1) = 2
-    ltable(7,2) = 0
-    ltable(7,3) = -2
-    ltable(7,4) = 0
-    ltable(7,5) = 58793
-    ltable(8,1) = 2
-    ltable(8,2) = -1
-    ltable(8,3) = -1
-    ltable(8,4) = 0
-    ltable(8,5) = 57066
-    ltable(9,1) = 2
-    ltable(9,2) = 0
-    ltable(9,3) = 1
-    ltable(9,4) = 0
-    ltable(9,5) = 53322
-    ltable(10,1) = 2
-    ltable(10,2) = -1
-    ltable(10,3) = 0
-    ltable(10,4) = 0
-    ltable(10,5) = 45758
-    ltable(11,1) = 0
-    ltable(11,2) = 1
-    ltable(11,3) = -1
-    ltable(11,4) = 0
-    ltable(11,5) = -40923
-    ltable(12,1) = 1
-    ltable(12,2) = 0
-    ltable(12,3) = 0
-    ltable(12,4) = 0
-    ltable(12,5) = -34720
-    ltable(13,1) = 0
-    ltable(13,2) = 1
-    ltable(13,3) = 1
-    ltable(13,4) = 0
-    ltable(13,5) = -30383
-    ltable(14,1) = 2
-    ltable(14,2) = 0
-    ltable(14,3) = 0
-    ltable(14,4) = -2
-    ltable(14,5) = 15327
-    ltable(15,1) = 0
-    ltable(15,2) = 0
-    ltable(15,3) = 1
-    ltable(15,4) = 2
-    ltable(15,5) = -12528
-    ltable(16,1) = 0
-    ltable(16,2) = 0
-    ltable(16,3) = 1
-    ltable(16,4) = -2
-    ltable(16,5) = 10980
-    ltable(17,1) = 4
-    ltable(17,2) = 0
-    ltable(17,3) = -1
-    ltable(17,4) = 0
-    ltable(17,5) = 10675
-    ltable(18,1) = 0
-    ltable(18,2) = 0
-    ltable(18,3) = 3
-    ltable(18,4) = 0
-    ltable(18,5) = 1034
-    ltable(19,1) = 4
-    ltable(19,2) = 0
-    ltable(19,3) = -2
-    ltable(19,4) = 0
-    ltable(19,5) = 8548
-    ltable(20,1) = 2
-    ltable(20,2) = 1
-    ltable(20,3) = -1
-    ltable(20,4) = 0
-    ltable(20,5) = -7888
-    ltable(21,1) = 2
-    ltable(21,2) = 1
-    ltable(21,3) = 0
-    ltable(21,4) = 0
-    ltable(21,5) = -6766
-    ltable(22,1) = 1
-    ltable(22,2) = 0
-    ltable(22,3) = -1
-    ltable(22,4) = 0
-    ltable(22,5) = -5163
-    ltable(23,1) = 1
-    ltable(23,2) = 1
-    ltable(23,3) = 0
-    ltable(23,4) = 0
-    ltable(23,5) = 4987
-    ltable(24,1) = 2
-    ltable(24,2) = -1
-    ltable(24,3) = 1
-    ltable(24,4) = 0
-    ltable(24,5) = 4036
-    ltable(25,1) = 2
-    ltable(25,2) = 0
-    ltable(25,3) = 2
-    ltable(25,4) = 0
-    ltable(25,5) = 3994
-    ltable(26,1) = 4
-    ltable(26,2) = 0
-    ltable(26,3) = 0
-    ltable(26,4) = 0
-    ltable(26,5) = 3861
-    ltable(27,1) = 2
-    ltable(27,2) = 0
-    ltable(27,3) = -3
-    ltable(27,4) = 0
-    ltable(27,5) = 3665
-    ltable(28,1) = 0
-    ltable(28,2) = 1
-    ltable(28,3) = -2
-    ltable(28,4) = 0
-    ltable(28,5) = -2689
-    ltable(29,1) = 2
-    ltable(29,2) = 0
-    ltable(29,3) = -1
-    ltable(29,4) = 2
-    ltable(29,5) = -2602
-    ltable(30,1) = 2
-    ltable(30,2) = -1
-    ltable(30,3) = -2
-    ltable(30,4) = 0
-    ltable(30,5) = 2390
-    ltable(31,1) = 1
-    ltable(31,2) = 0
-    ltable(31,3) = 1
-    ltable(31,4) = 0
-    ltable(31,5) = -2348
-    ltable(32,1) = 2
-    ltable(32,2) = -2
-    ltable(32,3) = 0
-    ltable(32,4) = 0
-    ltable(32,5) = 2236
-    ltable(33,1) = 0
-    ltable(33,2) = 1
-    ltable(33,3) = 2
-    ltable(33,4) = 0
-    ltable(33,5) = -2120
-    ltable(34,1) = 0
-    ltable(34,2) = 2
-    ltable(34,3) = 0
-    ltable(34,4) = 0
-    ltable(34,5) = -2069
-    ltable(35,1) = 2
-    ltable(35,2) = -2
-    ltable(35,3) = -1
-    ltable(35,4) = 0
-    ltable(35,5) = 2048
-    ltable(36,1) = 2
-    ltable(36,2) = 0
-    ltable(36,3) = 1
-    ltable(36,4) = -2
-    ltable(36,5) = -1773
-    ltable(37,1) = 2
-    ltable(37,2) = 0
-    ltable(37,3) = 0
-    ltable(37,4) = 2
-    ltable(37,5) = -1595
-    ltable(38,1) = 4
-    ltable(38,2) = -1
-    ltable(38,3) = -1
-    ltable(38,4) = 0
-    ltable(38,5) = 1215
-    ltable(39,1) = 0
-    ltable(39,2) = 0
-    ltable(39,3) = 2
-    ltable(39,4) = 2
-    ltable(39,5) = -1110
-    ltable(40,1) = 3
-    ltable(40,2) = 0
-    ltable(40,3) = -1
-    ltable(40,4) = 0
-    ltable(40,5) = -892
-    ltable(41,1) = 2
-    ltable(41,2) = 1
-    ltable(41,3) = 1
-    ltable(41,4) = 0
-    ltable(41,5) = -810
-    ltable(42,1) = 4
-    ltable(42,2) = -1
-    ltable(42,3) = -2
-    ltable(42,4) = 0
-    ltable(42,5) = 759
-    ltable(43,1) = 0
-    ltable(43,2) = 2
-    ltable(43,3) = -1
-    ltable(43,4) = 0
-    ltable(43,5) = -713
-    ltable(44,1) = 2
-    ltable(44,2) = 2
-    ltable(44,3) = -1
-    ltable(44,4) = 0
-    ltable(44,5) = -700
-    ltable(45,1) = 2
-    ltable(45,2) = 1
-    ltable(45,3) = -2
-    ltable(45,4) = 0
-    ltable(45,5) = 691
-    ltable(46,1) = 2
-    ltable(46,2) = -1
-    ltable(46,3) = 0
-    ltable(46,4) = -2
-    ltable(46,5) = 596
-    ltable(47,1) = 4
-    ltable(47,2) = 0
-    ltable(47,3) = 1
-    ltable(47,4) = 0
-    ltable(47,5) = 549
-    ltable(48,1) = 0
-    ltable(48,2) = 0
-    ltable(48,3) = 4
-    ltable(48,4) = 0
-    ltable(48,5) = 537
-    ltable(49,1) = 4
-    ltable(49,2) = -1
-    ltable(49,3) = 0
-    ltable(49,4) = 0
-    ltable(49,5) = 520
-    ltable(50,1) = 1
-    ltable(50,2) = 0
-    ltable(50,3) = -2
-    ltable(50,4) = 0
-    ltable(50,5) = -487
-    ltable(51,1) = 2
-    ltable(51,2) = 1
-    ltable(51,3) = 0
-    ltable(51,4) = -2
-    ltable(51,5) = -399
-    ltable(52,1) = 0
-    ltable(52,2) = 0
-    ltable(52,3) = 2
-    ltable(52,4) = -2
-    ltable(52,5) = -381
-    ltable(53,1) = 1
-    ltable(53,2) = 1
-    ltable(53,3) = 1
-    ltable(53,4) = 0
-    ltable(53,5) = 351
-    ltable(54,1) = 3
-    ltable(54,2) = 0
-    ltable(54,3) = -2
-    ltable(54,4) = 0
-    ltable(54,5) = -340
-    ltable(55,1) = 4
-    ltable(55,2) = 0
-    ltable(55,3) = -3
-    ltable(55,4) = 0
-    ltable(55,5) = 330
-    ltable(56,1) = 2
-    ltable(56,2) = -1
-    ltable(56,3) = 2
-    ltable(56,4) = 0
-    ltable(56,5) = 327
-    ltable(57,1) = 0
-    ltable(57,2) = 2
-    ltable(57,3) = 1
-    ltable(57,4) = 0
-    ltable(57,5) = -323
-    ltable(58,1) = 1
-    ltable(58,2) = 1
-    ltable(58,3) = -1
-    ltable(58,4) = 0
-    ltable(58,5) = 299
-    ltable(59,1) = 2
-    ltable(59,2) = 0
-    ltable(59,3) = 3
-    ltable(59,4) = 0
-    ltable(59,5) = 294
-    ltable(60,1) = 2
-    ltable(60,2) = 0
-    ltable(60,3) = -1
-    ltable(60,4) = -2
-    ltable(60,5) = 0
-
     sigma_l = 0.0
+    sigma_b = 0.0
 
     do i = 1, 60
+       sigma_l = sigma_l + (ltable(i,5) * (ecc ** abs(ltable(i,2))) * dsind( (D * ltable(i,1)) + (M * ltable(i,2)) + (Mprime * ltable(i,3)) + (F * ltable(i,4)) )) ! lunar longitude
+       sigma_b = sigma_b + (btable(i,5) * (ecc ** abs(btable(i,2))) * dsind( (D * btable(i,1)) + (M * btable(i,2)) + (Mprime * btable(i,3)) + (F * btable(i,4)) )) ! lunar latitude
+       !sigma_l = sigma_l + (ltable(i,5) * (ecc ** abs(ltable(i,2))) * sin( d2r * (D * ltable(i,1)) + (M * ltable(i,2)) + (Mprime * ltable(i,3)) + (F * ltable(i,4)) )) ! lunar longitude
+       !sigma_b = sigma_b + (btable(i,5) * (ecc ** abs(btable(i,2))) * sin(d2r * (D * btable(i,1)) + (M * btable(i,2)) + (Mprime * btable(i,3)) + (F * btable(i,4)) )) ! lunar latitude       
 
-       Dterm = D * ltable(i, 1)
-       Mterm = M * ltable(i, 2)
-       Mpterm = Mprime * ltable(i, 3)
-       Fterm = F * ltable(i, 4)
-       term = ltable(i, 5) * ecc ** abs(ltable(i, 2)) * sind(Dterm + Mterm + Mpterm + Fterm)
+       !Dterm = D * ltable(i, 1)
+       !Mterm = M * ltable(i, 2)
+       !Mpterm = Mprime * ltable(i, 3)
+       !Fterm = F * ltable(i, 4)
+       !term = ltable(i, 5) * (ecc ** abs(ltable(i, 2))) * sind(Dterm + Mterm + Mpterm + Fterm)
        
-       sigma_l = sigma_l + term
+       !sigma_l = sigma_l + term
     end do
 
-    sigma_l = sigma_l + (3958 * sind(a1)) + (1962 * sind(Lprime - F)) + (318 * sind(a2))
+    sigma_l = sigma_l + (3958 * dsind(a1)) + (1962 * dsind(Lprime - F)) + (318 * dsind(a2))
+    sigma_b = sigma_b - (2235 * dsind(Lprime)) + (382 * dsind(a3)) + (175 * dsind(a1 - F)) + (175 * dsind(a1 +F)) + (127 * dsind(Lprime - Mprime)) - (115 * dsind(Lprime + Mprime))
 
-    lambda = Lprime + (sigma_l / 1000000)
-    lambda = lambda + 0.004610    
-    lambda = mod(lambda, 360.0)
-    do while (lambda < 0.0)
-       lambda = lambda + 360.0
-    end do
+    lonlat(1) = Lprime + (sigma_l / 1000000.0) ! lunar longitude
+    lonlat(2) = sigma_b / 1000000.0 ! lunar latitude
+    lonlat(1) = modulo(lonlat(1), 360.0)
+
+    !lambda = Lprime + (sigma_l / 1000000)
+    !lambda = lambda + 0.004610    
+    !lambda = mod(lambda, 360.0)
+    !do while (lambda < 0.0)
+     !  lambda = lambda + 360.0
+    !end do
     !lambda = double precision(lambda)
 
+  end subroutine lunar_lonlat
+
+  subroutine lunar_longitude(jday, lon)
+    ! get the ecliptic longitude of the moon as of jday
+    double precision, intent(in)  :: jday
+    double precision, intent(out) :: lon ! ecliptic longitude
+
+    double precision, dimension(2) :: lonlat
+
+    call lunar_lonlat(jday, lonlat)
+    lon = lonlat(1)
+
   end subroutine lunar_longitude
+
+  subroutine lunar_latitude(jday, lat)
+    ! get the ecliptic latitude of the moon as of jday
+    double precision, intent(in)  :: jday
+    double precision, intent(out) :: lat ! ecliptic latitude
+
+    double precision, dimension(2) :: lonlat
+
+    call lunar_lonlat(jday, lonlat)
+    lat = lonlat(2)
+
+  end subroutine lunar_latitude
 
   subroutine lunar_time(jday, time)
     ! Find the minute of the new moon
@@ -1958,6 +1290,62 @@ contains
     time = time + minutes
 
   end subroutine lunar_time
+
+  subroutine lunar_radec(jday, radec)
+    ! obtain the right ascension and declination of the moon
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, dimension(2), intent(out) :: radec ! moon's right ascension and declination
+
+    double precision, dimension(3) :: nut ! nutation factors
+    double precision, dimension(2) :: lonlat ! lunar longitude and latitude
+
+    double precision :: pi = 4.0 * atan(1.0)
+    double precision :: d2r ! convert degrees to radians
+    double precision :: r2d ! convert radians to degrees
+
+    d2r = pi / 180.0
+    r2d = 180.0 / pi
+
+    call nutation(jday, nut)
+    call lunar_lonlat(jday, lonlat)
+    !call lunar_longitude(jday, lon)
+    !call lunar_latitude(jday, lat)
+
+    radec(1) = datand(((dsind(lonlat(1)) * dcosd(nut(1))) - (dtand(lonlat(2)) * dsind(nut(1)))) / dcosd(lonlat(1))) ! right ascension
+    radec(2) = dasind((dsind(lonlat(2)) * dcosd(nut(1))) + (dcosd(lonlat(2)) * dsind(nut(1)) * dsind(lonlat(1)))) ! declination
+
+    ! as with the solar celestial coordinates, things get a bit wonky when the angles aren't between -90 and +90
+    ! hence this block
+    if (lonlat(1) <= 90.0) then ! lambda in ALL quadrant
+       if (radec(1) >= 0.0) then ! alpha in ALL quadrant
+          radec(1) = 0.0 + radec(1)
+       else if (radec(1) < 0.0) then ! alpha in SIN quadrant
+          radec(1) = 180.0 + radec(1)
+       end if
+    else if (lonlat(1) <= 180.0) then ! lambda in SIN quadrant
+       if (radec(1) < 0.0) then !alpha in SIN quadrant
+          radec(1) = 180.0 + radec(1)
+       else if (radec(1) >= 0.0) then ! alpha in TAN quadrant
+          radec(1) = 180.0 + radec(1)
+       end if
+    else if (lonlat(1) <= 270.0) then ! lambda in TAN quadrant
+       if (radec(1) >= 0.0) then ! alpha in TAN quadrant
+          radec(1) = 180.0 + radec(1)
+       else if (radec(1) < 0.0) then ! alpha in COS quadrant
+          radec(1) = 360.0 + radec(1)
+       end if
+    else if (lonlat(1) <= 360.0) then ! lambda in COS quadrant
+       if (radec(1) < 0.0) then ! alpha in COS quadrant
+          radec(1) = 360.0 + radec(1)
+       else if (radec(1) >= 0.0) then !alpha in ALL quadrant
+          radec(1) = 0.0 + radec(1)
+       end if
+    end if
+
+    radec(1) = modulo(radec(1), 360.0)
+    !radec(2) = modulo(radec(2), 360.0)
+  end subroutine lunar_radec
+  
   
 end module lunar_coords
 
@@ -2405,6 +1793,27 @@ contains
     double precision, intent(out) :: lon  ! lunar longitude
     call lunar_longitude(jday, lon)
   end subroutine pub_lunar_longitude
+
+  subroutine pub_lunar_latitude(jday, lat)
+    ! return lunar latitude at a given time
+    double precision, intent(in)  :: jday ! Julian Day in question
+    double precision, intent(out) :: lat  ! lunar latitude
+    call lunar_latitude(jday, lat)
+  end subroutine pub_lunar_latitude
+
+  subroutine lunar_ecliptic_coords(jday, lonlat)
+    ! returns lunar longitude and latitude at a given time
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, dimension(2), intent(out) :: lonlat
+    call lunar_lonlat(jday, lonlat)
+  end subroutine lunar_ecliptic_coords
+
+  subroutine lunar_celestial_coords(jday, radec)
+    ! returns lunar right ascension and declination at a given time
+    double precision, intent(in) :: jday ! Julian Day in question
+    double precision, dimension(2), intent(out) :: radec
+    call lunar_radec(jday, radec)
+  end subroutine lunar_celestial_coords
 
   subroutine pub_solar_time(jday, angle, time)
     ! Returns the time that the sun hits a given ecliptic longitude

@@ -13,7 +13,9 @@ import stars
 from surya_siddhanta import uj_lon, uj_lat
 
 tropical_year = 365 + Fraction(5,24) + Fraction(48,1440) + Fraction(45,86400)
-lunar_month = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000)
+syn_month = 29 + Fraction(12,24) + Fraction(44,1440) + Fraction(28,864000)
+lunar_month = syn_month # just here for compatibility, will be removed eventually
+sid_month = 27 + Fraction(7,24) + Fraction(43,1440) + Fraction(12,86400)
 solar_term = tropical_year / 12 # time between major solar terms
 sid_year = 365 + Fraction(6, 24) + Fraction(9, 1440) + Fraction(954, 8640000)
 rasi = sid_year / 12 # time for the sun to transit one zodiac sign
@@ -352,7 +354,8 @@ def counterstar(jday, star):
 def solar_cel_coords(jday):
     '''Get the right ascension and declination of the sun'''
     radec = sunmoon.pub.pub_solar_radec(float(jday))
-    # yes this step is necessary for reasons I am completely unable to discern.
+    # yes this step is necessary due to how numpy arrays and tuples express themselves differently as strings
+    # explanation from someone who knows what they're talking about: https://techhub.social/@diazona/113653958945875533
     # if you think it is unnecessary, try taking out the next non-comment line
     # and replacing the return statement with "return radec"
     # then pass the value 2460576 to this function
@@ -572,4 +575,66 @@ def acronycal_rising(jday, lon, lat, star, tz):
         ans += 1
 
     return ceil(ans)
+
+def lunar_cel_coords(jday):
+    '''Compute the right ascension and declination of the moon as of jday'''
+    jday = Fraction(jday) - 0.5 # subtract 0.5 because true Julian Days start at noon
+
+    radec = sunmoon.pub.lunar_celestial_coords(jday)
+    ans = (radec[0], radec[1])
+    return ans
+
+def lunar_ra(jday, tz):
+    '''Return the right ascension of the moon as of jday'''
+    jday = Fraction(jday) # local Julian Day
+    tz = Fraction(tz) # local timezone
+    return float(lunar_cel_coords(jday - tz)[0])
+
+def lunar_dec(jday, tz):
+    '''Return the declination of the moon as of jday, if you want that for some reason'''
+    jday = Fraction(jday) # local Julian Day
+    tz = Fraction(tz) # local timezone
+    return float(lunar_cel_coords(jday - tz)[1])
+
+def lunar_stellar_angle(jday, star):
+    '''Compute the difference between the right ascensions of the moon and a given star as of jday, UTC'''
+    jday = Fraction(jday)
+
+    lunar_radec = lunar_cel_coords(jday)
+    stellar_radec = starpos(jday, star)
+    ans = (lunar_radec[0] - stellar_radec[0]) % 360
+    return ans
     
+def lunar_stellar_conjunction(jday, star):
+    '''Compute when the moon is in conjunction with a given star, UTC'''
+    jday = Fraction(jday) # Julian Day to star looking from
+
+    # get the time when the moon and the star are approximately in conjunction
+    if (lunar_stellar_angle(jday, star) <= 180):
+        jday -= (sid_month * (lunar_stellar_angle(jday, star) / 360))
+    else:
+        jday += (sid_month * ((360 - lunar_stellar_angle(jday, star)) / 360))
+
+    # get them into the same quadrant
+    while (lunar_stellar_angle(jday, star) >= 270):
+        jday += 1
+
+    # zero in on the exact time
+    p = 0
+    while (p < 5):
+        f = Fraction(1, (60 ** p))
+        while ( lunar_stellar_angle(jday, star) > lunar_stellar_angle((jday - f), star) ):
+            jday -= f
+        while ( lunar_stellar_angle(jday, star) > lunar_stellar_angle((jday + f), star) ):
+            jday += f
+        p += 1
+
+    return jday
+
+def local_lunar_stellar_conjunction(jday, star, tz):
+    '''Compute when the moon is in conjunction with a given star, in local time'''
+    jday = Fraction(jday) # Julian Day in question
+    tz = Fraction(tz) # timezone
+
+    ans = lunar_stellar_conjunction(jday, star) - tz
+    return ans

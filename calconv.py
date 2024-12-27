@@ -214,6 +214,8 @@ import maori_south
 import moriori
 import tahiti_nia
 import tahiti_raro
+import kazakh_m
+import kazakh_s
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2206,6 +2208,24 @@ def cons_day_julian_todate():
         moriori_day_ent.insert(0, moriori_date[0])
         moriori_month_ent.insert(0, moriori_date[1])
         moriori_year_ent.insert(0, moriori_date[2])
+
+        # Convert a Julian day to a date in the Kazakh nomad calendar (midnight-oriented)
+        kazakh_m_date = kazakh_m.fromjd(day)
+        kazakh_m_day_ent.delete(0, END)
+        kazakh_m_month_ent.delete(0, END)
+        kazakh_m_year_ent.delete(0, END)
+        kazakh_m_day_ent.insert(0, kazakh_m_date[0])
+        kazakh_m_month_ent.insert(0, kazakh_m_date[1])
+        kazakh_m_year_ent.insert(0, kazakh_m_date[2])
+
+        # Convert a Julian day to a date in the Kazakh nomad calendar (sunset-oriented)
+        kazakh_s_date = kazakh_s.fromjd(day)
+        kazakh_s_day_ent.delete(0, END)
+        kazakh_s_month_ent.delete(0, END)
+        kazakh_s_year_ent.delete(0, END)
+        kazakh_s_day_ent.insert(0, kazakh_s_date[0])
+        kazakh_s_month_ent.insert(0, kazakh_s_date[1])
+        kazakh_s_year_ent.insert(0, kazakh_s_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4218,6 +4238,24 @@ def moriori_converter():
         month = moriori_month_ent.get()
         year = int(moriori_year_ent.get())
         jday = moriori.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def kazakh_m_converter():
+        day = int(kazakh_m_day_ent.get())
+        month = kazakh_m_month_ent.get()
+        year = int(kazakh_m_year_ent.get())
+        jday = kazakh_m.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def kazakh_s_converter():
+        day = int(kazakh_s_day_ent.get())
+        month = kazakh_s_month_ent.get()
+        year = int(kazakh_s_year_ent.get())
+        jday = kazakh_s.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7048,6 +7086,32 @@ moriori_year_lbl = Label(frame, text = "Year").grid(row = 231, column = 11, stic
 moriori_year_ent = Entry(frame)
 moriori_year_ent.grid(row = 232, column = 11, sticky = W)
 moriori_bttn = Button(frame, text = "Calculate", command = moriori_converter).grid(row = 233, column = 9, columnspan = 3, sticky = W)
+
+# Kazakh nomad calendar (midnight-oriented)                                                                                            
+kazakh_m_lbl = Label(frame, text = "Kazakh nomad calendar (midnight-oriented)").grid(row = 234, column = 0, columnspan = 3, sticky = W)
+kazakh_m_day_lbl = Label(frame, text = "Day").grid(row = 235, column = 0, sticky = W)
+kazakh_m_day_ent = Entry(frame)
+kazakh_m_day_ent.grid(row = 236, column = 0, sticky = W)
+kazakh_m_month_lbl = Label(frame, text = "Month").grid(row = 235, column = 1, sticky = W)
+kazakh_m_month_ent = Entry(frame)
+kazakh_m_month_ent.grid(row = 236, column = 1, sticky = W)
+kazakh_m_year_lbl = Label(frame, text = "Year").grid(row = 235, column = 2, sticky = W)
+kazakh_m_year_ent = Entry(frame)
+kazakh_m_year_ent.grid(row = 236, column = 2, sticky = W)
+kazakh_m_bttn = Button(frame, text = "Calculate", command = kazakh_m_converter).grid(row = 237, column = 0, columnspan = 3, sticky = W)
+
+# Kazakh nomad calendar (sunset-oriented)                                                                                            
+kazakh_s_lbl = Label(frame, text = "Kazakh nomad calendar (sunset-oriented)").grid(row = 234, column = 3, columnspan = 3, sticky = W)
+kazakh_s_day_lbl = Label(frame, text = "Day").grid(row = 235, column = 3, sticky = W)
+kazakh_s_day_ent = Entry(frame)
+kazakh_s_day_ent.grid(row = 236, column = 3, sticky = W)
+kazakh_s_month_lbl = Label(frame, text = "Month").grid(row = 235, column = 4, sticky = W)
+kazakh_s_month_ent = Entry(frame)
+kazakh_s_month_ent.grid(row = 236, column = 4, sticky = W)
+kazakh_s_year_lbl = Label(frame, text = "Year").grid(row = 235, column = 5, sticky = W)
+kazakh_s_year_ent = Entry(frame)
+kazakh_s_year_ent.grid(row = 236, column = 5, sticky = W)
+kazakh_s_bttn = Button(frame, text = "Calculate", command = kazakh_s_converter).grid(row = 237, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.72.0")
