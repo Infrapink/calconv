@@ -25,6 +25,11 @@ r2d = 180 / pi # convert radians to degrees
 d2r = pi / 180 # convert degrees to radians
 eqm = 0.6749121716696571 # Difference between the celestial longitudes of the sun and counterspica when the sun hit an ecliptic angle of 23°15' in 1955. This is used in computing the instant of Meṣa Saṁkrānti
 
+gregorian_epoch = 1721426 - 366 # 1st January of the year 0
+gregorian_cycle = (400 * 365) + 97 # 400 years in the Gregorian calendar
+solar4 = (4 * 365) + 1 # 3 years of 365 days and one leap year of 366 days
+solar5 = (5 * 365) + 1 # 4 years of 365 days and one leap year of 366 days
+
 ky = 588466 # Consecutive Julian Day on which the Kali Yuga begins.
 se = ky + (3179 * sid_year) # Beginning of the Śaka Era
 vs = ky + (3044 * sid_year) # Beginning of the Vikram Samvat
@@ -91,13 +96,14 @@ def trans(day, angle, frtz):
     time = ceil(day) + Fraction(minutes, 1440) + frtz
     return time
 
-def newmoon(day, frtz):
+def newmoon2(day, tz):
     '''Julian Day and time of the new moon, in local time'''
+    # this function is deprecated. Use newmoon(), further down, instead
     day = floor(day) - 0.5
-    frtz = Fraction(frtz) # timezone
+    tz = Fraction(tz) # timezone
 
     minutes = int(sunmoon.pub.pub_lunar_time(day))
-    time = ceil(day) + Fraction(minutes, 1440) + frtz
+    time = ceil(day) + Fraction(minutes, 1440) + tz
     return time
 
 def first_visible_crescent(jday, tz):
@@ -105,7 +111,7 @@ def first_visible_crescent(jday, tz):
     jday = Fraction(jday)
     tz = Fraction(tz)
 
-    ans = newmoon(jday, tz) + 1
+    ans = newmoon2(jday, tz) + 1
     return ans
 
 def conj(day, frtz):
@@ -115,8 +121,9 @@ def conj(day, frtz):
     ans = newmoon(day, frtz)
     return ans
 
-def phase(jday, tz):
+def phase2(jday, tz):
     '''Angle between the sun and the moon at a given time'''
+    # this function is deprecated. Use phase(), further down
     # 0° → new moon
     # 180° → full moon
     jday = Fraction(jday) # the instant we are interested in
@@ -353,7 +360,7 @@ def counterstar(jday, star):
 
 def solar_cel_coords(jday):
     '''Get the right ascension and declination of the sun'''
-    radec = sunmoon.pub.pub_solar_radec(float(jday))
+    radec = sunmoon.pub.pub_solar_radec(float(jday - 0.5)) # subtract 0.5 to convert from local Julian Day to true Julian Day
     # yes this step is necessary due to how numpy arrays and tuples express themselves differently as strings
     # explanation from someone who knows what they're talking about: https://techhub.social/@diazona/113653958945875533
     # if you think it is unnecessary, try taking out the next non-comment line
@@ -363,6 +370,14 @@ def solar_cel_coords(jday):
     # but the function will return (1.79977691e+02, 9.67182122e-03)
     ans = (radec[0], radec[1])
     return ans
+
+def solar_ra(jday, tz):
+    '''Return the right ascension of the sun'''
+    return solar_cel_coords(float(jday - tz))[0]
+
+def solar_dec(jday):
+    '''Return the declination of the sun, if you want that for some reason'''
+    return solar_cel_coords(float(jday - tz))[1]
 
 def solar_zpos(jday, star, opp):
     '''Compute the sun's zodiacal position'''
@@ -512,6 +527,22 @@ def dayof_arab(jday, lon, lat, tz):
 
     return ans
 
+def dayof_kazakh(jday, lon, lat, tz):
+    '''Compute the day associated with an astronomical event, as per the Kazakh rule'''
+    # Days begin at sunset
+    # but if an event happens while it can't be seen, it is still associated with the day beginning last sunset
+    jday = Fraction(jday) # instant of the event in question
+    lon = Fraction(lon) # local geographic longitude
+    lat = Fraction(lat) # local geographic latitude
+    tz = Fraction(tz) # local timezone
+
+    if (jday >= local_sunset(jday, lon, lat, tz)):
+        ans = ceil(jday)
+    else:
+        ans = floor(jday)
+
+    return ans
+
 def heliacal_rising(jday, lon, lat, star, tz):
     '''Compute the nearest day of the heliacal rising of a given star at a given place.'''
     jday = Fraction(jday) # the time we start with
@@ -596,6 +627,41 @@ def lunar_dec(jday, tz):
     tz = Fraction(tz) # local timezone
     return float(lunar_cel_coords(jday - tz)[1])
 
+def lunar_solar_angle(jday, tz):
+    '''Compute the angle between the sun and the moon'''
+    # 0° → new moon
+    # 180° → full moon
+    jday = Fraction(jday) # local time we are interested in
+    tz = Fraction(tz) # local timezone
+    return ( float((lunar_ra(jday, tz) - solar_ra(jday, tz)) % 360))
+
+def phase(jday, tz):
+    # this is just for compatibility at this point
+    return lunar_solar_angle(jday, tz)
+
+def newmoon(jday, tz):
+    '''Compute the time of the new moon closest to jday'''
+    jday = Fraction(jday) # local time we are starting with
+    tz = Fraction(tz) # local timezone
+
+    angle = lunar_solar_angle(jday, tz)
+
+    # first, get the sun and the moon into approximate conjunction
+    if (angle <= 180):
+        jday -= (syn_month * (angle / 360))
+    else:
+        jday += (syn_month * ((360 - angle) / 360))
+
+    p = 0
+    while (p < 5):
+        f = 1 / (60 ** p)
+        while (lunar_solar_angle((jday + f), tz) > 270):
+            jday += f
+        while (lunar_solar_angle((jday - f), tz) < 90):
+            jday -= f
+        p += 1
+    return float(jday)
+
 def lunar_stellar_angle(jday, star):
     '''Compute the difference between the right ascensions of the moon and a given star as of jday, UTC'''
     jday = Fraction(jday)
@@ -636,5 +702,50 @@ def local_lunar_stellar_conjunction(jday, star, tz):
     jday = Fraction(jday) # Julian Day in question
     tz = Fraction(tz) # timezone
 
-    ans = lunar_stellar_conjunction(jday, star) - tz
+    ans = lunar_stellar_conjunction(jday, star) + tz
     return ans
+
+def gregorian_year_length(year):
+    '''Returns the number of days in a Gregorian year'''
+    year = int(year)
+
+    if (year % 400 == 0):
+        ans = 366
+    elif (year % 100 == 0):
+        ans = 365
+    elif (year % 4 == 0):
+        ans = 366
+    else:
+        ans = 365
+
+    return ans
+
+def gregorian_nyd(year, z):
+    '''Compute New Year's Day for a given year in the Gregorian calendar'''
+    year = int(year) # the year in question
+    z = bool(z) # is there a year 0?
+    if (year < 1):
+        year += int(not(z))
+
+    cycles = year // 400
+    y = 400 * cycles
+    nyd = gregorian_epoch + (cycles * gregorian_cycle) # new year's day
+
+    if (y + 100 <= year):
+        y += 100
+        nyd += 36525
+        while (y + 100 <= year):
+            y += 100
+            nyd += 36524
+        if (y + 4 <= year):
+            y += 4
+            nyd += (4 * 365)
+
+    quads = (year - y) // 4
+    y += (4 * quads)
+    nyd += (solar4 * quads)
+    while (y < year):
+        nyd += gregorian_year_length(y)
+        y += 1
+
+    return nyd

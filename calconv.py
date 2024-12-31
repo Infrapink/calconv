@@ -216,6 +216,7 @@ import tahiti_nia
 import tahiti_raro
 import kazakh_m
 import kazakh_s
+import kazakh_i
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2226,6 +2227,15 @@ def cons_day_julian_todate():
         kazakh_s_day_ent.insert(0, kazakh_s_date[0])
         kazakh_s_month_ent.insert(0, kazakh_s_date[1])
         kazakh_s_year_ent.insert(0, kazakh_s_date[2])
+
+        # Convert a Julian day to a date in the Kazakh nomad calendar (Islamic)
+        kazakh_i_date = kazakh_s.fromjd(day)
+        kazakh_i_day_ent.delete(0, END)
+        kazakh_i_month_ent.delete(0, END)
+        kazakh_i_year_ent.delete(0, END)
+        kazakh_i_day_ent.insert(0, kazakh_s_date[0])
+        kazakh_i_month_ent.insert(0, kazakh_s_date[1])
+        kazakh_i_year_ent.insert(0, kazakh_s_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4256,6 +4266,15 @@ def kazakh_s_converter():
         month = kazakh_s_month_ent.get()
         year = int(kazakh_s_year_ent.get())
         jday = kazakh_s.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def kazakh_i_converter():
+        day = int(kazakh_i_day_ent.get())
+        month = kazakh_i_month_ent.get()
+        year = int(kazakh_i_year_ent.get())
+        jday = kazakh_i.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7112,6 +7131,19 @@ kazakh_s_year_lbl = Label(frame, text = "Year").grid(row = 235, column = 5, stic
 kazakh_s_year_ent = Entry(frame)
 kazakh_s_year_ent.grid(row = 236, column = 5, sticky = W)
 kazakh_s_bttn = Button(frame, text = "Calculate", command = kazakh_s_converter).grid(row = 237, column = 3, columnspan = 3, sticky = W)
+
+# Kazakh nomad calendar (Islamic)                                                                                            
+kazakh_i_lbl = Label(frame, text = "Kazakh nomad calendar (Islamic rules)").grid(row = 234, column = 6, columnspan = 3, sticky = W)
+kazakh_i_day_lbl = Label(frame, text = "Day").grid(row = 235, column = 6, sticky = W)
+kazakh_i_day_ent = Entry(frame)
+kazakh_i_day_ent.grid(row = 236, column = 6, sticky = W)
+kazakh_i_month_lbl = Label(frame, text = "Month").grid(row = 235, column = 7, sticky = W)
+kazakh_i_month_ent = Entry(frame)
+kazakh_i_month_ent.grid(row = 236, column = 7, sticky = W)
+kazakh_i_year_lbl = Label(frame, text = "Year").grid(row = 235, column = 8, sticky = W)
+kazakh_i_year_ent = Entry(frame)
+kazakh_i_year_ent.grid(row = 236, column = 8, sticky = W)
+kazakh_i_bttn = Button(frame, text = "Calculate", command = kazakh_s_converter).grid(row = 237, column = 6, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.72.0")

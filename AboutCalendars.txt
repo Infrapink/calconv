@@ -2427,7 +2427,7 @@ Months are neither named nor numbered. Instead, they are identified by the togys
 
 If there is an official epoch, I am not aware of it. I have chosen the year of the Hijra, as Kazakhstan is majority Muslim. To speed up calculations, I made use of some pseudo-Metonic relations. 254 sidereal months is about 10 minutes longer than 235 synodic months, making it about 2 hr 24 min 30 sec longer than 19 tropical years, or 4 hr 3 min 20 sec shorter than 19 sidereal years. As such, I decided that 254 months was equivalent to 19 years.
 
-My main source defines the civil day as beginning at midnight. I have implemented this convention, and also a version in which the days begins at sunset, dagain because Kazakhstan is majority Muslim.
+My main source defines the civil day as beginning at midnight. I have implemented this convention, and also two other versions in which the day begins at sunset, again because Kazakhstan is majority Muslim. In the sunset-oriented version, each month begins on the day when the moon conjuncts with the Pleiades, regardless of when in the day it happens, wherein the day begins at sunset. In the Islamic version, the beginning of the month is determined by observation; if the moon conjuncts with the Pleiades while the sun is up, the month commences with the following sunset.
 
 Sources:
 * https://hermetic.ch/cal_stud/knc/Kazakh_Nomad_Calendar.htm

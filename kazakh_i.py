@@ -1,10 +1,10 @@
 #!/usr/bin/python3
 
-# Convert between Julian Days and the Kazakh nomad calendar, wherein days start at sunset
+# Convert between Julian Days and the Kazakh nomad calendar, wherein days start at midnight.
 
 from fractions import Fraction
 from stars import PLEIADES
-from solun import sid_month, syn_month, local_lunar_stellar_conjunction, newmoon, phase, dayof_kazakh
+from solun import sid_month, syn_month, local_lunar_stellar_conjunction, newmoon, phase, dayof_arab
 
 epoch = 1948379 # first conjunction of the new moon with the Pleiades in the year of Muhammad's flight to Mecca
 tz = Fraction(5, 24) # Kazakhstan is UTC+5
@@ -19,7 +19,7 @@ def darkmoon(jday):
     return newmoon(jday, tz)
 
 def dayof(jday):
-    return dayof_kazakh(Fraction(jday), lon, lat, tz)
+    return dayof_arab(Fraction(jday), lon, lat, tz)
 
 def firstmoon(jday):
     '''Compute the first month of the year'''

@@ -1,6 +1,9 @@
 #!/usr/bin/python3
 
-# This is a set of months for use in calconv
+# This is a set of months and weekdays for use in calconv
+
+# Weekdays
+WEEKDAYS_EN = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
 
 # GREGORIAN AND JULIAN CALENDARS
 
