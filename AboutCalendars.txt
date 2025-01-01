@@ -2431,3 +2431,33 @@ My main source defines the civil day as beginning at midnight. I have implemente
 
 Sources:
 * https://hermetic.ch/cal_stud/knc/Kazakh_Nomad_Calendar.htm
+
+---------------------------
+SYMMETRY454 AND SYMMETRY010
+---------------------------
+
+Symmetry454 and Symmetry010 are a pair of leap week calendars designed by Irv Bromborg, a professor of medicine at th e University of Toronto and a calendar enthusiast. Both use the same month names and year numbers as the Gregorian calendar, and 1 January of the year 1 is the same for all three calendars. Sym454 and Sym010 rejig the lengths of the months to be of more regular and uniform lengths, and so that every year contains an integer number of weeks; thus, every day of the year always falls on the same day of the week, the year always starts on a Monday (so there is never a Friday 13th), and every quarter year contains 91 days outside of leap years.
+
+Normal years are 364 days (52 weeks) long. Leap years are 371 days (53 weeks), the extra week added to December. A year is leap if (52y + 146) mod 293 < 52, where y is the number of the year. The mean year is thus 365⁷¹/₂₉₃ days long, about 11½ seconds longer than the mean tropical year.
+
+In Symmetry454, February, May, August, and November have 5 weeks (35 days), and the rest have 4 weeks (28 days), with December having 5 weeks in leap years; thus, each quarter consists of months of 4, 5, and 4 weeks, hence the name 454.
+
+Symmetry010 is a tad less radical. February, May, August, and November have 31 days and the rest have 30, with December getting 37 days in leap years, and thus no month has an integer number of weeks. Each quarter thus consists of months of 30, 31, and 30 days, hence 010.
+
+Sources:
+* https://kalendis.free.nf/symmetry.htm
+* https://kalendis.free.nf/classic.htm
+
+--------
+ISO-8601
+--------
+
+ISO-8601 is the ISO standard for representing dates in the Gregorian calendar. It is an exhaustive and dry tomb, and a tedious read even at only 48 pages.
+
+Among very precise descriptions of how to write dates and times, there are two alternative ways of representing calendar dates. The week date represents a date with a week instead of a month, every year having 52 or 53 whole weeks. The first week of the year is the week which contains the first Thursday of the calendar year; this is equivalent to the first week the majority of days of which fall within a specific calendar year. As such, the first day of the first week of the year may fall as early as 28 December or as late as 04 January. Strictly speaking, the week number should be prefixed with the letter W for clarity, but I have not done this because it is annoying to programme and the Week label above the text box provides sufficient clarity. I have also decided to use the names of the days instead of the numbers.
+
+The ordinal calendar dispenses with weeks and months altogether. Instead, every day is simply identified by its ordinal position within the year, New Year's Day being assigned the number 1.
+
+Sources:
+* ISO-8601:2019, sections 4.3.6, 4.3.7, 5.2.3, 5.2.4
+* https://fourmilab.ch/documents/calendar/

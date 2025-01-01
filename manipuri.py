@@ -57,7 +57,7 @@ def fromjd(jday):
         s += rasi
         cigra = (cigra + 1) % 12
         angle = (angle + 30) % 360
-    month = MONTHS[cigra]
+    month = MONTHS[int(cigra)]
     if (dayof(newmoon((crescent + syn_month), tz)) <= dayof(sankranti((s + rasi), ((angle + 30) % 360)))):
         # we're in the leap month
         month = "Adhik " + month

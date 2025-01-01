@@ -64,7 +64,7 @@ def fromjd(jday):
         year += 1
 
     # compute the month
-    m = (jday - crescent) // syn_month # number of the month
+    m = int((jday - crescent) // syn_month) # number of the month
     crescent += (m * syn_month)
     while (dayof(newmoon(crescent)) > jday):
         crescent -= syn_month

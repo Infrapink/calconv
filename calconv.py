@@ -217,6 +217,10 @@ import tahiti_raro
 import kazakh_m
 import kazakh_s
 import kazakh_i
+import sym454
+import sym010
+import iso_week
+import iso_day
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2236,6 +2240,40 @@ def cons_day_julian_todate():
         kazakh_i_day_ent.insert(0, kazakh_s_date[0])
         kazakh_i_month_ent.insert(0, kazakh_s_date[1])
         kazakh_i_year_ent.insert(0, kazakh_s_date[2])
+
+        # Convert a Julian day to a date in the Symmetry454 calendar
+        sym454_date = sym454.fromjd(day)
+        sym454_day_ent.delete(0, END)
+        sym454_month_ent.delete(0, END)
+        sym454_year_ent.delete(0, END)
+        sym454_day_ent.insert(0, sym454_date[0])
+        sym454_month_ent.insert(0, sym454_date[1])
+        sym454_year_ent.insert(0, sym454_date[2])
+
+        # Convert a Julian day to a date in the Symmetry010 calendar
+        sym010_date = sym010.fromjd(day)
+        sym010_day_ent.delete(0, END)
+        sym010_month_ent.delete(0, END)
+        sym010_year_ent.delete(0, END)
+        sym010_day_ent.insert(0, sym010_date[0])
+        sym010_month_ent.insert(0, sym010_date[1])
+        sym010_year_ent.insert(0, sym010_date[2])
+
+        # Convert a Julian day to a date in the ISO-8601 Week calendar
+        iso_week_date = iso_week.fromjd(day)
+        iso_week_day_ent.delete(0, END)
+        iso_week_week_ent.delete(0, END)
+        iso_week_year_ent.delete(0, END)
+        iso_week_day_ent.insert(0, iso_week_date[0])
+        iso_week_week_ent.insert(0, iso_week_date[1])
+        iso_week_year_ent.insert(0, iso_week_date[2])
+
+        # Convert a Julian day to a date in the ISO-8601 Ordinal calendar
+        iso_day_date = iso_day.fromjd(day)
+        iso_day_day_ent.delete(0, END)
+        iso_day_year_ent.delete(0, END)
+        iso_day_day_ent.insert(0, iso_day_date[0])
+        iso_day_year_ent.insert(0, iso_day_date[1])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4279,6 +4317,41 @@ def kazakh_i_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
+def sym454_converter():
+        day = int(sym454_day_ent.get())
+        month = sym454_month_ent.get()
+        year = int(sym454_year_ent.get())
+        jday = sym454.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def sym010_converter():
+        day = int(sym010_day_ent.get())
+        month = sym010_month_ent.get()
+        year = int(sym010_year_ent.get())
+        jday = sym010.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def iso_week_converter():
+        day = str(iso_week_day_ent.get())
+        week = iso_week_week_ent.get()
+        year = int(iso_week_year_ent.get())
+        jday = iso_week.tojd(day, week, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def iso_day_converter():
+        day = int(iso_day_day_ent.get())
+        year = int(iso_day_year_ent.get())
+        jday = iso_day.tojd(day, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 
 
 root = Tk()
@@ -4661,7 +4734,7 @@ tab_islamic_year_ent = Entry(frame)
 tab_islamic_year_ent.grid(row = 26, column = 5, sticky = W)
 tab_islamic_bttn = Button(frame, text = "Calculate", command = tab_islamic_converter).grid(row = 27, column = 3, columnspan = 3, sticky = W)
 
-# JAVANESE CALENDAR GOES HERE
+
 
 # Pre-Islamic Arab calendar                                                                                            
 arab_lbl = Label(frame, text = "Pre-Islamic Arab calendar").grid(row = 24, column = 9, columnspan = 3, sticky = W)
@@ -7145,6 +7218,55 @@ kazakh_i_year_ent = Entry(frame)
 kazakh_i_year_ent.grid(row = 236, column = 8, sticky = W)
 kazakh_i_bttn = Button(frame, text = "Calculate", command = kazakh_s_converter).grid(row = 237, column = 6, columnspan = 3, sticky = W)
 
+# Symmetry454 calendar                                                                                            
+sym454_lbl = Label(frame, text = "Symmetry454 calendar").grid(row = 238, column = 0, columnspan = 3, sticky = W)
+sym454_day_lbl = Label(frame, text = "Day").grid(row = 239, column = 0, sticky = W)
+sym454_day_ent = Entry(frame)
+sym454_day_ent.grid(row = 240, column = 0, sticky = W)
+sym454_month_lbl = Label(frame, text = "Month").grid(row = 239, column = 1, sticky = W)
+sym454_month_ent = Entry(frame)
+sym454_month_ent.grid(row = 240, column = 1, sticky = W)
+sym454_year_lbl = Label(frame, text = "Year").grid(row = 239, column = 2, sticky = W)
+sym454_year_ent = Entry(frame)
+sym454_year_ent.grid(row = 240, column = 2, sticky = W)
+sym454_bttn = Button(frame, text = "Calculate", command = sym454_converter).grid(row = 241, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.72.0")
+# Symmetry010 calendar                                                                                            
+sym010_lbl = Label(frame, text = "Symmetry010 calendar").grid(row = 238, column = 3, columnspan = 3, sticky = W)
+sym010_day_lbl = Label(frame, text = "Day").grid(row = 239, column = 3, sticky = W)
+sym010_day_ent = Entry(frame)
+sym010_day_ent.grid(row = 240, column = 3, sticky = W)
+sym010_month_lbl = Label(frame, text = "Month").grid(row = 239, column = 4, sticky = W)
+sym010_month_ent = Entry(frame)
+sym010_month_ent.grid(row = 240, column = 4, sticky = W)
+sym010_year_lbl = Label(frame, text = "Year").grid(row = 239, column = 5, sticky = W)
+sym010_year_ent = Entry(frame)
+sym010_year_ent.grid(row = 240, column = 5, sticky = W)
+sym010_bttn = Button(frame, text = "Calculate", command = sym010_converter).grid(row = 241, column = 3, columnspan = 3, sticky = W)
+
+# ISO-8601 Week calendar                                                                                            
+iso_week_lbl = Label(frame, text = "ISO-8601 Week calendar").grid(row = 238, column = 6, columnspan = 3, sticky = W)
+iso_week_day_lbl = Label(frame, text = "Day").grid(row = 239, column = 6, sticky = W)
+iso_week_day_ent = Entry(frame)
+iso_week_day_ent.grid(row = 240, column = 6, sticky = W)
+iso_week_week_lbl = Label(frame, text = "Week").grid(row = 239, column = 7, sticky = W)
+iso_week_week_ent = Entry(frame)
+iso_week_week_ent.grid(row = 240, column = 7, sticky = W)
+iso_week_year_lbl = Label(frame, text = "Year").grid(row = 239, column = 8, sticky = W)
+iso_week_year_ent = Entry(frame)
+iso_week_year_ent.grid(row = 240, column = 8, sticky = W)
+iso_week_bttn = Button(frame, text = "Calculate", command = iso_week_converter).grid(row = 241, column = 6, columnspan = 3, sticky = W)
+
+# ISO-8601 Ordinal calendar                                                                                            
+iso_day_lbl = Label(frame, text = "ISO-8601 Ordinal calendar").grid(row = 238, column = 10, columnspan = 3, sticky = W)
+iso_day_day_lbl = Label(frame, text = "Day").grid(row = 239, column = 10, sticky = W)
+iso_day_day_ent = Entry(frame)
+iso_day_day_ent.grid(row = 240, column = 10, sticky = W)
+iso_day_year_lbl = Label(frame, text = "Year").grid(row = 239, column = 11, sticky = W)
+iso_day_year_ent = Entry(frame)
+iso_day_year_ent.grid(row = 240, column = 11, sticky = W)
+iso_day_bttn = Button(frame, text = "Calculate", command = iso_day_converter).grid(row = 241, column = 10, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.80.0")
 root.mainloop()
