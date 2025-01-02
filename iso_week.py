@@ -30,7 +30,7 @@ def fromjd(jday):
     '''Convert a Julian Day into a date in the week calendar'''
     jday = int(jday)
 
-    year = int((jday - gregorian_epoch) // 365.2424)
+    year = int((jday - gregorian_epoch) // 365.2425)
     while (nym(year) > jday):
         year -= 1
     while (nym(year + 1) <= jday):

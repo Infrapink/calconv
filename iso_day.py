@@ -13,7 +13,7 @@ def fromjd(jday):
     '''Convert a Julian Day to a date in the ISO day calendar'''
     jday = int(jday)
 
-    year = int((jday - gregorian_epoch) // 365.2424)
+    year = int((jday - gregorian_epoch) // 365.2425)
     while (gregorian_nyd(year, True) > jday):
         year -= 1
     while (gregorian_nyd((year + 1), True) <= jday):
