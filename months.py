@@ -263,6 +263,15 @@ BABYLONIAN_LEAP_17 = {"Nisānu": 30,
 
 # HEBREW MONTHS
 
+HEBREW = ("Tishrei", "Marcheshvan", "Kislev", "Tevet", "Shevat", "Adar", "Veadar", "Nisan", "Iyar", "Sivan", "Tammuz", "Av", "Elul") # begins with Jewish Rosh Hashanah. Samaritans start at month 6.
+
+JEWISH_LENGTHS = {353: (30, 29, 29, 29, 30, 29,  0, 30, 29, 30, 29, 30, 29), # deficient normal year
+                  354: (30, 29, 30, 29, 30, 29,  0, 30, 29, 30, 29, 30, 29), # regular normal year
+                  355: (30, 30, 30, 29, 30, 29,  0, 30, 29, 30, 29, 30, 29), # abundant normal year
+                  383: (30, 29, 29, 29, 30, 30, 29, 30, 29, 30, 29, 30, 29), # deficient leap year
+                  384: (30, 29, 30, 29, 30, 30, 29, 30, 29, 30, 29, 30, 29), # regular leap year
+                  385: (30, 30, 30, 29, 30, 30, 29, 30, 29, 30, 29, 30, 29)} # abundant leap year
+
 HEBREW_DEFICIENT_NORMAL = {"Tishrei": 30,
                            "Marcheshvan": 29,
                            "Kislev": 29,
@@ -291,8 +300,8 @@ HEBREW_DEFICIENT_LEAP = {"Tishrei": 30,
                          "Elul": 29}
 
 HEBREW_REGULAR_NORMAL = {"Tishrei": 30,
-                         "Marcheshvan": 30,
-                         "Kislev": 29,
+                         "Marcheshvan": 29,
+                         "Kislev": 30,
                          "Tevet": 29,
                          "Shevat": 30,
                          "Adar": 29,
