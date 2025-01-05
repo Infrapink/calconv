@@ -221,6 +221,7 @@ import sym454
 import sym010
 import iso_week
 import iso_day
+import rect_jewish
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2274,6 +2275,15 @@ def cons_day_julian_todate():
         iso_day_year_ent.delete(0, END)
         iso_day_day_ent.insert(0, iso_day_date[0])
         iso_day_year_ent.insert(0, iso_day_date[1])
+
+        # Convert a Julian day to a date in the Rectified Jewish calendar
+        rect_jewish_date = rect_jewish.fromjd(day)
+        rect_jewish_day_ent.delete(0, END)
+        rect_jewish_month_ent.delete(0, END)
+        rect_jewish_year_ent.delete(0, END)
+        rect_jewish_day_ent.insert(0, rect_jewish_date[0])
+        rect_jewish_month_ent.insert(0, rect_jewish_date[1])
+        rect_jewish_year_ent.insert(0, rect_jewish_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4348,6 +4358,15 @@ def iso_day_converter():
         day = int(iso_day_day_ent.get())
         year = int(iso_day_year_ent.get())
         jday = iso_day.tojd(day, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def rect_jewish_converter():
+        day = int(rect_jewish_day_ent.get())
+        month = rect_jewish_month_ent.get()
+        year = int(rect_jewish_year_ent.get())
+        jday = rect_jewish.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7266,6 +7285,19 @@ iso_day_year_lbl = Label(frame, text = "Year").grid(row = 239, column = 11, stic
 iso_day_year_ent = Entry(frame)
 iso_day_year_ent.grid(row = 240, column = 11, sticky = W)
 iso_day_bttn = Button(frame, text = "Calculate", command = iso_day_converter).grid(row = 241, column = 10, columnspan = 3, sticky = W)
+
+# Rectified Jewish calendar                                                                                            
+rect_jewish_lbl = Label(frame, text = "Rectified Jewish calendar").grid(row = 242, column = 0, columnspan = 3, sticky = W)
+rect_jewish_day_lbl = Label(frame, text = "Day").grid(row = 243, column = 0, sticky = W)
+rect_jewish_day_ent = Entry(frame)
+rect_jewish_day_ent.grid(row = 244, column = 0, sticky = W)
+rect_jewish_month_lbl = Label(frame, text = "Month").grid(row = 243, column = 1, sticky = W)
+rect_jewish_month_ent = Entry(frame)
+rect_jewish_month_ent.grid(row = 244, column = 1, sticky = W)
+rect_jewish_year_lbl = Label(frame, text = "Year").grid(row = 243, column = 2, sticky = W)
+rect_jewish_year_ent = Entry(frame)
+rect_jewish_year_ent.grid(row = 244, column = 2, sticky = W)
+rect_jewish_bttn = Button(frame, text = "Calculate", command = rect_jewish_converter).grid(row = 245, column = 0, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.80.0")

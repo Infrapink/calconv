@@ -2461,3 +2461,14 @@ The ordinal calendar dispenses with weeks and months altogether. Instead, every 
 Sources:
 * ISO-8601:2019, sections 4.3.6, 4.3.7, 5.2.3, 5.2.4
 * https://fourmilab.ch/documents/calendar/
+
+-------------------------
+RECTIFIED JEWISH CALENDAR
+-------------------------
+
+The rectified Jewish calendar is a proposal by Irv Bromborg, inventor of Symmetry 454 and Symmetry 010, to make the Jewish calendar more accurate. It employs a leap year cycle of 4366 (130 leap years) months in 353 months in which a given year y is leap if (130y + 269) mod 353 < 130. (Prof Bromborg's description of the calendar uses 268 instead of 269; he notes in an addendum that 269 makes negligible difference and results in a more symmetrical distribution of leap years, so I have gone with that). It also includes a quadratic function to account for the fact that the synodic month is gradually shortening, calibrated to the fact that the traditional Jewish calendar was in sync with observation in the time of Hillel ben Yehudah.
+
+Days begin at sunset. The Rosh Hashanah postponement rules are equivalent to those of the traditional calendar, but are compute a bit differently due to the shrinking synodic month.
+
+Sources:
+* http://individual.utoronto.ca/kalendis/hebrew/rect.htm
