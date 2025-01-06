@@ -113,7 +113,8 @@ def tojd(day, month, year):
 
     figures = yeartype(year)
     jday = ceil(figures[1])
-    MONTHS = MONTH_LENGTHS[figures[0]]
+    #MONTHS = MONTH_LENGTHS[figures[0]]
+    MONTHS = MONTH_LENGTHS[yeartype(year + 1)[1] - yeartype(year)[1]]
 
     for m in MONTHS.keys():
         if(m == month):
@@ -130,31 +131,41 @@ def fromjd(jday):
     jday = int(jday)
 
     # compute the year
+    #print("John")
     year = ((jday - solar_epoch) // sid_year) + 1100
     while(lny(year)[2] > jday):
         year -= 1
     while(lny(year + 1)[2] <= jday):
         year += 1
 
+    #print("Paul")
     figures = yeartype(year)
-    MONTHS = MONTH_LENGTHS[figures[0]]
+    #print(figures)
+    #MONTHS = MONTH_LENGTHS[figures[0]]
+    MONTHS = MONTH_LENGTHS[yeartype(year + 1)[1] - yeartype(year)[1]]
     newmoon = ceil(figures[1])
     ata_yet = ceil(figures[2])
     year += 1100 # add 1100 to years since the epoch to get the calendar year
     if(jday < ata_yet):
         year = str(year - 1) + '*'
 
+    #print("George")
     # compute the month
     if(newmoon + 29 > jday):
+        #print("Ganon")
         month = "Tagu"
     else:
         for m in MONTHS.keys():
             if(newmoon + MONTHS[m] > jday):
+                #print("Link")
                 month = m
                 break
             else:
+                #print("Zelda")
+                #print(jday - newmoon)
                 newmoon += MONTHS[m]
 
+    #print("Ringo")
     # compute the day
     day = jday - newmoon + 1 # add 1 because humans don't count from 0
 
