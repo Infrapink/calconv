@@ -124,7 +124,7 @@ def fromjd(jday):
         elif (m == leap_months[year % 19] + 1):
             month = MONTHS[m - 1] + " 2"
         else:
-            months = MONTHS[m - 1]
+            month = MONTHS[m - 1]
 
     # get the day
     day = jday - newmoon + 1 # add 1 because humans don't count from 0
