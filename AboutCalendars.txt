@@ -2472,3 +2472,18 @@ Days begin at sunset. The Rosh Hashanah postponement rules are equivalent to tho
 
 Sources:
 * http://individual.utoronto.ca/kalendis/hebrew/rect.htm
+
+--------------------------------
+NEW ASTRONOMICAL JEWISH CALENDAR
+--------------------------------
+
+In addition to the rectified calendar, Prof. Bromborg also came up with an astronomical Jewish calendar, built on keeping Nisan synchronised with the northward equinox.
+
+Days begin at sunset. The first day of the month is the day beginning with the sunset which is at least 12 hours after the instant of the new moon. Nisan usually commences with the new moon before the northward equinox, unless the equinox would fall later than the 15th day of the month, in which case Nisan is delayed one month. If there are 13 lunations between Nisan and the previous Nisan, it is a leap year.
+
+The first day of the civil year falls on 1 Tishrei, Rosh Hashanah. If Rosh Hashanah would fall on a Wednesday, Friday, or Sunday following a year in which Elul would have 30 days, it is pushed back 1 day (leaving Elul with just 29 days); otherwise, it is moved forward 1 day, giving an extra day to last year's Elul.
+
+Times of sunset, new moon, and equinox are computed for Israeli Standard Time at Jerusalem.
+
+Sources:
+* http://individual.utoronto.ca/kalendis/hebrew/astro.htm

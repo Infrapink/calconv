@@ -222,6 +222,7 @@ import sym010
 import iso_week
 import iso_day
 import rect_jewish
+import neo_ast_jewish
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2284,6 +2285,15 @@ def cons_day_julian_todate():
         rect_jewish_day_ent.insert(0, rect_jewish_date[0])
         rect_jewish_month_ent.insert(0, rect_jewish_date[1])
         rect_jewish_year_ent.insert(0, rect_jewish_date[2])
+
+        # Convert a Julian day to a date in the New astronomical Jewish calendar
+        neo_ast_jewish_date = neo_ast_jewish.fromjd(day)
+        neo_ast_jewish_day_ent.delete(0, END)
+        neo_ast_jewish_month_ent.delete(0, END)
+        neo_ast_jewish_year_ent.delete(0, END)
+        neo_ast_jewish_day_ent.insert(0, neo_ast_jewish_date[0])
+        neo_ast_jewish_month_ent.insert(0, neo_ast_jewish_date[1])
+        neo_ast_jewish_year_ent.insert(0, neo_ast_jewish_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4367,6 +4377,15 @@ def rect_jewish_converter():
         month = rect_jewish_month_ent.get()
         year = int(rect_jewish_year_ent.get())
         jday = rect_jewish.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def neo_ast_jewish_converter():
+        day = int(neo_ast_jewish_day_ent.get())
+        month = neo_ast_jewish_month_ent.get()
+        year = int(neo_ast_jewish_year_ent.get())
+        jday = neo_ast_jewish.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7298,6 +7317,19 @@ rect_jewish_year_lbl = Label(frame, text = "Year").grid(row = 243, column = 2, s
 rect_jewish_year_ent = Entry(frame)
 rect_jewish_year_ent.grid(row = 244, column = 2, sticky = W)
 rect_jewish_bttn = Button(frame, text = "Calculate", command = rect_jewish_converter).grid(row = 245, column = 0, columnspan = 3, sticky = W)
+
+# New astronomical Jewish calendar                                                                                            
+neo_ast_jewish_lbl = Label(frame, text = "New astronomical Jewish calendar").grid(row = 242, column = 3, columnspan = 3, sticky = W)
+neo_ast_jewish_day_lbl = Label(frame, text = "Day").grid(row = 243, column = 3, sticky = W)
+neo_ast_jewish_day_ent = Entry(frame)
+neo_ast_jewish_day_ent.grid(row = 244, column = 3, sticky = W)
+neo_ast_jewish_month_lbl = Label(frame, text = "Month").grid(row = 243, column = 4, sticky = W)
+neo_ast_jewish_month_ent = Entry(frame)
+neo_ast_jewish_month_ent.grid(row = 244, column = 4, sticky = W)
+neo_ast_jewish_year_lbl = Label(frame, text = "Year").grid(row = 243, column = 5, sticky = W)
+neo_ast_jewish_year_ent = Entry(frame)
+neo_ast_jewish_year_ent.grid(row = 244, column = 5, sticky = W)
+neo_ast_jewish_bttn = Button(frame, text = "Calculate", command = neo_ast_jewish_converter).grid(row = 245, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.80.0")
