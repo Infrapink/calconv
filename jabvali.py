@@ -9,8 +9,8 @@ windu = 2835 # 96 months
 kurup = (15 * windu) - 1 # 1440 months
 sk = (9 * windu) - 1 # 864 months
 lunar_cycle = (4 * kurup) + sk # 6624 months
-MONTH_LENGTHS = {354: (30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29), # normal years
-                 355: (30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 30)} # leap years
+MONTH_LENGTHS = {354: (29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30), # normal years
+                 355: (29, 30, 29, 30, 29, 30, 29, 30, 30, 30, 29, 30)} # leap years
 lunar_leaps = (0, 3, 6)
 solar_leaps = (2, 5, 7, 10, 13, 16, 18)
 leap_months = {2:  1,
@@ -22,8 +22,7 @@ leap_months = {2:  1,
 
 def months_in_year(year):
     '''Return the number of months in a specified year'''
-    year = int(year)
-    if (year % 19 in solar_leaps):
+    if (int(year) % 19 in solar_leaps):
         ans = 13
     else:
         ans = 12
@@ -87,21 +86,26 @@ def fromjd(jday):
     while (newmoon + m12(months_past) <= jday):
         newmoon += m12(months_past)
         months_past += 12
+    
 
-    # newmoon is now the first of the month prior to or on jday
+    # newmoon is now the first of the month of the year in which jday falls
     # months_past is the months between newmoon and the epoch
 
     # let's get the year
     # first, account for the cycles of 19 years == 235 months
+    #print(jday - newmoon)
     year = (months_past // 235) * 19
     months_to_nyd = (months_past // 235) * 235 # total months from the epoch to new year's day
     while (months_to_nyd + months_in_year(year) <= months_past):
         months_to_nyd += months_in_year(year)
         year += 1
-    while (months_past > months_to_nyd):
-        months_past -= 1
-        newmoon -= days_in_month(months_past)
+    #print(months_past - months_to_nyd)
+    #while (months_past > months_to_nyd):
+        #months_past -= 1
+        #newmoon -= days_in_month(months_past)
+    #print(months_past - months_to_nyd)
     year += 1555 # add 1555 to get calendar year
+
 
     # now account for the actual months
     m = 0
@@ -110,6 +114,7 @@ def fromjd(jday):
         while (newmoon + days_in_month(months_past + m) <= jday):
             newmoon += days_in_month(months_past + m)
             m += 1
+            #print(m)
         month = MONTHS[m]
     else:
         # leap year
