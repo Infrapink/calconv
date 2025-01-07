@@ -14,11 +14,11 @@ MONTH_LENGTHS = {354: (29, 30, 29, 30, 29, 30, 29, 30, 29, 30, 29, 30), # normal
 lunar_leaps = (0, 3, 6)
 solar_leaps = (2, 5, 7, 10, 13, 16, 18)
 leap_months = {2:  1,
-               4:  5,
+               5:  5,
                7:  3,
                10: 1,
                13: 0,
-               15: 4}
+               16: 4}
 
 def months_in_year(year):
     '''Return the number of months in a specified year'''
@@ -105,10 +105,7 @@ def fromjd(jday):
 
     # now account for the actual months
     m = months_past - months_to_nyd # number of the month containing jday
-    if (not((year % 19) in solar_leaps)):
-        # normal year
-        month = MONTHS[m]
-    else:
+    if ((year % 19) in solar_leaps):
         # leap year
         if (m > leap_months[year % 19]):
             month = MONTHS[m - 1]
@@ -116,7 +113,9 @@ def fromjd(jday):
             month = "Leap " + MONTHS[m]
         else:
             month = MONTHS[m]
-
+    else:
+        # normal year
+        month = MONTHS[m]        
     # get the day
     day = jday - newmoon + 1 # add 1 because humans don't count from 0
 
