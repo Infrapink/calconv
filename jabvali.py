@@ -57,7 +57,6 @@ def fromjd(jday):
     cycles = (jday - epoch) // lunar_cycle
     months_past = cycles * 6624
     newmoon = epoch + (cycles * lunar_cycle)
-    #print(newmoon)
     while (newmoon + lunar_cycle <= jday):
         newmoon += lunar_cycle
         months_past += 6624
@@ -86,50 +85,37 @@ def fromjd(jday):
     while (newmoon + m12(months_past) <= jday):
         newmoon += m12(months_past)
         months_past += 12
+    while (newmoon + days_in_month(months_past) <= jday):
+        newmoon += days_in_month(months_past)
+        months_past += 1
     
 
-    # newmoon is now the first of the month of the year in which jday falls
+    # newmoon is now the first of the month in which jday falls
     # months_past is the months between newmoon and the epoch
 
     # let's get the year
     # first, account for the cycles of 19 years == 235 months
-    #print(jday - newmoon)
+
     year = (months_past // 235) * 19
     months_to_nyd = (months_past // 235) * 235 # total months from the epoch to new year's day
     while (months_to_nyd + months_in_year(year) <= months_past):
         months_to_nyd += months_in_year(year)
         year += 1
-    #print(months_past - months_to_nyd)
-    #while (months_past > months_to_nyd):
-        #months_past -= 1
-        #newmoon -= days_in_month(months_past)
-    #print(months_past - months_to_nyd)
     year += 1555 # add 1555 to get calendar year
 
-
     # now account for the actual months
-    m = 0
-    if (not(year % 19 in solar_leaps)):
+    m = months_past - months_to_nyd # number of the month containing jday
+    if (not((year % 19) in solar_leaps)):
         # normal year
-        while (newmoon + days_in_month(months_past + m) <= jday):
-            newmoon += days_in_month(months_past + m)
-            m += 1
-            #print(m)
         month = MONTHS[m]
     else:
         # leap year
-        l = 0 # have we passed the leap month?
-        while (newmoon + days_in_month(months_past + m) <= jday):
-            newmoon += days_in_month(months_past + m)
-            if (m == leap_months[year % 19]):
-                l = True
-            m += 1
-        if (m <= leap_months[year % 19]):
-            month = MONTHS[m]
-        elif (m == leap_months[year % 19] + 1):
-            month = MONTHS[m - 1] + " 2"
-        else:
+        if (m > leap_months[year % 19]):
             month = MONTHS[m - 1]
+        elif (m == leap_months[year % 19]):
+            month = "Leap " + MONTHS[m]
+        else:
+            month = MONTHS[m]
 
     # get the day
     day = jday - newmoon + 1 # add 1 because humans don't count from 0
@@ -148,6 +134,31 @@ def tojd(day, month, year):
     while (y < year):
         months_passed += months_in_year(y)
         y += 1
+
+    m = 0
+    if (month[:4] == "Leap"):
+        leap = True
+        month = month[4:]
+    else:
+        leap = False
+        
+    if (not((year % 19) in solar_leaps)):
+        # normal year
+        while (MONTHS[m] != month):
+            months_passed += 1
+            m += 1
+    else:
+        # leap year
+        l = False # have we passed the leap month?
+        while (MONTHS[m] != month):
+            months_passed += 1
+            if (m != leap_months[year % 19]):
+                m += 1
+            else:
+                l = True
+        if ( (not l) and (m == leap_months[year % 19]) ):
+            # we're in the leap month but need to be in the normal month
+            months_passed += 1
 
     # months_passed is now equal to the number of months that have passed since the epoch.
     # how many days is that?
@@ -183,35 +194,6 @@ def tojd(day, month, year):
     while (months_to_j < months_passed):
         jday += days_in_month(months_to_j)
         months_to_j += 1
-
-    # now to account for the actual month of the year
-    # first, where do we fall in relation to the leap month
-    if (month[len(month) - 1:] == '2'):
-        leap = True
-        month = month[:len(month) - 2]
-    else:
-        leap = False
-
-    m = 0
-    if (not(year % 19 in solar_leaps)):
-        # normal year
-        while (MONTHS[m] != month):
-            jday += days_in_month(months_to_j + m)
-            m += 1
-    else:
-        # leap year
-        l = False # have we passed the leap month?
-        while (MONTHS[m] != month):
-            if (m == leap_months[year % 19]):
-                l = True
-            jday += days_in_month(months_to_j + m)
-            m += 1
-        if (leap and not l):
-            # we're in the skip month, but we need to be in the normal month, which comes next
-            jday += days_in_month(months_to_j + m)
-        elif(l):
-            # we have not yet reached the desired month due to a previous month being repeated
-            jday += days_in_month(months_to_j + m)
 
     jday += day
     return jday
