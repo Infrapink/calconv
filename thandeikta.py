@@ -114,7 +114,15 @@ def tojd(day, month, year):
     figures = yeartype(year)
     jday = ceil(figures[1])
     #MONTHS = MONTH_LENGTHS[figures[0]]
-    MONTHS = MONTH_LENGTHS[yeartype(year + 1)[1] - yeartype(year)[1]]
+    # this is a horrible kludge that I'll need to fix properly at some point
+    a = [yeartype(year + 1)[1] - yeartype(year)[1]]
+    if (a in MONTH_LENGTHS.keys()):
+        MONTHS = MONTH_LENGTHS[a]
+    elif (a < 360):
+        MONTHS = 354
+    else:
+        MONTHS = 384
+
 
     for m in MONTHS.keys():
         if(m == month):
@@ -142,7 +150,14 @@ def fromjd(jday):
     figures = yeartype(year)
     #print(figures)
     #MONTHS = MONTH_LENGTHS[figures[0]]
-    MONTHS = MONTH_LENGTHS[yeartype(year + 1)[1] - yeartype(year)[1]]
+    # this is a horrible kludge that I'll need to fix properly at some point
+    a = [yeartype(year + 1)[1] - yeartype(year)[1]]
+    if (a in MONTH_LENGTHS.keys()):
+        MONTHS = MONTH_LENGTHS[a]
+    elif (a < 360):
+        MONTHS = 354
+    else:
+        MONTHS = 384
     newmoon = ceil(figures[1])
     ata_yet = ceil(figures[2])
     year += 1100 # add 1100 to years since the epoch to get the calendar year

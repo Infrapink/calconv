@@ -2487,3 +2487,17 @@ Times of sunset, new moon, and equinox are computed for Israeli Standard Time at
 
 Sources:
 * http://individual.utoronto.ca/kalendis/hebrew/astro.htm
+
+-------------
+YERM CALENDAR
+-------------
+
+The Yerm calendar is an algorithmic lunar calendar designed by Karl Palmen. It fairly accurately tracks the lunar cycle, while making no attempt to stay in sync with the seasons.
+
+Months can have 30 or 29 nights and are only identified by number, not name. Months are grouped into yerms (a contraction of year moon), which can have 17 or 15 months. The first month of a yerm always has 30 nights, and thereafter alternates 29 and 30 nights. Two long yerms followed by a short yerm make a three-yerm cycle; 17 of these cycles plus an additional long yerm make a lunar cycle. I have opted to write dates as day-month-yerm rather than day-month-yerm-cycle.
+
+Civil nights begin at noon, and thus correspond perfectly to True Julian Days.
+
+Sources:
+* https://www.hermetic.ch/cal_stud/palmen/yerm1.htm#rules
+* https://web.archive.org/web/20181105223022/http://hilgemeier.gmxhome.de/calendrix/palmen02.htm
