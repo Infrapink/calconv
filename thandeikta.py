@@ -15,7 +15,7 @@ from months import MYANMAR as MONTHS, MYANMAR_MONTH_LENGTHS as MONTH_LENGTHS
 
 # astronomical constants
 sid_year = Fraction(56395952, 154400)
-epoch = 2355953 # Midnight PRECEDING Meṣa Saṃkrānti of 1100 ME; see Irwin, 4:55
+epoch = 2355960 # Midnight PRECEDING Meṣa Saṃkrānti of 1100 ME; see Irwin, 4:55
 
 def days_expired(year):
     '''Returns days expired as of solar new year'''

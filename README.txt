@@ -944,6 +944,8 @@ Javanese calendars:
 * Dulkangidah
 * Besar
 
+In the Jabvali calendar, add a "Leap " before a month name to specify the leap month.
+
 Hawai'ian calendars:
 --------------------
 * Welehu
@@ -1073,6 +1075,20 @@ Tahitian:
 * Tema
 * Te-eri
 
+Yerm128
+-------
+* Chang'e
+* S^n
+* Tecciztecatl
+* Hina
+* Chía
+* Quilla
+* Khonsu
+* Gleti
+* Küyen
+* Mayari
+* Dalnim
+* Anumati
 
 LICENSE
 =======
@@ -1090,9 +1106,7 @@ Add the following calendars:
 
 * Byzantine
 * Shire Reckoning
-* ISO
 * Discordian
-* Minguo
 * Julian Period
 * Muisca
 * Mandean (Reingold and Dershowitz, p 129)

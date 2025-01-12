@@ -224,6 +224,7 @@ import iso_day
 import rect_jewish
 import neo_ast_jewish
 import yerm
+import yerm128
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2304,6 +2305,15 @@ def cons_day_julian_todate():
         yerm_day_ent.insert(0, yerm_date[0])
         yerm_month_ent.insert(0, yerm_date[1])
         yerm_year_ent.insert(0, yerm_date[2])
+
+        # Convert a Julian day to a date in the Yerm128 calendar
+        yerm128_date = yerm128.fromjd(day)
+        yerm128_day_ent.delete(0, END)
+        yerm128_month_ent.delete(0, END)
+        yerm128_year_ent.delete(0, END)
+        yerm128_day_ent.insert(0, yerm128_date[0])
+        yerm128_month_ent.insert(0, yerm128_date[1])
+        yerm128_year_ent.insert(0, yerm128_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4405,6 +4415,15 @@ def yerm_converter():
         month = yerm_month_ent.get()
         year = int(yerm_year_ent.get())
         jday = yerm.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def yerm128_converter():
+        day = int(yerm128_day_ent.get())
+        month = yerm128_month_ent.get()
+        year = int(yerm128_year_ent.get())
+        jday = yerm128.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7363,6 +7382,19 @@ yerm_year_ent = Entry(frame)
 yerm_year_ent.grid(row = 244, column = 8, sticky = W)
 yerm_bttn = Button(frame, text = "Calculate", command = yerm_converter).grid(row = 245, column = 6, columnspan = 3, sticky = W)
 
+# Yerm128 calendar                                                                                            
+yerm128_lbl = Label(frame, text = "Yerm128 calendar").grid(row = 242, column = 9, columnspan = 3, sticky = W)
+yerm128_day_lbl = Label(frame, text = "Day").grid(row = 243, column = 9, sticky = W)
+yerm128_day_ent = Entry(frame)
+yerm128_day_ent.grid(row = 244, column = 9, sticky = W)
+yerm128_month_lbl = Label(frame, text = "Month").grid(row = 243, column = 10, sticky = W)
+yerm128_month_ent = Entry(frame)
+yerm128_month_ent.grid(row = 244, column = 10, sticky = W)
+yerm128_year_lbl = Label(frame, text = "Year").grid(row = 243, column = 11, sticky = W)
+yerm128_year_ent = Entry(frame)
+yerm128_year_ent.grid(row = 244, column = 11, sticky = W)
+yerm128_bttn = Button(frame, text = "Calculate", command = yerm128_converter).grid(row = 245, column = 9, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.80.0")
+
+root.title("Calendar Converter 0.81.0")
 root.mainloop()

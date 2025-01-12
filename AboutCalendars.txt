@@ -2501,3 +2501,11 @@ Civil nights begin at noon, and thus correspond perfectly to True Julian Days.
 Sources:
 * https://www.hermetic.ch/cal_stud/palmen/yerm1.htm#rules
 * https://web.archive.org/web/20181105223022/http://hilgemeier.gmxhome.de/calendrix/palmen02.htm
+
+-------
+YERM128
+-------
+
+Yerm128 is a calendar of my own design. It tracks the sun as per the Goucher-Parker calendar, though with an epoch a week earlier so as to coïncide with the southern solstice. Months are tracked by the Yerm algorithm. New Year's Day falls on the day of the calculated new moon which is closest to solar new year; if the new moons before and after the southern solstice are equally far apart, the year begins with the month which contains solar new year.
+
+Months are named after various moon deities. Days begin at midnight. Leap months are added to the end of the year. There is a pattern to leap years, but I don't know it; the algorithm just inserts a leap month whenever necessary.
