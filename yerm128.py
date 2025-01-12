@@ -59,7 +59,7 @@ def newmoon(jday):
     jday = int(jday)
 
     cycles = (jday - lunar_epoch) // mc52
-    darkmoon = array('I', [lunar_epoch + (cycles * mc52), 0])
+    darkmoon = array('l', [lunar_epoch + (cycles * mc52), 0])
     while (darkmoon[0] + mc3 <= jday):
         darkmoon[0] += mc3
     while (darkmoon[0] + m17 <= jday):
