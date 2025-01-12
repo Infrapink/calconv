@@ -2509,3 +2509,15 @@ YERM128
 Yerm128 is a calendar of my own design. It tracks the sun as per the Goucher-Parker calendar, though with an epoch a week earlier so as to coïncide with the southern solstice. Months are tracked by the Yerm algorithm. New Year's Day falls on the day of the calculated new moon which is closest to solar new year; if the new moons before and after the southern solstice are equally far apart, the year begins with the month which contains solar new year.
 
 Months are named after various moon deities. Days begin at midnight. Leap months are added to the end of the year. There is a pattern to leap years, but I don't know it; the algorithm just inserts a leap month whenever necessary.
+
+-------------------
+BYZANTINE CALENDARS
+-------------------
+
+The old so-called Byzantine calendar was used in the Eastern Roman Empire from 988 AD, and was the liturgical calendar of the Patriarchate of Constantinople until 1788 AD. Its months synchronise with those of the Julian calendar; however, in an attempt to correspond better with Jewish tradition, the year begins on 1 September, and the years are counted from the Biblical Creation, reckoned to be 5508 years before the birth of Christ.
+
+Another variant is used to this day by some Orthodox churches. The new Byzantine calendar starts on 1 September and dates from Creation, as per the old calendar, but it synchronises with the Revised Julian calendar instead.
+
+Sources:
+* https://en.wikipedia.org/wiki/Byzantine_calendar
+* https://ssjc.uk/wp-content/uploads/2024/08/Calendar-AM-7533.pdf

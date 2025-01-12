@@ -225,6 +225,8 @@ import rect_jewish
 import neo_ast_jewish
 import yerm
 import yerm128
+import old_byzantine
+import new_byzantine
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2314,6 +2316,24 @@ def cons_day_julian_todate():
         yerm128_day_ent.insert(0, yerm128_date[0])
         yerm128_month_ent.insert(0, yerm128_date[1])
         yerm128_year_ent.insert(0, yerm128_date[2])
+
+        # Convert a Julian day to a date in the Old Byzantine calendar
+        old_byzantine_date = old_byzantine.fromjd(day, False)
+        old_byzantine_day_ent.delete(0, END)
+        old_byzantine_month_ent.delete(0, END)
+        old_byzantine_year_ent.delete(0, END)
+        old_byzantine_day_ent.insert(0, old_byzantine_date[0])
+        old_byzantine_month_ent.insert(0, old_byzantine_date[1])
+        old_byzantine_year_ent.insert(0, old_byzantine_date[2])
+
+        # Convert a Julian day to a date in the New Byzantine calendar
+        new_byzantine_date = new_byzantine.fromjd(day, False)
+        new_byzantine_day_ent.delete(0, END)
+        new_byzantine_month_ent.delete(0, END)
+        new_byzantine_year_ent.delete(0, END)
+        new_byzantine_day_ent.insert(0, new_byzantine_date[0])
+        new_byzantine_month_ent.insert(0, new_byzantine_date[1])
+        new_byzantine_year_ent.insert(0, new_byzantine_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4424,6 +4444,24 @@ def yerm128_converter():
         month = yerm128_month_ent.get()
         year = int(yerm128_year_ent.get())
         jday = yerm128.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def old_byzantine_converter():
+        day = int(old_byzantine_day_ent.get())
+        month = old_byzantine_month_ent.get()
+        year = int(old_byzantine_year_ent.get())
+        jday = old_byzantine.tojd(day, month, year, False)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def new_byzantine_converter():
+        day = int(new_byzantine_day_ent.get())
+        month = new_byzantine_month_ent.get()
+        year = int(new_byzantine_year_ent.get())
+        jday = new_byzantine.tojd(day, month, year, False)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7395,6 +7433,32 @@ yerm128_year_ent = Entry(frame)
 yerm128_year_ent.grid(row = 244, column = 11, sticky = W)
 yerm128_bttn = Button(frame, text = "Calculate", command = yerm128_converter).grid(row = 245, column = 9, columnspan = 3, sticky = W)
 
+# Old Byzantine calendar                                                                                            
+old_byzantine_lbl = Label(frame, text = "Old Byzantine calendar").grid(row = 246, column = 0, columnspan = 3, sticky = W)
+old_byzantine_day_lbl = Label(frame, text = "Day").grid(row = 247, column = 0, sticky = W)
+old_byzantine_day_ent = Entry(frame)
+old_byzantine_day_ent.grid(row = 248, column = 0, sticky = W)
+old_byzantine_month_lbl = Label(frame, text = "Month").grid(row = 247, column = 1, sticky = W)
+old_byzantine_month_ent = Entry(frame)
+old_byzantine_month_ent.grid(row = 248, column = 1, sticky = W)
+old_byzantine_year_lbl = Label(frame, text = "Year").grid(row = 247, column = 2, sticky = W)
+old_byzantine_year_ent = Entry(frame)
+old_byzantine_year_ent.grid(row = 248, column = 2, sticky = W)
+old_byzantine_bttn = Button(frame, text = "Calculate", command = old_byzantine_converter).grid(row = 249, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.81.0")
+# New Byzantine calendar                                                                                            
+new_byzantine_lbl = Label(frame, text = "New Byzantine calendar").grid(row = 246, column = 3, columnspan = 3, sticky = W)
+new_byzantine_day_lbl = Label(frame, text = "Day").grid(row = 247, column = 3, sticky = W)
+new_byzantine_day_ent = Entry(frame)
+new_byzantine_day_ent.grid(row = 248, column = 3, sticky = W)
+new_byzantine_month_lbl = Label(frame, text = "Month").grid(row = 247, column = 4, sticky = W)
+new_byzantine_month_ent = Entry(frame)
+new_byzantine_month_ent.grid(row = 248, column = 4, sticky = W)
+new_byzantine_year_lbl = Label(frame, text = "Year").grid(row = 247, column = 5, sticky = W)
+new_byzantine_year_ent = Entry(frame)
+new_byzantine_year_ent.grid(row = 248, column = 5, sticky = W)
+new_byzantine_bttn = Button(frame, text = "Calculate", command = new_byzantine_converter).grid(row = 249, column = 3, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.82.0")
 root.mainloop()
