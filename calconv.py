@@ -227,6 +227,8 @@ import yerm
 import yerm128
 import old_byzantine
 import new_byzantine
+import dee
+import cecil
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2334,6 +2336,24 @@ def cons_day_julian_todate():
         new_byzantine_day_ent.insert(0, new_byzantine_date[0])
         new_byzantine_month_ent.insert(0, new_byzantine_date[1])
         new_byzantine_year_ent.insert(0, new_byzantine_date[2])
+
+        # Convert a Julian day to a date in the John Dee's calendar
+        dee_date = dee.fromjd(day)
+        dee_day_ent.delete(0, END)
+        dee_month_ent.delete(0, END)
+        dee_year_ent.delete(0, END)
+        dee_day_ent.insert(0, dee_date[0])
+        dee_month_ent.insert(0, dee_date[1])
+        dee_year_ent.insert(0, dee_date[2])
+
+        # Convert a Julian day to a date in the Dee-Cecil calendar
+        cecil_date = cecil.fromjd(day)
+        cecil_day_ent.delete(0, END)
+        cecil_month_ent.delete(0, END)
+        cecil_year_ent.delete(0, END)
+        cecil_day_ent.insert(0, cecil_date[0])
+        cecil_month_ent.insert(0, cecil_date[1])
+        cecil_year_ent.insert(0, cecil_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4462,6 +4482,24 @@ def new_byzantine_converter():
         month = new_byzantine_month_ent.get()
         year = int(new_byzantine_year_ent.get())
         jday = new_byzantine.tojd(day, month, year, False)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def dee_converter():
+        day = int(dee_day_ent.get())
+        month = dee_month_ent.get()
+        year = int(dee_year_ent.get())
+        jday = dee.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def cecil_converter():
+        day = int(cecil_day_ent.get())
+        month = cecil_month_ent.get()
+        year = int(cecil_year_ent.get())
+        jday = cecil.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7459,6 +7497,32 @@ new_byzantine_year_ent = Entry(frame)
 new_byzantine_year_ent.grid(row = 248, column = 5, sticky = W)
 new_byzantine_bttn = Button(frame, text = "Calculate", command = new_byzantine_converter).grid(row = 249, column = 3, columnspan = 3, sticky = W)
 
+# John Dee's calendar                                                                                            
+dee_lbl = Label(frame, text = "John Dee's calendar").grid(row = 246, column = 6, columnspan = 3, sticky = W)
+dee_day_lbl = Label(frame, text = "Day").grid(row = 247, column = 6, sticky = W)
+dee_day_ent = Entry(frame)
+dee_day_ent.grid(row = 248, column = 6, sticky = W)
+dee_month_lbl = Label(frame, text = "Month").grid(row = 247, column = 7, sticky = W)
+dee_month_ent = Entry(frame)
+dee_month_ent.grid(row = 248, column = 7, sticky = W)
+dee_year_lbl = Label(frame, text = "Year").grid(row = 247, column = 8, sticky = W)
+dee_year_ent = Entry(frame)
+dee_year_ent.grid(row = 248, column = 8, sticky = W)
+dee_bttn = Button(frame, text = "Calculate", command = dee_converter).grid(row = 249, column = 6, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.82.0")
+# Dee-Cecil calendar                                                                                            
+cecil_lbl = Label(frame, text = "Dee-Cecil calendar").grid(row = 246, column = 9, columnspan = 3, sticky = W)
+cecil_day_lbl = Label(frame, text = "Day").grid(row = 247, column = 9, sticky = W)
+cecil_day_ent = Entry(frame)
+cecil_day_ent.grid(row = 248, column = 9, sticky = W)
+cecil_month_lbl = Label(frame, text = "Month").grid(row = 247, column = 10, sticky = W)
+cecil_month_ent = Entry(frame)
+cecil_month_ent.grid(row = 248, column = 10, sticky = W)
+cecil_year_lbl = Label(frame, text = "Year").grid(row = 247, column = 11, sticky = W)
+cecil_year_ent = Entry(frame)
+cecil_year_ent.grid(row = 248, column = 11, sticky = W)
+cecil_bttn = Button(frame, text = "Calculate", command = cecil_converter).grid(row = 249, column = 9, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.83.0")
 root.mainloop()

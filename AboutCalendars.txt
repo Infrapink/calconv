@@ -2521,3 +2521,24 @@ Another variant is used to this day by some Orthodox churches. The new Byzantine
 Sources:
 * https://en.wikipedia.org/wiki/Byzantine_calendar
 * https://ssjc.uk/wp-content/uploads/2024/08/Calendar-AM-7533.pdf
+
+-------------
+DEE AND CECIL
+-------------
+
+When the Gregorian calendar was announced, word of it reached England. The Gregorian calendar was undoubtedly superior to the Julian calendar, but English Protestants were naturally reticent about adopting a system promulgated by the pope. John Dee, an advisor to Queen Elizabeth I, court astrologer, and noted weirdo, took it upon himself to design an even better calendar, which would prove the superiority of Protestants over Catholics and also of England over Rome.
+
+Dee was well versed in astronomy, and familiar with the work of Copernicus and Kepler. He designed a solar calendar so similar to the Jalali calendar that I would be surprised to learn he had not read the works of Omar Khayyam. Events are dated from the birth of Jesus. In Dee's calendar, 1 January 1 falls on Julian Day 1721425, one day earlier than the Gregorian epoch; a minor variant, proposed by Queen Elizabeth's treasurer, William Cecil, uses the same epoch as the Gregorian calendar. The difference here is that Cecil thought it would be more practical to skip 10 days to bring the English calendar into sync with the Gregorian, while Dee thought they should skip 11 days to better match the dates of the equinoxes in the time of Christ.
+
+The calendar operates on a 33-year cycle; Dee no doubt appreciated the correlation with the length of Christ's Earthly life. A year is leap if, when divided by 33, it yields a nonzero remainder which is an integer multiple of 4. Months have the same lengths and names as in the Gregorian calendar. Days begin at midnight.
+
+The mean year is 365.2424... days long, just 5.2 seconds longer than the mean northward equinoctial year (for comparison, the Gregorian calendar is 10.37 seconds too long).
+
+Alas, for political reasons, Dee's proposal was never adopted, and England stuck with the Julian calendar until 1752 AD, at which point they adopted the Gregorian calendar. Dee presented his proposal to Rudolf II, the Holy Roman Emperor, but to no avail.
+
+Sources:
+* Peter Meyer, The Dee-Cecil Calendar and its Date Conversion Algorithms, 2009: https://www.hermetic.ch/cal_stud/dee-cecil-calendar.html
+* Peter Meyer, John Dee's Calendar and God's Longitude: https://www.hermetic.ch/cal_stud/gods_longitude.htm
+* Robert Poole, John Dee and the English Calendar: Science, Religion, and Empire, 1996: https://www.hermetic.ch/cal_stud/jdee.html
+* Simon Cassidy, Implementing a Correct 33-Year Calendar Reform, 1996: https://www.hermetic.ch/cal_stud/cassidy/33yr-cal.htm
+* Duncan Steel, The Non-Implemented 33-Year English Protestant Calendar, 2000: https://www.hermetic.ch/cal_stud/dst01.htm

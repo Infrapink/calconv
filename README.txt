@@ -51,7 +51,7 @@ On Windows, you can instead double-click on calconv.bat
 
 Dates are entered in the indicated text boxes in the order Day, Month, Year; if there is only one text box, input is a simple number. For now, months must be written in full, and entered exactly as listed here, including punctuation and diacritical marks. A later version will replace the text entry fields with selectable dropdown menus. Years before the calendar epoch are entered as negative numbers; so, for example, the year 44 BC would be input as '-44'.
 
-Julian, Gregorian, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, Georgian (Christian era), ADA, Holocene, and Byzantine Calendars:
+Julian, Gregorian, Parker, Goucher-Parker, Serbian Church, World, International Fixed, Pax, Gorman, Georgian (Christian era), ADA, Holocene, Byzantine, Dee, and Dee-Cecil Calendars:
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 * January
