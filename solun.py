@@ -25,6 +25,7 @@ r2d = 180 / pi # convert radians to degrees
 d2r = pi / 180 # convert degrees to radians
 eqm = 0.6749121716696571 # Difference between the celestial longitudes of the sun and counterspica when the sun hit an ecliptic angle of 23°15' in 1955. This is used in computing the instant of Meṣa Saṁkrānti
 
+julian_epoch = 1721424 - 366 # 1st January of the year 0
 gregorian_epoch = 1721426 - 366 # 1st January of the year 0
 gregorian_cycle = (400 * 365) + 97 # 400 years in the Gregorian calendar
 solar4 = (4 * 365) + 1 # 3 years of 365 days and one leap year of 366 days
@@ -703,6 +704,33 @@ def local_lunar_stellar_conjunction(jday, star, tz):
     tz = Fraction(tz) # timezone
 
     ans = lunar_stellar_conjunction(jday, star) + tz
+    return ans
+
+def julian_year_length(year):
+    '''Returns the number of days in a year in the Julian calendar, assuming there is a year 0'''
+
+    if (int(year) % 4 == 0):
+        ans = 366
+    else:
+        ans = 365
+
+    return ans
+
+def julian_nyd(year, z):
+    '''Returns the Julian Day corresponding to 1st January in a given year in the Julian calendar'''
+    year = int(year) # the year in question
+    z = bool(z) # is there a year 0?
+
+    if (year < 0):
+        year += int(not(z))
+
+    cycles = year // 4
+    y = 4 * cycles
+    ans = julian_epoch + (cycles * solar4)
+    while (y < year):
+        ans += julian_year_length(y)
+        y += 1
+
     return ans
 
 def gregorian_year_length(year):
