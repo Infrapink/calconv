@@ -1,4 +1,4 @@
-This is calconv, a program to convert between various calendars. It's my first real program, started in order to teach myself Python when I had downtime during the 2020 Covid-19 pandemic.
+#61;7803;1cThis is calconv, a program to convert between various calendars. It's my first real program, started in order to teach myself Python when I had downtime during the 2020 Covid-19 pandemic.
 
 REQUIREMENTS
 ============
@@ -1090,6 +1090,10 @@ Yerm128
 * Dalnim
 * Anumati
 
+In the following calendars, months are just given numbers:
+* Muisca
+* Yerm
+
 LICENSE
 =======
 
@@ -1107,7 +1111,5 @@ Add the following calendars:
 * Shire Reckoning
 * Discordian
 * Julian Period
-* Muisca
-* Mandean (Reingold and Dershowitz, p 129)
 * Pawukon
 * Akan

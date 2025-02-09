@@ -229,6 +229,7 @@ import old_byzantine
 import new_byzantine
 import dee
 import cecil
+import obs_muisca
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2354,6 +2355,15 @@ def cons_day_julian_todate():
         cecil_day_ent.insert(0, cecil_date[0])
         cecil_month_ent.insert(0, cecil_date[1])
         cecil_year_ent.insert(0, cecil_date[2])
+
+        # Convert a Julian day to a date in the Muisca agricultural calendar
+        obs_muisca_date = obs_muisca.fromjd(day)
+        obs_muisca_day_ent.delete(0, END)
+        obs_muisca_month_ent.delete(0, END)
+        obs_muisca_year_ent.delete(0, END)
+        obs_muisca_day_ent.insert(0, obs_muisca_date[0])
+        obs_muisca_month_ent.insert(0, obs_muisca_date[1])
+        obs_muisca_year_ent.insert(0, obs_muisca_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4500,6 +4510,15 @@ def cecil_converter():
         month = cecil_month_ent.get()
         year = int(cecil_year_ent.get())
         jday = cecil.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def obs_muisca_converter():
+        day = int(obs_muisca_day_ent.get())
+        month = obs_muisca_month_ent.get()
+        year = int(obs_muisca_year_ent.get())
+        jday = obs_muisca.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7522,6 +7541,19 @@ cecil_year_lbl = Label(frame, text = "Year").grid(row = 247, column = 11, sticky
 cecil_year_ent = Entry(frame)
 cecil_year_ent.grid(row = 248, column = 11, sticky = W)
 cecil_bttn = Button(frame, text = "Calculate", command = cecil_converter).grid(row = 249, column = 9, columnspan = 3, sticky = W)
+
+# Muisca agricultural calendar                                                                                            
+obs_muisca_lbl = Label(frame, text = "Muisca agricultural calendar").grid(row = 250, column = 0, columnspan = 3, sticky = W)
+obs_muisca_day_lbl = Label(frame, text = "Day").grid(row = 251, column = 0, sticky = W)
+obs_muisca_day_ent = Entry(frame)
+obs_muisca_day_ent.grid(row = 252, column = 0, sticky = W)
+obs_muisca_month_lbl = Label(frame, text = "Month").grid(row = 251, column = 1, sticky = W)
+obs_muisca_month_ent = Entry(frame)
+obs_muisca_month_ent.grid(row = 252, column = 1, sticky = W)
+obs_muisca_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 2, sticky = W)
+obs_muisca_year_ent = Entry(frame)
+obs_muisca_year_ent.grid(row = 252, column = 2, sticky = W)
+obs_muisca_bttn = Button(frame, text = "Calculate", command = obs_muisca_converter).grid(row = 253, column = 0, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.83.0")
