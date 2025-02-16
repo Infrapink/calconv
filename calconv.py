@@ -230,6 +230,7 @@ import new_byzantine
 import dee
 import cecil
 import obs_muisca
+import archetypes
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2364,6 +2365,15 @@ def cons_day_julian_todate():
         obs_muisca_day_ent.insert(0, obs_muisca_date[0])
         obs_muisca_month_ent.insert(0, obs_muisca_date[1])
         obs_muisca_year_ent.insert(0, obs_muisca_date[2])
+
+        # Convert a Julian day to a date in the Archetypes calendar
+        archetypes_date = archetypes.fromjd(day)
+        archetypes_day_ent.delete(0, END)
+        archetypes_month_ent.delete(0, END)
+        archetypes_year_ent.delete(0, END)
+        archetypes_day_ent.insert(0, archetypes_date[0])
+        archetypes_month_ent.insert(0, archetypes_date[1])
+        archetypes_year_ent.insert(0, archetypes_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4519,6 +4529,15 @@ def obs_muisca_converter():
         month = obs_muisca_month_ent.get()
         year = int(obs_muisca_year_ent.get())
         jday = obs_muisca.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def archetypes_converter():
+        day = int(archetypes_day_ent.get())
+        month = archetypes_month_ent.get()
+        year = int(archetypes_year_ent.get())
+        jday = archetypes.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7554,6 +7573,19 @@ obs_muisca_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 2, st
 obs_muisca_year_ent = Entry(frame)
 obs_muisca_year_ent.grid(row = 252, column = 2, sticky = W)
 obs_muisca_bttn = Button(frame, text = "Calculate", command = obs_muisca_converter).grid(row = 253, column = 0, columnspan = 3, sticky = W)
+
+# Archetypes calendar                                                                                            
+archetypes_lbl = Label(frame, text = "Archetypes calendar").grid(row = 250, column = 3, columnspan = 3, sticky = W)
+archetypes_day_lbl = Label(frame, text = "Day").grid(row = 251, column = 3, sticky = W)
+archetypes_day_ent = Entry(frame)
+archetypes_day_ent.grid(row = 252, column = 3, sticky = W)
+archetypes_month_lbl = Label(frame, text = "Month").grid(row = 251, column = 4, sticky = W)
+archetypes_month_ent = Entry(frame)
+archetypes_month_ent.grid(row = 252, column = 4, sticky = W)
+archetypes_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 5, sticky = W)
+archetypes_year_ent = Entry(frame)
+archetypes_year_ent.grid(row = 252, column = 5, sticky = W)
+archetypes_bttn = Button(frame, text = "Calculate", command = archetypes_converter).grid(row = 253, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.83.0")

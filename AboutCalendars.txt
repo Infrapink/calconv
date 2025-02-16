@@ -2567,3 +2567,16 @@ I have just implemented what I believe was the agricultural calendar. Months beg
 
 Sources:
 * The Muisca Calendar: An approximation to the timekeeping system of the ancient native people of the northeastern Andes of Colombia. Manuel Arturo Izquierdo Peña, 2008. Available at https://arxiv.org/pdf/0812.0574v2
+
+-------------------
+ARCHETYPES CALENDAR
+-------------------
+
+The Archetypes calendar was designed by Peter Meyer in 2010. It is an algorithmic lunisolar calendar that approximates the tropical year and synodic month quite well, and mostly synchronises with the Chinese calendar.
+
+The epoch is Julian Day 897474. This represents New Year's Day of the year 443, as it was a year when the new moon marking the start of Chinese New Year fell very close to midnight. In a year, odd-numbered months have 30 days, while even-numbered months have 29 days (the month count begins with 1, not 0). 1803 years make up a Helios cycle of 897474 days, which is exactly 94076 weeks. Within a Helios cycle, there are concurrent cycles which determine if a leap day should be added to the 10th month, and if a leap month should be added to the end of the year.
+
+Months are named after Greek deities associated with the sun, the planets, and Pluto. Each months consists of three 'tweeks' of 10 or 9 days, named after the sun, the planets, and Pluto respectively.
+
+Sources:
+* https://hermetic.ch/cal_stud/arch_cal/arch_cal.htm

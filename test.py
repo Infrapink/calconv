@@ -8,8 +8,8 @@ import months
 
 import julian
 import gregorian
-import sym454
-import sym010
+import archetypes
+import obs_muisca
 import chinese_lunisolar_qin
 import iso_week
 import iso_day
@@ -51,23 +51,23 @@ def cons_day_julian_todate():
         chinese_lunisolar_qin_month_ent.insert(0, chinese_lunisolar_qin_date[1])
         chinese_lunisolar_qin_year_ent.insert(0, chinese_lunisolar_qin_date[2])
 
-        # Convert a Julian Day to a date in the sym454 calendar
-        sym454_date = sym454.fromjd(day)
-        sym454_day_ent.delete(0, END)
-        sym454_month_ent.delete(0, END)
-        sym454_year_ent.delete(0, END)
-        sym454_day_ent.insert(0, sym454_date[0])
-        sym454_month_ent.insert(0, sym454_date[1])
-        sym454_year_ent.insert(0, sym454_date[2])
+        # Convert a Julian Day to a date in the archetypes calendar
+        archetypes_date = archetypes.fromjd(day)
+        archetypes_day_ent.delete(0, END)
+        archetypes_month_ent.delete(0, END)
+        archetypes_year_ent.delete(0, END)
+        archetypes_day_ent.insert(0, archetypes_date[0])
+        archetypes_month_ent.insert(0, archetypes_date[1])
+        archetypes_year_ent.insert(0, archetypes_date[2])
 	
-        # Convert a Julian Day to a date in the sym010 calendar
-        sym010_date = sym010.fromjd(day)
-        sym010_day_ent.delete(0, END)
-        sym010_month_ent.delete(0, END)
-        sym010_year_ent.delete(0, END)
-        sym010_day_ent.insert(0, sym010_date[0])
-        sym010_month_ent.insert(0, sym010_date[1])
-        sym010_year_ent.insert(0, sym010_date[2])
+        # Convert a Julian Day to a date in the obs_muisca calendar
+        obs_muisca_date = obs_muisca.fromjd(day)
+        obs_muisca_day_ent.delete(0, END)
+        obs_muisca_month_ent.delete(0, END)
+        obs_muisca_year_ent.delete(0, END)
+        obs_muisca_day_ent.insert(0, obs_muisca_date[0])
+        obs_muisca_month_ent.insert(0, obs_muisca_date[1])
+        obs_muisca_year_ent.insert(0, obs_muisca_date[2])
 
         # Convert a Julian day to a date in the ISO-week calendar
         iso_week_date = iso_week.fromjd(day)
@@ -130,24 +130,24 @@ def chinese_lunisolar_qin_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def sym454_converter():
-        day = int(sym454_day_ent.get())
-        month = sym454_month_ent.get()
-        year = str(sym454_year_ent.get())
-        if(year[len(year) - 1:] == '*'):
-                year = int(year[:len(year) - 1])
-        else:
-                year = int(year)
-        jday = sym454.tojd(day, month, year)
+def archetypes_converter():
+        day = int(archetypes_day_ent.get())
+        month = archetypes_month_ent.get()
+        year = str(archetypes_year_ent.get())
+        #if(year[len(year) - 1:] == '*'):
+        #        year = int(year[:len(year) - 1])
+        #else:
+        #        year = int(year)
+        jday = archetypes.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
         
-def sym010_converter():
-        day = int(sym010_day_ent.get())
-        month = sym010_month_ent.get()
-        year = int(sym010_year_ent.get())
-        jday = sym010.tojd(day, month, year)
+def obs_muisca_converter():
+        day = int(obs_muisca_day_ent.get())
+        month = obs_muisca_month_ent.get()
+        year = int(obs_muisca_year_ent.get())
+        jday = obs_muisca.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -246,31 +246,31 @@ chinese_lunisolar_qin_year_ent = Entry(frame)
 chinese_lunisolar_qin_year_ent.grid(row = 2, column = 11, sticky = W)
 chinese_lunisolar_qin_bttn = Button(frame, text = "Calculate", command = chinese_lunisolar_qin_converter).grid(row = 3, column = 9, columnspan = 3, sticky = W)
 
-# sym454 calendar                                                                                            
-sym454_lbl = Label(frame, text = "sym454 calendar").grid(row = 5, column = 0, columnspan = 3, sticky = W)
-sym454_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 0, sticky = W)
-sym454_day_ent = Entry(frame)
-sym454_day_ent.grid(row = 7, column = 0, sticky = W)
-sym454_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 1, sticky = W)
-sym454_month_ent = Entry(frame)
-sym454_month_ent.grid(row = 7, column = 1, sticky = W)
-sym454_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 2, sticky = W)
-sym454_year_ent = Entry(frame)
-sym454_year_ent.grid(row = 7, column = 2, sticky = W)
-sym454_bttn = Button(frame, text = "Calculate", command = sym454_converter).grid(row = 8, column = 0, columnspan = 3, sticky = W)
+# archetypes calendar                                                                                            
+archetypes_lbl = Label(frame, text = "archetypes calendar").grid(row = 5, column = 0, columnspan = 3, sticky = W)
+archetypes_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 0, sticky = W)
+archetypes_day_ent = Entry(frame)
+archetypes_day_ent.grid(row = 7, column = 0, sticky = W)
+archetypes_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 1, sticky = W)
+archetypes_month_ent = Entry(frame)
+archetypes_month_ent.grid(row = 7, column = 1, sticky = W)
+archetypes_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 2, sticky = W)
+archetypes_year_ent = Entry(frame)
+archetypes_year_ent.grid(row = 7, column = 2, sticky = W)
+archetypes_bttn = Button(frame, text = "Calculate", command = archetypes_converter).grid(row = 8, column = 0, columnspan = 3, sticky = W)
 
-# sym010 calendar
-sym010_lbl = Label(frame, text = "sym010 calendar").grid(row = 5, column = 3, columnspan = 3, sticky = W)
-sym010_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 3, sticky = W)
-sym010_day_ent = Entry(frame)
-sym010_day_ent.grid(row = 7, column = 3, sticky = W)
-sym010_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 4, sticky = W)
-sym010_month_ent = Entry(frame)
-sym010_month_ent.grid(row = 7, column = 4, sticky = W)
-sym010_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 5, sticky = W)
-sym010_year_ent = Entry(frame)
-sym010_year_ent.grid(row = 7, column = 5, sticky = W)
-sym010_bttn = Button(frame, text = "Calculate", command = sym010_converter).grid(row = 8, column = 3, columnspan = 3, sticky = W)
+# obs_muisca calendar
+obs_muisca_lbl = Label(frame, text = "obs_muisca calendar").grid(row = 5, column = 3, columnspan = 3, sticky = W)
+obs_muisca_day_lbl = Label(frame, text = "Day").grid(row = 6, column = 3, sticky = W)
+obs_muisca_day_ent = Entry(frame)
+obs_muisca_day_ent.grid(row = 7, column = 3, sticky = W)
+obs_muisca_month_lbl = Label(frame, text = "Month").grid(row = 6, column = 4, sticky = W)
+obs_muisca_month_ent = Entry(frame)
+obs_muisca_month_ent.grid(row = 7, column = 4, sticky = W)
+obs_muisca_year_lbl = Label(frame, text = "Year").grid(row = 6, column = 5, sticky = W)
+obs_muisca_year_ent = Entry(frame)
+obs_muisca_year_ent.grid(row = 7, column = 5, sticky = W)
+obs_muisca_bttn = Button(frame, text = "Calculate", command = obs_muisca_converter).grid(row = 8, column = 3, columnspan = 3, sticky = W)
 
 # ISO-week calendar                                                                                            
 iso_week_lbl = Label(frame, text = "ISO-week calendar").grid(row = 5, column = 6, columnspan = 3, sticky = W)
