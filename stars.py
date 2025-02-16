@@ -50,7 +50,7 @@ ALNILAM = Star( (5 * 15) + (36 * Decimal(15/60)) + (Decimal('12.8') * Decimal(15
 
 ALNITAK = Star( (5 * 15) + (40 * Decimal(15/60)) + (Decimal('45.52666') * Decimal(15/3600)), # ra
                 (-1) - (Decimal(56/60)) - (Decimal('34.2649') / 3600), # dec
-                387 # distance
+                387, # distance
                 Decimal('18.5')	/ 977792, # rv
                 Decimal('3.19') * mas2rad, # dra
                 Decimal('2.03') * mas2rad) # ddec
@@ -74,8 +74,8 @@ BELLATRIX = Star( (5 * 15) + (25 * Decimal(15/60)) + (Decimal('7.86325') * Decim
                   6 + Decimal(20/60) + (Decimal('58.9318') / 3600), # dec
                   77, # distance
                   Decimal('18.2') / 977792, # rv
-                  Decimal('-8.11') * masrrad, # dra
-                  Decimal('-12.88') * mas3rad) # ddec
+                  Decimal('-8.11') * mas2rad, # dra
+                  Decimal('-12.88') * mas2rad) # ddec
 
 BETELGEUSE = Star( (5 * 15) + (55 * Decimal(15/60)) + (Decimal('10.30536') * Decimal(15/3600)), # ra
                    7 + Decimal(24/60) + (Decimal('25.4304') / 3600), # dec
@@ -100,10 +100,10 @@ MINTAKA = Star( (5 * 15) + (32 * Decimal(15/60)) + (Decimal('0.40009') * Decimal
 
 PROCYON = Star( 15 * (7 + Decimal(39/60) + (Decimal('18.1195') / 3600)), # ra
                 5 + Decimal(13/60) + (Decimal('29.9552') / 3600), # dec
-                Decimal('3.51') # distance
+                Decimal('3.51'), # distance
                 Decimal('-3.2') / 977792, # rv
                 Decimal('-714.59') * mas2rad, # dra
-                Decimal('−1036.8') * mas2rad) # ddec
+                (0 - Decimal('1036.8')) * mas2rad) # ddec
 
 REVATI = Star( Decimal('18.4382'), # ra
                Decimal('7.578382361'), # dec
