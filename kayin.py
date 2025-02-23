@@ -185,6 +185,7 @@ def fromjd(jday):
                 break
             else:
                 newmoon += MONTHS[m]
+        month = MONTHS[m]
 
     # compute the day
     day = jday - newmoon + 1 # add 1 because humans don't count from 0

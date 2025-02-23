@@ -1090,6 +1090,23 @@ Yerm128
 * Dalnim
 * Anumati
 
+Borana:
+-------
+* Birra
+* Ciḳawa
+* Sadassa
+* Abrasa
+* Ammaji
+* Gurranḍala
+* Bittotessa
+* Camsa
+* Bufa
+* Wacabajji
+* Obora Gudda
+* Obora Diḳḳa
+
+In a leap year, Gurranḍala or Obora Diḳḳa may be repeated; to specify the leap month, add a " 2" to the end.
+
 In the following calendars, months are just given numbers:
 * Muisca
 * Yerm

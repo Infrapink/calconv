@@ -231,6 +231,8 @@ import dee
 import cecil
 import obs_muisca
 import archetypes
+import borana_bassi
+import borana_legesse
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2374,6 +2376,28 @@ def cons_day_julian_todate():
         archetypes_day_ent.insert(0, archetypes_date[0])
         archetypes_month_ent.insert(0, archetypes_date[1])
         archetypes_year_ent.insert(0, archetypes_date[2])
+
+        # Convert a Julian day to a date in the Borana calendar (Bassi model)
+        borana_bassi_date = borana_bassi.fromjd(day)
+        borana_bassi_day_ent.delete(0, END)
+        borana_bassi_month_ent.delete(0, END)
+        borana_bassi_year_ent.delete(0, END)
+        borana_bassi_cycle_ent.delete(0, END)
+        borana_bassi_day_ent.insert(0, borana_bassi_date[0])
+        borana_bassi_month_ent.insert(0, borana_bassi_date[1])
+        borana_bassi_year_ent.insert(0, borana_bassi_date[2])
+        borana_bassi_cycle_ent.insert(0, borana_bassi_date[3])
+
+        # Convert a Julian day to a date in the Borana calendar (Legesse model)
+        borana_legesse_date = borana_legesse.fromjd(day)
+        borana_legesse_day_ent.delete(0, END)
+        borana_legesse_month_ent.delete(0, END)
+        borana_legesse_year_ent.delete(0, END)
+        borana_legesse_cycle_ent.delete(0, END)
+        borana_legesse_day_ent.insert(0, borana_legesse_date[0])
+        borana_legesse_month_ent.insert(0, borana_legesse_date[1])
+        borana_legesse_year_ent.insert(0, borana_legesse_date[2])
+        borana_legesse_cycle_ent.insert(0, borana_legesse_date[3])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4538,6 +4562,26 @@ def archetypes_converter():
         month = archetypes_month_ent.get()
         year = int(archetypes_year_ent.get())
         jday = archetypes.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def borana_bassi_converter():
+        day = int(borana_bassi_day_ent.get())
+        month = borana_bassi_month_ent.get()
+        year = int(borana_bassi_year_ent.get())
+        cycle = int(borana_bassi_cycle_ent.get())
+        jday = borana_bassi.tojd(day, month, year, cycle)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def borana_legesse_converter():
+        day = int(borana_legesse_day_ent.get())
+        month = borana_legesse_month_ent.get()
+        year = int(borana_legesse_year_ent.get())
+        cycle = int(borana_legesse_cycle_ent.get())
+        jday = borana_bassi.tojd(day, month, year, cycle)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7586,6 +7630,38 @@ archetypes_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 5, st
 archetypes_year_ent = Entry(frame)
 archetypes_year_ent.grid(row = 252, column = 5, sticky = W)
 archetypes_bttn = Button(frame, text = "Calculate", command = archetypes_converter).grid(row = 253, column = 3, columnspan = 3, sticky = W)
+
+# Borana calendar (Bassi)                                                                                         
+borana_bassi_lbl = Label(frame, text = "Borana calendar (Bassi)").grid(row = 254, column = 0, columnspan = 4, sticky = W)
+borana_bassi_day_lbl = Label(frame, text = "Day").grid(row = 255, column = 0, sticky = W)
+borana_bassi_day_ent = Entry(frame)
+borana_bassi_day_ent.grid(row = 256, column = 0, sticky = W)
+borana_bassi_month_lbl = Label(frame, text = "Month").grid(row = 255, column = 1, sticky = W)
+borana_bassi_month_ent = Entry(frame)
+borana_bassi_month_ent.grid(row = 256, column = 1, sticky = W)
+borana_bassi_year_lbl = Label(frame, text = "Year").grid(row = 255, column = 2, sticky = W)
+borana_bassi_year_ent = Entry(frame)
+borana_bassi_year_ent.grid(row = 256, column = 2, sticky = W)
+borana_bassi_cycle_lbl = Label(frame, text = "Cycle").grid(row = 255, column = 3, sticky = W)
+borana_bassi_cycle_ent = Entry(frame)
+borana_bassi_cycle_ent.grid(row = 256, column = 3, sticky = W)
+borana_bassi_bttn = Button(frame, text = "Calculate", command = borana_bassi_converter).grid(row = 257, column = 0, columnspan = 4, sticky = W)
+
+# Borana calendar (Legesse)                                                                                         
+borana_legesse_lbl = Label(frame, text = "Borana calendar (Legesse)").grid(row = 254, column = 4, columnspan = 4, sticky = W)
+borana_legesse_day_lbl = Label(frame, text = "Day").grid(row = 255, column = 4, sticky = W)
+borana_legesse_day_ent = Entry(frame)
+borana_legesse_day_ent.grid(row = 256, column = 4, sticky = W)
+borana_legesse_month_lbl = Label(frame, text = "Month").grid(row = 255, column = 5, sticky = W)
+borana_legesse_month_ent = Entry(frame)
+borana_legesse_month_ent.grid(row = 256, column = 5, sticky = W)
+borana_legesse_year_lbl = Label(frame, text = "Year").grid(row = 255, column = 6, sticky = W)
+borana_legesse_year_ent = Entry(frame)
+borana_legesse_year_ent.grid(row = 256, column = 6, sticky = W)
+borana_legesse_cycle_lbl = Label(frame, text = "Cycle").grid(row = 255, column = 7, sticky = W)
+borana_legesse_cycle_ent = Entry(frame)
+borana_legesse_cycle_ent.grid(row = 256, column = 7, sticky = W)
+borana_legesse_bttn = Button(frame, text = "Calculate", command = borana_legesse_converter).grid(row = 257, column = 4, columnspan = 4, sticky = W)
 
 
 root.title("Calendar Converter 0.83.0")

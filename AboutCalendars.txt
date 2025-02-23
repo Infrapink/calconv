@@ -2580,3 +2580,34 @@ Months are named after Greek deities associated with the sun, the planets, and P
 
 Sources:
 * https://hermetic.ch/cal_stud/arch_cal/arch_cal.htm
+
+------
+BORANA
+------
+
+The traditional calendar of the Borana is lunistellar. Days begin at sunrise, and months begin with the first sunrise after the sighting of the waxing crescent moon. The calendar is tracked and maintained by ayyantu, knowledgeable men who pass knowledge down to their sons. Ayyantu is not a formal position or class; it is a designation for people with expertise in astronomy and timekeeping, and ayyantu have all the same obligations and no particular privileges in Borana society.
+
+Ayyantu do not all agree on the precise structure of the calendar, though their theoretical disagreements cancel out over the course of a year. As such, the models presented here are averages based on the most common statements I have been able to find.
+
+The Borana calendar was described in chapter 7 of Asmarom Legesse's anthropological monograph *Gada: Three Approaches to the Study of African Society*. He consulted numerous ayyantu, and based his model on the descriptions from the three with the most complete and extensive knowledge, named Duba Bikile, Jilo Afballo, and Arero Rammata. All three agreed that six months of the year were defined by the position of the new moon in relation to the stars Lami, Busan, Baqqalcha, Algajima, Arb Gaddu, Urji Walla, and Basa, which Legesse identifies as Mothallah, the Pleiades, Aldebaran, Bellatrix, Orion's Sword, Saiph, and Sirius. The other six months are identified by the phase of the moon when in conjunction with Lami, but Legesse's favoured ayyantu are in less agreement about exactly which of those months is which.
+
+Under this model, the month Bittotessa begins with the first visible crescent when the moon is in conjunction with Mothallah and Birra begins with the first visible crescent of the month whose full moon is in conjunction with Mothallah. Every eight years, the current ruling generation class hands over authority to the next generation class in line in the month of Gurrandala. This means that the new class begin their reign in Bittotessa; this, coupled with the fact that the first visible crescent is much easier to obseve than the exact full moon, means that Birra is the logical beginning of the year. Legesse places Birra at the start, but he also stresses that the Borana see time as cyclical and thus any beginning is an arbitrary imposition of Eurasian ideas onto an African culture. Since I need to pick ''a'' point to begin the year, I have gone with Bittotessa.
+
+Laurance R Doyle reviewed Legesse's work in 1986 and identified some discrepancies; based on these, he reïnterpreted the available data and argued that ayyantu identify the months by when the moon has the same declination as the relevant star, as opposed to the same right ascension. Since the traditional land of the Borana is very close to the equator, the stars rise almost vertically, and so it would be very easy to tell when they have the same declination - they would rise from the same point on the horizon. Doyle bolstered his argument by the fact that the observation columns at Namoratung'a II lined up with the declinations which the guide stars had in 300 BC, around the time Namoratung'a was built.
+
+Doyle's work was criticised almost as soon as it was published. Other anthroplogists argued that he was reading too much into the placement and structure of Namoratung'a II. He also claimed that the Borana calendar only has 12 synodic months every year, but this wouldn't matter much to the Borana because the equatorial climate changes little throughout the year. I myself ran the numbers and the declination of the moon at 12-month intervals changes quite a bit, which is the Borana did not engage in intercalation, the calendar would get out of sync with observation.
+
+This should have finally been put to bed by Marco Bassi in 1988. Bassi travelled to Sololo and consulted with Bante Abbagala, a respected elder and ayyantu. Bante explained how ayyantu perform their observations, and most notably guided him through a series of observations in September 1986; the result was the system described above. Bante and Bassi identify Lami as Sheratan and Hamal rather than Mothallah, which rather throws off Doyle's reïnterpretation; it also adds Procyon as an eighth reference star. Moreover, the third day of Bittotessa cannot fall before the moon is in conjunction with Aldebaran, and as such the beginning of the month can be delayed by a day or two if the first visible crecent happens to be very close to the conjunction with Sheratan.
+
+Despite having been conclusively disproved since 1988, the declination theory continues to be described as true, and even makes its way into the Handbook of Archaeoastronomy and Ethnoastronomy (which cites Bassi's paper!). I have no idea why this is. Perhaps it's just because it's so different and such a surprising model that people really want it to be true. Or maybe it's just that Bassi referenced Doyle's model as a possible ancient prototype.
+
+For my geographical coördinates, I chose Namoratung'a II, an ancient Borana observation site. The Borana do not use an era for their traditional calendar, instead referring to which generation-class held authority at the time. Because I need an era for the algorithms to work, I have chosen autumn of 1537 as my era, since that is as far back as Legesse's enumeration goes. Dates are given in the form day-month-year-cycle, where year can run from 1 to 8 and the cycle can be any integer.
+
+The days are named in a 27-name cycle, each day corresponding to the moon's zodiacal longitude. (Legesse incorrectly identifies this cycle as a sacred month).
+
+Sources:
+* Gada: Three Approaches to the Study of African Society, chapter 7, pp. 179—201. Asmarom Legesse, The Free Press, 1973
+* On the Borana Calendrical Systems: A Preliminary Field Report. Marco Bassi, Current Anthropology 29:4, pp. 619—624
+* The Reckoning of Time by the Borana Hayyantu. Paul Tablino, Rassegna di Studi Etiopici vol. 38 (1994), pp. 191—205
+* The Borana Calendar Reinterpreted. Laurance R. Doyle, Current Anthropology vol. 27, pp. 286—287. https://advocacy4oromia.org/articles/current-anthropology/
+* Mursi and Borana Calendars. Clive L.N. Ruggles in The Handbook of Archaeoastronomy and Ethnoastronomy (2015), ch. 13, pp. 1041—1050. DOI 10.1007/978-1-4614-6141-8_100

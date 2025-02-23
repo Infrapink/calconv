@@ -98,6 +98,15 @@ MINTAKA = Star( (5 * 15) + (32 * Decimal(15/60)) + (Decimal('0.40009') * Decimal
                 Decimal('0.64') * mas2rad, # dra
                 Decimal('-0.69') * mas2rad) # ddec
 
+# alpha trianguli
+MOTHALLA = Star( (1 * 15) + (53 * Decimal(15/60)) + (Decimal('4.90710') * Decimal(15/3600)), # ra
+                 29 + Decimal(34/60) + (Decimal('43.7801') / 3600), # dec
+                 Decimal('19.42'), # distance
+                 Decimal('-12.6') / 977792, # rv
+                 Decimal('10.82') * mas2rad, # dra
+                 Decimal('-234.24') * mas2rad) # ddec
+                                        
+
 PROCYON = Star( 15 * (7 + Decimal(39/60) + (Decimal('18.1195') / 3600)), # ra
                 5 + Decimal(13/60) + (Decimal('29.9552') / 3600), # dec
                 Decimal('3.51'), # distance

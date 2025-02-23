@@ -1389,6 +1389,11 @@ TIBETAN_NUM = {"Mchu": 0,
                "Mgo": 10,
                "Rgyal": 11}
 
+MYANMAR = ("Tagu", "Kason", "Nayon", "Wahso", "Wahso 2", "Wahgaung", "Tawthalin", "Thadinkyut", "Tazaungmon", "Natdaw", "Pyatho", "Tabodwe", "Tabaung")
+MYANMAR_MONTH_LENGTHS = {354: (29, 30, 29, 30,  0, 29, 30, 29, 30, 29, 30, 29, 30), # normal year
+                         384: (29, 30, 29, 30, 30, 29, 30, 29, 30, 29, 30, 29, 30), # leap year without a leap day
+                         385: (29, 30, 30, 30, 30, 29, 30, 29, 30, 29, 30, 29, 30)} # leap year with leap day
+
 MYANMAR_NORMAL = {"Tagu": 29,
                   "Kason": 30,
                   "Nayon": 29,
@@ -1791,3 +1796,18 @@ NUM_TAHITIAN = {"Avarehu":    1,
                 "Tema":      11,
                 "Te-eri":    12,
                 "Te-tai":     0}
+
+PASHTO = ("Hamal", "Sawr", "Jawza", "Saratan", "Asad", "Sunbula", "Mizan", "'Aqrab", "Qaws", "Jaddi", "Dalwa", "Hout")
+
+NUM_PASHTO = {"Hamal":   0,
+              "Sawr":    1,
+              "Jawza":   2,
+              "Saratan": 3,
+              "Asad":    4,
+              "Sunbula": 5,
+              "Mizan":   6,
+              "'Aqrab":  7,
+              "Qaws":    8,
+              "Jaddi":   9,
+              "Dalwa":  10,
+              "Hout":   11}

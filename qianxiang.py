@@ -145,7 +145,10 @@ def fromjd(jday):
                 # this is the leap month
                 l = True
                 m -= 1 # the month has the same name as the previous month
-        month = MONTHS[m]
+        if (m == 12):
+            month = "Làyuè"
+        else:
+            month = MONTHS[m]
         if ( (not l) and (floor(xinyue + yue) < floor(z)) ):
             # it's the leap month
             month = "Rùn " + month
