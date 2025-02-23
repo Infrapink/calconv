@@ -2611,3 +2611,14 @@ Sources:
 * The Reckoning of Time by the Borana Hayyantu. Paul Tablino, Rassegna di Studi Etiopici vol. 38 (1994), pp. 191—205
 * The Borana Calendar Reinterpreted. Laurance R. Doyle, Current Anthropology vol. 27, pp. 286—287. https://advocacy4oromia.org/articles/current-anthropology/
 * Mursi and Borana Calendars. Clive L.N. Ruggles in The Handbook of Archaeoastronomy and Ethnoastronomy (2015), ch. 13, pp. 1041—1050. DOI 10.1007/978-1-4614-6141-8_100
+
+--------------
+TABOT CALENDAR
+--------------
+
+The Tabot (The Anointed Body Of Testimony) was designed by Mark Moore (Ras Mahitema Selassie) and rigorously defined by Peter Meyer. It is designed for use by Rastafarians, and as such takes 02 November 1930 AD, the date following the coronation of Haile Selassie as Emperor of Ethiopia, as its epoch.
+
+Days begin at midnight, and New Year's Day always falls on 02 November Gregorian. There are 12 months, normally of 30 days each, but the last month of the year has 35 days, and the fourth month, Ras, has 31 days in leap years.
+
+Sources:
+* https://hermetic.ch/cal_stud/tabot.htm

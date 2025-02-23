@@ -1092,20 +1092,35 @@ Yerm128
 
 Borana:
 -------
-* Birra
-* Ciḳawa
-* Sadassa
-* Abrasa
-* Ammaji
-* Gurranḍala
 * Bittotessa
 * Camsa
 * Bufa
 * Wacabajji
 * Obora Gudda
 * Obora Diḳḳa
+* Birra
+* Ciḳawa
+* Sadassa
+* Abrasa
+* Ammaji
+* Gurranḍala
 
 In a leap year, Gurranḍala or Obora Diḳḳa may be repeated; to specify the leap month, add a " 2" to the end.
+
+Tabot:
+------
+* Anbassa
+* Hymanot
+* Immanuel
+* Ras
+* Ta'Berhan
+* Manassa
+* Danaffa
+* Negest
+* Tafari
+* Emra
+* Sawwara
+* Negus & Dejazmatch
 
 In the following calendars, months are just given numbers:
 * Muisca

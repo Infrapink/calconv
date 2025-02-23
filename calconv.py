@@ -233,6 +233,7 @@ import obs_muisca
 import archetypes
 import borana_bassi
 import borana_legesse
+import tabot
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2398,6 +2399,15 @@ def cons_day_julian_todate():
         borana_legesse_month_ent.insert(0, borana_legesse_date[1])
         borana_legesse_year_ent.insert(0, borana_legesse_date[2])
         borana_legesse_cycle_ent.insert(0, borana_legesse_date[3])
+
+        # Convert a Julian day to a date in the Tabot calendar
+        tabot_date = tabot.fromjd(day)
+        tabot_day_ent.delete(0, END)
+        tabot_month_ent.delete(0, END)
+        tabot_year_ent.delete(0, END)
+        tabot_day_ent.insert(0, tabot_date[0])
+        tabot_month_ent.insert(0, tabot_date[1])
+        tabot_year_ent.insert(0, tabot_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4586,6 +4596,15 @@ def borana_legesse_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
+def tabot_converter():
+        day = int(tabot_day_ent.get())
+        month = tabot_month_ent.get()
+        year = int(tabot_year_ent.get())
+        jday = tabot.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
 
 
 root = Tk()
@@ -4733,6 +4752,19 @@ rumi_year_lbl = Label(frame, text = "Year").grid(row = 5, column = 8, sticky = W
 rumi_year_ent = Entry(frame)
 rumi_year_ent.grid(row = 6, column = 8, sticky = W)
 rumi_bttn = Button(frame, text = "Calculate", command = rumi_converter).grid(row = 7, column = 6, columnspan = 3, sticky = W)
+
+# Tabot calendar                                                                                            
+tabot_lbl = Label(frame, text = "Tabot calendar").grid(row = 4, column = 9, columnspan = 3, sticky = W)
+tabot_day_lbl = Label(frame, text = "Day").grid(row = 5, column = 9, sticky = W)
+tabot_day_ent = Entry(frame)
+tabot_day_ent.grid(row = 6, column = 9, sticky = W)
+tabot_month_lbl = Label(frame, text = "Month").grid(row = 5, column = 10, sticky = W)
+tabot_month_ent = Entry(frame)
+tabot_month_ent.grid(row = 6, column = 10, sticky = W)
+tabot_year_lbl = Label(frame, text = "Year").grid(row = 5, column = 11, sticky = W)
+tabot_year_ent = Entry(frame)
+tabot_year_ent.grid(row = 6, column = 11, sticky = W)
+tabot_bttn = Button(frame, text = "Calculate", command = tabot_converter).grid(row = 7, column = 9, columnspan = 3, sticky = W)
 
 # Gregorian Calendar
 gregorian_lbl = Label(frame, text = "Gregorian Calendar").grid(row = 8, column = 0, columnspan = 3, sticky = W)
