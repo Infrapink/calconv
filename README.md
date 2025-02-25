@@ -1122,6 +1122,21 @@ Tabot:
 * Sawwara
 * Negus & Dejazmatch
 
+Hermetic Leap Week Monthly calendar:
+------------------------------------
+* Arcturus
+* Bellatrix
+* Canopus
+* Deneb
+* Elnath
+* Formalhaut
+* Girtab
+* Hadar
+* Izar
+* Jabbah
+* Kochab
+* Lesath
+
 In the following calendars, months are just given numbers:
 * Muisca
 * Yerm

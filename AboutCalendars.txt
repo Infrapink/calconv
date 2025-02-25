@@ -2622,3 +2622,16 @@ Days begin at midnight, and New Year's Day always falls on 02 November Gregorian
 
 Sources:
 * https://hermetic.ch/cal_stud/tabot.htm
+
+-----------------------
+HERMETIC WEEK CALENDARS
+-----------------------
+
+The Hermetic week calendars are a pair of leap week calendars designed by Peter Meyer, the mean accuracy of which are equal to that of the Gregorian calendar.
+
+The basic Hermetic Week calendar consists of years of either 52 or 53 weeks. Meyer's original formulation used a complex series of 5- or 6-year intervals, of which the third year was always leap. Karl Palmen determined a simpler formular (though one which requires more computer cycles to determine New Year's Day). A year Y is leap if ((71×Y + 203) mod 400) < 71. Days begin at midnight and dates are expressed as year-week-day.
+
+Palmen also designed a version which groups the weeks into months, named after stars. Each quarter year consists of three months, of which the first month has five weeks and the others have four; in a leap year, the extra week is added to the final month. All other maths are the same.
+
+Sources:
+* https://hermetic.ch/cal_stud/hlpwk/hlpwk.htm

@@ -234,6 +234,8 @@ import archetypes
 import borana_bassi
 import borana_legesse
 import tabot
+import hermetic_week
+import hermetic_wm
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2377,6 +2379,24 @@ def cons_day_julian_todate():
         archetypes_day_ent.insert(0, archetypes_date[0])
         archetypes_month_ent.insert(0, archetypes_date[1])
         archetypes_year_ent.insert(0, archetypes_date[2])
+
+        # Convert a Julian day to a date in the Hermetic Leap Week calendar
+        hermetic_week_date = hermetic_week.fromjd(day)
+        hermetic_week_day_ent.delete(0, END)
+        hermetic_week_month_ent.delete(0, END)
+        hermetic_week_year_ent.delete(0, END)
+        hermetic_week_day_ent.insert(0, hermetic_week_date[0])
+        hermetic_week_month_ent.insert(0, hermetic_week_date[1])
+        hermetic_week_year_ent.insert(0, hermetic_week_date[2])
+
+        # Convert a Julian day to a date in the Hermetic Leap Week Monthly calendar
+        hermetic_wm_date = hermetic_wm.fromjd(day)
+        hermetic_wm_day_ent.delete(0, END)
+        hermetic_wm_month_ent.delete(0, END)
+        hermetic_wm_year_ent.delete(0, END)
+        hermetic_wm_day_ent.insert(0, hermetic_wm_date[0])
+        hermetic_wm_month_ent.insert(0, hermetic_wm_date[1])
+        hermetic_wm_year_ent.insert(0, hermetic_wm_date[2])
 
         # Convert a Julian day to a date in the Borana calendar (Bassi model)
         borana_bassi_date = borana_bassi.fromjd(day)
@@ -4601,6 +4621,24 @@ def tabot_converter():
         month = tabot_month_ent.get()
         year = int(tabot_year_ent.get())
         jday = tabot.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def hermetic_week_converter():
+        day = int(hermetic_week_day_ent.get())
+        month = hermetic_week_month_ent.get()
+        year = int(hermetic_week_year_ent.get())
+        jday = hermetic_week.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def hermetic_wm_converter():
+        day = int(hermetic_wm_day_ent.get())
+        month = hermetic_wm_month_ent.get()
+        year = int(hermetic_wm_year_ent.get())
+        jday = hermetic_wm.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7662,6 +7700,32 @@ archetypes_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 5, st
 archetypes_year_ent = Entry(frame)
 archetypes_year_ent.grid(row = 252, column = 5, sticky = W)
 archetypes_bttn = Button(frame, text = "Calculate", command = archetypes_converter).grid(row = 253, column = 3, columnspan = 3, sticky = W)
+
+# Hermetic Leap Week calendar                                                                                            
+hermetic_week_lbl = Label(frame, text = "Hermetic Leap Week calendar").grid(row = 250, column = 6, columnspan = 3, sticky = W)
+hermetic_week_day_lbl = Label(frame, text = "Day").grid(row = 251, column = 6, sticky = W)
+hermetic_week_day_ent = Entry(frame)
+hermetic_week_day_ent.grid(row = 252, column = 6, sticky = W)
+hermetic_week_month_lbl = Label(frame, text = "Month").grid(row = 251, column = 7, sticky = W)
+hermetic_week_month_ent = Entry(frame)
+hermetic_week_month_ent.grid(row = 252, column = 7, sticky = W)
+hermetic_week_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 8, sticky = W)
+hermetic_week_year_ent = Entry(frame)
+hermetic_week_year_ent.grid(row = 252, column = 8, sticky = W)
+hermetic_week_bttn = Button(frame, text = "Calculate", command = hermetic_week_converter).grid(row = 253, column = 6, columnspan = 3, sticky = W)
+
+# Hermetic Leap Week Monthly calendar                                                                                            
+hermetic_wm_lbl = Label(frame, text = "Hermetic Leap Week Monthly calendar").grid(row = 250, column = 9, columnspan = 3, sticky = W)
+hermetic_wm_day_lbl = Label(frame, text = "Day").grid(row = 251, column = 9, sticky = W)
+hermetic_wm_day_ent = Entry(frame)
+hermetic_wm_day_ent.grid(row = 252, column = 9, sticky = W)
+hermetic_wm_month_lbl = Label(frame, text = "Month").grid(row = 251, column = 10, sticky = W)
+hermetic_wm_month_ent = Entry(frame)
+hermetic_wm_month_ent.grid(row = 252, column = 10, sticky = W)
+hermetic_wm_year_lbl = Label(frame, text = "Year").grid(row = 251, column = 11, sticky = W)
+hermetic_wm_year_ent = Entry(frame)
+hermetic_wm_year_ent.grid(row = 252, column = 11, sticky = W)
+hermetic_wm_bttn = Button(frame, text = "Calculate", command = hermetic_wm_converter).grid(row = 253, column = 9, columnspan = 3, sticky = W)
 
 # Borana calendar (Bassi)                                                                                         
 borana_bassi_lbl = Label(frame, text = "Borana calendar (Bassi)").grid(row = 254, column = 0, columnspan = 4, sticky = W)
