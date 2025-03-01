@@ -1345,8 +1345,29 @@ contains
     radec(1) = modulo(radec(1), 360.0)
     !radec(2) = modulo(radec(2), 360.0)
   end subroutine lunar_radec
-  
-  
+
+  subroutine lunar_visibility(jday, vis)
+    ! compute the fraction of the lunar disc which is currently illuminated from Earth
+    ! based on Meeus, Chapter 48
+    double precision, intent(in)  :: jday ! Julian Day in question
+    double precision, intent(out) :: vis  ! Fraction of the moon which is currently visible
+
+    double precision :: llon ! ecliptic longitude of the moon, in degrees
+    double precision :: llat ! ecliptic latitude of the moon, in degrees
+    double precision :: slon ! ecliptic longitude of the sun, in degrees
+    double precision :: elon ! elongation of the moon, or angular distance between the moon and the sun. this is not a reference to Musk.
+    double precision :: delta = 0.002573 ! mean distance from Earth to the moon, in astronomical units. This makes equation 48.3 slightly simpler
+    double precision :: phase_angle
+    
+    call lunar_longitude(jday, llon)
+    call lunar_latitude(jday, llat)
+    call solar_longitude(jday, slon)
+
+    elon = dacosd(dcosd(llat) * dcosd(llon - slon)) ! Meeus, 48.2
+    phase_angle = datand( dsind(elon) / (delta - dcosd(elon)) ) ! Meeus, 48.3. Because delta is measured in astronomical units, Meeus' R is equal to 1
+    vis = (1 + dcosd(phase_angle)) / 2.0 ! Meeus, 48.1
+  end subroutine lunar_visibility
+    
 end module lunar_coords
 
 
@@ -1894,5 +1915,12 @@ contains
     double precision, dimension(2), intent(out) :: answer
     call precession(jday, ra2000, dec2000, distance, rv, deltara, deltadec, answer)
   end subroutine pub_precession
+
+  subroutine pub_lunar_visibility(jday, vis)
+    ! Return the fraction of the near side of the moon which is illuminated at a given time
+    double precision, intent(in)  :: jday
+    double precision, intent(out) :: vis
+    call lunar_visibility(jday, vis)
+  end subroutine pub_lunar_visibility
 end module pub
 

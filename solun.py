@@ -777,3 +777,9 @@ def gregorian_nyd(year, z):
         y += 1
 
     return nyd
+
+def lunar_visibility(jday, tz):
+    '''Return the fraction of the near side of the moon which is illuminated at a given time'''
+    jday = float(jday) - 0.5 - float(tz) # True Julian Day in question
+    ans = sunmoon.pub.pub_lunar_visibility(jday)
+    return ans
