@@ -1137,6 +1137,22 @@ Hermetic Leap Week Monthly calendar:
 * Kochab
 * Lesath
 
+Hermetic Lunar Week calendar:
+-----------------------------
+* Artaud
+* Benjamin
+* Clark
+* de Quincy
+* Ellis
+* Furst
+* Goff
+* Hofmann
+* Izumi
+* Janiger
+* Kesey
+* Lilly
+* McKenna
+
 In the following calendars, months are just given numbers:
 * Muisca
 * Yerm

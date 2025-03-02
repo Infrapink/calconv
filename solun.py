@@ -165,7 +165,9 @@ def phasetime(jday, angle, tz):
     tz = Fraction(tz)
 
     p = 0
+    '''
     while (p < 4):
+        #print(float(jday))
         f = Fraction(1, (60 ** p))
         if (angle <= 90):
             while (phase((jday + f), tz) >= 270):
@@ -178,6 +180,22 @@ def phasetime(jday, angle, tz):
         while (phase((jday - f), tz) >= angle):
             jday -= f
         p += 1
+    '''
+    delta = (phase(jday, tz) - angle) % 360
+    if (delta <= 180):
+        jday -= (syn_month * (delta / 360))
+    else:
+        jday += (syn_month * ((360 - delta) / 360))
+
+    while (p < 4):
+        f = 1 / (60 ** p)
+        while ((phase((jday - f), tz) - angle) % 360 <= 90):
+            jday -= f
+        while ((phase((jday + f), tz) - angle) % 360 >= 270):
+            jday += f
+        p += 1
+                     
+        
     return jday
 
 def antiphasetime(jday, angle, tz):

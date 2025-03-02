@@ -2635,3 +2635,18 @@ Palmen also designed a version which groups the weeks into months, named after s
 
 Sources:
 * https://hermetic.ch/cal_stud/hlpwk/hlpwk.htm
+
+----------------------------
+HERMETIC LUNAR WEEK CALENDAR
+----------------------------
+
+The Hermetic Lunar Week calendar is an observational lunisolar calendar designed by Peter Meyer. Its central concept is dispending with the seven-day week in favour of variable-length "weeks" corresponding to the moon's canonical phases.
+
+Days begin at mean sunrise (06:00). Months commence on the first day which begins at Greenwich after the instant of astronomical new moon; months are named after noteworthy drug enthusiasts. The year begins with the month heralded by the new moon closest to the northward equinox. The era is 3000 BC for reasons Meyer does not state.
+
+Weeks begin on the first day which begins at Greenwich after the instant of one of the moon's canonical phases - the new moon, first quarter, full moon, and third quarter. A week is thus usually seven days long, sometimes eight days, and on rare occasions six or nine days. Meyer states that a week always has five working days, with the rest given over to weekends, and naïvely assumes that capitalists will extend the weekend, and that this won't completely bugger the schedules and wages of people who don't work Monday to Friday (or Sunday to Thursday if you're in Afghanistan, Israel, or an Arab country). As such, it is necessary to state the week number as well as the day, month, and year when giving a date.
+
+Working days are numbered (well, technically they have names, but those names are just "Dayone", "Daytwo", etc). The days of the weekend are called Nineday, Herday, Freeday, and Moonday, with Moonday always being the last and the rest being inserted as needed in reverse order. Thus, in a normal week, the weekend consists of Freeday and Moonday; in a long weekend, it consists of Herday, Freeday, and Moonday. Nineday is only added in rare 9-day weeks.
+
+Sources:
+* https://hermetic.ch/cal_stud/hlwc/hlwc.htm

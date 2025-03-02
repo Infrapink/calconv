@@ -236,6 +236,7 @@ import borana_legesse
 import tabot
 import hermetic_week
 import hermetic_wm
+import hermetic_lunar_week
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2428,6 +2429,17 @@ def cons_day_julian_todate():
         tabot_day_ent.insert(0, tabot_date[0])
         tabot_month_ent.insert(0, tabot_date[1])
         tabot_year_ent.insert(0, tabot_date[2])
+
+        # Convert a Julian day to a date in the Irix calendar
+        irix_date = irix.fromjd(day)
+        irix_day_ent.delete(0, END)
+        irix_week_ent.delete(0, END)
+        irix_month_ent.delete(0, END)
+        irix_year_ent.delete(0, END)
+        irix_day_ent.insert(0, irix_date[0])
+        irix_week_ent.insert(0, irix_date[1])
+        irix_month_ent.insert(0, irix_date[2])
+        irix_year_ent.insert(0, irix_date[3])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4639,6 +4651,16 @@ def hermetic_wm_converter():
         month = hermetic_wm_month_ent.get()
         year = int(hermetic_wm_year_ent.get())
         jday = hermetic_wm.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def irix_converter():
+        day = int(irix_day_ent.get())
+        week = int(irix_week_ent.get())
+        month = irix_month_ent.get()
+        year = int(irix_year_ent.get())
+        jday = irix.tojd(day, week, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7758,6 +7780,22 @@ borana_legesse_cycle_lbl = Label(frame, text = "Cycle").grid(row = 255, column =
 borana_legesse_cycle_ent = Entry(frame)
 borana_legesse_cycle_ent.grid(row = 256, column = 7, sticky = W)
 borana_legesse_bttn = Button(frame, text = "Calculate", command = borana_legesse_converter).grid(row = 257, column = 4, columnspan = 4, sticky = W)
+
+# Irix calendar                                                                                            
+irix_lbl = Label(frame, text = "Irix calendar").grid(row = 254, column = 8, columnspan = 3, sticky = W)
+irix_day_lbl = Label(frame, text = "Day").grid(row = 255, column = 8, sticky = W)
+irix_day_ent = Entry(frame)
+irix_day_ent.grid(row = 256, column = 8, sticky = W)
+irix_week_lbl = Label(frame, text = "Week").grid(row = 255, column = 9, sticky = W)
+irix_week_ent = Entry(frame)
+irix_week_ent.grid(row = 256, column = 9, sticky = W)
+irix_month_lbl = Label(frame, text = "Month").grid(row = 255, column = 10, sticky = W)
+irix_month_ent = Entry(frame)
+irix_month_ent.grid(row = 256, column = 10, sticky = W)
+irix_year_lbl = Label(frame, text = "Year").grid(row = 255, column = 11, sticky = W)
+irix_year_ent = Entry(frame)
+irix_year_ent.grid(row = 256, column = 11, sticky = W)
+irix_bttn = Button(frame, text = "Calculate", command = irix_converter).grid(row = 257, column = 8, columnspan = 4, sticky = W)
 
 
 root.title("Calendar Converter 0.83.0")
