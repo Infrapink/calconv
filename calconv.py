@@ -237,6 +237,12 @@ import tabot
 import hermetic_week
 import hermetic_wm
 import hermetic_lunar_week
+import attic
+import delian
+import boeotian
+import delphian
+import phokian
+import aitolian
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2430,16 +2436,70 @@ def cons_day_julian_todate():
         tabot_month_ent.insert(0, tabot_date[1])
         tabot_year_ent.insert(0, tabot_date[2])
 
-        # Convert a Julian day to a date in the Irix calendar
-        irix_date = irix.fromjd(day)
-        irix_day_ent.delete(0, END)
-        irix_week_ent.delete(0, END)
-        irix_month_ent.delete(0, END)
-        irix_year_ent.delete(0, END)
-        irix_day_ent.insert(0, irix_date[0])
-        irix_week_ent.insert(0, irix_date[1])
-        irix_month_ent.insert(0, irix_date[2])
-        irix_year_ent.insert(0, irix_date[3])
+        # Convert a Julian day to a date in the Hermetic Lunar Week calendar
+        hermetic_lunar_week_date = hermetic_lunar_week.fromjd(day)
+        hermetic_lunar_week_day_ent.delete(0, END)
+        hermetic_lunar_week_week_ent.delete(0, END)
+        hermetic_lunar_week_month_ent.delete(0, END)
+        hermetic_lunar_week_year_ent.delete(0, END)
+        hermetic_lunar_week_day_ent.insert(0, hermetic_lunar_week_date[0])
+        hermetic_lunar_week_week_ent.insert(0, hermetic_lunar_week_date[1])
+        hermetic_lunar_week_month_ent.insert(0, hermetic_lunar_week_date[2])
+        hermetic_lunar_week_year_ent.insert(0, hermetic_lunar_week_date[3])
+
+        # Convert a Julian day to a date in the Attic calendar
+        attic_date = attic.fromjd(day)
+        attic_day_ent.delete(0, END)
+        attic_month_ent.delete(0, END)
+        attic_year_ent.delete(0, END)
+        attic_day_ent.insert(0, attic_date[0])
+        attic_month_ent.insert(0, attic_date[1])
+        attic_year_ent.insert(0, attic_date[2])
+
+        # Convert a Julian day to a date in the Delian calendar
+        delian_date = delian.fromjd(day)
+        delian_day_ent.delete(0, END)
+        delian_month_ent.delete(0, END)
+        delian_year_ent.delete(0, END)
+        delian_day_ent.insert(0, delian_date[0])
+        delian_month_ent.insert(0, delian_date[1])
+        delian_year_ent.insert(0, delian_date[2])
+
+        # Convert a Julian day to a date in the Boeotian calendar
+        boeotian_date = boeotian.fromjd(day)
+        boeotian_day_ent.delete(0, END)
+        boeotian_month_ent.delete(0, END)
+        boeotian_year_ent.delete(0, END)
+        boeotian_day_ent.insert(0, boeotian_date[0])
+        boeotian_month_ent.insert(0, boeotian_date[1])
+        boeotian_year_ent.insert(0, boeotian_date[2])
+
+        # Convert a Julian day to a date in the Delphian calendar
+        delphian_date = delphian.fromjd(day)
+        delphian_day_ent.delete(0, END)
+        delphian_month_ent.delete(0, END)
+        delphian_year_ent.delete(0, END)
+        delphian_day_ent.insert(0, delphian_date[0])
+        delphian_month_ent.insert(0, delphian_date[1])
+        delphian_year_ent.insert(0, delphian_date[2])
+
+        # Convert a Julian day to a date in the Phokian calendar
+        phokian_date = phokian.fromjd(day)
+        phokian_day_ent.delete(0, END)
+        phokian_month_ent.delete(0, END)
+        phokian_year_ent.delete(0, END)
+        phokian_day_ent.insert(0, phokian_date[0])
+        phokian_month_ent.insert(0, phokian_date[1])
+        phokian_year_ent.insert(0, phokian_date[2])
+
+        # Convert a Julian day to a date in the Aitolian calendar
+        aitolian_date = aitolian.fromjd(day)
+        aitolian_day_ent.delete(0, END)
+        aitolian_month_ent.delete(0, END)
+        aitolian_year_ent.delete(0, END)
+        aitolian_day_ent.insert(0, aitolian_date[0])
+        aitolian_month_ent.insert(0, aitolian_date[1])
+        aitolian_year_ent.insert(0, aitolian_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4655,12 +4715,66 @@ def hermetic_wm_converter():
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
 
-def irix_converter():
-        day = int(irix_day_ent.get())
-        week = int(irix_week_ent.get())
-        month = irix_month_ent.get()
-        year = int(irix_year_ent.get())
-        jday = irix.tojd(day, week, month, year)
+def hermetic_lunar_week_converter():
+        day = int(hermetic_lunar_week_day_ent.get())
+        week = int(hermetic_lunar_week_week_ent.get())
+        month = hermetic_lunar_week_month_ent.get()
+        year = int(hermetic_lunar_week_year_ent.get())
+        jday = hermetic_lunar_week.tojd(day, week, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def attic_converter():
+        day = int(attic_day_ent.get())
+        month = attic_month_ent.get()
+        year = int(attic_year_ent.get())
+        jday = attic.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def delian_converter():
+        day = int(delian_day_ent.get())
+        month = delian_month_ent.get()
+        year = int(delian_year_ent.get())
+        jday = delian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def boeotian_converter():
+        day = int(boeotian_day_ent.get())
+        month = boeotian_month_ent.get()
+        year = int(boeotian_year_ent.get())
+        jday = boeotian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def delphian_converter():
+        day = int(delphian_day_ent.get())
+        month = delphian_month_ent.get()
+        year = int(delphian_year_ent.get())
+        jday = delphian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def phokian_converter():
+        day = int(phokian_day_ent.get())
+        month = phokian_month_ent.get()
+        year = int(phokian_year_ent.get())
+        jday = phokian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def aitolian_converter():
+        day = int(aitolian_day_ent.get())
+        month = aitolian_month_ent.get()
+        year = int(aitolian_year_ent.get())
+        jday = aitolian.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7781,21 +7895,99 @@ borana_legesse_cycle_ent = Entry(frame)
 borana_legesse_cycle_ent.grid(row = 256, column = 7, sticky = W)
 borana_legesse_bttn = Button(frame, text = "Calculate", command = borana_legesse_converter).grid(row = 257, column = 4, columnspan = 4, sticky = W)
 
-# Irix calendar                                                                                            
-irix_lbl = Label(frame, text = "Irix calendar").grid(row = 254, column = 8, columnspan = 3, sticky = W)
-irix_day_lbl = Label(frame, text = "Day").grid(row = 255, column = 8, sticky = W)
-irix_day_ent = Entry(frame)
-irix_day_ent.grid(row = 256, column = 8, sticky = W)
-irix_week_lbl = Label(frame, text = "Week").grid(row = 255, column = 9, sticky = W)
-irix_week_ent = Entry(frame)
-irix_week_ent.grid(row = 256, column = 9, sticky = W)
-irix_month_lbl = Label(frame, text = "Month").grid(row = 255, column = 10, sticky = W)
-irix_month_ent = Entry(frame)
-irix_month_ent.grid(row = 256, column = 10, sticky = W)
-irix_year_lbl = Label(frame, text = "Year").grid(row = 255, column = 11, sticky = W)
-irix_year_ent = Entry(frame)
-irix_year_ent.grid(row = 256, column = 11, sticky = W)
-irix_bttn = Button(frame, text = "Calculate", command = irix_converter).grid(row = 257, column = 8, columnspan = 4, sticky = W)
+# Hermetic Lunar Week calendar                                                                                            
+hermetic_lunar_week_lbl = Label(frame, text = "Hermetic Lunar Week calendar").grid(row = 254, column = 8, columnspan = 3, sticky = W)
+hermetic_lunar_week_day_lbl = Label(frame, text = "Day").grid(row = 255, column = 8, sticky = W)
+hermetic_lunar_week_day_ent = Entry(frame)
+hermetic_lunar_week_day_ent.grid(row = 256, column = 8, sticky = W)
+hermetic_lunar_week_week_lbl = Label(frame, text = "Week").grid(row = 255, column = 9, sticky = W)
+hermetic_lunar_week_week_ent = Entry(frame)
+hermetic_lunar_week_week_ent.grid(row = 256, column = 9, sticky = W)
+hermetic_lunar_week_month_lbl = Label(frame, text = "Month").grid(row = 255, column = 10, sticky = W)
+hermetic_lunar_week_month_ent = Entry(frame)
+hermetic_lunar_week_month_ent.grid(row = 256, column = 10, sticky = W)
+hermetic_lunar_week_year_lbl = Label(frame, text = "Year").grid(row = 255, column = 11, sticky = W)
+hermetic_lunar_week_year_ent = Entry(frame)
+hermetic_lunar_week_year_ent.grid(row = 256, column = 11, sticky = W)
+hermetic_lunar_week_bttn = Button(frame, text = "Calculate", command = hermetic_lunar_week_converter).grid(row = 257, column = 8, columnspan = 4, sticky = W)
+
+# Attic calendar                                                                                            
+attic_lbl = Label(frame, text = "Attic calendar").grid(row = 258, column = 0, columnspan = 3, sticky = W)
+attic_day_lbl = Label(frame, text = "Day").grid(row = 259, column = 0, sticky = W)
+attic_day_ent = Entry(frame)
+attic_day_ent.grid(row = 260, column = 0, sticky = W)
+attic_month_lbl = Label(frame, text = "Month").grid(row = 259, column = 1, sticky = W)
+attic_month_ent = Entry(frame)
+attic_month_ent.grid(row = 260, column = 1, sticky = W)
+attic_year_lbl = Label(frame, text = "Year").grid(row = 259, column = 2, sticky = W)
+attic_year_ent = Entry(frame)
+attic_year_ent.grid(row = 260, column = 2, sticky = W)
+attic_bttn = Button(frame, text = "Calculate", command = attic_converter).grid(row = 261, column = 0, columnspan = 3, sticky = W)
+
+# Delian calendar                                                                                            
+delian_lbl = Label(frame, text = "Delian calendar").grid(row = 258, column = 3, columnspan = 3, sticky = W)
+delian_day_lbl = Label(frame, text = "Day").grid(row = 259, column = 3, sticky = W)
+delian_day_ent = Entry(frame)
+delian_day_ent.grid(row = 260, column = 3, sticky = W)
+delian_month_lbl = Label(frame, text = "Month").grid(row = 259, column = 4, sticky = W)
+delian_month_ent = Entry(frame)
+delian_month_ent.grid(row = 260, column = 4, sticky = W)
+delian_year_lbl = Label(frame, text = "Year").grid(row = 259, column = 5, sticky = W)
+delian_year_ent = Entry(frame)
+delian_year_ent.grid(row = 260, column = 5, sticky = W)
+delian_bttn = Button(frame, text = "Calculate", command = delian_converter).grid(row = 261, column = 3, columnspan = 3, sticky = W)
+
+# Boeotian calendar                                                                                            
+boeotian_lbl = Label(frame, text = "Boeotian calendar").grid(row = 258, column = 6, columnspan = 3, sticky = W)
+boeotian_day_lbl = Label(frame, text = "Day").grid(row = 259, column = 6, sticky = W)
+boeotian_day_ent = Entry(frame)
+boeotian_day_ent.grid(row = 260, column = 6, sticky = W)
+boeotian_month_lbl = Label(frame, text = "Month").grid(row = 259, column = 7, sticky = W)
+boeotian_month_ent = Entry(frame)
+boeotian_month_ent.grid(row = 260, column = 7, sticky = W)
+boeotian_year_lbl = Label(frame, text = "Year").grid(row = 259, column = 8, sticky = W)
+boeotian_year_ent = Entry(frame)
+boeotian_year_ent.grid(row = 260, column = 8, sticky = W)
+boeotian_bttn = Button(frame, text = "Calculate", command = boeotian_converter).grid(row = 261, column = 6, columnspan = 3, sticky = W)
+
+# Delphian calendar                                                                                            
+delphian_lbl = Label(frame, text = "Delphian calendar").grid(row = 258, column = 9, columnspan = 3, sticky = W)
+delphian_day_lbl = Label(frame, text = "Day").grid(row = 259, column = 9, sticky = W)
+delphian_day_ent = Entry(frame)
+delphian_day_ent.grid(row = 260, column = 9, sticky = W)
+delphian_month_lbl = Label(frame, text = "Month").grid(row = 259, column = 10, sticky = W)
+delphian_month_ent = Entry(frame)
+delphian_month_ent.grid(row = 260, column = 10, sticky = W)
+delphian_year_lbl = Label(frame, text = "Year").grid(row = 259, column = 11, sticky = W)
+delphian_year_ent = Entry(frame)
+delphian_year_ent.grid(row = 260, column = 11, sticky = W)
+delphian_bttn = Button(frame, text = "Calculate", command = delphian_converter).grid(row = 261, column = 9, columnspan = 3, sticky = W)
+
+# Phokian calendar                                                                                            
+phokian_lbl = Label(frame, text = "Phokian calendar").grid(row = 262, column = 0, columnspan = 3, sticky = W)
+phokian_day_lbl = Label(frame, text = "Day").grid(row = 263, column = 0, sticky = W)
+phokian_day_ent = Entry(frame)
+phokian_day_ent.grid(row = 264, column = 0, sticky = W)
+phokian_month_lbl = Label(frame, text = "Month").grid(row = 263, column = 1, sticky = W)
+phokian_month_ent = Entry(frame)
+phokian_month_ent.grid(row = 264, column = 1, sticky = W)
+phokian_year_lbl = Label(frame, text = "Year").grid(row = 263, column = 2, sticky = W)
+phokian_year_ent = Entry(frame)
+phokian_year_ent.grid(row = 264, column = 2, sticky = W)
+phokian_bttn = Button(frame, text = "Calculate", command = phokian_converter).grid(row = 265, column = 0, columnspan = 3, sticky = W)
+
+# Aitolian calendar                                                                                            
+aitolian_lbl = Label(frame, text = "Aitolian calendar").grid(row = 262, column = 3, columnspan = 3, sticky = W)
+aitolian_day_lbl = Label(frame, text = "Day").grid(row = 263, column = 3, sticky = W)
+aitolian_day_ent = Entry(frame)
+aitolian_day_ent.grid(row = 264, column = 3, sticky = W)
+aitolian_month_lbl = Label(frame, text = "Month").grid(row = 263, column = 4, sticky = W)
+aitolian_month_ent = Entry(frame)
+aitolian_month_ent.grid(row = 264, column = 4, sticky = W)
+aitolian_year_lbl = Label(frame, text = "Year").grid(row = 263, column = 5, sticky = W)
+aitolian_year_ent = Entry(frame)
+aitolian_year_ent.grid(row = 264, column = 5, sticky = W)
+aitolian_bttn = Button(frame, text = "Calculate", command = aitolian_converter).grid(row = 265, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.83.0")

@@ -4,6 +4,13 @@
 
 # Weekdays
 WEEKDAYS_EN = ("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")
+DAYNO_EN = {"Monday":    0,
+            "Tuesday":   1,
+            "Wednesday": 2,
+            "Thursday":  3,
+            "Friday":    4,
+            "Saturday":  5,
+            "Sunday":    6}
 
 # GREGORIAN AND JULIAN CALENDARS
 
@@ -1811,3 +1818,94 @@ NUM_PASHTO = {"Hamal":   0,
               "Jaddi":   9,
               "Dalwa":  10,
               "Hout":   11}
+
+ATHENIAN = ("Hekatombaion", "Metageitnion", "Boedromion", "Pyanepsion", "Maimakterion", "Poseideon", "Gamelion", "Anthesterion", "Elaphebolion", "Mounichion", "Thargelion", "Skirophorion")
+
+NUM_ATHENIAN = {"Hekatombaion":  0,
+                "Metageitnion":  1,
+                "Boedromion":    2,
+                "Pyanepsion":    3,
+                "Maimakterion":  4,
+                "Poseideon":     5,
+                "Gamelion":      6,
+                "Anthesterion":  7,
+                "Elaphebolion":  8,
+                "Mounichion":    9,
+                "Thargelion":   10,
+                "Skirophorion": 11}
+
+DELIAN = ("Lenaion", "Hieros", "Galaxion", "Artemision", "Thargelion", "Panemos", "Hekatombaion", "Metageitnion", "Bouphonion", "Apatourion", "Aresion", "Poseideon")
+
+NUM_DELIAN = {"Lenaion":      0,
+              "Hieros":       1,
+              "Galaxion":     2,
+              "Artemision":   3,
+              "Thargelion":   4,
+              "Panemos":      5,
+              "Hekatombaion": 6,
+              "Metageitnion": 7,
+              "Bouphonion":   8,
+              "Apatourion":   9,
+              "Aresion":     10,
+              "Poseideon":   11}
+
+BOEOTIAN = ("Bukátios", "Hermaíos", "Prostatḗrios", "Agriṓnios", "Homolṓios", "Theiloúthios", "Hippodrómios", "Pánamos", "Pamboiṓtios", "Damátrios", "Alalkoménios", "Thiouios")
+
+NUM_BOEOTIAN = {"Bukátios":      0,
+                "Hermaíos":      1,
+                "Prostatḗrios":  2,
+                "Agriṓnios":     3,
+                "Homolṓios":     4,
+                "Theiloúthios":  5,
+                "Hippodrómios":  6,
+                "Pánamos":       7,
+                "Pamboiṓtios":   8,
+                "Damátrios":     9,
+                "Alalkoménios": 10,
+                "Thiouios":     11}
+
+DELPHIAN = ("Apellaios", "Boukatios", "Boathoos", "Heraios", "Daidaphorios", "Poitropios", "Amalios", "Bysios", "Theoxenios", "Endyspoitropios", "Herakleios", "Ilaios")
+
+NUM_DELPHIAN = {"Apellaios":       0,
+                "Boukatios":       1,
+                "Boathoos":        2,
+                "Heraios":         3,
+                "Daidaphorios":    4,
+                "Poitropios":      5,
+                "Amalios":         6,
+                "Bysios":          7,
+                "Theoxenios":      8,
+                "Endyspoitropios": 9,
+                "Herakleios":     10,
+                "Ilaios":         11}
+
+AITOLIAN = ("Athanaios", "Boukatios", "Dios", "Euthaios", "Homoloios", "Hermaios", "Dionysios", "Agyeios", "Hippodromios", "Laphraios", "Panamos", "Prokyklios")
+
+NUM_AITOLIAN = {"Athanaios":    0,
+                "Boukatios":    1,
+                "Dios":         2,
+                "Euthaios":     3,
+                "Homoloios":    4,
+                "Hermaios":     5,
+                "Dionysios":    6,
+                "Agyeios":      7,
+                "Hippodromios": 8,
+                "Laphraios":    9,
+                "Panamos":     10,
+                "Prokyklios":  11}
+
+MACEDONIAN = ("Dios", "Apellaios", "Audnaios", "Peritios", "Dystros", "Xandikos", "Artemisios", "Daisios", "Panemos", "Loios", "Gorpiaios", "Hyperberetaios")
+
+NUM_MACEDONIAN = {"Dios":            0,
+                  "Apellaios":       1,
+                  "Audnaios":        2,
+                  "Peritios":        3,
+                  "Dystros":         4,
+                  "Xandikos":        5,
+                  "Artemisios":      6,
+                  "Daisios":         7,
+                  "Panemos":         8,
+                  "Loios":           9,
+                  "Gorpiaios":      10,
+                  "Hyperberetaios": 11}
+

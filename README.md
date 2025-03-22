@@ -1153,9 +1153,89 @@ Hermetic Lunar Week calendar:
 * Lilly
 * McKenna
 
+ATTIC:
+------
+* Hekatombaion
+* Metageitnion
+* Boedromion
+* Pyanepsion
+* Maimakterion
+* Poseideon
+* Poseideon 2 (leap years only)
+* Gamelion
+* Anthesterion
+* Elaphebolion
+* Mounichion
+* Thargelion
+* Skirophorion
+
+DELIAN:
+-------
+* Lenaion
+* Hieros
+* Galaxion
+* Artemision
+* Thargelion
+* Panemos
+* Panemos 2 (leap years only)
+* Hekatombaion
+* Metageitnion
+* Bouphonion
+* Apatourion
+* Aresion
+* Poseideon
+
+BOEOTIAN:
+---------
+* Bukátios
+* Hermaíos
+* Prostatḗrios
+* Agriṓnios
+* Homolṓios
+* Theiloúthios
+* Theiloúthios 2 (leap years only)
+* Hippodrómios
+* Pánamos
+* Pamboiṓtios
+* Damátrios
+* Alalkoménios
+* Thiouios
+
+DELPHIAN:
+---------
+* Apellaios
+* Boukatios
+* Boathoos
+* Heraios
+* Daidaphorios
+* Poitropios
+* Poitropios 2 (leap years only)
+* Amalios
+* Bysios
+* Theoxenios
+* Endyspoitropios
+* Herakleios
+* Ilaios
+
+AITOLIAN:
+---------
+* Athanaios
+* Boukatios
+* Dios
+* Euthaios
+* Homoloios
+* Hermaios
+* Dionysios
+* Agyeios
+* Hippodromios
+* Laphraios
+* Panamos
+* Prokyklios
+
 In the following calendars, months are just given numbers:
 * Muisca
 * Yerm
+* Phokian
 
 LICENSE
 =======

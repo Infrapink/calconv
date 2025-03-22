@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 
-# Convert between Macedonian dates and Julian Days
+# Convert between Attic dates and Julian Days
 
 from solun import first_visible_crescent as fvc, trans, dayof_arab, tropical_year as trop_year, syn_month
-from months import MACEDONIAN as MONTHS, NUM_MACEDONIAN as MONTHNO
+from months import ATHENIAN as MONTHS, NUM_ATHENIAN as MONTHNO
 from fractions import Fraction
 
-lon = -22.52106 # longitude of Pella
-lat = 40.754669 # latitude of Pella
+lon = 0 - 23 - Fraction(43,60) - Fraction(41,3600) # longitude of Athens
+lat = 37 + Fraction(59,60) + Fraction(3,3600) # latitude of Athens
 tz = Fraction(2,24) # Greece is UTC+2
-epoch = Fraction(2301722639, 1440) # solar epoch
+epoch = Fraction(281420887, 180) # solar epoch
 
 def dayof(jday):
     '''Determine the day associated with an astronomical event'''
@@ -20,7 +20,7 @@ def nyd(year):
     '''Compute New Year's Day'''
     year = int(year)
 
-    solstice = trans((epoch + (year * trop_year)), 0, tz)
+    solstice = trans((epoch + (year * trop_year)), 90, tz)
     noumenia = fvc(solstice, tz)
     while (dayof(fvc((noumenia - syn_month), tz)) >= dayof(solstice)):
         noumenia -= syn_month
@@ -30,7 +30,7 @@ def nyd(year):
     return noumenia
 
 def fromjd(jday):
-    '''Convert a Julian Day into an Macedonian date'''
+    '''Convert a Julian Day into an Attic date'''
     jday = int(jday)
 
     # compute the year
@@ -74,7 +74,7 @@ def fromjd(jday):
     return (day, month, year)
 
 def tojd(day, month, year):
-    '''Convert an Macedonian date to a Julian Day'''
+    '''Convert an Attic date to a Julian Day'''
     day = int(day) - 1 # subtract 1 because humans don't count from 0
     month = str(month)
     year = int(year)

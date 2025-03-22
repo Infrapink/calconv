@@ -1,15 +1,15 @@
 #!/usr/bin/python3
 
-# Convert between Macedonian dates and Julian Days
+# Convert between Aitolian dates and Julian Days
 
 from solun import first_visible_crescent as fvc, trans, dayof_arab, tropical_year as trop_year, syn_month
-from months import MACEDONIAN as MONTHS, NUM_MACEDONIAN as MONTHNO
+from months import AITOLIAN as MONTHS, NUM_AITOLIAN as MONTHNO
 from fractions import Fraction
 
-lon = -22.52106 # longitude of Pella
-lat = 40.754669 # latitude of Pella
+lon = 0 - 22 - Fraction(15,60) - Fraction(0,3600) # longitude of Phokis
+lat = 38 + Fraction(30,60) + Fraction(0,3600) # latitude of Phokis
 tz = Fraction(2,24) # Greece is UTC+2
-epoch = Fraction(2301722639, 1440) # solar epoch
+epoch = Fraction(2251499731, 1440) # solar epoch
 
 def dayof(jday):
     '''Determine the day associated with an astronomical event'''
@@ -20,7 +20,7 @@ def nyd(year):
     '''Compute New Year's Day'''
     year = int(year)
 
-    solstice = trans((epoch + (year * trop_year)), 0, tz)
+    solstice = trans((epoch + (year * trop_year)), 180, tz)
     noumenia = fvc(solstice, tz)
     while (dayof(fvc((noumenia - syn_month), tz)) >= dayof(solstice)):
         noumenia -= syn_month
@@ -30,7 +30,7 @@ def nyd(year):
     return noumenia
 
 def fromjd(jday):
-    '''Convert a Julian Day into an Macedonian date'''
+    '''Convert a Julian Day into an Aitolian date'''
     jday = int(jday)
 
     # compute the year
@@ -63,7 +63,7 @@ def fromjd(jday):
         month = MONTHS[int(round((noumenia - crescent) / syn_month))]
     elif (round((noumenia - crescent) / syn_month) == 6):
         # leap month
-        month = "Poseideon 2"
+        month = "Panemos 2"
     else:
         # after the leap month
         month = MONTHS[int(round((noumenia - crescent) / syn_month)) + 1]
@@ -74,7 +74,7 @@ def fromjd(jday):
     return (day, month, year)
 
 def tojd(day, month, year):
-    '''Convert an Macedonian date to a Julian Day'''
+    '''Convert an Aitolian date to a Julian Day'''
     day = int(day) - 1 # subtract 1 because humans don't count from 0
     month = str(month)
     year = int(year)
@@ -89,11 +89,11 @@ def tojd(day, month, year):
         leap = True
     else:
         leap = False
-        if (month == "Poseideon 2"):
-            month = "Poseideon"
+        if (month == "Panemos 2"):
+            month = "Panemos"
 
     # account for the month
-    if (month == "Poseideon 2"):
+    if (month == "Panemos 2"):
         jday += (6 * syn_month)
     else:
         jday += (MONTHNO[month] * syn_month)

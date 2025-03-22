@@ -2650,3 +2650,23 @@ Working days are numbered (well, technically they have names, but those names ar
 
 Sources:
 * https://hermetic.ch/cal_stud/hlwc/hlwc.htm
+
+-----------------------------
+GREEK OBSERVATIONAL CALENDARS
+-----------------------------
+
+In ancient Greece, each city-state and Macedon kept its own calendar.
+
+Calendars were not astronomically-defined in the early days; instead, as Hesiod describes in Works and Days, the seasons were mostly defined by which winds were blowing and which birdcalls could be heard. The phases of the moon were used to coördinate between groups of people, but did not initially determine when activities should be carried out. Gradually, people adopted the heliacal and achronical rising and setting of particular stars as more consistent guides on when was best to plant and when to harvest, but the stars were only a guide, not a schedule, with farmers still relying extensively on experience and intuition.
+
+As city-states coalesced, calendars became more formal. Days begin at sunset and the month nominally commences with the first visible crescent. In practice, however, days were added to and removed from months at the discretion of magistrates, and in some cases months were even moved around throughout the year. As such, the Greeks were said to observe two calendars: The festival (or legal) calendar, decreed by archons, and the calendar of the gods, defined strictly by astronomical observations. The festival calendar frequently diverged from the calendar of the gods by several days, more than can be accounted for by difficulties in observing the moon.
+
+Leap months were inserted when necessary to keep the cycle of months approximately synchronised with the tropical year. Most commonly, the sixth month was repeated so as to have the sixth month start in the second half of the tropical year, and this is the convention I have adopted for this converter. However, this was by no means a hard and fast rule; leap months could be inserted anywhen, and the choice of where to place it was decided by political, religious, and economic expediency.
+
+The year begins with the first visible crescent on or after the day of one of the solstices or equinoxes. Attica (Athens) and Delphi are highly unusual in that the year starts with the summer solstice. Delos and Boeotia start the year at the winter solstice, Aitolia and Phokis with the autumn equinox, and Macedon with the spring equinox. Phokian months are just numbered, but the other poleis give them names reflecting which festivals fall during them, or which gods are honoured. The Athenian calendar has been revived by Hellenic Neopagans, who observe it as per the gods.
+
+The calendar era is 777 BC, the first year of the first Olympiad, with the exception of the Macedonian calendar, which I instead date from the reign of Alexander. This does not reflect ancient Greek practice; Greeks moved from one year to the next without numbering them, and if need be would refer to a year by who were the archons that year. Neopagans count by Olympiads, with the year given by its position within an Olympiad.
+
+Sources:
+* Greek and Roman Calendars: Construction of Time in the Classical World. Robert Hannah, Duckworth, 2005. Chapters 1 — 4
+* Calendars in Antiquity: Empires, States, and Societies. Sacha Stern, Oxford University Press, 2012. Chapter 1.
