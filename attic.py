@@ -66,7 +66,7 @@ def fromjd(jday):
         month = "Poseideon 2"
     else:
         # after the leap month
-        month = MONTHS[int(round((noumenia - crescent) / syn_month)) + 1]
+        month = MONTHS[int(round((noumenia - crescent) / syn_month)) - 1]
 
     # compute the day
     day = jday - dayof(fvc(noumenia, tz)) + 1 # add 1 because humans don't count from 0
