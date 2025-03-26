@@ -2670,3 +2670,26 @@ The calendar era is 777 BC, the first year of the first Olympiad, with the excep
 Sources:
 * Greek and Roman Calendars: Construction of Time in the Classical World. Robert Hannah, Duckworth, 2005. Chapters 1 — 4
 * Calendars in Antiquity: Empires, States, and Societies. Sacha Stern, Oxford University Press, 2012. Chapter 1.
+
+------------------------
+CYCLICAL GREEK CALENDARS
+------------------------
+
+In the 5th century BC, the Athenian astronomers Meton and Euktemon applied a few variants of the Babylonian 19-year cycle to the Greek calendar in the hope of making dates more predictable. None of the cycles described herein were used in an official capacity; they were topics of astronomical study, but Greek calendars in use were determined by observations and magisterial decrees.
+
+Robert Hannah describes one in which every 63rd day is skipped; thus, the lengths of months varies between 29 and 30 days. Older Greek writings describe a theoretical year of 12 months of 30 days each, similar to the Egyptian calendar without the extra days at the end of the year, a scheme which is also found in very early Avestan and Sanskrit works. As such, I understand this scheme as defining a month as 30 tithis long, where each tithi is ⁶²/₆₃ the length of a day. Thus my model counts 30 tithis for each month since the epoch, and the number of days since the epoch is ⁶²/₆₃ of that, rounded down. This gives a mean cycle lengths of 6939 days in 235 months or 19 years, for a mean month lengths of 29 days 12 hours 39 minutes 50 seconds, about 4 minutes 12 seconds shorter than the modern synodic month. The mean year is 365 days 5 hours 3 minutes 9½ seconds, a little over 40 minutes shorter than the modern tropical year.
+
+O. Neugebauer implies the existence of another Metonic cycle with fixed-length months. In this calendar, months alternate 30 and 29 days in a normal year, and the leap month always has 30 days, for a total of 6936 days in 235 months/19 years. This yields a synodic month of 29 days 12 hours 21 minutes 27 seconds, and a solar year of 365 days 1 hour 12 minutes. This is a pretty close match to the Egyptian year, which is the point of the relation, but it is not especially astronomically accurate.
+
+Even at the time, it was recognised in both Greece and Egypt that the solar year was closer to 365¼ days, and so Meton and Euktemon's actual scheme had 6940 days in a cycle. This yields a mean month of 29 days 12 hours 45 minutes 57.5 seconds, less than 2 minutes longer than the modern synodic month. The estimate of the solar year is less accurate, coming in at 365⁵/₁₉ days, about 17 minutes longer than the sidereal year and over half an hour longer than the tropical year.
+
+Days begin at sunset. The epoch is Julian Day 1563449, when the first visible crescent coïncided with teh northern solstice. Meton and Euktemon do not seem to have established a final leap year cycle; I have gone with a leap year in years 1, 4, 7, 9, 12, 15, and 17 of the cycle, counting from 0. For the non-Egyptian fixed-length months, I have added an extra day to Skirophorion in years 2, 6, 14, and 18 of the cycle so as to spread them out a bit.
+
+By the fourth century BC, Kallipos further refined Meton's work to make the mean year exactly 365¼ days long, which he did by dropping 1 day every four cycles, for a total of 27759 days in 76 years; I did not find any references as to where the extra day should be dropped, so I took it from the very last month of the 76-year cycle. This one yields a mean month of 29 days 12 hours 44 minutes 25.5 seconds, less than 23 seconds longer than the modern synodic month. Its epoch is Julian Day 1601069, when again the first visible crescent coïncided with the northern solstice.
+
+Hipparkhos later measured the tropical year as being ¹/₃₀₀ of a day shorter than 365¼ days; this is actually somewhat greater than the real difference, but is still an impressive feat of naked-eye astronomy. To correct this error, he proposed dropping an additional day every four Kallipic cycles, for a total of 111035 days in 304 years. This gives a mean month of 29 days 12 hours 44 minutes 2.5 seconds, less than 0.4 seconds shorter than the modern synodic month. The mean year is 365 days 5 hours 55 minutes 15.8 seconds long, about 6½ minutes longer than the modern tropical year. I did not find any reference to where the extra day should be subtracted, so I arbitrarily went with the final month of year 291 of the 304-year cycle (counting from 0).
+
+Sources:
+* Greek and Roman Calendars: Construction of Time in the Classical World, chapters 1 — 4. Robert Hannah, Duckworth, 2005.
+* Calendars in Antiquity: Empires, States, and Societies, chapter 1. Sacha Stern, Oxford University Press, 2012
+* A History of Ancient Mathematical Astronomy, Book IV B §1.2. O. Neugebauer, Springer, 1975

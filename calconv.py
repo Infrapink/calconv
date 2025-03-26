@@ -243,6 +243,11 @@ import boeotian
 import delphian
 import phokian
 import aitolian
+import athenian_metonic_e
+import athenian_metonic_v
+import athenian_metonic_f
+import hipparchic
+import callipic
 
 def cons_day_julian_todate():
         """Take the input into the Julian Day box andtojd it into the other date formats"""
@@ -2500,6 +2505,51 @@ def cons_day_julian_todate():
         aitolian_day_ent.insert(0, aitolian_date[0])
         aitolian_month_ent.insert(0, aitolian_date[1])
         aitolian_year_ent.insert(0, aitolian_date[2])
+
+        # Convert a Julian day to a date in the Metonic Athenian calendar (Egyptian version)
+        athenian_metonic_e_date = athenian_metonic_e.fromjd(day)
+        athenian_metonic_e_day_ent.delete(0, END)
+        athenian_metonic_e_month_ent.delete(0, END)
+        athenian_metonic_e_year_ent.delete(0, END)
+        athenian_metonic_e_day_ent.insert(0, athenian_metonic_e_date[0])
+        athenian_metonic_e_month_ent.insert(0, athenian_metonic_e_date[1])
+        athenian_metonic_e_year_ent.insert(0, athenian_metonic_e_date[2])
+
+        # Convert a Julian day to a date in the Metonic Athenian calendar (variable-length months)
+        athenian_metonic_v_date = athenian_metonic_v.fromjd(day)
+        athenian_metonic_v_day_ent.delete(0, END)
+        athenian_metonic_v_month_ent.delete(0, END)
+        athenian_metonic_v_year_ent.delete(0, END)
+        athenian_metonic_v_day_ent.insert(0, athenian_metonic_v_date[0])
+        athenian_metonic_v_month_ent.insert(0, athenian_metonic_v_date[1])
+        athenian_metonic_v_year_ent.insert(0, athenian_metonic_v_date[2])
+
+        # Convert a Julian day to a date in the Metonic Athenian calendar (fixed-length months)
+        athenian_metonic_f_date = athenian_metonic_f.fromjd(day)
+        athenian_metonic_f_day_ent.delete(0, END)
+        athenian_metonic_f_month_ent.delete(0, END)
+        athenian_metonic_f_year_ent.delete(0, END)
+        athenian_metonic_f_day_ent.insert(0, athenian_metonic_f_date[0])
+        athenian_metonic_f_month_ent.insert(0, athenian_metonic_f_date[1])
+        athenian_metonic_f_year_ent.insert(0, athenian_metonic_f_date[2])
+
+        # Convert a Julian day to a date in the Callipic calendar
+        callipic_date = callipic.fromjd(day)
+        callipic_day_ent.delete(0, END)
+        callipic_month_ent.delete(0, END)
+        callipic_year_ent.delete(0, END)
+        callipic_day_ent.insert(0, callipic_date[0])
+        callipic_month_ent.insert(0, callipic_date[1])
+        callipic_year_ent.insert(0, callipic_date[2])
+
+        # Convert a Julian day to a date in the Hipparchic calendar
+        hipparchic_date = hipparchic.fromjd(day)
+        hipparchic_day_ent.delete(0, END)
+        hipparchic_month_ent.delete(0, END)
+        hipparchic_year_ent.delete(0, END)
+        hipparchic_day_ent.insert(0, hipparchic_date[0])
+        hipparchic_month_ent.insert(0, hipparchic_date[1])
+        hipparchic_year_ent.insert(0, hipparchic_date[2])
 
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
@@ -4775,6 +4825,51 @@ def aitolian_converter():
         month = aitolian_month_ent.get()
         year = int(aitolian_year_ent.get())
         jday = aitolian.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def athenian_metonic_e_converter():
+        day = int(athenian_metonic_e_day_ent.get())
+        month = athenian_metonic_e_month_ent.get()
+        year = int(athenian_metonic_e_year_ent.get())
+        jday = athenian_metonic_e.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def athenian_metonic_v_converter():
+        day = int(athenian_metonic_v_day_ent.get())
+        month = athenian_metonic_v_month_ent.get()
+        year = int(athenian_metonic_v_year_ent.get())
+        jday = athenian_metonic_v.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def athenian_metonic_f_converter():
+        day = int(athenian_metonic_f_day_ent.get())
+        month = athenian_metonic_f_month_ent.get()
+        year = int(athenian_metonic_f_year_ent.get())
+        jday = athenian_metonic_f.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def callipic_converter():
+        day = int(callipic_day_ent.get())
+        month = callipic_month_ent.get()
+        year = int(callipic_year_ent.get())
+        jday = callipic.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def hipparchic_converter():
+        day = int(hipparchic_day_ent.get())
+        month = hipparchic_month_ent.get()
+        year = int(hipparchic_year_ent.get())
+        jday = hipparchic.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -7988,6 +8083,71 @@ aitolian_year_lbl = Label(frame, text = "Year").grid(row = 263, column = 5, stic
 aitolian_year_ent = Entry(frame)
 aitolian_year_ent.grid(row = 264, column = 5, sticky = W)
 aitolian_bttn = Button(frame, text = "Calculate", command = aitolian_converter).grid(row = 265, column = 3, columnspan = 3, sticky = W)
+
+# Metonic Athenian calendar (Egyptian version)                                                                                            
+athenian_metonic_e_lbl = Label(frame, text = "Metonic Athenian calendar (Egyptian version)").grid(row = 266, column = 0, columnspan = 3, sticky = W)
+athenian_metonic_e_day_lbl = Label(frame, text = "Day").grid(row = 267, column = 0, sticky = W)
+athenian_metonic_e_day_ent = Entry(frame)
+athenian_metonic_e_day_ent.grid(row = 268, column = 0, sticky = W)
+athenian_metonic_e_month_lbl = Label(frame, text = "Month").grid(row = 267, column = 1, sticky = W)
+athenian_metonic_e_month_ent = Entry(frame)
+athenian_metonic_e_month_ent.grid(row = 268, column = 1, sticky = W)
+athenian_metonic_e_year_lbl = Label(frame, text = "Year").grid(row = 267, column = 2, sticky = W)
+athenian_metonic_e_year_ent = Entry(frame)
+athenian_metonic_e_year_ent.grid(row = 268, column = 2, sticky = W)
+athenian_metonic_e_bttn = Button(frame, text = "Calculate", command = athenian_metonic_e_converter).grid(row = 269, column = 0, columnspan = 3, sticky = W)
+
+# Metonic Athenian calendar (variable-length months)                                                                                            
+athenian_metonic_v_lbl = Label(frame, text = "Metonic Athenian calendar (variable-length months)").grid(row = 266, column = 3, columnspan = 3, sticky = W)
+athenian_metonic_v_day_lbl = Label(frame, text = "Day").grid(row = 267, column = 3, sticky = W)
+athenian_metonic_v_day_ent = Entry(frame)
+athenian_metonic_v_day_ent.grid(row = 268, column = 3, sticky = W)
+athenian_metonic_v_month_lbl = Label(frame, text = "Month").grid(row = 267, column = 4, sticky = W)
+athenian_metonic_v_month_ent = Entry(frame)
+athenian_metonic_v_month_ent.grid(row = 268, column = 4, sticky = W)
+athenian_metonic_v_year_lbl = Label(frame, text = "Year").grid(row = 267, column = 5, sticky = W)
+athenian_metonic_v_year_ent = Entry(frame)
+athenian_metonic_v_year_ent.grid(row = 268, column = 5, sticky = W)
+athenian_metonic_v_bttn = Button(frame, text = "Calculate", command = athenian_metonic_v_converter).grid(row = 269, column = 3, columnspan = 3, sticky = W)
+
+# Metonic Athenian calendar (fixed-length months)                                                                                            
+athenian_metonic_f_lbl = Label(frame, text = "Metonic Athenian calendar (fixed-length months)").grid(row = 266, column = 6, columnspan = 3, sticky = W)
+athenian_metonic_f_day_lbl = Label(frame, text = "Day").grid(row = 267, column = 6, sticky = W)
+athenian_metonic_f_day_ent = Entry(frame)
+athenian_metonic_f_day_ent.grid(row = 268, column = 6, sticky = W)
+athenian_metonic_f_month_lbl = Label(frame, text = "Month").grid(row = 267, column = 7, sticky = W)
+athenian_metonic_f_month_ent = Entry(frame)
+athenian_metonic_f_month_ent.grid(row = 268, column = 7, sticky = W)
+athenian_metonic_f_year_lbl = Label(frame, text = "Year").grid(row = 267, column = 8, sticky = W)
+athenian_metonic_f_year_ent = Entry(frame)
+athenian_metonic_f_year_ent.grid(row = 268, column = 8, sticky = W)
+athenian_metonic_f_bttn = Button(frame, text = "Calculate", command = athenian_metonic_f_converter).grid(row = 269, column = 6, columnspan = 3, sticky = W)
+
+# Callipic calendar                                                                                            
+callipic_lbl = Label(frame, text = "Callipic calendar").grid(row = 270, column = 0, columnspan = 3, sticky = W)
+callipic_day_lbl = Label(frame, text = "Day").grid(row = 271, column = 0, sticky = W)
+callipic_day_ent = Entry(frame)
+callipic_day_ent.grid(row = 272, column = 0, sticky = W)
+callipic_month_lbl = Label(frame, text = "Month").grid(row = 271, column = 1, sticky = W)
+callipic_month_ent = Entry(frame)
+callipic_month_ent.grid(row = 272, column = 1, sticky = W)
+callipic_year_lbl = Label(frame, text = "Year").grid(row = 271, column = 2, sticky = W)
+callipic_year_ent = Entry(frame)
+callipic_year_ent.grid(row = 272, column = 2, sticky = W)
+callipic_bttn = Button(frame, text = "Calculate", command = callipic_converter).grid(row = 273, column = 0, columnspan = 3, sticky = W)
+
+# Hipparchic calendar                                                                                            
+hipparchic_lbl = Label(frame, text = "Hipparchic calendar").grid(row = 270, column = 3, columnspan = 3, sticky = W)
+hipparchic_day_lbl = Label(frame, text = "Day").grid(row = 271, column = 3, sticky = W)
+hipparchic_day_ent = Entry(frame)
+hipparchic_day_ent.grid(row = 272, column = 3, sticky = W)
+hipparchic_month_lbl = Label(frame, text = "Month").grid(row = 271, column = 4, sticky = W)
+hipparchic_month_ent = Entry(frame)
+hipparchic_month_ent.grid(row = 272, column = 4, sticky = W)
+hipparchic_year_lbl = Label(frame, text = "Year").grid(row = 271, column = 5, sticky = W)
+hipparchic_year_ent = Entry(frame)
+hipparchic_year_ent.grid(row = 272, column = 5, sticky = W)
+hipparchic_bttn = Button(frame, text = "Calculate", command = hipparchic_converter).grid(row = 273, column = 3, columnspan = 3, sticky = W)
 
 
 root.title("Calendar Converter 0.83.0")
