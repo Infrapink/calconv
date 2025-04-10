@@ -1,5 +1,9 @@
 #!/usr/bin/python3
 
+"""
+THIS CONVERTER IS WRONG AND DEPRECATED. IT WILL BE REMOVED IN A FUTURE UPDATE!
+"""
+
 #
 # Convert between the Roman calendar and Julian Day
 #

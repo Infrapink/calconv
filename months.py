@@ -1909,3 +1909,8 @@ NUM_MACEDONIAN = {"Dios":            0,
                   "Gorpiaios":      10,
                   "Hyperberetaios": 11}
 
+ROMAN = ("Ianuarius", "Februarius", "Mercedonius", "Martius", "Aprilis", "Maia", "Iunius", "Quintilis", "Sextilis", "Septembris", "Octobris", "Novembris", "Decembris")
+
+ROMAN_LENGTHS = {355: (29, 28,  0, 31, 29, 31, 29, 31, 29, 29, 31, 29, 29), # normal year
+                 377: (29, 23, 27, 31, 29, 31, 29, 31, 29, 29, 31, 29, 29), # leap year, Mercedonius before regifugium
+                 378: (29, 23, 28, 31, 29, 31, 29, 31, 29, 29, 31, 29, 29)} # leap year, Mercedonius afer Regifugium

@@ -2551,6 +2551,44 @@ def cons_day_julian_todate():
         hipparchic_month_ent.insert(0, hipparchic_date[1])
         hipparchic_year_ent.insert(0, hipparchic_date[2])
 
+        # Convert a Julian day to a date in the Greek Neopagan calendar
+        neoattic_date = neoattic.fromjd(day)
+        neoattic_day_ent.delete(0, END)
+        neoattic_month_ent.delete(0, END)
+        neoattic_year_ent.delete(0, END)
+        neoattic_cycle_ent.delete(0, END)
+        neoattic_day_ent.insert(0, neoattic_date[0])
+        neoattic_month_ent.insert(0, neoattic_date[1])
+        neoattic_year_ent.insert(0, neoattic_date[2])
+        neoattic_cycle_ent.insert(0, neoattic_date[3])
+
+        # Convert a Julian day to a date in the Roman calendar starting in Martius
+        roman_m_date = roman_m.fromjd(day)
+        roman_m_day_ent.delete(0, END)
+        roman_m_month_ent.delete(0, END)
+        roman_m_year_ent.delete(0, END)
+        roman_m_day_ent.insert(0, roman_m_date[0])
+        roman_m_month_ent.insert(0, roman_m_date[1])
+        roman_m_year_ent.insert(0, roman_m_date[2])
+
+        # Convert a Julian day to a date in the Roman calendar starting in Ianuarius
+        roman_i_date = roman_i.fromjd(day)
+        roman_i_day_ent.delete(0, END)
+        roman_i_month_ent.delete(0, END)
+        roman_i_year_ent.delete(0, END)
+        roman_i_day_ent.insert(0, roman_i_date[0])
+        roman_i_month_ent.insert(0, roman_i_date[1])
+        roman_i_year_ent.insert(0, roman_i_date[2])
+
+        # Convert a Julian day to a date in the Corrected Roman calendar calendar
+        macrobius_date = macrobius.fromjd(day)
+        macrobius_day_ent.delete(0, END)
+        macrobius_month_ent.delete(0, END)
+        macrobius_year_ent.delete(0, END)
+        macrobius_day_ent.insert(0, macrobius_date[0])
+        macrobius_month_ent.insert(0, macrobius_date[1])
+        macrobius_year_ent.insert(0, macrobius_date[2])
+
 def cons_day_julian_plus():
         day = cons_day_julian_ent.get()
         day = int(day) + 1
@@ -4870,6 +4908,43 @@ def hipparchic_converter():
         month = hipparchic_month_ent.get()
         year = int(hipparchic_year_ent.get())
         jday = hipparchic.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def neoattic_converter():
+        day = int(neoattic_day_ent.get())
+        month = neoattic_month_ent.get()
+        year = int(neoattic_year_ent.get())
+        cycle = int(neoattic_cycle_ent.get())
+        jday = neoattic.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def roman_m_converter():
+        day = int(roman_m_day_ent.get())
+        month = roman_m_month_ent.get()
+        year = int(roman_m_year_ent.get())
+        jday = roman_m.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def roman_i_converter():
+        day = int(roman_i_day_ent.get())
+        month = roman_i_month_ent.get()
+        year = int(roman_i_year_ent.get())
+        jday = roman_i.tojd(day, month, year)
+        cons_day_julian_ent.delete(0, END)
+        cons_day_julian_ent.insert(0, jday)
+        cons_day_julian_todate()
+
+def macrobius_converter():
+        day = int(macrobius_day_ent.get())
+        month = macrobius_month_ent.get()
+        year = int(macrobius_year_ent.get())
+        jday = macrobius.tojd(day, month, year)
         cons_day_julian_ent.delete(0, END)
         cons_day_julian_ent.insert(0, jday)
         cons_day_julian_todate()
@@ -8149,6 +8224,61 @@ hipparchic_year_ent = Entry(frame)
 hipparchic_year_ent.grid(row = 272, column = 5, sticky = W)
 hipparchic_bttn = Button(frame, text = "Calculate", command = hipparchic_converter).grid(row = 273, column = 3, columnspan = 3, sticky = W)
 
+# Greek Neopagan calendar                                                                                            
+neoattic_lbl = Label(frame, text = "Greek Neopagan calendar").grid(row = 274, column = 0, columnspan = 3, sticky = W)
+neoattic_day_lbl = Label(frame, text = "Day").grid(row = 275, column = 0, sticky = W)
+neoattic_day_ent = Entry(frame)
+neoattic_day_ent.grid(row = 276, column = 0, sticky = W)
+neoattic_month_lbl = Label(frame, text = "Month").grid(row = 275, column = 1, sticky = W)
+neoattic_month_ent = Entry(frame)
+neoattic_month_ent.grid(row = 276, column = 1, sticky = W)
+neoattic_year_lbl = Label(frame, text = "Year").grid(row = 275, column = 2, sticky = W)
+neoattic_year_ent = Entry(frame)
+neoattic_year_ent.grid(row = 276, column = 2, sticky = W)
+neoattic_cycle_lbl = Label(frame, text = "Olympiad").grid(row = 275, column = 3, sticky = W)
+neoattic_cycle_ent = Entry(frame)
+neoattic_cycle_ent.grid(row = 276, column = 3, sticky = W)
+neoattic_bttn = Button(frame, text = "Calculate", command = neoattic_converter).grid(row = 277, column = 0, columnspan = 3, sticky = W)
 
-root.title("Calendar Converter 0.83.0")
+# Roman calendar starting in Martius                                                                                            
+roman_m_lbl = Label(frame, text = "Roman calendar starting in Martius").grid(row = 278, column = 0, columnspan = 3, sticky = W)
+roman_m_day_lbl = Label(frame, text = "Day").grid(row = 279, column = 0, sticky = W)
+roman_m_day_ent = Entry(frame)
+roman_m_day_ent.grid(row = 280, column = 0, sticky = W)
+roman_m_month_lbl = Label(frame, text = "Month").grid(row = 279, column = 1, sticky = W)
+roman_m_month_ent = Entry(frame)
+roman_m_month_ent.grid(row = 280, column = 1, sticky = W)
+roman_m_year_lbl = Label(frame, text = "Year").grid(row = 279, column = 2, sticky = W)
+roman_m_year_ent = Entry(frame)
+roman_m_year_ent.grid(row = 280, column = 2, sticky = W)
+roman_m_bttn = Button(frame, text = "Calculate", command = roman_m_converter).grid(row = 281, column = 0, columnspan = 3, sticky = W)
+
+# Roman calendar starting in Ianuarius                                                                                            
+roman_i_lbl = Label(frame, text = "Roman calendar starting in Ianuarius").grid(row = 278, column = 3, columnspan = 3, sticky = W)
+roman_i_day_lbl = Label(frame, text = "Day").grid(row = 279, column = 3, sticky = W)
+roman_i_day_ent = Entry(frame)
+roman_i_day_ent.grid(row = 280, column = 3, sticky = W)
+roman_i_month_lbl = Label(frame, text = "Month").grid(row = 279, column = 4, sticky = W)
+roman_i_month_ent = Entry(frame)
+roman_i_month_ent.grid(row = 280, column = 4, sticky = W)
+roman_i_year_lbl = Label(frame, text = "Year").grid(row = 279, column = 5, sticky = W)
+roman_i_year_ent = Entry(frame)
+roman_i_year_ent.grid(row = 280, column = 5, sticky = W)
+roman_i_bttn = Button(frame, text = "Calculate", command = roman_i_converter).grid(row = 281, column = 3, columnspan = 3, sticky = W)
+
+# Corrected Roman calendar calendar                                                                                            
+macrobius_lbl = Label(frame, text = "Corrected Roman calendar").grid(row = 278, column = 6, columnspan = 3, sticky = W)
+macrobius_day_lbl = Label(frame, text = "Day").grid(row = 279, column = 6, sticky = W)
+macrobius_day_ent = Entry(frame)
+macrobius_day_ent.grid(row = 280, column = 6, sticky = W)
+macrobius_month_lbl = Label(frame, text = "Month").grid(row = 279, column = 7, sticky = W)
+macrobius_month_ent = Entry(frame)
+macrobius_month_ent.grid(row = 280, column = 7, sticky = W)
+macrobius_year_lbl = Label(frame, text = "Year").grid(row = 279, column = 8, sticky = W)
+macrobius_year_ent = Entry(frame)
+macrobius_year_ent.grid(row = 280, column = 8, sticky = W)
+macrobius_bttn = Button(frame, text = "Calculate", command = macrobius_converter).grid(row = 281, column = 6, columnspan = 3, sticky = W)
+
+
+root.title("Calendar Converter 0.85.0")
 root.mainloop()
