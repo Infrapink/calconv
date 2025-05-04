@@ -238,6 +238,7 @@ import hermetic_week
 import hermetic_wm
 import hermetic_lunar_week
 import attic
+import neoattic
 import delian
 import boeotian
 import delphian
