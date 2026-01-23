@@ -1,2 +1,0 @@
-calconv.py
-pause
